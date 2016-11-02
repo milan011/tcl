@@ -1,0 +1,38 @@
+.div-img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: red;
+	background-color: #6b0;
+	cursor: pointer;
+	font: 12px/1.5 'Microsoft YaHei', arial, tahoma, sans-serif;
+}
+
+.div-img-back {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	color: #fff;
+	background-color: #000;
+	margin-left: 0px;
+	width: 100%;
+	font: 12px/1.5 'Microsoft YaHei', arial, tahoma, sans-serif;
+}
+
+.div-img-edit {
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.div-img-del {
+	margin-right: 5px;
+	float: right;
+	cursor: pointer;
+}
+
+.thumbnails>li {
+	margin-bottom: 5px;
+	margin-left: 5px;
+	position: relative;
+	padding: 0px;
+}
