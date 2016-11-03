@@ -99,28 +99,28 @@
 				  <div class="control-group">
 				  					<label class="control-label" for="focusedInput">联系电话</label>
 				  					<div class="controls">
-				  					  <input class="input-xlarge focused" id="telephone" name="telephone" type="text" value="">
+				  					  <input class="input-xlarge focused" id="telephone" name="telephone" type="text" value="{{old('telephone')}}">
 				  					</div>
 				  </div>
 
 				   <div class="control-group">
 					<label class="control-label" for="focusedInput">QQ号</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="qq_number" name="qq_number" type="text" value="">
+					  <input class="input-xlarge focused" id="qq_number" name="qq_number" type="text" value="{{old('qq_number')}}">
 					</div>
 				  </div>
 
 				   <div class="control-group">
 					<label class="control-label" for="focusedInput">微信公共号</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="wx_number" name="wx_number" type="text" value="">
+					  <input class="input-xlarge focused" id="wx_number" name="wx_number" type="text" value="{{old('wx_number')}}">
 					</div>
 				  </div>
 
 				   <div class="control-group">
 					<label class="control-label" for="focusedInput">常用邮箱</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="email" name="email" type="text" value="">
+					  <input class="input-xlarge focused" id="email" name="email" type="text" value="{{old('email')}}">
 					</div>
 				  </div>				
 				  <div class="form-actions">
