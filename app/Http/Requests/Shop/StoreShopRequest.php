@@ -32,7 +32,7 @@ class StoreShopRequest extends Request
             'qq_number'   => '',
             'wx_number'   => '',
             'telephone'   => 'required',
-            'email'       => 'email|unique:tcl_shop',
+            'email'       => 'required|email|unique:tcl_shop',
             'address'     => '',
             'status'      => ''
             /*'password' => 'required|min:5|confirmed',
@@ -55,6 +55,7 @@ class StoreShopRequest extends Request
                 'provence_id.required'   => '请选择省份',
                 'city_id.required'       => '请选城市',
                 'telephone.required'     => '请输入门店联系电话',
+                'email.required'         => '请输入邮箱地址',
                 'email.unique'           => '邮箱地址已被使用',
                 'email.email'            => '邮箱格式错误',
             ];

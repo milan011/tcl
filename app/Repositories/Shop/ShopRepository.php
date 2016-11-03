@@ -102,7 +102,7 @@ class ShopRepository implements ShopRepositoryContract
 
         $shop->fill($input)->save();
 
-        dd($shop->toJson());
+        // dd($shop->toJson());
 
         if($shop){
            
