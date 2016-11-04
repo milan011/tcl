@@ -47,10 +47,12 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     // Route::get('car', 'CarController@index')->name('car.index');   
     Route::get('car/self', 'CarController@carself')->name('car.self'); 
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
+    Route::get('role/{id}/editPromiss', 'RoleController@editPromiss')->name('admin.role.editPromiss');
     Route::resource('user', 'UserController'); 
     Route::resource('car', 'CarController');  
     Route::resource('shop', 'ShopController');  
     Route::resource('role', 'RoleController');  
+    Route::resource('permission', 'PermissionController');  
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
