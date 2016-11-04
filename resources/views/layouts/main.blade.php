@@ -187,7 +187,7 @@
 						<li>
 							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">权限管理</span><span style="float:right;">>></span></a>
 							<ul>
-								<li><a class="submenu" href="#"><i class="icon-file-alt"></i><span class="hidden-tablet">权限管理</span></a></li>
+								<li><a class="submenu" href="{{route('admin.permission.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">权限管理</span></a></li>
 								<li><a class="submenu" href="{{route('admin.role.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">角色管理</span></a></li>
 							</ul>	
 						</li>
