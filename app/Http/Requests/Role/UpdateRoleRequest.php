@@ -4,7 +4,7 @@ namespace App\Http\Requests\Role;
 
 use App\Http\Requests\Request;
 
-class StoreRoleRequest extends Request
+class UpdateRoleRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,19 +13,23 @@ class StoreRoleRequest extends Request
      */
     public function authorize()
     {
-        return auth()->user()->hasRole('administrator');
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
+     * 验证规则
      * @return array
      */
     public function rules()
-    {
+    {   
+        // p($this->all()['shop_id']);exit;
+        $id = $this->route('role');
+        // dd($id);
         return [
-            'name' => 'required',
-            'slug' => 'required|unique:roles',
+            'name'        => 'required',
+            'slug'        => 'required|unique:roles',
+            'slug'        => "unique:roles,slug,".$id,
             'description' => 'required'
         ];
     }
