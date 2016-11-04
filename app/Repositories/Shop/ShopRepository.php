@@ -15,11 +15,13 @@ use DB;
 class ShopRepository implements ShopRepositoryContract
 {
 
+    // 根据ID获得门店信息
     public function find($id)
     {
         return Shop::findOrFail($id);
     }
 
+    // 获得门店列表
     public function getAllShops()
     {   
         // $status = '1';
@@ -47,8 +49,7 @@ class ShopRepository implements ShopRepositoryContract
         ->lists('full_name', 'id');
     }
 
-
-
+    // 创建门店
     public function create($requestData)
     {   
         $requestData['user_id'] = Auth::id();
@@ -72,27 +73,9 @@ class ShopRepository implements ShopRepositoryContract
 
             return false;
         }
-
-        /*try {
-
-            Shop::create($input);
-
-        } catch (Illuminate\Database\QueryException $e) {
-
-            return Redirect::to('/login-me')->with('msg', ' Sorry something went worng. Please try again.');
-        }*/
-
-        /*if(Shop::create($input)){
-
-            // $shop->save();
-            Session::flash('flash_message', '添加门店成功');
-            return $shop;
-        }else{
-
-            p('hehe');exit;
-        }*/
     }
 
+    // 修改门店
     public function update($requestData, $id)
     {
         
@@ -113,6 +96,7 @@ class ShopRepository implements ShopRepositoryContract
         }
     }
 
+    // 删除门店
     public function destroy($id)
     {
         try {

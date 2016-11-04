@@ -16,7 +16,6 @@
 	<li><a href="#1f">添加门店</a></li>
 </ul>
 @endsection
-
 <!-- 主体 -->
 @section('content')
 
@@ -55,6 +54,7 @@
 						</select>
 					</div>
 				  </div>
+				
 				<div class="control-group">
 					<label class="control-label" for="selectError3">门店类别</label>
 					<div class="controls">
