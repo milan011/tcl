@@ -64,5 +64,11 @@ class AccessServiceProvider extends ServiceProvider
             \App\Repositories\Shop\ShopRepositoryContract::class,
             \App\Repositories\Shop\ShopRepository::class
         );
+
+        //绑定PermissionRepository
+        $this->app->bind(
+            \App\Repositories\Permission\PermissionRepositoryContract::class,
+            \App\Repositories\Permission\PermissionRepository::class
+        );
     }
 }
