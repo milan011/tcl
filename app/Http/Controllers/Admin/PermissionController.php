@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\permission\StorePermissionRequest;
-use App\Http\Requests\permission\UpdatePermissionRequest;
-use App\Repositories\Role\RoleRepositoryContract;
+use App\Http\Requests\Permission\StorePermissonRequest;
+use App\Http\Requests\Permission\UpdatePermissionRequest;
+use App\Repositories\Permission\PermissionRepositoryContract;
 
 class PermissionController extends Controller
 {
-    protected $roles;
+    protected $permission;
 
-    public function __construct(RoleRepositoryContract $roles)
+    public function __construct(PermissionRepositoryContract $permission)
     {
-        $this->roles = $roles;
+        $this->permission = $permission;
         $this->middleware('user.is.admin', ['only' => ['index', 'create', 'destroy']]);
     }
 
@@ -28,19 +28,19 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        dd($this->roles->allPermissions());
-        return view('admin.roles.index')
-        ->withRoles($this->roles->allPermissions());
+        // dd($this->permission->allPermissions());
+        return view('admin.permission.index')
+        ->withPermissions($this->permission->allPermissions());
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 权限添加
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('admin.permission.create');
     }
 
     /**
@@ -49,9 +49,19 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePermissonRequest $permissionRequest)
     {
-        //
+        $sucessed = $this->permission->create($permissionRequest);
+        // dd($sucessed);
+        if($sucessed){
+            
+            Session::flash('sucess', '添加权限成功');
+            // dd($roleRequest->session()->all());
+            return redirect()->route('admin.permission.index')->withInput();
+        }else{
+
+            return back();
+        }
     }
 
     /**
@@ -67,25 +77,40 @@ class PermissionController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * 编辑权限
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $permission_info = $this->permission->find($id);
+        // p($permission_info);exit;
+        return view('admin.permission.edit', compact(
+
+            'permission_info'
+        ));
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * 更新权限信息
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePermissionRequest $updateRequest, $id)
     {
-        //
+        $sucessed = $this->permission->update($updateRequest, $id);
+
+        if($sucessed){
+            
+            Session::flash('sucess', '修改权限成功');
+            // dd($ShopRequest->session()->all());
+            return redirect()->route('admin.permission.index')->withInput();
+        }else{
+            Session::flash('faill', '修改权限失败');
+            return back();
+        }
     }
 
     /**
