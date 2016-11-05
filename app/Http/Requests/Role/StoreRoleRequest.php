@@ -18,7 +18,7 @@ class StoreRoleRequest extends Request
 
     /**
      * Get the validation rules that apply to the request.
-     *
+     * 验证规则
      * @return array
      */
     public function rules()

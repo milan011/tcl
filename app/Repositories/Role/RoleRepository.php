@@ -18,29 +18,9 @@ class RoleRepository implements RoleRepositoryContract
         return Role::findOrFail($id);
     }
 
-    public function allPermissions()
-    {
-        return Permissions::paginate(10);
-    }
-
     public function allRoles()
     {
         return Role::paginate(10);
-    }
-
-    public function permissionsUpdate($requestData)
-    {
-        $allowed_permissions = [];
-        foreach ($requestData->input('permissions') as $permissionId => $permission) {
-            if ($permission === '1') {
-                $allowed_permissions[] = (int)$permissionId;
-            }
-        }
-       
-        $role = Role::find($requestData->input('role_id'));
-
-        $role->permissions()->sync($allowed_permissions);
-        $role->save();
     }
 
     // 创建角色
@@ -63,7 +43,6 @@ class RoleRepository implements RoleRepositoryContract
 
             return false;
         }
-
     }
 
     // 修改角色
