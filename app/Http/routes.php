@@ -46,7 +46,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::get('/', 'HomeController@index');     
     Route::get('car/self', 'CarController@carself')->name('car.self'); 
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
-    Route::get('role/{id}/editPromiss', 'RoleController@editPromiss')->name('admin.role.editPromiss');
+    Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');
     Route::resource('user', 'UserController'); 
     Route::resource('car', 'CarController');  
     Route::resource('shop', 'ShopController');  

@@ -7,17 +7,21 @@ use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Role;
+use App\Permissions;
 use App\Http\Requests\Role\StoreRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
 use App\Repositories\Role\RoleRepositoryContract;
+use App\Repositories\Permission\PermissionRepositoryContract;
 
 class RoleController extends Controller{
 
     protected $roles;
+    protected $permission;
 
-    public function __construct(RoleRepositoryContract $roles)
+    public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permission)
     {
-        $this->roles = $roles;
+        $this->roles      = $roles;
+        $this->permission = $permission;
         $this->middleware('user.is.admin', ['only' => ['index', 'create', 'destroy']]);
     }
     public function index()
@@ -52,7 +56,7 @@ class RoleController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {       
+    {    
         $role_info = $this->roles->find($id);
         // p($roles_info);exit;
         return view('admin.roles.edit', compact(
@@ -88,14 +92,18 @@ class RoleController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editPromiss($id)
-    {       
-        dd('hah');
+    public function editPermission($id)
+    {   
+        // 获得角色信息           
         $role_info = $this->roles->find($id);
-        // p($roles_info);exit;
-        return view('admin.roles.edit', compact(
+        // 获得权限信息并分类（按用户管理、车源管理、求购信息管理等）
+        $permission_info = Permissions::all();
+        $permission_info = getPermissionByModel($permission_info);
+        // dd($permission_info);exit;
+        return view('admin.roles.editPermission', compact(
 
-            'role_info'
+            'role_info',
+            '$permission_info'
         ));
     }
 
