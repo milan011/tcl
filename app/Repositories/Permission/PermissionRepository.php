@@ -13,7 +13,6 @@ class PermissionRepository implements PermissionRepositoryContract
         return Permissions::findOrFail($id);
     }
 
-
     public function allPermissions()
     {
         return Permissions::paginate(10);
