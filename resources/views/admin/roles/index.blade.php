@@ -52,7 +52,7 @@
 								<a class="btn btn-info" href="{{route('admin.role.edit', ['role'=>$role->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>
-								<a class="btn btn-info" href="{{route('admin.role.editPromiss', ['id'=>$role->id])}}">
+								<a class="btn btn-info" href="{{route('admin.role.editPermission', ['id'=>$role->id])}}">
 									<i class="icon-edit icon-white"></i> 权限设置
 								</a>
 								<input type="hidden" value="{{$role->id}}">
