@@ -28,86 +28,96 @@
 @section('content')
 
 @include('layouts.message')
-	<div class="row-fluid sortable">
-
+	<form class="form-horizontal" action="{{route('admin.role.updatePermission')}}" method="post">
+				{!! csrf_field() !!}
+				{{ method_field('PUT') }}
+	<div class="row-fluid sortable ui-sortable">
+		
 		<div class="box span6">
 			<div class="box-content">
 				<div class="listTree">
-				<ul>
-					<li>
-						<span>
-							<input type="checkbox" name="">
-							门店设置
-						</span>
-						<ul>
-							<li>
-								<span>
-									<input type="checkbox" name="">
-									门店设置
-								</span>
-							</li>
-							<li>
-								<span>
-									<input type="checkbox" name="">
-									门店设置
-								</span>
-							</li>
-						</ul>
-					</li>
-					<li>2</li>
-					<li>3</li>
-				</ul>
-			</div>
-				<ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;">
-					<li style="display: inline-block;line-height: 20px;">
-						<a class="btn btn-primary" href="{{route('admin.role.create')}}">添加角色</a>
-					</li>
-					<li style="display: inline-block;line-height: 20px;">
-						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
-					</li>
-				</ul>         
+					<ul>
+						@foreach ($permission_info[0] as $key=>$permissions)
+						<li>
+							<span class="permissions_effect">
+								<!-- <input type="checkbox" name=""> -->
+								{{$key}}
+								<i class="icon-chevron-up icon-black"></i>
+							</span>
+							<ul style="display:none;">
+							@foreach ($permissions as $perm)
+								<li>
+									<span>
+										<input type="checkbox" value="{{$perm->id}}" name="chouse_permission[]">
+										{{$perm->name}}
+									</span>
+								</li>
+							@endforeach
+							</ul>
+						</li>
+						@endforeach
+					</ul>
+				</div>         
 			</div>
 		</div>
 		<div class="box span6">
 			<div class="box-content">
 			<div class="listTree">
-				<ul>
-					<li>
-						<span>
-							<input type="checkbox" name="">
-							门店设置
-						</span>
-						<ul>
-							<li>
-								<span>
-									<input type="checkbox" name="">
-									门店设置
-								</span>
-							</li>
-							<li>
-								<span>
-									<input type="checkbox" name="">
-									门店设置
-								</span>
-							</li>
-						</ul>
-					</li>
-					<li>2</li>
-					<li>3</li>
-				</ul>
-			</div>
-				<ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;">
-					<li style="display: inline-block;line-height: 20px;">
-						<a class="btn btn-primary" href="{{route('admin.role.create')}}">添加角色</a>
-					</li>
-					<li style="display: inline-block;line-height: 20px;">
-						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
-					</li>
-				</ul>         
+				<div class="listTree">
+					<ul>
+						@foreach ($permission_info[1] as $key=>$permissions)
+						<li>
+							<span class="permissions_effect">
+								<!-- <input type="checkbox" name=""> -->
+								{{$key}}
+								<i class="icon-chevron-up icon-black"></i>
+							</span>
+							<ul style="display:none;">
+							@foreach ($permissions as $perm)
+								<li>
+									<span>
+										<input type="checkbox" value="{{$perm->id}}" name="chouse_permission[]">
+										{{$perm->name}}
+									</span>
+								</li>
+							@endforeach
+							</ul>
+						</li>
+						@endforeach
+					</ul>
+				</div>          
 			</div>
 	    </div>
+	    
+		<ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;">
+			<li style="display: inline-block;line-height: 20px;">
+				<input type="submit" value="保存">
+			</li>
+			<li style="display: inline-block;line-height: 20px;">
+				<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
+			</li>
+		</ul>         
+		</form>
 @endsection
 
 @section('script_content')
 	<script src="{{URL::asset('js/tcl/bootstrap-listTree.js')}}"></script>
+	<script>
+		
+		function permissions_show(){
+			//显示权限
+			$(this).next().show();
+		}
+
+		function permissions_hide(){
+			//隐藏权限
+			$(this).next().hide();
+		}
+	</script>
+	<script>
+		$(document).ready(function(){
+
+			$('.permissions_effect').toggle(permissions_show, permissions_hide);
+		});
+	</script>
 @endsection

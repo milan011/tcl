@@ -99,12 +99,23 @@ class RoleController extends Controller{
         // 获得权限信息并分类（按用户管理、车源管理、求购信息管理等）
         $permission_info = Permissions::all();
         $permission_info = getPermissionByModel($permission_info);
-        // dd($permission_info);exit;
+        // dd($permission_info);
         return view('admin.roles.editPermission', compact(
 
             'role_info',
-            '$permission_info'
+            'permission_info'
         ));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * 更新角色权限
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePermission(Request $request){
+
+        dd($request->all());
     }
 
     public function destroy($id)
