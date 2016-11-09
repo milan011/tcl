@@ -58,6 +58,12 @@ class Handler extends ExceptionHandler
             return response()->json($result);
         }
 
+        if($e instanceof ModelNotFoundException) {
+
+            // dd(($e));
+            return '大哥，没找着啊！';
+        }
+
         return parent::render($request, $e);
     }
 }
