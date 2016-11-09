@@ -23,6 +23,12 @@ class RoleRepository implements RoleRepositoryContract
         return Role::paginate(10);
     }
 
+    // 获得角色拥有的权限信息
+    public function getRolePermission($role_id){
+
+        return Role::findOrFail($role_id)->permissions;
+    }
+
     // 创建角色
     public function create($requestData)
     {

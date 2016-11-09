@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\Permissions;
+use App\PermissionRole;
+use DB;
 use App\Http\Requests\Role\StoreRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
 use App\Repositories\Role\RoleRepositoryContract;
@@ -96,6 +98,10 @@ class RoleController extends Controller{
     {   
         // 获得角色信息           
         $role_info = $this->roles->find($id);
+        // 获得角色权限信息
+        $role_permission = $this->roles->getRolePermission($id)->toArray(); 
+        $role_permission = json_encode($role_permission); 
+        // dd($role_permission);
         // 获得权限信息并分类（按用户管理、车源管理、求购信息管理等）
         $permission_info = Permissions::all();
         $permission_info = getPermissionByModel($permission_info);
@@ -103,7 +109,8 @@ class RoleController extends Controller{
         return view('admin.roles.editPermission', compact(
 
             'role_info',
-            'permission_info'
+            'permission_info',
+            'role_permission'
         ));
     }
 
@@ -115,7 +122,56 @@ class RoleController extends Controller{
      */
     public function updatePermission(Request $request){
 
-        dd($request->all());
+        $role_id = $request->role_id; //角色ID
+        $permission_list = array();
+        // 获得角色权限信息
+        $role_permission = $this->roles->getRolePermission($request->role_id); 
+        //提取权限ID
+        foreach ($role_permission as $key => $value) {
+            
+            $permission_list[] = $value->id;
+        }
+        //已经拥有的权限列表
+        $permission_now = collect($permission_list);
+
+        //提交的权限列表
+        $permission_request = collect($request->chouse_permission);   
+        // dd(collect($request->chouse_permission));
+        
+        //需要删除的权限
+        $need_remove = $permission_now->diff($permission_request);
+
+        // 需要添加的权限
+        $need_add = $permission_request->diff($permission_now);
+
+        if($need_remove->count() > 0){
+            //存在需要删除的权限则删除
+            // dd($need_remove->toArray());
+            $deletPermission = PermissionRole::where('role_id', $role_id)
+                                              ->whereIn('permission_id', $need_remove)
+                                              ->delete();
+
+        }
+
+        if($need_add->count() > 0){
+            // 存在需要添加的权限则添加
+            // dd($need_add);
+
+            foreach ($need_add as $key => $value) {
+                $addPermission = new PermissionRole;
+                
+                $addPermission->permission_id = $value;
+                $addPermission->role_id       = $role_id;
+
+                $addPermission->save();               
+            }
+        }
+
+        Session::flash('sucess', '修改角色权限成功');
+
+        return redirect()->route('admin.role.index')->withInput();
+        // dd($need_remove);
+        
     }
 
     public function destroy($id)

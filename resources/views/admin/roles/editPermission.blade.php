@@ -61,8 +61,7 @@
 			</div>
 		</div>
 		<div class="box span6">
-			<div class="box-content">
-			<div class="listTree">
+			<div class="box-content">			
 				<div class="listTree">
 					<ul>
 						@foreach ($permission_info[1] as $key=>$permissions)
@@ -92,12 +91,14 @@
 		<ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;">
 			<li style="display: inline-block;line-height: 20px;">
 				<input type="submit" value="保存">
+				<input type="hidden" name="role_id" value="{{$role_info->id}}">
 			</li>
 			<li style="display: inline-block;line-height: 20px;">
 				<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
 			</li>
 		</ul>         
 		</form>
+		<input type="hidden" name="role_permission" value="{{$role_permission}}">
 @endsection
 
 @section('script_content')
@@ -117,7 +118,25 @@
 	<script>
 		$(document).ready(function(){
 
+			var role_permission = $("input[name='role_permission']").val(); //当前角色已拥有权限
+
 			$('.permissions_effect').toggle(permissions_show, permissions_hide);
+
+			//已经拥有的权限默认选中
+			$("input[name='chouse_permission[]']").each(function(){
+
+				// console.log($(this).val());
+				var choused = $(this);
+				$.each(eval(role_permission), function(){
+
+					// console.log(this.id);
+					if(choused.val() == this.id){
+
+						choused.attr('checked', 'checked');
+					}
+				});
+			});
+			// console.log(eval(role_permission));
 		});
 	</script>
 @endsection
