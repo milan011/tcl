@@ -19,6 +19,7 @@
     <link href="{{URL::asset('css/tcl/bootstrap-responsive.min.css')}}" rel="stylesheet">
     <link id="base-style" href="{{URL::asset('css/tcl/style.css')}}" rel="stylesheet">
     <link id="base-style-responsive" href="{{URL::asset('css/tcl/style-responsive.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('confirm/css/jquery-confirm.css')}}" rel="stylesheet">
     <!-- <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'> -->
     <!-- end: CSS -->
     
@@ -298,6 +299,7 @@
         <script src="{{URL::asset('js/tcl/retina.js')}}"></script>
 
         <script src="{{URL::asset('js/tcl/custom.js')}}"></script>
+        <script src="{{URL::asset('confirm/js/jquery-confirm.js')}}"></script>
         @yield('script_content')
     <!-- end: JavaScript-->
 	

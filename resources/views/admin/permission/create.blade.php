@@ -48,7 +48,7 @@
 				  </div>				
 				  <div class="form-actions">
 					<button type="submit" class="btn btn-primary">确定</button>
-					<button class="btn">返回</button>
+					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>
 				</fieldset>
 			</form>				

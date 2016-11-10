@@ -60,7 +60,7 @@
 								<form action="{{route('admin.role.destroy', ['role'=>$role->id])}}" method="post" style="    display: inherit;margin:0px;">
 									{{ csrf_field() }}
             						{{ method_field('DELETE') }}
-									<button class="btn btn-danger" type="submit">
+									<button class="btn btn-danger delete-confrim" type="button">
 										<i class="icon-trash icon-white"></i> 删除
 									</button>
 								</form>
@@ -79,51 +79,5 @@
 @endsection
 
 @section('script_content')
-
-<script>
-
-	$(document).ready(function(){
-
-		$('.changStatus').click(function(){
-
-			var id     = $(this).next().val();
-			var status = $(this).attr('data-status');
-			var token = $("input[name='_token']").val();
-
-			/*alert(id);
-			alert(status);*/
-			// alert($("input[name='_token']").val());
-
-			$.ajax({
-
-				type: 'POST',
-
-				url: 'role/changeStatus',
-
-				data: { id : id, status : status},
-
-				dataType: 'json',
-
-				headers: {
-
-					'X-CSRF-TOKEN': '{{ csrf_token() }}'
-
-				},
-
-				success: function(data){
-
-					alert(data.msg);
-					location.reload();
-					// console.log(data);
-				},
-
-				error: function(xhr, type){
-
-					alert('Ajax error!')
-				}
-
-});
-		});
-	});
-</script>
+<script src="{{URL::asset('js/tcl/confirm.js')}}"></script>
 @endsection

@@ -59,7 +59,7 @@
 								<form action="{{route('admin.permission.destroy', ['permission'=>$permission->id])}}" method="post" style="display: inherit;margin:0px;">
 									{{ csrf_field() }}
             						{{ method_field('DELETE') }}
-									<button class="btn btn-danger" type="submit">
+									<button class="btn btn-danger delete-confrim" type="button">
 										<i class="icon-trash icon-white"></i> 删除
 									</button>
 								</form>
@@ -78,5 +78,5 @@
 @endsection
 
 @section('script_content')
-
+<script src="{{URL::asset('js/tcl/confirm.js')}}"></script>
 @endsection

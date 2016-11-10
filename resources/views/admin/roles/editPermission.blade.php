@@ -1,14 +1,14 @@
 @extends('layouts.main')
 
 @section('head_content')
-
-@endsection
 	<link href="{{URL::asset('css/tcl/bootstrap-listTree.css')}}" rel="stylesheet">
 	<style type="text/css">
 		.listTree span{
 			padding:0px;
 		}
 	</style>
+@endsection
+	
 @section('BreadcrumbTrail')
 	<ul class="breadcrumb">
 		<li>
