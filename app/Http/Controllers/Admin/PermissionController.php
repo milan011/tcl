@@ -115,12 +115,18 @@ class PermissionController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * 删除权限
+     * 删除规则：
+     * 1、当前权限是赋予角色使用
+     * 2、若有角色被赋予该权限，则禁止删除
+     * 3、若该权限未被赋予角色使用则删除
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+
+        $this->permission->destroy($id);      
+        return redirect()->route('admin.role.index');
     }
 }

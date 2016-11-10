@@ -176,9 +176,10 @@ class RoleController extends Controller{
 
     public function destroy($id)
     {
+        // dd($id);
         $this->roles->destroy($id);
-        Session()->flash('flash_message', 'Role deleted');
-        return redirect()->route('admin.roles.index');
+        
+        return redirect()->route('admin.role.index');
     }
 }
 

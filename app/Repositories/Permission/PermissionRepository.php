@@ -13,6 +13,16 @@ class PermissionRepository implements PermissionRepositoryContract
         return Permissions::findOrFail($id);
     }
 
+    // 判断是否有角色被赋予该权限
+    protected function permissionUsed($permission_id){
+
+        // dd('将被删除的权限是:'.$permission_id);
+        $permission = Permissions::findOrFail($permission_id)->hasManyRoles;
+
+        dd($permission);
+    }
+
+    //获得所有权限信息
     public function allPermissions()
     {
         return Permissions::paginate(10);
@@ -60,7 +70,9 @@ class PermissionRepository implements PermissionRepositoryContract
 
     // 删除权限
     public function destroy($id)
-    {
+    {   
+        $this->permissionUsed($id);
+
         $role = Role::findorFail($id);
         if ($role->id !== 1) {
             $role->delete();

@@ -78,8 +78,9 @@ class RoleRepository implements RoleRepositoryContract
         $role = Role::findorFail($id);
         if ($role->id !== 1) {
             $role->delete();
+            Session()->flash('sucess', '删除角色成功');
         } else {
-            Session()->flash('flash_message_warning', 'Can not delete Administrator role');
+            Session()->flash('faill', '不能删除超级管理员');
         }
     }
 }
