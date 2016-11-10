@@ -61,7 +61,8 @@ class Handler extends ExceptionHandler
         if($e instanceof ModelNotFoundException) {
 
             // dd(($e));
-            return '大哥，没找着啊！';
+            // return response()->view('admin.errors.notfound'); //自定义页面
+            // return '大哥，没找着啊！';
         }
 
         return parent::render($request, $e);
