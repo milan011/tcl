@@ -3,6 +3,7 @@ namespace App\Repositories\Permission;
 
 use App\Role;
 use App\Permissions;
+use DB;
 
 class PermissionRepository implements PermissionRepositoryContract
 {
@@ -16,10 +17,14 @@ class PermissionRepository implements PermissionRepositoryContract
     // 判断是否有角色被赋予该权限
     protected function permissionUsed($permission_id){
 
-        // dd('将被删除的权限是:'.$permission_id);
-        $permission = Permissions::findOrFail($permission_id)->hasManyRoles;
-
-        dd($permission);
+        $permission = Permissions::findOrFail($permission_id)->hasManyPermissionRoles()->get();
+        
+        // dd($permission->count());
+        if($permission->count() > 0 ){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     //获得所有权限信息
@@ -71,13 +76,14 @@ class PermissionRepository implements PermissionRepositoryContract
     // 删除权限
     public function destroy($id)
     {   
-        $this->permissionUsed($id);
+        if($this->permissionUsed($id)){
+            // 当前权限没有被赋予角色
+            $Permissions = Permissions::findorFail($id);
+            $Permissions->delete();
+            Session()->flash('sucess', '权限删除成功');
+        }else{
 
-        $role = Role::findorFail($id);
-        if ($role->id !== 1) {
-            $role->delete();
-        } else {
-            Session()->flash('flash_message_warning', 'Can not delete Administrator role');
+            Session()->flash('faill', '该权限正在被使用');
         }
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Session;
+use DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Permission\StorePermissonRequest;
 use App\Http\Requests\Permission\UpdatePermissionRequest;
@@ -125,8 +126,8 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-
-        $this->permission->destroy($id);      
-        return redirect()->route('admin.role.index');
+        $this->permission->destroy($id);  
+    
+        return redirect()->route('admin.permission.index');
     }
 }

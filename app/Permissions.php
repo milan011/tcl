@@ -19,6 +19,11 @@ class Permissions extends Model
     }
     public function hasperm()
     {
-        return $this->belongsToMany('App\PermissionRole', 'Permission_role', 'role_id');
+        return $this->belongsTo('App\PermissionRole', 'Permission_id', 'id');
+    }
+
+    // 定义Permissionsns与Permission_Role一对多关系
+    public function hasManyPermissionRoles(){
+    	return $this->hasMany('App\PermissionRole', 'permission_id', 'id');
     }
 }
