@@ -24,7 +24,7 @@ class ShopController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * 门店列表
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -42,7 +42,7 @@ class ShopController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 添加门店
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -53,28 +53,20 @@ class ShopController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * 添加门店
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreShopRequest $ShopRequest)
     {
-        $sucessed = $this->shop->create($ShopRequest);
-
-        if($sucessed){
-            
-            Session::flash('sucess', '添加门店成功');
-            // dd($ShopRequest->session()->all());
-            return redirect()->route('admin.shop.index')->withInput();
-        }else{
-
-            return back();
-        }
+        $getInsertedId = $this->shop->create($ShopRequest);
+        // p(lastSql());exit;
+        return redirect()->route('admin.shop.index')->withInput();
     }
 
     /**
      * Display the specified resource.
-     *
+     * 显示门店详细信息
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -85,14 +77,15 @@ class ShopController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * 编辑门店
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {       
         $shop_info = $this->shop->find($id);
-        // p($shop_info);exit;
+        dd(lastSql());
+        p($shop_info);exit;
         return view('admin.shop.edit', compact(
 
             'shop_info'
@@ -101,36 +94,26 @@ class ShopController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * 修改门店
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateShopRequest $shopRequest, $id)
     {   
-        $sucessed = $this->shop->update($shopRequest, $id);
-
-        if($sucessed){
-            
-            Session::flash('sucess', '修改门店成功');
-            // dd($ShopRequest->session()->all());
-            return redirect()->route('admin.shop.index')->withInput();
-        }else{
-            Session::flash('faill', '修改门店失败');
-            return back();
-        }
+        $this->shop->update($shopRequest, $id);
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     * 删除门店
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {    
-        $this->shop->destroy($id);
-        
+        $this->shop->destroy($id);        
         return redirect()->route('admin.shop.index');       
     }
 

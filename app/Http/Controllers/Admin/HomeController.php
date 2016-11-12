@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
+use DB;
+use Debugbar;
 use View;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -24,7 +26,7 @@ class HomeController extends Controller
     {
         //
         $user = $request->user();
-        /*p($user->hehe());
+        /*p(lastSql());
         p($user['attributes']);exit;*/
 
         $hehe = 'hehehehe ni mei a';
