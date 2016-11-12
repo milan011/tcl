@@ -28,6 +28,7 @@ class UpdateShopRequest extends Request
         // dd($id);
         return [
             'name'        => 'required',
+            'name'        => "unique:tcl_shop,name,".$id,
             'type'        => 'required|numeric',
             'provence_id' => 'required|numeric',
             'city_id'     => 'required|numeric',
@@ -54,6 +55,7 @@ class UpdateShopRequest extends Request
         public function messages(){
             return [
                 'name.required'          => '请输入门店名称',
+                'name.unique'            => '请门店名称已经被使用',
                 'type.required'          => '请选择门店类型',
                 'provence_id.required'   => '请选择省份',
                 'city_id.required'       => '请选城市',

@@ -25,7 +25,7 @@ class StoreShopRequest extends Request
     public function rules()
     {   
         return [
-            'name'        => 'required',
+            'name'        => 'required|unique:tcl_shop',
             'type'        => 'required|numeric',
             'provence_id' => 'required|numeric',
             'city_id'     => 'required|numeric',
@@ -51,6 +51,7 @@ class StoreShopRequest extends Request
         public function messages(){
             return [
                 'name.required'          => '请输入门店名称',
+                'name.unique'            => '门店名称已被使用',
                 'type.required'          => '请选择门店类型',
                 'provence_id.required'   => '请选择省份',
                 'city_id.required'       => '请选城市',
