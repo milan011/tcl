@@ -11,6 +11,7 @@ use PHPZen\LaravelRbac\Traits\Rbac;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use DB;
+use Debugbar;
 
 class ShopRepository implements ShopRepositoryContract
 {
@@ -24,18 +25,6 @@ class ShopRepository implements ShopRepositoryContract
     // 获得门店列表
     public function getAllShops()
     {   
-        // $status = '1';
-        /*$shop = new Shop();
-
-        if(isset($status)){
-
-            $shop = $shop->where('status', '!=', $status);
-        }
-        
-        $shop = $shop->where('type', '=', '1');
-
-        return $shop->get()->toArray();*/
-
         return Shop::paginate(10);
     }
 
@@ -60,19 +49,8 @@ class ShopRepository implements ShopRepositoryContract
 
         $shop = $shop->create($input);
 
-        // $shop = $shop->save();
-
-        /*p(lastSql());
-        dd($shop->id);*/
-
-        if($shop){
-
-            
-            return $shop;
-        }else{
-
-            return false;
-        }
+        Session::flash('sucess', '添加门店成功');
+        return $shop;
     }
 
     // 修改门店
@@ -80,20 +58,11 @@ class ShopRepository implements ShopRepositoryContract
     {
         
         $shop  = Shop::findorFail($id);
-
         $input =  array_replace($requestData->all());
-
         $shop->fill($input)->save();
-
         // dd($shop->toJson());
-
-        if($shop){
-           
-            return $shop;
-        }else{
-
-            return false;
-        }
+        Session::flash('sucess', '修改门店成功');
+        return $shop;
     }
 
     // 删除门店
