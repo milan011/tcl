@@ -70,5 +70,11 @@ class AccessServiceProvider extends ServiceProvider
             \App\Repositories\Permission\PermissionRepositoryContract::class,
             \App\Repositories\Permission\PermissionRepository::class
         );
+
+        //绑定NoticeRepository
+        $this->app->bind(
+            \App\Repositories\Notice\NoticeRepositoryContract::class,
+            \App\Repositories\Notice\NoticeRepository::class
+        );
     }
 }
