@@ -57,14 +57,16 @@ class Handler extends ExceptionHandler
 
             return response()->json($result);
         }
+        if (config('app.debug')) {
+            //若非调试环境，则转自定义异常显示，线上环境提示比较友好，线下利于调试
+            if($e instanceof ModelNotFoundException) {
 
-        if($e instanceof ModelNotFoundException) {
-
-            // dd(($e));
-            // return response()->view('admin.errors.notfound'); //自定义页面
-            // return '大哥，没找着啊！';
+                // dd(($e));
+                // return response()->view('admin.errors.notfound'); //自定义页面
+                return '大哥，没找着啊！';
+            }
         }
-
+        
         return parent::render($request, $e);
     }
 }
