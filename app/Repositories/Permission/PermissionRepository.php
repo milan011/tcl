@@ -3,7 +3,7 @@ namespace App\Repositories\Permission;
 
 use App\Role;
 use App\Permissions;
-use DB;
+use Session;
 
 class PermissionRepository implements PermissionRepositoryContract
 {
@@ -46,13 +46,9 @@ class PermissionRepository implements PermissionRepositoryContract
                     'description' => $permissionDescription
         ]);
 
-        if($permission){
-            
-            return $permission;
-        }else{
+        Session::flash('sucess', '添加权限成功');          
+        return $permission;
 
-            return false;
-        }
     }
 
     // 更新权限信息
@@ -64,13 +60,8 @@ class PermissionRepository implements PermissionRepositoryContract
 
         $permission->fill($input)->save();
 
-        if($permission){
-           
-            return $permission;
-        }else{
-
-            return false;
-        }
+        Session::flash('sucess', '修改权限成功');
+        return $permission;
     }
 
     // 删除权限

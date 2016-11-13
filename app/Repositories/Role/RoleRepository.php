@@ -3,6 +3,7 @@ namespace App\Repositories\Role;
 
 use App\Role;
 use App\Permissions;
+use Session;
 
 class RoleRepository implements RoleRepositoryContract
 {
@@ -42,13 +43,8 @@ class RoleRepository implements RoleRepositoryContract
                     'description' => $roleDescription
         ]);
 
-        if($role){
-            
-            return $role;
-        }else{
-
-            return false;
-        }
+        Session::flash('sucess', '添加角色成功');          
+        return $role;
     }
 
     // 修改角色
@@ -56,20 +52,12 @@ class RoleRepository implements RoleRepositoryContract
     {
         
         $role  = Role::findorFail($id);
-
         $input =  array_replace($requestData->all());
-
         $role->fill($input)->save();
 
         // dd($role->toJson());
-
-        if($role){
-           
-            return $role;
-        }else{
-
-            return false;
-        }
+        Session::flash('sucess', '修改角色成功');          
+        return $role;
     }
 
     // 删除角色
