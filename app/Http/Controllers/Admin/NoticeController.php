@@ -3,20 +3,39 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Notice\UpdateNoticeRequest;
+use App\Http\Requests\Notice\StoreNoticeRequest;
+use App\Repositories\Notice\NoticeRepositoryContract;
 
 class NoticeController extends Controller
 {
+    protected $notice;
+
+    public function __construct(
+        NoticeRepositoryContract $notice
+    ) {
+    
+        $this->notice = $notice;
+        // $this->middleware('notice.create', ['only' => ['create']]);
+    }
+
     /**
      * Display a listing of the resource.
-     *
+     * 公告列表
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $notices = $this->notice->allNotices();
+
+        // dd($notices->count());
+        return view('admin.notice.index', compact(
+
+            'notices'
+        ));
     }
 
     /**
@@ -26,7 +45,7 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.notice.create');
     }
 
     /**

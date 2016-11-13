@@ -12,7 +12,7 @@ class Notice extends Model
      * @var string
      */
     // protected $table = 'users';
-    protected $table = 'tcl_shop';
+    protected $table = 'tcl_notice';
     protected $primaryKey ='id';
 
     /**
