@@ -179,7 +179,7 @@
 							</a></li>
 						@endif
 						@ifUserCan('notice.check')
-						<li><a class="submenu"href="/notice">
+						<li><a class="submenu" href="{{route('admin.notice.index')}}">
 									<i class="icon-bullhorn"></i> <span class="hidden-tablet">
 										公告列表</span>
 							</a></li>
