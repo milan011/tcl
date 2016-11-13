@@ -84,8 +84,8 @@ class ShopController extends Controller
     public function edit($id)
     {       
         $shop_info = $this->shop->find($id);
-        dd(lastSql());
-        p($shop_info);exit;
+        /*dd(lastSql());
+        p($shop_info);exit;*/
         return view('admin.shop.edit', compact(
 
             'shop_info'

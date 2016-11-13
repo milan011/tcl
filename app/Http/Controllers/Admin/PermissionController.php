@@ -52,17 +52,9 @@ class PermissionController extends Controller
      */
     public function store(StorePermissonRequest $permissionRequest)
     {
-        $sucessed = $this->permission->create($permissionRequest);
-        // dd($sucessed);
-        if($sucessed){
-            
-            Session::flash('sucess', '添加权限成功');
-            // dd($roleRequest->session()->all());
-            return redirect()->route('admin.permission.index')->withInput();
-        }else{
+        $getInsertedId = $this->permission->create($permissionRequest);
 
-            return back();
-        }
+        return redirect()->route('admin.permission.index')->withInput();
     }
 
     /**
@@ -101,17 +93,9 @@ class PermissionController extends Controller
      */
     public function update(UpdatePermissionRequest $updateRequest, $id)
     {
-        $sucessed = $this->permission->update($updateRequest, $id);
+        $this->permission->update($updateRequest, $id);
 
-        if($sucessed){
-            
-            Session::flash('sucess', '修改权限成功');
-            // dd($ShopRequest->session()->all());
-            return redirect()->route('admin.permission.index')->withInput();
-        }else{
-            Session::flash('faill', '修改权限失败');
-            return back();
-        }
+        return redirect()->route('admin.permission.index')->withInput();
     }
 
     /**

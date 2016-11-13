@@ -75,17 +75,8 @@ class RoleController extends Controller{
      */
     public function update(UpdateroleRequest $rolesRequest, $id)
     {   
-        $sucessed = $this->roles->update($rolesRequest, $id);
-
-        if($sucessed){
-            
-            Session::flash('sucess', '修改角色成功');
-            // dd($ShopRequest->session()->all());
-            return redirect()->route('admin.role.index')->withInput();
-        }else{
-            Session::flash('faill', '修改角色失败');
-            return back();
-        }
+        $getInsertedId = $this->roles->update($rolesRequest, $id);
+        return redirect()->route('admin.role.index')->withInput();
     }
 
     /**
