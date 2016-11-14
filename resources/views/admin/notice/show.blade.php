@@ -23,56 +23,21 @@
 
 <div class="row-fluid sortable">
 	<div class="box span12">
+		<div class="box-header" data-original-title>
+			<h2>
+				<i class="icon-trophy  align-justify"></i><span class="break"></span> 通知公告
+			</h2>
+			<!-- <div class="box-icon">  
+				<a href="缩小窗口" class="btn-minimize"><i
+					class="halflings-icon chevron-up"></i></a>
+			</div> -->
+		</div>
 		<div class="box-content">
-			<form class="form-horizontal" action="{{route('admin.notice.update', ['notice'=>$notice_info->id])}}" method="post">
-				{!! csrf_field() !!}
-				{{ method_field('PUT') }}
-				<fieldset>
-				  <div class="control-group">
-					<label class="control-label" for="focusedInput">公告标题</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="title" type="text" name="title" value="{{$notice_info->title}}">
-					</div>
-				  </div> 
-				<div class="control-group">
-					<label class="control-label" for="selectError3">是否置顶</label>
-					<div class="controls">
-					  <select id="is_top" name="is_top">
-					  	<option  @if($notice_info->status == '0') selected @endif  value="0">不置顶</option>
-					  	<option  @if($notice_info->status == '1') selected @endif  value="1">置顶</option>
-						</select>
-					</div>
-				</div>	
-				<div class="control-group">
-					<label class="control-label" for="selectError3">公告类型</label>
-					<div class="controls">
-					  <select id="type" name="type">
-					  	<option  @if($notice_info->status == '1') selected @endif  value="1">系统公告</option>
-					  	<option  @if($notice_info->status == '2') selected @endif  value="2">临时公告</option>
-						</select>
-					</div>
-				</div>				
-				   <div class="control-group">
-					<label class="control-label" for="focusedInput">排序</label>
-					<div class="controls">
-					  	<input class="input-xlarge focused" id="sort" name="sort" type="text" value="{{$notice_info->sort}}">
-					</div>
-				  </div>       
-				<div class="control-group">
-				  <label class="control-label" for="textarea2">公告内容</label>
-				  <div class="controls">
-					<textarea class="cleditor" id="textarea2" name="content" rows="5">
-						{{$notice_info->content}}
-					</textarea>
-
-				  </div>
-				</div>			
-				  <div class="form-actions">
-					<button type="submit" class="btn btn-primary">确定</button>
-					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
-				  </div>
-				</fieldset>
-			</form>				
+			<h2 align="center">{{$notice_info->title}}</h2>
+			<h4 align="center">发布人：{{$notice_info->belongsToUser->name}}</h4>
+			<h4 align="center">发布时间：{{$notice_info->created_at}}</h4>
+			<p>{!! $notice_info->content !!}</p>	
+			<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返&nbsp;&nbsp;回</a>		
 		</div>
 	</div>			
 </div>   
