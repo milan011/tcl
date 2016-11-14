@@ -71,7 +71,7 @@ class NoticeController extends Controller
     {
         $notice_info = $this->notice->find($id);
         // dd(lastSql());
-        dd($notice_info);exit;
+        // dd($notice_info);exit;
         return view('admin.notice.show', compact(
 
             'notice_info'
