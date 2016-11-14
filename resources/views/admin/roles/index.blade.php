@@ -49,7 +49,7 @@
 							<td>{{$role->name}}</td>
 							<td class="center">{{$role->description}}</td>							
 							<td class="center">
-								<a class="btn btn-info" href="{{route('admin.role.edit', ['role'=>$role->id])}}">
+								<a class="btn btn-warning" href="{{route('admin.role.edit', ['role'=>$role->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>
 								<a class="btn btn-info" href="{{route('admin.role.editPermission', ['id'=>$role->id])}}">

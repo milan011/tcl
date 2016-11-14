@@ -63,7 +63,7 @@
 							<td class="center"><span class="label label-warning">已停用</span></td>
 							@endif							
 							<td class="center">
-								<a class="btn btn-info" href="{{route('admin.shop.edit', ['shop'=>$shop->id])}}">
+								<a class="btn btn-warning" href="{{route('admin.shop.edit', ['shop'=>$shop->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>
 								@if($shop->status == '1') 

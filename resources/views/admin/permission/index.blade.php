@@ -51,7 +51,7 @@
 							<td class="center">{{$permission->description}}</td>						
 							<td class="center">{{$permission->slug}}</td>	
 							<td class="center">
-								<a class="btn btn-info" href="{{route('admin.permission.edit', ['permission'=>$permission->id])}}">
+								<a class="btn btn-warning" href="{{route('admin.permission.edit', ['permission'=>$permission->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>
 								<input type="hidden" value="{{$permission->id}}">
