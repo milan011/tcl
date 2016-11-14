@@ -100,4 +100,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
       return $this->hasOne('Shop', 'user_id', 'id');
     }
+
+    // 定义User表与Notice表一对多关系
+    public function hasManyNotice(){
+
+      return $this->hasMany('App\Notice', 'user_id', 'id');
+    }
 }

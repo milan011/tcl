@@ -20,7 +20,7 @@ class Notice extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['name', 'nick_name', 'password', 'telephone', 'phone', 'qq_number', 'wx_number', 'address', 'creater_id', 'shop_id', 'status', 'user_img'];
+    protected $fillable = ['title', 'content', 'type', 'user_id', 'sort', 'is_top'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -30,4 +30,10 @@ class Notice extends Model
     protected $hidden = [   
         'password', 'remember_token',
     ];
+
+    // 定义User表与Notice表一对多关系
+    public function belongsToUser(){
+
+      return $this->belongsTo('App\User', 'user_id', 'id');
+    }
 }
