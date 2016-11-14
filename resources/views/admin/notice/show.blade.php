@@ -5,7 +5,7 @@
 <ul class="breadcrumb">
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.index')}}">主页</a>  
+		<a href="{{route('admin.index')}}">Home</a> 
 		<i class="icon-angle-right"></i>
 	</li>
 	<li>
@@ -13,7 +13,7 @@
 		<a href="{{route('admin.notice.index')}}">公告管理</a> 
 		<i class="icon-angle-right"></i>
 	</li>
-	<li><a href="#1f">修改公告</a></li>
+	<li><a href="#1f">公告详情</a></li>
 </ul>
 @endsection
 <!-- 主体 -->
