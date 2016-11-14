@@ -3,6 +3,7 @@ namespace App\Repositories\Notice;
 
 use App\Notice;
 use Session;
+use Auth;
 
 class NoticeRepository implements NoticeRepositoryContract
 {
@@ -19,31 +20,30 @@ class NoticeRepository implements NoticeRepositoryContract
     }
 
     public function allNotices()
-    {
-        return Notice::paginate(10);
-    }
-
-    // 获得公告拥有的权限信息
-    public function getNoticePermission($Notice_id){
-
-        return Notice::findOrFail($Notice_id)->permissions;
+    {   
+        /*$notice_user = new Notice;
+        // $info = $notice_user::with('App\User')->find(1);
+        $info = Notice::with('belongsToUser')->find(1);
+        // dd(lastSql());
+        dd($info->belongsToUser->name);
+        dd($info->belongsToUser()->get());*/
+        return Notice::with('belongsToUser')->paginate(10);
     }
 
     // 创建公告
     public function create($requestData)
     {
-        $NoticeName = $requestData->name;
-        $NoticeSlug = $requestData->slug;
-        $NoticeDescription = $requestData->description;
+        $requestData['user_id'] = Auth::id();
+        // dd($requestData);
+        
+        $notice = new Notice;
+        $input  =  array_replace($requestData->all());
+        $notice->fill($input);
 
-        $Notice = Notice::create([
-                    'name' => $NoticeName,
-                    'slug' => $NoticeSlug,
-                    'description' => $NoticeDescription
-        ]);
+        $notice = $notice->create($input);
 
         Session::flash('sucess', '添加公告成功');          
-        return $Notice;
+        return $notice;
     }
 
     // 修改公告
