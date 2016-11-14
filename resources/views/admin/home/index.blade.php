@@ -7,7 +7,6 @@
 			<a href="{{route('admin.index')}}">主页</a>  
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="#1f">首页</a></li>
 	</ul>
 @endsection
 
