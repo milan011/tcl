@@ -30,40 +30,42 @@
 				  <div class="control-group">
 					<label class="control-label" for="focusedInput">公告标题</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="focusedInput" type="text" name="title">
+					  <input class="input-xlarge focused" id="title" type="text" name="title" value="{{old('title')}}">
 					</div>
 				  </div> 
-				  <div class="control-group">
+				<div class="control-group">
 					<label class="control-label" for="selectError3">是否置顶</label>
 					<div class="controls">
-					  <select id="type" name="type">
+					  <select id="is_top" name="is_top">
 					  	<option  value="0">不置顶</option>
 					  	<option  value="1">置顶</option>
 						</select>
 					</div>
-				</div>					
+				</div>	
+				<div class="control-group">
+					<label class="control-label" for="selectError3">公告类型</label>
+					<div class="controls">
+					  <select id="type" name="type">
+					  	<option  value="1">系统公告</option>
+					  	<option  value="2">临时公告</option>
+						</select>
+					</div>
+				</div>				
 				   <div class="control-group">
 					<label class="control-label" for="focusedInput">排序</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="email" name="email" type="text" value="{{old('email')}}">
+					  	<input class="input-xlarge focused" id="sort" name="sort" type="text" value="{{ (null !== old('sort')) ? old('sort') : '10'}}">
 					</div>
 				  </div>       
 				<div class="control-group">
 				  <label class="control-label" for="textarea2">公告内容</label>
 				  <div class="controls">
-					<textarea class="cleditor" id="textarea2" name="content" rows="5"></textarea>
+					<textarea class="cleditor" id="textarea2" name="content" rows="5">
+						{{old('content')}}
+					</textarea>
+
 				  </div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="selectError3">是否启用</label>
-					<div class="controls">
-					  <select id="status" name="status" data-rel="chosen">
-					  	<option  value="1">启用</option>
-						<option  value="0">停用</option>
-						
-						</select>
-					</div>
-				</div>				
+				</div>			
 				  <div class="form-actions">
 					<button type="submit" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>

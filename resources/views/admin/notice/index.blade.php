@@ -53,12 +53,12 @@
 					<tbody>
 						@foreach ($notices as $notice)
     					<tr>
-							<td>{{$notice->name}}</td>						
-							<td class="center">加盟店</td>
-							<td class="center"><span class="label label-success">已启用</span></td>			
-							<td class="center"><span class="label label-success">已启用</span></td>			
+							<td>{{$notice->id}}</td>						
+							<td class="center">{{$notice->title}}</td>
+							<td class="center">{{$notice->belongsToUser->name}}</td>			
+							<td class="center">{{$notice->created_at}}</td>			
 							<td class="center">
-								<a class="btn btn-info" href="{{route('admin.notice.edit', ['notice'=>$notice->id])}}">
+								<a class="btn btn-warning" href="{{route('admin.notice.edit', ['notice'=>$notice->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>
 								<a class="btn btn-info" href="{{route('admin.notice.show', ['notice'=>$notice->id])}}">
