@@ -31,7 +31,7 @@ class NoticeController extends Controller
     {
         $notices = $this->notice->allNotices();
 
-        // dd($notices->count());
+        // dd($notices);
         return view('admin.notice.index', compact(
 
             'notices'
@@ -54,9 +54,11 @@ class NoticeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreNoticeRequest $noticeRequest)
     {
-        //
+        $getInsertedId = $this->notice->create($noticeRequest);
+        // p(lastSql());exit;
+        return redirect()->route('admin.notice.index')->withInput();
     }
 
     /**
@@ -67,18 +69,30 @@ class NoticeController extends Controller
      */
     public function show($id)
     {
-        //
+        $notice_info = $this->notice->find($id);
+        // dd(lastSql());
+        dd($notice_info);exit;
+        return view('admin.notice.show', compact(
+
+            'notice_info'
+        ));
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * 编辑公告
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $notice_info = $this->notice->find($id);
+        // dd(lastSql());
+        // p($notice_info);exit;
+        return view('admin.notice.edit', compact(
+
+            'notice_info'
+        ));
     }
 
     /**
@@ -88,9 +102,11 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateNoticeRequest $noticeRequest, $id)
     {
-        //
+        // dd($noticeRequest->all());
+        $this->notice->update($noticeRequest, $id);
+        return redirect()->route('admin.notice.index');
     }
 
     /**
