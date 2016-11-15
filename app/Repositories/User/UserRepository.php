@@ -2,8 +2,6 @@
 namespace App\Repositories\User;
 
 use App\User;
-use App\Tasks;
-use App\Settings;
 use Session;
 use Illuminate\Http\Request;
 use Gate;
@@ -26,9 +24,13 @@ class UserRepository implements UserRepositoryContract
     }
 
     public function getAllUsers()
-    {   
-        
-        return User::all();
+    {           
+        /*return User::with(['hasOneShop'=>function($query){
+            $query->select('user_id','name','address');
+        }])->paginate(10);*/
+
+        return User::with(tableUnionDesign('hasOneShop',['user_id','name','address','email']))->paginate(10);
+        // return User::with('hasOneShop')->paginate(10);
     }
 
     public function getAllUsersWithDepartments()

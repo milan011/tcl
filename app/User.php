@@ -7,17 +7,18 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use PHPZen\LaravelRbac\Traits\Rbac;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Fenos\Notifynder\Notifable;
 use Cache;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
 
-    use Authenticatable, CanResetPassword, Rbac, Notifable;
+    use Authenticatable, CanResetPassword, Rbac, Notifable, SoftDeletes;
 
     /**
      * The database table used by the model.
-     *
+     * 定义表名及主键
      * @var string
      */
     // protected $table = 'users';
@@ -26,7 +27,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * The attributes that are mass assignable.
-     *
+     * 批量赋值属性
      * @var array
      */
     // protected $fillable = ['name', 'email', 'password', 'address', 'personal_number', 'work_number', 'image_path'];
@@ -34,7 +35,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * The attributes excluded from the model's JSON form.
-     *
+     * 隐藏属性
      * @var array
      */
     // protected $dates = ['trial_ends_at', 'subscription_ends_at'];
@@ -42,6 +43,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = [   //在模型数组或 JSON 显示中隐藏某些属性
         'password', 'remember_token',
     ];
+
+    /**
+     * 应该被调整为日期的属性
+     * 定义软删除
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
     
     
     public function tasksAssign()
@@ -64,41 +72,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->hasMany('App\Tasks', 'fk_user_id_assign', 'id')->whereIn('status', [1, 2]);
     }
-    public function leadsAll()
-    {
-        return $this->hasMany('App\Leads', 'fk_user_id', 'id');
-    }
-    public function settings()
-    {
-        return $this->belongsTo('App\Settings');
-    }
-
-    public function clientsAssign()
-    {
-        return $this->hasMany('App\Client', 'fk_user_id', 'id');
-    }
+    
 
     public function userRole()
     {
         return $this->hasOne('App\RoleUser', 'user_id', 'id');
     }
-    public function department()
-    {
-        return $this->belongsToMany('App\Department', 'department_user');
-    }
-    public function departmentOne()
-    {
-        return $this->belongsToMany('App\Department', 'department_user')->withPivot('Department_id');
-    }
-    public function isOnline()
-    {
-        return Cache::has('user-is-online-' . $this->id);
-    }
 
     // 定义User表与Shop表一对一关系
     public function hasOneShop(){
 
-      return $this->hasOne('Shop', 'user_id', 'id');
+      // return $this->hasOne('App\Shop', 'user_id', 'id')->select('user_id','name', 'address');
+      return $this->hasOne('App\Shop', 'user_id', 'id');
     }
 
     // 定义User表与Notice表一对多关系

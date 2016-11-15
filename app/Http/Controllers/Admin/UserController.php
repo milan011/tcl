@@ -47,9 +47,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        // dd(auth()->user());
-        dd(auth()->user()->canDo('tcl_user.update'));
-        return view('users.index');
+        $users = $this->users->getAllUsers();
+        // dd(lastSql());
+        dd($users);
+        return view('admin.user.index', compact(
+
+            'users'
+        ));
     }
 
     public function anyData()
