@@ -70,3 +70,21 @@
 
         return collect($permissions_del)->chunk($chunk_num);
 	}
+
+	/**
+     * Get the validation rules that apply to the request.
+     * 返回关联表指定字段
+     * $relation:定义的关联名称,如:hasOneShop
+     * Array $columns 指定的字段
+     * @return array
+     */
+	function tableUnionDesign($relation, Array $columns){
+
+		$desing = array();
+
+		$desing[$relation] = (function($query) use ($columns){
+		            $query->select($columns);
+		        });
+
+        return $desing;
+	}
