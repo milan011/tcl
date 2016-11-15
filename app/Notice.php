@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Notice extends Model
 {
+    use SoftDeletes; //使用软删除
+    
     /**
      * The database table used by the model.
      * 定义模型对应数据表及主键
@@ -30,6 +33,13 @@ class Notice extends Model
     protected $hidden = [   
         'password', 'remember_token',
     ];
+
+    /**
+     * 应该被调整为日期的属性
+     * 定义软删除
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
 
     // 定义User表与Notice表一对多关系
     public function belongsToUser(){

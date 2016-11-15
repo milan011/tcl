@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Shop extends Model
 {	
 
-	use SoftDeletes;
+	use SoftDeletes; //使用软删除
 
     /**
      * The database table used by the model.
