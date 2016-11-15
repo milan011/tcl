@@ -62,12 +62,8 @@ class NoticeRepository implements NoticeRepositoryContract
     // 删除公告
     public function destroy($id)
     {
-        $Notice = Notice::findorFail($id);
-        if ($Notice->id !== 1) {
-            $Notice->delete();
-            Session()->flash('sucess', '删除公告成功');
-        } else {
-            Session()->flash('faill', '不能删除超级管理员');
-        }
+        $Notice = Notice::findorFail($id);       
+        $Notice->delete();
+        Session()->flash('sucess', '删除公告成功');        
     }
 }

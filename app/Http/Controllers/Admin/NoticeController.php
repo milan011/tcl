@@ -117,6 +117,8 @@ class NoticeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $this->notice->destroy($id);        
+        return redirect()->route('admin.notice.index');
     }
 }
