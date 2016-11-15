@@ -75,7 +75,6 @@ class ShopRepository implements ShopRepositoryContract
            
         } catch (\Illuminate\Database\QueryException $e) {
             Session()->flash('faill', '删除门店失败');
-        }
-        
+        }      
     }
 }
