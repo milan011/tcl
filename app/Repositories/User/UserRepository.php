@@ -29,7 +29,9 @@ class UserRepository implements UserRepositoryContract
             $query->select('user_id','name','address');
         }])->paginate(10);*/
 
-        return User::with(tableUnionDesign('hasOneShop',['user_id','name','address','email']))->paginate(10);
+        return User::with(tableUnionDesign('hasOneShop',['user_id','name','address','email']))
+                   ->select(['id', 'name', 'nick_name'])
+                   ->paginate(10);
         // return User::with('hasOneShop')->paginate(10);
     }
 
