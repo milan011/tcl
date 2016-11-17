@@ -73,10 +73,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('App\Tasks', 'fk_user_id_assign', 'id')->whereIn('status', [1, 2]);
     }
     
-
-    public function userRole()
+    // 定义User表与role_user表一对一关系
+    public function hasOneUserRole()
     {
         return $this->hasOne('App\RoleUser', 'user_id', 'id');
+    }
+
+    // 定义User表与role表多对多关系
+    public function hasManyRoles()
+    {
+        return $this->belongsToMany('App\Role', 'role_user', 'user_id', 'role_id');
     }
 
     // 定义User表与Shop表一对一关系
