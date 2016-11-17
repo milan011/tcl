@@ -30,6 +30,7 @@ class UserRepository implements UserRepositoryContract
         }])->paginate(10);*/
 
         return User::with(tableUnionDesign('hasOneShop',['user_id','name','address','email']))
+                   ->with('hasManyRoles')
                    ->select(['id', 'name', 'nick_name'])
                    ->paginate(10);
         // return User::with('hasOneShop')->paginate(10);
@@ -52,9 +53,11 @@ class UserRepository implements UserRepositoryContract
         $settings = Settings::all();
 
         $password =  bcrypt($requestData->password);
-        $role = $requestData->roles;
-        $department = $requestData->departments;
-        if ($requestData->hasFile('image_path')) {
+        $role     = $requestData->roles;
+        
+        // $department = $requestData->departments;
+
+        /*if ($requestData->hasFile('image_path')) {
             if (!is_dir(public_path(). '/images/'. $companyname)) {
                       mkdir(public_path(). '/images/'. $companyname, 0777, true);
             }
@@ -70,7 +73,9 @@ class UserRepository implements UserRepositoryContract
             $input =  array_replace($requestData->all(), ['image_path'=>"$filename", 'password'=>"$password"]);
         } else {
             $input =  array_replace($requestData->all(), ['password'=>"$password"]);
-        }
+        }*/
+
+        $input =  array_replace($requestData->all(), ['password'=>"$password"]);
 
         $user = User::create($input);
         $user->roles()->attach($role);
