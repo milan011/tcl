@@ -23,20 +23,14 @@ class UserController extends Controller
 {
     protected $users;
     protected $roles;
-    protected $departments;
-    protected $settings;
 
     public function __construct(
         UserRepositoryContract $users,
-        RoleRepositoryContract $roles,
-        DepartmentRepositoryContract $departments,
-        SettingRepositoryContract $settings
+        RoleRepositoryContract $roles
     ) {
     
         $this->users = $users;
         $this->roles = $roles;
-        $this->departments = $departments;
-        $this->settings = $settings;
         $this->middleware('user.create', ['only' => ['create']]);
     }
 
@@ -49,7 +43,7 @@ class UserController extends Controller
     {
         $users = $this->users->getAllUsers();
         // dd(lastSql());
-        dd($users);
+        // dd($users);
         return view('admin.user.index', compact(
 
             'users'
@@ -146,11 +140,11 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('users.create')
-        ->withRoles($this->roles->listAllRoles())
-        ->withDepartments($this->departments->listAllDepartments());
+        // dd($request);
+        return view('admin.user.create')
+        ->withRoles($this->roles->listAllRoles());
     }
 
     /**
