@@ -10,10 +10,10 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.shop.index')}}">门店管理</a> 
+		<a href="{{route('admin.user.index')}}">用户管理</a> 
 		<i class="icon-angle-right"></i>
 	</li>
-	<li><a href="#1f">添加门店</a></li>
+	<li><a href="#1f">添加用户</a></li>
 </ul>
 @endsection
 <!-- 主体 -->
@@ -24,17 +24,29 @@
 <div class="row-fluid sortable">
 	<div class="box span12">
 		<div class="box-content">
-			<form class="form-horizontal" action="{{route('admin.shop.store')}}" method="post">
+			<form class="form-horizontal" action="{{route('admin.user.store')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
-				  <div class="control-group">
-					<label class="control-label" for="focusedInput">门店名称</label>
+				   <div class="control-group">
+					<label class="control-label" for="focusedInput">用户名称</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="name" name="name" type="text" value="{{old('name')}}">
+					  <input class="input-xlarge focused" id="name" name="name" type="text" value="old('name')" />
 					</div>
-				  </div>
+				   </div>
+				   <div class="control-group">
+						<label class="control-label" for="passWord">登录密码</label>
+						<div class="controls">
+						  <input class="input-xlarge focused" id="password" name="password" type="password" value="" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="passWord1">确认密码</label>
+						<div class="controls">
+						  <input class="input-xlarge focused" id="password_confirmation" name="password_confirmation"   type="passWord" value="">
+						</div>
+					 </div>
 				  <!-- <div class="control-group">
-				  					<label class="control-label">上级门店</label>
+				  					<label class="control-label">上级用户</label>
 				  					<div class="controls">
 				  					  <span class="input-xlarge uneditable-input">淘车乐总公司</span>
 				  					  <input type="hidden" id="PID" name="PID" value="1"/>
@@ -42,12 +54,12 @@
 				  </div> -->
 				    <!-- <div id="dept_view"  class="alert alert-error" style="display:none">
 				    						<button class="close" data-dismiss="alert" type="button">×</button>
-				    						<strong>上级门店不能为空!</strong> 请返回选择.
+				    						<strong>上级用户不能为空!</strong> 请返回选择.
 				    					</div> -->
 				<div class="control-group">
 					<label class="control-label" for="selectError3">是否启用</label>
 					<div class="controls">
-					  <select id="status" name="status" data-rel="chosen">
+					  <select id="status" name="status">
 					  	<option  value="1">启用</option>
 						<option  value="0">停用</option>
 						
@@ -56,10 +68,10 @@
 				  </div>
 				
 				<div class="control-group">
-					<label class="control-label" for="selectError3">门店类别</label>
+					<label class="control-label" for="selectError3">用户角色</label>
 					<div class="controls">
-					  <select id="type" name="type" data-rel="chosen">
-					  	<option  value="1">门店</option>
+					  <select id="type" name="type">
+					  	<option  value="1">超级管理员</option>
 					  	<option  value="2">加盟店</option>
 						</select>
 					</div>
@@ -67,7 +79,7 @@
 				<div class="control-group">
 					<label class="control-label" for="selectError3">所属省份</label>
 					<div class="controls">
-					  <select id="provence_id" name="provence_id" data-rel="chosen">
+					  <select id="provence_id" name="provence_id">
 					  	<option  value="1">河北</option>
 					  	<option  value="2">河南</option>
 						</select>
@@ -76,7 +88,7 @@
 				<div class="control-group">
 					<label class="control-label" for="selectError3">所属城市</label>
 					<div class="controls">
-					  <select id="city_id" name="city_id" data-rel="chosen">
+					  <select id="city_id" name="city_id">
 					  	<option  value="1">石家庄</option>
 					  	<option  value="2">郑州</option>
 						</select>
@@ -132,4 +144,9 @@
 		</div>
 	</div>			
 </div>   
+@endsection
+@section('script_content')
+<script>
+	
+</script>
 @endsection

@@ -36,7 +36,7 @@
 							<th>真实姓名</th>
 							<th>所属门店</th>
 							<th>用户角色</th>
-							<th>是否启用</th>
+							<!-- <th>是否启用</th> -->
 							<th>操作</th>
 						</tr>
 					</thead>   
@@ -44,29 +44,13 @@
 						@foreach ($users as $user)
     					<tr>
 							<td>{{$user->name}}</td>
-							@if($user->type == '1')
-							<td class="center">用户</td>
-							@else
-							<td class="center">加盟店</td>
-							@endif
-							@if($user->status == '1')
-							<td class="center"><span class="label label-success">已启用</span></td>
-							@else
-							<td class="center"><span class="label label-warning">已停用</span></td>
-							@endif							
+							<td class="center">{{$user->nick_name}}</td>
+							<td class="center">{{$user->hasOneShop->name}}</td>
+							<td class="center">{{$user->hasManyRoles[0]->name}}</td>							
 							<td class="center">
 								<a class="btn btn-warning" href="{{route('admin.user.edit', ['user'=>$user->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>
-								@if($user->status == '1') 
-								<button class="btn btn-info changStatus" data-status="0">
-									<i class="icon-edit icon-white"></i> 停用
-								</button>
-								@else 
-								<button class="btn btn-info changStatus" data-status="1">
-									<i class="icon-edit icon-white"></i> 启用
-								</button>
-								@endif
 								<input type="hidden" value="{{$user->id}}">
 								<span>
 								<form action="{{route('admin.user.destroy', ['user'=>$user->id])}}" method="post" style="display: inherit;margin:0px;">
