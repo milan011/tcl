@@ -141,8 +141,14 @@ class UserController extends Controller
      * @return Response
      */
     public function create(Request $request)
-    {
-        // dd($request);
+    {   
+        // $user_role_id = $request->user()->hasOneUserRole->role_id; //获得当前用户角色id
+        $user_role_id = $request->user()->hasManyRoles[0]->id; //获得当前用户角色id   两种方法均可
+        // dd($user_role_id);
+        $user_add_allow = getUserAddAllowList($user_role_id);
+
+        dd($user_add_allow);
+
         return view('admin.user.create')
         ->withRoles($this->roles->listAllRoles());
     }
