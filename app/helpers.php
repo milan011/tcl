@@ -88,3 +88,27 @@
 
         return $desing;
 	}
+
+	/**
+     * 返回允许用户添加的用户
+     * $role_id:角色ID
+     * @return array
+     */
+	function getUserAddAllowList($role_id){
+
+		// dd($role_id);
+		switch ($role_id) {
+			case '1':
+				# 超级管理员，可添加所有用户
+				return 'niu bi';
+			break;
+
+			case '2':
+			# code...
+			break;
+			
+			default:
+				# code...
+				break;
+		}
+	}
