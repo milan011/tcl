@@ -28,21 +28,23 @@
 				{!! csrf_field() !!}
 				<fieldset>
 				   <div class="control-group">
-					<label class="control-label" for="focusedInput">用户名称</label>
+					<label class="control-label" for="name">用户名称</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="name" name="name" type="text" value="old('name')" />
+					  <input class="input-xlarge focused" id="name" name="name"  type="text" value="{{old('name')}}" placeholder="请输入用户名"/>
+					 
 					</div>
 				   </div>
 				   <div class="control-group">
-						<label class="control-label" for="passWord">登录密码</label>
+						<label class="control-label" for="password">登录密码</label>
 						<div class="controls">
-						  <input class="input-xlarge focused" id="password" name="password" type="password" value="" />
+							<input type="password" style="display:none">
+						  <input class="input-xlarge focused" id="password" name="password" type="password" value="" placeholder="请输入密码"/>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="passWord1">确认密码</label>
+						<label class="control-label" for="password_confirmation">确认密码</label>
 						<div class="controls">
-						  <input class="input-xlarge focused" id="password_confirmation" name="password_confirmation"   type="passWord" value="">
+						  <input class="input-xlarge focused" id="password_confirmation" name="password_confirmation"   type="passWord" value="" placeholder="再次输入密码">
 						</div>
 					 </div>
 				  <!-- <div class="control-group">
@@ -57,7 +59,7 @@
 				    						<strong>上级用户不能为空!</strong> 请返回选择.
 				    					</div> -->
 				<div class="control-group">
-					<label class="control-label" for="selectError3">是否启用</label>
+					<label class="control-label" for="status">是否启用</label>
 					<div class="controls">
 					  <select id="status" name="status">
 					  	<option  value="1">启用</option>
