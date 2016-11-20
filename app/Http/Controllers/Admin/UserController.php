@@ -5,10 +5,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Tasks;
+use App\shop;
 use Illuminate\Http\Request;
 use Gate;
 use Datatables;
 use Carbon;
+use Auth;
 use PHPZen\LaravelRbac\Traits\Rbac;
 use Illuminate\Support\Facades\Input;
 use App\Client;
@@ -16,6 +18,7 @@ use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Repositories\User\UserRepositoryContract;
 use App\Repositories\Role\RoleRepositoryContract;
+use App\Repositories\Shop\ShopRepositoryContract;
 use App\Repositories\Department\DepartmentRepositoryContract;
 use App\Repositories\Setting\SettingRepositoryContract;
 
@@ -23,14 +26,17 @@ class UserController extends Controller
 {
     protected $users;
     protected $roles;
+    protected $shops;
 
     public function __construct(
         UserRepositoryContract $users,
-        RoleRepositoryContract $roles
+        RoleRepositoryContract $roles,
+        ShopRepositoryContract $shops
     ) {
     
         $this->users = $users;
         $this->roles = $roles;
+        $this->shops = $shops;
         $this->middleware('user.create', ['only' => ['create']]);
     }
 
@@ -137,29 +143,47 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 创建用户
      * @return Response
      */
-    public function create(Request $request)
+    public function create()
     {   
-        // $user_role_id = $request->user()->hasOneUserRole->role_id; //获得当前用户角色id
-        $user_role_id = $request->user()->hasManyRoles[0]->id; //获得当前用户角色id   两种方法均可
+        //获得当前用户角色id
+        $user_role_id = $this->users->getRoleInfoById()->id;
         // dd($user_role_id);
-        $user_add_allow = getUserAddAllowList($user_role_id);
 
-        dd($user_add_allow);
+        // 允许当前用户添加的角色列表
+        $role_add_allow = $this->roles->getAllowList($user_role_id);
+        // p($role_add_allow);
 
-        return view('admin.user.create')
-        ->withRoles($this->roles->listAllRoles());
+        // 允许当前用户添加的门店列表
+        $shop_id = Auth::user()->shop_id;
+        if($shop_id != 0){
+
+            $shop_add_allow = $this->shops->find($shop_id);
+        }else{
+
+            $shop_add_allow = Shop::select(['id', 'name'])->get();
+        }
+        // dd(lastSql());
+        // dd($shop_add_allow);
+
+        return view('admin.user.create', compact(
+
+            'role_add_allow',
+            'shop_add_allow'
+        ));
     }
 
     /**
      * Store a newly created resource in storage.
+     * 保存用户
      * @param User $user
      * @return Response
      */
     public function store(StoreUserRequest $userRequest)
-    {
+    {   
+        dd($userRequest->all());
         $getInsertedId = $this->users->create($userRequest);
         return redirect()->route('users.index');
     }
