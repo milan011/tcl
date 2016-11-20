@@ -140,4 +140,24 @@ class UserRepository implements UserRepositoryContract
         }
         
     }
+
+    //获得用户角色信息
+    public function getRoleInfoById($id=''){
+
+        $role_id = '';
+
+        if(empty($id)){ //若ID为空，则获得当前用户ID
+
+            // dd(Auth::user()->hasManyRoles[0]->id);
+            $role_id = Auth::user()->hasManyRoles[0]->id;
+        }else{
+
+            // dd(User::findOrFail($id)->hasManyRoles[0]->id);
+            $role_id = User::findOrFail($id)->hasManyRoles[0]->id;
+        }
+        
+        $role_info = Role::find($role_id);
+        // dd($role_info);
+        return $role_info;
+    }
 }

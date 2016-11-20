@@ -71,4 +71,16 @@ class RoleRepository implements RoleRepositoryContract
             Session()->flash('faill', '不能删除超级管理员');
         }
     }
+
+    // 根据角色ID获得允许添加的角色信息
+    public function getAllowList($role_id){
+
+        $allow_list      = getUserAddAllowList($role_id);
+        $allow_role_info = Role::select('id', 'name', 'slug', 'description')
+                                ->whereIn('id', $allow_list)
+                                ->get();
+                                
+        return $allow_role_info;
+        // dd($allow_role_info);
+    }
 }

@@ -15,4 +15,7 @@ interface UserRepositoryContract
     public function update($id, $requestData);
 
     public function destroy($id);
+
+    //获得用户角色信息
+    public function getRoleInfoById($id='');
 }
