@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {   
-        if($e instanceof ApiException) {
+        /*if($e instanceof ApiException) {
             $result = [
                 "msg"    => "",
                 "data"   => $e->getMessage(),
@@ -65,7 +65,7 @@ class Handler extends ExceptionHandler
                 // return response()->view('admin.errors.notfound'); //自定义页面
                 return '大哥，没找着啊！';
             }
-        }
+        }*/
         
         return parent::render($request, $e);
     }
