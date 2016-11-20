@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\AccessServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
+        App\Providers\VailidatorServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
        
 
