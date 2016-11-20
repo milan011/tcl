@@ -28,95 +28,81 @@
 				{!! csrf_field() !!}
 				<fieldset>
 				   <div class="control-group">
-					<label class="control-label" for="name">用户名称</label>
+					<label class="control-label" for="name"><font style="color:red;">*</font>用户名</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="name" name="name"  type="text" value="{{old('name')}}" placeholder="请输入用户名"/>
 					 
 					</div>
 				   </div>
 				   <div class="control-group">
-						<label class="control-label" for="password">登录密码</label>
+					<label class="control-label" for="name"><font style="color:red;">*</font>实际姓名</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="nick_name" name="nick_name"  type="text" value="{{old('nick_name')}}" placeholder="请输入实际姓名"/>
+					 
+					</div>
+				   </div>
+				   <div class="control-group">
+						<label class="control-label" for="password"><font style="color:red;">*</font>登录密码</label>
 						<div class="controls">
 							<input type="password" style="display:none">
 						  <input class="input-xlarge focused" id="password" name="password" type="password" value="" placeholder="请输入密码"/>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="password_confirmation">确认密码</label>
+						<label class="control-label" for="password_confirmation"><font style="color:red;">*</font>确认密码</label>
 						<div class="controls">
 						  <input class="input-xlarge focused" id="password_confirmation" name="password_confirmation"   type="passWord" value="" placeholder="再次输入密码">
 						</div>
 					 </div>
-				  <!-- <div class="control-group">
-				  					<label class="control-label">上级用户</label>
-				  					<div class="controls">
-				  					  <span class="input-xlarge uneditable-input">淘车乐总公司</span>
-				  					  <input type="hidden" id="PID" name="PID" value="1"/>
-				  					</div>
-				  </div> -->
-				    <!-- <div id="dept_view"  class="alert alert-error" style="display:none">
-				    						<button class="close" data-dismiss="alert" type="button">×</button>
-				    						<strong>上级用户不能为空!</strong> 请返回选择.
-				    					</div> -->
-				<div class="control-group">
-					<label class="control-label" for="status">是否启用</label>
-					<div class="controls">
-					  <select id="status" name="status">
-					  	<option  value="1">启用</option>
-						<option  value="0">停用</option>
-						
-						</select>
+					<div class="control-group">
+				  		<label class="control-label" for="focusedInput">
+				  			<font style="color:red;">*</font>联系电话
+				  		</label>
+				  		<div class="controls">
+				  			<input class="input-xlarge focused" id="telephone" name="telephone" type="text" value="{{old('telephone')}}">
+				  		</div>
+				 	</div>	
+				  	<div class="control-group">
+						<label class="control-label" for="selectError3">
+							<font style="color:red;">*</font>用户角色
+						</label>
+						<div class="controls">
+					  		<select id="role_id" name="role_id">
+					  			<option  value="0">---请选择角色---</option>
+					  			@foreach($role_add_allow as $role)
+					  			<option value="{{$role->id}}" >{{$role->name}}</option>
+					  			@endforeach
+							</select>
+						</div>
 					</div>
-				  </div>
-				
-				<div class="control-group">
-					<label class="control-label" for="selectError3">用户角色</label>
-					<div class="controls">
-					  <select id="type" name="type">
-					  	<option  value="1">超级管理员</option>
-					  	<option  value="2">加盟店</option>
-						</select>
+					<div class="control-group" id="shop_show" style="display:none;">
+						<label class="control-label" for="selectError3">所属门店</label>
+						<div class="controls">
+						  <select id="shop_id" name="shop_id">
+						  	<option  value="0">淘车乐总部</option>
+						  	@foreach($shop_add_allow as $shop)
+						  	<option  value="{{$shop->id}}">{{$shop->name}}</option>
+						  	@endforeach
+							</select>
+						</div>
 					</div>
-				</div>	
-				<div class="control-group">
-					<label class="control-label" for="selectError3">所属省份</label>
-					<div class="controls">
-					  <select id="provence_id" name="provence_id">
-					  	<option  value="1">河北</option>
-					  	<option  value="2">河南</option>
-						</select>
-					</div>					
-				</div>	
-				<div class="control-group">
-					<label class="control-label" for="selectError3">所属城市</label>
-					<div class="controls">
-					  <select id="city_id" name="city_id">
-					  	<option  value="1">石家庄</option>
-					  	<option  value="2">郑州</option>
-						</select>
-					</div>					
-				</div>		  
+					<div class="control-group">
+						<label class="control-label" for="status">是否启用</label>
+						<div class="controls">
+					  		<select id="status" name="status">
+					  			<option  value="1">启用</option>
+								<option  value="0">停用</option>						
+							</select>
+						</div>
+				 	</div>					
+					
+					  
 				<div class="control-group">
 					<label class="control-label" for="focusedInput">地址</label>
 					<div class="controls">
 						 <textarea id="address" name="address" class="autogrow"></textarea>
 					</div>
 				  </div>
-
-				   <!-- <div class="control-group">
-				   					<label class="control-label" for="focusedInput">手机号</label>
-				   					<div class="controls">
-				   					  <input class="input-xlarge focused" id="mobile" name="mobile" type="text" value="">
-				   					</div>
-				   				  </div> -->
-
-				  <div class="control-group">
-				  					<label class="control-label" for="focusedInput">联系电话</label>
-				  					<div class="controls">
-				  					  <input class="input-xlarge focused" id="telephone" name="telephone" type="text" value="{{old('telephone')}}">
-				  					</div>
-				  </div>
-
 				   <div class="control-group">
 					<label class="control-label" for="focusedInput">QQ号</label>
 					<div class="controls">
@@ -149,6 +135,20 @@
 @endsection
 @section('script_content')
 <script>
-	
+	$(document).ready(function(){
+
+		$('#role_id').change(function(){
+
+			var role_id = $(this).val();
+
+			if(role_id == 6 || role_id == 7){
+
+				$('#shop_show').show();
+			}else{
+
+				$('#shop_show').hide();
+			}
+		});
+	});
 </script>
 @endsection
