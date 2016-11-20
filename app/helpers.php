@@ -97,18 +97,29 @@
 	function getUserAddAllowList($role_id){
 
 		// dd($role_id);
+		//返回允许添加用户列表
+		$allow_list = array();
+
 		switch ($role_id) {
 			case '1':
 				# 超级管理员，可添加所有用户
-				return 'niu bi';
+				$allow_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 			break;
 
 			case '2':
-			# code...
+				# 总部管理员，可添加除超级管理员和总部管理员以外用户
+				$allow_list = ['3', '4', '5', '6', '7', '8', '9'];
+			break;
+
+			case '6':
+				# 门店店长，可添加属于本门店店员
+			$allow_list = ['7'];
 			break;
 			
 			default:
-				# code...
-				break;
+				# 不允许添加用户
+			 	$allow_list = [];
+			break;
 		}
+		return $allow_list;
 	}
