@@ -29,7 +29,7 @@ class StoreUserRequest extends Request
             'password'              => 'required|min:6|confirmed',
             'password_confirmation' => 'required|min:6',
             'telephone'             => 'required|phone_number',
-            'email'                 => 'email|unique:tcl_user',
+            'email'                 => 'required|email|unique:tcl_user',
             'role_id'               => 'required|numeric|min:1',
             'shop_id'               => 'required'
         ];
@@ -56,7 +56,9 @@ class StoreUserRequest extends Request
             'role_id.required'                => '请选择角色',
             'role_id.min'                     => '请选择角色',
             'shop_id.required'                => '请选择门店',
-            'email.unique'                    => '邮箱已经被使用'
+            'email.required'                  => '请输入邮箱地址',
+            'email.unique'                    => '邮箱地址已被使用',
+            'email.email'                     => '邮箱格式错误',
         ];
     }
 }
