@@ -40,10 +40,10 @@ class Shop extends Model
      */
     protected $dates = ['deleted_at'];
 
-    // 定义User表与Shop表一对一关系
-    public function belongsToUser(){
+    // 定义Shop表与User表一对多关系
+    public function hasManyUser(){
 
-    return $this->belongsTo('User', 'user_id', 'id');
+    return $this->hasMany('App\User', 'shop_id', 'id');
 
   }
 }

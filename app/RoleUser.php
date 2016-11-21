@@ -8,8 +8,8 @@ class RoleUser extends Model
 {
     protected $table = "role_user";
     
-    public function usersrole()
+    /*public function usersrole()
     {
         return $this->belongsTo('User');
-    }
+    }*/
 }

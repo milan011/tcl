@@ -31,7 +31,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     // protected $fillable = ['name', 'email', 'password', 'address', 'personal_number', 'work_number', 'image_path'];
-    protected $fillable = ['name', 'nick_name', 'password', 'telephone', 'phone', 'qq_number', 'wx_number', 'address', 'creater_id', 'shop_id', 'status', 'user_img'];
+    protected $fillable = ['name', 'nick_name', 'password', 'telephone', 'phone', 'qq_number', 'wx_number', 'address', 'creater_id', 'shop_id', 'status', 'user_img', 'email'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -73,10 +73,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('App\Tasks', 'fk_user_id_assign', 'id')->whereIn('status', [1, 2]);
     }
     
-    // 定义User表与role_user表一对一关系
-    public function hasOneUserRole()
+    // 定义User表与role_user表一对多关系
+    public function hasManyUserRole()
     {
-        return $this->hasOne('App\RoleUser', 'user_id', 'id');
+        return $this->hasMany('App\RoleUser', 'user_id', 'id');
     }
 
     // 定义User表与role表多对多关系
@@ -86,10 +86,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     // 定义User表与Shop表一对一关系
-    public function hasOneShop(){
+    public function belongsToShop(){
 
       // return $this->hasOne('App\Shop', 'user_id', 'id')->select('user_id','name', 'address');
-      return $this->hasOne('App\Shop', 'user_id', 'id');
+      return $this->belongsTo('App\Shop', 'shop_id', 'id');
     }
 
     // 定义User表与Notice表一对多关系
