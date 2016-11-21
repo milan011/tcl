@@ -50,6 +50,9 @@ class UserController extends Controller
         $users = $this->users->getAllUsers();
         // dd(lastSql());
         // dd($users);
+        /*foreach ($users as $key => $value) {
+           dd($value->belongsToShop);
+        }*/
         return view('admin.user.index', compact(
 
             'users'
@@ -158,9 +161,10 @@ class UserController extends Controller
 
         // 允许当前用户添加的门店列表
         $shop_id = Auth::user()->shop_id;
-        if($shop_id != 0){
 
-            $shop_add_allow = $this->shops->find($shop_id);
+        if($shop_id != 21){
+
+            $shop_add_allow = Shop::where('id', $shop_id)->select(['id', 'name'])->get();
         }else{
 
             $shop_add_allow = Shop::select(['id', 'name'])->get();
@@ -183,9 +187,8 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $userRequest)
     {   
-        dd($userRequest->all());
         $getInsertedId = $this->users->create($userRequest);
-        return redirect()->route('users.index');
+        return redirect()->route('admin.user.index');
     }
 
     /**
