@@ -9,6 +9,7 @@ use Datatables;
 use Carbon;
 use PHPZen\LaravelRbac\Traits\Rbac;
 use App\Role;
+use App\RoleUser;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use App\Client;
@@ -28,10 +29,9 @@ class UserRepository implements UserRepositoryContract
         /*return User::with(['hasOneShop'=>function($query){
             $query->select('user_id','name','address');
         }])->paginate(10);*/
-
-        return User::with(tableUnionDesign('hasOneShop',['user_id','name','address','email']))
-                   ->with('hasManyRoles')
-                   ->select(['id', 'name', 'nick_name'])
+        return User::with(tableUnionDesign('hasManyRoles', ['roles.id', 'name', 'slug']))
+                   // ->with(tableUnionDesign('belongsToShop', ['id','name','address','email']))
+                   ->select(['id','shop_id', 'name', 'nick_name'])
                    ->paginate(10);
         // return User::with('hasOneShop')->paginate(10);
     }
@@ -50,11 +50,12 @@ class UserRepository implements UserRepositoryContract
 
     public function create($requestData)
     {
-        $settings = Settings::all();
-
+        /*p('hehe');
+        dd($requestData->all());*/
         $password =  bcrypt($requestData->password);
-        $role     = $requestData->roles;
-        
+        $role_id  = $requestData->role_id;
+
+        // dd($role);
         // $department = $requestData->departments;
 
         /*if ($requestData->hasFile('image_path')) {
@@ -74,15 +75,17 @@ class UserRepository implements UserRepositoryContract
         } else {
             $input =  array_replace($requestData->all(), ['password'=>"$password"]);
         }*/
-
-        $input =  array_replace($requestData->all(), ['password'=>"$password"]);
-
+        // 添加用户到用户表
+        $input =  array_replace($requestData->all(), ['password'=>"$password",'creater_id'=>Auth::id()]);
         $user = User::create($input);
-        $user->roles()->attach($role);
-        $user->department()->attach($department);
-        $user->save();
 
-        Session::flash('flash_message', 'User successfully added!'); //Snippet in Master.blade.php
+        // 关联用户表与用户-角色表
+        $userRole = new RoleUser;
+        $userRole->role_id = $role_id;
+        $userRole->user_id = $user->id;
+        $userRole->save();
+
+        Session::flash('sucess', '添加用户成功'); 
         return $user;
     }
 
