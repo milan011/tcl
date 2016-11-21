@@ -79,7 +79,7 @@
 						<label class="control-label" for="selectError3">所属门店</label>
 						<div class="controls">
 						  <select id="shop_id" name="shop_id">
-						  	<option  value="0">淘车乐总部</option>
+						  	<option  value="21">--请选择门店--</option>
 						  	@foreach($shop_add_allow as $shop)
 						  	<option  value="{{$shop->id}}">{{$shop->name}}</option>
 						  	@endforeach

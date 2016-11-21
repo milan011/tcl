@@ -45,8 +45,14 @@
     					<tr>
 							<td>{{$user->name}}</td>
 							<td class="center">{{$user->nick_name}}</td>
-							<td class="center">{{$user->hasOneShop->name}}</td>
-							<td class="center">{{$user->hasManyRoles[0]->name}}</td>							
+							<td class="center">{{$user->belongsToShop->name}}</td>
+							@if($user->hasManyRoles->count() != 0)
+							@foreach($user->hasManyRoles as $role)
+							<td class="center">{{$role->name}}</td>
+							@endforeach
+							@else
+							<td class="center">未知</td>	
+							@endif						
 							<td class="center">
 								<a class="btn btn-warning" href="{{route('admin.user.edit', ['user'=>$user->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
