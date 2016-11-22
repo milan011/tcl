@@ -200,9 +200,9 @@ class UserController extends Controller
     public function show($id)
     {
         
-        return view('users.show')
+        /*return view('users.show')
         ->withUser($this->users->find($id))
-        ->withCompanyname($this->settings->getCompanyName());
+        ->withCompanyname($this->settings->getCompanyName());*/
     }
 
     /**
@@ -213,10 +213,28 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('users.edit')
-        ->withUser($this->users->find($id))
-        ->withRoles($this->roles->listAllRoles())
-        ->withDepartment($this->departments->listAllDepartments());
+        //获得当前用户角色id
+        $user_role_id = $this->users->getRoleInfoById()->id;
+        // dd($user_role_id);
+
+        // 允许当前用户添加的角色列表
+        $role_add_allow = $this->roles->getAllowList($user_role_id);
+        // p($role_add_allow);
+
+        // 允许当前用户添加的门店列表
+        $shop_id = Auth::user()->shop_id;
+        if($shop_id != 21){
+
+            $shop_add_allow = Shop::where('id', $shop_id)->select(['id', 'name'])->get();
+        }else{
+
+            $shop_add_allow = Shop::select(['id', 'name'])->get();
+        }
+
+        $user = $this->users->find($id);
+        // dd($user);
+
+        return view('admin.user.edit',compact('user', 'role_add_allow', 'shop_add_allow'));
     }
 
     /**
@@ -225,10 +243,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id, UpdateUserRequest $request)
+    public function update($id, UpdateUserRequest $userRequest)
     {
-        $this->users->update($id, $request);
-        Session()->flash('flash_message', 'User successfully updated');
+        $this->users->update($id, $userRequest);
+        
         return redirect()->back();
     }
 
