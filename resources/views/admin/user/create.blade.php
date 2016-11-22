@@ -124,7 +124,7 @@
 					</div>
 				  </div>				
 				  <div class="form-actions">
-					<button type="submit"  onclick="check()" class="btn btn-primary">确定</button>
+					<button type="submit" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>
 				</fieldset>
