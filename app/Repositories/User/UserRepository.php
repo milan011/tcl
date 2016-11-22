@@ -19,9 +19,12 @@ use DB;
 class UserRepository implements UserRepositoryContract
 {
 
+    // 获得用户信息
     public function find($id)
-    {
-        return User::findOrFail($id);
+    {   
+        return User::with(tableUnionDesign('hasManyRoles', ['roles.id', 'name', 'slug']))
+                    ->select(['id', 'name', 'nick_name', 'telephone', 'qq_number', 'email', 'wx_number','address','shop_id', 'status'])
+                    ->findOrFail($id);
     }
 
     public function getAllUsers()
@@ -55,26 +58,6 @@ class UserRepository implements UserRepositoryContract
         $password =  bcrypt($requestData->password);
         $role_id  = $requestData->role_id;
 
-        // dd($role);
-        // $department = $requestData->departments;
-
-        /*if ($requestData->hasFile('image_path')) {
-            if (!is_dir(public_path(). '/images/'. $companyname)) {
-                      mkdir(public_path(). '/images/'. $companyname, 0777, true);
-            }
-            $settings = Settings::findOrFail(1);
-            $companyname = $settings->company;
-            $file =  $requestData->file('image_path');
-
-            $destinationPath = public_path(). '/images/'. $companyname;
-            $filename = str_random(8) . '_' . $file->getClientOriginalName() ;
-
-            $file->move($destinationPath, $filename);
-            
-            $input =  array_replace($requestData->all(), ['image_path'=>"$filename", 'password'=>"$password"]);
-        } else {
-            $input =  array_replace($requestData->all(), ['password'=>"$password"]);
-        }*/
         // 添加用户到用户表
         $input =  array_replace($requestData->all(), ['password'=>"$password",'creater_id'=>Auth::id()]);
         $user = User::create($input);
@@ -91,39 +74,42 @@ class UserRepository implements UserRepositoryContract
 
     public function update($id, $requestData)
     {
+        // dd($requestData->all());
+        $user = User::with(tableUnionDesign('hasManyRoles', ['roles.id', 'name', 'slug']))
+                    ->findorFail($id);
+
+        /*p($requestData->role_id);
+        dd($user->hasManyRoles[0]->id);*/
         
-        $user = User::findorFail($id);
-        $password = bcrypt($requestData->password);
-        $role = $requestData->roles;
-        $department = $requestData->department;
+        $user->name      = $requestData->name;
+        $user->nick_name = $requestData->nick_name;
+        $user->telephone = $requestData->telephone;
+        $user->shop_id   = $requestData->shop_id;
+        $user->status    = $requestData->status;
+        $user->address   = $requestData->address;
+        $user->qq_number = $requestData->qq_number;
+        $user->wx_number = $requestData->wx_number;
+        $user->email     = $requestData->email;
 
-        if ($requestData->hasFile('image_path')) {
-            $settings = Settings::findOrFail(1);
-            $companyname = $settings->company;
-            $file =  $requestData->file('image_path');
+        // 更新用户
+        $user->save();
 
-            $destinationPath = public_path(). '\\images\\'. $companyname;
-            $filename = str_random(8) . '_' . $file->getClientOriginalName() ;
+        //如果角色有变化，更新UserRole表
+        if($requestData->role_id != $user->hasManyRoles[0]->id){
 
-            $file->move($destinationPath, $filename);
-            if ($requestData->password == "") {
-                $input =  array_replace($requestData->except('password'), ['image_path'=>"$filename"]);
-            } else {
-                $input =  array_replace($requestData->all(), ['image_path'=>"$filename", 'password'=>"$password"]);
-            }
-        } else {
-            if ($requestData->password == "") {
-                $input =  array_replace($requestData->except('password'));
-            } else {
-                $input =  array_replace($requestData->all(), ['password'=>"$password"]);
-            }
+            $user_id = $id; //当前用户ID
+            $role_id = $user->hasManyRoles[0]->id; //角色ID
+            // 获得需要更新的对象
+            $user_role = RoleUser::where('user_id', $user_id)
+                                 ->where('role_id', $role_id)
+                                 ->first();
+            // dd($requestData->role_id);
+            $user_role->role_id = $requestData->role_id;
+
+            $user_role->save();
         }
 
-        $user->fill($input)->save();
-        $user->roles()->sync([$role]);
-        $user->department()->sync([$department]);
-
-        Session::flash('flash_message', 'User successfully updated!');
+        Session()->flash('sucess', '更新用户成功');
 
         return $user;
     }
