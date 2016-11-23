@@ -260,6 +260,6 @@ class UserController extends Controller
     {
         $this->users->destroy($id);
         
-        return redirect()->route('users.index');
+        return redirect()->route('admin.user.index');
     }
 }
