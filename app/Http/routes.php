@@ -55,6 +55,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('permission', 'PermissionController');  
     Route::resource('notice', 'NoticeController');  
     Route::resource('customer', 'CustomerController');  
+    Route::resource('category', 'CategoryController');  
+    Route::resource('brand', 'BrandController');  
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
