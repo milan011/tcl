@@ -76,5 +76,17 @@ class AccessServiceProvider extends ServiceProvider
             \App\Repositories\Notice\NoticeRepositoryContract::class,
             \App\Repositories\Notice\NoticeRepository::class
         );
+
+        //绑定BrandRepository
+        $this->app->bind(
+            \App\Repositories\Brand\BrandRepositoryContract::class,
+            \App\Repositories\Brand\BrandRepository::class
+        );
+
+        //绑定CategoryRepository
+        $this->app->bind(
+            \App\Repositories\Category\CategoryRepositoryContract::class,
+            \App\Repositories\Category\CategoryRepository::class
+        );
     }
 }
