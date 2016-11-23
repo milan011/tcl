@@ -152,6 +152,15 @@
 							</ul>	
 						</li>
 						@endif
+						@ifUserCan('category.check')
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车型管理</span><span style="float:right;">>></span></a>
+							<ul>
+								<li><a class="submenu" href="{{route('admin.brand.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">品牌管理</span></a></li>
+								<li><a class="submenu" href="{{route('admin.category.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">车型管理</span></a></li>
+							</ul>	
+						</li>
+						@endif
 						@ifUserCan('deal.check')
 							<li><a class="submenu"href="/guohu">
 									<i class="icon-retweet"></i> <span class="hidden-tablet">
