@@ -8,11 +8,11 @@ class Customer extends Model
 {
     /**
      * The database table used by the model.
+     * 淘车乐客户表
      * 定义模型对应数据表及主键
      * @var string
      */
-    // protected $table = 'users';
-    protected $table = 'tcl_shop';
+    protected $table = 'tcl_customer';
     protected $primaryKey ='id';
 
     /**

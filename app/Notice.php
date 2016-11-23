@@ -12,6 +12,7 @@ class Notice extends Model
     /**
      * The database table used by the model.
      * 定义模型对应数据表及主键
+     * 淘车乐公告表
      * @var string
      */
     // protected $table = 'users';

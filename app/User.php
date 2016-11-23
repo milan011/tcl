@@ -19,6 +19,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * The database table used by the model.
      * 定义表名及主键
+     * 淘车乐管理员表
      * @var string
      */
     // protected $table = 'users';
