@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Input;
 use DB;
 use Debugbar;
 
-class BrandRepository implements ShopRepositoryContract
+class BrandRepository implements BrandRepositoryContract
 {
 
     // 根据ID获得门店信息
     public function find($id)
     {
-        return Shop::select(['id', 'name'])->findOrFail($id);
+        return Brand::select(['id', 'name'])->findOrFail($id);
     }
 
     // 获得门店列表
-    public function getAllShops()
+    public function getAllBrands()
     {   
-        return Shop::paginate(10);
+        return Brand::paginate(10);
     }
 
     public function getAllUsersWithDepartments()
@@ -43,34 +43,34 @@ class BrandRepository implements ShopRepositoryContract
     {   
         $requestData['user_id'] = Auth::id();
         // dd($requestData->all());
-        $shop = new Shop();
+        $Brand = new Brand();
         $input =  array_replace($requestData->all());
-        $shop->fill($input);
+        $Brand->fill($input);
 
-        $shop = $shop->create($input);
+        $Brand = $Brand->create($input);
 
         Session::flash('sucess', '添加门店成功');
-        return $shop;
+        return $Brand;
     }
 
     // 修改门店
     public function update($requestData, $id)
     {
         
-        $shop  = Shop::findorFail($id);
+        $Brand  = Brand::findorFail($id);
         $input =  array_replace($requestData->all());
-        $shop->fill($input)->save();
-        // dd($shop->toJson());
+        $Brand->fill($input)->save();
+        // dd($Brand->toJson());
         Session::flash('sucess', '修改门店成功');
-        return $shop;
+        return $Brand;
     }
 
     // 删除门店
     public function destroy($id)
     {
         try {
-            $shop = Shop::findorFail($id);
-            $shop->delete();
+            $Brand = Brand::findorFail($id);
+            $Brand->delete();
             Session::flash('sucess', '删除门店成功');
            
         } catch (\Illuminate\Database\QueryException $e) {
