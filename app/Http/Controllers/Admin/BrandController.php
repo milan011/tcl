@@ -12,7 +12,7 @@ use App\Repositories\Brand\BrandRepositoryContract;
 
 class BrandController extends Controller
 {
-    protected $brand;
+    protected $brands;
 
     public function __construct(
 
@@ -56,9 +56,12 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBrandRequest $brandRequest)
     {
-        //
+        // dd($brandRequest);
+        $getInsertedId = $this->brands->create($brandRequest);
+        // p(lastSql());exit;
+        return redirect()->route('admin.brand.index')->withInput();
     }
 
     /**
@@ -80,7 +83,13 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $barnd_info = $this->brands->find($id);
+        // dd(lastSql());
+        dd($barnd_info);exit;
+        return view('admin.barnd.edit', compact(
+
+            'barnd_info'
+        ));
     }
 
     /**
