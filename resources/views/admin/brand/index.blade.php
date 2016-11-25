@@ -42,7 +42,9 @@
 						@foreach ($brands as $brand)
     					<tr>
 							<td>{{$brand->name}}</td>
-							<td>{{$brand->logo_img}}</td>							
+							<td>
+								<img style="max-width:7%;" src="{{ URL::asset('uploads/brand/') }}/{{$brand->logo_img}}">
+							</td>							
 							@if($brand->status == '1')
 							<td class="center"><span class="label label-success">已启用</span></td>
 							@else

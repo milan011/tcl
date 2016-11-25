@@ -24,7 +24,7 @@
 <div class="row-fluid sortable">
 	<div class="box span12">
 		<div class="box-content">
-			<form class="form-horizontal" action="{{route('admin.brand.store')}}" method="post">
+			<form class="form-horizontal" action="{{route('admin.brand.store')}}" method="post" enctype="multipart/form-data">
 				{!! csrf_field() !!}
 				<fieldset>
 				  <div class="control-group">
@@ -36,8 +36,8 @@
 				  <div class="control-group">
 					<label class="control-label" for="focusedInput">品牌Logo</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="logo_img" name="logo_img" type="file" value="{{old('logo_img')}}">
-					  <a  id="upload-button" href="#" onclick="saveImg()" class="btn btn-primary" style="margin-left:10px;">上传</a>
+					  	<input class="input-xlarge focused" id="logo_img" name="logo_img" type="file" value="{{old('logo_img')}}">
+					  	<!-- <a id="upload-img" href="#" class="btn btn-primary" style="margin-left:10px;">上传</a> -->
 					</div>					
 				  </div>
 				  <!-- <div class="control-group">
@@ -53,7 +53,7 @@
 				  <div class="control-group">
 					<label class="control-label" for="focusedInput">品牌排序</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="sort" name="sort" type="text" value="{{old('sort')}}">
+					  <input class="input-xlarge focused" id="sort" name="sort" type="text" value="{{ (null !== old('sort')) ? old('sort') : '10'}}">
 					</div>
 				  </div>
 
@@ -78,7 +78,7 @@
 					</div>
 				  </div>	  				
 				  <div class="form-actions">
-					<button type="submit"  onclick="check()" class="btn btn-primary">确定</button>
+					<button type="submit" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>
 				</fieldset>
@@ -91,6 +91,6 @@
 <!-- 引入确认框js -->
 <script src="{{URL::asset('js/tcl/dynamic.js')}}"></script> 
 <script>
-
+	
 </script>
 @endsection
