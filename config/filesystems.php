@@ -48,6 +48,30 @@ return [
             'root'   => storage_path('app'),
         ],
 
+        // 新建一个本地端uploads空间（目录） 用于存储品牌图片
+        'uploads_brand' => [
+
+            'driver' => 'local',
+
+            // 文件将上传到storage/app/uploads目录
+            // 'root' => storage_path('app/uploads'),
+
+            // 文件将上传到public/uploads目录 如果需要浏览器直接访问 请设置成这个
+            'root' => public_path('uploads/brand'),
+        ],
+
+        // 新建一个本地端uploads空间（目录） 用于存储车源图片
+        'uploads_car' => [
+
+            'driver' => 'local',
+
+            // 文件将上传到storage/app/uploads目录
+            // 'root' => storage_path('app/uploads'),
+
+            // 文件将上传到public/uploads目录 如果需要浏览器直接访问 请设置成这个
+            'root' => public_path('uploads/car'),
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => 'ftp.example.com',
