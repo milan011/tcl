@@ -48,6 +48,12 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
     Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');
     Route::put('role/updatePermission', 'RoleController@updatePermission')->name('admin.role.updatePermission');
+    // 文件、图片上传路由
+    Route::get('upload', 'UploadController@index');
+    Route::post('upload/file', 'UploadController@uploadFile')->name('upload.uploadFile');
+    Route::delete('aupload/file', 'UploadController@deleteFile');
+    Route::post('upload/folder', 'UploadController@createFolder');
+    Route::delete('upload/folder', 'UploadController@deleteFolder');
     Route::resource('user', 'UserController'); 
     Route::resource('car', 'CarController');  
     Route::resource('shop', 'ShopController');  
