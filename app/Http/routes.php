@@ -46,6 +46,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::get('/', 'HomeController@index')->name('admin.index');     
     Route::get('car/self', 'CarController@carself')->name('car.self'); 
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
+    Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('brand.getChildBrand');
     Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');
     Route::put('role/updatePermission', 'RoleController@updatePermission')->name('admin.role.updatePermission');
     // 文件、图片上传路由
