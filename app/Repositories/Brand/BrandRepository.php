@@ -51,7 +51,22 @@ class BrandRepository implements BrandRepositoryContract
     public function create($requestData)
     {   
         $requestData['creater_id'] = Auth::id();
-        
+
+        switch ($requestData->brand_type) { //根据品牌类别确定pid
+            case '0': //顶级品牌
+                $requestData['pid'] = 0;
+            break;
+            case '1': //一级品牌                    
+                $requestData['pid'] = $requestData->pid[0];
+            break;
+            case '2': //二级品牌
+                $requestData['pid'] = $requestData->pid[1];
+            break;
+            default:
+                # code...
+            break;
+        }
+
         if($requestData->hasFile('logo_img')){  //如果有上传图片
 
             // 文件是否上传成功
@@ -85,9 +100,11 @@ class BrandRepository implements BrandRepositoryContract
                 $input =  array_replace($requestData->all(), ['logo_img'=>"$filename"]);
             }
         }else{
-
+            
             $input =  array_replace($requestData->all());
         }
+
+        // dd($requestData->all());
 
         $Brand = new Brand();
         
@@ -122,5 +139,14 @@ class BrandRepository implements BrandRepositoryContract
         } catch (\Illuminate\Database\QueryException $e) {
             Session()->flash('faill', '删除门店失败');
         }      
+    }
+
+    //获得子品牌
+    public function getChildBrand($brand_id){
+
+        return Brand::select(['id', 'pid', 'name', 'logo_img'])
+                    ->where('pid', $brand_id)
+                    ->where('status', '1')
+                    ->get();
     }
 }

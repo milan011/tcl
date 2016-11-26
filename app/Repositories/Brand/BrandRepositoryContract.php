@@ -8,11 +8,11 @@ interface BrandRepositoryContract
     
     public function getAllBrands();
 
-    public function getAllUsersWithDepartments();
-
     public function create($requestData);
 
     public function update($id, $requestData);
 
     public function destroy($id);
+
+    public function getChildBrand($brand_id);
 }

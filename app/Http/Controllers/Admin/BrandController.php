@@ -47,7 +47,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('admin.brand.create');
+        $all_top_brands = $this->brands->getChildBrand(0);
+        return view('admin.brand.create',compact('all_top_brands'));
     }
 
     /**
@@ -58,7 +59,7 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $brandRequest)
     {
-        // dd($brandRequest);
+        // dd($brandRequest->all());
         $getInsertedId = $this->brands->create($brandRequest);
         // p(lastSql());exit;
         return redirect()->route('admin.brand.index')->withInput();
@@ -113,5 +114,30 @@ class BrandController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //获得子品牌
+    public function getChildBrand(Request $request){
+
+        $brand_id = $request->input('pid');
+
+        $brands = $this->brands->getChildBrand($brand_id);
+
+        // p($brands->toJson());exit;
+        if($brands->count() > 0){
+
+            return response()->json(array(
+                'status' => 1,
+                'data'   => $brands,
+                'message'   => '获取品牌列表成功'
+            ));
+        }else{
+
+            return response()->json(array(
+                'status' => 0,
+                'message'   => '获取品牌列表失败'
+            ));
+        }
+         
     }
 }
