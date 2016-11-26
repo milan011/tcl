@@ -24,7 +24,7 @@ class Brand extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['name', 'logo_img', 'sort', 'status', 'frist_letter', 'recommend', 'creater_id'];
+    protected $fillable = ['name', 'logo_img', 'sort', 'status', 'frist_letter', 'recommend', 'creater_id', 'pid'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -39,7 +39,7 @@ class Brand extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-    
+
     // 定义User表与Brand表一对多关系
     public function belongsToUser(){
 
