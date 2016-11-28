@@ -11,7 +11,7 @@
 			<a href="{{route('admin.index')}}">主页</a>  
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="#1f">品牌管理</a></li>
+		<li><a href="#1f">品牌列表</a></li>
 	</ul>
 @endsection
 
@@ -43,7 +43,7 @@
     					<tr>
 							<td>{{$brand->name}}</td>
 							<td>
-								<img style="max-width:7%;" src="{{ URL::asset('uploads/brand/') }}/{{$brand->logo_img}}">
+								<img style="width:32px;height:32px;" src="{{ URL::asset('uploads/brand/') }}/{{$brand->logo_img}}">
 							</td>							
 							@if($brand->status == '1')
 							<td class="center"><span class="label label-success">已启用</span></td>

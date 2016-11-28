@@ -10,7 +10,7 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.brand.index')}}">品牌管理</a> 
+		<a href="{{route('admin.brand.index')}}">品牌列表</a> 
 		<i class="icon-angle-right"></i>
 	</li>
 	<li><a href="#1f">添加品牌</a></li>
@@ -41,14 +41,14 @@
 					<label class="control-label" for="selectError3">父品牌</label>
 					<div class="controls">
 					  	<select id="top_brand" name="pid[]">
-					  		<option value="0">请选择品牌</option>
+					  		<option value="0">请选择顶级品牌</option>
 					  		@foreach ($all_top_brands as $brand)	
 					  		<option value="{{$brand->id}}">{{$brand->name}}</option>
 					  		@endforeach										
 						</select>
 						<span id="pid2_select" style="display:none;">
 							<select id="second_brand" name="pid[]">
-					  			<option  value="0">请选择品牌</option>											
+					  			<option  value="0">请选择一级品牌</option>											
 							</select>
 						</span>
 					</div>
@@ -104,6 +104,7 @@
 					</div>
 				  </div>	  				
 				  <div class="form-actions">
+				  	<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
 					<button type="submit" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>
@@ -114,111 +115,9 @@
 </div>   
 @endsection
 @section('script_content')
-<!-- 引入确认框js -->
-<!-- <script src="{{URL::asset('js/tcl/dynamic.js')}}"></script>  -->
+<!-- 引入品牌级联js -->
+<script src="{{URL::asset('js/tcl/brand.js')}}"></script> 
 <script>
-	$(document).ready(function(){
 
-		$('#brand_type').change(function(){
-
-			var brand_type = $('#brand_type').val();
-
-			//获得所有顶级品牌
-        			/*$.ajax({
-
-						type: 'POST',		
-						url: '{{route('brand.getChildBrand')}}',		
-						data: { pid : 0},		
-						dataType: 'json',		
-						headers: {		
-							'X-CSRF-TOKEN': '{{ csrf_token() }}'		
-						},		
-						success: function(data){		
-
-							if(data.status == 1){
-								var content = '';
-
-								$.each(data.data, function(index, value){
-
-									content += '<option value="';
-									content += value.id;
-									content += '">';
-									content += value.name;
-									content += '</option>';
-								})
-
-								// $('#top_brand').append(content);
-								console.log($('#top_brand'));
-								$('#top_brand').append(content);
-								// console.log(content);
-							}else{
-
-								alert(data.message);
-								return false;
-							}
-						},		
-						error: function(xhr, type){
-		
-							alert('Ajax error!');
-						}
-					});*/
-			switch (brand_type) {
-        		case '0':// 添加顶级品牌
-        			$('#pid_select').hide();
-        			$('#pid2_select').hide();
-        		break;
-        		case '1':// 添加一级品牌
-        			$('#pid_select').show();
-        			$('#pid2_select').hide();
-        		break;        		    
-        		case '2':// 添加二级品牌        		            		    
-					$('#pid_select').show();
-        		break;
-        		default :
-            		$('#pid_select').hide();
-        			$('#pid_select').hide();
-    		}
-		});
-
-		$('#top_brand').change(function(){
-
-			var brand_id = $(this).val();
-
-			//获得该顶级品牌下二级品牌
-        	$.ajax({
-				type: 'POST',		
-				url: '{{route('brand.getChildBrand')}}',		
-				data: { pid : brand_id},		
-				dataType: 'json',		
-				headers: {		
-					'X-CSRF-TOKEN': '{{ csrf_token() }}'		
-				},		
-				success: function(data){		
-					if(data.status == 1){
-						var content = '';
-						$.each(data.data, function(index, value){
-							content += '<option value="';
-							content += value.id;
-							content += '">';
-							content += value.name;
-							content += '</option>';
-						})
-						// $('#top_brand').append(content);
-						console.log($('#second_brand'));
-						$('#second_brand').append(content);
-						// console.log(content);
-					}else{
-						alert(data.message);
-						return false;
-					}
-				},		
-				error: function(xhr, type){
-
-					alert('Ajax error!');
-				}
-			});
-			$('#pid2_select').show();
-		});
-	});
 </script>
 @endsection
