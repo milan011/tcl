@@ -195,7 +195,9 @@ class UploadsManager
         $path = $this->cleanFolder($path);
     
         if ($this->disk->exists($path)) {
-            return "File already exists.";
+
+            // return substr($path,1,strlen($path)-1);
+            return false;
         }
     
         return $this->disk->put($path, $content);
