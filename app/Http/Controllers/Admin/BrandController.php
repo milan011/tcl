@@ -84,12 +84,13 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $barnd_info = $this->brands->find($id);
+        $brand_info = $this->brands->find($id);
+        $brand_tree = $this->brands->getBrandTree($id);
         // dd(lastSql());
-        dd($barnd_info);exit;
-        return view('admin.barnd.edit', compact(
+        // dd($brand_info);exit;
+        return view('admin.brand.edit', compact(
 
-            'barnd_info'
+            'brand_info'
         ));
     }
 
@@ -102,7 +103,10 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        p($id);
+        dd($request->all());
+        $this->brands->update($request, $id);
+        return redirect()->route('admin.brand.index')->withInput();
     }
 
     /**
@@ -135,7 +139,7 @@ class BrandController extends Controller
 
             return response()->json(array(
                 'status' => 0,
-                'message'   => '获取品牌列表失败'
+                'message'   => '该品牌下无子品牌'
             ));
         }
          
