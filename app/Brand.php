@@ -45,4 +45,10 @@ class Brand extends Model
 
       return $this->belongsTo('App\User', 'creater_id', 'id');
     }
+
+    // 定义Brand表与Category表一对多关系
+    public function hasManyCategory(){
+
+      return $this->hasMany('App\Category', 'brand_id', 'id');
+    }
 }
