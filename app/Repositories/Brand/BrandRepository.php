@@ -71,9 +71,9 @@ class BrandRepository implements BrandRepositoryContract
 
                 // 获取文件相关信息
                 $filename = $file->getClientOriginalName(); // 文件原名
-                $ext = $file->getClientOriginalExtension();     // 扩展名
+                $ext      = $file->getClientOriginalExtension();     // 扩展名
                 $realPath = $file->getRealPath();   //临时文件的绝对路径
-                $type = $file->getClientMimeType();     // image/jpeg
+                $type     = $file->getClientMimeType();     // image/jpeg
 
                 // dd($originalName);
                 // dd($ext);
@@ -110,21 +110,7 @@ class BrandRepository implements BrandRepositoryContract
     public function update($requestData, $id)
     {
         $brand  = Brand::findorFail($id);
-
-        switch ($requestData->brand_type) { //根据品牌类别确定pid
-            case '0': //顶级品牌
-                $requestData['pid'] = 0;
-            break;
-            case '1': //一级品牌                    
-                $requestData['pid'] = $requestData->pid[0];
-            break;
-            case '2': //二级品牌
-                $requestData['pid'] = $requestData->pid[1];
-            break;
-            default:
-                # code...
-            break;
-        }
+        // dd($requestData->all());
 
         if($requestData->hasFile('logo_img')){  //如果有上传图片
 
@@ -140,26 +126,12 @@ class BrandRepository implements BrandRepositoryContract
 
                 // 获取文件相关信息
                 $filename = $file->getClientOriginalName(); // 文件原名
-                $ext = $file->getClientOriginalExtension();     // 扩展名
+                $ext      = $file->getClientOriginalExtension();     // 扩展名
                 $realPath = $file->getRealPath();   //临时文件的绝对路径
-                $type = $file->getClientMimeType();     // image/jpeg
+                $type     = $file->getClientMimeType();     // image/jpeg
+                $bool     = $uploads_file->saveFile($filename, file_get_contents($realPath));
 
-                // dd($originalName);
-                // dd($ext);
-                // dd($realPath);
-                // dd($type);
-                // dd(uniqid());
-                // 上传文件
-                // $filename = date('Y-m-d-H-i-s') . '-' . uniqid() . '.' . $ext;
-                // $filename = $originalName;
-                // 使用我们新建的uploads本地存储空间（目录）
-                // $bool = Storage::disk('uploads')->put($filename, file_get_contents($realPath));
-                $bool = $uploads_file->saveFile($filename, file_get_contents($realPath));
-                /*p($filename);
-                p($bool);exit;*/
-                $input =  array_replace($requestData->all(), ['logo_img'=>"$filename"]);
-                /*p('hehe');
-                dd($input);*/
+                $input    =  array_replace($requestData->all(), ['logo_img'=>"$filename"]);
             }
         }else{
             
@@ -177,8 +149,8 @@ class BrandRepository implements BrandRepositoryContract
     public function destroy($id)
     {
         try {
-            $Brand = Brand::findorFail($id);
-            $Brand->delete();
+            $brand = Brand::findorFail($id);
+            $brand->delete();
             Session::flash('sucess', '删除品牌成功');
            
         } catch (\Illuminate\Database\QueryException $e) {
@@ -198,7 +170,14 @@ class BrandRepository implements BrandRepositoryContract
     //获得指定品牌的父品牌
     protected function getParentBrand($brand_id){
 
-
+        $pid = Brand::select('id', 'pid')
+                    ->where('id', $brand_id)
+                    ->first();
+        // dd($pid->pid);
+        return Brand::select(['id', 'pid', 'name', 'logo_img'])
+                    ->where('id', $pid->pid)
+                    ->where('status', '1')
+                    ->first();
     }
 
     //获得指定品牌的品牌树(递归获取该品牌所有子品牌及父品牌)
@@ -206,41 +185,60 @@ class BrandRepository implements BrandRepositoryContract
 
         $brandTree['child']  = $this->getAllChild($brand_id);
         $brandTree['parent'] = $this->getAllParent($brand_id);
+        // dd($brandTree);
+        return $brandTree;
     }
 
     //获得指定品牌下所有子品牌
-    protected function getAllChild($brand_id){
+    protected function getAllChild($brand_id, $lev=1){
 
         $child = array();
 
         if($this->haveChildBrand($brand_id)){
 
             $brand_info = $this->getChildBrand($brand_id)->toArray();
-            // dd($brand_info);
-            $child_tree[] = $brand_info;
-            dd($child_tree);
+
+            foreach ($brand_info as $key => $value) {
+                
+                $child[$key]        = $value;
+                $child[$key]['lev'] = $lev;
+            }
+
             foreach ($brand_info as $key => $value) {
 
-                $child_tree = array_merge($child_tree, $this->getAllChild($value['id']));
-                // $child_tree = $this->getAllChild($value['id']);
+                $child = array_merge($child, $this->getAllChild($value['id'], $lev+1));
             } 
         }   
 
-        dd($child_tree);
-
+        return $child;
     }
 
     //获得指定品牌的所有父品牌
-    protected function getAllParent($brand_id){
+    protected function getAllParent($brand_id, $lev=1){
 
-        $parent_tree = array();
+        $parent = array();
+
+        if(!$this->isTopBrand($brand_id)){
+
+            $brand_info = $this->getParentBrand($brand_id)->toArray();
+            // dd($brand_info);
+            
+            $brand_info['lev'] = $lev;   
+            $parent[]          = $brand_info;
+
+            $parent = array_merge($parent, $this->getAllParent($brand_info['id'], $lev+1));
+
+        }   
+
+        return $parent;
     }
 
     //判断该品牌是否有下级品牌
     protected function haveChildBrand($brand_id){
 
         $child = $this->getChildBrand($brand_id);
-        // dd($child->count());
+        /*p(lastSql());
+        dd($child);*/
         if($child->count() != 0){
 
             return true;
