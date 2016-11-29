@@ -6,7 +6,7 @@ interface CategoryRepositoryContract
     
     public function find($id);
     
-    public function getAllCategorys();
+    public function getAllcategory();
 
     public function getAllUsersWithDepartments();
 

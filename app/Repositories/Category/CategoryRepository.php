@@ -23,7 +23,7 @@ class CategoryRepository implements CategoryRepositoryContract
     }
 
     // 获得门店列表
-    public function getAllCategorys()
+    public function getAllcategory()
     {   
         return Category::paginate(10);
     }
