@@ -90,6 +90,40 @@
 <!-- 引入确认框js -->
 <script src="{{URL::asset('js/tcl/confirm.js')}}"></script> 
 <script>
+	$(document).ready(function(){
 
+		$('.changStatus').click(function(){
+
+			var id     = $(this).next().val();
+			var status = $(this).attr('data-status');
+			var token  = $("input[name='_token']").val();
+
+			/*alert(id);
+			alert(status);*/
+			// alert($("input[name='_token']").val());
+
+			$.ajax({
+				
+				type: 'POST',
+				url: 'brand/changeStatus',
+				data: { id : id, status : status},
+				dataType: 'json',
+				headers: {
+
+					'X-CSRF-TOKEN': '{{ csrf_token() }}'
+				},
+				success: function(data){
+
+					alert(data.msg);
+					location.reload();
+					// console.log(data);
+				},
+				error: function(xhr, type){
+
+					alert('Ajax error!');
+				}
+			});
+		});
+	});
 </script>
 @endsection

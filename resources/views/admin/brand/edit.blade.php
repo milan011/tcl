@@ -31,22 +31,20 @@
 				<div class="control-group">
 					<label class="control-label" for="selectError3">品牌类型</label>
 					<div class="controls">
-					  <select id="brand_type" name="brand_type">
-					  	<option  value="0">顶级品牌</option>
-						<option  value="1">一级品牌</option>						
-						<option  value="2">二级品牌</option>						
-						</select>
-					</div>
-				  </div>
-				  <div id="pid_select" class="control-group" style="display:none;">
-					<label class="control-label" for="selectError3">父品牌</label>
+					  	<input type="text" readonly="readonly" value="{{$pid_info['name']}}">
+					</div>					
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="selectError3">品牌信息</label>
 					<div class="controls">
-					  	
-					</div>
-				  </div>
+					  	<input type="text" readonly="readonly" value="{{$pid_info['top_name']}} @if(isset($pid_info['perv_name'])) --- {{$pid_info['perv_name']}} @endif">
+					</div>					
+				</div>
+				  
 				  <div class="control-group">
 					<label class="control-label" for="focusedInput">品牌名称</label>
 					<div class="controls">
+						<input type="hidden" name="pid" value="{{$pid_info['pid']}}">
 					  <input class="input-xlarge focused" id="name" name="name" type="text" value="{{$brand_info->name}}">
 					</div>
 				  </div>
