@@ -6,9 +6,26 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\Brand\BrandRepositoryContract;
+use App\Repositories\Category\CategoryRepositoryContract;
 
 class CategoryController extends Controller
 {
+    protected $category;
+    protected $brands;
+
+    public function __construct(
+
+        CategoryRepositoryContract $category,
+        BrandRepositoryContract $brands
+    ) {
+    
+        $this->category = $category;
+        $this->brands = $brands;
+
+        // $this->middleware('brand.create', ['only' => ['create']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +33,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categorys = $this->category->getAllcategory();
+        // dd(lastSql());
+        // dd($categorys);
+        /*foreach ($category as $key => $value) {
+           dd($value->belongsToShop);
+        }*/
+        return view('admin.category.index', compact('categorys'));
     }
 
     /**
@@ -26,7 +49,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $all_top_brands = $this->brands->getChildBrand(0);
+        return view('admin.category.create',compact('all_top_brands'));
     }
 
     /**
