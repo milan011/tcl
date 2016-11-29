@@ -86,11 +86,39 @@ class BrandController extends Controller
     {
         $brand_info = $this->brands->find($id);
         $brand_tree = $this->brands->getBrandTree($id);
+        $brand_parents = $brand_tree['parent'];
         // dd(lastSql());
-        // dd($brand_info);exit;
+        // dd(($brand_parents));exit;
+        switch (count($brand_parents)) {
+            case '0':
+                # 顶级品牌
+                $pid_info['name'] = '顶级品牌';
+                $pid_info['pid']  = '0';
+                $pid_info['top_name']  = $brand_info['name'];
+                break;
+            case '1':
+                # 一级品牌
+                $pid_info['name']      = '一级品牌';
+                $pid_info['pid']       = $brand_parents[0]['id'];
+                $pid_info['top_name']  = $brand_parents[0]['name'];
+                break;
+            case '2':
+                # 二级品牌
+                $pid_info['name'] = '二级品牌';
+                $pid_info['pid']       = $brand_parents[0]['id'];
+                $pid_info['perv_name'] = $brand_parents[0]['name'];
+                $pid_info['top_name']  = $brand_parents[1]['name'];
+                break;
+            default:
+                # code...
+            break;
+        }
+        // dd($pid_info);
+
         return view('admin.brand.edit', compact(
 
-            'brand_info'
+            'brand_info',
+            'pid_info'
         ));
     }
 
@@ -103,8 +131,8 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        p($id);
-        dd($request->all());
+        // p($id);
+        // dd($request->all());
         $this->brands->update($request, $id);
         return redirect()->route('admin.brand.index')->withInput();
     }
@@ -117,7 +145,8 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->brands->destroy($id);        
+        return redirect()->route('admin.brand.index');
     }
 
     //获得子品牌
@@ -141,7 +170,32 @@ class BrandController extends Controller
                 'status' => 0,
                 'message'   => '该品牌下无子品牌'
             ));
+        }        
+    }
+
+    /**
+     * 修改品牌状态
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function changeStatus(Request $request)
+    {    
+        /*if($request->ajax()){
+            echo "zhen de shi AJAX";
         }
-         
+        p($request->input('id'));
+        p($request->input('status'));
+        p($request->method());exit;*/
+
+        $brand = $this->brands->find($request->id);
+
+        $brand->status = $request->input('status');
+
+        $brand->save();
+
+        return response()->json(array(
+            'status' => 1,
+            'msg' => 'ok',
+        ));      
     }
 }
