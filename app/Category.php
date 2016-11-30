@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use DB;
 
 class Category extends Model
 {
@@ -23,7 +24,7 @@ class Category extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['name', 'logo_img', 'sort', 'status', 'recommend', 'user_id', 'brand_id'];
+    protected $fillable = ['name', 'car_img', 'sort', 'status', 'recommend', 'user_id', 'brand_id', 'year_type'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -41,9 +42,21 @@ class Category extends Model
      */
     protected $dates = ['deleted_at'];
 
+    // 插入数据时忽略唯一索引
+    public static function insertIgnore($array){
+        $a = new static();
+        if($a->timestamps){
+            $now = \Carbon\Carbon::now();
+            $array['created_at'] = $now;
+            $array['updated_at'] = $now;
+        }
+        DB::insert('INSERT IGNORE INTO '.$a->table.' ('.implode(',',array_keys($array)).
+            ') values (?'.str_repeat(',?',count($array) - 1).')',array_values($array));
+    }
+
     // 定义Brand表与Category表一对多关系
     public function belongsToBrand(){
 
-      return $this->belongsTo('App\Brand', 'brand_id', 'id');
+      return $this->belongsTo('App\Brand', 'brand_id', 'id')->select('id','pid', 'name AS brand_name');
     }
 }
