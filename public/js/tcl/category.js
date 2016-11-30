@@ -1,43 +1,28 @@
-// 品牌级联菜单js
+// 添加车型级联菜单js
 $(document).ready(function(){
 
-	$('#brand_type').change(function(){
+		$('#second_category').empty();
+		$('#second_category').append('<option  value="0">请选择一级品牌</option>');
+		$('#second_category').hide();
+		$('#thrid_category').empty();
+		$('#thrid_category').append('<option  value="0">请选择二级品牌</option>');
+		$('#thrid_category').hide();
 
-		var brand_type = $('#brand_type').val();
+		$('#top_category').change(function(){
 
-		switch (brand_type) {
-        	case '0':// 添加顶级品牌
-        		$('#pid_select').hide();
-        		$('#pid2_select').hide();
-        	break;
-        	case '1':// 添加一级品牌
-        		$('#pid_select').show();
-        		$('#pid2_select').hide();
-        	break;        		    
-        	case '2':// 添加二级品牌        		            		    
-				$('#pid_select').show();
-        	break;
-        	default :
-           		$('#pid_select').hide();
-        		$('#pid_select').hide();
-    	}
-	});
+			var top_brand   = $(this).val();
+			var token       = $("input[name='_token']").val();
+			var request_url = $("input[name='ajax_request_url']").val();
 
-	$('#top_brand').change(function(){
+			$('#second_category').hide();
+			$('#thrid_category').hide();
+			// alert(top_brand);return false;
 
-		var brand_id    = $(this).val();
-		var brand_type  = $('#brand_type').val();
-		var token       = $("input[name='_token']").val();
-		var request_url = $("input[name='ajax_request_url']").val();
-		// alert(brand_type);
-
-		if(brand_type == 2){
-
-			//获得该顶级品牌下二级品牌
+			//获得该顶级品牌子品牌
         	$.ajax({
 				type: 'POST',		
 				url: request_url,		
-				data: { pid : brand_id},		
+				data: { pid : top_brand},		
 				dataType: 'json',		
 				headers: {		
 					'X-CSRF-TOKEN': token		
@@ -53,15 +38,16 @@ $(document).ready(function(){
 							content += '</option>';
 						})
 						// $('#top_brand').append(content);
-						console.log($('#second_brand'));
-						$('#second_brand').empty();
-						$('#second_brand').append(content);
+						console.log($('#second_category'));
+						$('#second_category').empty();
+						$('#second_category').append(content);
 						// console.log(content);
-						$('#pid2_select').show();
+						$('#second_category').show();
 					}else{
 						alert(data.message);
-						$('#second_brand').empty();
-						$('#pid2_select').hide();
+						$('#second_category').empty();
+						$('#second_category').append('<option  value="0">请选择一级品牌</option>');
+						$('#second_category').hide();
 						return false;
 					}
 				},		
@@ -69,7 +55,55 @@ $(document).ready(function(){
 	
 					alert('Ajax error!');
 				}
-			});				
-		}			
+			});
+		});
+
+		$('#second_category').change(function(){
+
+			var top_brand   = $(this).val();
+			var token       = $("input[name='_token']").val();
+			var request_url = $("input[name='ajax_request_url']").val();
+
+			$('#thrid_category').hide();
+			// alert(top_brand);return false;
+
+			//获得该顶级品牌子品牌
+        	$.ajax({
+				type: 'POST',		
+				url: request_url,		
+				data: { pid : top_brand},		
+				dataType: 'json',		
+				headers: {		
+					'X-CSRF-TOKEN': token		
+				},		
+				success: function(data){		
+					if(data.status == 1){
+						var content = '<option  value="0">请选择二级品牌</option>';
+						$.each(data.data, function(index, value){
+							content += '<option value="';
+							content += value.id;
+							content += '">';
+							content += value.name;
+							content += '</option>';
+						})
+						// $('#top_brand').append(content);
+						// console.log($('#second_category'));
+						$('#thrid_category').empty();
+						$('#thrid_category').append(content);
+						// console.log(content);
+						$('#thrid_category').show();
+					}else{
+						alert(data.message);
+						$('#thrid_category').empty();
+						$('#thrid_category').append('<option  value="0">请选择二级品牌</option>');
+						$('#thrid_category').hide();
+						return false;
+					}
+				},		
+				error: function(xhr, type){
+	
+					alert('Ajax error!');
+				}
+			});
+		});
 	});
-});
