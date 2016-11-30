@@ -27,7 +27,7 @@
 			<form class="form-horizontal" action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
 				{!! csrf_field() !!}
 				<fieldset>
-				  <div id="pid_select" class="control-group">
+				  <div class="control-group">
 					<label class="control-label" for="selectError3">车型品牌</label>
 					<div class="controls">
 					  	<select id="top_category" name="">
@@ -36,16 +36,13 @@
 					  		<option value="{{$brand->id}}">{{$brand->name}}</option>
 					  		@endforeach										
 						</select>
-						<span id="pid2_select" style="display:none;">
-							<select id="second_category" name="">
-					  			<option  value="0">请选择一级品牌</option>											
-							</select>
-						</span>
-						<span id="pid3_select" style="display:none;">
-							<select id="thrid_category" name="brand_id">
-					  			<option  value="0">请选择二级品牌</option>											
-							</select>
-						</span>
+						<select id="second_category" name="" style="display:none;">
+					  		<option  value="0">请选择一级品牌</option>											
+						</select>
+						<select id="thrid_category" name="brand_id" style="display:none;">
+					  		<option  value="0">请选择二级品牌</option>											
+						</select>
+
 					</div>
 				  </div>
 				  <div class="control-group">
@@ -62,9 +59,28 @@
 					</div>					
 				  </div> -->
 				  <div class="control-group">
-					<label class="control-label" for="focusedInput">车型首字母</label>
+					<label class="control-label" for="focusedInput">车款</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="frist_letter" name="frist_letter" type="text" value="{{old('frist_letter')}}">
+					   <select id="year_type" name="year_type">
+					  		<option  value="">请选择年份</option>											
+					  		<option  value="2002">2002</option>											
+					  		<option  value="2003">2003</option>											
+					  		<option  value="2004">2004</option>											
+					  		<option  value="2005">2005</option>											
+					  		<option  value="2006">2006</option>											
+					  		<option  value="2007">2007</option>											
+					  		<option  value="2009">2009</option>											
+					  		<option  value="2010">2010</option>											
+					  		<option  value="2011">2011</option>											
+					  		<option  value="2012">2012</option>											
+					  		<option  value="2013">2013</option>											
+					  		<option  value="2014">2014</option>											
+					  		<option  value="2015">2015</option>											
+					  		<option  value="2016">2016</option>											
+					  		<option  value="2017">2017</option>											
+					  		<option  value="2018">2018</option>											
+					  		<option  value="2019">2019</option>											
+						</select>
 					</div>
 				  </div>
 				  <div class="control-group">
@@ -108,7 +124,4 @@
 @section('script_content')
 <!-- 引入车型级联js -->
 <script src="{{URL::asset('js/tcl/category.js')}}"></script> 
-<script>
-
-</script>
 @endsection

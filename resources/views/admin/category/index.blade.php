@@ -33,7 +33,8 @@
 					<thead>
 						<tr>
 							<th>车型名称</th>
-							<th>车型Logo</th>
+							<th>品牌</th>
+							<th>车款</th>
 							<th>车型状态</th>
 							<th>操作</th>
 						</tr>
@@ -42,9 +43,8 @@
 						@foreach ($categorys as $category)
     					<tr>
 							<td>{{$category->name}}</td>
-							<td>
-								<img style="width:32px;height:32px;" src="{{ URL::asset('uploads/category/') }}/{{$category->logo_img}}">
-							</td>							
+							<td>{{$category->belongsToBrand->brand_name}}</td>
+							<td>{{$category->year_type}}款</td>							
 							@if($category->status == '1')
 							<td class="center"><span class="label label-success">已启用</span></td>
 							@else
