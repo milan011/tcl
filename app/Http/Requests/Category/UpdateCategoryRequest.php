@@ -13,18 +13,37 @@ class UpdateCategoryRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
+     /**
      * Get the validation rules that apply to the request.
-     *
+     * 验证规则
      * @return array
      */
     public function rules()
     {
+        // $id = $this->route('category');
         return [
-            //
+            'name'     => 'required',
+            // 'name'     => "unique:tcl_category,name,".$id,
+            'brand_id' => 'required',
+            'year_type'=> 'required',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     * 验证失败信息提示
+     * @return array
+     */
+    public function messages(){
+        return [
+            'name.required'      => '请输入车型名称',
+            // 'name.unique'        => '车型名称已经存在',
+            'brand_id.required'  => '请选择二级品牌',
+            'year_type.required' => '请选择车款年份',
+
         ];
     }
 }
