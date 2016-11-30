@@ -19,7 +19,8 @@ class CategoryRepository implements CategoryRepositoryContract
     // 根据ID获得门店信息
     public function find($id)
     {
-        return Category::select(['id', 'name'])->findOrFail($id);
+        return Category::select(['id', 'name', 'brand_id', 'year_type', 'sort', 'status', 'recommend'])
+                       ->findOrFail($id);
     }
 
     // 获得门店列表
@@ -28,41 +29,39 @@ class CategoryRepository implements CategoryRepositoryContract
         return Category::paginate(10);
     }
 
-    public function getAllUsersWithDepartments()
-    {
-        return  User::select(array
-            ('users.name', 'users.id',
-                DB::raw('CONCAT(users.name, " (", departments.name, ")") AS full_name')))
-        ->join('department_user', 'users.id', '=', 'department_user.user_id')
-        ->join('departments', 'department_user.department_id', '=', 'departments.id')
-        ->lists('full_name', 'id');
-    }
-
     // 创建门店
     public function create($requestData)
     {   
-        $requestData['user_id'] = Auth::id();
+        // $requestData['user_id'] = Auth::id();
         // dd($requestData->all());
-        $Category = new Category();
-        $input =  array_replace($requestData->all());
-        $Category->fill($input);
+        $category = new Category();
+        // $input =  array_replace($requestData->all());
 
-        $Category = $Category->create($input);
+        $input['brand_id']  = $requestData->brand_id;
+        $input['name']      = $requestData->name;
+        $input['year_type'] = $requestData->year_type;
+        $input['sort']      = $requestData->sort;
+        $input['status']    = $requestData->status;
+        $input['recommend'] = $requestData->recommend;
+        $input['user_id']   = Auth::id();
+        // dd($input);
 
-        Session::flash('sucess', '添加门店成功');
-        return $Category;
+        $category = $category->insertIgnore($input);
+
+        Session::flash('sucess', '添加车型成功');
+        return $category;
     }
 
     // 修改门店
     public function update($requestData, $id)
     {
         
-        $Category  = Category::findorFail($id);
+        $category  = Category::findorFail($id);
         $input =  array_replace($requestData->all());
-        $Category->fill($input)->save();
+        $category->fill($input)->save();
         // dd($Category->toJson());
         Session::flash('sucess', '修改门店成功');
-        return $Category;
+        return $category;
     }
 
     // 删除门店

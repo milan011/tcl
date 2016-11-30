@@ -8,8 +8,6 @@ interface CategoryRepositoryContract
     
     public function getAllcategory();
 
-    public function getAllUsersWithDepartments();
-
     public function create($requestData);
 
     public function update($id, $requestData);
