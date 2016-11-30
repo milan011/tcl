@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Category\CategoryRepositoryContract;
+use App\Http\Requests\Category\UpdateCategoryRequest;
+use App\Http\Requests\Category\StoreCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -35,7 +37,7 @@ class CategoryController extends Controller
     {
         $categorys = $this->category->getAllcategory();
         // dd(lastSql());
-        // dd($categorys);
+        // dd($categorys[0]->belongsToBrand);
         /*foreach ($category as $key => $value) {
            dd($value->belongsToShop);
         }*/
@@ -59,9 +61,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $catgoryRequest)
     {
-        //
+        // dd($catgoryRequest->all());
+        $getInsertedId = $this->category->create($catgoryRequest);
+        // p(lastSql());exit;
+        return redirect()->route('admin.category.index')->withInput();    
     }
 
     /**
@@ -83,7 +88,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category_info = $this->category->find($id);
+        
+        dd($category_info);
+
+        return view('admin.category.edit', compact('category_info'));
     }
 
     /**
@@ -93,7 +102,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryRequest $catgoryRequest, $id)
     {
         //
     }
