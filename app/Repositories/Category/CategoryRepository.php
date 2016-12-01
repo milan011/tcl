@@ -16,20 +16,20 @@ use Debugbar;
 class CategoryRepository implements CategoryRepositoryContract
 {
 
-    // 根据ID获得门店信息
+    // 根据ID获得车型信息
     public function find($id)
     {
         return Category::select(['id', 'name', 'brand_id', 'year_type', 'sort', 'status', 'recommend'])
                        ->findOrFail($id);
     }
 
-    // 获得门店列表
+    // 获得车型列表
     public function getAllcategory()
     {   
         return Category::paginate(10);
     }
 
-    // 创建门店
+    // 创建车型
     public function create($requestData)
     {   
         // $requestData['user_id'] = Auth::id();
@@ -52,28 +52,29 @@ class CategoryRepository implements CategoryRepositoryContract
         return $category;
     }
 
-    // 修改门店
+    // 修改车型
     public function update($requestData, $id)
     {
         
         $category  = Category::findorFail($id);
         $input =  array_replace($requestData->all());
+        // dd($category->fill($input));
         $category->fill($input)->save();
         // dd($Category->toJson());
-        Session::flash('sucess', '修改门店成功');
+        Session::flash('sucess', '修改车型成功');
         return $category;
     }
 
-    // 删除门店
+    // 删除车型
     public function destroy($id)
     {
         try {
             $Category = Category::findorFail($id);
             $Category->delete();
-            Session::flash('sucess', '删除门店成功');
+            Session::flash('sucess', '删除车型成功');
            
         } catch (\Illuminate\Database\QueryException $e) {
-            Session()->flash('faill', '删除门店失败');
+            Session()->flash('faill', '删除车型失败');
         }      
     }
 }
