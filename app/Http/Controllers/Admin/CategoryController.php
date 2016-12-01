@@ -52,7 +52,9 @@ class CategoryController extends Controller
     public function create()
     {
         $all_top_brands = $this->brands->getChildBrand(0);
-        return view('admin.category.create',compact('all_top_brands'));
+        $year_type = config('tcl.year_type'); //获取配置文件中所有车款年份
+
+        return view('admin.category.create',compact('all_top_brands', 'year_type'));
     }
 
     /**
@@ -89,10 +91,19 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category_info = $this->category->find($id);
-        
-        dd($category_info);
+        $brand_tree = $this->brands->getBrandTree($category_info->brand_id);
+        $brand_parents = $brand_tree['parent'];
+        $pid_info['perv_name'] = $brand_parents[0]['name'];
+        $pid_info['top_name']  = $brand_parents[1]['name'];
 
-        return view('admin.category.edit', compact('category_info'));
+        $year_type = config('tcl.year_type'); //获取配置文件中所有车款年份
+        
+        // dd(config('tcl.car_year'));
+        /*p($pid_info);
+        dd($brand_parents);
+        dd($category_info);*/
+
+        return view('admin.category.edit', compact('category_info', 'pid_info', 'year_type'));
     }
 
     /**
@@ -104,7 +115,9 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $catgoryRequest, $id)
     {
-        //
+        // dd($catgoryRequest->all());
+        $this->category->update($catgoryRequest, $id);
+        return redirect()->route('admin.category.index')->withInput();
     }
 
     /**
@@ -115,6 +128,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->category->destroy($id);        
+        return redirect()->route('admin.category.index');
     }
 }
