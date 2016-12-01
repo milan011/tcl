@@ -6,7 +6,7 @@ interface CarRepositoryContract
     
     public function find($id);
     
-    public function getAllcategory();
+    public function getAllcars();
 
     public function create($requestData);
 

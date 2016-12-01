@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories\Car;
 
-use App\Car;
+use App\Cars;
 use Session;
 use Illuminate\Http\Request;
 use Gate;
@@ -16,25 +16,25 @@ use Debugbar;
 class CarRepository implements CarRepositoryContract
 {
 
-    // 根据ID获得车型信息
+    // 根据ID获得车源信息
     public function find($id)
     {
-        return Category::select(['id', 'name', 'brand_id', 'year_type', 'sort', 'status', 'recommend'])
+        return Cars::select(['id', 'name', 'brand_id', 'year_type', 'sort', 'status', 'recommend'])
                        ->findOrFail($id);
     }
 
-    // 获得车型列表
-    public function getAllcategory()
+    // 获得车源列表
+    public function getAllcars()
     {   
-        return Category::paginate(10);
+        return Cars::paginate(10);
     }
 
-    // 创建车型
+    // 创建车源
     public function create($requestData)
     {   
         // $requestData['user_id'] = Auth::id();
         // dd($requestData->all());
-        $category = new Category();
+        $car = new Cars();
         // $input =  array_replace($requestData->all());
 
         $input['brand_id']  = $requestData->brand_id;
@@ -46,35 +46,35 @@ class CarRepository implements CarRepositoryContract
         $input['user_id']   = Auth::id();
         // dd($input);
 
-        $category = $category->insertIgnore($input);
+        $car = $car->insertIgnore($input);
 
-        Session::flash('sucess', '添加车型成功');
-        return $category;
+        Session::flash('sucess', '添加车源成功');
+        return $car;
     }
 
-    // 修改车型
+    // 修改车源
     public function update($requestData, $id)
     {
         
-        $category  = Category::findorFail($id);
+        $car  = Cars::findorFail($id);
         $input =  array_replace($requestData->all());
-        // dd($category->fill($input));
-        $category->fill($input)->save();
-        // dd($Category->toJson());
-        Session::flash('sucess', '修改车型成功');
-        return $category;
+        // dd($Car->fill($input));
+        $car->fill($input)->save();
+        // dd($Car->toJson());
+        Session::flash('sucess', '修改车源成功');
+        return $car;
     }
 
-    // 删除车型
+    // 删除车源
     public function destroy($id)
     {
         try {
-            $Category = Category::findorFail($id);
-            $Category->delete();
-            Session::flash('sucess', '删除车型成功');
+            $car = Cars::findorFail($id);
+            $car->delete();
+            Session::flash('sucess', '删除车源成功');
            
         } catch (\Illuminate\Database\QueryException $e) {
-            Session()->flash('faill', '删除车型失败');
+            Session()->flash('faill', '删除车源失败');
         }      
     }
 }
