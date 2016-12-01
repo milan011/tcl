@@ -3,18 +3,30 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\Brand\BrandRepositoryContract;
+use App\Repositories\Car\CarRepositoryContract;
+use App\Http\Requests\Car\UpdateCarRequest;
+use App\Http\Requests\Car\StoreCarRequest;
 
 class CarController extends Controller
 {   
-    protected $request;
+    protected $car;
+    protected $brands;
 
-    public function __construct(Request $request)
-    {
-        
-        $this->request = $request;
+    public function __construct(
+
+        CarRepositoryContract $car,
+        BrandRepositoryContract $brands
+    ) {
+    
+        $this->car = $car;
+        $this->brands = $brands;
+
+
+        // $this->middleware('brand.create', ['only' => ['create']]);
     }
 
     /**
@@ -25,15 +37,14 @@ class CarController extends Controller
     public function index()
     {
         //
-        return 'ca ni kan dao le che yuan';
+        return view('admin.car.index', compact('cars'));
     }
 
     public function carself()
     {
-        //
-        // p($this->request->id);exit;
-        dd($this->request->user()['attributes']['nick_name']);
-        return 'ca ni kan dao le che yuan ni zi ji de';
+        $cars = $this->car->getAllcars();
+        // dd($cars);
+        return view('admin.car.index', compact('cars'));
     }
 
     /**
@@ -43,7 +54,22 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        // dd('create');
+        $all_top_brands = $this->brands->getChildBrand(0);
+        $year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
+        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
+        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
+        // dd($category_type);
+        return view('admin.car.create',compact(
+            'all_top_brands', 
+            'year_type', 
+            'category_type', 
+            'gearbox',
+            'out_color',
+            'inside_color'
+        ));
     }
 
     /**
