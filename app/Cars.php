@@ -12,7 +12,7 @@ class Cars extends Model
      * @var string
      */
     // protected $table = 'users';
-    protected $table = 'tcl_shop';
+    protected $table = 'tcl_cars';
     protected $primaryKey ='id';
 
     /**
@@ -20,7 +20,7 @@ class Cars extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['name', 'nick_name', 'password', 'telephone', 'phone', 'qq_number', 'wx_number', 'address', 'creater_id', 'shop_id', 'status', 'user_img'];
+    protected $fillable = ['car_code', 'brand_id', 'categorey_id', 'cate_id', 'img_url', 'img_thumb', 'capacity', 'gearbox', 'out_color', 'inside_color', 'plate_date', 'plate_end', 'plate_provence', 'plate_city', 'age', 'safe_type', 'sale_number', 'mileage', 'description', 'top_price', 'bottom_price', 'car_status', 'recommend', 'is_top', 'car_type', 'customer_id', 'creater_id', 'shop_id', 'want_area', 'created_at'];
 
     /**
      * The attributes excluded from the model's JSON form.
