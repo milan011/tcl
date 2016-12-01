@@ -91,7 +91,7 @@
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li>
-							<a href="/admin">
+							<a href="{{route('admin.index')}}">
 								<i class="icon-home"></i>
 								<span class="hidden-tablet"> 主页</span>
 							</a>
