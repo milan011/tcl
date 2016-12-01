@@ -215,7 +215,7 @@
 			</noscript>
 			
 			<!-- start: Content -->
-			<div id="content" class="span10" style="height:800px !important;">
+			<div id="content" class="span10" style="height:800px;">
 			<!-- 面包屑导航 -->
 			@yield('BreadcrumbTrail')   	
 			<!-- 主体内容 -->
