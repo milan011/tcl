@@ -20,7 +20,8 @@
         "pusher/pusher-php-server": "^2.3",
         "fenos/notifynder": "3.1.*",
         "maatwebsite/excel": "~2.1.0",
-        "barryvdh/laravel-debugbar": "^2.2"
+        "barryvdh/laravel-debugbar": "^2.2",
+        "intervention/image": "^2.3"
         
     },
     "require-dev": {
