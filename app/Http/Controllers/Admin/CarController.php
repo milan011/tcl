@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Car\CarRepositoryContract;
+use App\Repositories\Shop\ShopRepositoryContract;
 use App\Http\Requests\Car\UpdateCarRequest;
 use App\Http\Requests\Car\StoreCarRequest;
 
@@ -15,15 +16,18 @@ class CarController extends Controller
 {   
     protected $car;
     protected $brands;
+    protected $shop;
 
     public function __construct(
 
         CarRepositoryContract $car,
-        BrandRepositoryContract $brands
+        BrandRepositoryContract $brands,
+        ShopRepositoryContract $shop
     ) {
     
         $this->car = $car;
         $this->brands = $brands;
+        $this->shop = $shop;
 
 
         // $this->middleware('brand.create', ['only' => ['create']]);
@@ -54,13 +58,18 @@ class CarController extends Controller
      */
     public function create()
     {
-        // dd('create');
+        // dd(Auth::user());
+        $city_id = $this->shop->find(Auth::user()->shop_id);
         $all_top_brands = $this->brands->getChildBrand(0);
         $year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
         $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
+        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
+        $car_type       = config('tcl.car_type'); //获取配置文件车源类型
+        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
+        $city_id        = $this->shop->find(Auth::user()->shop_id); //车源所在城市
         // dd($category_type);
         return view('admin.car.create',compact(
             'all_top_brands', 
@@ -68,7 +77,11 @@ class CarController extends Controller
             'category_type', 
             'gearbox',
             'out_color',
-            'inside_color'
+            'inside_color',
+            'sale_number',
+            'car_type',
+            'city_id',
+            'customer_res'
         ));
     }
 
