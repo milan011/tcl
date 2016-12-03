@@ -26,8 +26,8 @@ class StoreCustomerRequest extends Request
         // dd($this->all());
         return [
             // 'name'     => 'required|unique:tcl_category',
-            'name'      => 'required',
-            'telephone' => 'required|phone_number',
+            'customer_name'  => 'required',
+            'telephone'      => 'required|phone_number',
         ];
     }
 
@@ -38,7 +38,7 @@ class StoreCustomerRequest extends Request
      */
     public function messages(){
         return [
-            'name.required'          => '请输入客户名称',
+            'customer_name.required' => '请输入客户名称',
             'telephone.required'     => '请输入手机号码',
             'telephone.phone_number' => '手机号码无效',
         ];
