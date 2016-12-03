@@ -59,7 +59,7 @@ class CarController extends Controller
     public function create()
     {
         // dd(Auth::user());
-        $city_id = $this->shop->find(Auth::user()->shop_id);
+ 
         $all_top_brands = $this->brands->getChildBrand(0);
         $year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
@@ -69,8 +69,8 @@ class CarController extends Controller
         $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
         $car_type       = config('tcl.car_type'); //获取配置文件车源类型
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
-        $city_id        = $this->shop->find(Auth::user()->shop_id); //车源所在城市
-        // dd($category_type);
+        $city_id        = $this->shop->find(Auth::user()->shop_id)->city_id; //车源所在城市
+        // dd($city_id);
         return view('admin.car.create',compact(
             'all_top_brands', 
             'year_type', 

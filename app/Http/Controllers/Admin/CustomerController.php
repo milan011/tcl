@@ -8,9 +8,22 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
 use App\Http\Requests\Customer\StoreCustomerRequest;
+use App\Repositories\Customer\CustomerRepositoryContract;
 
 class CustomerController extends Controller
 {
+    protected $customer;
+
+    public function __construct(
+
+        CustomerRepositoryContract $customer
+    ) {
+    
+        $this->customer = $customer;
+
+        // $this->middleware('brand.create', ['only' => ['create']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,7 +63,10 @@ class CustomerController extends Controller
      */
     public function ajaxStore(StoreCustomerRequest $customerRequest)
     {
-        p($customerRequest->all());exit;
+        // p($customerRequest->all());exit;
+        $customer = $this->customer->create($customerRequest);
+
+        return response()->json($customer); 
     }
 
     /**
