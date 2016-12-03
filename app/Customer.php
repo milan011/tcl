@@ -35,6 +35,18 @@ class Customer extends Model
         'password', 'remember_token',
     ];
 
+    // 插入数据时忽略唯一索引
+    public static function insertIgnore($array){
+        $a = new static();
+        if($a->timestamps){
+            $now = \Carbon\Carbon::now();
+            $array['created_at'] = $now;
+            $array['updated_at'] = $now;
+        }
+        DB::insert('INSERT IGNORE INTO '.$a->table.' ('.implode(',',array_keys($array)).
+            ') values (?'.str_repeat(',?',count($array) - 1).')',array_values($array));
+    }
+
     // 定义User表与Customer表一对多关系
     public function belongsToUser(){
 
