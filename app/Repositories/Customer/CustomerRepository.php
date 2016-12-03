@@ -16,65 +16,76 @@ use Debugbar;
 class CustomerRepository implements CustomerRepositoryContract
 {
 
-    // 根据ID获得车型信息
+    // 根据ID获得车源信息
     public function find($id)
     {
-        return Category::select(['id', 'name', 'brand_id', 'year_type', 'sort', 'status', 'recommend'])
+        return Customer::select(['id', 'name', 'telephone'])
                        ->findOrFail($id);
     }
 
-    // 获得车型列表
-    public function getAllcategory()
+    // 获得车源列表
+    public function getAllCustomers()
     {   
-        return Category::paginate(10);
+        return Customer::paginate(10);
     }
 
-    // 创建车型
+    // 创建车源
     public function create($requestData)
     {   
-        // $requestData['user_id'] = Auth::id();
-        // dd($requestData->all());
-        $category = new Category();
-        // $input =  array_replace($requestData->all());
+        
+        if($this->isRepeat($requestData->telephone)){
+            //手机号码重复，已存在该手机注册用户，返回用户实例
+            $customer = $this->isRepeat($requestData->telephone);
+        }else{
+            // 注册用户并返回实例
+            $requestData['creater_id'] = Auth::id();
+            $requestData['name']       = $requestData['customer_name'];
+            $requestData['password']   = bcrypt('123465');
 
-        $input['brand_id']  = $requestData->brand_id;
-        $input['name']      = $requestData->name;
-        $input['year_type'] = $requestData->year_type;
-        $input['sort']      = $requestData->sort;
-        $input['status']    = $requestData->status;
-        $input['recommend'] = $requestData->recommend;
-        $input['user_id']   = Auth::id();
-        // dd($input);
+            unset($requestData['_token']);
+            unset($requestData['customer_name']);
 
-        $category = $category->insertIgnore($input);
+            $customer = new Customer();
+            $input =  array_replace($requestData->all());
+            $customer->fill($input);
 
-        Session::flash('sucess', '添加车型成功');
-        return $category;
+            $customer    = $customer->create($input);
+        }        
+
+        return $customer;
     }
 
-    // 修改车型
+    // 修改车源
     public function update($requestData, $id)
     {
         
-        $category  = Category::findorFail($id);
+        $customer  = Customer::findorFail($id);
         $input =  array_replace($requestData->all());
-        // dd($category->fill($input));
-        $category->fill($input)->save();
-        // dd($Category->toJson());
-        Session::flash('sucess', '修改车型成功');
-        return $category;
+        // dd($customer->fill($input));
+        $customer->fill($input)->save();
+        // dd($customer->toJson());
+        Session::flash('sucess', '修改车源成功');
+        return $customer;
     }
 
-    // 删除车型
+    // 删除车源
     public function destroy($id)
     {
         try {
-            $Category = Category::findorFail($id);
-            $Category->delete();
-            Session::flash('sucess', '删除车型成功');
+            $customer = Customer::findorFail($id);
+            $customer->delete();
+            Session::flash('sucess', '删除车源成功');
            
         } catch (\Illuminate\Database\QueryException $e) {
-            Session()->flash('faill', '删除车型失败');
+            Session()->flash('faill', '删除车源失败');
         }      
+    }
+
+    //判断手机号是否被使用
+    public function isRepeat($customer_telephone){
+
+        return Customer::select('id', 'name')
+                       ->where('telephone', $customer_telephone)
+                       ->first();
     }
 }

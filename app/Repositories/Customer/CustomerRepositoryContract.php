@@ -6,11 +6,13 @@ interface CustomerRepositoryContract
     
     public function find($id);
     
-    public function getAllcategory();
+    public function getAllCustomers();
 
     public function create($requestData);
 
     public function update($id, $requestData);
 
     public function destroy($id);
+
+    public function isRepeat($customer_telephone);
 }
