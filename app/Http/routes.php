@@ -47,6 +47,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::get('car/self', 'CarController@carself')->name('car.self'); 
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
     Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('brand.getChildBrand');
+    Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
     Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');
     Route::post('brand/changeStatus', 'brandController@changeStatus')->name('brand.changeStatus');
     Route::put('role/updatePermission', 'RoleController@updatePermission')->name('admin.role.updatePermission');
@@ -57,6 +58,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('upload/folder', 'UploadController@createFolder');
     Route::delete('upload/folder', 'UploadController@deleteFolder');
     Route::post('customer/ajaxStore', 'CustomerController@ajaxStore')->name('admin.customer.ajaxStore');
+    Route::post('car/ajaxStore', 'CarController@ajaxStore')->name('admin.car.ajaxStore');
     Route::resource('user', 'UserController'); 
     Route::resource('car', 'CarController');  
     Route::resource('shop', 'ShopController');  
