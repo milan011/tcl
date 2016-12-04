@@ -57,7 +57,7 @@ class CustomerController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * ajax存储客户
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */

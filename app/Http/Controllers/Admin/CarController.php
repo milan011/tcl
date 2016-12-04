@@ -9,8 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Car\CarRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
-use App\Http\Requests\Car\UpdateCarRequest;
-use App\Http\Requests\Car\StoreCarRequest;
+use App\Http\Requests\Cars\UpdateCarsRequest;
+use App\Http\Requests\Cars\StoreCarsRequest;
 
 class CarController extends Controller
 {   
@@ -69,6 +69,7 @@ class CarController extends Controller
         $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
         $car_type       = config('tcl.car_type'); //获取配置文件车源类型
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
+        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
         $city_id        = $this->shop->find(Auth::user()->shop_id)->city_id; //车源所在城市
         // dd($city_id);
         return view('admin.car.create',compact(
@@ -81,6 +82,7 @@ class CarController extends Controller
             'sale_number',
             'car_type',
             'city_id',
+            'safe_type',
             'customer_res'
         ));
     }
@@ -94,6 +96,20 @@ class CarController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * ajax存储车源
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ajaxStore(StoreCarsRequest $carRequest)
+    {
+        p($carRequest->all());exit;
+        $car = $this->car->create($carRequest);
+
+        return response()->json($car); 
     }
 
     /**

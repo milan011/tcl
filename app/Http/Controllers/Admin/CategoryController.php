@@ -131,4 +131,28 @@ class CategoryController extends Controller
         $this->category->destroy($id);        
         return redirect()->route('admin.category.index');
     }
+
+    //获得指定品牌下车型
+    public function getChildCategory(Request $request){
+
+        $brand_id = $request->input('pid');
+
+        $category = $this->category->getChildCategoryByBrandId($brand_id);
+
+        // p($category->toJson());exit;
+        if($category->count() > 0){
+
+            return response()->json(array(
+                'status' => 1,
+                'data'   => $category,
+                'message'   => '获取品牌列表成功'
+            ));
+        }else{
+
+            return response()->json(array(
+                'status' => 0,
+                'message'   => '该品牌下无子品牌'
+            ));
+        }        
+    }
 }
