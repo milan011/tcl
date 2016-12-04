@@ -64,7 +64,7 @@
 		</form>
 	</div>
 		<div class="box-content" id="car_content" style="overflow: auto;height: 70%;display:none;">
-			<form class="form-horizontal" id="car_form" action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
+			<form class="form-horizontal" id="car_form" action="" method="post" enctype="multipart/form-data">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
@@ -80,17 +80,20 @@
 				  <div class="control-group">
 					<label class="control-label" for="selectError3">车型品牌</label>
 					<div class="controls">
-					  	<select id="top_category" name="">
+					  	<select id="top_category" name="brand_id" style="width:15%">
 					  		<option value="0">请选择品牌</option>
 					  		@foreach ($all_top_brands as $brand)	
 					  		<option value="{{$brand->id}}">{{$brand->name}}</option>
 					  		@endforeach										
 						</select>
-						<select id="second_category" name="" style="display:none;">
-					  		<option  value="0">请选择一级品牌</option>											
+						<select id="second_category" name="car_factory" style="display:none;width:15%;">
+					  		<option  value="0">请选择厂家</option>											
 						</select>
-						<select id="thrid_category" name="brand_id" style="display:none;">
-					  		<option  value="0">请选择二级品牌</option>											
+						<select id="thrid_category" name="category_id" style="display:none;width:15%;">
+					  		<option  value="0">请选择车系</option>											
+						</select>
+						<select id="four_category" name="cate_id" style="display:none;">
+					  		<option  value="0">请选择车型</option>											
 						</select>
 
 					</div>
@@ -98,15 +101,15 @@
 				  <div class="control-group">
 					<label class="control-label" for="focusedInput">车型名称</label>
 					<div class="controls">
-						<input type="hidden" name="auto_add_name" value="">
-					  <input class="input-xlarge focused" id="name" name="name" type="text" value="{{old('name')}}">
+						<input type="hidden" name="auto_add_name" id="auto_add_name" value="1">
+					  	<input class="input-xlarge focused" readonly="readonly" id="name" name="name" type="text" value="">
 					</div>
 				  </div>
 				  
 				  <div class="control-group">
 					<label class="control-label" for="focusedInput">排量</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="capacity" name="capacity" type="text" value="{{old('capacity')}}">
+					  <input class="input-xlarge focused" id="capacity" name="capacity" type="text" value=""> L
 					</div>
 				  </div>
 
@@ -161,6 +164,16 @@
                   		<select id="sale_number" name="sale_number" >                        
 					  		@foreach($sale_number as $key=>$sale)											
 					  		<option  value="{{$key}}">{{$sale}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
+              	<div class="control-group  ">
+                	<label class="control-label" for="safe_type">车险类别</label>
+                	<div class="controls">
+                  		<select id="safe_type" name="safe_type" >                        
+					  		@foreach($safe_type as $key=>$safe)											
+					  		<option  value="{{$key}}">{{$safe}}</option>	
 					  		@endforeach	                     
                   		</select>
                 	</div>
@@ -240,7 +253,7 @@
 				  	<input type="hidden" name="want_area" value="{{$city_id}}">					
 				  	<input type="hidden" name="customer_id" value="">					
 					<button class="btn" id="return_customer">返回</button>
-					<button id="car_add" type="submit" class="btn btn-primary">确定</button>
+					<button id="car_add" class="btn btn-primary">确定</button>
 				  </div>
 				</fieldset>
 			</form>				
@@ -299,10 +312,28 @@
 			return false;
 		});
 
-		$('#return_customer').click(function(){
+		$('#car_add').click(function(){
 
-			customer_content.show();
-			car_content.hide();
+			var request_url = '{{route('admin.car.ajaxStore')}}';
+			alert('hehe');
+			$.ajax({
+				method: 'POST',
+				url: request_url,
+				data:$("#car_form").serialize(),
+				dataType: 'json',
+				headers: {		
+					'X-CSRF-TOKEN': '{{ csrf_token() }}'		
+				},
+				success:function(data){
+
+					alert(data);
+				},
+				error: function(xhr, type){
+					alert('error');
+				}
+			});
+
+			return false;
 		});
 	});
 </script>
