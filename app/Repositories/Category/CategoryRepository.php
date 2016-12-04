@@ -69,12 +69,21 @@ class CategoryRepository implements CategoryRepositoryContract
     public function destroy($id)
     {
         try {
-            $Category = Category::findorFail($id);
-            $Category->delete();
+            $category = Category::findorFail($id);
+            $category->delete();
             Session::flash('sucess', '删除车型成功');
            
         } catch (\Illuminate\Database\QueryException $e) {
             Session()->flash('faill', '删除车型失败');
         }      
+    }
+
+    // 获得指定品牌下所有车型
+    public function getChildCategoryByBrandId($brand_id){
+
+        return Category::select(['id', 'brand_id','year_type', 'name'])
+                    ->where('brand_id', $brand_id)
+                    ->where('status', '1')
+                    ->get();
     }
 }
