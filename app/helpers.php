@@ -142,3 +142,20 @@
 	{
 	    return starts_with($mimeType, 'image/');
 	}
+
+	/**
+	 * 获得车源编号
+	 */
+	function getCarCode()
+	{
+		$datetime = new DateTime('06/06/16');
+
+		dd($datetime);
+		p(Carbon::createFromDate('2016', '01', '02', 'Asia/Shanghai'));
+		p(Carbon::now()->year);
+		p(Carbon::now()->month);
+		p(Carbon::now()->day);
+		p(Carbon::now()->hour);
+		dd(Carbon::today());
+	    return ;
+	}
