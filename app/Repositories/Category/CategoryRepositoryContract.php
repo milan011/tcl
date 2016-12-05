@@ -13,4 +13,6 @@ interface CategoryRepositoryContract
     public function update($id, $requestData);
 
     public function destroy($id);
+
+    public function getChildCategoryByBrandId($brand_id);
 }
