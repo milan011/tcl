@@ -19,7 +19,7 @@ class CarRepository implements CarRepositoryContract
     // 根据ID获得车源信息
     public function find($id)
     {
-        return Cars::select(['id', 'name', 'brand_id', 'year_type', 'sort', 'status', 'recommend'])
+        return Cars::select(['id', 'name'])
                        ->findOrFail($id);
     }
 
@@ -32,23 +32,24 @@ class CarRepository implements CarRepositoryContract
     // 创建车源
     public function create($requestData)
     {   
-        // $requestData['user_id'] = Auth::id();
-        // dd($requestData->all());
-        $car = new Cars();
-        // $input =  array_replace($requestData->all());
+        if($requestData->has('vin_code') && $this->isRepeat($requestData->vin_code)){
+            //存在车架号并且存在该车架号记录
+            $car = $this->isRepeat($requestData->vin_code);
+        }else{
+            // 注册用户并返回实例
+            $requestData['creater_id'] = Auth::id();
+            $requestData['car_code']   = bcrypt('123465');
 
-        $input['brand_id']  = $requestData->brand_id;
-        $input['name']      = $requestData->name;
-        $input['year_type'] = $requestData->year_type;
-        $input['sort']      = $requestData->sort;
-        $input['status']    = $requestData->status;
-        $input['recommend'] = $requestData->recommend;
-        $input['user_id']   = Auth::id();
-        // dd($input);
+            unset($requestData['_token']);
+            unset($requestData['ajax_request_url']);
 
-        $car = $car->insertIgnore($input);
+            $car = new Cars();
+            $input =  array_replace($requestData->all());
+            $car->fill($input);
 
-        Session::flash('sucess', '添加车源成功');
+            $car = $car->create($input);
+        }        
+
         return $car;
     }
 
@@ -76,5 +77,13 @@ class CarRepository implements CarRepositoryContract
         } catch (\Illuminate\Database\QueryException $e) {
             Session()->flash('faill', '删除车源失败');
         }      
+    }
+
+    //判断车架号号是否被使用
+    public function isRepeat($vin_code){
+
+        return Car::select('id', 'name')
+                       ->where('vin_code', $vin_code)
+                       ->first();
     }
 }
