@@ -50,7 +50,7 @@
 						@foreach ($cars as $car)
     					<tr>
 							<td>{{$car->name}}</td>
-							<td>{{$car->belongsToBrand->brand_name}}</td>
+							<td>{{$car->name}}</td>
 							<td>{{$car->year_type}}款</td>							
 							@if($car->status == '1')
 							<td class="center"><span class="label label-success">已启用</span></td>

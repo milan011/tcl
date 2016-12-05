@@ -1,5 +1,10 @@
 @extends('layouts.main')
 
+@section('head_content')
+<!-- 自定义css -->
+
+@endsection
+
 <!-- 面包屑 -->
 @section('BreadcrumbTrail')
 <ul class="breadcrumb">
@@ -99,10 +104,17 @@
 					</div>
 				  </div>
 				  <div class="control-group">
-					<label class="control-label" for="focusedInput">车型名称</label>
+					<label class="control-label" for="name">车源名称</label>
 					<div class="controls">
 						<input type="hidden" name="auto_add_name" id="auto_add_name" value="1">
 					  	<input class="input-xlarge focused" readonly="readonly" id="name" name="name" type="text" value="">
+					</div>
+				  </div>
+
+				  <div class="control-group">
+					<label class="control-label" for="vin_code">车架号</label>
+					<div class="controls">
+					  	<input class="input-xlarge focused" id="vin_code" name="vin_code" type="text" value="">
 					</div>
 				  </div>
 				  
@@ -125,7 +137,7 @@
               	</div>
 
               	<div class="control-group  ">
-                	<label class="control-label" for="shiftType">外观颜色</label>
+                	<label class="control-label" for="out_color">外观颜色</label>
                 	<div class="controls">
                   		<select id="out_color" name="out_color" >                        
 					  		@foreach($out_color as $key=>$color)											
@@ -136,9 +148,9 @@
               	</div>
 
               	<div class="control-group  ">
-                	<label class="control-label" for="shiftType">内饰颜色</label>
+                	<label class="control-label" for="inside_color">内饰颜色</label>
                 	<div class="controls">
-                  		<select id="out_color" name="out_color" >                        
+                  		<select id="inside_color" name="inside_color" >                        
 					  		@foreach($inside_color as $key=>$color)											
 					  		<option  value="{{$key}}">{{$color}}</option>	
 					  		@endforeach	                     
@@ -148,15 +160,32 @@
               	<div class="control-group">
 					<label class="control-label" for="plate_date">上牌日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge datepicker" id="plate_date" value="">
+							<input type="text" class="input-xlarge datepicker" name="plate_date" id="plate_date" value="">
 						</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="plate_end">到检日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge datepicker" id="plate_end" value="">
+							<input type="text" class="input-xlarge datepicker" name="plate_end" id="plate_end" value="">
 						</div>
 				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="plate_provence">上牌城市</label>
+					<div class="controls">
+					  	<select id="plate_provence" name="plate_provence" style="width:15%">
+					  		<option value="0">请选择省份</option>
+					  		<option value="1">河北</option>
+					  		<option value="2">河南</option>
+									
+						</select>
+						<select id="plate_city" name="plate_city" style="width:15%;">
+					  		<option  value="0">请选择城市</option>											
+					  		<option  value="1">石家庄</option>											
+					  		<option  value="2">唐山</option>											
+						</select>
+					</div>
+				  </div>
 
 				<div class="control-group  ">
                 	<label class="control-label" for="shiftType">过户次数</label>
@@ -178,6 +207,12 @@
                   		</select>
                 	</div>
               	</div>
+              	<div class="control-group">
+					<label class="control-label" for="safe_end">到保日期</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge datepicker" name="safe_end" id="safe_end" value="">
+						</div>
+				</div>
               	<div class="control-group">
 					<label class="control-label" for="focusedInput">行驶里程</label>
 					<div class="controls">
@@ -226,7 +261,7 @@
 					</div>
 				</div>
 				<div class="control-group  ">
-                	<label class="control-label" for="car_type">过户次数</label>
+                	<label class="control-label" for="car_type">车源类型</label>
                 	<div class="controls">
                   		<select id="car_type" name="car_type" >                        
 					  		@foreach($car_type as $key=>$type)											
@@ -235,7 +270,6 @@
                   		</select>
                 	</div>
               	</div>
-
 
 				<div class="control-group">
 					<label class="control-label" for="selectError3">是否启用</label>
@@ -264,6 +298,8 @@
 @section('script_content')
 <!-- 引入车型级联js -->
 <script src="{{URL::asset('js/tcl/category.js')}}"></script> 
+<!-- 引入对话框插件 -->
+<script src="{{URL::asset('js/tcl/dialog.js')}}"></script> 
 <script>
 	$(document).ready(function(){
 
@@ -315,7 +351,7 @@
 		$('#car_add').click(function(){
 
 			var request_url = '{{route('admin.car.ajaxStore')}}';
-			alert('hehe');
+
 			$.ajax({
 				method: 'POST',
 				url: request_url,
@@ -329,7 +365,37 @@
 					alert(data);
 				},
 				error: function(xhr, type){
-					alert('error');
+					
+					if(xhr.status == 422){ //表单验证失败，返回的状态
+						// console.log(JSON.parse(xhr.responseText));
+						var content_error = '';
+						
+						content_error += '<div>';
+						content_error += "<div class='alert alert-warning' style='text-align:center;'>";
+						$.each(JSON.parse(xhr.responseText),function(name,value) {
+							// console.log(name);
+							// console.log(value);							
+							content_error += value[0];
+							content_error += '<div>';							
+						});
+						content_error += '</div>';
+						content_error += '</div>';
+
+						var modal = new Modal({
+    						title: '',
+    						content: content_error,
+    						width: 560,
+    						
+    						onModalShow: function () {
+    						    var $form = this.$modal.find('div');
+    						}
+						});
+
+						modal.open();
+
+						return false;
+					}
+					alert('添加车源败，请重新添加或联系管理员');
 				}
 			});
 
