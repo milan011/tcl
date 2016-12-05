@@ -20,7 +20,7 @@ class Cars extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['car_code', 'brand_id', 'car_factory', 'categorey_id', 'cate_id', 'capacity', 'gearbox', 'out_color', 'inside_color', 'plate_date', 'plate_end', 'plate_provence', 'plate_city', 'age', 'safe_type', 'sale_number', 'mileage', 'description', 'top_price', 'bottom_price', 'car_status', 'recommend', 'is_top', 'car_type', 'customer_id', 'creater_id', 'shop_id', 'want_area'];
+    protected $fillable = ['car_code', 'brand_id', 'car_factory', 'categorey_id', 'cate_id', 'capacity', 'gearbox', 'out_color', 'inside_color', 'plate_date', 'plate_end', 'plate_provence', 'plate_city', 'age', 'safe_type', 'sale_number', 'mileage', 'description', 'top_price', 'bottom_price', 'car_status', 'recommend', 'is_top', 'car_type', 'customer_id', 'creater_id', 'shop_id', 'want_area', 'vin_code', 'sale_tcl'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -41,5 +41,11 @@ class Cars extends Model
         }
         DB::insert('INSERT IGNORE INTO '.$a->table.' ('.implode(',',array_keys($array)).
             ') values (?'.str_repeat(',?',count($array) - 1).')',array_values($array));
+    }
+
+    // 定义Category表与Cars表一对多关系
+    public function belongsToCategory(){
+
+      return $this->belongsTo('App\Category', 'cate_id', 'id')->select('id', 'name AS category_name');
     }
 }

@@ -59,4 +59,10 @@ class Category extends Model
 
       return $this->belongsTo('App\Brand', 'brand_id', 'id')->select('id','pid', 'name AS brand_name');
     }
+
+    // 定义Category表与Cars表一对多关系
+    public function hasManyCars(){
+
+      return $this->hasMany('App\Cars', 'cate_id', 'id');
+    }
 }
