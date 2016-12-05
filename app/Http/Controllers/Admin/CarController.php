@@ -47,7 +47,7 @@ class CarController extends Controller
     public function carself()
     {
         $cars = $this->car->getAllcars();
-        // dd($cars);
+        // dd($cars[0]);
         return view('admin.car.index', compact('cars'));
     }
 
@@ -59,7 +59,7 @@ class CarController extends Controller
     public function create()
     {
         // dd(Auth::user());
- 
+        $car_code = getCarCode();
         $all_top_brands = $this->brands->getChildBrand(0);
         $year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
@@ -71,7 +71,8 @@ class CarController extends Controller
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
         $city_id        = $this->shop->find(Auth::user()->shop_id)->city_id; //车源所在城市
-        // dd($city_id);
+        $provence_id    = $this->shop->find(Auth::user()->shop_id)->provence_id; //车源所在省份
+        dd($city_id);
         return view('admin.car.create',compact(
             'all_top_brands', 
             'year_type', 
@@ -82,6 +83,7 @@ class CarController extends Controller
             'sale_number',
             'car_type',
             'city_id',
+            'provence_id',
             'safe_type',
             'customer_res'
         ));
@@ -106,7 +108,7 @@ class CarController extends Controller
      */
     public function ajaxStore(StoreCarsRequest $carRequest)
     {
-        p($carRequest->all());exit;
+        // p($carRequest->all());exit;
         $car = $this->car->create($carRequest);
 
         return response()->json($car); 
