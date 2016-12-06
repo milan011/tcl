@@ -70,9 +70,10 @@ class CarController extends Controller
         $car_type       = config('tcl.car_type'); //获取配置文件车源类型
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
+        $capacity       = config('tcl.capacity'); //获取配置文件排量
         $city_id        = $this->shop->find(Auth::user()->shop_id)->city_id; //车源所在城市
         $provence_id    = $this->shop->find(Auth::user()->shop_id)->provence_id; //车源所在省份
-        dd($city_id);
+        // dd($city_id);
         return view('admin.car.create',compact(
             'all_top_brands', 
             'year_type', 
@@ -85,6 +86,7 @@ class CarController extends Controller
             'city_id',
             'provence_id',
             'safe_type',
+            'capacity',
             'customer_res'
         ));
     }
@@ -106,7 +108,7 @@ class CarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function ajaxStore(StoreCarsRequest $carRequest)
+    public function ajaxAdd(StoreCarsRequest $carRequest)
     {
         // p($carRequest->all());exit;
         $car = $this->car->create($carRequest);

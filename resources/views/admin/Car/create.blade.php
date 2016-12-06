@@ -2,7 +2,7 @@
 
 @section('head_content')
 <!-- 自定义css -->
-
+<link id="bootstrap-style" href="{{ URL::asset('css/tcl/bootstrap-datepicker.min.css') }}" rel="stylesheet">
 @endsection
 
 <!-- 面包屑 -->
@@ -117,13 +117,17 @@
 					  	<input class="input-xlarge focused" id="vin_code" name="vin_code" type="text" value="">
 					</div>
 				  </div>
-				  
-				  <div class="control-group">
-					<label class="control-label" for="focusedInput">排量</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="capacity" name="capacity" type="text" value=""> L
-					</div>
-				  </div>
+
+				  <div class="control-group  ">
+                	<label class="control-label" for="capacity">排量</label>
+                	<div class="controls">
+                  		<select id="capacity" name="capacity" >                        
+					  		@foreach($capacity as $key=>$capa)											
+					  		<option  value="{{$key}}">{{$capa}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
 
 				  <div class="control-group  ">
                 	<label class="control-label" for="shiftType">变速箱</label>
@@ -160,13 +164,13 @@
               	<div class="control-group">
 					<label class="control-label" for="plate_date">上牌日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge datepicker" name="plate_date" id="plate_date" value="">
+							<input type="text" class="input-xlarge date-picker" name="plate_date" id="plate_date" value="">
 						</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="plate_end">到检日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge datepicker" name="plate_end" id="plate_end" value="">
+							<input type="text" class="input-xlarge date-picker" name="plate_end" id="plate_end" value="">
 						</div>
 				</div>
 
@@ -210,7 +214,7 @@
               	<div class="control-group">
 					<label class="control-label" for="safe_end">到保日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge datepicker" name="safe_end" id="safe_end" value="">
+							<input type="text" class="input-xlarge date-picker" name="safe_end" id="safe_end" value="">
 						</div>
 				</div>
               	<div class="control-group">
@@ -300,6 +304,9 @@
 <script src="{{URL::asset('js/tcl/category.js')}}"></script> 
 <!-- 引入对话框插件 -->
 <script src="{{URL::asset('js/tcl/dialog.js')}}"></script> 
+<!-- 引入日历插件 -->
+<script src="{{URL::asset('js/tcl/bootstrap-datepicker.js')}}"></script> 
+<script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script> 
 <script>
 	$(document).ready(function(){
 
@@ -309,7 +316,14 @@
 		var customer_res     = $('#customer_res').val();*/
 		var customer_content = $('#customer_content');
 		var car_content      = $('#car_content');
-		var customer_id      = $("input[name='customer_id']");		
+		var customer_id      = $("input[name='customer_id']");	
+
+		$('.date-picker').datepicker({
+            language: 'zh-CN',
+            autoclose: true,
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
+        });	
 
 		$('#customer_add').click(function(){
 
@@ -350,7 +364,7 @@
 
 		$('#car_add').click(function(){
 
-			var request_url = '{{route('admin.car.ajaxStore')}}';
+			var request_url = '{{route('admin.car.ajaxAdd')}}';
 
 			$.ajax({
 				method: 'POST',
@@ -362,7 +376,8 @@
 				},
 				success:function(data){
 
-					alert(data);
+					console.log(data);
+					alert('车源添加成功！');
 				},
 				error: function(xhr, type){
 					
@@ -398,6 +413,14 @@
 					alert('添加车源败，请重新添加或联系管理员');
 				}
 			});
+
+			return false;
+		});
+
+		$('#return_customer').click(function(){
+
+			customer_content.show();
+			car_content.hide();
 
 			return false;
 		});
