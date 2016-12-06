@@ -148,14 +148,13 @@
 	 */
 	function getCarCode()
 	{
-		$datetime = new DateTime('06/06/16');
+		// 车源编号为Unix时间戳后9位
+		$code = 'C-';
 
-		dd($datetime);
-		p(Carbon::createFromDate('2016', '01', '02', 'Asia/Shanghai'));
-		p(Carbon::now()->year);
-		p(Carbon::now()->month);
-		p(Carbon::now()->day);
-		p(Carbon::now()->hour);
-		dd(Carbon::today());
-	    return ;
+		$date = (string)(time());
+		$date =  substr ($date, 1); 
+
+		$code .= $date;
+
+	    return $code;
 	}
