@@ -32,13 +32,13 @@ class CarRepository implements CarRepositoryContract
     // 创建车源
     public function create($requestData)
     {   
-        if($requestData->has('vin_code') && $this->isRepeat($requestData->vin_code)){
+        if(!empty($requestData->vin_code) && $this->isRepeat($requestData->vin_code)){
             //存在车架号并且存在该车架号记录
             $car = $this->isRepeat($requestData->vin_code);
         }else{
             // 注册用户并返回实例
             $requestData['creater_id'] = Auth::id();
-            $requestData['car_code']   = bcrypt('123465');
+            $requestData['car_code']   = getCarCode();
 
             unset($requestData['_token']);
             unset($requestData['ajax_request_url']);
