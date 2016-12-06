@@ -189,7 +189,7 @@ $(document).ready(function(){
 					console.log(car_base_name);*/
 
 					auto_name = car_category + car_base_name;
-					console.log($('#name'));
+					// console.log($('#name'));
 					$('#name').val(auto_name);
 				});
 			}
