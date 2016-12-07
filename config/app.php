@@ -163,8 +163,8 @@ return [
         App\Providers\ViewComposerServiceProvider::class,
         App\Providers\VailidatorServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
        
-
     ],
 
     /*
@@ -217,6 +217,7 @@ return [
         'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
         'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Image'    => Intervention\Image\Facades\Image::class
         
     ],
 
