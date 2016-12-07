@@ -57,6 +57,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::delete('aupload/file', 'UploadController@deleteFile');
     Route::post('upload/folder', 'UploadController@createFolder');
     Route::delete('upload/folder', 'UploadController@deleteFolder');
+    Route::post('imgUpload', 'ImageController@postUpload')->name('admin.image.upload');
+    Route::post('imgUpload/delete', 'ImageController@deleteUpload')->name('admin.image.delete');
     Route::post('customer/ajaxStore', 'CustomerController@ajaxStore')->name('admin.customer.ajaxStore');
     Route::post('car/ajaxAdd', 'CarController@ajaxAdd')->name('admin.car.ajaxAdd');
     Route::resource('user', 'UserController'); 
