@@ -4,6 +4,11 @@
 <!-- 自定义css -->
 <link id="bootstrap-style" href="{{ URL::asset('css/tcl/bootstrap-datepicker.min.css') }}" rel="stylesheet">
 <link id="bootstrap-style" href="{{ URL::asset('css/tcl/dropzone/dropzone.css') }}" rel="stylesheet">
+<style type="text/css">
+	.dropzone{
+		padding: 30px 20px;
+	}
+</style>
 @endsection
 
 <!-- 面包屑 -->
@@ -71,7 +76,7 @@
 			</fieldset>
 		</form>
 	</div>
-		<div class="box-content" id="car_content" style="overflow: auto;height: 70%;display:none;">
+		<div class="box-content" id="car_content" style="overflow: auto;height:70%;display:none;">
 			<form class="form-horizontal" id="car_form" action="" method="post" enctype="multipart/form-data">
 				{!! csrf_field() !!}
 				<fieldset>
@@ -301,9 +306,13 @@
 		</div>
 		<!-- 车源信息添加 end-->
 		<!-- 图片信息添加 begin -->
-		<div class="box-content" id="img_content" style="overflow: auto;height: 70%;display:none;">
+		<div class="box-content" id="img_content" style="overflow: auto;height:70%;display:none;">
+		<div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="jumbotron how-to-create" >
 			<h3>Images <span id="photoCounter"></span></h3><br />
 			<!-- 隐藏图片信息模板 -->
+			<div class="dropzone-previews" id="dropzonePreview"></div>
     		<div id="preview-template" style="display: none;">
 
         		<div class="dz-preview dz-file-preview">
@@ -353,26 +362,32 @@
             	<div class="fallback">
                     <input name="file" type="file" multiple />
                 </div>
-                <div class="dropzone-previews" id="dropzonePreview"></div>
+                <!-- <div class="dropzone-previews" id="dropzonePreview"></div> -->
 
-                <h4 style="text-align: center;color:#428bca;">Drop images in this area  <span class="glyphicon glyphicon-hand-down"></span></h4>
-
-                <div class="form-actions">				
-				  	<input type="hidden" name="car_id" value="">					
-					<button class="btn" id="return_car">返回</button>
-					<button id="img_add" class="btn btn-primary">确定</button>
-				 </div>
+                <h4 style="text-align: center;color:#428bca;margin-top:20px;">
+                	点击上传
+                	<span class="glyphicon glyphicon-hand-down">
+                		
+                	</span>
+                </h4>
+                <input type="hidden" name="car_id" value="">
 			</form>
 			<div class="jumbotron how-to-create">
                 <ul>
-                    <li>Images are uploaded as soon as you drop them</li>
-                    <li>Maximum allowed size of image is 8MB</li>
+                    <li>当您选择图片并确认后，图片会自动上传</li>
+                    <li>上传图片请勿大于2MB</li>
                 </ul>
 
             </div>
-            
+            <div class="form-actions">									
+				<button class="btn" id="return_car">返回</button>
+				<button id="img_add" class="btn btn-primary">确定</button>
+			</div>
 		</div>
 		<!-- 图片信息添加 end -->
+		</div>
+		</div>
+		</div>
 	</div>			
 </div>   
 @endsection
@@ -505,8 +520,22 @@
 
 			customer_content.show();
 			car_content.hide();
+			img_content.hide();
 
 			return false;
+		});
+
+		$('#return_car').click(function(){
+
+			car_content.show();
+			customer_content.hide();
+
+			return false;
+		});
+
+		$('#img_add').click(function(){
+
+			window.location.href = 'self';
 		});
 	});
 </script>

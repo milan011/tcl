@@ -19,14 +19,15 @@ class CarRepository implements CarRepositoryContract
     // 根据ID获得车源信息
     public function find($id)
     {
-        return Cars::select(['id', 'name'])
+        return Cars::select(['id', 'name', 'car_code', 'top_price', 'plate_date', 'plate_date', 'mileage', 'out_color', 'gearbox', 'sale_number', 'shop_id', 'creater_id', 'created_at'])
                        ->findOrFail($id);
     }
 
     // 获得车源列表
     public function getAllcars()
     {   
-        return Cars::paginate(10);
+        return Cars::select(['id', 'name', 'car_code', 'top_price', 'plate_date', 'plate_date', 'mileage', 'out_color', 'gearbox', 'sale_number', 'shop_id', 'creater_id', 'created_at'])
+                   ->paginate(10);
     }
 
     // 创建车源

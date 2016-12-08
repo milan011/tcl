@@ -21,7 +21,7 @@
 	<div class="row-fluid sortable">		
 		<div class="box span12">
 			<div class="box-content">
-				<ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;">
+				<ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;margin-bottom:5px;">
 					<li style="display: inline-block;line-height: 20px;">
 						<a class="btn btn-primary" href="{{route('admin.car.create')}}">添加车源</a>
 					</li>
@@ -36,40 +36,35 @@
 							<th>车源名称</th>
 							<th>预售价</th>
 							<th>上牌时间</th>
-							<th>里程</th>
-							<th>车身颜色</th>
+							<th>里程</th>							
 							<th>变速箱</th>
+							<th>车身颜色</th>
 							<th>过户</th>
 							<th>登记日期</th>
-							<th>负责人</th>
 							<th>门店</th>
+							<th>负责人</th>
 							<th>操作</th>
 						</tr>
 					</thead>   
 					<tbody>
 						@foreach ($cars as $car)
     					<tr>
+							<td>{{$car->car_code}}</td>
 							<td>{{$car->name}}</td>
-							<td>{{$car->name}}</td>
-							<td>{{$car->year_type}}款</td>							
-							@if($car->status == '1')
-							<td class="center"><span class="label label-success">已启用</span></td>
-							@else
-							<td class="center"><span class="label label-warning">已停用</span></td>
-							@endif							
+							<td>{{$car->top_price}}万</td>							
+							<td>{{substr($car->plate_date, 0 ,10)}}</td>
+							<td>{{$car->mileage}}万公里</td>							
+							<td>{{$gearbox[$car->gearbox]}}</td>							
+							<td>{{$out_color[$car->out_color]}}</td>						
+							<td>{{$car->sale_number}}</td>							
+							<td>{{substr($car->created_at, 0 ,10)}}</td>							
+							<td>{{$car->belongsToShop->shop_name}}</td>							
+							<td>{{$car->belongsToUser->nick_name}}</td>							
+														
 							<td class="center">
 								<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>
-								@if($car->status == '1') 
-								<button class="btn btn-info changStatus" data-status="0">
-									<i class="icon-edit icon-white"></i> 停用
-								</button>
-								@else 
-								<button class="btn btn-info changStatus" data-status="1">
-									<i class="icon-edit icon-white"></i> 启用
-								</button>
-								@endif
 								<input type="hidden" value="{{$car->id}}">
 								<span>
 								<form action="{{route('admin.car.destroy', ['car'=>$car->id])}}" method="post" style="display: inherit;margin:0px;">

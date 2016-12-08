@@ -47,8 +47,14 @@ class CarController extends Controller
     public function carself()
     {
         $cars = $this->car->getAllcars();
+
         // dd($cars[0]);
-        return view('admin.car.index', compact('cars'));
+
+
+        $gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+
+        return view('admin.car.index', compact('cars', 'gearbox', 'out_color'));
     }
 
     /**
