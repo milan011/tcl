@@ -44,7 +44,13 @@ class Shop extends Model
     // 定义Shop表与User表一对多关系
     public function hasManyUser(){
 
-    return $this->hasMany('App\User', 'shop_id', 'id');
+        return $this->hasMany('App\User', 'creater_id', 'id');
 
-  }
+    }
+
+    // 定义Shop表与Cars表一对多关系
+    public function hasManyCars(){
+
+      return $this->hasMany('App\Cars', 'shop_id', 'id');
+    }
 }

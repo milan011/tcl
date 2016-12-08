@@ -110,4 +110,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
       return $this->hasMany('App\Customer', 'user_id', 'id');
     }
+
+    // 定义User表与Cars表一对多关系
+    public function hasManyCars(){
+
+      return $this->hasMany('App\Cars', 'creater_id', 'id');
+    }
 }

@@ -48,4 +48,16 @@ class Cars extends Model
 
       return $this->belongsTo('App\Category', 'cate_id', 'id')->select('id', 'name AS category_name');
     }
+
+    // 定义Shop表与Cars表一对多关系
+    public function belongsToShop(){
+
+      return $this->belongsTo('App\Shop', 'shop_id', 'id')->select('id', 'name AS shop_name');
+    }
+
+    // 定义User表与Cars表一对多关系
+    public function belongsToUser(){
+
+      return $this->belongsTo('App\User', 'creater_id', 'id')->select('id', 'nick_name');
+    }
 }
