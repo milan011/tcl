@@ -4,11 +4,15 @@ Dropzone.options.realDropzone = {
     uploadMultiple: false,
     parallelUploads: 10,
     maxFilesize: 2,
+    maxFiles: 10,
     previewsContainer: '#dropzonePreview',
+    acceptedFiles: ".jpg,.png",
     previewTemplate: document.querySelector('#preview-template').innerHTML,
     addRemoveLinks: true,
-    dictRemoveFile: 'Remove',
-    dictFileTooBig: '图片不能大于MB',
+    dictCancelUpload: '删除',
+    dictCancelUploadConfirmation: true,
+    dictRemoveFile: '删除',
+    dictFileTooBig: '图片不能大于2MB',
 
     // The setting up of the dropzone
     init:function() {
