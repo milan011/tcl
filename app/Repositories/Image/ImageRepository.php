@@ -50,9 +50,14 @@ class ImageRepository implements ImageRepositoryContract
 
         }
 
+        $img_dir = date('Ym', time());
+        $img_dir .= '\\'.'images\\';
+        $img_dir .= $allowed_filename; //存储的图片包含路径信息
         $sessionImage = new Image;
-        $sessionImage->filename      = $allowed_filename;
+        $sessionImage->filename      = $img_dir;
+        // p($img_dir);exit;
         $sessionImage->original_name = $originalName;
+        $sessionImage->car_id        = $form_data['car_id'];
         $sessionImage->save();
 
         return Response::json([
@@ -84,6 +89,9 @@ class ImageRepository implements ImageRepositoryContract
     public function original( $photo, $filename )
     {
         $manager = new ImageManager();
+        /*p($filename);
+        p(Config::get('images.full_size'));
+        p(Config::get('images.icon_size'));exit;*/
         $image = $manager->make( $photo )->save(Config::get('images.full_size') . $filename );
 
         return $image;
