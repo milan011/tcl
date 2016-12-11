@@ -43,6 +43,24 @@ class Cars extends Model
             ') values (?'.str_repeat(',?',count($array) - 1).')',array_values($array));
     }
 
+
+    public function addCondition($requestData){
+
+        $query = $this;
+
+        if(isset($requestData['car_status']) && $requestData['car_status'] != ''){
+
+            $query = $query->where('car_status', $requestData['car_status']);
+        }
+
+        if(!empty($requestData['car_code'])){
+
+            $query = $query->where('car_code', $requestData['car_code']);
+        }
+
+        return $query;
+    }
+
     // 定义Category表与Cars表一对多关系
     public function belongsToCategory(){
 

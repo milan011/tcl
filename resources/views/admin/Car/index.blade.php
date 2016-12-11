@@ -30,7 +30,6 @@
 @include('layouts.message')
 	<div class="row-fluid sortable">		
 		<div class="box span12">
-
 			<div class="box-content">
 				<!-- <ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;margin-bottom:5px;">
 					<li style="display: inline-block;line-height: 20px;">
@@ -42,15 +41,18 @@
 				</ul> -->
 				<div class="page-tabs">
             		<ul class="nav nav-tabs">
-            		  <li class="active" id="#nomal_car">
-            		    <a href="javascript:void(0);">正常车源</a>
+            		  <li class="select_car_status @if($car_status_current == 1) active @endif" >
+            		    <a href="javascript:void(0);" data-status="1">正常车源</a>
             		  </li>
-            		  <li id="#need_mod_car">
-            		    <a href="javascript:void(0);">待跟进车源</a>
+            		  <li class="select_car_status @if($car_status_current == 2) active @endif">
+            		    <a href="javascript:void(0);" data-status="2">待跟进车源</a>
             		  </li>
-            		  <li id="#discarded_car">
-            		    <a href="javascript:void(0);">已废弃车源</a>
+            		  <li class="select_car_status @if($car_status_current == 0) active @endif" >
+            		    <a href="javascript:void(0);" data-status="0">已废弃车源</a>
             		  </li>
+            		  <li style="display: inline-block;line-height:20px;">
+						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索车源</a>
+					</li>
             		  <li style="display: inline-block;line-height:20px;float:right;">
 						<a class="btn btn-primary" href="{{route('admin.car.create')}}">添加车源</a>
 					</li>
@@ -71,6 +73,7 @@
 							<th>变速箱</th>
 							<th>车身颜色</th>
 							<th>过户</th>
+							<th>状态</th>
 							<th>登记日期</th>
 							<th>门店</th>
 							<th>负责人</th>
@@ -88,6 +91,7 @@
 							<td>{{$gearbox[$car->gearbox]}}</td>							
 							<td>{{$out_color[$car->out_color]}}</td>						
 							<td>{{$car->sale_number}}</td>							
+							<td>{{$car_stauts_config[$car->car_status]}}</td>							
 							<td>{{substr($car->created_at, 0 ,10)}}</td>							
 							<td>{{$car->belongsToShop->shop_name}}</td>							
 							<td>{{$car->belongsToUser->nick_name}}</td>							
@@ -144,15 +148,46 @@
 					</tbody>
 				</table>
 				<div class="pagination pagination-centered">
-					 {!! $cars->appends(['sort' => '1'])->links() !!}
-				</div> 
-				<form id="condition" action="" method="post">
-					{!! csrf_field() !!}
-					<input type="hidden" name="status" value="222">
-				</form>
-				         
-			</div>
+					 {!! $cars->links() !!}
+				</div> 		
+			</div>			
 		</div>
+	</div>
+	<div class="modal hide fade" id="myModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>车源搜索</h3>
+		</div>
+		<div class="modal-body" style="max-height:none;">
+			<form class="form-horizontal" id="condition" action="" method="post">
+				{!! csrf_field() !!}
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="car_code">车源编号</label>
+						<div class="controls">
+						  	<input class="input-xlarge focused" name="car_code" id="car_code" type="text" value="">
+						</div>
+					</div>		
+					<div class="control-group  ">
+            	    	<label class="control-label" for="car_status">车源状态</label>
+            	    	<div class="controls">
+            	      		<select id="car_status" name="car_status" >
+            	      			<option value=''>不限</option>                        
+								@foreach($car_stauts_config as $key=>$status)								
+									<option @if($car_status_current == $key) selected  @endif  value="{{$key}}">		{{$status}}
+									</option>	
+								@endforeach	                     
+            	      		</select>
+            	    	</div>
+            	  	</div>				  
+				</fieldset>
+				<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+			<button type="submit" class="btn btn-primary">搜索</button>
+		</div>
+			</form>				         
+		</div>
+		
 	</div>
 @endsection
 
@@ -161,6 +196,16 @@
 <script src="{{URL::asset('js/tcl/confirm.js')}}"></script> 
 <script>
 	$(document).ready(function(){
+
+		var car_status_current = '{{$car_status_current}}';
+
+		if(car_status_current == ''){
+
+			$('.select_car_status').each(function(){
+
+				$(this).removeClass('active');
+			});
+		}
 
 		$('.changStatus').click(function(){
 
@@ -195,11 +240,25 @@
 			});
 		});
 
+		$('li.select_car_status').click(function(){
+
+			var car_status = $(this).children('a').attr('data-status');
+
+			if(!$(this).hasClass('active')){
+
+				$(this).addClass('active').siblings().removeClass('active');
+				$("select[name='car_status']").val(car_status);
+
+				$('#condition').submit();
+			}
+			
+		});
+
 		$('.pagination').children('li').children('a').click(function(){
 
-			alert($(this).attr('href'));
+			// alert($(this).attr('href'));
 			$('#condition').attr('action', $(this).attr('href'));
-			alert($('#condition').attr('action'));
+			// alert($('#condition').attr('action'));
 			$('#condition').submit();
 			return false;
 		});

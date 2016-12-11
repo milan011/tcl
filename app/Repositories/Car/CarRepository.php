@@ -27,11 +27,16 @@ class CarRepository implements CarRepositoryContract
     public function getAllcars($request)
     {   
         // dd($request->all());
-        $query = Cars::query();  // 返回的是一个 QueryBuilder 实例
-        // $query = new Cars();       // 返回的是一个Cars实例,两种方法均可
+        // $query = Cars::query();  // 返回的是一个 QueryBuilder 实例
+        $query = new Cars();       // 返回的是一个Cars实例,两种方法均可
+        
+        $query = $query->addCondition($request->all());
+
         // dd($query);
         $query = $query->where('name', '!=', '');
-        return $query->select(['id', 'name', 'car_code', 'top_price', 'plate_date', 'plate_date', 'mileage', 'out_color', 'gearbox', 'sale_number', 'shop_id', 'creater_id', 'created_at'])
+        // $query = $query->where('car_status', $request->input('car_status', '1'));
+
+        return $query->select(['id', 'name', 'car_code', 'top_price', 'plate_date', 'plate_date', 'mileage', 'out_color', 'gearbox', 'sale_number', 'shop_id', 'creater_id', 'created_at', 'car_status'])
                    ->paginate(10);
     }
 

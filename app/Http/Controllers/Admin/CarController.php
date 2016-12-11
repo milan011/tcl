@@ -46,13 +46,17 @@ class CarController extends Controller
 
     public function carself(Request $request)
     {
-        dd($request->all());
+        // dd(array_filter($request->all()));
         $cars = $this->car->getAllcars($request);
+        /*p(lastSql());
+        dd($cars);*/
+        $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
+        $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
+        $car_status_current = $request->input('car_status', ''); //当前查询的车源状态
+        // dd($car_status);
 
-        $gearbox    = config('tcl.gearbox'); //获取配置文件中变速箱类别
-        $out_color  = config('tcl.out_color'); //获取配置文件中外观颜色
-
-        return view('admin.car.index', compact('cars', 'gearbox', 'out_color'));
+        return view('admin.car.index', compact('cars', 'gearbox', 'out_color', 'car_status_current', 'car_stauts_config'));
     }
 
     /**
