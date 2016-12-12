@@ -44,7 +44,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'home', 'namespace' => 'Home'],
 
 Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.index');     
-    Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('car.self'); 
+    Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('admin.car.self'); 
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
     Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('brand.getChildBrand');
     Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
