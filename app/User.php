@@ -10,6 +10,7 @@ use PHPZen\LaravelRbac\Traits\Rbac;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Fenos\Notifynder\Notifable;
 use Cache;
+use Auth;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -52,7 +53,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $dates = ['deleted_at'];
     
-    
+    // 是否超级管理员
+    public function isSuperAdmin(){
+
+        return Auth::id() === 1;
+    }
+
     public function tasksAssign()
     {
         return $this->hasMany('App\Tasks', 'fk_user_id_assign', 'id')
