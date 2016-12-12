@@ -102,7 +102,7 @@
 							<ul>
 								<li><a class="submenu" href="{{route('admin.car.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">所有车源</span></a>
 								</li>
-								<li><a class="submenu" href="{{route('car.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">我的车源</span></a>
+								<li><a class="submenu" href="{{route('admin.car.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">我的车源</span></a>
 								</li>
 							</ul>	
 						</li>

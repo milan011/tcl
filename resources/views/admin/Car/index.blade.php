@@ -11,6 +11,10 @@
 			border-left: 9px solid transparent;
 			content: none;
 		}
+
+		.dropdown-menu{
+			min-width:100%;
+		}
 	</style>
 @endsection
 
@@ -115,29 +119,44 @@
 										<i class="icon-edit icon-white"></i> 编辑
 									</a>
 									<input type="hidden" value="{{$car->id}}">
-									<span>
-										<form action="{{route('admin.car.destroy', ['car'=>$car->id])}}" method="post" style="display: inherit;margin:0px;">
-										{{ csrf_field() }}
-            							{{ method_field('DELETE') }}
-										<button class="btn btn-danger delete-confrim" type="button">
-											<i class="icon-trash icon-white"></i> 删除
-										</button>
-									</form>
-									</span>
+									
 									<div class="btn-group " role=”group”>
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 											更多
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu pull-right">
+											<!-- <li>
+												<span>
+												<form action="{{route('admin.car.destroy', ['car'=>$car->id])}}" method="post" style="display: inherit;margin:0px;">
+												{{ csrf_field() }}
+            									{{ method_field('DELETE') }}
+												<button class="btn btn-danger delete-confrim" type="button">
+													<i class="icon-trash icon-white"></i> 删除
+												</button>
+												</form>
+												</span>
+											</li> -->
 											<li>
-												<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
-													<i class="icon-edit icon-white"></i> 编辑
+												<a class="btn btn-info" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
+													<i class="icon-edit icon-white"></i> 匹配
 												</a>
 											</li>
-											<li><a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
-													<i class="icon-edit icon-white"></i> 编辑
-												</a>	
+											<li>
+												@if($car->car_status == '0') 
+												<button class="btn btn-info changStatus" data-status="0" style="width:100%;">
+													<i class="icon-edit icon-white"></i> 激活
+												</button>
+												@else 
+												<button class="btn btn-info changStatus" data-status="1" style="width:100%;>
+													<i class="icon-edit icon-white"></i> 废弃
+												</button>
+												@endif
+											</li>
+											<li>
+												<button class="btn btn-success changStatus" data-status="1">
+													<i class="icon-edit icon-white"></i> 快速跟进
+												</button>
 											</li>
 										</ul>
  							 		</div>

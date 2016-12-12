@@ -286,7 +286,7 @@
 				<div class="control-group">
 					<label class="control-label" for="selectError3">是否启用</label>
 					<div class="controls">
-					  <select id="status" name="status">
+					  <select id="car_status" name="car_status">
 					  	<option  value="1">启用</option>
 						<option  value="0">停用</option>						
 						</select>
@@ -399,6 +399,7 @@
 <!-- 引入日历插件 -->
 <script src="{{URL::asset('js/tcl/bootstrap-datepicker.js')}}"></script> 
 <script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script> 
+<!-- 引入图片上传插件 -->
 <script src="{{URL::asset('js/tcl/dropzone/dropzone.js')}}"></script> 
 <script src="{{URL::asset('js/tcl/dropzone-config.js')}}"></script> 
 <script>

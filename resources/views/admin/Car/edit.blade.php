@@ -1,5 +1,11 @@
 @extends('layouts.main')
 
+@section('head_content')
+<!-- 自定义css -->
+<link id="bootstrap-style" href="{{ URL::asset('css/tcl/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+<link id="bootstrap-style" href="{{ URL::asset('css/tcl/dropzone/dropzone.css') }}" rel="stylesheet">
+
+@endsection
 <!-- 面包屑 -->
 @section('BreadcrumbTrail')
 <ul class="breadcrumb">
@@ -10,10 +16,10 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.category.index')}}">车型列表</a> 
+		<a href="{{route('admin.car.index')}}">车源列表</a> 
 		<i class="icon-angle-right"></i>
 	</li>
-	<li><a href="#1f">修改车型</a></li>
+	<li><a href="#1f">修改车源</a></li>
 </ul>
 @endsection
 <!-- 主体 -->
@@ -21,70 +27,197 @@
 
 @include('layouts.message')
 
-<div class="row-fluid sortable">
-	<div class="box span12">
-		<div class="box-content">
-			<form class="form-horizontal" action="{{route('admin.category.update', ['category'=>$category_info->id])}}" method="post" enctype="multipart/form-data">
+<div class="row-fluid sortable" style="height:100%;">
+	<div class="box span12" style="height:100%;">
+		<div class="box-content" style="overflow:auto;height:90%;">
+			<form class="form-horizontal" action="{{route('admin.car.update', ['car'=>$cars->id])}}" method="post" enctype="multipart/form-data">
 				{!! csrf_field() !!}
 				{{ method_field('PUT') }}
 				<fieldset>
-				
-				<div class="control-group">
-					<label class="control-label" for="selectError3">品牌信息</label>
-					<div class="controls">
-					  	<input type="text" readonly="readonly" value="{{$pid_info['top_name']}} @if(isset($pid_info['perv_name'])) --- {{$pid_info['perv_name']}} @endif --- {{$category_info->belongsToBrand->brand_name}}">
-					</div>					
-				</div>
 				  
 				  <div class="control-group">
-					<label class="control-label" for="focusedInput">车型名称</label>
+					<label class="control-label" for="name">车源名称</label>
 					<div class="controls">
-					  <input type="hidden" name="brand_id" value="{{$category_info->brand_id}}">
-					  <input class="input-xlarge focused" id="name" name="name" type="text" value="{{$category_info->name}}">
+					  <input class="input-xlarge focused" id="name" readonly="readonly" name="name" type="text" value="{{$cars->name}}">
 					</div>
 				  </div>
-				  <!-- <div class="control-group">
-					<label class="control-label" for="focusedInput">车型Logo</label>
-					<div class="controls">
-					  	<input class="input-xlarge focused" id="car_img" name="car_img" type="file" value="{{$category_info->car_img}}">
-					  	<a id="upload-img" href="#" class="btn btn-primary" style="margin-left:10px;">上传</a>
-					</div>					
-				  </div> -->
 				  <div class="control-group">
-					<label class="control-label" for="focusedInput">车款</label>
+					<label class="control-label" for="car_code">车源编号</label>
 					<div class="controls">
-					   <select id="year_type" name="year_type">
-					  		<option  value="">请选择年份</option>											
-					  		@foreach($year_type as $year)											
-					  		<option @if($category_info->year_type == $year) selected @endif  value="{{$year}}">{{$year}}</option>											
-					  		@endforeach											
+					  <input class="input-xlarge focused" id="car_code" readonly="readonly" name="car_code" type="text" value="{{$cars->car_code}}">
+					</div>
+				  </div>
+				  <div class="control-group">
+					<label class="control-label" for="vin_code">车架号号</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="vin_code" name="vin_code" type="text" value="{{$cars->vin_code}}">
+					</div>
+				  </div>
+				  <div class="control-group  ">
+                	<label class="control-label" for="capacity">排量</label>
+                	<div class="controls">
+                  		<select id="capacity" name="capacity" >                        
+					  		@foreach($capacity as $key=>$capa)											
+					  		<option @if(($cars->capacity-1) == $key) selected @endif  value="{{$key}}">
+					  			{{$capa}}
+					  		</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
+
+				  <div class="control-group  ">
+                	<label class="control-label" for="shiftType">变速箱</label>
+                	<div class="controls">
+                  		<select id="gearbox" name="gearbox" >                        
+					  		@foreach($gearbox as $key=>$gear)											
+					  		<option @if($cars->gearbox == $key) selected @endif value="{{$key}}">{{$gear}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
+
+              	<div class="control-group  ">
+                	<label class="control-label" for="out_color">外观颜色</label>
+                	<div class="controls">
+                  		<select id="out_color" name="out_color" >                        
+					  		@foreach($out_color as $key=>$color)											
+					  		<option @if($cars->out_color == $key) selected @endif value="{{$key}}">{{$color}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
+
+              	<div class="control-group  ">
+                	<label class="control-label" for="inside_color">内饰颜色</label>
+                	<div class="controls">
+                  		<select id="inside_color" name="inside_color" >                        
+					  		@foreach($inside_color as $key=>$color)											
+					  		<option @if($cars->inside_color == $key) selected @endif value="{{$key}}">{{$color}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
+              	<div class="control-group">
+					<label class="control-label" for="plate_date">上牌日期</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge date-picker" name="plate_date" id="plate_date" value="{{substr($cars->plate_date, 0 ,10)}}">
+						</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="plate_end">到检日期</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge date-picker" name="plate_end" id="plate_end" value="{{substr($cars->plate_end, 0 ,10)}}">
+						</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="plate_provence">上牌城市</label>
+					<div class="controls">
+					  	<select id="plate_provence" name="plate_provence" style="width:15%">
+					  		<option value="0">请选择省份</option>
+					  		<option value="1">河北</option>
+					  		<option value="2">河南</option>
+									
+						</select>
+						<select id="plate_city" name="plate_city" style="width:15%;">
+					  		<option  value="0">请选择城市</option>											
+					  		<option  value="1">石家庄</option>											
+					  		<option  value="2">唐山</option>											
 						</select>
 					</div>
 				  </div>
-				  <div class="control-group">
-					<label class="control-label" for="focusedInput">车型排序</label>
+
+				<div class="control-group  ">
+                	<label class="control-label" for="shiftType">过户次数</label>
+                	<div class="controls">
+                  		<select id="sale_number" name="sale_number" >                        
+					  		@foreach($sale_number as $key=>$sale)											
+					  		<option @if($cars->sale_number == $key) selected @endif value="{{$key}}">{{$sale}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
+              	<div class="control-group  ">
+                	<label class="control-label" for="safe_type">车险类别</label>
+                	<div class="controls">
+                  		<select id="safe_type" name="safe_type" >                        
+					  		@foreach($safe_type as $key=>$safe)											
+					  		<option @if($cars->safe_type == $key) selected @endif value="{{$key}}">{{$safe}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
+              	<div class="control-group">
+					<label class="control-label" for="safe_end">到保日期</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge date-picker" name="safe_end" id="safe_end" value="{{substr($cars->safe_end, 0 ,10)}}">
+						</div>
+				</div>
+              	<div class="control-group">
+					<label class="control-label" for="focusedInput">行驶里程</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="sort" name="sort" type="text" value="{{$category_info->sort}}">
+					  <input class="input-xlarge focused" id="mileage" name="mileage" type="text" value="{{$cars->mileage}}"><span style="margin-left:5px;">万公里</span>
 					</div>
-				  </div>
+				</div>
+
+				<div class="control-group ">
+					<label class="control-label" for="description">
+						<font style="color:red;">*&nbsp;</font>车况
+					</label>
+				<div class="controls">
+					<textarea id="description" name="description" required >{{$cars->description}}</textarea>
+				</div>
+			  </div>
+
+			  <div class="control-group">
+					<label class="control-label" for="top_price">期望价格</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="top_price" name="top_price" type="text" value="{{$cars->top_price}}"><span style="margin-left:5px;">万元</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="bottom_price">底价</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="bottom_price" name="bottom_price" type="text" value="{{$cars->bottom_price}}"><span style="margin-left:5px;">万元</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="selectError3">是否推荐</label>
+					<div class="controls">
+					  <select id="recommend" name="recommend" >
+					  	<option @if($cars->recommend == '1') selected @endif value="1">推荐</option>
+						<option @if($cars->recommend == '0') selected @endif value="0">不推荐</option>						
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="is_top">是否置顶</label>
+					<div class="controls">
+					  <select id="is_top" name="is_top" >
+					  	<option @if($cars->is_top == '1') selected @endif value="1">置顶</option>
+						<option @if($cars->is_top == '0') selected @endif value="0">不置顶</option>						
+						</select>
+					</div>
+				</div>
+				<div class="control-group  ">
+                	<label class="control-label" for="car_type">车源类型</label>
+                	<div class="controls">
+                  		<select id="car_type" name="car_type" >                        
+					  		@foreach($car_type as $key=>$type)											
+					  		<option @if($cars->car_type == $key) selected @endif value="{{$key}}">{{$type}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
 
 				<div class="control-group">
 					<label class="control-label" for="selectError3">是否启用</label>
 					<div class="controls">
-					  <select id="status" name="status">
-					  	<option @if($category_info->status == '1') selected @endif value="1">启用</option>
-						<option @if($category_info->status == '0') selected @endif value="0">停用</option>
-						
-						</select>
-					</div>
-				  </div>	
-
-				  <div class="control-group">
-					<label class="control-label" for="selectError3">是否推荐</label>
-					<div class="controls">
-					  <select id="recommend" name="recommend" >
-					  	<option @if($category_info->recommend == '1') selected @endif value="1">推荐</option>
-						<option @if($category_info->recommend == '0') selected @endif value="0">不推荐</option>						
+					  <select id="car_status" name="car_status">
+					  	<option @if($cars->car_status == '1') selected @endif value="1">启用</option>
+						<option @if($cars->car_status == '0') selected @endif value="0">停用</option>						
 						</select>
 					</div>
 				  </div>	  				
@@ -99,12 +232,17 @@
 </div>   
 @endsection
 @section('script_content')
-<!-- 引入车型级联js -->
-<!-- <script src="{{URL::asset('js/tcl/category.js')}}"></script>  -->
-<script>
+<!-- 引入日历插件 -->
+<script src="{{URL::asset('js/tcl/bootstrap-datepicker.js')}}"></script> 
+<script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script> 
+<script type="text/javascript">
 	$(document).ready(function(){
-
-		// $('#year_type').
+		$('.date-picker').datepicker({
+            language: 'zh-CN',
+            autoclose: true,
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
+        });
 	});
 </script>
 @endsection
