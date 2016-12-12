@@ -33,6 +33,7 @@ class StoreCarsRequest extends Request
             'description'    => 'required',
             'top_price'      => 'required',
             'bottom_price'   => 'required',
+            'vin_code'       => 'alpha_num|size:17',
         ];
     }
 
@@ -53,6 +54,8 @@ class StoreCarsRequest extends Request
             'description.required'  => '请输入车况描述',
             'top_price.required'    => '请输入期望价格',
             'bottom_price.required' => '请输入底价',
+            'vin_code.alpha_num'    => '车架号应由字母和数字组成',
+            'vin_code.size'         => '请输入17位车架号',
 
         ];
     }

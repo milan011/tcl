@@ -51,6 +51,9 @@ class Cars extends Model
         if(isset($requestData['car_status']) && $requestData['car_status'] != ''){
 
             $query = $query->where('car_status', $requestData['car_status']);
+        }else{
+
+            $query = $query->where('car_status', '1');
         }
 
         if(!empty($requestData['car_code'])){

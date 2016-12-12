@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Auth;
+use Gate;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
@@ -53,7 +54,13 @@ class CarController extends Controller
         $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
         $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
-        $car_status_current = $request->input('car_status', ''); //当前查询的车源状态
+        // dd($request->method());
+        if($request->method() == 'POST'){
+            $car_status_current = $request->input('car_status', ''); //当前查询的车源状态
+        }else{
+            $car_status_current = $request->input('car_status', '1'); //当前查询的车源状态
+        }
+        
         // dd($car_status);
 
         return view('admin.car.index', compact('cars', 'gearbox', 'out_color', 'car_status_current', 'car_stauts_config'));
@@ -143,7 +150,36 @@ class CarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cars = $this->car->find($id);
+
+        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
+        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
+        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
+        $car_type       = config('tcl.car_type'); //获取配置文件车源类型
+        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
+        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
+        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        
+        if (Gate::denies('update', $cars)) {
+            //不允许编辑,基于Policy
+            dd('no no');
+        }
+
+        // dd($cars);
+        return view('admin.car.edit', compact(
+            'cars',
+            'gearbox',
+            'out_color',
+            'inside_color',
+            'sale_number',
+            'car_type',
+            'customer_res',
+            'safe_type',
+            'capacity'
+
+        ));
+
     }
 
     /**
@@ -153,9 +189,10 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCarsRequest $carRequest, $id)
     {
-        //
+        $this->car->update($carRequest, $id);
+        return redirect()->route('admin.car.self')->withInput();
     }
 
     /**
