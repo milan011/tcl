@@ -15,11 +15,41 @@ use Debugbar;
 
 class CarRepository implements CarRepositoryContract
 {
+    //默认查询数据
+    protected $select_columns = ['id', 'name', 'car_code', 'vin_code', 'capacity', 'top_price', 'plate_date', 'plate_end', 'mileage', 'out_color', 'inside_color', 'gearbox', 'plate_provence', 'plate_city', 'safe_end', 'sale_number', 'shop_id', 'creater_id', 'created_at', 'updated_at', 'description', 'bottom_price', 'safe_type', 'safe_end', 'recommend', 'is_top', 'car_type', 'car_status', 'customer_id', 'guide_price', 'pg_description'];
+
+    // 车源表列名称-注释对应
+    protected $columns_annotate = [
+
+        'vin_code'       => '车架号',
+        'capacity'       => '排量',
+        'gearbox'        => '变速箱',
+        'out_color'      => '外观颜色',
+        'inside_color'   => '内饰颜色',
+        'plate_date'     => '上牌日期',
+        'plate_end'      => '到检日期',
+        'plate_provence' => '上牌省份',
+        'plate_city'     => '上牌城市',
+        'age'            => '车龄',
+        'safe_type'      => '保险类别',
+        'safe_end'       => '到保日期',
+        'sale_number'    => '过户次数',
+        'mileage'        => '行驶里程',
+        'description'    => '车况',
+        'pg_description' => '评估师描述',
+        'top_price'      => '期望价格',
+        'bottom_price'   => '底价',
+        'guide_price'    => '指导价',
+        'car_status'     => '车源状态',
+        'is_top'         => '是否置顶推荐',
+        'recommend'      => '是否推荐车源',
+        'car_type'       => '车源类别',
+    ];
 
     // 根据ID获得车源信息
     public function find($id)
     {
-        return Cars::select(['id', 'name', 'car_code', 'vin_code', 'capacity', 'top_price', 'plate_date', 'plate_end', 'mileage', 'out_color', 'gearbox', 'safe_end', 'sale_number', 'shop_id', 'creater_id', 'created_at', 'description', 'bottom_price'])
+        return Cars::select($this->select_columns)
                    ->findOrFail($id);
     }
 
@@ -36,7 +66,7 @@ class CarRepository implements CarRepositoryContract
         $query = $query->where('name', '!=', '');
         // $query = $query->where('car_status', $request->input('car_status', '1'));
 
-        return $query->select(['id', 'name', 'car_code', 'top_price', 'plate_date', 'plate_date', 'mileage', 'out_color', 'gearbox', 'sale_number', 'shop_id', 'creater_id', 'created_at', 'car_status'])
+        return $query->select($this->select_columns)
                    ->paginate(10);
     }
 
@@ -68,8 +98,31 @@ class CarRepository implements CarRepositoryContract
     public function update($requestData, $id)
     {
         // dd($requestData->all());
-        $car  = Cars::findorFail($id);
+
+        $car = Cars::select($this->select_columns)->findorFail($id);
+
+        $original_content = $car->toArray(); //原有车源信息
+        $request_content  = $requestData->all(); //提交的车源信息
         
+        /*p($original_content);
+        p($request_content);*/
+        $changed_content = getDiffArray($request_content, $original_content);
+        $update_content = ['例行跟进'];  //定义车源跟进时信息变化情况,即跟进描述
+        if($changed_content->count() != 0){
+            $update_content = array();
+            foreach ($changed_content as $key => $value) {
+
+                /*p($this->columns_annotate[$key]);
+                p($requestData->$key);
+                p($original_content[$key]);*/
+
+                $update_content[] = Auth::user()->nick_name.'修改'.$this->columns_annotate[$key].'['.$original_content[$key].']至['.$requestData->$key.']';
+            }
+        }
+        dd(collect($update_content)->toJson());
+        dd(json_decode(collect($update_content)->toJson())); //json_decode将json再转回数组
+        dd($changed_content);
+        //比较提交的数据与原数据差别
         $car->vin_code       = $requestData->vin_code;
         $car->capacity       = $requestData->capacity;
         $car->gearbox        = $requestData->gearbox;
@@ -87,7 +140,8 @@ class CarRepository implements CarRepositoryContract
         $car->pg_description = $requestData->pg_description;
         $car->guide_price    = $requestData->guide_price;
 
-
+        
+        
         $car->save();
         // dd($Car->toJson());
         Session::flash('sucess', '修改车源成功');
