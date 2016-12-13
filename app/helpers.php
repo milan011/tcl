@@ -158,3 +158,11 @@
 
 	    return $code;
 	}
+
+    /**
+	 * 传入2个数组，返回其差异
+	 */
+	function getDiffArray($arr, $arr_compare){	
+
+		return collect($arr)->diff(collect($arr_compare))->forget(['_token', '_method']);
+	}
