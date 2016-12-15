@@ -2,6 +2,7 @@
 namespace App\Repositories\Car;
 
 use App\Cars;
+use App\CarFollow;
 use Session;
 use Illuminate\Http\Request;
 use Gate;
@@ -98,54 +99,73 @@ class CarRepository implements CarRepositoryContract
     public function update($requestData, $id)
     {
         // dd($requestData->all());
+        DB::transaction(function() use ($requestData, $id){
 
-        $car = Cars::select($this->select_columns)->findorFail($id);
+            $car         = Cars::select($this->select_columns)->findorFail($id); //车源对象
+            $follow_info = new CarFollow(); //车源跟进对象
 
-        $original_content = $car->toArray(); //原有车源信息
-        $request_content  = $requestData->all(); //提交的车源信息
+            $original_content = $car->toArray(); //原有车源信息
+            $request_content  = $requestData->all(); //提交的车源信息
         
-        /*p($original_content);
-        p($request_content);*/
-        $changed_content = getDiffArray($request_content, $original_content);
-        $update_content = ['例行跟进'];  //定义车源跟进时信息变化情况,即跟进描述
-        if($changed_content->count() != 0){
-            $update_content = array();
-            foreach ($changed_content as $key => $value) {
-
-                /*p($this->columns_annotate[$key]);
-                p($requestData->$key);
-                p($original_content[$key]);*/
-
-                $update_content[] = Auth::user()->nick_name.'修改'.$this->columns_annotate[$key].'['.$original_content[$key].']至['.$requestData->$key.']';
+            /*p($original_content);
+            p($request_content);*/
+            $changed_content = getDiffArray($request_content, $original_content);//比较提交的数据与原数据差别
+            $update_content = collect(['例行跟进'])->toJson();  //定义车源跟进时信息变化情况,即跟进描述
+            // dd(json_decode($update_content));
+            if($changed_content->count() != 0){
+                $update_content = array();
+                foreach ($changed_content as $key => $value) {
+    
+                    /*p($this->columns_annotate[$key]);
+                    p($requestData->$key);
+                    p($original_content[$key]);*/
+    
+                    $update_content[] = Auth::user()->nick_name.'修改'.$this->columns_annotate[$key].'['.$original_content    [$key].']至['.$requestData->$key.']';
+                }
             }
-        }
-        dd(collect($update_content)->toJson());
-        dd(json_decode(collect($update_content)->toJson())); //json_decode将json再转回数组
-        dd($changed_content);
-        //比较提交的数据与原数据差别
-        $car->vin_code       = $requestData->vin_code;
-        $car->capacity       = $requestData->capacity;
-        $car->gearbox        = $requestData->gearbox;
-        $car->out_color      = $requestData->out_color;
-        $car->inside_color   = $requestData->inside_color;
-        $car->plate_date     = $requestData->plate_date;
-        $car->plate_end      = $requestData->plate_end;
-        $car->sale_number    = $requestData->sale_number;
-        $car->safe_type      = $requestData->safe_type;
-        $car->safe_end       = $requestData->safe_end;
-        $car->mileage        = $requestData->mileage;
-        $car->description    = $requestData->description;
-        $car->top_price      = $requestData->top_price;
-        $car->bottom_price   = $requestData->bottom_price;
-        $car->pg_description = $requestData->pg_description;
-        $car->guide_price    = $requestData->guide_price;
 
         
+            /*dd($follow_info);
+            dd(collect($update_content)->toJson());
+            dd(json_decode(collect($update_content)->toJson())); //json_decode将json再转回数组
+            dd($changed_content);*/
         
-        $car->save();
+            // 车源编辑信息
+            $car->vin_code       = $requestData->vin_code;
+            $car->capacity       = $requestData->capacity;
+            $car->gearbox        = $requestData->gearbox;
+            $car->out_color      = $requestData->out_color;
+            $car->inside_color   = $requestData->inside_color;
+            $car->plate_date     = $requestData->plate_date;
+            $car->plate_end      = $requestData->plate_end;
+            $car->sale_number    = $requestData->sale_number;
+            $car->safe_type      = $requestData->safe_type;
+            $car->safe_end       = $requestData->safe_end;
+            $car->mileage        = $requestData->mileage;
+            $car->description    = $requestData->description;
+            $car->top_price      = $requestData->top_price;
+            $car->bottom_price   = $requestData->bottom_price;
+            $car->pg_description = $requestData->pg_description;
+            $car->guide_price    = $requestData->guide_price;
+            $car->creater_id     = Auth::id();
+    
+            // 车源跟进信息
+            $follow_info->car_id       = $id;
+            $follow_info->user_id      = Auth::id();
+            $follow_info->follow_type  = '1';
+            $follow_info->operate_type = '2';
+            $follow_info->description  = collect($update_content)->toJson();
+            $follow_info->prev_update  = $car->updated_at;
+         
+            $follow_info->save();
+            $car->save(); 
+
+            Session::flash('sucess', '修改车源成功');
+            return $car;           
+        });     
+        // dd('sucess');
         // dd($Car->toJson());
-        Session::flash('sucess', '修改车源成功');
-        return $car;
+        
     }
 
     // 删除车源
@@ -167,5 +187,70 @@ class CarRepository implements CarRepositoryContract
         return Car::select('id', 'name')
                        ->where('vin_code', $vin_code)
                        ->first();
+    }
+
+    //车源状态转换，暂时只有激活-废弃转换
+    public function statusChange($requestData, $id){
+
+        // dd($requestData->all());
+        DB::transaction(function() use ($requestData, $id){
+
+            $car         = Cars::select($this->select_columns)->findorFail($id); //车源对象
+            $follow_info = new CarFollow(); //车源跟进对象
+
+            if($requestData->status == 1){
+
+                $update_content = collect([Auth::user()->nick_name.'激活车源'])->toJson();
+            }else{
+
+                $update_content = collect([Auth::user()->nick_name.'废弃车源'])->toJson();
+            }
+            
+
+            // 车源编辑信息
+            $car->car_status = $requestData->status;
+
+            // 车源跟进信息
+            $follow_info->car_id       = $id;
+            $follow_info->user_id      = Auth::id();
+            $follow_info->follow_type  = '1';
+            $follow_info->operate_type = '2';
+            $follow_info->description  = collect($update_content)->toJson();
+            $follow_info->prev_update  = $car->updated_at;
+         
+            $follow_info->save();
+            $car->save(); 
+
+            return $car;
+        });
+    }
+
+    public function quicklyFollow($id){
+
+        DB::transaction(function() use ($id){
+
+            $car         = Cars::select($this->select_columns)->findorFail($id); //车源对象
+            $follow_info = new CarFollow(); //车源跟进对象
+
+            $update_content = collect([Auth::user()->nick_name.'例行跟进'])->toJson();
+            
+            // 车源编辑信息
+            $car->creater_id = Auth::id();
+            $car->car_status = '1';
+
+            // 车源跟进信息
+            $follow_info->car_id       = $id;
+            $follow_info->user_id      = Auth::id();
+            $follow_info->follow_type  = '1';
+            $follow_info->operate_type = '2';
+            $follow_info->description  = collect($update_content)->toJson();
+            $follow_info->prev_update  = $car->updated_at;
+         
+            $follow_info->save();
+            $car->save();
+            $car->touch();
+
+            return $car;
+        });
     }
 }

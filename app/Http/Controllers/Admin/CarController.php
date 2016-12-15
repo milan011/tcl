@@ -205,4 +205,59 @@ class CarController extends Controller
     {
         //
     }
+
+    /**
+     * 修改门店状态
+     * 暂时只有激活-废弃转换
+     * @return \Illuminate\Http\Response
+     */
+    public function changeStatus(Request $request)
+    {    
+        /*if($request->ajax()){
+            echo "zhen de shi AJAX";
+        }
+        p($request->input('id'));
+        p($request->input('status'));
+        p($request->method());exit;*/
+
+        /*$car = $this->car->find($request->id);
+
+        $car->status = $request->input('status');
+
+        $car->save();*/
+
+        $this->car->statusChange($request, $request->input('id'));
+
+        return response()->json(array(
+            'status' => 1,
+            'msg' => 'ok',
+        ));      
+    }
+
+    /**
+     * 快速跟进，只修改跟进时间
+     * @return \Illuminate\Http\Response
+     */
+    public function follwQuickly(Request $request)
+    {    
+        /*if($request->ajax()){
+            echo "zhen de shi AJAX";
+        }
+        p($request->input('id'));
+        p($request->input('status'));
+        p($request->method());exit;*/
+
+        /*$car = $this->car->find($request->id);
+
+        $car->status = $request->input('status');
+
+        $car->save();*/
+        // p($request->id);exit;
+        $this->car->quicklyFollow($request->input('id'));
+
+        return response()->json(array(
+            'status' => 1,
+            'msg' => 'ok',
+        ));      
+    }
 }

@@ -81,4 +81,10 @@ class Cars extends Model
 
       return $this->belongsTo('App\User', 'creater_id', 'id')->select('id', 'nick_name');
     }
+
+    // 定义Car表与car_follow表一对多关系
+    public function hasManyFollow()
+    {
+        return $this->hasMany('App\CarFollow', 'car_id', 'id');
+    }
 }
