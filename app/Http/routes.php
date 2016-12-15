@@ -46,10 +46,12 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::get('/', 'HomeController@index')->name('admin.index');     
     Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('admin.car.self'); 
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
+    Route::post('car/changeStatus', 'CarController@changeStatus')->name('admin.car.changeStatus');
+    Route::post('car/follwQuickly', 'CarController@follwQuickly')->name('admin.car.follwQuickly');
     Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('brand.getChildBrand');
-    Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
-    Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');
     Route::post('brand/changeStatus', 'brandController@changeStatus')->name('brand.changeStatus');
+    Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
+    Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');    
     Route::put('role/updatePermission', 'RoleController@updatePermission')->name('admin.role.updatePermission');
     // 文件、图片上传路由
     Route::get('upload', 'UploadController@index');
