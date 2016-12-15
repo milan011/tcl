@@ -118,8 +118,7 @@
 									<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
 										<i class="icon-edit icon-white"></i> 编辑
 									</a>
-									<input type="hidden" value="{{$car->id}}">
-									
+									<input type="hidden" value="{{$car->id}}">									
 									<div class="btn-group " role=”group”>
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 											更多
@@ -144,18 +143,20 @@
 											</li>
 											<li>
 												@if($car->car_status == '0') 
-												<button class="btn btn-info changStatus" data-status="0" style="width:100%;">
+												<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
 													<i class="icon-edit icon-white"></i> 激活
 												</button>
 												@else 
-												<button class="btn btn-info changStatus" data-status="1" style="width:100%;>
+												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
 													<i class="icon-edit icon-white"></i> 废弃
-												</button>
+												</button>												
 												@endif
+												<input type="hidden" value="{{$car->id}}">
 											</li>
 											<li>
-												<button class="btn btn-success changStatus" data-status="1">
+												<button class="btn btn-success" id="follow_quickly">
 													<i class="icon-edit icon-white"></i> 快速跟进
+													<input type="hidden" value="{{$car->id}}">
 												</button>
 											</li>
 										</ul>
@@ -254,7 +255,7 @@
 				},
 				error: function(xhr, type){
 
-					alert('Ajax error!');
+					alert('操作失败，请重新操作或联系管理员');
 				}
 			});
 		});
@@ -280,6 +281,38 @@
 			// alert($('#condition').attr('action'));
 			$('#condition').submit();
 			return false;
+		});
+
+		$('#follow_quickly').click(function(){
+
+			var id     = $(this).children('input').val();
+			var token  = $("input[name='_token']").val();
+
+			/*alert(id);
+			alert(status);*/
+			// alert($("input[name='_token']").val());
+
+			$.ajax({
+				
+				type: 'POST',
+				url: 'car/follwQuickly',
+				data: { id : id},
+				dataType: 'json',
+				headers: {
+
+					'X-CSRF-TOKEN': '{{ csrf_token() }}'
+				},
+				success: function(data){
+
+					alert(data.msg);
+					// location.reload();
+					// console.log(data);
+				},
+				error: function(xhr, type){
+
+					alert('操作失败，请重新操作或联系管理员');
+				}
+			});
 		});
 	});
 </script>
