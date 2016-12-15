@@ -78,7 +78,7 @@ class CarRepository implements CarRepositoryContract
             //存在车架号并且存在该车架号记录
             $car = $this->isRepeat($requestData->vin_code);
         }else{
-            // 注册用户并返回实例
+            // 添加车源并返回实例
             $requestData['creater_id'] = Auth::id();
             $requestData['car_code']   = getCarCode();
 

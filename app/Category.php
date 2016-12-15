@@ -65,4 +65,10 @@ class Category extends Model
 
       return $this->hasMany('App\Cars', 'cate_id', 'id');
     }
+
+    // 定义Category表与Want表一对多关系
+    public function hasManyWants(){
+
+      return $this->hasMany('App\Want', 'cate_id', 'id');
+    }
 }

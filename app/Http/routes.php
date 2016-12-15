@@ -45,9 +45,12 @@ Route::group(['middleware' => 'web', 'prefix' => 'home', 'namespace' => 'Home'],
 Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.index');     
     Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('admin.car.self'); 
+    Route::match(['get', 'post'], 'selfwant', 'WantController@selfwant')->name('admin.want.self'); 
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
     Route::post('car/changeStatus', 'CarController@changeStatus')->name('admin.car.changeStatus');
-    Route::post('car/follwQuickly', 'CarController@follwQuickly')->name('admin.car.follwQuickly');
+    Route::post('want/follwQuickly', 'wantController@follwQuickly')->name('admin.want.follwQuickly');
+    Route::post('want/changeStatus', 'wantController@changeStatus')->name('admin.want.changeStatus');
+    Route::post('want/follwQuickly', 'wantController@follwQuickly')->name('admin.want.follwQuickly');
     Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('brand.getChildBrand');
     Route::post('brand/changeStatus', 'brandController@changeStatus')->name('brand.changeStatus');
     Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
@@ -65,6 +68,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('car/ajaxAdd', 'CarController@ajaxAdd')->name('admin.car.ajaxAdd');
     Route::resource('user', 'UserController'); 
     Route::resource('car', 'CarController');  
+    Route::resource('want', 'WantController');  
     Route::resource('shop', 'ShopController');  
     Route::resource('role', 'RoleController');  
     Route::resource('permission', 'PermissionController');  

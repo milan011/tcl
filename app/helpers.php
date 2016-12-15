@@ -146,10 +146,15 @@
 	/**
 	 * 获得车源编号
 	 */
-	function getCarCode()
+	function getCarCode($type = 'car')
 	{
 		// 车源编号为Unix时间戳后9位
-		$code = 'C-';
+		if($type == 'car'){
+			$code = 'C-';
+		}else{
+			$code = 'W-';
+		}
+		
 
 		$date = (string)(time());
 		$date =  substr ($date, 1); 

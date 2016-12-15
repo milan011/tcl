@@ -43,7 +43,7 @@ class Cars extends Model
             ') values (?'.str_repeat(',?',count($array) - 1).')',array_values($array));
     }
 
-
+    // 搜索条件处理
     public function addCondition($requestData){
 
         $query = $this;

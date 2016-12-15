@@ -106,5 +106,11 @@ class AccessServiceProvider extends ServiceProvider
             \App\Repositories\Image\ImageRepositoryContract::class,
             \App\Repositories\Image\ImageRepository::class
         );
+
+        //绑定WantRepository
+        $this->app->bind(
+            \App\Repositories\Want\WantRepositoryContract::class,
+            \App\Repositories\Want\WantRepository::class
+        );
     }
 }

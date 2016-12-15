@@ -36,7 +36,7 @@ class CarController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * 所有车源列表
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -45,6 +45,11 @@ class CarController extends Controller
         return view('admin.car.index', compact('cars'));
     }
 
+    /**
+     * Display a listing of the resource.
+     * 我的车源列表
+     * @return \Illuminate\Http\Response
+     */
     public function carself(Request $request)
     {
         // dd(array_filter($request->all()));
