@@ -111,8 +111,8 @@
 						<li>
 							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">求购信息</span><span style="float:right;">>></span></a>
 							<ul>
-								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet">所有求购信息</span></a></li>
-								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet">我的求购信息</span></a></li>
+								<li><a class="submenu" href="{{route('admin.want.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">所有求购信息</span></a></li>
+								<li><a class="submenu" href="{{route('admin.want.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">我的求购信息</span></a></li>
 							</ul>	
 						</li>
 						@endif
