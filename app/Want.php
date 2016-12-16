@@ -20,7 +20,7 @@ class Want extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['want_code', 'name', 'car_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_eara', 'remark', 'want_status', 'shop_id'];
+    protected $fillable = ['want_code', 'name', 'car_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_eara', 'remark', 'want_status', 'shop_id', 'is_top', 'recommend'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -40,6 +40,11 @@ class Want extends Model
         }else{
 
             $query = $query->where('want_status', '1');
+        }
+
+        if(!empty($requestData['want_code'])){
+
+            $query = $query->where('want_code', $requestData['want_code']);
         }
 
         return $query;
@@ -63,9 +68,9 @@ class Want extends Model
       return $this->belongsTo('App\User', 'creater_id', 'id')->select('id', 'nick_name');
     }
 
-    // 定义Car表与want_follow表一对多关系
+    // 定义want表与want_follow表一对多关系
     public function hasManyFollow()
     {
-        return $this->hasMany('App\WantFollow', 'car_id', 'id');
+        return $this->hasMany('App\WantFollow', 'want_id', 'id');
     }
 }

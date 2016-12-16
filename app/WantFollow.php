@@ -12,7 +12,7 @@ class WantFollow extends Model
      * @var string
      */
     // protected $table = 'users';
-    protected $table = 'tcl_shop';
+    protected $table = 'tcl_want_follow';
     protected $primaryKey ='id';
 
     /**
@@ -20,14 +20,18 @@ class WantFollow extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['name', 'nick_name', 'password', 'telephone', 'phone', 'qq_number', 'wx_number', 'address', 'creater_id', 'shop_id', 'status', 'user_img'];
+    protected $fillable = ['want_id', 'user_id', 'follow_type', 'operate_type', 'description', 'prev_update'];
 
     /**
      * The attributes excluded from the model's JSON form.
      * //在模型数组或 JSON 显示中隐藏某些属性
      * @var array
      */
-    protected $hidden = [   
-        'password', 'remember_token',
-    ];
+    protected $hidden = [];
+
+    // 定义want表与want_follow表一对多关系
+    public function belongsToWants(){
+
+      return $this->belongsTo('App\Want', 'want_id', 'id');
+    }
 }
