@@ -17,34 +17,24 @@ use Debugbar;
 class WantRepository implements WantRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'want_code', 'name', 'want_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_area', 'remark', 'want_status', 'shop_id', 'created_at'];
+    protected $select_columns = ['id', 'want_code', 'name', 'want_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_area', 'remark', 'want_status', 'shop_id', 'created_at', 'updated_at'];
 
     // 求购信息表列名称-注释对应
     protected $columns_annotate = [
 
-        'vin_code'       => '车架号',
         'capacity'       => '排量',
         'gearbox'        => '变速箱',
         'out_color'      => '外观颜色',
         'inside_color'   => '内饰颜色',
-        'plate_date'     => '上牌日期',
-        'plate_end'      => '到检日期',
-        'plate_provence' => '上牌省份',
-        'plate_city'     => '上牌城市',
         'age'            => '车龄',
-        'safe_type'      => '保险类别',
-        'safe_end'       => '到保日期',
-        'sale_number'    => '过户次数',
         'mileage'        => '行驶里程',
-        'description'    => '车况',
-        'pg_description' => '评估师描述',
-        'top_price'      => '期望价格',
-        'bottom_price'   => '底价',
+        'remark'         => '车况',
+        'bottom_price'   => '期望价格',
+        'top_price'      => '可接受价格',
         'guide_price'    => '指导价',
-        'car_status'     => '求购信息状态',
+        'want_status'    => '求购信息状态',
         'is_top'         => '是否置顶推荐',
         'recommend'      => '是否推荐求购信息',
-        'car_type'       => '求购信息类别',
     ];
 
     // 根据ID获得求购信息信息
@@ -96,17 +86,17 @@ class WantRepository implements WantRepositoryContract
         // dd($requestData->all());
         DB::transaction(function() use ($requestData, $id){
 
-            $Want         = Want::select($this->select_columns)->findorFail($id); //求购信息对象
-            $follow_info = new CarFollow(); //求购信息跟进对象
+            $want         = Want::select($this->select_columns)->findorFail($id); //求购信息对象
+            $follow_info = new WantFollow(); //求购信息跟进对象
 
-            $original_content = $Want->toArray(); //原有求购信息信息
+            $original_content = $want->toArray(); //原有求购信息信息
             $request_content  = $requestData->all(); //提交的求购信息信息
         
             /*p($original_content);
             p($request_content);*/
             $changed_content = getDiffArray($request_content, $original_content);//比较提交的数据与原数据差别
             $update_content = collect(['例行跟进'])->toJson();  //定义求购信息跟进时信息变化情况,即跟进描述
-            // dd(json_decode($update_content));
+            // dd($changed_content);
             if($changed_content->count() != 0){
                 $update_content = array();
                 foreach ($changed_content as $key => $value) {
@@ -120,43 +110,38 @@ class WantRepository implements WantRepositoryContract
             }
 
         
-            /*dd($follow_info);
-            dd(collect($update_content)->toJson());
+            // dd($follow_info);
+            /*dd($update_content);
             dd(json_decode(collect($update_content)->toJson())); //json_decode将json再转回数组
             dd($changed_content);*/
         
             // 求购信息编辑信息
-            $Want->vin_code       = $requestData->vin_code;
-            $Want->capacity       = $requestData->capacity;
-            $Want->gearbox        = $requestData->gearbox;
-            $Want->out_color      = $requestData->out_color;
-            $Want->inside_color   = $requestData->inside_color;
-            $Want->plate_date     = $requestData->plate_date;
-            $Want->plate_end      = $requestData->plate_end;
-            $Want->sale_number    = $requestData->sale_number;
-            $Want->safe_type      = $requestData->safe_type;
-            $Want->safe_end       = $requestData->safe_end;
-            $Want->mileage        = $requestData->mileage;
-            $Want->description    = $requestData->description;
-            $Want->top_price      = $requestData->top_price;
-            $Want->bottom_price   = $requestData->bottom_price;
-            $Want->pg_description = $requestData->pg_description;
-            $Want->guide_price    = $requestData->guide_price;
-            $Want->creater_id     = Auth::id();
+            $want->capacity       = $requestData->capacity;
+            $want->gearbox        = $requestData->gearbox;
+            $want->out_color      = $requestData->out_color;
+            $want->inside_color   = $requestData->inside_color;
+            // $want->sale_number    = $requestData->sale_number;
+            $want->mileage        = $requestData->mileage;
+            $want->remark         = $requestData->remark;
+            $want->top_price      = $requestData->top_price;
+            $want->bottom_price   = $requestData->bottom_price;
+            $want->is_top         = $requestData->is_top;
+            $want->recommend      = $requestData->recommend;
+            $want->creater_id     = Auth::id();
     
             // 求购信息跟进信息
-            $follow_info->car_id       = $id;
+            $follow_info->want_id       = $id;
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
             $follow_info->description  = collect($update_content)->toJson();
-            $follow_info->prev_update  = $car->updated_at;
+            $follow_info->prev_update  = $want->updated_at;
          
             $follow_info->save();
-            $Want->save(); 
+            $want->save(); 
 
             Session::flash('sucess', '修改求购信息成功');
-            return $Want;           
+            return $want;           
         });     
         // dd('sucess');
         // dd($Car->toJson());
@@ -190,8 +175,8 @@ class WantRepository implements WantRepositoryContract
         // dd($requestData->all());
         DB::transaction(function() use ($requestData, $id){
 
-            $Want         = Want::select($this->select_columns)->findorFail($id); //求购信息对象
-            $follow_info = new CarFollow(); //求购信息跟进对象
+            $want         = Want::select($this->select_columns)->findorFail($id); //求购信息对象
+            $follow_info = new WantFollow(); //求购信息跟进对象
 
             if($requestData->status == 1){
 
@@ -203,20 +188,20 @@ class WantRepository implements WantRepositoryContract
             
 
             // 求购信息编辑信息
-            $Want->Want_status = $requestData->status;
+            $want->Want_status = $requestData->status;
 
             // 求购信息跟进信息
-            $follow_info->car_id       = $id;
+            $follow_info->want_id       = $id;
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
             $follow_info->description  = collect($update_content)->toJson();
-            $follow_info->prev_update  = $Want->updated_at;
+            $follow_info->prev_update  = $want->updated_at;
          
             $follow_info->save();
-            $Want->save(); 
+            $want->save(); 
 
-            return $Want;
+            return $want;
         });
     }
 
@@ -224,28 +209,28 @@ class WantRepository implements WantRepositoryContract
 
         DB::transaction(function() use ($id){
 
-            $Want         = Cars::select($this->select_columns)->findorFail($id); //求购信息对象
-            $follow_info = new CarFollow(); //求购信息跟进对象
+            $want         = Want::select($this->select_columns)->findorFail($id); //求购信息对象
+            $follow_info = new WantFollow(); //求购信息跟进对象
 
             $update_content = collect([Auth::user()->nick_name.'例行跟进'])->toJson();
             
             // 求购信息编辑信息
-            $Want->creater_id = Auth::id();
-            $Want->car_status = '1';
+            $want->creater_id  = Auth::id();
+            $want->want_status = '1';
 
             // 求购信息跟进信息
-            $follow_info->car_id       = $id;
+            $follow_info->want_id       = $id;
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
             $follow_info->description  = collect($update_content)->toJson();
-            $follow_info->prev_update  = $Want->updated_at;
+            $follow_info->prev_update  = $want->updated_at;
          
             $follow_info->save();
-            $Want->save();
-            $Want->touch();
+            $want->save();
+            $want->touch();
 
-            return $Want;
+            return $want;
         });
     }
 }

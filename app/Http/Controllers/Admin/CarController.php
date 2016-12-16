@@ -212,7 +212,7 @@ class CarController extends Controller
     }
 
     /**
-     * 修改门店状态
+     * 修改车源状态
      * 暂时只有激活-废弃转换
      * @return \Illuminate\Http\Response
      */

@@ -25,7 +25,6 @@ class UpdateWantRequest extends Request
     {
 
         return [
-            'cate_id'      => 'required',
             'top_price'    => 'required',
             'bottom_price' => 'required',
         ];
@@ -38,8 +37,6 @@ class UpdateWantRequest extends Request
      */
     public function messages(){
         return [
-
-            'cate_id.required'      => '请选择期望车型',
             'top_price.required'    => '请输入最高可接受价格',
             'bottom_price.required' => '请输入期望价',
         ];

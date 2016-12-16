@@ -101,67 +101,48 @@
 							<td>{{$car->belongsToUser->nick_name}}</td>							
 														
 							<td class="center">
-								<!-- <a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
-									<i class="icon-edit icon-white"></i> 编辑
-								</a>
-								<input type="hidden" value="{{$car->id}}">
-								<span>
-								<form action="{{route('admin.car.destroy', ['car'=>$car->id])}}" method="post" style="display: inherit;margin:0px;">
-									{{ csrf_field() }}
-            						{{ method_field('DELETE') }}
-									<button class="btn btn-danger delete-confrim" type="button">
-										<i class="icon-trash icon-white"></i> 删除
-									</button>
-								</form>
-								</span> -->
+								@if($car->car_status == '0') 
+								<!-- 废弃状态查询 -->
 								<div class="btn-group">
-									<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
-										<i class="icon-edit icon-white"></i> 编辑
+									<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
+										<i class="icon-edit icon-white"></i> 激活
+									</button>
+								</div>								
+								@elseif($car->car_status == '1' || $car->car_status == '2')
+								<!-- 正常状态查询 -->
+								<div class="btn-group">
+									<a class="btn btn-success" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
+										<i class="icon-edit icon-white"></i> 匹配
 									</a>
-									<input type="hidden" value="{{$car->id}}">									
 									<div class="btn-group " role=”group”>
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 											更多
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu pull-right">
-											<!-- <li>
-												<span>
-												<form action="{{route('admin.car.destroy', ['car'=>$car->id])}}" method="post" style="display: inherit;margin:0px;">
-												{{ csrf_field() }}
-            									{{ method_field('DELETE') }}
-												<button class="btn btn-danger delete-confrim" type="button">
-													<i class="icon-trash icon-white"></i> 删除
-												</button>
-												</form>
-												</span>
-											</li> -->
+																						
 											<li>
-												<a class="btn btn-info" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
-													<i class="icon-edit icon-white"></i> 匹配
-												</a>
-											</li>
-											<li>
-												@if($car->car_status == '0') 
-												<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
-													<i class="icon-edit icon-white"></i> 激活
-												</button>
-												@else 
 												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
 													<i class="icon-edit icon-white"></i> 废弃
 												</button>												
-												@endif
-												<input type="hidden" value="{{$car->id}}">
 											</li>
 											<li>
 												<button class="btn btn-success" id="follow_quickly">
 													<i class="icon-edit icon-white"></i> 快速跟进
-													<input type="hidden" value="{{$car->id}}">
 												</button>
 											</li>
 										</ul>
  							 		</div>
+								</div>		
+								@else 
+								<!-- 其他 -->
+								<div class="btn-group">
+									<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">
+										<i class="icon-edit icon-white"></i> 查看
+									</a>
 								</div>	
+								@endif
+								<input id="current_car_id" type="hidden" value="{{$car->id}}">	
 							</td>
 						</tr>
 						@endforeach							
@@ -218,6 +199,8 @@
 	$(document).ready(function(){
 
 		var car_status_current = '{{$car_status_current}}';
+		var current_car_id     = $('#current_car_id').val();
+		var redirect_url       = '{{route('admin.car.self')}}';
 
 		if(car_status_current == ''){
 
@@ -229,19 +212,13 @@
 
 		$('.changStatus').click(function(){
 
-			var id     = $(this).next().val();
 			var status = $(this).attr('data-status');
-			var token  = $("input[name='_token']").val();
-
-			/*alert(id);
-			alert(status);*/
-			// alert($("input[name='_token']").val());
 
 			$.ajax({
 				
 				type: 'POST',
 				url: 'car/changeStatus',
-				data: { id : id, status : status},
+				data: { id : current_car_id, status : status},
 				dataType: 'json',
 				headers: {
 
@@ -250,7 +227,8 @@
 				success: function(data){
 
 					alert(data.msg);
-					location.reload();
+					// location.reload();
+					$('#condition').submit();
 					// console.log(data);
 				},
 				error: function(xhr, type){
@@ -268,7 +246,9 @@
 
 				$(this).addClass('active').siblings().removeClass('active');
 				$("select[name='car_status']").val(car_status);
-
+				/*alert('{{route('admin.car.self')}}');
+				return false;*/
+				$('#condition').attr('action', '{{route('admin.car.self')}}');
 				$('#condition').submit();
 			}
 			
@@ -285,18 +265,11 @@
 
 		$('#follow_quickly').click(function(){
 
-			var id     = $(this).children('input').val();
-			var token  = $("input[name='_token']").val();
-
-			/*alert(id);
-			alert(status);*/
-			// alert($("input[name='_token']").val());
-
 			$.ajax({
 				
 				type: 'POST',
 				url: 'car/follwQuickly',
-				data: { id : id},
+				data: { id : current_car_id},
 				dataType: 'json',
 				headers: {
 

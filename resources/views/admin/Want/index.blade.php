@@ -89,79 +89,64 @@
     					<tr>
 							<td>{{$want->want_code}}</td>
 							<td>{{$want->name}}</td>
-							<td>{{$want->top_price}}万</td>							
-							<td>{{substr($want->plate_date, 0 ,10)}}</td>
+							<td>{{$want->bottom_price}}-{{$want->top_price}}万</td>							
+							<td>1年</td>
 							<td>{{$want->mileage}}万公里</td>							
-							<td>{{$gearbox[$want->gearbox]}}</td>							
+							<td>@if($want->gearbox == 0) 不限 @else {{$gearbox[$want->gearbox]}} @endif</td>			
 							<td>{{$out_color[$want->out_color]}}</td>						
-							<td>{{$want->sale_number}}</td>							
+							<td>@if($want->capacity == 0) 不限 @else {{$capacity[$want->capacity]}} @endif</td>
 							<td>{{$want_stauts_config[$want->want_status]}}</td>							
 							<td>{{substr($want->created_at, 0 ,10)}}</td>							
 							<td>{{$want->belongsToShop->shop_name}}</td>							
 							<td>{{$want->belongsToUser->nick_name}}</td>							
 														
 							<td class="center">
-								<!-- <a class="btn btn-warning" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
-									<i class="icon-edit icon-white"></i> 编辑
-								</a>
-								<input type="hidden" value="{{$want->id}}">
-								<span>
-								<form action="{{route('admin.want.destroy', ['want'=>$want->id])}}" method="post" style="display: inherit;margin:0px;">
-									{{ csrf_field() }}
-            						{{ method_field('DELETE') }}
-									<button class="btn btn-danger delete-confrim" type="button">
-										<i class="icon-trash icon-white"></i> 删除
-									</button>
-								</form>
-								</span> -->
+								@if($want->want_status == '0') 
+								<!-- 废弃状态查询 -->
 								<div class="btn-group">
-									<a class="btn btn-warning" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
-										<i class="icon-edit icon-white"></i> 编辑
+									<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
+										<i class="icon-edit icon-white"></i> 激活
+									</button>
+								</div>								
+								@elseif($want->want_status == '1' || $want->want_status == '2')
+								<!-- 正常状态查询 -->
+								<div class="btn-group">
+									<a class="btn btn-success" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
+										<i class="icon-edit icon-white"></i> 匹配
 									</a>
-									<input type="hidden" value="{{$want->id}}">									
 									<div class="btn-group " role=”group”>
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 											更多
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu pull-right">
-											<!-- <li>
-												<span>
-												<form action="{{route('admin.want.destroy', ['want'=>$want->id])}}" method="post" style="display: inherit;margin:0px;">
-												{{ csrf_field() }}
-            									{{ method_field('DELETE') }}
-												<button class="btn btn-danger delete-confrim" type="button">
-													<i class="icon-trash icon-white"></i> 删除
-												</button>
-												</form>
-												</span>
-											</li> -->
 											<li>
-												<a class="btn btn-info" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
-													<i class="icon-edit icon-white"></i> 匹配
-												</a>
-											</li>
+												<a class="btn btn-warning" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
+													<i class="icon-edit icon-white"></i> 编辑
+												</a>												
+											</li>											
 											<li>
-												@if($want->want_status == '0') 
-												<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
-													<i class="icon-edit icon-white"></i> 激活
-												</button>
-												@else 
 												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
 													<i class="icon-edit icon-white"></i> 废弃
 												</button>												
-												@endif
-												<input type="hidden" value="{{$want->id}}">
 											</li>
 											<li>
 												<button class="btn btn-success" id="follow_quickly">
 													<i class="icon-edit icon-white"></i> 快速跟进
-													<input type="hidden" value="{{$want->id}}">
 												</button>
 											</li>
 										</ul>
  							 		</div>
+								</div>		
+								@else 
+								<!-- 其他 -->
+								<div class="btn-group">
+									<a class="btn btn-warning" href="{{route('admin.want.show', ['want'=>$want->id])}}">
+										<i class="icon-edit icon-white"></i> 查看
+									</a>
 								</div>	
+								@endif
+								<input id="current_want_id" type="hidden" value="{{$want->id}}">
 							</td>
 						</tr>
 						@endforeach							
@@ -218,6 +203,7 @@
 	$(document).ready(function(){
 
 		var want_status_current = '{{$want_status_current}}';
+		var current_want_id     = $('#current_want_id').val();
 
 		if(want_status_current == ''){
 
@@ -227,12 +213,10 @@
 			});
 		}
 
+		// 废弃-激活
 		$('.changStatus').click(function(){
 
-			var id     = $(this).next().val();
 			var status = $(this).attr('data-status');
-			var token  = $("input[name='_token']").val();
-
 			/*alert(id);
 			alert(status);*/
 			// alert($("input[name='_token']").val());
@@ -241,7 +225,7 @@
 				
 				type: 'POST',
 				url: 'want/changeStatus',
-				data: { id : id, status : status},
+				data: { id : current_want_id, status : status},
 				dataType: 'json',
 				headers: {
 
@@ -250,7 +234,9 @@
 				success: function(data){
 
 					alert(data.msg);
-					location.reload();
+					$('#condition').attr('action', '{{route('admin.want.self')}}');
+					$('#condition').submit();
+					// location.reload();
 					// console.log(data);
 				},
 				error: function(xhr, type){
@@ -283,20 +269,14 @@
 			return false;
 		});
 
+		// 快速跟进
 		$('#follow_quickly').click(function(){
-
-			var id     = $(this).children('input').val();
-			var token  = $("input[name='_token']").val();
-
-			/*alert(id);
-			alert(status);*/
-			// alert($("input[name='_token']").val());
 
 			$.ajax({
 				
 				type: 'POST',
 				url: 'want/follwQuickly',
-				data: { id : id},
+				data: { id : current_want_id},
 				dataType: 'json',
 				headers: {
 

@@ -147,6 +147,8 @@ class CarRepository implements CarRepositoryContract
             $car->bottom_price   = $requestData->bottom_price;
             $car->pg_description = $requestData->pg_description;
             $car->guide_price    = $requestData->guide_price;
+            $car->is_top         = $requestData->is_top;
+            $car->recommend      = $requestData->recommend;
             $car->creater_id     = Auth::id();
     
             // 车源跟进信息

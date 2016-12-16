@@ -212,7 +212,7 @@
                 	</div>
               	</div>
 
-				<div class="control-group">
+				<!-- <div class="control-group">
 					<label class="control-label" for="selectError3">是否启用</label>
 					<div class="controls">
 					  <select id="car_status" name="car_status">
@@ -220,7 +220,7 @@
 						<option @if($cars->car_status == '0') selected @endif value="0">停用</option>						
 						</select>
 					</div>
-				  </div>	  				
+				  </div> -->	  				
 				  <div class="form-actions">
 					<button type="submit" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
