@@ -45,16 +45,15 @@ class WantRepository implements WantRepositoryContract
     }
 
     // 根据不同参数获得求购信息列表
-    public function getAllWants($request)
+    public function getAllWants($request, $is_self = false)
     {   
-        // dd($request->all());
-        // $query = Cars::query();  // 返回的是一个 QueryBuilder 实例
-        $query = new Want();       // 返回的是一个Cars实例,两种方法均可
-        // dd($query);
-        $query = $query->addCondition($request->all()); //根据条件组合语句
 
+        // dd($request->all());
+        // $query = Want::query();  // 返回的是一个 QueryBuilder 实例
+        $query = new Want();       // 返回的是一个Cars实例,两种方法均可
+
+        $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
         // dd($query);
-        // $query = $query->where('car_status', $request->input('car_status', '1'));
 
         return $query->select($this->select_columns)
                    ->paginate(10);

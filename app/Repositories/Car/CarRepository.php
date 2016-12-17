@@ -55,13 +55,13 @@ class CarRepository implements CarRepositoryContract
     }
 
     // 根据不同参数获得车源列表
-    public function getAllcars($request)
+    public function getAllcars($request, $is_self = false)
     {   
         // dd($request->all());
         // $query = Cars::query();  // 返回的是一个 QueryBuilder 实例
         $query = new Cars();       // 返回的是一个Cars实例,两种方法均可
         // dd($request->all());
-        $query = $query->addCondition($request->all()); //根据条件组合语句
+        $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
 
         // dd($query);
         $query = $query->where('name', '!=', '');

@@ -6,7 +6,7 @@ interface WantRepositoryContract
     
     public function find($id);
     
-    public function getAllWants($requestData);
+    public function getAllWants($requestData, $is_self = false);
 
     public function create($requestData);
 
