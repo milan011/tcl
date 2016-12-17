@@ -56,6 +56,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
     Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');    
     Route::put('role/updatePermission', 'RoleController@updatePermission')->name('admin.role.updatePermission');
+    Route::post('chance/create', 'ChanceController@create')->name('admin.chance.create');
     // 文件、图片上传路由
     Route::get('upload', 'UploadController@index');
     Route::post('upload/file', 'UploadController@uploadFile')->name('upload.uploadFile');
@@ -76,6 +77,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('customer', 'CustomerController');  
     Route::resource('category', 'CategoryController');  
     Route::resource('brand', 'BrandController');  
+    Route::resource('chance', 'ChanceController');  
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
