@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Cars extends Model
 {
@@ -44,9 +45,27 @@ class Cars extends Model
     }
 
     // 搜索条件处理
-    public function addCondition($requestData){
+    public function addCondition($requestData, $is_self){
 
         $query = $this;
+
+        if($is_self){
+
+            if(!(Auth::user()->isSuperAdmin())){
+
+               if(Auth::user()->isMdLeader()){
+                    //店长
+                    $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
+        
+                    // $this->where('shop_id', $user_shop_id);
+                    $query = $query->where('shop_id', '6');    
+                }else{
+                    //店员
+                    // $this->where('creater_id', Auth::id());
+                    $query = $query->where('creater_id', '3');  
+                } 
+            }           
+        }
 
         if(isset($requestData['car_status']) && $requestData['car_status'] != ''){
 

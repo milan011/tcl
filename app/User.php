@@ -59,6 +59,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return Auth::id() === 1;
     }
 
+    // 是否店长
+    public function isMdLeader(){
+
+        $user_role_id  = Auth::user()->hasManyUserRole[0]->role_id; //用户角色id
+        $user_role_id  = '6';
+        return $user_role_id == config('tcl.user_role_type')['门店店长'];
+    }
+
     public function tasksAssign()
     {
         return $this->hasMany('App\Tasks', 'fk_user_id_assign', 'id')

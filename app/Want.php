@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Want extends Model
 {
@@ -30,9 +31,27 @@ class Want extends Model
     protected $hidden = [];
 
     // 搜索条件处理
-    public function addCondition($requestData){
+    public function addCondition($requestData, $is_self){
 
         $query = $this;
+        // dd($query);
+        if($is_self){
+
+            if(!(Auth::user()->isSuperAdmin())){
+
+               if(Auth::user()->isMdLeader()){
+                    //店长
+                    $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
+        
+                    // $this->where('shop_id', $user_shop_id);
+               $query = $query->where('shop_id', '6');    
+                }else{
+                    //店员
+                    // $this->where('creater_id', Auth::id());
+                    $query = $query->where('creater_id', '3');  
+                } 
+            }           
+        }
 
         if(isset($requestData['want_status']) && $requestData['want_status'] != ''){
 
@@ -45,6 +64,29 @@ class Want extends Model
         if(!empty($requestData['want_code'])){
 
             $query = $query->where('want_code', $requestData['want_code']);
+        }
+
+        return $query;
+    }
+
+    public function justSelfSelect($query){
+
+        /*if(Auth::user()->isSuperAdmin()){
+            // 超级管理员
+            return $query;
+        }*/
+        if(Auth::user()->isMdLeader()){
+            //店长
+            $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
+
+            // $this->where('shop_id', $user_shop_id);
+            $query = $this->where('shop_id', '6');
+
+        }else{
+            //店员
+            // $this->where('creater_id', Auth::id());
+            $query = $this->where('creater_id', '3');
+
         }
 
         return $query;

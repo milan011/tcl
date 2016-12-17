@@ -12,7 +12,7 @@ class Chance extends Model
      * @var string
      */
     // protected $table = 'users';
-    protected $table = 'tcl_shop';
+    protected $table = 'tcl_chance';
     protected $primaryKey ='id';
 
     /**
