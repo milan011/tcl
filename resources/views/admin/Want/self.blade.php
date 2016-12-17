@@ -45,7 +45,7 @@
 				</ul> -->
 				<div class="page-tabs">
             		<ul class="nav nav-tabs">
-            		  <!-- <li class="select_want_status @if($want_status_current == 1) active @endif" >
+            		  <li class="select_want_status @if($want_status_current == 1) active @endif" >
             		    <a href="javascript:void(0);" data-status="1">正常求购信息</a>
             		  </li>
             		  <li class="select_want_status @if($want_status_current == 2) active @endif">
@@ -53,7 +53,7 @@
             		  </li>
             		  <li class="select_want_status @if($want_status_current == 0) active @endif" >
             		    <a href="javascript:void(0);" data-status="0">已废弃求购信息</a>
-            		  </li> -->
+            		  </li>
             		  <li style="display: inline-block;line-height:20px;">
 						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索求购信息</a>
 					</li>
@@ -101,6 +101,15 @@
 							<td>{{$want->belongsToUser->nick_name}}</td>							
 														
 							<td class="center">
+								@if($want->want_status == '0') 
+								<!-- 废弃状态查询 -->
+								<div class="btn-group">
+									<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
+										<i class="icon-edit icon-white"></i> 激活
+									</button>
+								</div>								
+								@elseif($want->want_status == '1' || $want->want_status == '2')
+								<!-- 正常状态查询 -->
 								<div class="btn-group">
 									<span>
 										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
@@ -111,10 +120,41 @@
 											</button>
 										</form>
 									</span>
+									<!-- <a class="btn btn-success" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
+										<i class="icon-edit icon-white"></i> 匹配
+									</a> -->
+									<div class="btn-group " role=”group”>
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+											更多
+											<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu pull-right">
+											<li>
+												<a class="btn btn-warning" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
+													<i class="icon-edit icon-white"></i> 编辑
+												</a>												
+											</li>											
+											<li>
+												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
+													<i class="icon-edit icon-white"></i> 废弃
+												</button>												
+											</li>
+											<li>
+												<button class="btn btn-success" id="follow_quickly">
+													<i class="icon-edit icon-white"></i> 快速跟进
+												</button>
+											</li>
+										</ul>
+ 							 		</div>
+								</div>		
+								@else 
+								<!-- 其他 -->
+								<div class="btn-group">
 									<a class="btn btn-warning" href="{{route('admin.want.show', ['want'=>$want->id])}}">
 										<i class="icon-edit icon-white"></i> 查看
 									</a>
-								</div>
+								</div>	
+								@endif
 								<input id="current_want_id" type="hidden" value="{{$want->id}}">
 							</td>
 						</tr>
@@ -146,8 +186,11 @@
             	    	<label class="control-label" for="want_status">求购信息状态</label>
             	    	<div class="controls">
             	      		<select id="want_status" name="want_status" >
-            	      			<option value='1'>正常</option>                        
-								                    
+            	      			<option value=''>不限</option>                        
+								@foreach($want_stauts_config as $key=>$status)								
+									<option @if($want_status_current == $key) selected  @endif  value="{{$key}}">		{{$status}}
+									</option>	
+								@endforeach	                     
             	      		</select>
             	    	</div>
             	  	</div>				  

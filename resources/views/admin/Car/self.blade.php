@@ -45,7 +45,7 @@
 				</ul> -->
 				<div class="page-tabs">
             		<ul class="nav nav-tabs">
-            		  <!-- <li class="select_car_status @if($car_status_current == 1) active @endif" >
+            		  <li class="select_car_status @if($car_status_current == 1) active @endif" >
             		    <a href="javascript:void(0);" data-status="1">正常车源</a>
             		  </li>
             		  <li class="select_car_status @if($car_status_current == 2) active @endif">
@@ -53,7 +53,7 @@
             		  </li>
             		  <li class="select_car_status @if($car_status_current == 0) active @endif" >
             		    <a href="javascript:void(0);" data-status="0">已废弃车源</a>
-            		  </li> -->
+            		  </li>
             		  <li style="display: inline-block;line-height:20px;">
 						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索车源</a>
 					</li>
@@ -98,23 +98,51 @@
 							<td>{{$car_stauts_config[$car->car_status]}}</td>							
 							<td>{{substr($car->created_at, 0 ,10)}}</td>							
 							<td>{{$car->belongsToShop->shop_name}}</td>							
-							<td>{{$car->belongsToUser->nick_name}}</td>		
+							<td>{{$car->belongsToUser->nick_name}}</td>							
+														
 							<td class="center">
+								@if($car->car_status == '0') 
+								<!-- 废弃状态查询 -->
 								<div class="btn-group">
-									<span>
-										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
-										    {{ csrf_field() }}
-            								<input type="hidden" name="want_id" value="{{$car->id}}">
-											<button class="btn btn-success" type="submit">
-											<i class="icon-edit icon-white"></i> 匹配
-											</button>
-										</form>
-									</span>
+									<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
+										<i class="icon-edit icon-white"></i> 激活
+									</button>
+								</div>								
+								@elseif($car->car_status == '1' || $car->car_status == '2')
+								<!-- 正常状态查询 -->
+								<div class="btn-group">
+									<a class="btn btn-success" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
+										<i class="icon-edit icon-white"></i> 匹配
+									</a>
+									<div class="btn-group " role=”group”>
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+											更多
+											<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu pull-right">
+																						
+											<li>
+												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
+													<i class="icon-edit icon-white"></i> 废弃
+												</button>												
+											</li>
+											<li>
+												<button class="btn btn-success" id="follow_quickly">
+													<i class="icon-edit icon-white"></i> 快速跟进
+												</button>
+											</li>
+										</ul>
+ 							 		</div>
+								</div>		
+								@else 
+								<!-- 其他 -->
+								<div class="btn-group">
 									<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">
 										<i class="icon-edit icon-white"></i> 查看
 									</a>
-								</div>
-								<input id="current_car_id" type="hidden" value="{{$car->id}}">
+								</div>	
+								@endif
+								<input id="current_car_id" type="hidden" value="{{$car->id}}">	
 							</td>
 						</tr>
 						@endforeach							
@@ -145,7 +173,11 @@
             	    	<label class="control-label" for="car_status">车源状态</label>
             	    	<div class="controls">
             	      		<select id="car_status" name="car_status" >
-            	      			<option value='1'>正常</option>                                           
+            	      			<option value=''>不限</option>                        
+								@foreach($car_stauts_config as $key=>$status)								
+									<option @if($car_status_current == $key) selected  @endif  value="{{$key}}">		{{$status}}
+									</option>	
+								@endforeach	                     
             	      		</select>
             	    	</div>
             	  	</div>				  
