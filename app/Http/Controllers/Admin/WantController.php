@@ -39,10 +39,18 @@ class WantController extends Controller
      * 所有客源列表
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        return view('admin.want.index', compact('wants'));
+        $wants = $this->want->getAllWants($request);
+
+        $gearbox             = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        $out_color           = config('tcl.out_color'); //获取配置文件中外观颜色
+        $want_stauts_config  = config('tcl.want_stauts'); //获取配置文件中车源状态
+        $capacity            = config('tcl.capacity'); //获取配置文件排量
+        $want_status_current = '1';
+        /*p(lastSql());
+        dd($wants);*/
+        return view('admin.want.index', compact('wants', 'gearbox', 'out_color', 'want_status_current', 'want_stauts_config', 'capacity'));
     }
 
     /**
@@ -53,13 +61,13 @@ class WantController extends Controller
     public function selfwant(Request $request)
     {
         // dd($request->all());
-        $wants = $this->want->getAllWants($request);
-        /*p(lastSql());
-        dd($wants);*/
+        $wants = $this->want->getAllWants($request, true);
+        // p(lastSql());
+        // dd($wants);
         $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
-        $want_stauts_config  = config('tcl.want_stauts'); //获取配置文件中车源状态
-        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $want_stauts_config = config('tcl.want_stauts'); //获取配置文件中车源状态
+        $capacity           = config('tcl.capacity'); //获取配置文件排量
         // dd($request->method());
         if($request->method() == 'POST'){
             $want_status_current = $request->input('want_status', ''); //当前查询的车源状态
@@ -69,7 +77,7 @@ class WantController extends Controller
         
         // dd($car_status);
 
-        return view('admin.want.index', compact('wants', 'gearbox', 'out_color', 'want_status_current', 'want_stauts_config', 'capacity'));
+        return view('admin.want.self', compact('wants', 'gearbox', 'out_color', 'want_status_current', 'want_stauts_config', 'capacity'));
     }
 
     /**
@@ -132,7 +140,9 @@ class WantController extends Controller
      */
     public function show($id)
     {
-        //
+        $wants = $this->want->find($id);
+
+        dd($wants);
     }
 
     /**

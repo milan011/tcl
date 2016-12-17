@@ -39,10 +39,17 @@ class CarController extends Controller
      * 所有车源列表
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        return view('admin.car.index', compact('cars'));
+        $cars = $this->car->getAllcars($request, true);
+        /*p(lastSql());
+        dd($cars[0]);*/
+        $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
+        $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
+        $car_status_current = '1';
+
+        return view('admin.car.index', compact('cars', 'gearbox', 'out_color', 'car_status_current', 'car_stauts_config'));
     }
 
     /**
@@ -53,7 +60,7 @@ class CarController extends Controller
     public function carself(Request $request)
     {
         // dd(array_filter($request->all()));
-        $cars = $this->car->getAllcars($request);
+        $cars = $this->car->getAllcars($request, true);
         /*p(lastSql());
         dd($cars);*/
         $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
@@ -68,7 +75,7 @@ class CarController extends Controller
         
         // dd($car_status);
 
-        return view('admin.car.index', compact('cars', 'gearbox', 'out_color', 'car_status_current', 'car_stauts_config'));
+        return view('admin.car.self', compact('cars', 'gearbox', 'out_color', 'car_status_current', 'car_stauts_config'));
     }
 
     /**
