@@ -48,7 +48,7 @@ class CarsPolicy{
             return true;
         }
 
-        if(($user_role_id == config('tcl.user_role_type')['门店店长']) && ($user_shop_id = $user_shop_id)){
+        if(($user_role_id == config('tcl.user_role_type')['门店店长']) && ($user_shop_id = $car_shop_id)){
 
             // 车源所属门店店长
             return true;
