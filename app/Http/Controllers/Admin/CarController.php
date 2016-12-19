@@ -41,6 +41,7 @@ class CarController extends Controller
      */
     public function index(Request $request)
     {
+        // dd($request->method());
         $cars = $this->car->getAllcars($request, true);
         /*p(lastSql());
         dd($cars[0]);*/
@@ -151,7 +152,15 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        //
+        $cars = $this->car->find($id);
+
+        $gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+
+        // dd($cars->hasManyImages()->get());
+        return view('admin.car.show', compact('cars', 'gearbox', 'out_color', 'capacity', 'category_type'));
     }
 
     /**
@@ -173,10 +182,10 @@ class CarController extends Controller
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
         $capacity       = config('tcl.capacity'); //获取配置文件排量
         
-        if (Gate::denies('update', $cars)) {
+        /*if (Gate::denies('update', $cars)) {
             //不允许编辑,基于Policy
             dd('no no');
-        }
+        }*/
 
         // dd($cars);
         return view('admin.car.edit', compact(

@@ -142,7 +142,13 @@ class WantController extends Controller
     {
         $wants = $this->want->find($id);
 
-        dd($wants);
+        $gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+
+        // dd($wants);
+        return view('admin.want.show', compact('wants', 'gearbox', 'out_color', 'capacity', 'category_type'));
     }
 
     /**
