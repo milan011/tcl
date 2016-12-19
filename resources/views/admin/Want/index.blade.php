@@ -112,7 +112,7 @@
 										</form>
 									</span>
 									<a class="btn btn-warning" href="{{route('admin.want.show', ['want'=>$want->id])}}">
-										<i class="icon-edit icon-white"></i> 查看
+										<i class="icon-edit icon-white"></i> 详细信息
 									</a>
 								</div>
 								<input id="current_want_id" type="hidden" value="{{$want->id}}">

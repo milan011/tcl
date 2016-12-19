@@ -25,7 +25,7 @@
 			<a href="{{route('admin.index')}}">主页</a>  
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="javascript:void(0);">车源列表</a></li>
+		<li><a href="javascript:void(0);">销售机会列表</a></li>
 	</ul>
 @endsection
 
@@ -37,7 +37,7 @@
 			<div class="box-content">
 				<!-- <ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;margin-bottom:5px;">
 					<li style="display: inline-block;line-height: 20px;">
-						<a class="btn btn-primary" href="{{route('admin.car.create')}}">添加车源</a>
+						<a class="btn btn-primary" href="{{route('admin.chance.create')}}">添加销售机会</a>
 					</li>
 					<li style="display: inline-block;line-height: 20px;">
 						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
@@ -45,23 +45,19 @@
 				</ul> -->
 				<div class="page-tabs">
             		<ul class="nav nav-tabs">
-            		  <!-- <li class="select_car_status @if($car_status_current == 1) active @endif" >
-            		    <a href="javascript:void(0);" data-status="1">正常车源</a>
+            		  <!-- <li class="select_chance_status @if($chance_status_current == 1) active @endif" >
+            		    <a href="javascript:void(0);" data-status="1">正常销售机会</a>
             		  </li>
-            		  <li class="select_car_status @if($car_status_current == 2) active @endif">
-            		    <a href="javascript:void(0);" data-status="2">待跟进车源</a>
+            		  <li class="select_chance_status @if($chance_status_current == 2) active @endif">
+            		    <a href="javascript:void(0);" data-status="2">待跟进销售机会</a>
             		  </li>
-            		  <li class="select_car_status @if($car_status_current == 0) active @endif" >
-            		    <a href="javascript:void(0);" data-status="0">已废弃车源</a>
+            		  <li class="select_chance_status @if($chance_status_current == 0) active @endif" >
+            		    <a href="javascript:void(0);" data-status="0">已废弃销售机会</a>
             		  </li> -->
             		  <li style="display: inline-block;line-height:20px;">
-						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索车源</a>
-					</li>
-            		  <li style="display: inline-block;line-height:20px;float:right;">
-						<a class="btn btn-primary" href="{{route('admin.car.create')}}">添加车源</a>
-					</li>
-					<li style="display:inline-block;line-height:20px;float:right;">
-						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
+						<a class="btn btn-success btn-search" href="javascript:void(0);"><i class="halflings-icon search"></i>搜索销售机会</a>
+					<li style="display:inline-block;line-height:20px;">
+						<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
 					</li>
             		</ul>
         		</div>
@@ -69,60 +65,52 @@
 				<table  class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>车源编号</th>
-							<th>车源名称</th>
-							<th>预售价</th>
-							<th>上牌时间</th>
-							<th>里程</th>							
-							<th>变速箱</th>
-							<th>车身颜色</th>
-							<th>过户</th>
+							<th>车源信息</th>
+							<th>求购信息</th>
 							<th>状态</th>
-							<th>登记日期</th>
-							<th>门店</th>
-							<th>负责人</th>
+							<th>车源负责人</th>
+							<th>客源负责人</th>							
+							<th>创建者</th>
+							<th>创建时间</th>
+							<th>所属门店</th>
 							<th>操作</th>
 						</tr>
 					</thead> 
 					<tbody>
-						@foreach ($cars as $car)
+						@foreach ($chances as $chance)
     					<tr>
-							<td>{{$car->car_code}}</td>
-							<td>{{$car->name}}</td>
-							<td>{{$car->top_price}}万</td>							
-							<td>{{substr($car->plate_date, 0 ,10)}}</td>
-							<td>{{$car->mileage}}万公里</td>							
-							<td>{{$gearbox[$car->gearbox]}}</td>							
-							<td>{{$out_color[$car->out_color]}}</td>						
-							<td>{{$car->sale_number}}</td>							
-							<td>{{$car_stauts_config[$car->car_status]}}</td>							
-							<td>{{substr($car->created_at, 0 ,10)}}</td>							
-							<td>{{$car->belongsToShop->shop_name}}</td>							
-							<td>{{$car->belongsToUser->nick_name}}</td>		
+							<td>{{$chance->belongsToUser->nick_name}}</td>
+							<td>{{$chance->belongsToUser->nick_name}}</td>
+							<td>{{$chance->belongsToUser->nick_name}}</td>							
+							<td>{{$chance->belongsToUser->nick_name}}</td>
+							<td>{{$chance->belongsToUser->nick_name}}</td>							
+							<td>{{$chance->belongsToUser->nick_name}}</td>										
+							<td>{{substr($chance->created_at, 0 ,10)}}</td>							
+							<td>{{$chance->belongsToUser->nick_name}}</td>							
+							<td>{{$chance->belongsToUser->nick_name}}</td>		
 							<td class="center">
 								<div class="btn-group">
 									<span>
 										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
 										    {{ csrf_field() }}
-            								<input type="hidden" name="car_id" value="{{$car->id}}">
-            								<input type="hidden" name="is_self" value="1">
+            								<input type="hidden" name="chance_id" value="{{$chance->id}}">
 											<button class="btn btn-success" type="submit">
 											<i class="icon-edit icon-white"></i> 匹配
 											</button>
 										</form>
 									</span>
-									<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">
+									<a class="btn btn-warning" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
 										<i class="icon-edit icon-white"></i> 详细信息
 									</a>
 								</div>
-								<input id="current_car_id" type="hidden" value="{{$car->id}}">
+								<input id="current_chance_id" type="hidden" value="{{$chance->id}}">
 							</td>
 						</tr>
 						@endforeach							
 					</tbody>
 				</table>
 				<div class="pagination pagination-centered">
-					 {!! $cars->links() !!}
+					 {!! $chances->links() !!}
 				</div> 		
 			</div>			
 		</div>
@@ -130,22 +118,22 @@
 	<div class="modal hide fade" id="myModal">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">×</button>
-			<h3>车源搜索</h3>
+			<h3>销售机会搜索</h3>
 		</div>
 		<div class="modal-body" style="max-height:none;">
-			<form class="form-horizontal" id="condition" action="/admin/car/index" method="post">
+			<form class="form-horizontal" id="condition" action="/admin/chance/index" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="car_code">车源编号</label>
+						<label class="control-label" for="chance_code">销售机会编号</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" name="car_code" id="car_code" type="text" value="">
+						  	<input class="input-xlarge focused" name="chance_code" id="chance_code" type="text" value="">
 						</div>
 					</div>		
 					<div class="control-group  ">
-            	    	<label class="control-label" for="car_status">车源状态</label>
+            	    	<label class="control-label" for="chance_status">销售机会状态</label>
             	    	<div class="controls">
-            	      		<select id="car_status" name="car_status" >
+            	      		<select id="chance_status" name="chance_status" >
             	      			<option value='1'>正常</option>                                           
             	      		</select>
             	    	</div>

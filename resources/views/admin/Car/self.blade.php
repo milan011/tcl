@@ -25,7 +25,7 @@
 			<a href="{{route('admin.index')}}">主页</a>  
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="#1f">车源列表</a></li>
+		<li><a href="javascript:void(0);">车源列表</a></li>
 	</ul>
 @endsection
 
@@ -120,7 +120,11 @@
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu pull-right">
-																						
+											<li>
+												<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
+													<i class="icon-edit icon-white"></i> 编辑
+												</a>												
+											</li>											
 											<li>
 												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
 													<i class="icon-edit icon-white"></i> 废弃

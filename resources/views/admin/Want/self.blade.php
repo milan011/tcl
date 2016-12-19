@@ -115,6 +115,7 @@
 										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
 										    {{ csrf_field() }}
             								<input type="hidden" name="want_id" value="{{$want->id}}">
+            								<input type="hidden" name="is_self" value="1">
 											<button class="btn btn-success" type="submit">
 											<i class="icon-edit icon-white"></i> 匹配
 											</button>
