@@ -44,8 +44,13 @@ Route::group(['middleware' => 'web', 'prefix' => 'home', 'namespace' => 'Home'],
 
 Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.index');     
+    Route::match(['get', 'post'], 'car/index', 'CarController@index')->name('admin.car.index'); 
+    // Route::post('car', 'CarController@list')->name('admin.car.list'); 
     Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('admin.car.self'); 
+    Route::match(['get', 'post'], 'want/index', 'WantController@index')->name('admin.want.index'); 
     Route::match(['get', 'post'], 'selfwant', 'WantController@selfwant')->name('admin.want.self'); 
+    Route::match(['get', 'post'], 'chance/index', 'ChanceController@index')->name('admin.chance.index');  
+    Route::post('chance/create', 'ChanceController@create')->name('admin.chance.create');  
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
     Route::post('car/changeStatus', 'CarController@changeStatus')->name('admin.car.changeStatus');
     Route::post('want/follwQuickly', 'wantController@follwQuickly')->name('admin.want.follwQuickly');
@@ -56,7 +61,6 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
     Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');    
     Route::put('role/updatePermission', 'RoleController@updatePermission')->name('admin.role.updatePermission');
-    Route::post('chance/create', 'ChanceController@create')->name('admin.chance.create');
     // 文件、图片上传路由
     Route::get('upload', 'UploadController@index');
     Route::post('upload/file', 'UploadController@uploadFile')->name('upload.uploadFile');
