@@ -98,12 +98,30 @@ class Cars extends Model
     // 定义User表与Cars表一对多关系
     public function belongsToUser(){
 
-      return $this->belongsTo('App\User', 'creater_id', 'id')->select('id', 'nick_name');
+      return $this->belongsTo('App\User', 'creater_id', 'id')->select('id', 'nick_name', 'telephone as creater_telephone');
+    }
+
+    // 定义customer表与Cars表一对多关系
+    public function belongsToCustomer(){
+
+      return $this->belongsTo('App\Customer', 'customer_id', 'id')->select('id', 'name as customer_name', 'telephone as customer_telephone');
     }
 
     // 定义Car表与car_follow表一对多关系
     public function hasManyFollow()
     {
         return $this->hasMany('App\CarFollow', 'car_id', 'id');
+    }
+
+    // 定义Car表与images表一对多关系
+    public function hasManyImages()
+    {
+        return $this->hasMany('App\Image', 'car_id', 'id');
+    }
+
+    // 定义Car表与chance表一对多关系
+    public function hasManyChances()
+    {
+        return $this->hasMany('App\Chance', 'car_id', 'id');
     }
 }

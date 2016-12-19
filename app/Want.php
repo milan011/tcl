@@ -107,12 +107,24 @@ class Want extends Model
     // 定义User表与Want(客源）表一对多关系
     public function belongsToUser(){
 
-      return $this->belongsTo('App\User', 'creater_id', 'id')->select('id', 'nick_name');
+      return $this->belongsTo('App\User', 'creater_id', 'id')->select('id', 'nick_name', 'telephone as creater_telephone');
     }
 
     // 定义want表与want_follow表一对多关系
     public function hasManyFollow()
     {
         return $this->hasMany('App\WantFollow', 'want_id', 'id');
+    }
+
+    // 定义want表与customer表一对多关系
+    public function belongsToCustomer(){
+
+      return $this->belongsTo('App\Customer', 'customer_id', 'id')->select('id', 'name as customer_name', 'telephone as customer_telephone');
+    }
+
+    // 定义Want表与chance表一对多关系
+    public function hasManyChances()
+    {
+        return $this->hasMany('App\Chance', 'want_id', 'id');
     }
 }

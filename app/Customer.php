@@ -52,4 +52,28 @@ class Customer extends Model
 
       return $this->belongsTo('App\User', 'user_id', 'id');
     }
+
+    // 定义Customer表与Cars表一对多关系
+    public function hasManyCars()
+    {
+        return $this->hasMany('App\Cars', 'customer_id', 'id');
+    }
+
+    // 定义Customer表与want表一对多关系
+    public function hasManyWants()
+    {
+        return $this->hasMany('App\Want', 'customer_id', 'id');
+    }
+
+    // 定义Customer表与chance表一对多关系(车源)
+    public function hasManyChancesOnCar()
+    {
+        return $this->hasMany('App\Chance', 'car_customer_id', 'id');
+    }
+
+    // 定义Customer表与chance表一对多关系(求购)
+    public function hasManyChancesOnWant()
+    {
+        return $this->hasMany('App\Chance', 'want_customer_id', 'id');
+    }
 }
