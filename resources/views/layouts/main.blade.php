@@ -98,9 +98,9 @@
 						</li>	
 						@ifUserCan('car.check')
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车源信息</span><span style="float:right;">>></span></a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车源信息</span><span style="float:right;">>></span></a>
 							<ul>
-								<li><a class="submenu" href="{{route('admin.car.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">所有车源</span></a>
+								<li><a class="submenu" href="{{route('admin.car.index')}}/index"><i class="icon-file-alt"></i><span class="hidden-tablet">所有车源</span></a>
 								</li>
 								<li><a class="submenu" href="{{route('admin.car.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">我的车源</span></a>
 								</li>
@@ -109,25 +109,26 @@
 						@endif
 						@ifUserCan('want.check')	
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">求购信息</span><span style="float:right;">>></span></a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">求购信息</span><span style="float:right;">>></span></a>
 							<ul>
-								<li><a class="submenu" href="{{route('admin.want.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">所有求购信息</span></a></li>
+								<li><a class="submenu" href="{{route('admin.want.index')}}/index"><i class="icon-file-alt"></i><span class="hidden-tablet">所有求购信息</span></a></li>
 								<li><a class="submenu" href="{{route('admin.want.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">我的求购信息</span></a></li>
 							</ul>	
 						</li>
 						@endif
 						@ifUserCan('chance.check')
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">销售机会</span><span style="float:right;">>></span></a>
-							<ul>
-								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet">所有销售机会</span></a></li>
-								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet">我的销售机会</span></a></li>
-							</ul>	
+							<a class="submenu" href="{{route('admin.chance.index')}}/index">
+								<i class="icon-sitemap"></i> 
+								<span class="hidden-tablet">
+									销售机会管理
+								</span>
+							</a>
 						</li>
 						@endif
 						@ifUserCan('plan.check')
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">约车管理</span><span style="float:right;">>></span></a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">约车管理</span><span style="float:right;">>></span></a>
 							<ul>
 								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet">所有约车</span></a></li>
 								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet">我的约车</span></a></li>
@@ -136,7 +137,7 @@
 						@endif
 						@ifUserCan('booking.check')
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">订车管理</span><span style="float:right;">>></span></a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">订车管理</span><span style="float:right;">>></span></a>
 							<ul>
 								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet">所有订车</span></a></li>
 								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet">我的订车</span></a></li>
@@ -145,7 +146,7 @@
 						@endif
 						@ifUserCan('transcation.check')
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">交易管理</span><span style="float:right;">>></span></a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">交易管理</span><span style="float:right;">>></span></a>
 							<ul>
 								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet">所有交易</span></a></li>
 								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet">我的交易</span></a></li>
@@ -154,7 +155,7 @@
 						@endif
 						@ifUserCan('category.check')
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车型管理</span><span style="float:right;">>></span></a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车型管理</span><span style="float:right;">>></span></a>
 							<ul>
 								<li><a class="submenu" href="{{route('admin.brand.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">品牌管理</span></a></li>
 								<li><a class="submenu" href="{{route('admin.category.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">车型管理</span></a></li>
@@ -195,7 +196,7 @@
 						@endif
 						@ifUserCan('role.manage')
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">权限管理</span><span style="float:right;">>></span></a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">权限管理</span><span style="float:right;">>></span></a>
 							<ul>
 								<li><a class="submenu" href="{{route('admin.permission.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">权限管理</span></a></li>
 								<li><a class="submenu" href="{{route('admin.role.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">角色管理</span></a></li>
