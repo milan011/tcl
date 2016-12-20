@@ -54,6 +54,11 @@ class WantRepository implements WantRepositoryContract
 
         $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
         // dd($query);
+        
+        if($request->has('os_recommend') && $request->os_recommend == 'yes'){
+            //系统推荐信息scope添加
+            $query = $query->osRecommend($request->all());
+        }
 
         return $query->select($this->select_columns)
                    ->paginate(10);

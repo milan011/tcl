@@ -60,15 +60,20 @@ class CarRepository implements CarRepositoryContract
         // dd($request->all());
         // $query = Cars::query();  // 返回的是一个 QueryBuilder 实例
         $query = new Cars();       // 返回的是一个Cars实例,两种方法均可
-        // dd($request->all());
+
         $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
 
+        if($request->has('os_recommend') && $request->os_recommend == 'yes'){
+            //系统推荐信息scope添加
+            // $query = $query->osRecommend($request->all());
+        }       
         // dd($query);
         $query = $query->where('name', '!=', '');
         // $query = $query->where('car_status', $request->input('car_status', '1'));
 
         return $query->select($this->select_columns)
-                   ->paginate(10);
+                     ->orderBy('created_at', 'desc')
+                     ->paginate(10);
     }
 
     // 创建车源
