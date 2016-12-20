@@ -83,6 +83,25 @@ class Cars extends Model
         return $query;
     }
 
+     /**
+     * 推荐车型信息的查询作用域
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOsRecommend($query, $requestData)
+    {
+        if(isset($requestData['top_price'])){
+            $query = $query->where('top_price', '<=', $requestData['top_price']);
+        }
+        
+        if(isset($requestData['bottom_price'])){
+            $query = $query->where('bottom_price', '>=', $requestData['bottom_price']);
+        }
+        
+        $query = $query->where('car_status', '1');
+        return $query;
+    }
+
     // 定义Category表与Cars表一对多关系
     public function belongsToCategory(){
 
