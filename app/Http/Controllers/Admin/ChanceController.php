@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Car\CarRepositoryContract;
 use App\Repositories\Chance\ChanceRepositoryContract;
+use App\Repositories\Want\WantRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
 use App\Http\Requests\Chance\UpdateChanceRequest;
 use App\Http\Requests\Chance\StoreChanceRequest;
@@ -19,6 +20,7 @@ class ChanceController extends Controller
     protected $car;
     protected $brands;
     protected $shop;
+    protected $want;
     protected $chance;
 
     public function __construct(
@@ -26,10 +28,12 @@ class ChanceController extends Controller
         CarRepositoryContract $car,
         BrandRepositoryContract $brands,
         ShopRepositoryContract $shop,
+        WantRepositoryContract $want,
         ChanceRepositoryContract $chance
     ) {
     
         $this->car    = $car;
+        $this->want    = $want;
         $this->brands = $brands;
         $this->shop   = $shop;
         $this->chance = $chance;
@@ -62,16 +66,35 @@ class ChanceController extends Controller
      */
     public function create(Request $request)
     {
-        dd($request->has('is_self'));
+        // dd($request->all());
+        $request['os_recommend'] = 'yes';
+        $is_self = $request->has('is_self');
 
-        if($request->has('is_self')){
-            //自己管理的车源或客源发起
-        }
+        if($request->has('want_id')){
+            //匹配求购信息
+            $waited_info = $this->want->find($request->want_id);
+            $request['top_price']    = $waited_info->top_price;          
+            $request['bottom_price'] = $waited_info->bottom_price;
+            
+            $match_info = $this->car->getAllcars($request, $is_self);
+            $createBy   = 'want';
+            // dd($waited_info);
+            /*p(lastSql());
+            dd($match_info);*/
+        
+        }else{
+            // 匹配车源信息
+            $waited_info = $this->car->find($request->car_id);
+            $request['top_price']    = $waited_info->top_price;          
+            $request['bottom_price'] = $waited_info->bottom_price;
+            
+            $match_info = $this->want->getAllcars($request, $is_self);
+            $createBy   = 'car';
 
-        $car_code = getCarCode();
-        $all_top_brands = $this->brands->getChildBrand(0);
-        $year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
-        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+            // p($waited_info);
+            dd($match_info);
+        }  
+
         $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
@@ -79,25 +102,25 @@ class ChanceController extends Controller
         $car_type       = config('tcl.car_type'); //获取配置文件车源类型
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
-        $capacity       = config('tcl.capacity'); //获取配置文件排量
-        $city_id        = $this->shop->find(Auth::user()->shop_id)->city_id; //车源所在城市
-        $provence_id    = $this->shop->find(Auth::user()->shop_id)->provence_id; //车源所在省份
-        // dd($city_id);
+        $capacity       = config('tcl.capacity'); //获取配置文件排量  
+        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+        $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
+
         return view('admin.chance.create',compact(
-            'all_top_brands', 
-            'year_type', 
-            'category_type', 
-            'gearbox',
-            'out_color',
-            'inside_color',
-            'sale_number',
-            'car_type',
-            'city_id',
-            'provence_id',
-            'safe_type',
-            'capacity',
-            'customer_res'
-        ));
+                'waited_info', 
+                'match_info',
+                'createBy',
+                'gearbox',
+                'out_color',
+                'inside_color',
+                'sale_number',
+                'car_type',
+                'customer_res',
+                'safe_type',
+                'capacity',
+                'category_type',
+                'car_stauts_config'
+        ));   
     }
 
     /**
@@ -108,7 +131,7 @@ class ChanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
