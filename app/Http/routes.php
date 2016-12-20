@@ -82,6 +82,9 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('category', 'CategoryController');  
     Route::resource('brand', 'BrandController');  
     Route::resource('chance', 'ChanceController');  
+    Route::resource('plan', 'PlanController');  
+    Route::resource('booking', 'BookingController');  
+    Route::resource('transcation', 'TranscationController');  
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
