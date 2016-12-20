@@ -73,7 +73,7 @@
 <div class="row-fluid sortable">
 	<div class="box span12" style="padding:10px;">
 
-		<p class="title">{{$wants->name}}</p>
+		<p class="title">【求购】{{$wants->name}}</p>
 		<p class="detial">
 			<i>底价:</i>
 			<em>{{$wants->top_price}}</em>
