@@ -21,7 +21,7 @@ class Want extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['want_code', 'name', 'car_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_eara', 'remark', 'want_status', 'shop_id', 'is_top', 'recommend'];
+    protected $fillable = ['want_code', 'name', 'car_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'sale_number', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_eara', 'remark', 'want_status', 'shop_id', 'is_top', 'recommend'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -126,7 +126,7 @@ class Want extends Model
     // 定义User表与Want(客源）表一对多关系
     public function belongsToUser(){
 
-      return $this->belongsTo('App\User', 'creater_id', 'id')->select('id', 'nick_name', 'telephone as creater_telephone');
+      return $this->belongsTo('App\User', 'creater_id', 'id')->select('id as user_id', 'nick_name', 'telephone as creater_telephone');
     }
 
     // 定义want表与want_follow表一对多关系

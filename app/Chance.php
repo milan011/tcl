@@ -20,7 +20,7 @@ class Chance extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['car_id', 'want_id', 'car_customer_id', 'want_customer_id', 'car_creater', 'want_creater', 'creater'];
+    protected $fillable = ['chance_code', 'car_id', 'want_id', 'car_customer_id', 'want_customer_id', 'car_creater', 'want_creater', 'creater', 'status'];
 
     /**
      * The attributes excluded from the model's JSON form.
