@@ -3,50 +3,50 @@
 @section('head_content')
 	<style type="text/css">
 		.detial {
-	font-size: 14px;
-	line-height: 24px;
-	color: #3A3A3A;
-	font-style: normal;
-	font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
-}
+			font-size: 14px;
+			line-height: 24px;
+			color: #3A3A3A;
+			font-style: normal;
+			font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
+		}
 
-.detial i {
-	font-style: normal;
-	color: #999;
-	font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
-}
+		.detial i {
+			font-style: normal;
+			color: #999;
+			font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
+		}
 
-.detial span {
-	width: 30%;
-	display: inline-block;
-	font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
-}
-
-.detial em {
-	color: #f84949;
-	font-size: 28px;
-	font-style: normal;
-	font-weight: bold;
-	line-height: 28px;
-	font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
-}
-
-.title {
-	color: #333;
-	font-size: 20px;
-	line-height: 30px;
-	font-weight: normal;
-	font: 'Microsoft YaHei', arial, tahoma, sans-serif;
-}
-
-.title em {
-	color: #f84949;
-	font-size: 28px;
-	font-style: normal;
-	font-weight: bold;
-	line-height: 30px;
-	font: 'Microsoft YaHei', arial, tahoma, sans-serif;
-}
+		.detial span {
+			width: 30%;
+			display: inline-block;
+			font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
+		}
+		
+		.detial em {
+			color: #f84949;
+			font-size: 28px;
+			font-style: normal;
+			font-weight: bold;
+			line-height: 28px;
+			font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
+		}
+		
+		.title {
+			color: #333;
+			font-size: 20px;
+			line-height: 30px;
+			font-weight: normal;
+			font: 'Microsoft YaHei', arial, tahoma, sans-serif;
+		}
+		
+		.title em {
+			color: #f84949;
+			font-size: 28px;
+			font-style: normal;
+			font-weight: bold;
+			line-height: 30px;
+			font: 'Microsoft YaHei', arial, tahoma, sans-serif;
+		}
 	</style>
 @endsection
 
@@ -273,7 +273,7 @@
 @endsection
 @section('script_content')
 <!-- 引入车型级联js -->
-<script src="{{URL::asset('js/tcl/category.js')}}"></script> 
+<!-- <script src="{{URL::asset('js/tcl/category.js')}}"></script>  -->
 <!-- 引入对话框插件 -->
 <script src="{{URL::asset('js/tcl/dialog.js')}}"></script> 
 <!-- 引入日历插件 -->
@@ -281,6 +281,16 @@
 <script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script> 
 
 <script>
-		
+	$(document).ready(function(){
+	
+		$('ul.pagination').children('li').children('a').click(function(){
+
+			// alert($(this).attr('href'));
+			$('#condition').attr('action', $(this).attr('href'));
+			alert($('#condition').attr('action'));
+			$('#condition').submit();
+			return false;
+		});
+	});	
 </script>
 @endsection

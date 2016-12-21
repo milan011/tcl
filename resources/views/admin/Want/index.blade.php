@@ -146,8 +146,7 @@
             	    	<label class="control-label" for="want_status">求购信息状态</label>
             	    	<div class="controls">
             	      		<select id="want_status" name="want_status" >
-            	      			<option value='1'>正常</option>                        
-								                    
+            	      			<option value='1'>正常</option>								                    
             	      		</select>
             	    	</div>
             	  	</div>				  

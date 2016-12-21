@@ -163,7 +163,16 @@
                   		</select>
                 	</div>
               	</div>
-
+              	<div class="control-group  ">
+                	<label class="control-label" for="shiftType">过户次数</label>
+                	<div class="controls">
+                  		<select id="sale_number" name="sale_number" >                        
+					  		@foreach($sale_number as $key=>$sale)											
+					  		<option  value="{{$key}}">{{$sale}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
 				<!-- <div class="control-group">
 					<label class="control-label" for="plate_provence">上牌城市</label>
 					<div class="controls">
@@ -181,16 +190,7 @@
 					</div>
 				  </div> -->
 
-				<!-- <div class="control-group  ">
-                	<label class="control-label" for="shiftType">过户次数</label>
-                	<div class="controls">
-                  		<select id="sale_number" name="sale_number" >                        
-					  		@foreach($sale_number as $key=>$sale)											
-					  		<option  value="{{$key}}">{{$sale}}</option>	
-					  		@endforeach	                     
-                  		</select>
-                	</div>
-              	</div> -->
+				
               	<!-- <div class="control-group  ">
                 	<label class="control-label" for="safe_type">车险类别</label>
                 	<div class="controls">
