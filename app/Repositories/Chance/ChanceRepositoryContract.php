@@ -14,5 +14,5 @@ interface ChanceRepositoryContract
 
     public function destroy($id);
 
-    public function isRepeat($vin_code);
+    public function isRepeat($requestData);
 }

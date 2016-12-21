@@ -85,7 +85,7 @@ class CarRepository implements CarRepositoryContract
         }else{
             // 添加车源并返回实例
             $requestData['creater_id'] = Auth::id();
-            $requestData['car_code']   = getCarCode();
+            $requestData['car_code']   = getCarCode('car');
 
             unset($requestData['_token']);
             unset($requestData['ajax_request_url']);
