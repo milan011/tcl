@@ -69,6 +69,19 @@ class ChanceController extends Controller
         // dd($request->all());
         $request['os_recommend'] = 'yes';
         $is_self = $request->has('is_self');
+  
+        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
+        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
+        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
+        $car_type       = config('tcl.car_type'); //获取配置文件车源类型
+        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
+        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
+        $capacity       = config('tcl.capacity'); //获取配置文件排量  
+        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+        $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
+        $mileage_config  = config('tcl.mileage'); //获取配置文件中车源状态
+        $sale_number_config  = config('tcl.want_sale_number'); //获取配置文件中车源状态
 
         if($request->has('want_id')){
             //匹配求购信息
@@ -78,9 +91,26 @@ class ChanceController extends Controller
             
             $match_info = $this->car->getAllcars($request, $is_self);
             $createBy   = 'want';
-            // dd($waited_info);
-            /*p(lastSql());
-            dd($match_info);*/
+            /*dd($waited_info);
+            p(lastSql());*/
+            // dd($match_info);
+             return view('admin.chance.createByWant',compact(
+                'waited_info', 
+                'match_info',
+                'createBy',
+                'gearbox',
+                'out_color',
+                'inside_color',
+                'sale_number',
+                'car_type',
+                'customer_res',
+                'safe_type',
+                'capacity',
+                'category_type',
+                'car_stauts_config',
+                'mileage_config',
+                'sale_number_config'
+            )); 
         
         }else{
             // 匹配车源信息
@@ -93,20 +123,7 @@ class ChanceController extends Controller
 
             // p($waited_info);
             dd($match_info);
-        }  
-
-        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
-        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
-        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
-        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
-        $car_type       = config('tcl.car_type'); //获取配置文件车源类型
-        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
-        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
-        $capacity       = config('tcl.capacity'); //获取配置文件排量  
-        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
-        $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
-
-        return view('admin.chance.create',compact(
+             return view('admin.chance.createByCar',compact(
                 'waited_info', 
                 'match_info',
                 'createBy',
@@ -120,7 +137,10 @@ class ChanceController extends Controller
                 'capacity',
                 'category_type',
                 'car_stauts_config'
-        ));   
+            )); 
+        }
+
+         
     }
 
     /**
@@ -131,8 +151,32 @@ class ChanceController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $want_info = $this->want->find($request->want_id);
+        $car_info  = $this->car->find($request->car_id);
+
+        // dd($want_info->id);
+        // dd($want_info->customer_id);
+        // dd($want_info->belongsToCustomer->customer_name);
+        // dd($car_info->id);
+        // dd($car_info->customer_id);
+        // dd($car_info->belongsToCustomer->customer_name);
+
+        $request['want_id']          = $want_info->id;
+        $request['want_customer_id'] = $want_info->customer_id;
+        $request['car_id']           = $car_info->id;
+        $request['car_customer_id']  = $car_info->customer_id;
+        $request['car_creater']      = $car_info->belongsToUser->user_id;
+        $request['want_creater']     = $want_info->belongsToUser->user_id;
+
+        // dd($request->all());
+
+        $chance = $this->chance->create($request);
+
+        dd($chance);
+        return response()->json($chance);
+        
     }
+
 
     /**
      * Display the specified resource.

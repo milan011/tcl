@@ -95,7 +95,7 @@ class WantController extends Controller
         $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
-        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
+        $sale_number    = config('tcl.want_sale_number'); //获取配置文件中过户次数
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
         $capacity       = config('tcl.capacity'); //获取配置文件排量
@@ -106,6 +106,7 @@ class WantController extends Controller
             'all_top_brands', 
             'year_type', 
             'category_type', 
+            'gearbox',
             'gearbox',
             'out_color',
             'inside_color',
