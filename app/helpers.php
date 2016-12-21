@@ -144,15 +144,17 @@
 	}
 
 	/**
-	 * 获得车源编号
+	 * 获得车源、销售机会、求购编号
 	 */
 	function getCarCode($type = 'car')
 	{
 		// 车源编号为Unix时间戳后9位
 		if($type == 'car'){
 			$code = 'C-';
-		}else{
+		}else if($type == 'want'){
 			$code = 'W-';
+		}else if($type == 'chance'){
+			$code = 'X-';
 		}
 		
 
