@@ -49,14 +49,15 @@ class ChanceController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->method());
-        $chances = $this->chance->getAllChances($request, true);
-        /*p(lastSql());
-        dd($chances);*/
+        /*p($request->method());
+        dd($request->all());*/
+        $chances = $this->chance->getAllChances($request);
+        // dd(lastSql());
+        // dd($chances[0]->belongsToUserOnCar);
 
-        $chance_status_current = '1';
+        $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
 
-        return view('admin.chance.index', compact('chances', 'chance_status_current'));
+        return view('admin.chance.index', compact('chances', 'chance_launch'));
     }
 
     /**
@@ -172,7 +173,7 @@ class ChanceController extends Controller
 
         $chance = $this->chance->create($request);
 
-        dd($chance);
+        // dd($chance->toJson());
         return response()->json($chance);
         
     }
