@@ -142,4 +142,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
       return $this->hasMany('App\Chance', 'creater', 'id');
     }
+
+    // 定义User表与Chance表一对多关系(求购信息)
+    public function hasManyChancesOnWant(){
+
+      return $this->hasMany('App\Chance', 'want_customer_id', 'id');
+    }
+
+    // 定义User表与Chance表一对多关系(车源信息)
+    public function hasManyChancesOnCar(){
+
+      return $this->hasMany('App\Chance', 'car_customer_id', 'id');
+    }
 }

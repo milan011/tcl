@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Chance extends Model
 {
@@ -29,10 +30,56 @@ class Chance extends Model
      */
     protected $hidden = [ ];
 
+     /**
+     * 发起销售机会或参与销售机会的查询作用域
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeChacneLaunch($query, $type = 1)
+    {
+        $user_id = Auth::id();
+
+        $query = $query->where(function($query) use ($user_id){
+
+            $query = $query->where('car_creater', $user_id);
+            $query = $query->orWhere('want_creater', $user_id);
+        });
+
+        switch ($type) {
+            case '1': //我发起的销售机会
+                $query = $query->where('creater', $user_id);
+            break;
+            
+            case '2': //我参与的销售机会
+                $query = $query->where('creater', '!=', $user_id);
+            break;
+
+            default:
+                $query = $query->where('creater', $user_id);
+            break;
+        }
+
+        return $query;
+    }
+
     // 定义User表与Chance表一对多关系
     public function belongsToUser(){
 
       return $this->belongsTo('App\User', 'creater', 'id')->select('id', 'nick_name', 'telephone as creater_telephone');
+    }
+
+    // 定义User表与Chance表一对多关系(求购)
+    public function belongsToUserOnWant(){
+
+      return $this->belongsTo('App\User', 'want_creater', 'id')
+                  ->select('id', 'nick_name as want_creater', 'telephone as creater_telephone');
+    }
+
+    // 定义User表与Chance表一对多关系(车源)
+    public function belongsToUserOnCar(){
+
+        return $this->belongsTo('App\User', 'car_creater', 'id')
+                    ->select('id', 'nick_name as car_creater', 'telephone as creater_telephone');
     }
 
     // 定义Want表与Chance表一对多关系
@@ -50,12 +97,14 @@ class Chance extends Model
     // 定义want表与customer表一对多关系(求购)
     public function belongsToCustomerOnWant(){
 
-      return $this->belongsTo('App\Customer', 'want_customer_id', 'id')->select('id', 'name as car_customer_name', 'telephone as car_customer_telephone');
+      return $this->belongsTo('App\Customer', 'want_customer_id', 'id')
+                  ->select('id', 'name as want_customer_name', 'telephone as want_customer_telephone');
     }
 
     // 定义want表与customer表一对多关系(车源)
     public function belongsToCustomerOnCar(){
 
-      return $this->belongsTo('App\Customer', 'car_customer_id', 'id')->select('id', 'name as want_customer_name', 'telephone as want_customer_telephone');
+      return $this->belongsTo('App\Customer', 'car_customer_id', 'id')
+                  ->select('id', 'name as car_customer_name', 'telephone as car_customer_telephone');
     }
 }
