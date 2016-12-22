@@ -6,7 +6,7 @@ interface ChanceRepositoryContract
     
     public function find($id);
     
-    public function getAllChances($requestData, $is_self = false);
+    public function getAllChances($requestData);
 
     public function create($requestData);
 

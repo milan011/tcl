@@ -17,7 +17,7 @@ use Debugbar;
 class chanceRepository implements chanceRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['car_id', 'want_id', 'car_customer_id', 'want_customer_id', 'car_creater', 'want_creater', 'creater', 'created_at'];
+    protected $select_columns = ['chance_code', 'car_id', 'want_id', 'car_customer_id', 'want_customer_id', 'car_creater', 'want_creater', 'creater', 'created_at'];
 
     // 销售机会表列名称-注释对应
     protected $columns_annotate = [
@@ -39,19 +39,19 @@ class chanceRepository implements chanceRepositoryContract
     }
 
     // 根据不同参数获得销售机会列表
-    public function getAllChances($request, $is_self = false)
+    public function getAllChances($request)
     {   
-        // dd($request->all());
+        // dd($request->chance_launch);
         // $query = Chance::query();  // 返回的是一个 QueryBuilder 实例
         $query = new Chance();       // 返回的是一个Chance实例,两种方法均可
         // dd($request->all());
         // $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
 
-        // dd($query);
-        // $query = $query->where('chance_status', $request->input('chance_status', '1'));
+        $query = $query->chacneLaunch($request->chance_launch);
 
-        return $query->select($this->select_columns)
-                   ->paginate(10);
+        return $query->whereIn('status', ['1', '2', '3'])
+                     ->select($this->select_columns)
+                     ->paginate(10);
     }
 
     // 创建销售机会
@@ -74,7 +74,7 @@ class chanceRepository implements chanceRepositoryContract
 
             $chance = $chance->create($input);
         }        
-        dd($chance);
+        // dd($chance);
         return $chance;
     }
 
