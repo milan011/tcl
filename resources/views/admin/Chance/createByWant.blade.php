@@ -330,9 +330,10 @@
 				headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
 				success: function(data){
 
-					alert(data.msg);
-					location.reload();
-					// console.log(data);
+					alert(data.want_id);
+					// location.reload();
+					console.log(data);
+					return false;
 				},
 				error: function(xhr, type){
 

@@ -45,33 +45,32 @@
 				</ul> -->
 				<div class="page-tabs">
             		<ul class="nav nav-tabs">
-            		  <!-- <li class="select_chance_status @if($chance_status_current == 1) active @endif" >
-            		    <a href="javascript:void(0);" data-status="1">正常销售机会</a>
+            		  <li class="chance_launch @if($chance_launch == 1) active @endif" >
+            		    <a href="javascript:void(0);" data-status="1">我发起的销售机会</a>
             		  </li>
-            		  <li class="select_chance_status @if($chance_status_current == 2) active @endif">
-            		    <a href="javascript:void(0);" data-status="2">待跟进销售机会</a>
+            		  <li class="chance_launch @if($chance_launch == 2) active @endif">
+            		    <a href="javascript:void(0);" data-status="2">我参与的销售机会</a>
             		  </li>
-            		  <li class="select_chance_status @if($chance_status_current == 0) active @endif" >
-            		    <a href="javascript:void(0);" data-status="0">已废弃销售机会</a>
-            		  </li> -->
-            		  <li style="display: inline-block;line-height:20px;">
-						<a class="btn btn-success btn-search" href="javascript:void(0);"><i class="halflings-icon search"></i>搜索销售机会</a>
-					<li style="display:inline-block;line-height:20px;">
+            		  <li style="display:inline-block;line-height:20px;float:right">
 						<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
-					</li>
+						</li>
+            		  	<li style="display: inline-block;line-height:20px;float:right;">
+						<a class="btn btn-success btn-search" href="javascript:void(0);"><i class="halflings-icon search"></i>搜索销售机会</a>
+						</li>						
             		</ul>
         		</div>
 
 				<table  class="table table-striped table-bordered">
 					<thead>
 						<tr>
+							<th>编号</th>
 							<th>车源信息</th>
 							<th>求购信息</th>
-							<th>状态</th>
 							<th>车源负责人</th>
 							<th>客源负责人</th>							
 							<th>创建者</th>
 							<th>创建时间</th>
+							<th>状态</th>
 							<th>所属门店</th>
 							<th>操作</th>
 						</tr>
@@ -79,15 +78,15 @@
 					<tbody>
 						@foreach ($chances as $chance)
     					<tr>
-							<td>{{$chance->belongsToUser->nick_name}}</td>
-							<td>{{$chance->belongsToUser->nick_name}}</td>
-							<td>{{$chance->belongsToUser->nick_name}}</td>							
-							<td>{{$chance->belongsToUser->nick_name}}</td>
+    						<td>{{$chance->chance_code}}</td>
+							<td>{{$chance->belongsToCustomerOnCar->car_customer_name}}</td>
+							<td>{{$chance->belongsToCustomerOnWant->want_customer_name}}</td>
+							<td>{{$chance->belongsToUserOnWant->want_creater}}</td>							
+							<td>{{$chance->belongsToUserOnCar->car_creater or 'hehe'}}</td>
 							<td>{{$chance->belongsToUser->nick_name}}</td>							
 							<td>{{$chance->belongsToUser->nick_name}}</td>										
 							<td>{{substr($chance->created_at, 0 ,10)}}</td>							
-							<td>{{$chance->belongsToUser->nick_name}}</td>							
-							<td>{{$chance->belongsToUser->nick_name}}</td>		
+							<td>{{$chance->belongsToUser->nick_name}}</td>									
 							<td class="center">
 								<div class="btn-group">
 									<span>
@@ -131,10 +130,11 @@
 						</div>
 					</div>		
 					<div class="control-group  ">
-            	    	<label class="control-label" for="chance_status">销售机会状态</label>
+            	    	<label class="control-label" for="chance_launch">销售机会状态</label>
             	    	<div class="controls">
-            	      		<select id="chance_status" name="chance_status" >
-            	      			<option value='1'>正常</option>                                           
+            	      		<select id="chance_launch" name="chance_launch" >
+            	      			<option value='1'>我发起的销售机会</option>                                           
+            	      			<option value='2'>我参与的销售机会</option>                                           
             	      		</select>
             	    	</div>
             	  	</div>				  
@@ -162,6 +162,20 @@
 			// alert($('#condition').attr('action'));
 			$('#condition').submit();
 			return false;
+		});
+
+		$('li.chance_launch').click(function(){
+
+			var chance_launch = $(this).children('a').attr('data-status');
+
+			if(!$(this).hasClass('active')){
+
+				$(this).addClass('active').siblings().removeClass('active');
+				$("select[name='chance_launch']").val(chance_launch);
+
+				$('#condition').submit();
+			}
+			
 		});
 	});
 </script>
