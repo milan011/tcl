@@ -53,11 +53,12 @@ class ChanceController extends Controller
         dd($request->all());*/
         $chances = $this->chance->getAllChances($request);
         // dd(lastSql());
-        // dd($chances[0]->belongsToUserOnCar);
+        // dd($chances[0]->status);
 
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
+        $chance_status = config('tcl.chance_status'); //获取配置文件中销售机会状态
 
-        return view('admin.chance.index', compact('chances', 'chance_launch'));
+        return view('admin.chance.index', compact('chances', 'chance_launch', 'chance_status'));
     }
 
     /**
@@ -139,9 +140,7 @@ class ChanceController extends Controller
                 'category_type',
                 'car_stauts_config'
             )); 
-        }
-
-         
+        }        
     }
 
     /**
@@ -187,15 +186,20 @@ class ChanceController extends Controller
      */
     public function show($id)
     {
-        $chances = $this->chance->find($id);
-
+        $chances   = $this->chance->find($id);
+        $car_info  = $this->car->find($chances->car_id); //车源信息
+        $want_info = $this->want->find($chances->want_id); //求购信息
+        // dd($chances);
+        // dd($car_info);
+        // dd($want_info);
         $gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $capacity       = config('tcl.capacity'); //获取配置文件排量
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+        $mileage        = config('tcl.mileage'); //获取配置文件中车型类别
 
         // dd($chances->hasManyImages()->get());
-        return view('admin.chance.show', compact('chances', 'gearbox', 'out_color', 'capacity', 'category_type'));
+        return view('admin.chance.show', compact('chances', 'gearbox', 'out_color', 'capacity', 'category_type', 'car_info', 'want_info', 'mileage'));
     }
 
     /**
