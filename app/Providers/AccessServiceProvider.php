@@ -118,5 +118,11 @@ class AccessServiceProvider extends ServiceProvider
             \App\Repositories\Chance\ChanceRepositoryContract::class,
             \App\Repositories\Chance\ChanceRepository::class
         );
+
+        //绑定PlanRepository
+        $this->app->bind(
+            \App\Repositories\Plan\PlanRepositoryContract::class,
+            \App\Repositories\Plan\PlanRepository::class
+        );
     }
 }
