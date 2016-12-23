@@ -79,14 +79,14 @@
 						@foreach ($chances as $chance)
     					<tr>
     						<td>{{$chance->chance_code}}</td>
-							<td>{{$chance->belongsToCustomerOnCar->car_customer_name}}</td>
-							<td>{{$chance->belongsToCustomerOnWant->want_customer_name}}</td>
-							<td>{{$chance->belongsToUserOnWant->want_creater}}</td>							
-							<td>{{$chance->belongsToUserOnCar->car_creater or 'hehe'}}</td>
-							<td>{{$chance->belongsToUser->nick_name}}</td>							
-							<td>{{$chance->belongsToUser->nick_name}}</td>										
-							<td>{{substr($chance->created_at, 0 ,10)}}</td>							
-							<td>{{$chance->belongsToUser->nick_name}}</td>									
+							<td>{{$chance->belongsToCar->car_name}}</td>
+							<td>{{$chance->belongsToWant->want_name}}</td>
+							<td>{{$chance->belongsToUserOnCar->car_creater}}</td>
+							<td>{{$chance->belongsToUserOnWant->want_creater}}</td>								
+							<td>{{$chance->belongsToUser->nick_name}}</td>											
+							<td>{{substr($chance->created_at, 0 ,10)}}</td>	
+							<td>{{$chance_status[1]}}</td>						
+							<td>{{$chance->belongsToShop->shop_name}}</td>									
 							<td class="center">
 								<div class="btn-group">
 									<span>
@@ -94,15 +94,33 @@
 										    {{ csrf_field() }}
             								<input type="hidden" name="chance_id" value="{{$chance->id}}">
 											<button class="btn btn-success" type="submit">
-											<i class="icon-edit icon-white"></i> 匹配
+											<i class="icon-edit icon-white"></i> 约车发起
 											</button>
 										</form>
 									</span>
-									<a class="btn btn-warning" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
-										<i class="icon-edit icon-white"></i> 详细信息
-									</a>
+									
+									<div class="btn-group">
+									
+									<div class="btn-group " role=”group”>
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+											更多
+											<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu pull-right">
+											<li>
+												<a class="btn btn-success" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
+													详情
+												</a>												
+											</li>											
+											<li>
+												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
+													<i class="icon-edit icon-white"></i> 废弃
+												</button>												
+											</li>
+										</ul>
+ 							 		</div>
 								</div>
-								<input id="current_chance_id" type="hidden" value="{{$chance->id}}">
+								</div>
 							</td>
 						</tr>
 						@endforeach							
