@@ -1,23 +1,25 @@
 <?php
-namespace App\Repositories\chance;
+namespace App\Repositories\Plan;
 
+use App\Plan;
+use App\Cars;
+use App\Want;
 use App\Chance;
-use App\chanceFollow;
 use Session;
 use Illuminate\Http\Request;
 use Gate;
 use Datatables;
-use chancebon;
+use Planbon;
 use PHPZen\LaravelRbac\Traits\Rbac;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use DB;
 use Debugbar;
 
-class chanceRepository implements chanceRepositoryContract
+class PlanRepository implements PlanRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'chance_code', 'car_id', 'want_id', 'car_customer_id', 'want_customer_id', 'car_creater', 'want_creater', 'creater', 'shop_id', 'status', 'created_at'];
+    protected $select_columns = ['id', 'Plan_code', 'car_id', 'want_id', 'car_customer_id', 'want_customer_id', 'car_creater', 'want_creater', 'creater', 'shop_id', 'status', 'created_at'];
 
     // 销售机会表列名称-注释对应
     protected $columns_annotate = [
@@ -34,20 +36,20 @@ class chanceRepository implements chanceRepositoryContract
     // 根据ID获得销售机会信息
     public function find($id)
     {
-        return Chance::select($this->select_columns)
+        return Plan::select($this->select_columns)
                    ->findOrFail($id);
     }
 
     // 根据不同参数获得销售机会列表
-    public function getAllChances($request)
+    public function getAllPlans($request)
     {   
-        // dd($request->chance_launch);
-        // $query = Chance::query();  // 返回的是一个 QueryBuilder 实例
-        $query = new Chance();       // 返回的是一个Chance实例,两种方法均可
+        // dd($request->Plan_launch);
+        // $query = Plan::query();  // 返回的是一个 QueryBuilder 实例
+        $query = new Plan();       // 返回的是一个Plan实例,两种方法均可
         // dd($request->all());
         // $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
 
-        $query = $query->chacneLaunch($request->chance_launch);
+        $query = $query->chacneLaunch($request->Plan_launch);
 
         return $query->whereIn('status', ['1', '2', '3'])
                      ->select($this->select_columns)
@@ -57,25 +59,31 @@ class chanceRepository implements chanceRepositoryContract
     // 创建销售机会
     public function create($requestData)
     {   
-        // dd($requestData->all());
-        // $car_id = 
-        if($this->isRepeat($requestData)){
-
-            $chance = $this->isRepeat($requestData);
-
-        }else{
-            // 添加销售机会并返回实例
-            $requestData['creater']     = Auth::id();
-            $requestData['chance_code'] = getCarCode('chance');
-
-            $chance = new Chance();
+        DB::transaction(function() use ($requestData){
+            // 添加销售机会并返回实例,同时销售机会对应车源、求购信息设置为约车状态           
+            $requestData['user_id']     = Auth::id();
+    
+            $plan   = new Plan();
+            $car    = Cars::findOrFail($requestData->car_id);
+            $want   = Want::findOrFail($requestData->want_id);
+            $chance = Chance::findOrFail($requestData->chance_id);
+            
             $input  =  array_replace($requestData->all());
-            $chance->fill($input);
 
-            $chance = $chance->create($input);
-        }        
-        // dd($chance);
-        return $chance;
+            //车源、求购、销售机会状态设置为已约车状态
+            $car->car_status       = '3';
+            $want->want_status     = '3';
+            $chance->status        = '4';
+            
+            $plan->fill($input);
+
+            $plan = $plan->create($input);
+            $car->save();
+            $want->save();
+            $chance->save();
+
+            return $plan;
+        });      
     }
 
     // 修改销售机会
@@ -84,10 +92,10 @@ class chanceRepository implements chanceRepositoryContract
         // dd($requestData->all());
         DB::transaction(function() use ($requestData, $id){
 
-            $chance         = Chance::select($this->select_columns)->findorFail($id); //销售机会对象
-            $follow_info = new chanceFollow(); //销售机会跟进对象
+            $Plan         = Plan::select($this->select_columns)->findorFail($id); //销售机会对象
+            $follow_info = new PlanFollow(); //销售机会跟进对象
 
-            $original_content = $chance->toArray(); //原有销售机会信息
+            $original_content = $Plan->toArray(); //原有销售机会信息
             $request_content  = $requestData->all(); //提交的销售机会信息
         
             /*p($original_content);
@@ -114,42 +122,42 @@ class chanceRepository implements chanceRepositoryContract
             dd($changed_content);*/
         
             // 销售机会编辑信息
-            $chance->vin_code       = $requestData->vin_code;
-            $chance->capacity       = $requestData->capacity;
-            $chance->gearbox        = $requestData->gearbox;
-            $chance->out_color      = $requestData->out_color;
-            $chance->inside_color   = $requestData->inside_color;
-            $chance->plate_date     = $requestData->plate_date;
-            $chance->plate_end      = $requestData->plate_end;
-            $chance->sale_number    = $requestData->sale_number;
-            $chance->safe_type      = $requestData->safe_type;
-            $chance->safe_end       = $requestData->safe_end;
-            $chance->mileage        = $requestData->mileage;
-            $chance->description    = $requestData->description;
-            $chance->top_price      = $requestData->top_price;
-            $chance->bottom_price   = $requestData->bottom_price;
-            $chance->pg_description = $requestData->pg_description;
-            $chance->guide_price    = $requestData->guide_price;
-            $chance->is_top         = $requestData->is_top;
-            $chance->recommend      = $requestData->recommend;
-            $chance->creater_id     = Auth::id();
+            $Plan->vin_code       = $requestData->vin_code;
+            $Plan->capacity       = $requestData->capacity;
+            $Plan->gearbox        = $requestData->gearbox;
+            $Plan->out_color      = $requestData->out_color;
+            $Plan->inside_color   = $requestData->inside_color;
+            $Plan->plate_date     = $requestData->plate_date;
+            $Plan->plate_end      = $requestData->plate_end;
+            $Plan->sale_number    = $requestData->sale_number;
+            $Plan->safe_type      = $requestData->safe_type;
+            $Plan->safe_end       = $requestData->safe_end;
+            $Plan->mileage        = $requestData->mileage;
+            $Plan->description    = $requestData->description;
+            $Plan->top_price      = $requestData->top_price;
+            $Plan->bottom_price   = $requestData->bottom_price;
+            $Plan->pg_description = $requestData->pg_description;
+            $Plan->guide_price    = $requestData->guide_price;
+            $Plan->is_top         = $requestData->is_top;
+            $Plan->recommend      = $requestData->recommend;
+            $Plan->creater_id     = Auth::id();
     
             // 销售机会跟进信息
-            $follow_info->chance_id       = $id;
+            $follow_info->Plan_id       = $id;
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
             $follow_info->description  = collect($update_content)->toJson();
-            $follow_info->prev_update  = $chance->updated_at;
+            $follow_info->prev_update  = $Plan->updated_at;
          
             $follow_info->save();
-            $chance->save(); 
+            $Plan->save(); 
 
             Session::flash('sucess', '修改销售机会成功');
-            return $chance;           
+            return $Plan;           
         });     
         // dd('sucess');
-        // dd($chance->toJson());
+        // dd($Plan->toJson());
         
     }
 
@@ -157,8 +165,8 @@ class chanceRepository implements chanceRepositoryContract
     public function destroy($id)
     {
         try {
-            $chance = Chance::findorFail($id);
-            $chance->delete();
+            $Plan = Plan::findorFail($id);
+            $Plan->delete();
             Session::flash('sucess', '删除销售机会成功');
            
         } catch (\Illuminate\Database\QueryException $e) {
@@ -172,7 +180,7 @@ class chanceRepository implements chanceRepositoryContract
         $car_id  = $requestData->car_id;
         $want_id = $requestData->want_id;
 
-        return chance::select(['id','chance_code', 'car_id', 'want_id', 'car_customer_id', 'want_customer_id', 'car_creater', 'want_creater', 'creater', 'status'])
+        return Plan::select(['id','Plan_code', 'car_id', 'want_id', 'car_customer_id', 'want_customer_id', 'car_creater', 'want_creater', 'creater', 'status'])
                        ->where('car_id', $car_id)
                        ->where('want_id', $want_id)
                        ->where('creater', Auth::id())
@@ -185,8 +193,8 @@ class chanceRepository implements chanceRepositoryContract
         // dd($requestData->all());
         DB::transaction(function() use ($requestData, $id){
 
-            $chance         = Chance::select($this->select_columns)->findorFail($id); //销售机会对象
-            $follow_info = new chanceFollow(); //销售机会跟进对象
+            $Plan         = Plan::select($this->select_columns)->findorFail($id); //销售机会对象
+            $follow_info = new PlanFollow(); //销售机会跟进对象
 
             if($requestData->status == 1){
 
@@ -198,20 +206,20 @@ class chanceRepository implements chanceRepositoryContract
             
 
             // 销售机会编辑信息
-            $chance->chance_status = $requestData->status;
+            $Plan->Plan_status = $requestData->status;
 
             // 销售机会跟进信息
-            $follow_info->chance_id       = $id;
+            $follow_info->Plan_id       = $id;
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
             $follow_info->description  = collect($update_content)->toJson();
-            $follow_info->prev_update  = $chance->updated_at;
+            $follow_info->prev_update  = $Plan->updated_at;
          
             $follow_info->save();
-            $chance->save(); 
+            $Plan->save(); 
 
-            return $chance;
+            return $Plan;
         });
     }
 
@@ -219,28 +227,28 @@ class chanceRepository implements chanceRepositoryContract
 
         DB::transaction(function() use ($id){
 
-            $chance         = Chance::select($this->select_columns)->findorFail($id); //销售机会对象
-            $follow_info = new chanceFollow(); //销售机会跟进对象
+            $Plan         = Plan::select($this->select_columns)->findorFail($id); //销售机会对象
+            $follow_info = new PlanFollow(); //销售机会跟进对象
 
             $update_content = collect([Auth::user()->nick_name.'例行跟进'])->toJson();
             
             // 销售机会编辑信息
-            $chance->creater_id = Auth::id();
-            $chance->chance_status = '1';
+            $Plan->creater_id = Auth::id();
+            $Plan->Plan_status = '1';
 
             // 销售机会跟进信息
-            $follow_info->chance_id       = $id;
+            $follow_info->Plan_id       = $id;
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
             $follow_info->description  = collect($update_content)->toJson();
-            $follow_info->prev_update  = $chance->updated_at;
+            $follow_info->prev_update  = $Plan->updated_at;
          
             $follow_info->save();
-            $chance->save();
-            $chance->touch();
+            $Plan->save();
+            $Plan->touch();
 
-            return $chance;
+            return $Plan;
         });
     }
 }
