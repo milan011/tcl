@@ -94,6 +94,12 @@ class Chance extends Model
       return $this->belongsTo('App\Cars', 'car_id', 'id')->select('id', 'name as car_name');
     }
 
+    // 定义Shop表与Chance表一对多关系
+    public function belongsToShop(){
+
+      return $this->belongsTo('App\Shop', 'shop_id', 'id')->select('id', 'name as shop_name');
+    }
+
     // 定义want表与customer表一对多关系(求购)
     public function belongsToCustomerOnWant(){
 
@@ -106,5 +112,11 @@ class Chance extends Model
 
       return $this->belongsTo('App\Customer', 'car_customer_id', 'id')
                   ->select('id', 'name as car_customer_name', 'telephone as car_customer_telephone');
+    }
+
+    // 定义Chance表与plan表一对多关系
+    public function hasManyPlans()
+    {
+        return $this->hasMany('App\Plan', 'chance_id', 'id');
     }
 }

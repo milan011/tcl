@@ -12,7 +12,7 @@ class Plan extends Model
      * @var string
      */
     // protected $table = 'users';
-    protected $table = 'tcl_shop';
+    protected $table = 'tcl_plan';
     protected $primaryKey ='id';
 
     /**
@@ -20,7 +20,7 @@ class Plan extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['name', 'nick_name', 'password', 'telephone', 'phone', 'qq_number', 'wx_number', 'address', 'creater_id', 'shop_id', 'status', 'user_img'];
+    protected $fillable = ['chance_id', 'user_id', 'plan_address', 'plan_time', 'plan_del', 'status'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -30,4 +30,16 @@ class Plan extends Model
     protected $hidden = [   
         'password', 'remember_token',
     ];
+
+    // 定义Plan表与Chance表一对多关系
+    public function belongsToChance(){
+
+      return $this->belongsTo('App\Chince', 'chance_id', 'id');
+    }
+
+    // 定义Plan表与User表一对多关系
+    public function belongsToUser(){
+
+      return $this->belongsTo('App\User', 'user_id', 'id');
+    }
 }

@@ -59,4 +59,10 @@ class Shop extends Model
 
       return $this->hasMany('App\Want', 'shop_id', 'id');
     }
+
+    // 定义Shop表与Chance表一对多关系
+    public function hasManyChances(){
+
+      return $this->hasMany('App\Chance', 'shop_id', 'id');
+    }
 }
