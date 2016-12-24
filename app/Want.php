@@ -84,7 +84,7 @@ class Want extends Model
             $query = $query->where('bottom_price',    '<=', $requestData['bottom_price']);
         }
         
-        $query = $query->where('car_status', '1');
+        $query = $query->where('want_status', '1');
         return $query;
     }
 
