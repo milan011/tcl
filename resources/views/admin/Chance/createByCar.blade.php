@@ -111,7 +111,7 @@
 				</span>
 				<span>
 					<i>车辆类别：</i>
-					{{$category_type[$waited_info->want_type]}}
+					{{$category_type[$waited_info->categorey_type]}}
 				</span>
 			</p>
 		</div>
@@ -174,7 +174,7 @@
             				<button class="btn">系统推荐</button>
             			</li>
             		  	<li style="display: inline-block;line-height:20px;float:right;">
-							<a class="btn btn-search" href="javascript:void(0);"><i class="halflings-icon search"></i>搜索车源</a>
+							<a class="btn btn-search" href="javascript:void(0);"><i class="halflings-icon search"></i>搜索求购信息</a>
 						</li>
             		</ul>
         		</div>
@@ -182,15 +182,14 @@
 				<table  class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>车源编号</th>
-							<th>车源名称</th>
-							<th>预售价</th>
-							<th>上牌时间</th>
+							<th>求购信息编号</th>
+							<th>求购信息名称</th>
+							<th>预期价格</th>
 							<th>里程</th>							
 							<th>变速箱</th>
 							<th>车身颜色</th>
-							<th>过户</th>
-							<th>状态</th>
+							<th>过户次数</th>
+							<th>客户备注</th>
 							<th>登记日期</th>
 							<th>门店</th>
 							<th>负责人</th>
@@ -200,15 +199,14 @@
 					<tbody>
 						@foreach ($match_info as $match)
     					<tr>
-							<td>{{$match->car_code}}</td>
+							<td>{{$match->want_code}}</td>
 							<td>{{$match->name}}</td>
-							<td>{{$match->top_price}}万</td>							
-							<td>{{substr($match->plate_date, 0 ,10)}}</td>
-							<td>{{$match->mileage}}万公里</td>							
+							<td>{{$match->bottom_price}}-{{$match->top_price}}万</td>							
+							<td>{{$mileage_config[$match->mileage]}}</td>							
 							<td>{{$gearbox[$match->gearbox]}}</td>							
 							<td>{{$out_color[$match->out_color]}}</td>						
 							<td>{{$match->sale_number}}</td>							
-							<td>{{$car_stauts_config['1']}}</td>							
+							<td>{{$match->remark}}</td>							
 							<td>{{substr($match->created_at, 0 ,10)}}</td>							
 							<td>{{$match->belongsToShop->shop_name}}</td>							
 							<td>{{$match->belongsToUser->nick_name}}</td>		
@@ -217,13 +215,14 @@
 									<span>
 										<form action="{{route('admin.chance.store')}}" method="post" style="display: inherit;margin:0px;">
 										    {{ csrf_field() }}
-            								
-            								<input type="hidden" name="wait_id" value="{{$waited_info->id}}">
-											<button class="btn btn-success" type="submit">
+            								           								
+            								<input type="hidden" name="want_id" value="{{$match->id}}">
+											<button class="btn btn-success create_chance" type="button">
 											<i class="icon-edit icon-white"></i> 确认匹配
 											</button>
+											<input type="hidden" name="car_id" value="{{$waited_info->id}}">
 										</form>
-									</span>								
+									</span>									
 								</div>
 							</td>
 						</tr>
@@ -247,15 +246,15 @@
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="car_code">车源编号</label>
+						<label class="control-label" for="want_code">车源编号</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" name="car_code" id="car_code" type="text" value="">
+						  	<input class="input-xlarge focused" name="cwant_code" id="want_code" type="text" value="">
 						</div>
 					</div>		
 					<div class="control-group  ">
-            	    	<label class="control-label" for="car_status">车源状态</label>
+            	    	<label class="control-label" for="want_status">车源状态</label>
             	    	<div class="controls">
-            	      		<select id="car_status" name="car_status" >
+            	      		<select id="want_status" name="want_status" >
             	      			<option value='1'>正常</option>                                           
             	      		</select>
             	    	</div>
@@ -263,7 +262,7 @@
 				</fieldset>
 				<div class="modal-footer">
 			<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
-			<input type="hidden" name="want_id" value="{{$waited_info->id}}">
+			<input type="hidden" name="car_id" value="{{$waited_info->id}}">
 			<button type="submit" class="btn btn-primary">搜索</button>
 		</div>
 			</form>				         
@@ -290,6 +289,35 @@
 			alert($('#condition').attr('action'));
 			$('#condition').submit();
 			return false;
+		});
+
+		$('.create_chance').click(function(){
+			var want_id      = $(this).prev("input[name='want_id']").val();
+			var car_id       = $(this).next("input[name='car_id']").val();
+			var request_url  = "{{route('admin.chance.store')}}";
+			/*alert(want_id);
+			alert(car_id);*/
+			// return false;
+			$.ajax({
+
+				method: 'POST',
+				url: request_url,
+				data: { want_id : want_id, car_id : car_id},
+				dataType: 'json',
+				headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+				success: function(data){
+
+					alert('匹配成功');
+					// location.reload();
+					// console.log(data);
+					window.location.href = '{{route('admin.chance.index')}}';
+					return false;
+				},
+				error: function(xhr, type){
+
+					alert('Ajax error!');
+				}
+			});
 		});
 	});	
 </script>

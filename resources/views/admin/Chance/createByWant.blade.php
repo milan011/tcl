@@ -330,9 +330,10 @@
 				headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
 				success: function(data){
 
-					alert(data.want_id);
+					alert('匹配成功');
 					// location.reload();
-					console.log(data);
+					// console.log(data);
+					window.location.href = '{{route('admin.chance.index')}}';
 					return false;
 				},
 				error: function(xhr, type){

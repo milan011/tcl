@@ -11,7 +11,7 @@
 			<a href="{{route('admin.index')}}">主页</a>  
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="#1f">门店管理</a></li>
+		<li><a href="javascript:void(0);">门店管理</a></li>
 	</ul>
 @endsection
 
