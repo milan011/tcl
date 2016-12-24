@@ -42,9 +42,11 @@ class PlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        dd('hehe');
+        $plans = $this->plan->getAllPlans($request);
+
+        dd($plans);
     }
 
     /**
@@ -66,6 +68,34 @@ class PlanController extends Controller
             'car_info', 
             'want_info'
         ));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     * 约车发起/确认
+     * @return \Illuminate\Http\Response
+     */
+    public function planLaunch(Request $request)
+    {
+        // dd($request->all());
+        $plan = $this->plan->planLaunch($request);
+
+        if($request->chance_status == 1){
+
+            return response()->json(array(
+                'data'       => $plan,
+                'msg'        => '发起约车成功',
+                'msg_change' => '待确认',
+            ));
+        }elseif($request->chance_status == 2){
+
+            return response()->json(array(
+                'data'       => $plan,
+                'msg_change' => '已确认',
+                'msg'        => '确认约车成功',
+            ));
+        }
+        
     }
 
     /**

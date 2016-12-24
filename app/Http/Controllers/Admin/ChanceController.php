@@ -53,7 +53,7 @@ class ChanceController extends Controller
         dd($request->all());*/
         $chances = $this->chance->getAllChances($request);
         // dd(lastSql());
-        // dd($chances[0]->status);
+        // dd($chances);
 
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
         $chance_status = config('tcl.chance_status'); //获取配置文件中销售机会状态
@@ -120,11 +120,11 @@ class ChanceController extends Controller
             $request['top_price']    = $waited_info->top_price;          
             $request['bottom_price'] = $waited_info->bottom_price;
             
-            $match_info = $this->want->getAllcars($request, $is_self);
+            $match_info = $this->want->getAllWants($request, $is_self);
             $createBy   = 'car';
 
-            // p($waited_info);
-            dd($match_info);
+            // dd($waited_info);
+            // dd($match_info);
              return view('admin.chance.createByCar',compact(
                 'waited_info', 
                 'match_info',
@@ -138,6 +138,7 @@ class ChanceController extends Controller
                 'safe_type',
                 'capacity',
                 'category_type',
+                'mileage_config',
                 'car_stauts_config'
             )); 
         }        
@@ -167,6 +168,7 @@ class ChanceController extends Controller
         $request['car_customer_id']  = $car_info->customer_id;
         $request['car_creater']      = $car_info->belongsToUser->user_id;
         $request['want_creater']     = $want_info->belongsToUser->user_id;
+        $request['shop_id']          = Auth::user()['shop_id'];
 
         // dd($request->all());
 
