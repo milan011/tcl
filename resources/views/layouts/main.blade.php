@@ -128,10 +128,10 @@
 						@endif
 						@ifUserCan('plan.check')
 						<li>
-							<a class="submenu" href="{{route('admin.plan.index')}}/index">
+							<a class="submenu" href="{{route('admin.plan.index')}}">
 								<i class="icon-sitemap"></i> 
 								<span class="hidden-tablet">
-									约车会管理
+									约车管理
 								</span>
 							</a>
 						</li>
