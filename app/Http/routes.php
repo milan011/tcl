@@ -51,7 +51,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::match(['get', 'post'], 'selfwant', 'WantController@selfwant')->name('admin.want.self'); 
     Route::match(['get', 'post'], 'chance/index', 'ChanceController@index')->name('admin.chance.index');  
     Route::post('chance/create', 'ChanceController@create')->name('admin.chance.create');  
-    Route::post('plan/create', 'PlanController@create')->name('admin.plan.create');  
+    Route::post('plan/create', 'PlanController@create')->name('admin.plan.create'); 
+    Route::post('plan/planLaunch', 'PlanController@planLaunch')->name('admin.plan.planLaunch');    
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
     Route::post('car/changeStatus', 'CarController@changeStatus')->name('admin.car.changeStatus');
     Route::post('want/follwQuickly', 'wantController@follwQuickly')->name('admin.want.follwQuickly');
