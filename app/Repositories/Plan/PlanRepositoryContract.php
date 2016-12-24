@@ -10,6 +10,8 @@ interface PlanRepositoryContract
 
     public function create($requestData);
 
+    public function planLaunch($requestData);
+
     public function update($id, $requestData);
 
     public function destroy($id);
