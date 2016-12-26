@@ -6,17 +6,35 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\Book\BookRepositoryContract;
 
 class BookController extends Controller
 {
+
+    protected $book;
+
+    public function __construct(
+
+        BookRepositoryContract $book
+    ) {
+
+        $this->book   = $book;
+        // $this->middleware('brand.create', ['only' => ['create']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $books = $this->book->getAllBooks($request);
+
+        /*p(lastSql());
+        dd($books);*/
+
+        return view('admin.book.index', compact('books'));
     }
 
     /**
@@ -24,9 +42,9 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -59,7 +77,11 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $books = $this->book->find($id);
+        dd($books);
+        return view('admin.car.edit', compact(
+            'books'
+        ));
     }
 
     /**
