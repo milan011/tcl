@@ -28,8 +28,9 @@
 <div class="row-fluid sortable">
 	<div class="box span12">
 		<div class="box-content">
-			<form class="form-horizontal" action="{{route('admin.book.create')}}" method="post">
+			<form class="form-horizontal" action="{{route('admin.plan.update', ['plan'=>$plan_info->id])}}" method="post">
 				{!! csrf_field() !!}
+				{{ method_field('PUT') }}
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label" for="car_code">车源编号</label>
