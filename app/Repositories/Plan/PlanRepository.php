@@ -19,7 +19,7 @@ use Debugbar;
 class PlanRepository implements PlanRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'chance_id', 'user_id', 'plan_time', 'plan_address', 'plan_del', 'status', 'created_at'];
+    protected $select_columns = ['id', 'chance_id', 'user_id', 'plan_time', 'plan_remark', 'plan_address', 'plan_del', 'status', 'created_at'];
 
     // 约车表列名称-注释对应
     protected $columns_annotate = [
@@ -53,6 +53,7 @@ class PlanRepository implements PlanRepositoryContract
 
         return $query->whereIn('status', ['1', '2', '3'])
                      ->select($this->select_columns)
+                     ->orderBy('plan_time', 'DESC')
                      ->paginate(10);
     }
 
@@ -71,8 +72,8 @@ class PlanRepository implements PlanRepositoryContract
             $input  =  array_replace($requestData->all());
 
             //车源、求购、约车状态设置为已约车状态
-            $car->car_status       = '3';
-            $want->want_status     = '3';
+            $car->car_status       = '2';
+            $want->want_status     = '2';
             $chance->status        = '4';
             
             $plan->fill($input);
@@ -104,75 +105,51 @@ class PlanRepository implements PlanRepositoryContract
         return $chance;    
     }
 
-    // 修改约车
+    // 看车结果反馈
     public function update($requestData, $id)
-    {
+    {   
+        /**
+        * 处理逻辑：
+        * 1、看车后有购买意向，则转为订车操作，对应车源、求购、销售机会状态设置为订车   
+        * 2、看车失败或没有看车，则该约车信息被废弃、对应销售机会也被废弃，对应车源信息和客源信息转为正常状态，
+        *   可以再次被匹配并发起约车。    
+        */
         // dd($requestData->all());
         DB::transaction(function() use ($requestData, $id){
 
-            $Plan         = Plan::select($this->select_columns)->findorFail($id); //约车对象
-            $follow_info = new PlanFollow(); //约车跟进对象
+            $plan   = Plan::select($this->select_columns)->findorFail($id); //约车对象
+            $chance = Chance::findOrFail($plan->chance_id);
+            $car    = Cars::findOrFail($chance->car_id);
+            $want   = Want::findOrFail($chance->want_id);
 
-            $original_content = $Plan->toArray(); //原有约车信息
-            $request_content  = $requestData->all(); //提交的约车信息
-        
-            /*p($original_content);
-            p($request_content);*/
-            $changed_content = getDiffArray($request_content, $original_content);//比较提交的数据与原数据差别
-            $update_content = collect(['例行跟进'])->toJson();  //定义约车跟进时信息变化情况,即跟进描述
-            // dd(json_decode($update_content));
-            if($changed_content->count() != 0){
-                $update_content = array();
-                foreach ($changed_content as $key => $value) {
-    
-                    /*p($this->columns_annotate[$key]);
-                    p($requestData->$key);
-                    p($original_content[$key]);*/
-    
-                    $update_content[] = Auth::user()->nick_name.'修改'.$this->columns_annotate[$key].'['.$original_content    [$key].']至['.$requestData->$key.']';
-                }
+            //dd($plan);
+            // dd($chance);
+            // dd($car);
+            // dd($want);
+            if($requestData->plan_del == 1){
+                //看车成功
+                $car->car_status   = '3';
+                $want->want_status = '3';
+                $chance->status    = '5';
+
+                $plan->status = '1';
+                $plan->plan_remark = $requestData->plan_remark;
+            }else{
+                // 看车失败
+                $car->car_status   = '1';
+                $want->want_status = '1';
+                $chance->status    = '0';
+
+                $plan->status = '0';
+                $plan->plan_remark = $requestData->plan_remark;
             }
 
-        
-            /*dd($follow_info);
-            dd(collect($update_content)->toJson());
-            dd(json_decode(collect($update_content)->toJson())); //json_decode将json再转回数组
-            dd($changed_content);*/
-        
-            // 约车编辑信息
-            $Plan->vin_code       = $requestData->vin_code;
-            $Plan->capacity       = $requestData->capacity;
-            $Plan->gearbox        = $requestData->gearbox;
-            $Plan->out_color      = $requestData->out_color;
-            $Plan->inside_color   = $requestData->inside_color;
-            $Plan->plate_date     = $requestData->plate_date;
-            $Plan->plate_end      = $requestData->plate_end;
-            $Plan->sale_number    = $requestData->sale_number;
-            $Plan->safe_type      = $requestData->safe_type;
-            $Plan->safe_end       = $requestData->safe_end;
-            $Plan->mileage        = $requestData->mileage;
-            $Plan->description    = $requestData->description;
-            $Plan->top_price      = $requestData->top_price;
-            $Plan->bottom_price   = $requestData->bottom_price;
-            $Plan->pg_description = $requestData->pg_description;
-            $Plan->guide_price    = $requestData->guide_price;
-            $Plan->is_top         = $requestData->is_top;
-            $Plan->recommend      = $requestData->recommend;
-            $Plan->creater_id     = Auth::id();
-    
-            // 约车跟进信息
-            $follow_info->Plan_id       = $id;
-            $follow_info->user_id      = Auth::id();
-            $follow_info->follow_type  = '1';
-            $follow_info->operate_type = '2';
-            $follow_info->description  = collect($update_content)->toJson();
-            $follow_info->prev_update  = $Plan->updated_at;
-         
-            $follow_info->save();
-            $Plan->save(); 
+            $car->save();
+            $want->save();
+            $chance->save();
+            $plan->save();
 
-            Session::flash('sucess', '修改约车成功');
-            return $Plan;           
+            return $plan;           
         });     
         // dd('sucess');
         // dd($Plan->toJson());
