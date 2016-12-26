@@ -53,6 +53,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('chance/create', 'ChanceController@create')->name('admin.chance.create');  
     Route::post('plan/create', 'PlanController@create')->name('admin.plan.create'); 
     Route::post('plan/planLaunch', 'PlanController@planLaunch')->name('admin.plan.planLaunch');    
+    Route::post('book/create', 'BookController@create')->name('admin.book.create');    
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
     Route::post('car/changeStatus', 'CarController@changeStatus')->name('admin.car.changeStatus');
     Route::post('want/follwQuickly', 'wantController@follwQuickly')->name('admin.want.follwQuickly');
@@ -86,7 +87,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('brand', 'BrandController');  
     Route::resource('chance', 'ChanceController');  
     Route::resource('plan', 'PlanController');  
-    Route::resource('booking', 'BookingController');  
+    Route::resource('book', 'BookController');  
     Route::resource('transcation', 'TranscationController');  
 });
 
