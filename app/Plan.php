@@ -20,7 +20,7 @@ class Plan extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['chance_id', 'user_id', 'plan_address', 'plan_time', 'plan_del', 'status'];
+    protected $fillable = ['chance_id', 'user_id', 'plan_address', 'plan_remark', 'plan_time', 'plan_del', 'status'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -34,7 +34,7 @@ class Plan extends Model
     // 定义Plan表与Chance表一对多关系
     public function belongsToChance(){
 
-      return $this->belongsTo('App\Chince', 'chance_id', 'id');
+      return $this->belongsTo('App\Chance', 'chance_id', 'id');
     }
 
     // 定义Plan表与User表一对多关系
