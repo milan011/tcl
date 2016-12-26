@@ -124,5 +124,11 @@ class AccessServiceProvider extends ServiceProvider
             \App\Repositories\Plan\PlanRepositoryContract::class,
             \App\Repositories\Plan\PlanRepository::class
         );
+
+        //绑定PlanRepository
+        $this->app->bind(
+            \App\Repositories\Book\BookRepositoryContract::class,
+            \App\Repositories\Book\BookRepository::class
+        );
     }
 }
