@@ -136,16 +136,6 @@
 							</a>
 						</li>
 						@endif
-						@ifUserCan('booking.check')
-						<li>
-							<a class="submenu" href="{{route('admin.book.index')}}">
-								<i class="icon-sitemap"></i> 
-								<span class="hidden-tablet">
-									订车管理
-								</span>
-							</a>
-						</li>
-						@endif
 						@ifUserCan('transcation.check')
 						<li>
 							<a class="submenu" href="{{route('admin.transcation.index')}}">
