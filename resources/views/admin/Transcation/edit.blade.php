@@ -98,8 +98,8 @@
                 	<label class="control-label" for="plan_del">看车结果</label>
                 	<div class="controls">
                   		<select id="plan_del" name="plan_del" >          				  							
-					  		<option  value="0">未成功</option>	
-					  		<option  value="1">成功</option>	                    
+					  		<option  value="1">成功</option>	
+					  		<option  value="0">未成功</option>	                    
                   		</select>
                 	</div>
               		</div>
@@ -113,8 +113,7 @@
 				  	<input type="hidden" name="car_id" value="{{$car_info->id}}">
 				  	<input type="hidden" name="want_id" value="{{$want_info->id}}">
 				  	<input type="hidden" name="chance_id" value="{{$chance_info->id}}">
-				  	<input type="hidden" name="plan_id" value="{{$plan_info->id}}">
-					<button type="submit"  class="btn btn-primary" id="del">保存并废弃</button>
+					<button type="submit"  class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>
 				</fieldset>
@@ -129,41 +128,12 @@
 <script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script> 
 <script type="text/javascript">
 	$(document).ready(function(){
-
-		var plan_status = $('#plan_del').val();
-
-		if(plan_status == 1){
-			var create_transcation = '{{route('admin.transcation.create')}}';
-
-			$('#del').text('转交易流程');
-			$('form').attr('action', create_transcation);
-		}
-
 		$('.date-picker').datepicker({
             language: 'zh-CN',
             autoclose: true,
             format: 'yyyy-mm-dd',
             todayHighlight: true
         });	
-
-        $('#plan_del').change(function(){
-        	var plan_status        = $(this).val();
-        	var create_transcation = '{{route('admin.transcation.create')}}';
-        	var update_plan        = "{{route('admin.plan.update', ['plan'=>$plan_info->id])}}";
-
-        	if(plan_status == 1){
-        		$("input[name='_method']").val('POST');
-        		$('form').attr('action', create_transcation);
-        		$('#del').text('转交易流程');
-        	}
-
-        	if(plan_status == 0){
-        		$("input[name='_method']").val('PUT');
-        		$('form').attr('action', update_plan);
-        		$('#del').text('保存并废弃');
-        	}
-        	// alert($('form').attr('action'));
-        });
 	});
 </script>
 @endsection
