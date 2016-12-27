@@ -51,7 +51,7 @@ class PlanRepository implements PlanRepositoryContract
 
         // $query = $query->chacneLaunch($request->Plan_launch);
 
-        return $query->whereIn('status', ['1', '2', '3'])
+        return $query->where('status', '1')
                      ->select($this->select_columns)
                      ->orderBy('plan_time', 'DESC')
                      ->paginate(10);
@@ -115,7 +115,17 @@ class PlanRepository implements PlanRepositoryContract
         *   可以再次被匹配并发起约车。    
         */
         // dd($requestData->all());
-        DB::transaction(function() use ($requestData, $id){
+        $plan   = Plan::select($this->select_columns)->findorFail($id); //约车对象
+
+        $plan->status = '0';
+        $plan->plan_remark = $requestData->plan_remark;
+
+        Session::flash('sucess', '革命尚未成功，同志仍需努力');
+        $plan->save();
+
+        return $plan;
+
+        /*DB::transaction(function() use ($requestData, $id){
 
             $plan   = Plan::select($this->select_columns)->findorFail($id); //约车对象
             $chance = Chance::findOrFail($plan->chance_id);
@@ -150,10 +160,9 @@ class PlanRepository implements PlanRepositoryContract
             $plan->save();
 
             return $plan;           
-        });     
+        }); */    
         // dd('sucess');
-        // dd($Plan->toJson());
-        
+        // dd($Plan->toJson());       
     }
 
     // 删除约车
