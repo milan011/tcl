@@ -120,9 +120,9 @@ class Chance extends Model
         return $this->hasMany('App\Plan', 'chance_id', 'id');
     }
 
-    // 定义Chance表与book表一对多关系
-    public function hasManyBooks()
+    // 定义Chance表与Transcation表一对多关系
+    public function hasManyTranscations()
     {
-        return $this->hasMany('App\Book', 'chance_id', 'id');
+        return $this->hasMany('App\Transcation', 'chance_id', 'id');
     }
 }

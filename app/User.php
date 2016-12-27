@@ -162,8 +162,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     // 定义User表与book表一对多关系
-    public function hasManyBooks()
+    public function hasManyTranscations()
     {
-        return $this->hasMany('App\Book', 'user_id', 'id');
+        return $this->hasMany('App\Transcation', 'user_id', 'id');
     }
 }
