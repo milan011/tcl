@@ -12,7 +12,6 @@ use App\Repositories\Plan\PlanRepositoryContract;
 use App\Repositories\Car\CarRepositoryContract;
 use App\Repositories\Want\WantRepositoryContract;
 use App\Repositories\Chance\ChanceRepositoryContract;
-use App\Repositories\Book\BookRepositoryContract;
 use App\Http\Requests\Plan\UpdatePlanRequest;
 use App\Http\Requests\Plan\StorePlanRequest;
 
@@ -23,22 +22,19 @@ class PlanController extends Controller
     protected $car;
     protected $want;
     protected $chance;
-    protected $book;
 
     public function __construct(
 
         PlanRepositoryContract $plan,
         CarRepositoryContract $car,
         WantRepositoryContract $want,
-        ChanceRepositoryContract $chance,
-        BookRepositoryContract $book
+        ChanceRepositoryContract $chance
     ) {
 
         $this->plan   = $plan;
         $this->car    = $car;
         $this->want   = $want;
         $this->chance = $chance;
-        $this->book   = $book;
 
 
         // $this->middleware('brand.create', ['only' => ['create']]);
@@ -168,10 +164,13 @@ class PlanController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->all());
-        $book_created = (object) false;
-        $book_id      = (object) '';
+        $plan = $this->plan->update($request, $id);
+        
+        return redirect()->route('admin.plan.index')->withInput();
+        /*$book_created = (object) false;
+        $book_id      = (object) '';*/
 
-        DB::transaction(function() use ($request, $id, $book_created, $book_id){
+        /*DB::transaction(function() use ($request, $id, $book_created, $book_id){
             if($request->plan_del == '1'){
 
                 $book = $this->book->create($request->chance_id);   
@@ -193,9 +192,9 @@ class PlanController extends Controller
 
             return redirect()->route('admin.book.edit', ['plan'=>$book_id->scalar])->withInput();
         }else{
-            // dd('xixi');
+            dd('xixi');
             return redirect()->route('admin.plan.index')->withInput();
-        }
+        }*/
         
     }
 
