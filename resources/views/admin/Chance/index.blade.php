@@ -134,7 +134,11 @@
 												<!-- <i class="icon-edit icon-white"></i>  -->
 													已确认
 												</button>
-											 	@endif												
+											 	@endif
+											@elseif($chance->status == 4)												<button class="btn btn-success" type="submit">
+												<i class="icon-edit icon-white"></i> 
+													约车
+												</button>
 											@endif
 										</form>
 									</span>

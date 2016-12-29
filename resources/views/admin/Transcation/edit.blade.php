@@ -14,99 +14,129 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.chance.index')}}">约车管理</a> 
+		<a href="{{route('admin.chance.index')}}">交易管理</a> 
 		<i class="icon-angle-right"></i>
 	</li>
-	<li><a href="javascript:void(0);">约车反馈</a></li>
+	<li><a href="javascript:void(0);">交易跟进</a></li>
 </ul>
 @endsection
 <!-- 主体 -->
 @section('content')
 
 @include('layouts.message')
-
+<div class="row-fluid sortable">		
+		<div class="box span12">
+			<div class="box-content">
+				<div class="box-header" data-original-title>
+				<h2>
+					<i class="halflings-icon user"></i><span class="break"></span>销售机会详情
+				</h2>								
+				</div>
+				<table  class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th></th>
+							<th>编号</th>
+							<th>名称</th>
+							<th>客户</th>
+							<th>客户电话</th>
+							<th>负责人</th>
+							<th>负责人电话</th>
+							<th>备注</th>
+						</tr>
+					</thead> 
+					<tbody>
+    					<tr>
+    						<td>车源信息</td>
+							<td>{{$car_info->car_code}}</td>
+							<td>{{$car_info->name}}</td>
+							<td>{{$car_info->belongsToCustomer->customer_name}}</td>	
+							<td>110</td>
+							<td>{{$car_info->belongsToUser->nick_name}}</td>
+							<td>{{$car_info->belongsToUser->creater_telephone}}</td>
+							<td>{{$car_info->description}}</td>										
+						</tr>
+						<tr>
+    						<td>求购信息</td>
+    						<td>{{$want_info->want_code}}</td>														
+							<td>{{$want_info->name}}</td>									
+							<td>{{$want_info->belongsToCustomer->customer_name}}</td>
+							<td>119</td>
+							<td>{{$want_info->belongsToUser->nick_name}}</td>
+							<td>{{$want_info->belongsToUser->creater_telephone}}</td>
+							<td>{{$want_info->remark}}</td>							
+						</tr>
+												
+					</tbody>
+				</table>		
+			</div>			
+		</div>
+	</div>
 <div class="row-fluid sortable">
 	<div class="box span12">
 		<div class="box-content">
-			<form class="form-horizontal" action="{{route('admin.plan.update', ['plan'=>$plan_info->id])}}" method="post">
+			<form class="form-horizontal" action="{{route('admin.transcation.update', ['transcation'=>$transcations->id])}}" method="post">
 				{!! csrf_field() !!}
 				{{ method_field('PUT') }}
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="car_code">车源编号</label>
+						<label class="control-label" for="deal_price">成交价</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" readonly="readonly"  name="car_code" type="text" value="{{$car_info->car_code}}">
+						  	<input class="input-xlarge focused"  name="deal_price" type="text" value="{{$transcations->deal_price}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
-						<label class="control-label" for="car_name">车源名称</label>
+						<label class="control-label" for="earnest">定金</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" readonly="readonly"  name="car_name" type="text" value="{{$car_info->name}}">
+						  	<input class="input-xlarge focused" name="earnest" type="text" value="{{$transcations->earnest}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
-						<label class="control-label" for="car_customer">车源客户</label>
+						<label class="control-label" for="first_pay">首款</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" readonly="readonly"  name="car_customer" type="text" value="{{$car_info->belongsToCustomer->customer_name}}">
+						  	<input class="input-xlarge focused"  name="first_pay" type="text" value="{{$transcations->first_pay}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
-						<label class="control-label" for="car_creater">车源负责人</label>
+						<label class="control-label" for="last_pay">尾款</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" readonly="readonly"  name="car_creater" type="text" value="{{$car_info->belongsToUser->nick_name}}">
+						  	<input class="input-xlarge focused"  name="last_pay" type="text" value="{{$transcations->last_pay}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
-						<label class="control-label" for="want_code">求购编号</label>
+						<label class="control-label" for="commission">应收佣金</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" readonly="readonly"  name="want_code" type="text" value="{{$want_info->want_code}}">
+						  	<input class="input-xlarge focused"   name="commission" type="text" value="{{$transcations->commission}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
-						<label class="control-label" for="want_code">求购名称</label>
+						<label class="control-label" for="commission_infact">实收佣金</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" readonly="readonly"  name="want_code" type="text" value="{{$want_info->name}}">
+						  	<input class="input-xlarge focused"   name="commission_infact" type="text" value="{{$transcations->commission_infact}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
-						<label class="control-label" for="want_customer">求购客户</label>
+						<label class="control-label" for="sale_card">压卖方手续</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" readonly="readonly"  name="want_customer" type="text" value="{{$want_info->belongsToCustomer->customer_name}}">
+						  	<input class="input-xlarge focused"   name="sale_card" type="text" value="{{$transcations->sale_card}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
-						<label class="control-label" for="want_creater">求购负责人</label>
+					<label class="control-label" for="done_time">预计成交时间</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" readonly="readonly"  name="want_creater" type="text" value="{{$want_info->belongsToUser->nick_name}}">
-						</div>
-				  	</div>
-
-				  	<div class="control-group">
-					<label class="control-label" for="plan_time">看车日期</label>
-						<div class="controls">
-							<input type="text" class="input-xlarge" readonly="readonly" name="plan_time" id="plan_time" value="{{$plan_info->plan_time}}">
+							<input type="text" class="input-xlarge date-picker"  name="done_time" id="done_time" value="{{$transcations->done_time}}">
 						</div>
 					</div>
-					  
-					<div class="control-group">
-						<label class="control-label" for="plan_address">看车地址</label>
+              		<div class="control-group">
+						<label class="control-label" for="commission_remark">佣金备注</label>
 						<div class="controls">
-						 	<input id="address" name="plan_address" readonly="readonly" value="{{$plan_info->plan_address}}" />
+						 	<textarea id="address" name="commission_remark" class="autogrow"></textarea>
 						</div>
 				  	</div>
-				  	<div class="control-group  ">
-                	<label class="control-label" for="plan_del">看车结果</label>
-                	<div class="controls">
-                  		<select id="plan_del" name="plan_del" >          				  							
-					  		<option  value="1">成功</option>	
-					  		<option  value="0">未成功</option>	                    
-                  		</select>
-                	</div>
-              		</div>
-              		<div class="control-group">
-						<label class="control-label" for="plan_remark">情况反馈</label>
+				  	<div class="control-group">
+						<label class="control-label" for="violate">违章未处理</label>
 						<div class="controls">
-						 	<textarea id="address" name="plan_remark" class="autogrow"></textarea>
+						 	<textarea id="address" name="violate" class="autogrow"></textarea>
 						</div>
 				  	</div>			   			
 				  <div class="form-actions">
