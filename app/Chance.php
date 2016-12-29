@@ -39,6 +39,11 @@ class Chance extends Model
     {
         $user_id = Auth::id();
 
+        if($user_id == 1){
+
+            return $query;
+        }
+
         $query = $query->where(function($query) use ($user_id){
 
             $query = $query->where('car_creater', $user_id);
@@ -85,13 +90,13 @@ class Chance extends Model
     // 定义Want表与Chance表一对多关系
     public function belongsToWant(){
 
-      return $this->belongsTo('App\Want', 'want_id', 'id')->select('id', 'name as want_name');
+      return $this->belongsTo('App\Want', 'want_id', 'id')->select('id', 'want_status', 'name as want_name');
     }
 
     // 定义Car表与Chance表一对多关系
     public function belongsToCar(){
 
-      return $this->belongsTo('App\Cars', 'car_id', 'id')->select('id', 'name as car_name');
+      return $this->belongsTo('App\Cars', 'car_id', 'id')->select('id', 'car_status', 'name as car_name');
     }
 
     // 定义Shop表与Chance表一对多关系
