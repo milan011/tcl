@@ -20,7 +20,7 @@ use Debugbar;
 class TranscationRepository implements TranscationRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id'];
+    protected $select_columns = ['id','chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id','created_at'];
 
     // 订车表列名称-注释对应
     protected $columns_annotate = [
@@ -37,7 +37,7 @@ class TranscationRepository implements TranscationRepositoryContract
     // 根据ID获得订车信息
     public function find($id)
     {
-        return Transaction::select($this->select_columns)
+        return Transcation::select($this->select_columns)
                    ->findOrFail($id);
     }
 
@@ -46,12 +46,12 @@ class TranscationRepository implements TranscationRepositoryContract
     {   
         // dd($request->Transaction_launch);
         // $query = Transaction::query();  // 返回的是一个 QueryBuilder 实例
-        $query = new Transaction();       // 返回的是一个Transaction实例,两种方法均可
+        $query = new Transcation();       // 返回的是一个Transaction实例,两种方法均可
         // dd($request->all());
         // $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
 
         // $query = $query->chacneLaunch($request->Transaction_launch);
-
+        $query = $query->where('trade_status', '1');
         return $query->select($this->select_columns)
                      ->orderBy('created_at', 'DESC')
                      ->paginate(10);
@@ -96,54 +96,58 @@ class TranscationRepository implements TranscationRepositoryContract
         }                     
     }
 
-    // 看车结果反馈
+    // 交易修改
     public function update($requestData, $id)
     {   
-        /**
-        * 处理逻辑：
-        * 1、看车后有购买意向，则转为订车操作，对应车源、求购、销售机会状态设置为订车   
-        * 2、看车失败或没有看车，则该订车信息被废弃、对应销售机会也被废弃，对应车源信息和客源信息转为正常状态，
-        *   可以再次被匹配并发起订车。    
-        */
-        // dd($requestData->all());
-        DB::transaction(function() use ($requestData, $id){
+        // dd($requestData->all()); 
+        if(isset($requestData->complete) && $requestData->complete == '1'){
 
-            $plan   = Plan::select($this->select_columns)->findorFail($id); //订车对象
-            $chance = Chance::findOrFail($plan->chance_id);
-            $car    = Cars::findOrFail($chance->car_id);
-            $want   = Want::findOrFail($chance->want_id);
+            DB::transaction(function() use ($requestData, $id){
 
-            //dd($plan);
-            // dd($chance);
-            // dd($car);
-            // dd($want);
-            if($requestData->plan_del == 1){
-                //看车成功
-                $car->car_status   = '3';
-                $want->want_status = '3';
-                $chance->status    = '5';
+                $transcation = Transcation::findorFail($id); //交易对象
+                $plan        = Plan::where('chance_id', $transcation->chance_id)->first();
+                $chance      = $transcation->belongsToChance; //销售机会对象
+                $car         = $chance->belongsToCar;         //车源
+                $want        = $chance->belongsToWant;        //求购信息
+    
+                // dd($transcation);
+                /*dd($plan);
+                dd($car);
+                dd($want);
+                dd($chance);*/
+                $requestData['trade_status'] = '2';
+                $input =  array_replace($requestData->all());
+    
+                // dd($transcation->fill($input));
+                $transcation->fill($input)->save();
+            
+                $chance->status    = '6';
+                $car->car_status   = '6';
+                $want->want_status = '6';
+                $plan->plan_del    = '2';
+    
+                $chance->save();
+                $car->save();
+                $want->save();
+                $plan->save();
+                $transcation->save(); 
+    
+                Session::flash('sucess', '恭喜您完成交易');
+                return $transcation;
+            });
+        }else{
 
-                $plan->plan_status = '1';
-                $plan->plan_remark = $requestData->plan_remark;
-            }else{
-                // 看车失败
-                $car->car_status   = '1';
-                $want->want_status = '1';
-                $chance->status    = '0';
+            $transcation  = Transcation::findorFail($id);
+            $input =  array_replace($requestData->all());
 
-                $plan->plan_status = '0';
-                $plan->plan_remark = $requestData->plan_remark;
-            }
-
-            $car->save();
-            $want->save();
-            $chance->save();
-            $plan->save();
-
-            return $plan;           
-        });     
-        // dd('sucess');
-        // dd($Plan->toJson());       
+            // dd($transcation->fill($input));
+            $transcation->fill($input)->save();
+            // dd($transcation);
+            Session::flash('sucess', '修改交易成功');
+            return $transcation;
+            
+        }
+         
     }
 
     // 删除订车
@@ -162,6 +166,41 @@ class TranscationRepository implements TranscationRepositoryContract
     //判断销售机会是否重复
     public function isRepeat($chance_id){
 
-        return Transaction::where('chance_id', $chance_id)->first();
+        return Transcation::where('chance_id', $chance_id)->first();
+    }
+
+    //状态转换，暂时只有激活-废弃转换
+    public function statusChange($requestData, $id){
+        /**
+        * 交易被废弃后，其对应销售机会将被废弃，对应车源、求购信息转为正常状态   
+        */
+        // dd($requestData->all());
+        DB::transaction(function() use ($requestData, $id){
+
+            $transcation = Transcation::findorFail($id); //交易对象
+            $plan        = Plan::where('chance_id', $transcation->chance_id)->first();
+            $chance      = $transcation->belongsToChance; //销售机会对象
+            $car         = $chance->belongsToCar;         //车源
+            $want        = $chance->belongsToWant;        //求购信息
+
+            // dd($transcation);
+            /*dd($plan);
+            dd($car);
+            dd($want);
+            dd($chance);*/
+
+            $transcation->trade_status = '0';
+            $chance->status            = '0';
+            $car->car_status           = '1';
+            $want->want_status         = '1';
+            $plan->plan_del            = '0';
+
+            $chance->save();
+            $car->save();
+            $want->save();
+            $transcation->save(); 
+
+            return $transcation;
+        });
     }
 }

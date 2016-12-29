@@ -51,6 +51,7 @@ class chanceRepository implements chanceRepositoryContract
 
         return $query->whereIn('status', ['1', '2', '3'])
                      ->select($this->select_columns)
+                     ->orderBy('created_at', 'DESC')
                      ->paginate(10);
     }
 
