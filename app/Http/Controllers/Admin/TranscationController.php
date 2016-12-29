@@ -14,6 +14,7 @@ use App\Repositories\Want\WantRepositoryContract;
 use App\Repositories\Chance\ChanceRepositoryContract;
 use App\Http\Requests\Transcation\UpdateTranscationRequest;
 use App\Http\Requests\Transcation\StoreTranscationRequest;
+use App\Http\Requests\Transcation\CompleteTranscationRequest;
 
 class TranscationController extends Controller
 {
@@ -47,11 +48,11 @@ class TranscationController extends Controller
     {
         $transcations = $this->transcation->getAllTransactions();
 
-        p(lastSql());
+        /*p(lastSql());
         dd($transcations);
-        dd($transcation[0]->belongsToChance);
+        dd($transcation[0]->belongsToChance);*/
 
-        return view('admin.transcation.index', compact('transcation'));
+        return view('admin.transcation.index', compact('transcations'));
     }
 
     /**
@@ -123,19 +124,53 @@ class TranscationController extends Controller
      */
     public function edit($id)
     {
-        dd('sb 重复了吧');
+        $transcations = $this->transcation->find($id);
+        $chance_info  = $this->chance->find($transcations->id);
+        $car_info     = $this->car->find($chance_info->car_id);
+        $want_info    = $this->want->find($chance_info->want_id);
+
+        // dd($chance_info);
+        // dd($car_info);
+        // dd($want_info);
+        // dd($transcations);
+
+        return view('admin.transcation.edit', compact(
+            'transcations',
+            'car_info',
+            'want_info',
+            'chance_info'
+        ));
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * 交易跟进
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateTranscationRequest $transcationRequest, $id)
     {
-        //
+        // dd($transcationRequest->all());
+        $transcation = $this->transcation->update($transcationRequest, $id);
+        
+        return redirect()->route('admin.transcation.index')->withInput();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * 交易完成
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function completeDel(CompleteTranscationRequest $transcationRequest, $id)
+    {
+        // dd('hehe del');
+        // dd($transcationRequest->all());
+        $transcation = $this->transcation->update($transcationRequest, $id);
+        
+        return redirect()->route('admin.transcation.index')->withInput();
     }
 
     /**
@@ -147,5 +182,61 @@ class TranscationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * 修改交易状态
+     * 暂时只有激活-废弃转换
+     * @return \Illuminate\Http\Response
+     */
+    public function changeStatus(Request $request)
+    {    
+        /*if($request->ajax()){
+            echo "zhen de shi AJAX";
+        }
+        p($request->input('id'));
+        p($request->input('status'));
+        p($request->method());exit;*/
+
+        /*$car = $this->car->find($request->id);
+
+        $car->status = $request->input('status');
+
+        $car->save();*/
+
+        $this->transcation->statusChange($request, $request->input('id'));
+
+        return response()->json(array(
+            'status' => 1,
+            'msg' => 'ok',
+        ));      
+    }
+
+    /**
+     * 交易完成
+     * @return \Illuminate\Http\Response
+     */
+    public function complete(Request $request)
+    {    
+        // dd(Session::all());
+
+        $transcation_id = isset($request->transcation_id) ? $request->transcation_id : old('transcation_id');
+        // dd($transcation_id);
+        $transcations = $this->transcation->find($transcation_id);
+        $chance_info  = $this->chance->find($transcations->id);
+        $car_info     = $this->car->find($chance_info->car_id);
+        $want_info    = $this->want->find($chance_info->want_id);
+
+        // dd($chance_info);
+        // dd($car_info);
+        // dd($want_info);
+        // dd($transcations);
+
+        return view('admin.transcation.complete', compact(
+            'transcations',
+            'car_info',
+            'want_info',
+            'chance_info'
+        ));     
     }
 }

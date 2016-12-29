@@ -62,7 +62,7 @@ class PlanController extends Controller
      */
     public function create(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $chance_info = $this->chance->find($request->chance_id);
         $car_info    = $this->car->find($request->car_id);
         $want_info   = $this->want->find($request->want_id);
