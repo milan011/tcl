@@ -129,7 +129,7 @@ class Cars extends Model
     // 定义Car表与car_follow表一对多关系
     public function hasManyFollow()
     {
-        return $this->hasMany('App\CarFollow', 'car_id', 'id');
+        return $this->hasMany('App\CarFollow', 'car_id', 'id')->orderBy('created_at', 'DESC');
     }
 
     // 定义Car表与images表一对多关系

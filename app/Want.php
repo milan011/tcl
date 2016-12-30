@@ -81,7 +81,7 @@ class Want extends Model
         }
         
         if(isset($requestData['bottom_price'])){
-            $query = $query->where('bottom_price',    '<=', $requestData['bottom_price']);
+            $query = $query->where('bottom_price',    '>=', $requestData['bottom_price']);
         }
         
         $query = $query->where('want_status', '1');

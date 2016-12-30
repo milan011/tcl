@@ -171,5 +171,34 @@
 	 */
 	function getDiffArray($arr, $arr_compare){	
 
-		return collect($arr)->diff(collect($arr_compare))->forget(['_token', '_method']);
+		$update_info  = collect($arr)->forget(['_token', '_method']);
+		$current_info = collect($arr_compare);
+
+		/*dd($update_info);
+		dd($current_info);
+		dd($update_info->diffKeys($current_info));*/
+
+		foreach ($update_info as $key => $value) {
+			
+			if($current_info[$key] == $value){
+
+				$update_info->forget($key);
+			}
+		}
+		// exit;
+		// dd($update_info);
+
+		return $update_info;
+		// return collect($arr)->diff(collect($arr_compare))->forget(['_token', '_method']);
+	}
+
+	//json解码
+	function decodeUnicode($str){
+
+		return preg_replace_callback('/\\\\u([0-9a-f]{4})/i',
+		create_function(
+		'$matches',
+		'return mb_convert_encoding(pack("H*", $matches[1]), "UTF-8", "UCS-2BE");'
+		),
+		$str);
 	}
