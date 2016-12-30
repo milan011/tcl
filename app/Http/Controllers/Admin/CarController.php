@@ -60,6 +60,7 @@ class CarController extends Controller
      */
     public function carself(Request $request)
     {
+        
         // dd(array_filter($request->all()));
         $cars = $this->car->getAllcars($request, true);
         /*p(lastSql());

@@ -46,7 +46,7 @@ class TranscationController extends Controller
      */
     public function index()
     {
-        $transcations = $this->transcation->getAllTransactions();
+        $transcations = $this->transcation->getAllTranscations();
 
         /*p(lastSql());
         dd($transcations);

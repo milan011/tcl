@@ -99,6 +99,7 @@ class WantController extends Controller
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
         $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $mileage_config = config('tcl.mileage'); //获取配置文件中车源状态
         $city_id        = $this->shop->find(Auth::user()->shop_id)->city_id; //车源所在城市
         $provence_id    = $this->shop->find(Auth::user()->shop_id)->provence_id; //车源所在省份
         // dd($city_id);
@@ -115,7 +116,8 @@ class WantController extends Controller
             'provence_id',
             'safe_type',
             'capacity',
-            'customer_res'
+            'customer_res',
+            'mileage_config'
         ));
     }
 

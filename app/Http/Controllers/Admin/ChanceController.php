@@ -94,8 +94,8 @@ class ChanceController extends Controller
             $match_info = $this->car->getAllcars($request, $is_self);
             $createBy   = 'want';
             /*dd($waited_info);
-            p(lastSql());*/
-            // dd($match_info);
+            p(lastSql());
+            dd($match_info);*/
              return view('admin.chance.createByWant',compact(
                 'waited_info', 
                 'match_info',
@@ -123,8 +123,18 @@ class ChanceController extends Controller
             $match_info = $this->want->getAllWants($request, $is_self);
             $createBy   = 'car';
 
-            // dd($waited_info);
-            // dd($match_info);
+            $img_info = $waited_info->hasManyImages;
+            $follow_info = $waited_info->hasManyFollow;
+            // dd($follow_info);
+            foreach ($follow_info as $key => $value) {
+                
+                $car_follow[] = json_decode($value->description);
+            }
+            dd($car_follow);
+            dd(json_decode($follow_info[8]->description));
+            dd(decodeUnicode(json_decode($follow_info[0]->description)));
+            dd(json_decode($follow_info[0]->description->toJson()));
+            // dd($img_info->toArray());
              return view('admin.chance.createByCar',compact(
                 'waited_info', 
                 'match_info',
@@ -139,7 +149,8 @@ class ChanceController extends Controller
                 'capacity',
                 'category_type',
                 'mileage_config',
-                'car_stauts_config'
+                'car_stauts_config',
+                'img_info'
             )); 
         }        
     }
