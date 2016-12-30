@@ -184,7 +184,7 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="selectError3">是否推荐</label>
+					<label class="control-label" for="recommend">是否推荐</label>
 					<div class="controls">
 					  <select id="recommend" name="recommend" >
 					  	<option @if($cars->recommend == '1') selected @endif value="1">推荐</option>

@@ -207,15 +207,16 @@
 							<input type="text" class="input-xlarge date-picker" name="safe_end" id="safe_end" value="">
 						</div>
 				</div> -->
-              	<div class="control-group">
-					<label class="control-label" for="focusedInput">行驶里程</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="mileage" name="mileage" type="text" value="{{old('mileage')}}"><span style="margin-left:5px;">万公里</span>
-					</div>
-				</div>
-
-				
-
+              	<div class="control-group  ">
+                	<label class="control-label" for="mileage">里程</label>
+                	<div class="controls">
+                  		<select id="mileage" name="mileage" >                       
+					  		@foreach($mileage_config as $key=>$mileage)											
+					  		<option  value="{{$key}}">{{$mileage}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
 			  <div class="control-group">
 					<label class="control-label" for="top_price">可接受价格</label>
 					<div class="controls">

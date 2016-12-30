@@ -536,7 +536,7 @@
 
 		$('#img_add').click(function(){
 
-			window.location.href = 'self';
+			window.location.href = '{{route("admin.car.self")}}';
 		});
 	});
 </script>

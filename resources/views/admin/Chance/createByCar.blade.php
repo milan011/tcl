@@ -47,6 +47,10 @@
 			line-height: 30px;
 			font: 'Microsoft YaHei', arial, tahoma, sans-serif;
 		}
+
+		.tab-menu.nav-tabs > li{
+			float:left;
+		}
 	</style>
 @endsection
 
@@ -73,87 +77,170 @@
 @include('layouts.message')
 <div class="row-fluid sortable">
 	<div class="box span12" style="padding:10px;">
-		
+		<div class="box-header">
+			<h2>
+				<!-- <i class="halflings-icon th"></i><span class="break"></span> -->
+			</h2>
+		</div>
 		<div class="box-content">
-		<p class="title">【出售】{{$waited_info->name}}</p>
-		<p class="detial">
-			<i>底价:</i>
-			<em>{{$waited_info->top_price}}</em>
-			<i>万元</i>
-		</p>
+			<ul class="nav tab-menu nav-tabs" id="myTab">
+				<li class="active"><a href="#info">详情</a></li>
+				<li><a href="#images">图片</a></li>
+				<li><a href="#follow">跟踪</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<div id="info" class="tab-pane active">
+					<div class="box-content">
+						<p class="title">【出售】{{$waited_info->name}}</p>
+						<p class="detial">
+							<i>底价:</i>
+							<em>{{$waited_info->top_price}}</em>
+							<i>万元</i>
+						</p>
 
-		<div class="col-xs-4">
-			<p class="detial">
-				<span>
-					<i>排量:</i>
-					{{$capacity[$waited_info->capacity]}}
-				</span>
-				<span>
-					<i>变速箱：</i>
-					{{$gearbox[$waited_info->gearbox]}}
-				</span>
-				<span>
-					<i>里程：</i>
-					{{$waited_info->mileage}}万公里
-				</span>
-			</p>
-		</div>
-		<div class="col-xs-4">
-			<p class="detial">
-				<span>
-					<i>过户次数：</i>
-					{{$waited_info->sale_number}}
-				<i>次</i>
-				</span>
-				<span>
-					<i>车身颜色：</i>
-					{{$out_color[$waited_info->out_color]}}
-				</span>
-				<span>
-					<i>车辆类别：</i>
-					{{$category_type[$waited_info->categorey_type]}}
-				</span>
-			</p>
-		</div>
-		<div class="col-xs-4">
-			<p class="detial">
-				<span>
-					<i>上牌日期：</i>
-					{{$waited_info->plate_date}}
-				</span>
-				<span>
-					<i>检车日期：</i>
-					{{$waited_info->plate_end}}
-				</span>
-				<span>
-					<i>登记日期：</i>
-					{{$waited_info->created_at}}
-				</span>
-			</p>
-		</div>
-		<div class="col-xs-4">
-			<p class="detial">
-				<span>
-					<i>编号：</i>
-					{{$waited_info->car_code}}
-				</span>
-				<span>
-					<i>车况：</i>
-					{{$waited_info->description}}
-				</span>
-			</p>
-		</div>
-
-		<div class="detial">
-			<span>
-				<i>销售顾问：</i>{{$waited_info->belongsTouser->nick_name}}{{$waited_info->belongsTouser->creater_telephone}}
-			<em></em>
-			</span>
-			<span>
-				<i>车主：</i>{{$waited_info->belongsToCustomer->customer_name}}{{$waited_info->belongsToCustomer->customer_telephone}}
-			<em></em>
-			</span>
-		</div>
+						<div class="col-xs-4">
+							<p class="detial">
+								<span>
+									<i>排量:</i>
+									{{$capacity[$waited_info->capacity]}}
+								</span>
+								<span>
+									<i>变速箱：</i>
+									{{$gearbox[$waited_info->gearbox]}}
+								</span>
+								<span>
+									<i>里程：</i>
+									{{$waited_info->mileage}}万公里
+								</span>
+							</p>
+						</div>
+						<div class="col-xs-4">
+							<p class="detial">
+								<span>
+									<i>过户次数：</i>
+									{{$waited_info->sale_number}}
+								<i>次</i>
+								</span>
+								<span>
+									<i>车身颜色：</i>
+									{{$out_color[$waited_info->out_color]}}
+								</span>
+								<span>
+									<i>车辆类别：</i>
+									{{$category_type[$waited_info->categorey_type]}}
+								</span>
+							</p>
+						</div>
+						<div class="col-xs-4">
+							<p class="detial">
+								<span>
+									<i>上牌日期：</i>
+									{{$waited_info->plate_date}}
+								</span>
+								<span>
+									<i>检车日期：</i>
+									{{$waited_info->plate_end}}
+								</span>
+								<span>
+									<i>登记日期：</i>
+									{{$waited_info->created_at}}
+								</span>
+							</p>
+						</div>
+						<div class="col-xs-4">
+							<p class="detial">
+								<span>
+									<i>编号：</i>
+									{{$waited_info->car_code}}
+								</span>
+								<span>
+									<i>车况：</i>
+									{{$waited_info->description}}
+								</span>
+							</p>
+						</div>
+				
+						<div class="detial">
+							<span>
+								<i>销售顾问：</i>{{$waited_info->belongsTouser->nick_name}}{{$waited_info->belongsTouser->creater_telephone}}
+							<em></em>
+							</span>
+							<span>
+								<i>车主：</i>{{$waited_info->belongsToCustomer->customer_name}}{{$waited_info->belongsToCustomer->customer_telephone}}
+							<em></em>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div id="images" class="tab-pane">
+					<div>图片</div>
+				</div>
+				<div id="follow" class="tab-pane">
+					<div class="box-content span4">
+						<div class="chat-form" style="text-align: right;margin:-10px -10px -10px -10px;">
+							<textarea id="textDesc"></textarea>
+				 			<label class="checkbox inline" style="padding-left:0px;margin-top: 0px;">
+								<input type="checkbox" name="checkFollow" id="inlineCheckbox1" value="1"> 记录
+				  			</label>
+				  			<label class="checkbox inline" style="padding-left:0px;">
+								<input type="checkbox" name="checkFollow" id="inlineCheckbox2" value="2"> 电话
+				  			</label>
+				  			<label class="checkbox inline" style="padding-left:0px;">
+								<input type="checkbox" name="checkFollow" id="inlineCheckbox3" value="3"> 拜访
+				  			</label>
+				 			<button onclick="publish()" class="btn btn-info">发布</button>
+						</div>
+						<div class="clearfix"></div>						
+					</div>
+					<div class="box-content span6">
+						<div class="timeline "> <!-- <div class="timeslot alt"> -->
+					 	<div class="timeslot  "  >
+							<div class="task">
+				    			<span>
+									<span class="type">系统</span>
+									<span class="details">
+										添加求购信息
+									</span>
+									<span>
+										
+									</span> 
+								</span>
+								<div class="arrow"></div>
+							</div>	
+							<div class="icon">
+								<i class="icon-globe"></i>
+							</div>
+							<div class="time">
+								<strong>林涵</strong> 于 2016-12-30 11:26
+							</div>	
+			   			</div>
+							<div class="clearfix"></div>				
+					 		<div class="timeslot alt "  >
+								<div class="task">
+				    				<span>
+										<span class="type">系统</span>
+										<span class="details">
+											添加销售机会
+										</span>
+										<span>
+											
+										</span> 
+									</span>
+									<div class="arrow"></div>
+								</div>	
+								<div class="icon">
+									<i class="icon-globe"></i>
+								</div>
+								<div class="time">
+									<strong>林涵</strong> 于 2016-12-30 11:25
+								</div>	
+			   				</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>	
 </div>
