@@ -82,22 +82,39 @@ class CarRepository implements CarRepositoryContract
         if(!empty($requestData->vin_code) && $this->isRepeat($requestData->vin_code)){
             //存在车架号并且存在该车架号记录
             $car = $this->isRepeat($requestData->vin_code);
+            return $car;
         }else{
-            // 添加车源并返回实例
-            $requestData['creater_id'] = Auth::id();
-            $requestData['car_code']   = getCarCode('car');
+            DB::transaction(function() use ($requestData){
+                // 添加车源并返回实例,处理跟进(添加车源)
+                $requestData['creater_id'] = Auth::id();
+                $requestData['car_code']   = getCarCode('car');
+    
+                unset($requestData['_token']);
+                unset($requestData['ajax_request_url']);
+    
+                $car = new Cars();
+                $input =  array_replace($requestData->all());
+                $car->fill($input);
+                $car = $car->create($input);
 
-            unset($requestData['_token']);
-            unset($requestData['ajax_request_url']);
+                $follow_info = new CarFollow(); //车源跟进对象
 
-            $car = new Cars();
-            $input =  array_replace($requestData->all());
-            $car->fill($input);
+                $create_content = collect(['创建车源'])->toJson();  //定义车源跟进时信息变化情况,即跟进描述
 
-            $car = $car->create($input);
-        }        
+                // 车源跟进信息
+                $follow_info->car_id       = $car->id;
+                $follow_info->user_id      = Auth::id();
+                $follow_info->follow_type  = '1';
+                $follow_info->operate_type = '1';
+                $follow_info->description  = $create_content;
+                $follow_info->prev_update  = $car->updated_at;
+            
+                $follow_info->save();  
+                
 
-        return $car;
+                return $car;
+            });
+        }         
     }
 
     // 修改车源
@@ -111,29 +128,46 @@ class CarRepository implements CarRepositoryContract
 
             $original_content = $car->toArray(); //原有车源信息
             $request_content  = $requestData->all(); //提交的车源信息
-        
-            /*p($original_content);
+            
+            /*$collection1 = collect(['type'=>2, 'type1'=>7, 'type2'=>3]);
+            $collection2 = collect(['type'=>0, 'type5'=>2, 'type2'=>3]);
+
+            $diff = $collection2->diffKeys($collection1);
+            // $diff = array_udiff($collection1, $collection2);
+
+            dd($diff);
+            p($original_content);
             p($request_content);*/
             $changed_content = getDiffArray($request_content, $original_content);//比较提交的数据与原数据差别
-            $update_content = collect(['例行跟进'])->toJson();  //定义车源跟进时信息变化情况,即跟进描述
+            $update_content = '例行跟进';  //定义车源跟进时信息变化情况,即跟进描述
             // dd(json_decode($update_content));
+            // dd($changed_content);
             if($changed_content->count() != 0){
                 $update_content = array();
+                $need_del_array = ['capacity', 'gearbox','out_color','inside_color','safe_type','sale_number','is_top','recommend', 'car_type',];
                 foreach ($changed_content as $key => $value) {
-    
                     /*p($this->columns_annotate[$key]);
                     p($requestData->$key);
                     p($original_content[$key]);*/
-    
-                    $update_content[] = Auth::user()->nick_name.'修改'.$this->columns_annotate[$key].'['.$original_content    [$key].']至['.$requestData->$key.']';
+                    if(in_array($key, $need_del_array)){
+                        /*p($original_content[$key]);
+                        p($key);
+                        p($value);
+                        p(config('tcl.'.$key)[$value]);exit;*/
+                        $current_content = config('tcl.'.$key)[$original_content[$key]];
+                        $updated_content = config('tcl.'.$key)[$value];
+                        $update_content[] = $this->columns_annotate[$key].'['.$current_content.']修改为['.$updated_content.']';
+                    }else{
+                        $update_content[] = $this->columns_annotate[$key].'['.$original_content[$key].']修改为['.$requestData->$key.']';
+                    }
                 }
             }
 
         
-            /*dd($follow_info);
-            dd(collect($update_content)->toJson());
+            // dd($follow_info);
+            // dd(collect($update_content)->toJson());
             dd(json_decode(collect($update_content)->toJson())); //json_decode将json再转回数组
-            dd($changed_content);*/
+            dd($changed_content);
         
             // 车源编辑信息
             $car->vin_code       = $requestData->vin_code;
@@ -222,7 +256,7 @@ class CarRepository implements CarRepositoryContract
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
-            $follow_info->description  = collect($update_content)->toJson();
+            $follow_info->description  = $update_content;
             $follow_info->prev_update  = $car->updated_at;
          
             $follow_info->save();
@@ -250,7 +284,7 @@ class CarRepository implements CarRepositoryContract
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
-            $follow_info->description  = collect($update_content)->toJson();
+            $follow_info->description  = $update_content;
             $follow_info->prev_update  = $car->updated_at;
          
             $follow_info->save();

@@ -67,21 +67,37 @@ class WantRepository implements WantRepositoryContract
     // 创建求购信息
     public function create($requestData)
     {   
-        // 添加求购信息并返回实例
-        $requestData['creater_id'] = Auth::id();
-        $requestData['want_code']  = getCarCode('want');
+        DB::transaction(function() use ($requestData){
+            // 添加求购信息并返回实例
+            $requestData['creater_id'] = Auth::id();
+            $requestData['want_code']  = getCarCode('want');
+            
+            if(empty($requestData->name)){
+                $requestData['name'] = '无具体意向车型';
+            }
+    
+            $want = new Want;
+            $input  =  array_replace($requestData->all());
+            $want->fill($input);
+            $want = $want->create($input);
+            // dd($want);
+
+            $follow_info = new WantFollow(); //求购信息跟进对象
+
+            $create_content = collect(['创建求购信息'])->toJson();  //定义求购信息跟进时信息变化情况,即跟进描述
+            // 求购信息跟进信息
+            $follow_info->car_id       = $want->id;
+            $follow_info->user_id      = Auth::id();
+            $follow_info->follow_type  = '1';
+            $follow_info->operate_type = '1';
+            $follow_info->description  = $create_content;
+            $follow_info->prev_update  = $car->updated_at;
         
-        if(empty($requestData->name)){
-            $requestData['name'] = '无具体意向车型';
-        }
-
-        $want = new Want;
-        $input  =  array_replace($requestData->all());
-        $want->fill($input);
-        // dd($want);
-        $want = $want->create($input);    
-
-        return $want;
+            $follow_info->save(); 
+                
+    
+            return $want;
+        });
     }
 
     // 修改求购信息
@@ -99,7 +115,7 @@ class WantRepository implements WantRepositoryContract
             /*p($original_content);
             p($request_content);*/
             $changed_content = getDiffArray($request_content, $original_content);//比较提交的数据与原数据差别
-            $update_content = collect(['例行跟进'])->toJson();  //定义求购信息跟进时信息变化情况,即跟进描述
+            $update_content = '例行跟进';  //定义求购信息跟进时信息变化情况,即跟进描述
             // dd($changed_content);
             if($changed_content->count() != 0){
                 $update_content = array();
@@ -199,7 +215,7 @@ class WantRepository implements WantRepositoryContract
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
-            $follow_info->description  = collect($update_content)->toJson();
+            $follow_info->description  = $update_content;
             $follow_info->prev_update  = $want->updated_at;
          
             $follow_info->save();

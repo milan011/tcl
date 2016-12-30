@@ -42,7 +42,7 @@ class TranscationRepository implements TranscationRepositoryContract
     }
 
     // 根据不同参数获得订车列表
-    public function getAllTransactions()
+    public function getAllTranscations()
     {   
         // dd($request->Transaction_launch);
         // $query = Transaction::query();  // 返回的是一个 QueryBuilder 实例
@@ -81,10 +81,10 @@ class TranscationRepository implements TranscationRepositoryContract
                 
     
                 $requestData['user_id'] = Auth::id();
-                $transaction = new Transcation();
+                $transcation = new Transcation();
                 $input =  array_replace($requestData->all());
-                $transaction->fill($input);
-                $transaction = $transaction->create($input);
+                $transcation->fill($input);
+                $transcation = $transcation->create($input);
     
                 $car->save();
                 $want->save();
