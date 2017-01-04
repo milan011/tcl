@@ -35,14 +35,14 @@ class Chance extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeChacneLaunch($query, $type = 1)
+    public function scopeChacneLaunch($query, $participate)
     {
         $user_id = Auth::id();
 
-        if($user_id == 1){
+        /*if($user_id == 1){
 
             return $query;
-        }
+        }*/
 
         $query = $query->where(function($query) use ($user_id){
 
@@ -50,18 +50,14 @@ class Chance extends Model
             $query = $query->orWhere('want_creater', $user_id);
         });
 
-        switch ($type) {
-            case '1': //我发起的销售机会
-                $query = $query->where('creater', $user_id);
-            break;
-            
-            case '2': //我参与的销售机会
-                $query = $query->where('creater', '!=', $user_id);
-            break;
+        if($participate){
+            //用户参与的销售机会
 
-            default:
-                $query = $query->where('creater', $user_id);
-            break;
+            $query = $query->where('creater', '!=', $user_id);
+        }else{
+            //用户发起的销售机会
+
+            $query = $query->where('creater', $user_id);
         }
 
         return $query;
