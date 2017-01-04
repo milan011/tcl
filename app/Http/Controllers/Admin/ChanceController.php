@@ -84,6 +84,8 @@ class ChanceController extends Controller
         $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
         $mileage_config  = config('tcl.mileage'); //获取配置文件中车源状态
         $sale_number_config  = config('tcl.want_sale_number'); //获取配置文件中车源状态
+        $follow_type     = config('tcl.follow_type'); //获取配置文件中车源状态
+        $age            = config('tcl.age'); //获取配置文件中车源状态
 
         if($request->has('want_id')){
             //匹配求购信息
@@ -93,8 +95,16 @@ class ChanceController extends Controller
             
             $match_info = $this->car->getAllcars($request, $is_self);
             $createBy   = 'want';
-            /*dd($waited_info);
-            p(lastSql());
+
+            $follow_info = $waited_info->hasManyFollow;
+            // dd($match_info);
+            foreach ($follow_info as $key => $value) {
+                
+                $follow_info[$key]['description'] = json_decode($value->description);
+            }
+
+            // dd($waited_info);
+            /*p(lastSql());
             dd($match_info);*/
              return view('admin.chance.createByWant',compact(
                 'waited_info', 
@@ -111,7 +121,10 @@ class ChanceController extends Controller
                 'category_type',
                 'car_stauts_config',
                 'mileage_config',
-                'sale_number_config'
+                'sale_number_config',
+                'follow_type',
+                'follow_info',
+                'age'
             )); 
         
         }else{
@@ -122,18 +135,18 @@ class ChanceController extends Controller
             
             $match_info = $this->want->getAllWants($request, $is_self);
             $createBy   = 'car';
-
+            // dd($waited_info->categorey_type);
             $img_info = $waited_info->hasManyImages;
             $follow_info = $waited_info->hasManyFollow;
-            // dd($follow_info);
+            // dd($match_info);
             foreach ($follow_info as $key => $value) {
                 
-                $car_follow[] = json_decode($value->description);
+                $follow_info[$key]['description'] = json_decode($value->description);
             }
-            dd($car_follow);
-            dd(json_decode($follow_info[8]->description));
-            dd(decodeUnicode(json_decode($follow_info[0]->description)));
-            dd(json_decode($follow_info[0]->description->toJson()));
+            // dd($follow_info);
+            // dd(json_decode($follow_info[8]->description));
+            // dd(decodeUnicode(json_decode($follow_info[1]->description)));
+            // dd(json_decode($follow_info[0]->description->toJson()));
             // dd($img_info->toArray());
              return view('admin.chance.createByCar',compact(
                 'waited_info', 
@@ -150,7 +163,9 @@ class ChanceController extends Controller
                 'category_type',
                 'mileage_config',
                 'car_stauts_config',
-                'img_info'
+                'img_info',
+                'follow_info',
+                'follow_type'
             )); 
         }        
     }
@@ -163,11 +178,13 @@ class ChanceController extends Controller
      */
     public function store(Request $request)
     {
-        $want_info = $this->want->find($request->want_id);
-        $car_info  = $this->car->find($request->car_id);
+        
+        $want_info = $this->want->find($request->pipei_want_id);
+        $car_info  = $this->car->find($request->pipei_car_id);
 
-        // dd($want_info->id);
-        // dd($want_info->customer_id);
+        /*dd($request->all());
+        dd($want_info->id);
+        dd($want_info);*/
         // dd($want_info->belongsToCustomer->customer_name);
         // dd($car_info->id);
         // dd($car_info->customer_id);
@@ -186,8 +203,7 @@ class ChanceController extends Controller
         $chance = $this->chance->create($request);
 
         // dd($chance->toJson());
-        return response()->json($chance);
-        
+        return redirect()->route('admin.chance.index')->withInput();     
     }
 
 

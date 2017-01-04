@@ -42,7 +42,9 @@ class CarController extends Controller
     public function index(Request $request)
     {
         // dd($request->method());
-        $cars = $this->car->getAllcars($request, true);
+        $request['car_status'] = '1';
+        // dd($request->all());
+        $cars = $this->car->getAllcars($request);
         /*p(lastSql());
         dd($cars[0]);*/
         $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
@@ -61,23 +63,25 @@ class CarController extends Controller
     public function carself(Request $request)
     {
         
-        // dd(array_filter($request->all()));
+        // dd($request->all());
         $cars = $this->car->getAllcars($request, true);
         /*p(lastSql());
         dd($cars);*/
         $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
         $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
-        // dd($request->method());
+        
+        // dd($select_conditions['car_status']);
         if($request->method() == 'POST'){
-            $car_status_current = $request->input('car_status', ''); //当前查询的车源状态
+            //初始搜索条件
+            $select_conditions  = $request->all();
         }else{
-            $car_status_current = $request->input('car_status', '1'); //当前查询的车源状态
+            $select_conditions['car_status'] = '';
         }
         
         // dd($car_status);
 
-        return view('admin.car.self', compact('cars', 'gearbox', 'out_color', 'car_status_current', 'car_stauts_config'));
+        return view('admin.car.self', compact('cars', 'gearbox', 'out_color', 'car_stauts_config', 'select_conditions'));
     }
 
     /**
@@ -143,6 +147,26 @@ class CarController extends Controller
         $car = $this->car->create($carRequest);
 
         return response()->json($car); 
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * ajax存储跟进信息(互动)
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function interactiveAdd(Request $request)
+    {
+        // p($request->all());exit;
+
+        $this->car->interactiveAdd($request, $request->input('car_id'));
+
+        return response()->json(array(
+            'status'      => 1,
+            'msg'         => '添加成功',
+            'content'     => $request->input('content'),
+            'follow_time' => date('Y-m-d, H:i:s', time()),
+        )); 
     }
 
     /**
@@ -280,6 +304,47 @@ class CarController extends Controller
         return response()->json(array(
             'status' => 1,
             'msg' => 'ok',
+        ));      
+    }
+
+    /**
+     * ajax获得车源信息
+     * @return \Illuminate\Http\Response
+     */
+    public function getCarInfo(Request $request)
+    {    
+        $year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
+        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
+        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
+        $sale_number    = config('tcl.want_sale_number'); //获取配置文件中过户次数
+        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
+        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
+        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $mileage_config = config('tcl.mileage'); //获取配置文件中车源状态
+        $car_age = config('tcl.age'); //获取配置文件中车源状态
+       
+        $car = $this->car->find($request->input('car_id'));
+        // dd(substr((date($car->created_at)), 0, 10));
+        $car->capacity = $capacity[$car->capacity];
+        $car->car_type = $category_type[$car->car_type];
+        $car->gearbox = $gearbox[$car->gearbox];
+        $car->out_color = $out_color[$car->out_color];
+        $car->sale_number = $car->sale_number;
+        $car->inside_color = $inside_color[$car->inside_color];
+        $car->safe_type = $safe_type[$car->safe_type];
+        $car->customer = $car->belongsToCustomer->customer_name;
+        $car->creater = $car->belongsToUser->nick_name;
+        $car->creater_tel = $car->belongsToUser->creater_telephone;
+        $car->shop_name = $car->belongsToShop->shop_name;
+        $car->created = substr((date($car->created_at)), 0, 10);
+        
+        // dd($car);
+        return response()->json(array(
+            'status' => 1,
+            'msg' => 'ok',
+            'data' => $car->toJson(),
         ));      
     }
 }

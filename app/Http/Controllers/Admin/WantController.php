@@ -41,6 +41,7 @@ class WantController extends Controller
      */
     public function index(Request $request)
     {
+        $request['want_status'] = '1';
         $wants = $this->want->getAllWants($request);
 
         $gearbox             = config('tcl.gearbox'); //获取配置文件中变速箱类别
@@ -70,14 +71,15 @@ class WantController extends Controller
         $capacity           = config('tcl.capacity'); //获取配置文件排量
         // dd($request->method());
         if($request->method() == 'POST'){
-            $want_status_current = $request->input('want_status', ''); //当前查询的车源状态
+            //初始搜索条件
+            $select_conditions  = $request->all();
         }else{
-            $want_status_current = $request->input('want_status', '1'); //当前查询的车源状态
+            $select_conditions['want_status'] = '';
         }
         
         // dd($car_status);
 
-        return view('admin.want.self', compact('wants', 'gearbox', 'out_color', 'want_status_current', 'want_stauts_config', 'capacity'));
+        return view('admin.want.self', compact('wants', 'gearbox', 'out_color', 'want_status', 'want_stauts_config', 'capacity', 'select_conditions'));
     }
 
     /**
@@ -133,6 +135,26 @@ class WantController extends Controller
         $getInsertedId = $this->want->create($wantRequest);
         // p(lastSql());exit;
         return redirect()->route('admin.want.self')->withInput();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * ajax存储跟进信息(互动)
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function interactiveAdd(Request $request)
+    {
+        // p($request->all());exit;
+
+        $this->want->interactiveAdd($request, $request->input('want_id'));
+
+        return response()->json(array(
+            'status'      => 1,
+            'msg'         => '添加成功',
+            'content'     => $request->input('content'),
+            'follow_time' => date('Y-m-d, H:i:s', time()),
+        )); 
     }
 
     /**
@@ -263,6 +285,47 @@ class WantController extends Controller
         return response()->json(array(
             'status' => 1,
             'msg' => 'ok',
+        ));      
+    }
+
+     /**
+     * ajax获得求购信息
+     * @return \Illuminate\Http\Response
+     */
+    public function getWantInfo(Request $request)
+    {    
+        $year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
+        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
+        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
+        $sale_number    = config('tcl.want_sale_number'); //获取配置文件中过户次数
+        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
+        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
+        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $mileage_config = config('tcl.mileage'); //获取配置文件中车源状态
+        $car_age = config('tcl.age'); //获取配置文件中车源状态
+       
+        $want = $this->want->find($request->input('want_id'));
+
+        $want->capacity = $capacity[$want->capacity];
+        $want->want_type = $category_type[$want->want_type];
+        $want->gearbox = $gearbox[$want->gearbox];
+        $want->mileage = $mileage_config[$want->mileage];
+        $want->out_color = $out_color[$want->out_color];
+        $want->sale_number = $sale_number[$want->sale_number];
+        $want->inside_color = $inside_color[$want->inside_color];
+        $want->car_age = $car_age[$want->age];
+        $want->customer = $want->belongsToCustomer->customer_name;
+        $want->creater = $want->belongsToUser->nick_name;
+        $want->creater_tel = $want->belongsToUser->creater_telephone;
+        $want->shop_name = $want->belongsToShop->shop_name;
+        
+        // dd($want);
+        return response()->json(array(
+            'status' => 1,
+            'msg' => 'ok',
+            'data' => $want->toJson(),
         ));      
     }
 }
