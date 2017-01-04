@@ -44,21 +44,43 @@ class ChanceController extends Controller
 
     /**
      * Display a listing of the resource.
-     * 销售机会列表
+     * 用户参与的销售机会列表
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
+        
+        $request['participate'] = true;
         /*p($request->method());
         dd($request->all());*/
         $chances = $this->chance->getAllChances($request);
-        // dd(lastSql());
-        // dd($chances);
+        /*p(lastSql());
+        dd($chances);*/
 
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
         $chance_status = config('tcl.chance_status'); //获取配置文件中销售机会状态
 
         return view('admin.chance.index', compact('chances', 'chance_launch', 'chance_status'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     * 用户发起的销售机会列表
+     * @return \Illuminate\Http\Response
+     */
+    public function selfChance(Request $request)
+    {
+        /*p($request->method());
+        dd($request->all());*/
+        $request['participate'] = false;
+        $chances = $this->chance->getAllChances($request);
+        /*p(lastSql());
+        dd($chances);*/
+
+        $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
+        $chance_status = config('tcl.chance_status'); //获取配置文件中销售机会状态
+
+        return view('admin.chance.self', compact('chances', 'chance_launch', 'chance_status'));
     }
 
     /**

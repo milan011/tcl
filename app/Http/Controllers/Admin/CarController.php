@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Auth;
 use Gate;
+use App\Area;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
@@ -106,6 +107,12 @@ class CarController extends Controller
         $capacity       = config('tcl.capacity'); //获取配置文件排量
         $city_id        = $this->shop->find(Auth::user()->shop_id)->city_id; //车源所在城市
         $provence_id    = $this->shop->find(Auth::user()->shop_id)->provence_id; //车源所在省份
+
+        $area = Area::withTrashed()
+                    ->where('pid', '1')
+                    ->where('status', '1')
+                    ->get();
+
         // dd($city_id);
         return view('admin.car.create',compact(
             'all_top_brands', 
@@ -120,7 +127,8 @@ class CarController extends Controller
             'provence_id',
             'safe_type',
             'capacity',
-            'customer_res'
+            'customer_res',
+            'area'
         ));
     }
 

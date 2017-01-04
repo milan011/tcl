@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Session;
 use App\Http\Requests;
+use App\Area;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Shop\UpdateShopRequest;
 use App\Http\Requests\Shop\StoreShopRequest;
@@ -47,8 +48,13 @@ class ShopController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.shop.create');
+        $area = Area::withTrashed()
+                    ->where('pid', '1')
+                    ->where('status', '1')
+                    ->get();
+
+        // dd($area);
+        return view('admin.shop.create', compact('area'));
     }
 
     /**
