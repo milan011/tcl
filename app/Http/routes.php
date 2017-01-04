@@ -32,6 +32,9 @@ Route::get('haha', function(){
 });*/
 
 Route::group(['middleware' => 'web'], function () {
+    Route::get('admin/login', 'Auth\AuthController@showLoginForm');
+    Route::post('admin/login', 'Auth\AuthController@login');
+    Route::get('admin/logout', 'Auth\AuthController@logout');
     Route::auth();
 });
 
@@ -50,6 +53,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::match(['get', 'post'], 'want/index', 'WantController@index')->name('admin.want.index'); 
     Route::match(['get', 'post'], 'selfwant', 'WantController@selfwant')->name('admin.want.self'); 
     Route::match(['get', 'post'], 'chance/index', 'ChanceController@index')->name('admin.chance.index');  
+    Route::match(['get', 'post'], 'chance/self', 'ChanceController@selfChance')->name('admin.chance.self');  
     Route::post('chance/create', 'ChanceController@create')->name('admin.chance.create');  
     Route::match(['get', 'post'], 'plan/create', 'PlanController@create')->name('admin.plan.create'); 
     Route::post('plan/planLaunch', 'PlanController@planLaunch')->name('admin.plan.planLaunch');    
@@ -82,6 +86,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('customer/ajaxStore', 'CustomerController@ajaxStore')->name('admin.customer.ajaxStore');
     Route::post('chance/store', 'ChanceController@store')->name('admin.chance.store');
     Route::post('car/ajaxAdd', 'CarController@ajaxAdd')->name('admin.car.ajaxAdd');
+    Route::post('area/getAreaInfo', 'AreaController@getAreaInfo')->name('admin.area.getAreaInfo');
     Route::resource('user', 'UserController'); 
     Route::resource('car', 'CarController');  
     Route::resource('want', 'WantController');  
