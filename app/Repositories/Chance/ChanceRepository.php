@@ -41,13 +41,13 @@ class chanceRepository implements chanceRepositoryContract
     // 根据不同参数获得销售机会列表
     public function getAllChances($request)
     {   
-        // dd($request->chance_launch);
+        // dd($request->participate);
         // $query = Chance::query();  // 返回的是一个 QueryBuilder 实例
         $query = new Chance();       // 返回的是一个Chance实例,两种方法均可
         // dd($request->all());
         // $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
 
-        $query = $query->chacneLaunch($request->chance_launch);
+        $query = $query->chacneLaunch($request->participate);
 
         return $query->whereIn('status', ['1', '2', '3'])
                      ->select($this->select_columns)
