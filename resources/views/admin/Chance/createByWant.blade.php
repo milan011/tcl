@@ -62,11 +62,11 @@
 		<a href="{{route('admin.index')}}">主页</a>  
 		<i class="icon-angle-right"></i>
 	</li>
-	<li>
+	<!-- <li>
 		<i class="icon-home"></i>
 		<a href="{{route('admin.chance.index')}}">销售机会列表</a> 
 		<i class="icon-angle-right"></i>
-	</li>
+	</li> -->
 	<li><a href="javascript:void(0);">创建销售机会</a></li>
 </ul>
 @endsection

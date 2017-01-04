@@ -14,7 +14,7 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.chance.index')}}">约车管理</a> 
+		<a href="{{route('admin.plan.index')}}">约车管理</a> 
 		<i class="icon-angle-right"></i>
 	</li>
 	<li><a href="javascript:void(0);">添加约车</a></li>

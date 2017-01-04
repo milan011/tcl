@@ -47,7 +47,7 @@
 				<div class="control-group">
 					<label class="control-label" for="selectError3">是否启用</label>
 					<div class="controls">
-					  <select id="status" name="status" data-rel="chosen">
+					  <select id="status" name="status">
 					  	<option  value="1">启用</option>
 						<option  value="0">停用</option>
 						
@@ -56,32 +56,46 @@
 				  </div>
 				
 				<div class="control-group">
-					<label class="control-label" for="selectError3">门店类别</label>
+					<label class="control-label" for="type">门店类别</label>
 					<div class="controls">
-					  <select id="type" name="type" data-rel="chosen">
+					  <select id="type" name="type">
 					  	<option  value="1">门店</option>
 					  	<option  value="2">加盟店</option>
 						</select>
 					</div>
-				</div>	
+				</div>
 				<div class="control-group">
-					<label class="control-label" for="selectError3">所属省份</label>
+					<label class="control-label" for="provence_id">所属城市</label>
 					<div class="controls">
-					  <select id="provence_id" name="provence_id" data-rel="chosen">
+					  	<select id="provence_id" name="provence_id">
+					  		<option value="0">请选择省份</option>
+					  		@foreach($area as $provence)
+					  		<option  value="{{$provence->id}}">{{$provence->name}}</option>
+					  		@endforeach									
+						</select>
+						<select id="city_id" name="city_id" style="display:none;">
+					  		<option  value="0">请选择城市</option>											
+						</select>
+					</div>
+				</div>	
+				<!-- <div class="control-group">
+					<label class="control-label" for="provence_id">所属省份</label>
+					<div class="controls">
+					  <select id="provence_id" name="provence_id">
 					  	<option  value="1">河北</option>
 					  	<option  value="2">河南</option>
 						</select>
 					</div>					
 				</div>	
 				<div class="control-group">
-					<label class="control-label" for="selectError3">所属城市</label>
+					<label class="control-label" for="city_id">所属城市</label>
 					<div class="controls">
-					  <select id="city_id" name="city_id" data-rel="chosen">
+					  <select id="city_id" name="city_id">
 					  	<option  value="1">石家庄</option>
 					  	<option  value="2">郑州</option>
 						</select>
 					</div>					
-				</div>		  
+				</div>	 -->	  
 				<div class="control-group">
 					<label class="control-label" for="focusedInput">地址</label>
 					<div class="controls">
@@ -132,4 +146,50 @@
 		</div>
 	</div>			
 </div>   
+@endsection
+@section('script_content')
+<!-- <script src="{{URL::asset('js/tcl/city.js')}}"></script> -->
+<script>
+	$(document).ready(function(){
+
+		$('#provence_id').change(function(){
+
+			var provence_id = $(this).val();
+			var request_url = "{{route('admin.area.getAreaInfo')}}";
+			
+			$('#city_id').hide();
+
+			$.ajax({
+
+				method: 'POST',
+				url: request_url,
+				data: { provence_id : provence_id},
+				dataType: 'json',
+				headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+				success: function(data){
+
+					var content = '<option  value="0">请选择城市</option>';
+					$.each(data.data, function(index, value){
+						content += '<option value="';
+						content += value.id;
+						content += '">';
+						content += value.name;
+						content += '</option>';
+					});
+					// $('#top_brand').append(content);
+					// console.log($('#city_id'));
+					$('#city_id').empty();
+					$('#city_id').append(content);
+					// console.log(content);
+					$('#city_id').show();
+					return false;
+				},
+				error: function(xhr, type){
+
+					alert('Ajax error!');
+				}
+			});
+		});
+	});
+</script>
 @endsection
