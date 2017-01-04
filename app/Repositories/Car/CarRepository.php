@@ -17,7 +17,7 @@ use Debugbar;
 class CarRepository implements CarRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'name', 'car_code', 'vin_code', 'capacity', 'top_price', 'plate_date', 'plate_end', 'mileage', 'age', 'out_color', 'inside_color', 'gearbox', 'plate_provence', 'plate_city', 'safe_end', 'sale_number', 'categorey_type', 'shop_id', 'creater_id', 'created_at', 'updated_at', 'description', 'bottom_price', 'safe_type', 'safe_end', 'recommend', 'is_top', 'car_type', 'car_status', 'customer_id', 'guide_price', 'pg_description'];
+    protected $select_columns = ['id', 'name', 'car_code', 'vin_code', 'capacity', 'top_price', 'plate_date', 'plate_end', 'mileage', 'age', 'out_color', 'inside_color', 'gearbox', 'plate_provence', 'plate_city', 'safe_end', 'sale_number', 'categorey_type', 'shop_id', 'creater_id', 'created_at', 'updated_at', 'description', 'bottom_price', 'safe_type','recommend', 'is_top', 'car_type', 'car_status', 'customer_id', 'guide_price', 'pg_description'];
 
     // 车源表列名称-注释对应
     protected $columns_annotate = [
@@ -166,8 +166,8 @@ class CarRepository implements CarRepositoryContract
         
             // dd($follow_info);
             // dd(collect($update_content)->toJson());
-            dd(json_decode(collect($update_content)->toJson())); //json_decode将json再转回数组
-            dd($changed_content);
+            // dd(json_decode(collect($update_content)->toJson())); //json_decode将json再转回数组
+            // dd($changed_content);
         
             // 车源编辑信息
             $car->vin_code       = $requestData->vin_code;
@@ -266,6 +266,7 @@ class CarRepository implements CarRepositoryContract
         });
     }
 
+    // 快速跟进
     public function quicklyFollow($id){
 
         DB::transaction(function() use ($id){
@@ -273,7 +274,7 @@ class CarRepository implements CarRepositoryContract
             $car         = Cars::select($this->select_columns)->findorFail($id); //车源对象
             $follow_info = new CarFollow(); //车源跟进对象
 
-            $update_content = collect([Auth::user()->nick_name.'例行跟进'])->toJson();
+            $update_content = collect(['例行跟进'])->toJson();
             
             // 车源编辑信息
             $car->creater_id = Auth::id();
@@ -283,6 +284,36 @@ class CarRepository implements CarRepositoryContract
             $follow_info->car_id       = $id;
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
+            $follow_info->operate_type = '2';
+            $follow_info->description  = $update_content;
+            $follow_info->prev_update  = $car->updated_at;
+         
+            $follow_info->save();
+            $car->save();
+            $car->touch();
+
+            return $car;
+        });
+    }
+
+    // 互动信息添加
+     public function interactiveAdd($requestData){
+
+        DB::transaction(function() use ($requestData){
+
+            $car         = Cars::select($this->select_columns)->findorFail($requestData->car_id); //车源对象
+            $follow_info = new CarFollow(); //车源跟进对象
+
+            $update_content = collect([$requestData->content])->toJson();
+            
+            // 车源编辑信息
+            /*$car->creater_id = Auth::id();
+            $car->car_status = '1';*/
+
+            // 车源跟进信息
+            $follow_info->car_id       = $requestData->car_id;
+            $follow_info->user_id      = Auth::id();
+            $follow_info->follow_type  = '2';
             $follow_info->operate_type = '2';
             $follow_info->description  = $update_content;
             $follow_info->prev_update  = $car->updated_at;

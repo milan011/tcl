@@ -76,6 +76,7 @@ class chanceRepository implements chanceRepositoryContract
             $chance = $chance->create($input);
         }        
         // dd($chance);
+        Session::flash('sucess', '创建销售机会成功');
         return $chance;
     }
 

@@ -55,13 +55,14 @@ class WantRepository implements WantRepositoryContract
         $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
         // dd($query);
         
-        if($request->has('os_recommend') && $request->os_recommend == 'yes'){
+        /*if($request->has('os_recommend') && $request->os_recommend == 'yes'){
             //系统推荐信息scope添加
             $query = $query->osRecommend($request->all());
-        }
+        }*/
 
         return $query->select($this->select_columns)
-                   ->paginate(10);
+                     ->orderBy('created_at', 'DESC')
+                     ->paginate(10);
     }
 
     // 创建求购信息
@@ -232,7 +233,7 @@ class WantRepository implements WantRepositoryContract
             $want         = Want::select($this->select_columns)->findorFail($id); //求购信息对象
             $follow_info = new WantFollow(); //求购信息跟进对象
 
-            $update_content = collect([Auth::user()->nick_name.'例行跟进'])->toJson();
+            $update_content = collect(['例行跟进'])->toJson();
             
             // 求购信息编辑信息
             $want->creater_id  = Auth::id();
@@ -244,6 +245,36 @@ class WantRepository implements WantRepositoryContract
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
             $follow_info->description  = collect($update_content)->toJson();
+            $follow_info->prev_update  = $want->updated_at;
+         
+            $follow_info->save();
+            $want->save();
+            $want->touch();
+
+            return $want;
+        });
+    }
+
+    // 互动信息添加
+     public function interactiveAdd($requestData){
+
+        DB::transaction(function() use ($requestData){
+
+            $want         = Want::select($this->select_columns)->findorFail($requestData->want_id); //求购信息对象
+            $follow_info = new WantFollow(); //求购信息跟进对象
+
+            $update_content = collect([$requestData->content])->toJson();
+            
+            // 求购信息编辑信息
+            /*$want->creater_id = Auth::id();
+            $want->want_status = '1';*/
+
+            // 求购信息跟进信息
+            $follow_info->want_id      = $requestData->want_id;
+            $follow_info->user_id      = Auth::id();
+            $follow_info->follow_type  = '2';
+            $follow_info->operate_type = '2';
+            $follow_info->description  = $update_content;
             $follow_info->prev_update  = $want->updated_at;
          
             $follow_info->save();
