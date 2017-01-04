@@ -153,7 +153,7 @@
 			<em></em>
 			</span>
 		</div>
-		<span>
+		<!-- <span>
 			<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
 				{{ csrf_field() }}
             		<input type="hidden" name="car_id" value="{{$cars->id}}">
@@ -162,7 +162,7 @@
 					</button>
 			</form>
 			<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
-		</span>
+		</span> -->
 	</div>	
 </div>   
 @endsection

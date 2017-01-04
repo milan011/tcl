@@ -45,15 +45,6 @@
 				</ul> -->
 				<div class="page-tabs">
             		<ul class="nav nav-tabs">
-            		  <li class="select_want_status @if($want_status_current == 1) active @endif" >
-            		    <a href="javascript:void(0);" data-status="1">正常求购信息</a>
-            		  </li>
-            		  <li class="select_want_status @if($want_status_current == 2) active @endif">
-            		    <a href="javascript:void(0);" data-status="2">待跟进求购信息</a>
-            		  </li>
-            		  <li class="select_want_status @if($want_status_current == 0) active @endif" >
-            		    <a href="javascript:void(0);" data-status="0">已废弃求购信息</a>
-            		  </li>
             		  <li style="display: inline-block;line-height:20px;">
 						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索求购信息</a>
 					</li>
@@ -98,8 +89,7 @@
 							<td>{{$want_stauts_config[$want->want_status]}}</td>							
 							<td>{{substr($want->created_at, 0 ,10)}}</td>							
 							<td>{{$want->belongsToShop->shop_name}}</td>							
-							<td>{{$want->belongsToUser->nick_name}}</td>							
-														
+							<td>{{$want->belongsToUser->nick_name}}</td>										
 							<td class="center">
 								@if($want->want_status == '0') 
 								<!-- 废弃状态查询 -->
@@ -107,6 +97,11 @@
 									<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
 										<i class="icon-edit icon-white"></i> 激活
 									</button>
+								</div>
+								<div class="btn-group">
+									<a class="btn btn-warning" href="{{route('admin.want.show', ['want'=>$want->id])}}">
+										<i class="icon-edit icon-white"></i> 查看
+									</a>
 								</div>								
 								@elseif($want->want_status == '1' || $want->want_status == '2')
 								<!-- 正常状态查询 -->
@@ -124,7 +119,7 @@
 									<!-- <a class="btn btn-success" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
 										<i class="icon-edit icon-white"></i> 匹配
 									</a> -->
-									<div class="btn-group " role=”group”>
+									<div class="btn-group " role="group">
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 											更多
 											<span class="caret"></span>
@@ -147,7 +142,10 @@
 											</li>
 										</ul>
  							 		</div>
-								</div>		
+								</div>
+								@elseif($want->want_status == '3' || $want->want_status == '4' || $want->want_status == '5')<a class="btn btn-warning" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
+									<i class="icon-edit icon-white"></i> 编辑
+								</a>		
 								@else 
 								<!-- 其他 -->
 								<div class="btn-group">
@@ -174,7 +172,7 @@
 			<h3>求购信息搜索</h3>
 		</div>
 		<div class="modal-body" style="max-height:none;">
-			<form class="form-horizontal" id="condition" action="" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.want.self')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
@@ -189,7 +187,7 @@
             	      		<select id="want_status" name="want_status" >
             	      			<option value=''>不限</option>                        
 								@foreach($want_stauts_config as $key=>$status)								
-									<option @if($want_status_current == $key) selected  @endif  value="{{$key}}">		{{$status}}
+									<option @if($select_conditions['want_status'] == $key && $select_conditions['want_status'] != '') selected @endif  value="{{$key}}">		{{$status}}
 									</option>	
 								@endforeach	                     
             	      		</select>
@@ -212,16 +210,7 @@
 <script>
 	$(document).ready(function(){
 
-		var want_status_current = '{{$want_status_current}}';
 		var current_want_id     = $('#current_want_id').val();
-
-		if(want_status_current == ''){
-
-			$('.select_want_status').each(function(){
-
-				$(this).removeClass('active');
-			});
-		}
 
 		// 废弃-激活
 		$('.changStatus').click(function(){

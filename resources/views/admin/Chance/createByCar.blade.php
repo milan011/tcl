@@ -91,7 +91,125 @@
 			<div id="myTabContent" class="tab-content">
 				<div id="info" class="tab-pane active">
 					<div class="box-content">
-						<p class="title">【出售】{{$waited_info->name}}</p>
+						<table  class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th></th>
+							<th>车源信息</th>
+							<th>求购信息</th>
+							<th></th>
+							<th>车源信息</th>
+							<th>求购信息</th>
+						</tr>
+					</thead> 
+					<tbody>
+    					<tr>
+    						<td>编号</td>
+							<td>{{$waited_info->car_code}}</td>							
+							<td id="want_code"></td>
+							<td>车架号</td>
+							<td>{{$waited_info->vin_code}}</td>							
+							<td></td>
+						</tr>
+						<tr>
+    						<td>名称</td>
+							<td>{{$waited_info->name}}</td>							
+							<td id="name"></td>
+							<td>车型类别</td>
+							<td>{{$category_type[$waited_info->categorey_type]}}</td>							
+							<td id="want_type"></td>
+						</tr>
+						<tr>
+    						<td>期望价格</td>
+							<td>{{$waited_info->bottom_price}}-{{$waited_info->top_price}}万</td>
+							<td id="want_price"></td>	
+							<td>外观颜色</td>
+							<td>{{$out_color[$waited_info->out_color]}}</td>
+							<td id="out_color"></td>				
+						</tr>
+						<tr>
+    						<td>车龄</td>
+							<td>{{$waited_info->age}}</td>							
+							<td id="car_age"></td>
+							<td>内饰颜色</td>
+							<td>{{$inside_color[$waited_info->inside_color]}}</td>
+							<td id="inside_color"></td>
+						</tr>
+						<tr>
+    						<td>行驶里程</td>
+							<td>{{$waited_info->mileage}}</td>							
+							<td id="mileage"></td>
+							<td>上牌日期</td>
+							<td>{{substr($waited_info->plate_date, 0 ,10)}}</td>
+							<td></td>
+						</tr>
+						<tr>
+    						<td>变速箱</td>
+							<td>{{$gearbox[$waited_info->gearbox]}}</td>							
+							<td id="gearbox"></td>
+							<td>到检日期</td>
+							<td>{{substr($waited_info->plate_end, 0 ,10)}}</td>
+							<td></td>
+						</tr>
+						<tr>
+    						<td>排量</td>
+							<td>{{$capacity[$waited_info->capacity]}}</td>							
+							<td id="capacity"></td>
+							<td>上牌城市</td>
+							<td>石家庄</td>							
+							<td>石家庄</td>
+						</tr>
+						<tr>
+    						<td>登记日期</td>
+							<td>{{substr($waited_info->created_at, 0 ,10)}}</td>							
+							<td id="created_at"></td>
+							<td>保险类别</td>
+							<td>{{$safe_type[$waited_info->safe_type]}}</td>							
+							<td></td>
+						</tr>
+						<tr>
+    						<td>所属门店</td>
+							<td>{{$waited_info->belongsToShop->shop_name}}</td>							
+							<td id="shop_name"></td>
+							<td>保险到期</td>
+							<td>{{substr($waited_info->safe_end, 0 ,10)}}</td>							
+							<td></td>
+						</tr>
+						<tr>
+    						<td>负责人</td>
+							<td>{{$waited_info->belongsToUser->nick_name}}({{$waited_info->belongsToUser->creater_telephone}})</td>							
+							<td id="creater"></td>
+							<td>过户次数</td>
+							<td>{{$waited_info->sale_number}}</td>							
+							<td id="sale_number"></td>
+						</tr>
+						<tr>
+    						<td>评估师描述</td>
+							<td>{{$waited_info->pg_description}}</td>							
+							<td></td>
+							<td>指导价</td>
+							<td>{{$waited_info->guide_price}}</td>							
+							<td></td>
+						</tr>
+						<tr>
+    						<td>备注</td>
+							<td>{{$waited_info->description}}</td>							
+							<td id="remark"></td>
+						</tr>						
+					</tbody>
+				</table>
+				<span>
+					<form action="{{route('admin.chance.store')}}" method="post" style="display: inherit;margin:0px;">
+						{{ csrf_field() }}
+            			<input type="hidden" name="pipei_car_id" value="{{$waited_info->id}}">
+            			<input type="hidden" name="pipei_want_id" value="">
+						<button class="btn btn-success" type="submit">
+						<i class="icon-edit icon-white"></i> 匹配
+						</button>
+					</form>
+					<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
+				</span>
+						<!-- <p class="title">【出售】{{$waited_info->name}}</p>
 						<p class="detial">
 							<i>底价:</i>
 							<em>{{$waited_info->top_price}}</em>
@@ -169,7 +287,7 @@
 								<i>车主：</i>{{$waited_info->belongsToCustomer->customer_name}}{{$waited_info->belongsToCustomer->customer_telephone}}
 							<em></em>
 							</span>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div id="images" class="tab-pane">
@@ -188,39 +306,22 @@
 				  			<label class="checkbox inline" style="padding-left:0px;">
 								<input type="checkbox" name="checkFollow" id="inlineCheckbox3" value="3"> 拜访
 				  			</label>
-				 			<button onclick="publish()" class="btn btn-info">发布</button>
+				  			<input type="hidden" name="user_name" value="{{Auth::User()->nick_name}}">
+				 			<button id="interactive" class="btn btn-info">发布</button>
 						</div>
 						<div class="clearfix"></div>						
 					</div>
 					<div class="box-content span6">
-						<div class="timeline "> <!-- <div class="timeslot alt"> -->
-					 	<div class="timeslot  "  >
-							<div class="task">
-				    			<span>
-									<span class="type">系统</span>
-									<span class="details">
-										添加求购信息
-									</span>
-									<span>
-										
-									</span> 
-								</span>
-								<div class="arrow"></div>
-							</div>	
-							<div class="icon">
-								<i class="icon-globe"></i>
-							</div>
-							<div class="time">
-								<strong>林涵</strong> 于 2016-12-30 11:26
-							</div>	
-			   			</div>
-							<div class="clearfix"></div>				
-					 		<div class="timeslot alt "  >
+						<div class="timeline"> <!-- <div class="timeslot alt"> -->
+							@foreach ($follow_info as $key=>$info)
+					 		<div class="timeslot @if($key%2 == 0) alt @endif">
 								<div class="task">
 				    				<span>
-										<span class="type">系统</span>
+										<span class="type">{{$follow_type[$info->follow_type]}}</span>
 										<span class="details">
-											添加销售机会
+											@foreach($info->description as $des)
+												<li style="list-style:none;">{{$des}}</li>
+											@endforeach
 										</span>
 										<span>
 											
@@ -232,10 +333,11 @@
 									<i class="icon-globe"></i>
 								</div>
 								<div class="time">
-									<strong>林涵</strong> 于 2016-12-30 11:25
+									<strong>{{$info->belongsToUsers->nick_name}}</strong> 于 {{$info->created_at}}
 								</div>	
 			   				</div>
 							<div class="clearfix"></div>
+							@endforeach				
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -305,7 +407,7 @@
             								           								
             								<input type="hidden" name="want_id" value="{{$match->id}}">
 											<button class="btn btn-success create_chance" type="button">
-											<i class="icon-edit icon-white"></i> 确认匹配
+											<i class="icon-edit icon-white"></i> 对比
 											</button>
 											<input type="hidden" name="car_id" value="{{$waited_info->id}}">
 										</form>
@@ -373,15 +475,16 @@
 
 			// alert($(this).attr('href'));
 			$('#condition').attr('action', $(this).attr('href'));
-			alert($('#condition').attr('action'));
+			// alert($('#condition').attr('action'));
 			$('#condition').submit();
 			return false;
 		});
 
 		$('.create_chance').click(function(){
-			var want_id      = $(this).prev("input[name='want_id']").val();
-			var car_id       = $(this).next("input[name='car_id']").val();
-			var request_url  = "{{route('admin.chance.store')}}";
+			var want_id          = $(this).prev("input[name='want_id']").val();
+			var car_id           = $(this).next("input[name='car_id']").val();
+			var request_url      = "{{route('admin.want.getWantInfo')}}";
+			
 			/*alert(want_id);
 			alert(car_id);*/
 			// return false;
@@ -389,15 +492,103 @@
 
 				method: 'POST',
 				url: request_url,
-				data: { want_id : want_id, car_id : car_id},
+				data: { want_id : want_id},
 				dataType: 'json',
 				headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
 				success: function(data){
 
+					var want = JSON.parse(data.data);
+
+					$("input[name='pipei_want_id']").val(want.id);
+					$('#want_code').text(want.want_code);
+					$('#name').text(want.name);
+					$('#created_at').text(want.created_at);
+					$('#capacity').text(want.capacity);
+					$('#want_price').text(want.bottom_price+'-'+want.top_price+'万');
+					$('#gearbox').text(want.gearbox);
+					$('#age').text(want.age);
+					$('#mileage').text(want.mileage);
+					$('#out_color').text(want.out_color);
+					$('#inside_color').text(want.inside_color);
+					$('#creater').text(want.creater+'('+want.creater_tel+')');
+					$('#shop_name').text(want.shop_name);
+					$('#remark').text(want.remark);
+					$('#want_type').text(want.want_type);
+					$('#car_age').text(want.car_age);
+
+					// alert('匹配成功');
+					console.log(want);
+					// window.location.href = '{{route('admin.chance.index')}}';
+					return false;
+				},
+				error: function(xhr, type){
+
+					alert('Ajax error!');
+				}
+			});
+		});
+
+		//互动信息添加
+		$('#interactive').click(function(){
+
+			var content = $('#textDesc').val();
+			var car_id  = '{{$waited_info->id}}';
+			var request_url  = "{{route('admin.car.interactiveAdd')}}";
+
+			/*alert(content);
+			alert(car_id);*/
+
+			$.ajax({
+
+				method: 'POST',
+				url: request_url,
+				data: { content : content, car_id : car_id},
+				dataType: 'json',
+				headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+				success: function(data){
+					var last_follow_left = $('.timeslot').last().hasClass('alt');
+					var content_follow  = '<div class="timeslot ';
+					var user_name  = $("input[name='user_name']").val();
+
+					if(!last_follow_left){
+						content_follow += 'alt';
+					}
+
+					content_follow += '">'
+					content_follow += '<div calss="task">'
+					content_follow += '<span>';
+					content_follow += '<span class="type">';
+					content_follow += '互动';
+					content_follow += '</span>';
+					content_follow += '<span class="deatails">';
+					content_follow += '<li style="list-style:none;">';
+					content_follow += data.content;
+					content_follow += '</li>';
+					content_follow += '</span>';
+					content_follow += '</span>';
+					content_follow += '<div class="arrow"></div>';
+					content_follow += '</div>';
+					content_follow += '<div class="icon">';
+					content_follow += '<i class="icon-globe"></i>';
+					content_follow += '</div>';
+					content_follow += '<div class="time">';
+					content_follow += '<strong>';
+					content_follow += user_name;
+					content_follow += '</strong>';
+					content_follow += ' 于';
+					content_follow += data.follow_time;
+					content_follow += '</div>';
+					content_follow += '</div>';
+					content_follow += '<div class="clearfix"></div>';			   				
+							
+					alert(last_follow_left);
 					alert('匹配成功');
+					console.log(content_follow);
+
+					$('.timeline').prepend(content_follow);
 					// location.reload();
 					// console.log(data);
-					window.location.href = '{{route('admin.chance.index')}}';
+					// window.location.href = '{{route('admin.chance.index')}}';
 					return false;
 				},
 				error: function(xhr, type){

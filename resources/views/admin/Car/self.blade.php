@@ -45,15 +45,6 @@
 				</ul> -->
 				<div class="page-tabs">
             		<ul class="nav nav-tabs">
-            		  <li class="select_car_status @if($car_status_current == 1) active @endif" >
-            		    <a href="javascript:void(0);" data-status="1">正常车源</a>
-            		  </li>
-            		  <li class="select_car_status @if($car_status_current == 2) active @endif">
-            		    <a href="javascript:void(0);" data-status="2">待跟进车源</a>
-            		  </li>
-            		  <li class="select_car_status @if($car_status_current == 0) active @endif" >
-            		    <a href="javascript:void(0);" data-status="0">已废弃车源</a>
-            		  </li>
             		  <li style="display: inline-block;line-height:20px;">
 						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索车源</a>
 					</li>
@@ -102,14 +93,19 @@
 														
 							<td class="center">
 								@if($car->car_status == '0') 
-								<!-- 废弃状态查询 -->
+								<!-- 废弃状态 -->
 								<div class="btn-group">
 									<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
 										<i class="icon-edit icon-white"></i> 激活
 									</button>
+								</div>
+								<div class="btn-group">
+									<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">
+										<i class="icon-edit icon-white"></i> 查看
+									</a>
 								</div>								
 								@elseif($car->car_status == '1' || $car->car_status == '2')
-								<!-- 正常状态查询 -->
+								<!-- 正常或待跟进状态 -->
 								<div class="btn-group">
 									<span>
 										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
@@ -144,7 +140,10 @@
 											</li>
 										</ul>
  							 		</div>
-								</div>		
+								</div>
+								@elseif($car->car_status == '3' || $car->car_status == '4' || $car->car_status == '5')<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
+									<i class="icon-edit icon-white"></i> 编辑
+								</a>
 								@else 
 								<!-- 其他 -->
 								<div class="btn-group">
@@ -171,7 +170,7 @@
 			<h3>车源搜索</h3>
 		</div>
 		<div class="modal-body" style="max-height:none;">
-			<form class="form-horizontal" id="condition" action="" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.car.self')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
@@ -186,7 +185,7 @@
             	      		<select id="car_status" name="car_status" >
             	      			<option value=''>不限</option>                        
 								@foreach($car_stauts_config as $key=>$status)								
-									<option @if($car_status_current == $key) selected  @endif  value="{{$key}}">		{{$status}}
+									<option @if($select_conditions['car_status'] == $key && $select_conditions['car_status'] != '') selected @endif value="{{$key}}">	{{$status}}
 									</option>	
 								@endforeach	                     
             	      		</select>
@@ -209,17 +208,16 @@
 <script>
 	$(document).ready(function(){
 
-		var car_status_current = '{{$car_status_current}}';
 		var current_car_id     = $('#current_car_id').val();
 		var redirect_url       = '{{route('admin.car.self')}}';
 
-		if(car_status_current == ''){
+		/*if(car_status_current == ''){
 
 			$('.select_car_status').each(function(){
 
 				$(this).removeClass('active');
 			});
-		}
+		}*/
 
 		$('.changStatus').click(function(){
 
@@ -249,7 +247,7 @@
 			});
 		});
 
-		$('li.select_car_status').click(function(){
+		/*$('li.select_car_status').click(function(){
 
 			var car_status = $(this).children('a').attr('data-status');
 
@@ -257,13 +255,12 @@
 
 				$(this).addClass('active').siblings().removeClass('active');
 				$("select[name='car_status']").val(car_status);
-				/*alert('{{route('admin.car.self')}}');
-				return false;*/
+				alert('{{route('admin.car.self')}}');
+				return false;
 				$('#condition').attr('action', '{{route('admin.car.self')}}');
 				$('#condition').submit();
-			}
-			
-		});
+			}			
+		});*/
 
 		$('.pagination').children('li').children('a').click(function(){
 
