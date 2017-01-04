@@ -27,10 +27,13 @@ class AuthController extends Controller
 
     /**
      * Where to redirect users after login / registration.
-     *
+     * 登录跳转地址
      * @var string
      */
     protected $redirectTo = '/admin';
+
+    // 退出后跳转地址
+    protected $redirectAfterLogout = '/admin/login';
 
     /**
      * Create a new authentication controller instance.
