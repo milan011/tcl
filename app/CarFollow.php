@@ -34,4 +34,10 @@ class CarFollow extends Model
 
       return $this->belongsTo('App\Cars', 'car_id', 'id');
     }
+
+    // 定义User表与car_follow表一对多关系
+    public function belongsToUsers(){
+
+      return $this->belongsTo('App\User', 'user_id', 'id');
+    }
 }

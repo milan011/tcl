@@ -72,7 +72,7 @@ class Cars extends Model
             $query = $query->where('car_status', $requestData['car_status']);
         }else{
 
-            $query = $query->where('car_status', '1');
+            $query = $query->whereIn('car_status', ['1', '2', '3', '4', '5', '6']);
         }
 
         if(!empty($requestData['car_code'])){
