@@ -59,7 +59,11 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('transcation/completeDel/{transcation}', 'TranscationController@completeDel')->name('admin.transcation.completeDel');    
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
     Route::post('car/changeStatus', 'CarController@changeStatus')->name('admin.car.changeStatus');
-    Route::post('want/follwQuickly', 'wantController@follwQuickly')->name('admin.want.follwQuickly');
+    Route::post('car/follwQuickly', 'CarController@follwQuickly')->name('admin.car.follwQuickly');
+    Route::post('car/interactiveAdd', 'CarController@interactiveAdd')->name('admin.car.interactiveAdd');  
+    Route::post('car/getCarInfo', 'CarController@getCarInfo')->name('admin.car.getCarInfo');
+    Route::post('want/interactiveAdd', 'WantController@interactiveAdd')->name('admin.want.interactiveAdd');
+    Route::post('want/getWantInfo', 'WantController@getWantInfo')->name('admin.want.getWantInfo');
     Route::post('want/changeStatus', 'wantController@changeStatus')->name('admin.want.changeStatus');
     Route::post('want/follwQuickly', 'wantController@follwQuickly')->name('admin.want.follwQuickly');
     Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('brand.getChildBrand');
