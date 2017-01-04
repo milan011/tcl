@@ -69,8 +69,8 @@
 								<li class="dropdown-menu-title">
  									<span>用户信息</span>
 								</li>
-								<li><a href="#"><i class="halflings-icon user"></i>修改密码</a></li>
-								<li><a href="#"><i class="halflings-icon off"></i>退出</a></li>
+								<li><a href="JavaScript:void(0);"><i class="halflings-icon user"></i>修改密码</a></li>
+								<li><a href="{{ url('admin/logout') }}"><i class="halflings-icon off"></i>退出</a></li>
 							</ul>
 						</li>
 						<!-- end: User Dropdown -->
@@ -118,12 +118,11 @@
 						@endif
 						@ifUserCan('chance.check')
 						<li>
-							<a class="submenu" href="{{route('admin.chance.index')}}/index">
-								<i class="icon-sitemap"></i> 
-								<span class="hidden-tablet">
-									销售机会管理
-								</span>
-							</a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">销售机会</span><span style="float:right;">>></span></a>
+							<ul>
+								<li><a class="submenu" href="{{route('admin.chance.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">发起的销售机会</span></a></li>
+								<li><a class="submenu" href="{{route('admin.chance.index')}}/index"><i class="icon-file-alt"></i><span class="hidden-tablet">参与的销售机会</span></a></li>			
+							</ul>
 						</li>
 						@endif
 						@ifUserCan('plan.check')
