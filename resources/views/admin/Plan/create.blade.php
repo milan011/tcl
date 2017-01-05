@@ -89,9 +89,12 @@
 					  
 					<div class="control-group">
 						<label class="control-label" for="plan_address">看车地址</label>
-						<div class="controls">
-						 	<input id="plan_address" name="plan_address" value="" />
-						</div>
+						<select id="plan_address" name="plan_address" >
+							<option  value="">请选择门店</option>                        
+					  		@foreach($shops as $key=>$shop)											
+					  			<option  value="{{$shop->name}}">{{$shop->name}}</option>	
+					  		@endforeach	                     
+                  		</select>
 				  	</div>
 
 				   			

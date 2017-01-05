@@ -488,7 +488,9 @@
 				success:function(data){
 
 					//设置图片对应车源ID
-					car_id.val(data.id);
+					/*alert(data.scalar.id);
+					console.log(data);*/
+					car_id.val(data.scalar.id);
 					$('#content_title').text('图片上传');
 					car_content.hide();
 					img_content.show();
@@ -544,6 +546,7 @@
 
 			car_content.show();
 			customer_content.hide();
+			img_content.hide();
 
 			return false;
 		});

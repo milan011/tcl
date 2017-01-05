@@ -55,26 +55,27 @@
 						</tr>
 					</thead>   
 					<tbody>
-						@foreach ($plans as $plan)
+						@foreach ($chances as $chance)
     					<tr>
-							<td>{{$plan->belongsToChance->chance_code}}</td>
-							<td>{{$plan->belongsToChance->belongsToCar->car_name}}</td>
-							<td>{{$plan->belongsToChance->belongsToCustomerOnWant->want_customer_name}}</td>
-							<td>{{$plan->plan_time}}</td>
-							<td>{{$plan->plan_address}}</td>													
-							<td>{{substr($plan->created_at, 0 ,10)}}</td>	
-							@if($plan->status == '1')
+							<td>{{$chance->chance_code}}</td>
+							<td>{{$chance->belongsToCar->car_name}}</td>
+							<td>{{$chance->belongsToCustomerOnWant->want_customer_name}}</td>
+							<td>{{$chance->hasOnePlan->plan_time}}</td>
+							<td>{{$chance->hasOnePlan->plan_address}}</td>										
+							<td>{{substr($chance->hasOnePlan->created_at, 0 ,10)}}</td>	
+							@if($chance->hasOnePlan->status == '1')
 							<td class="center"><span class="label label-success">正常</span></td>
 							@else
 							<td class="center"><span class="label label-warning">废弃</span></td>
 							@endif
-							<td>{{$plan->belongsToChance->belongsToUser->nick_name}}</td>						
-							<td>{{$plan->belongsToChance->belongsToShop->shop_name}}</td>							
+							<td>{{$chance->belongsToUser->nick_name}}</td>						
+							<td>{{$chance->belongsToShop->shop_name}}</td>
+							@if($chance->creater == Auth::id())							
 							<td class="center">
-								<a class="btn btn-success" href="{{route('admin.plan.edit', ['plan'=>$plan->id])}}">
+								<a class="btn btn-success" href="{{route('admin.plan.edit', ['plan'=>$chance->hasOnePlan->id])}}">
 									<i class="icon-edit icon-white"></i> 约车反馈
 								</a>
-								@if($plan->status == '1') 
+								<!-- @if($chance->hasOnePlan->status == '1') 
 								<button class="btn btn-info changStatus" data-status="0">
 									<i class="icon-edit icon-white"></i> 废弃
 								</button>
@@ -83,9 +84,9 @@
 									<i class="icon-edit icon-white"></i> 激活
 								</button>
 								@endif
-								<input type="hidden" value="{{$plan->id}}">
+								<input type="hidden" value="{{$chance->hasOnePlan->id}}"> -->
 								<!-- <span>
-								<form action="{{route('admin.plan.destroy', ['plan'=>$plan->id])}}" method="post" style="display: inherit;margin:0px;">
+								<form action="{{route('admin.plan.destroy', ['plan'=>$chance->id])}}" method="post" style="display: inherit;margin:0px;">
 									{{ csrf_field() }}
             						{{ method_field('DELETE') }}
 									<button class="btn btn-danger delete-confrim" type="button">
@@ -94,12 +95,19 @@
 								</form>
 								</span> -->
 							</td>
+							@else
+							<td class="center">
+								<a class="btn btn-success" href="{{route('admin.plan.show', ['plan'=>$chance->hasOnePlan->id])}}">
+									<i class="icon-edit icon-white"></i> 查看
+								</a>
+							</td>
+							@endif
 						</tr>
 						@endforeach							
 					</tbody>
 				</table>
 				<div class="pagination pagination-centered">
-					 {!! $plans->links() !!}
+					 {!! $chances->links() !!}
 				</div>          
 			</div>
 		</div>

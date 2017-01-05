@@ -45,11 +45,16 @@
 				</div>
 			</div> -->
 			<div class="box-content">
-				<ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;">
-					<li style="display: inline-block;line-height: 20px;">
+				<div class="page-tabs">
+            		<ul class="nav nav-tabs">
+            		  <li style="display: inline-block;line-height:20px;">
+						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索交易信息</a>
+					</li>
+					<li style="display:inline-block;line-height:20px;float:right;">
 						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
 					</li>
-				</ul>
+            		</ul>
+        		</div>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
@@ -76,7 +81,8 @@
 							<td>{{$transcation->done_time}}</td>													
 							<td>{{substr($transcation->created_at, 0 ,10)}}</td>	
 							<td>{{$transcation->belongsToChance->belongsToUser->nick_name}}</td>	
-							<td>{{$transcation->belongsToChance->belongsToShop->shop_name}}</td>							
+							<td>{{$transcation->belongsToChance->belongsToShop->shop_name}}</td>
+							@if($transcation->user_id == Auth::id())		
 							<td class="center">
 								<a class="btn btn-success" href="{{route('admin.transcation.edit', ['transcation'=>$transcation->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
@@ -113,6 +119,13 @@
 										</ul>
  							 		</div>
 							</td>
+							@else
+							<td class="center">
+								<a class="btn btn-success" href="{{route('admin.transcation.show', ['transcation'=>$transcation->id])}}">
+									<i class="icon-edit icon-white"></i> 查看
+								</a>
+							</td>
+							@endif
 						</tr>
 						@endforeach							
 					</tbody>
@@ -123,6 +136,39 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal hide fade" id="myModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>交易信息搜索</h3>
+		</div>
+		<div class="modal-body" style="max-height:none;">
+			<form class="form-horizontal" id="condition" action="{{route('admin.transcation.index')}}/index" method="post">
+				{!! csrf_field() !!}
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="chance_code">交易信息编号</label>
+						<div class="controls">
+						  	<input class="input-xlarge focused" name="chance_code" id="chance_code" type="text" value="">
+						</div>
+					</div>		
+					<div class="control-group  ">
+            	    	<label class="control-label" for="trade_status">交易信息状态</label>
+            	    	<div class="controls">
+            	      		<select id="chance_status" name="trade_status" >
+            	      			<option value='1'>正常</option>								                    
+            	      			<option value='2'>已完成</option>								                    
+            	      		</select>
+            	    	</div>
+            	  	</div>				  
+				</fieldset>
+				<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+			<button type="submit" class="btn btn-primary">搜索</button>
+		</div>
+			</form>				         
+		</div>
+		
+	</div>
 @endsection
 
 @section('script_content')
@@ -131,6 +177,15 @@
 <script>
 
 	$(document).ready(function(){
+
+		$('.pagination').children('li').children('a').click(function(){
+
+			// alert($(this).attr('href'));
+			$('#condition').attr('action', $(this).attr('href'));
+			// alert($('#condition').attr('action'));
+			$('#condition').submit();
+			return false;
+		});
 
 		$('.changStatus').click(function(){
 
