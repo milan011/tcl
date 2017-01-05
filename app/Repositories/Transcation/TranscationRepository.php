@@ -20,7 +20,7 @@ use Debugbar;
 class TranscationRepository implements TranscationRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id','chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id','created_at'];
+    protected $select_columns = ['id','chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id','created_at', 'shop_id'];
 
     // 订车表列名称-注释对应
     protected $columns_annotate = [
@@ -42,16 +42,16 @@ class TranscationRepository implements TranscationRepositoryContract
     }
 
     // 根据不同参数获得订车列表
-    public function getAllTranscations()
+    public function getAllTranscations($ruquest)
     {   
         // dd($request->Transaction_launch);
         // $query = Transaction::query();  // 返回的是一个 QueryBuilder 实例
         $query = new Transcation();       // 返回的是一个Transaction实例,两种方法均可
-        // dd($request->all());
-        // $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
+        // dd($ruquest->all());
+        $query = $query->addCondition($ruquest->all()); //根据条件组合语句
 
         // $query = $query->chacneLaunch($request->Transaction_launch);
-        $query = $query->where('trade_status', '1');
+        // $query = $query->where('trade_status', '1');
         return $query->select($this->select_columns)
                      ->orderBy('created_at', 'DESC')
                      ->paginate(10);
@@ -79,8 +79,29 @@ class TranscationRepository implements TranscationRepositoryContract
                 $plan->plan_del    = '1';
                 $plan->plan_remark = $requestData->plan_remark;
                 
-    
+                //获得交易参与者ID及门店ID
+                $partner = getPartnerInfo($chance->car_creater,$chance->want_creater,$chance->creater);
+                
+                if($partner['is_self']){
+                    //车源、求购均来自本用户
+                    $requestData['partner_id'] = Auth::id();
+                    $requestData['partner_shop'] = $chance->shop_id;
+                }else{
+
+                    if($partner['want']){
+                        // 对方提供求购信息
+                        $requestData['partner_id']   = $partner['user_id'];
+                        $requestData['partner_shop'] = $want->shop_id;
+                    }else{
+                        // 对方提供车源信息
+                        $requestData['partner_id'] = $partner['user_id'];
+                        $requestData['partner_shop'] = $car->shop_id;
+                    }
+                }
+
                 $requestData['user_id'] = Auth::id();
+                $requestData['shop_id'] = $chance->shop_id;
+                
                 $transcation = new Transcation();
                 $input =  array_replace($requestData->all());
                 $transcation->fill($input);

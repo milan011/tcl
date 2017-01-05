@@ -6,7 +6,7 @@ interface TranscationRepositoryContract
     
     public function find($id);
     
-    public function getAllTranscations();
+    public function getAllTranscations($requestData);
 
     public function create($requestData);
 

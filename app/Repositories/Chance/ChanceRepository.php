@@ -39,7 +39,7 @@ class chanceRepository implements chanceRepositoryContract
     }
 
     // 根据不同参数获得销售机会列表
-    public function getAllChances($request)
+    public function getAllChances($request, $is_all=true)
     {   
         // dd($request->participate);
         // $query = Chance::query();  // 返回的是一个 QueryBuilder 实例
@@ -47,10 +47,16 @@ class chanceRepository implements chanceRepositoryContract
         // dd($request->all());
         // $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
 
-        $query = $query->chacneLaunch($request->participate);
+        $query = $query->chacneLaunch($request->participate, $is_all);
 
-        return $query->whereIn('status', ['1', '2', '3'])
-                     ->select($this->select_columns)
+        if(!$is_all){
+
+           $query = $query->where('status', '4');
+        }else{
+            $query = $query->whereIn('status', ['1', '2', '3']);
+        }
+
+        return $query->select($this->select_columns)
                      ->orderBy('created_at', 'DESC')
                      ->paginate(10);
     }

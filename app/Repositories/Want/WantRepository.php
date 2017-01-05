@@ -87,12 +87,12 @@ class WantRepository implements WantRepositoryContract
 
             $create_content = collect(['创建求购信息'])->toJson();  //定义求购信息跟进时信息变化情况,即跟进描述
             // 求购信息跟进信息
-            $follow_info->car_id       = $want->id;
+            $follow_info->want_id       = $want->id;
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '1';
             $follow_info->description  = $create_content;
-            $follow_info->prev_update  = $car->updated_at;
+            $follow_info->prev_update  = $want->updated_at;
         
             $follow_info->save(); 
                 

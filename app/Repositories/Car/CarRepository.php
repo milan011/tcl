@@ -81,17 +81,19 @@ class CarRepository implements CarRepositoryContract
     {   
         if(!empty($requestData->vin_code) && $this->isRepeat($requestData->vin_code)){
             //存在车架号并且存在该车架号记录
+
             $car = $this->isRepeat($requestData->vin_code);
             return $car;
         }else{
-            DB::transaction(function() use ($requestData){
+            $car_obj = (object) '';
+            DB::transaction(function() use ($requestData, $car_obj){
                 // 添加车源并返回实例,处理跟进(添加车源)
                 $requestData['creater_id'] = Auth::id();
                 $requestData['car_code']   = getCarCode('car');
     
                 unset($requestData['_token']);
                 unset($requestData['ajax_request_url']);
-    
+
                 $car = new Cars();
                 $input =  array_replace($requestData->all());
                 $car->fill($input);
@@ -109,11 +111,13 @@ class CarRepository implements CarRepositoryContract
                 $follow_info->description  = $create_content;
                 $follow_info->prev_update  = $car->updated_at;
             
-                $follow_info->save();  
-                
+                $follow_info->save();
 
-                return $car;
+                $car_obj->scalar = $car;
+                // dd($car_obj);
+                // return $car_obj;
             });
+            return $car_obj;
         }         
     }
 
@@ -205,8 +209,7 @@ class CarRepository implements CarRepositoryContract
             return $car;           
         });     
         // dd('sucess');
-        // dd($Car->toJson());
-        
+        // dd($Car->toJson());       
     }
 
     // 删除车源

@@ -47,7 +47,7 @@ class PlanRepository implements PlanRepositoryContract
         // $query = Plan::query();  // 返回的是一个 QueryBuilder 实例
         $query = new Plan();       // 返回的是一个Plan实例,两种方法均可
         // dd($request->all());
-        // $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
+        $query = $query->addCondition($request->all()); //根据条件组合语句
 
         // $query = $query->chacneLaunch($request->Plan_launch);
 
