@@ -44,9 +44,10 @@ class TranscationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $transcations = $this->transcation->getAllTranscations();
+        // dd($request->all());
+        $transcations = $this->transcation->getAllTranscations($request);
 
         /*p(lastSql());
         dd($transcations);
@@ -113,7 +114,7 @@ class TranscationController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
     }
 
     /**

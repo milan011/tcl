@@ -153,7 +153,8 @@ class CarController extends Controller
     {
         // p($carRequest->all());exit;
         $car = $this->car->create($carRequest);
-
+        /*p('hehe');
+        dd($car);*/
         return response()->json($car); 
     }
 

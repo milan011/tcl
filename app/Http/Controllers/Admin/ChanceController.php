@@ -51,6 +51,7 @@ class ChanceController extends Controller
     {
         
         $request['participate'] = true;
+        
         /*p($request->method());
         dd($request->all());*/
         $chances = $this->chance->getAllChances($request);
@@ -225,7 +226,7 @@ class ChanceController extends Controller
         $chance = $this->chance->create($request);
 
         // dd($chance->toJson());
-        return redirect()->route('admin.chance.index')->withInput();     
+        return redirect()->route('admin.chance.self')->withInput();     
     }
 
 

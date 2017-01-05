@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
 use DB;
+use App\Shop;
 use App\Http\Controllers\Controller;
 use App\Repositories\Plan\PlanRepositoryContract;
 use App\Repositories\Car\CarRepositoryContract;
@@ -46,13 +47,15 @@ class PlanController extends Controller
      */
     public function index(Request $request)
     {
-        $plans = $this->plan->getAllPlans($request);
+        // 先搜索属于该用户的销售机会，再得到约车信息
+        $request['participate'] = false;
 
-        /*p(lastSql());
-        dd($plans);
-        dd($plans[0]->belongsToChance);*/
+        $chances = $this->chance->getAllChances($request, false);
+        // dd(lastSql());
+        // dd($chances[0]->hasOnePlan);
+        // dd($chances);
 
-        return view('admin.plan.index', compact('plans'));
+        return view('admin.plan.index', compact('chances'));
     }
 
     /**
@@ -62,6 +65,8 @@ class PlanController extends Controller
      */
     public function create(Request $request)
     {
+        $shops = Shop::where('status', '1')->select('id', 'name')->get();
+        // dd($shops);
         // dd($request->all());
         $chance_info = $this->chance->find($request->chance_id);
         $car_info    = $this->car->find($request->car_id);
@@ -73,7 +78,8 @@ class PlanController extends Controller
         return view('admin.plan.create',compact(
             'chance_info', 
             'car_info', 
-            'want_info'
+            'want_info',
+            'shops'
         ));
     }
 
@@ -114,6 +120,7 @@ class PlanController extends Controller
     public function store(Request $request)
     {
         // dd($brandRequest->all());
+
         $getInsertedId = $this->plan->create($request);
         // p(lastSql());exit;
         return redirect()->route('admin.plan.index')->withInput();
@@ -138,12 +145,13 @@ class PlanController extends Controller
      */
     public function edit($id)
     {
+        // dd($this->plan->find($id));
         $plan_info   = $this->plan->find($id);
         $chance_info = $this->chance->find($plan_info->chance_id);
         $car_info    = $this->car->find($chance_info->car_id);
         $want_info   = $this->want->find($chance_info->want_id);
 
-        //dd($chance_info);
+        // dd($plan_info);
         //dd($plan_info);
 
         return view('admin.plan.edit',compact(

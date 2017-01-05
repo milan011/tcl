@@ -63,8 +63,8 @@ class WantController extends Controller
     {
         // dd($request->all());
         $wants = $this->want->getAllWants($request, true);
-        // p(lastSql());
-        // dd($wants);
+        /*p(lastSql());
+        dd($wants);*/
         $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
         $want_stauts_config = config('tcl.want_stauts'); //获取配置文件中车源状态
