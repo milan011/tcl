@@ -31,6 +31,7 @@ class Plan extends Model
         'password', 'remember_token',
     ];
 
+
     // 定义Plan表与Chance表一对多关系
     public function belongsToChance(){
 

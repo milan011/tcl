@@ -44,11 +44,11 @@ class Want extends Model
                     $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
         
                     // $this->where('shop_id', $user_shop_id);
-               $query = $query->where('shop_id', '6');    
+                    $query = $query->where('shop_id', $user_shop_id);    
                 }else{
                     //店员
                     // $this->where('creater_id', Auth::id());
-                    $query = $query->where('creater_id', '3');  
+                    $query = $query->where('creater_id', Auth::id());  
                 } 
             }           
         }
@@ -97,14 +97,14 @@ class Want extends Model
         if(Auth::user()->isMdLeader()){
             //店长
             $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
-
-            // $this->where('shop_id', $user_shop_id);
-            $query = $this->where('shop_id', '6');
+            // dd($user_shop_id);
+            $this->where('shop_id', $user_shop_id);
+            // $query = $this->where('shop_id', '6');
 
         }else{
             //店员
             // $this->where('creater_id', Auth::id());
-            $query = $this->where('creater_id', '3');
+            $query = $this->where('creater_id', Auth::id());
 
         }
 

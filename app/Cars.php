@@ -58,11 +58,11 @@ class Cars extends Model
                     $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
         
                     // $this->where('shop_id', $user_shop_id);
-                    $query = $query->where('shop_id', '6');    
+                    $query = $query->where('shop_id', $user_shop_id);    
                 }else{
                     //店员
                     // $this->where('creater_id', Auth::id());
-                    $query = $query->where('creater_id', '3');  
+                    $query = $query->where('creater_id', Auth::id());  
                 } 
             }           
         }

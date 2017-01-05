@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Transcation extends Model
 {
@@ -20,7 +21,7 @@ class Transcation extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id'];
+    protected $fillable = ['chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id', 'shop_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -28,6 +29,50 @@ class Transcation extends Model
      * @var array
      */
     protected $hidden = [];
+
+    // 搜索条件处理
+    public function addCondition($requestData){
+
+        $query = $this;
+
+        if(!(Auth::user()->isSuperAdmin())){
+           if(Auth::user()->isMdLeader()){
+                //店长
+                $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
+    
+                $query = $query->where(function($query) use ($user_shop_id){
+
+                    $query = $query->where('shop_id', $user_shop_id);
+                    $query = $query->orWhere('partner_shop', $user_shop_id);
+                });
+
+                // $query = $query->where('shop_id', $user_shop_id);    
+            }else{
+                //店员
+                $query = $query->where(function($query){
+
+                    $query = $query->where('user_id', Auth::id());
+                    $query = $query->orWhere('partner_id', Auth::id());
+                });
+                // $query = $query->where('user_id', Auth::id());  
+            } 
+        }           
+
+        if(isset($requestData['trade_status']) && $requestData['trade_status'] != ''){
+
+            $query = $query->where('trade_status', $requestData['trade_status']);
+        }else{
+
+            $query = $query->where('trade_status', '1');
+        }
+
+        if(!empty($requestData['want_code'])){
+
+            $query = $query->where('want_code', $requestData['want_code']);
+        }
+
+        return $query;
+    }
 
     // 定义Transcation表与Chance表一对多关系
     public function belongsToChance(){

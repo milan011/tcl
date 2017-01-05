@@ -35,7 +35,7 @@ class Chance extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeChacneLaunch($query, $participate)
+    public function scopeChacneLaunch($query, $participate, $is_all)
     {
         $user_id = Auth::id();
 
@@ -50,15 +50,18 @@ class Chance extends Model
             $query = $query->orWhere('want_creater', $user_id);
         });
 
-        if($participate){
-            //用户参与的销售机会
+        if($is_all){
+            if($participate){
+                //用户参与的销售机会
 
-            $query = $query->where('creater', '!=', $user_id);
-        }else{
-            //用户发起的销售机会
+                $query = $query->where('creater', '!=', $user_id);
+            }else{
+                //用户发起的销售机会
 
-            $query = $query->where('creater', $user_id);
+                $query = $query->where('creater', $user_id);
+            }
         }
+        
 
         return $query;
     }
@@ -115,10 +118,10 @@ class Chance extends Model
                   ->select('id', 'name as car_customer_name', 'telephone as car_customer_telephone');
     }
 
-    // 定义Chance表与plan表一对多关系
-    public function hasManyPlans()
+    // 定义Chance表与plan表一对一关系
+    public function hasOnePlan()
     {
-        return $this->hasMany('App\Plan', 'chance_id', 'id');
+        return $this->hasOne('App\Plan', 'chance_id', 'id');
     }
 
     // 定义Chance表与Transcation表一对多关系
