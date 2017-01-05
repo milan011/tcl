@@ -202,3 +202,28 @@
 		),
 		$str);
 	}
+
+	//获得交易伙伴信息
+	function getPartnerInfo($car_creater, $want_creater, $creater){
+
+		$partner = array();
+
+		if($car_creater == $want_creater){
+
+			$partner['self'] = true;
+		}else{
+			if($car_creater = $creater){
+				// 发起者提供车源
+				$partner['self'] = true;
+				$partner['want'] = true;
+				$partner['user_id'] = $want_creater;
+			}else{
+				// 发起者提供求购
+				$partner['self'] = true;
+				$partner['want'] = false;
+				$partner['user_id'] = $car_creater;
+			}
+		}
+
+		return $partner;
+	}
