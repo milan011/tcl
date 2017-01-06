@@ -100,10 +100,10 @@
 					  		<option value="{{$brand->id}}">{{$brand->name}}</option>
 					  		@endforeach										
 						</select>
-						<select id="second_category" name="want_factory" style="display:none;width:15%;">
+						<select id="second_category" name="car_factory" style="display:none;width:15%;">
 					  		<option  value="0">请选择厂家</option>											
 						</select>
-						<select id="thrid_category" name="category_id" style="display:none;width:15%;">
+						<select id="thrid_category" name="categorey_id" style="display:none;width:15%;">
 					  		<option  value="0">请选择车系</option>											
 						</select>
 						<select id="four_category" name="cate_id" style="display:none;">
@@ -167,7 +167,7 @@
                 	<label class="control-label" for="shiftType">过户次数</label>
                 	<div class="controls">
                   		<select id="sale_number" name="sale_number" >                        
-					  		@foreach($sale_number as $key=>$sale)											
+					  		@foreach($sale_number_config as $key=>$sale)											
 					  		<option  value="{{$key}}">{{$sale}}</option>	
 					  		@endforeach	                     
                   		</select>
