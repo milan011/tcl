@@ -43,15 +43,15 @@ class WantController extends Controller
     {
         $request['want_status'] = '1';
         $wants = $this->want->getAllWants($request);
-
+/*
         $gearbox             = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color           = config('tcl.out_color'); //获取配置文件中外观颜色
         $want_stauts_config  = config('tcl.want_stauts'); //获取配置文件中车源状态
-        $capacity            = config('tcl.capacity'); //获取配置文件排量
+        $capacity            = config('tcl.capacity'); //获取配置文件排量*/
         $want_status_current = '1';
         /*p(lastSql());
         dd($wants);*/
-        return view('admin.want.index', compact('wants', 'gearbox', 'out_color', 'want_status_current', 'want_stauts_config', 'capacity'));
+        return view('admin.want.index', compact('wants', 'want_status_current'));
     }
 
     /**
@@ -65,10 +65,10 @@ class WantController extends Controller
         $wants = $this->want->getAllWants($request, true);
         /*p(lastSql());
         dd($wants);*/
-        $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        /*$gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
         $want_stauts_config = config('tcl.want_stauts'); //获取配置文件中车源状态
-        $capacity           = config('tcl.capacity'); //获取配置文件排量
+        $capacity           = config('tcl.capacity'); //获取配置文件排量*/
         // dd($request->method());
         if($request->method() == 'POST'){
             //初始搜索条件
@@ -79,7 +79,7 @@ class WantController extends Controller
         
         // dd($car_status);
 
-        return view('admin.want.self', compact('wants', 'gearbox', 'out_color', 'want_status', 'want_stauts_config', 'capacity', 'select_conditions'));
+        return view('admin.want.self', compact('wants',  'want_stauts_config', 'select_conditions'));
     }
 
     /**
@@ -92,7 +92,7 @@ class WantController extends Controller
         // dd(Auth::user());
 
         $all_top_brands = $this->brands->getChildBrand(0);
-        $year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
+        /*$year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
         $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
@@ -101,25 +101,14 @@ class WantController extends Controller
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
         $capacity       = config('tcl.capacity'); //获取配置文件排量
-        $mileage_config = config('tcl.mileage'); //获取配置文件中车源状态
+        $mileage_config = config('tcl.mileage'); //获取配置文件中车源状态*/
         $city_id        = $this->shop->find(Auth::user()->shop_id)->city_id; //车源所在城市
         $provence_id    = $this->shop->find(Auth::user()->shop_id)->provence_id; //车源所在省份
         // dd($city_id);
         return view('admin.want.create',compact(
             'all_top_brands', 
-            'year_type', 
-            'category_type', 
-            'gearbox',
-            'gearbox',
-            'out_color',
-            'inside_color',
-            'sale_number',
             'city_id',
-            'provence_id',
-            'safe_type',
-            'capacity',
-            'customer_res',
-            'mileage_config'
+            'provence_id'
         ));
     }
 
@@ -167,13 +156,13 @@ class WantController extends Controller
     {
         $wants = $this->want->find($id);
 
-        $gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        /*$gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $capacity       = config('tcl.capacity'); //获取配置文件排量
-        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别*/
 
         // dd($wants);
-        return view('admin.want.show', compact('wants', 'gearbox', 'out_color', 'capacity', 'category_type'));
+        return view('admin.want.show', compact('wants'));
     }
 
     /**
@@ -186,25 +175,19 @@ class WantController extends Controller
     {
         $wants = $this->want->find($id);
         // dd($wants);
-        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
+        /*$gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
         $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
-        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $capacity       = config('tcl.capacity'); //获取配置文件排量*/
         
         /*if (Gate::denies('update', $wants)) {
             //不允许编辑,基于Policy
             dd('no no');
         }*/
         return view('admin.want.edit', compact(
-            'wants',
-            'gearbox',
-            'out_color',
-            'inside_color',
-            'sale_number',
-            'customer_res',
-            'capacity'
+            'wants'
         ));
     }
 

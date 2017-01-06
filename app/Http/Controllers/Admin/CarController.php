@@ -43,17 +43,16 @@ class CarController extends Controller
     public function index(Request $request)
     {
         // dd($request->method());
+        $all_top_brands = $this->brands->getChildBrand(0);
         $request['car_status'] = '1';
-        // dd($request->all());
+        $select_conditions  = $request->all();
+        // dd($select_conditions);
         $cars = $this->car->getAllcars($request);
-        /*p(lastSql());
-        dd($cars[0]);*/
-        $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
-        $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
-        $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
+        /*dd(lastSql());
+        dd($cars);*/
         $car_status_current = '1';
 
-        return view('admin.car.index', compact('cars', 'gearbox', 'out_color', 'car_status_current', 'car_stauts_config'));
+        return view('admin.car.index', compact('cars','car_status_current', 'all_top_brands', 'select_conditions'));
     }
 
     /**
@@ -66,11 +65,10 @@ class CarController extends Controller
         
         // dd($request->all());
         $cars = $this->car->getAllcars($request, true);
+        $all_top_brands = $this->brands->getChildBrand(0);
         /*p(lastSql());
         dd($cars);*/
-        $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
-        $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
-        $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
+
         
         // dd($select_conditions['car_status']);
         if($request->method() == 'POST'){
@@ -82,7 +80,7 @@ class CarController extends Controller
         
         // dd($car_status);
 
-        return view('admin.car.self', compact('cars', 'gearbox', 'out_color', 'car_stauts_config', 'select_conditions'));
+        return view('admin.car.self', compact('cars', 'select_conditions','all_top_brands'));
     }
 
     /**
@@ -95,7 +93,7 @@ class CarController extends Controller
         // dd(Auth::user());
         $car_code = getCarCode();
         $all_top_brands = $this->brands->getChildBrand(0);
-        $year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
+        /*$year_type      = config('tcl.year_type'); //获取配置文件中所有车款年份
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
         $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
@@ -104,7 +102,7 @@ class CarController extends Controller
         $car_type       = config('tcl.car_type'); //获取配置文件车源类型
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
-        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $capacity       = config('tcl.capacity'); //获取配置文件排量*/
         $city_id        = $this->shop->find(Auth::user()->shop_id)->city_id; //车源所在城市
         $provence_id    = $this->shop->find(Auth::user()->shop_id)->provence_id; //车源所在省份
 
@@ -115,19 +113,9 @@ class CarController extends Controller
 
         // dd($city_id);
         return view('admin.car.create',compact(
-            'all_top_brands', 
-            'year_type', 
-            'category_type', 
-            'gearbox',
-            'out_color',
-            'inside_color',
-            'sale_number',
-            'car_type',
+            'all_top_brands',           
             'city_id',
             'provence_id',
-            'safe_type',
-            'capacity',
-            'customer_res',
             'area'
         ));
     }
@@ -207,14 +195,13 @@ class CarController extends Controller
     {
         $cars = $this->car->find($id);
 
-        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
-        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        /*$out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
         $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
         $car_type       = config('tcl.car_type'); //获取配置文件车源类型
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
-        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $capacity       = config('tcl.capacity'); //获取配置文件排量*/
         
         /*if (Gate::denies('update', $cars)) {
             //不允许编辑,基于Policy
@@ -223,16 +210,7 @@ class CarController extends Controller
 
         // dd($cars);
         return view('admin.car.edit', compact(
-            'cars',
-            'gearbox',
-            'out_color',
-            'inside_color',
-            'sale_number',
-            'car_type',
-            'customer_res',
-            'safe_type',
-            'capacity'
-
+            'cars'
         ));
 
     }

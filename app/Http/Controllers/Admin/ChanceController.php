@@ -59,9 +59,9 @@ class ChanceController extends Controller
         dd($chances);*/
 
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
-        $chance_status = config('tcl.chance_status'); //获取配置文件中销售机会状态
+        // $chance_status = config('tcl.chance_status'); //获取配置文件中销售机会状态
 
-        return view('admin.chance.index', compact('chances', 'chance_launch', 'chance_status'));
+        return view('admin.chance.index', compact('chances', 'chance_launch'));
     }
 
     /**
@@ -95,7 +95,7 @@ class ChanceController extends Controller
         $request['os_recommend'] = 'yes';
         $is_self = $request->has('is_self');
   
-        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
+        /*$gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
         $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
@@ -108,7 +108,7 @@ class ChanceController extends Controller
         $mileage_config  = config('tcl.mileage'); //获取配置文件中车源状态
         $sale_number_config  = config('tcl.want_sale_number'); //获取配置文件中车源状态
         $follow_type     = config('tcl.follow_type'); //获取配置文件中车源状态
-        $age            = config('tcl.age'); //获取配置文件中车源状态
+        $age            = config('tcl.age'); //获取配置文件中车源状态*/
 
         if($request->has('want_id')){
             //匹配求购信息
@@ -131,23 +131,8 @@ class ChanceController extends Controller
             dd($match_info);*/
              return view('admin.chance.createByWant',compact(
                 'waited_info', 
-                'match_info',
-                'createBy',
-                'gearbox',
-                'out_color',
-                'inside_color',
-                'sale_number',
-                'car_type',
-                'customer_res',
-                'safe_type',
-                'capacity',
-                'category_type',
-                'car_stauts_config',
-                'mileage_config',
-                'sale_number_config',
-                'follow_type',
-                'follow_info',
-                'age'
+                'match_info',             
+                'follow_info'
             )); 
         
         }else{
@@ -175,20 +160,8 @@ class ChanceController extends Controller
                 'waited_info', 
                 'match_info',
                 'createBy',
-                'gearbox',
-                'out_color',
-                'inside_color',
-                'sale_number',
-                'car_type',
-                'customer_res',
-                'safe_type',
-                'capacity',
-                'category_type',
-                'mileage_config',
-                'car_stauts_config',
                 'img_info',
-                'follow_info',
-                'follow_type'
+                'follow_info'
             )); 
         }        
     }
@@ -244,14 +217,14 @@ class ChanceController extends Controller
         // dd($chances);
         // dd($car_info);
         // dd($want_info);
-        $gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        /*$gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $capacity       = config('tcl.capacity'); //获取配置文件排量
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
         $mileage        = config('tcl.mileage'); //获取配置文件中车型类别
-
+*/
         // dd($chances->hasManyImages()->get());
-        return view('admin.chance.show', compact('chances', 'gearbox', 'out_color', 'capacity', 'category_type', 'car_info', 'want_info', 'mileage'));
+        return view('admin.chance.show', compact('chances',  'car_info', 'want_info'));
     }
 
     /**
@@ -264,7 +237,7 @@ class ChanceController extends Controller
     {
         $chances = $this->chance->find($id);
 
-        $gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
+        /*$gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
         $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
         $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
@@ -272,7 +245,7 @@ class ChanceController extends Controller
         $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
         $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
         $capacity       = config('tcl.capacity'); //获取配置文件排量
-        
+        */
         /*if (Gate::denies('update', $chances)) {
             //不允许编辑,基于Policy
             dd('no no');
@@ -280,16 +253,7 @@ class ChanceController extends Controller
 
         // dd($chances);
         return view('admin.chance.edit', compact(
-            'chances',
-            'gearbox',
-            'out_color',
-            'inside_color',
-            'sale_number',
-            'car_type',
-            'customer_res',
-            'safe_type',
-            'capacity'
-
+            'chances'
         ));
 
     }
