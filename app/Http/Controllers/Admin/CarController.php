@@ -48,8 +48,8 @@ class CarController extends Controller
         $select_conditions  = $request->all();
         // dd($select_conditions);
         $cars = $this->car->getAllcars($request);
-        /*dd(lastSql());
-        dd($cars);*/
+        // dd(lastSql());
+        // dd($cars);
         $car_status_current = '1';
 
         return view('admin.car.index', compact('cars','car_status_current', 'all_top_brands', 'select_conditions'));
@@ -64,9 +64,10 @@ class CarController extends Controller
     {
         
         // dd($request->all());
-        $cars = $this->car->getAllcars($request, true);
         $all_top_brands = $this->brands->getChildBrand(0);
-        /*p(lastSql());
+        $cars = $this->car->getAllcars($request, true);
+        
+        /*dd(lastSql());
         dd($cars);*/
 
         

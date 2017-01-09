@@ -59,6 +59,26 @@ class PlanController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     * 用户发起的约车列表
+     * @return \Illuminate\Http\Response
+     */
+    public function selfPlan(Request $request)
+    {
+        // p($request->method());
+        dd($request->all());
+        $request['participate'] = false;
+        $chances = $this->chance->getAllChances($request);
+        /*dd(lastSql());
+        dd($chances);*/
+        $select_conditions  = $request->all();
+        $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
+
+
+        return view('admin.chance.self', compact('chances', 'chance_launch','select_conditions'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

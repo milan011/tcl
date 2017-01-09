@@ -57,11 +57,11 @@ class ChanceController extends Controller
         $chances = $this->chance->getAllChances($request);
         /*p(lastSql());
         dd($chances);*/
-
+        $select_conditions  = $request->all();
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
         // $chance_status = config('tcl.chance_status'); //获取配置文件中销售机会状态
 
-        return view('admin.chance.index', compact('chances', 'chance_launch'));
+        return view('admin.chance.index', compact('chances', 'chance_launch','select_conditions'));
     }
 
     /**
@@ -71,17 +71,17 @@ class ChanceController extends Controller
      */
     public function selfChance(Request $request)
     {
-        /*p($request->method());
-        dd($request->all());*/
+        // p($request->method());
+        // dd($request->all());
         $request['participate'] = false;
         $chances = $this->chance->getAllChances($request);
-        /*p(lastSql());
+        /*dd(lastSql());
         dd($chances);*/
-
+        $select_conditions  = $request->all();
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
-        $chance_status = config('tcl.chance_status'); //获取配置文件中销售机会状态
 
-        return view('admin.chance.self', compact('chances', 'chance_launch', 'chance_status'));
+
+        return view('admin.chance.self', compact('chances', 'chance_launch','select_conditions'));
     }
 
     /**

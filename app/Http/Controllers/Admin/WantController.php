@@ -43,15 +43,14 @@ class WantController extends Controller
     {
         $request['want_status'] = '1';
         $wants = $this->want->getAllWants($request);
-/*
-        $gearbox             = config('tcl.gearbox'); //获取配置文件中变速箱类别
-        $out_color           = config('tcl.out_color'); //获取配置文件中外观颜色
-        $want_stauts_config  = config('tcl.want_stauts'); //获取配置文件中车源状态
-        $capacity            = config('tcl.capacity'); //获取配置文件排量*/
+        // dd(lastSql());
+        // dd($wants);
+        $all_top_brands = $this->brands->getChildBrand(0);
+        // dd($request->all());
         $want_status_current = '1';
-        /*p(lastSql());
-        dd($wants);*/
-        return view('admin.want.index', compact('wants', 'want_status_current'));
+        $select_conditions  = $request->all();
+        
+        return view('admin.want.index', compact('wants', 'want_status_current','all_top_brands', 'select_conditions'));
     }
 
     /**
@@ -62,6 +61,7 @@ class WantController extends Controller
     public function selfwant(Request $request)
     {
         // dd($request->all());
+        $all_top_brands = $this->brands->getChildBrand(0);
         $wants = $this->want->getAllWants($request, true);
         /*p(lastSql());
         dd($wants);*/
@@ -79,7 +79,7 @@ class WantController extends Controller
         
         // dd($car_status);
 
-        return view('admin.want.self', compact('wants',  'want_stauts_config', 'select_conditions'));
+        return view('admin.want.self', compact('wants',  'want_stauts_config', 'select_conditions','all_top_brands'));
     }
 
     /**
