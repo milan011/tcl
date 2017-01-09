@@ -42,20 +42,32 @@ class chanceRepository implements chanceRepositoryContract
     public function getAllChances($request, $is_all=true)
     {   
         // dd($request->participate);
-        // $query = Chance::query();  // 返回的是一个 QueryBuilder 实例
+        // $query = Chance::query();  // 返回的是一个QueryBuilder 实例
         $query = new Chance();       // 返回的是一个Chance实例,两种方法均可
         // dd($request->all());
-        // $query = $query->addCondition($request->all(), $is_self); //根据条件组合语句
+        if(!empty($request['chance_code'])){
 
-        $query = $query->chacneLaunch($request->participate, $is_all);
-
-        if(!$is_all){
-
-           $query = $query->where('status', '4');
+            $query = $query->where('chance_code', $request['chance_code']);
         }else{
-            $query = $query->whereIn('status', ['1', '2', '3']);
-        }
+            $query = $query->addCondition($request->all()); //根据条件组合语句
 
+            $query = $query->chacneLaunch($request->participate, $is_all);
+    
+            if(!$is_all){
+    
+               $query = $query->where('status', '4');
+            }else{
+    
+                if(isset($request['status']) && $request['status'] != ''){
+    
+                    $query = $query->where('status', $request['status']);
+                }else{
+    
+                    $query = $query->whereIn('status', ['1', '2', '3']);
+                }            
+            }
+        }
+        
         return $query->select($this->select_columns)
                      ->orderBy('created_at', 'DESC')
                      ->paginate(10);

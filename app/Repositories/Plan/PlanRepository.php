@@ -68,6 +68,25 @@ class PlanRepository implements PlanRepositoryContract
             $car    = Cars::findOrFail($requestData->car_id);
             $want   = Want::findOrFail($requestData->want_id);
             $chance = Chance::findOrFail($requestData->chance_id);
+
+            //获得交易参与者ID及门店ID
+            $partner = getPartnerInfo($chance->car_creater,$chance->want_creater,$chance->creater);
+            // dd($partner);
+            if($partner['self']){
+                //车源、求购均来自本用户
+                $requestData['partner_id'] = Auth::id();
+                $requestData['partner_shop'] = $chance->shop_id;
+            }else{
+                if($partner['want']){
+                    // 对方提供求购信息
+                    $requestData['partner_id']   = $partner['user_id'];
+                    $requestData['partner_shop'] = $want->shop_id;
+                }else{
+                    // 对方提供车源信息
+                    $requestData['partner_id'] = $partner['user_id'];
+                    $requestData['partner_shop'] = $car->shop_id;
+                }
+            }
             
             $input  =  array_replace($requestData->all());
 

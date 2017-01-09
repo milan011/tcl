@@ -82,7 +82,7 @@ class TranscationRepository implements TranscationRepositoryContract
                 //获得交易参与者ID及门店ID
                 $partner = getPartnerInfo($chance->car_creater,$chance->want_creater,$chance->creater);
                 
-                if($partner['is_self']){
+                if($partner['self']){
                     //车源、求购均来自本用户
                     $requestData['partner_id'] = Auth::id();
                     $requestData['partner_shop'] = $chance->shop_id;
