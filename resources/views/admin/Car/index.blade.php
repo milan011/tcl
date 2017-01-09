@@ -4,7 +4,10 @@
 <link id="bootstrap-style" href="{{ URL::asset('css/tcl/bootstrap-datepicker.min.css') }}" rel="stylesheet">
 <!-- <link id="bootstrap-style" href="{{ URL::asset('css/tcl/dropzone/dropzone.css') }}" rel="stylesheet"> -->
 	<style type="text/css">
-		
+		.one_line{
+			width:40%;
+			margin-bottom:5px;
+		}
 		/*.dropdown-menu::after, .dropdown-menu::before{
 			top: -1px;
 			left: 10px;
@@ -152,7 +155,7 @@
             	    	<div class="controls">
             	      		<select id="category_type" name="category_type" >
             	      			@foreach($category_type as $key=>$category)
-            	      			<option value='{{$key}}'>{{$category}}</option>  
+            	      			<option @if(isset($select_conditions['category_type']) && $select_conditions['category_type'] == $key && $select_conditions['category_type'] != '') selected @endif value='{{$key}}'>{{$category}}</option>  
             	      			@endforeach                                         
             	      		</select>
             	    	</div>
@@ -175,27 +178,17 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="bottom_price">价格下限</label>
+						<label class="control-label" for="bottom_price">价格范围</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" name="bottom_price" id="bottom_price" type="text" value="{{$select_conditions['bottom_price'] or ''}}">
+						  	<input class="input-xlarge one_line focused" name="bottom_price" id="bottom_price" type="text" value="{{$select_conditions['bottom_price'] or ''}}" placeholder="低价">
+						  	<input class="input-xlarge one_line focused" name="top_price" id="top_price" type="text" value="{{$select_conditions['top_price'] or ''}}" placeholder="高价">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="top_price">价格上线</label>
+						<label class="control-label" for="begin_date">日期范围</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" name="top_price" id="top_price" type="text" value="{{$select_conditions['top_price'] or ''}}">
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="begin_date">开始日期</label>
-						<div class="controls">
-							<input type="text" class="input-xlarge date-picker" name="begin_date" id="begin_date" value="{{$select_conditions['begin_date'] or ''}}">
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="end_date">结束日期</label>
-						<div class="controls">
-							<input type="text" class="input-xlarge date-picker" name="end_date" id="end_date" value="{{$select_conditions['end_date'] or ''}}">
+							<input type="text" class="input-xlarge date-picker one_line" name="begin_date" id="begin_date" value="{{$select_conditions['begin_date'] or ''}}" placeholder="开始日期" >
+							<input type="text" class="input-xlarge one_line date-picker" name="end_date" id="end_date" value="{{$select_conditions['end_date'] or ''}}" placeholder="结束日期">
 						</div>
 					</div>
 					<div class="control-group  ">
@@ -209,10 +202,10 @@
             	    	</div>
             	  	</div>
             	  	<div class="control-group  ">
-            	    	<label class="control-label" for="mileage">里程</label>
+            	    	<label class="control-label" for="mileage">里程范围</label>
             	    	<div class="controls">
-            	      		<input class="input-xlarge focused" name="begin_mileage" id="begin_mileage" type="text" value="{{$select_conditions['begin_mileage'] or ''}}">
-            	      		<input class="input-xlarge focused" name="end_mileage" id="end_mileage" type="text" value="{{$select_conditions['end_mileage'] or ''}}">
+            	      		<input class="input-xlarge one_line focused" name="begin_mileage" id="begin_mileage" type="text" value="{{$select_conditions['begin_mileage'] or ''}}" placeholder="里程下限">
+            	      		<input class="input-xlarge one_line focused" name="end_mileage" id="end_mileage" type="text" value="{{$select_conditions['end_mileage'] or ''}}" placeholder="里程上限">
             	    	</div>
             	  	</div>
             	  	<div class="control-group  ">
@@ -248,7 +241,7 @@
 				</fieldset>
 				<div class="modal-footer">
 				</div>
-				<a href="#" class="btn" data-dismiss="modal">关闭</a>
+				<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
 				<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
 				<button type="submit" class="btn btn-primary">搜索</button>
 			</form>	

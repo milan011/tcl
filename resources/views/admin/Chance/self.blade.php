@@ -1,19 +1,11 @@
 @extends('layouts.main')
 
 @section('head_content')
+<link id="bootstrap-style" href="{{ URL::asset('css/tcl/bootstrap-datepicker.min.css') }}" rel="stylesheet">
 	<style type="text/css">
-		
-		.dropdown-menu::after, .dropdown-menu::before{
-			top: -1px;
-			left: 10px;
-			border-right: 9px solid transparent;
-			border-bottom: 9px solid #222 !important;
-			border-left: 9px solid transparent;
-			content: none;
-		}
-
-		.dropdown-menu{
-			min-width:100%;
+		.one_line{
+			width:40%;
+			margin-bottom:5px;
 		}
 	</style>
 @endsection
@@ -176,7 +168,7 @@
 			<h3>销售机会搜索</h3>
 		</div>
 		<div class="modal-body" style="max-height:none;">
-			<form class="form-horizontal" id="condition" action="/admin/chance/index" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.chance.self')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
@@ -186,17 +178,25 @@
 						</div>
 					</div>		
 					<div class="control-group  ">
-            	    	<label class="control-label" for="chance_launch">销售机会状态</label>
+            	    	<label class="control-label" for="status">状态</label>
             	    	<div class="controls">
-            	      		<select id="chance_launch" name="chance_launch" >
-            	      			<option value='1'>我发起的销售机会</option>                                           
-            	      			<option value='2'>我参与的销售机会</option>                                           
+            	      		<select id="status" name="status" >
+            	      			@foreach($chance_status as $key=>$chance)
+            	      			<option @if(isset($select_conditions['status']) && $select_conditions['status'] == $key && $select_conditions['status'] != '') selected @endif value='{{$key}}'>{{$chance}}</option>  
+            	      			@endforeach                                         
             	      		</select>
             	    	</div>
-            	  	</div>				  
+            	  	</div>
+            	  	<div class="control-group">
+						<label class="control-label" for="begin_date">日期范围</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge date-picker one_line" name="begin_date" id="begin_date" value="{{$select_conditions['begin_date'] or ''}}" placeholder="开始日期" >
+							<input type="text" class="input-xlarge one_line date-picker" name="end_date" id="end_date" value="{{$select_conditions['end_date'] or ''}}" placeholder="结束日期">
+						</div>
+					</div>				  
 				</fieldset>
 				<div class="modal-footer">
-			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+			<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
 			<button type="submit" class="btn btn-primary">搜索</button>
 		</div>
 			</form>				         
@@ -208,6 +208,9 @@
 @section('script_content')
 <!-- 引入确认框js -->
 <!-- <script src="{{URL::asset('js/tcl/confirm.js')}}"></script>  -->
+<!-- 引入日历插件 -->
+<script src="{{URL::asset('js/tcl/bootstrap-datepicker.js')}}"></script> 
+<script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script>
 <script>
 	$(document).ready(function(){
 	
@@ -293,6 +296,13 @@
 			}
 			return false;
 		});
+
+		$('.date-picker').datepicker({
+            language: 'zh-CN',
+            autoclose: true,
+            format: 'yyyy-mm-dd 00:00:00',
+            todayHighlight: true
+        });
 	});
 </script>
 @endsection

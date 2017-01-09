@@ -127,22 +127,20 @@
 						@endif
 						@ifUserCan('plan.check')
 						<li>
-							<a class="submenu" href="{{route('admin.plan.index')}}">
-								<i class="icon-sitemap"></i> 
-								<span class="hidden-tablet">
-									约车管理
-								</span>
-							</a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">约车管理</span><span style="float:right;">>></span></a>
+							<ul>
+								<li><a class="submenu" href="{{route('admin.plan.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">发起的约车</span></a></li>
+								<li><a class="submenu" href="{{route('admin.plan.index')}}/index"><i class="icon-file-alt"></i><span class="hidden-tablet">参与的约车</span></a></li>			
+							</ul>
 						</li>
 						@endif
 						@ifUserCan('transcation.check')
 						<li>
-							<a class="submenu" href="{{route('admin.transcation.index')}}">
-								<i class="icon-sitemap"></i> 
-								<span class="hidden-tablet">
-									交易管理
-								</span>
-							</a>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">交易管理</span><span style="float:right;">>></span></a>
+							<ul>
+								<li><a class="submenu" href="{{route('admin.transcation.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">发起的交易</span></a></li>
+								<li><a class="submenu" href="{{route('admin.transcation.index')}}/index"><i class="icon-file-alt"></i><span class="hidden-tablet">参与的交易</span></a></li>			
+							</ul>
 						</li>
 						@endif
 						
