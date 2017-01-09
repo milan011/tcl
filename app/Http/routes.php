@@ -54,7 +54,11 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::match(['get', 'post'], 'transcation/index', 'TranscationController@index')->name('admin.transcation.index'); 
     Route::match(['get', 'post'], 'selfwant', 'WantController@selfwant')->name('admin.want.self'); 
     Route::match(['get', 'post'], 'chance/index', 'ChanceController@index')->name('admin.chance.index');  
-    Route::match(['get', 'post'], 'chance/self', 'ChanceController@selfChance')->name('admin.chance.self');  
+    Route::match(['get', 'post'], 'selfChance', 'ChanceController@selfChance')->name('admin.chance.self');  
+    Route::match(['get', 'post'], 'plan/index', 'PlanController@index')->name('admin.plan.index');
+    Route::match(['get', 'post'], 'selfPlan', 'PlanController@selfPlan')->name('admin.plan.self'); 
+    Route::match(['get', 'post'], 'transcation/index', 'TranscationController@index')->name('admin.transcation.index');
+    Route::match(['get', 'post'], 'selfTranscation', 'TranscationController@selfTranscation')->name('admin.transcation.self');  
     Route::post('chance/create', 'ChanceController@create')->name('admin.chance.create');  
     Route::match(['get', 'post'], 'plan/create', 'PlanController@create')->name('admin.plan.create'); 
     Route::post('plan/planLaunch', 'PlanController@planLaunch')->name('admin.plan.planLaunch');    
