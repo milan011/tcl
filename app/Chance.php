@@ -53,15 +53,41 @@ class Chance extends Model
         if($is_all){
             if($participate){
                 //用户参与的销售机会
-
                 $query = $query->where('creater', '!=', $user_id);
             }else{
                 //用户发起的销售机会
-
                 $query = $query->where('creater', $user_id);
             }
         }
         
+
+        return $query;
+    }
+
+    // 搜索条件处理
+    public function addCondition($requestData){
+
+        $query = $this;
+        // dd($query);
+        /*if($is_self){
+
+            if(!(Auth::user()->isSuperAdmin())){
+
+               if(Auth::user()->isMdLeader()){
+                    //店长
+                    $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
+        
+                    // $this->where('shop_id', $user_shop_id);
+                    $query = $query->where('shop_id', $user_shop_id);    
+                }else{
+                    //店员
+                    // $this->where('creater_id', Auth::id());
+                    $query = $query->where('creater_id', Auth::id());  
+                } 
+            }           
+        }*/
+
+              
 
         return $query;
     }

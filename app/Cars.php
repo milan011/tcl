@@ -122,12 +122,12 @@ class Cars extends Model
            }
         } 
 
-        if(!empty($requestData['begin_milage'])){
-            $query = $query->where('milage', '<=', $requestData['begin_milage']);
+        if(!empty($requestData['begin_mileage'])){
+            $query = $query->where('mileage', '>=', $requestData['begin_mileage']);
         }
         
-        if(!empty($requestData['end_milage'])){
-            $query = $query->where('milage', '>=', $requestData['end_milage']);
+        if(!empty($requestData['end_mileage'])){
+            $query = $query->where('mileage', '<=', $requestData['end_mileage']);
         }
 
         if(!empty($requestData['top_price'])){
@@ -135,7 +135,7 @@ class Cars extends Model
         }
         
         if(!empty($requestData['bottom_price'])){
-            $query = $query->where('bottom_price', '>=', $requestData['bottom_price']);
+            $query = $query->where('top_price', '>=', $requestData['bottom_price']);
         }
 
         if(!empty($requestData['end_date'])){
