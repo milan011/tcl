@@ -30,8 +30,8 @@ class ConfigComposer
         $want_stauts_config        = config('tcl.want_stauts'); //获取配置文件中求购信息状态
         $chance_status             = config('tcl.chance_status'); //获取配置文件中销售机会状态
         $car_stauts_config         = config('tcl.car_stauts'); //获取配置文件中车源状态
-        $plan_stauts_config        = config('tcl.plan_stauts'); //获取配置文件中约车状态
-        $transcation_stauts_config = config('tcl.transcation_stauts'); //获取配置文件中交易状态
+        $plan_stauts_config        = config('tcl.plan_status'); //获取配置文件中约车状态
+        $transcation_stauts_config = config('tcl.transcation_status'); //获取配置文件中交易状态
         $sale_number_config        = config('tcl.want_sale_number'); //获取配置文件中求购信息过户配置
         $follow_type               = config('tcl.follow_type'); //获取配置文件中跟踪类别
         $age                       = config('tcl.age'); //获取配置文件中车龄

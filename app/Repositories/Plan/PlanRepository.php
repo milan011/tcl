@@ -51,8 +51,7 @@ class PlanRepository implements PlanRepositoryContract
 
         // $query = $query->chacneLaunch($request->Plan_launch);
 
-        return $query->where('status', '1')
-                     ->select($this->select_columns)
+        return $query->select($this->select_columns)
                      ->orderBy('plan_time', 'DESC')
                      ->paginate(10);
     }
@@ -87,6 +86,8 @@ class PlanRepository implements PlanRepositoryContract
                     $requestData['partner_shop'] = $car->shop_id;
                 }
             }
+
+            $requestData['shop_id'] = $chance->shop_id;
             
             $input  =  array_replace($requestData->all());
 
