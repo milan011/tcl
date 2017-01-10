@@ -321,12 +321,30 @@
 		<!-- 车源信息添加 end-->
 		<!-- 图片信息添加 begin -->
 		<div class="box-content" id="img_content" style="overflow: auto;height:70%;display:none;">
-		<div class="row">
+		<!-- <div class="row"> -->
         <div class="col-md-offset-1 col-md-10">
             <div class="jumbotron how-to-create" >
-			<h3>Images <span id="photoCounter"></span></h3><br />
+			<!-- <h3>Images <span id="photoCounter"></span></h3><br /> -->
 			<!-- 隐藏图片信息模板 -->
-			<div class="dropzone-previews" id="dropzonePreview"></div>
+			<div class="dropzone-previews" id="dropzonePreview">
+				<form id="real-dropzone" class="form-horizontal dropzone" action="{{route('admin.image.upload')}}" method="post" enctype="multipart/form-data">
+					{!! csrf_field() !!}
+					<div class="dz-message">
+		
+            		</div>
+            		<div class="fallback">
+                	    <input name="file" type="file" multiple />
+                	</div>
+
+                	<h4 style="text-align: center;color:#428bca;margin-top:20px;">
+                		点击上传
+                		<span class="glyphicon glyphicon-hand-down">
+                			
+                		</span>
+                	</h4>
+                	<input type="hidden" name="car_id" value="">
+				</form>
+			</div>
     		<div id="preview-template" style="display: none;">
 
         		<div class="dz-preview dz-file-preview">
@@ -365,27 +383,10 @@
                     		</g>
                 		</svg>
             		</div>
-        		</div>
+        		<!-- </div> -->
     		</div>
     		<!-- End 隐藏图片信息模板 -->
-			<form id="real-dropzone" class="form-horizontal dropzone" action="{{route('admin.image.upload')}}" method="post" enctype="multipart/form-data">
-			{!! csrf_field() !!}
-				<div class="dz-message">
-	
-            	</div>
-            	<div class="fallback">
-                    <input name="file" type="file" multiple />
-                </div>
-                <!-- <div class="dropzone-previews" id="dropzonePreview"></div> -->
-
-                <h4 style="text-align: center;color:#428bca;margin-top:20px;">
-                	点击上传
-                	<span class="glyphicon glyphicon-hand-down">
-                		
-                	</span>
-                </h4>
-                <input type="hidden" name="car_id" value="">
-			</form>
+			
 			<div class="jumbotron how-to-create">
                 <ul>
                     <li>当您选择图片并确认后，图片会自动上传</li>
@@ -400,7 +401,7 @@
 		</div>
 		<!-- 图片信息添加 end -->
 		</div>
-		</div>
+		<!-- </div> -->
 		</div>
 	</div>			
 </div>   
