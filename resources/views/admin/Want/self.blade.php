@@ -7,6 +7,17 @@
 			width:40%;
 			margin-bottom:5px;
 		}
+		.dropdown-menu::after, .dropdown-menu::before{
+			top: -1px;
+			left: 10px;
+			border-right: 9px solid transparent;
+			border-bottom: 9px solid #222 !important;
+			border-left: 9px solid transparent;
+			content: none;
+		}
+		.dropdown-menu{
+			min-width:100%;
+		}
 	</style>
 @endsection
 

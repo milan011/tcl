@@ -89,7 +89,7 @@
 							@endif
 							<td>{{$plan->belongsToChance->belongsToUser->nick_name}}</td>						
 							<td>{{$plan->belongsToChance->belongsToShop->shop_name}}</td>
-							@if($plan->user_id == Auth::id())							
+													
 							<td class="center">
 								<a class="btn btn-success" href="{{route('admin.plan.edit', ['plan'=>$plan->id])}}">
 									<i class="icon-edit icon-white"></i> 约车反馈
@@ -114,13 +114,7 @@
 								</form>
 								</span> -->
 							</td>
-							@else
-							<td class="center">
-								<a class="btn btn-success" href="{{route('admin.plan.show', ['plan'=>$plan->id])}}">
-									<i class="icon-edit icon-white"></i> 查看
-								</a>
-							</td>
-							@endif
+						
 						</tr>
 						@endforeach							
 					</tbody>
@@ -137,7 +131,7 @@
 			<h3>约车搜索</h3>
 		</div>
 		<div class="modal-body" style="max-height:none;">
-			<form class="form-horizontal" id="condition" action="/admin/plan/index" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.plan.self')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>		
 					<!-- <div class="control-group  ">

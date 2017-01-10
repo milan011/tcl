@@ -145,7 +145,7 @@
 			<h3>交易信息搜索</h3>
 		</div>
 		<div class="modal-body" style="max-height:none;">
-			<form class="form-horizontal" id="condition" action="{{route('admin.transcation.index')}}/index" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.transcation.self')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<!-- <div class="control-group">
@@ -158,7 +158,7 @@
             	    	<label class="control-label" for="trade_status">状态</label>
             	    	<div class="controls">
             	      		<select id="trade_status" name="trade_status" >
-            	      		<option value=''>选择</option>
+            	      			<option value=''>选择</option>
             	      			@foreach($transcation_stauts_config as $key=>$transcation)
             	      			<option @if(isset($select_conditions['trade_status']) && $select_conditions['trade_status'] == $key && $select_conditions['trade_status'] != '') selected @endif value='{{$key}}'>{{$transcation}}</option>  
             	      			@endforeach                                         
