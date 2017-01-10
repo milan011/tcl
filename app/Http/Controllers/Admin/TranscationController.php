@@ -176,7 +176,7 @@ class TranscationController extends Controller
         // dd($transcationRequest->all());
         $transcation = $this->transcation->update($transcationRequest, $id);
         
-        return redirect()->route('admin.transcation.index')->withInput();
+        return redirect()->route('admin.transcation.self')->withInput();
     }
 
     /**

@@ -196,7 +196,7 @@ class PlanController extends Controller
         // dd($request->all());
         $plan = $this->plan->update($request, $id);
         
-        return redirect()->route('admin.plan.index')->withInput();
+        return redirect()->route('admin.plan.self')->withInput();
         /*$book_created = (object) false;
         $book_id      = (object) '';*/
 
