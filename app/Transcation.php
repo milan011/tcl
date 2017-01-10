@@ -35,6 +35,8 @@ class Transcation extends Model
 
         $query = $this;
 
+        $user_id = Auth::id();
+
         if(!(Auth::user()->isSuperAdmin())){
            if(Auth::user()->isMdLeader()){
                 //店长
@@ -49,14 +51,30 @@ class Transcation extends Model
                 // $query = $query->where('shop_id', $user_shop_id);    
             }else{
                 //店员
-                $query = $query->where(function($query){
+                $query = $query->where(function($query) use ($user_id){
 
-                    $query = $query->where('user_id', Auth::id());
-                    $query = $query->orWhere('partner_id', Auth::id());
+                    $query = $query->where('user_id', $user_id);
+                    $query = $query->orWhere('partner_id', $user_id);
                 });
                 // $query = $query->where('user_id', Auth::id());  
             } 
-        }           
+        }
+
+        if($requestData['participate']){
+            //用户参与的销售机会
+            $query = $query->where('user_id', '!=', $user_id);
+        }else{
+            //用户发起的销售机会
+            $query = $query->where('user_id', $user_id);
+        }
+
+        if(!empty($requestData['end_date'])){
+            $query = $query->where('created_at', '<=', $requestData['end_date']);
+        }
+        
+        if(!empty($requestData['begin_date'])){
+            $query = $query->where('created_at', '>=', $requestData['begin_date']);
+        }            
 
         if(isset($requestData['trade_status']) && $requestData['trade_status'] != ''){
 
@@ -64,11 +82,6 @@ class Transcation extends Model
         }else{
 
             $query = $query->where('trade_status', '1');
-        }
-
-        if(!empty($requestData['want_code'])){
-
-            $query = $query->where('want_code', $requestData['want_code']);
         }
 
         return $query;

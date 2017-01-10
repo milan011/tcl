@@ -60,7 +60,6 @@ class Chance extends Model
             }
         }
         
-
         return $query;
     }
 
@@ -87,7 +86,13 @@ class Chance extends Model
             }           
         }*/
 
-              
+        if(!empty($requestData['end_date'])){
+            $query = $query->where('created_at', '<=', $requestData['end_date']);
+        }
+        
+        if(!empty($requestData['begin_date'])){
+            $query = $query->where('created_at', '>=', $requestData['begin_date']);
+        }
 
         return $query;
     }

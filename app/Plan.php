@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Plan extends Model
 {
@@ -30,6 +31,60 @@ class Plan extends Model
     protected $hidden = [   
         'password', 'remember_token',
     ];
+
+    // 搜索条件处理
+    public function addCondition($requestData){
+
+        $query   = $this;
+        $user_id = Auth::id();//用户id
+        // dd($query);
+        if(!(Auth::user()->isSuperAdmin())){
+           if(Auth::user()->isMdLeader()){
+                //店长
+
+                $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id   
+                $query = $query->where(function($query) use ($user_shop_id){
+
+                    $query = $query->where('shop_id', $user_shop_id);
+                    $query = $query->orWhere('partner_shop', $user_shop_id);
+                });   
+            }else{
+                //店员
+
+                $query = $query->where(function($query) use ($user_id){
+
+                    $query = $query->where('user_id', $user_id);
+                    $query = $query->orWhere('partner_id', $user_id);
+                }); 
+            } 
+        } 
+
+        if($requestData['participate']){
+            //用户参与的销售机会
+            $query = $query->where('user_id', '!=', $user_id);
+        }else{
+            //用户发起的销售机会
+            $query = $query->where('user_id', $user_id);
+        } 
+
+        if(!empty($requestData['end_date'])){
+            $query = $query->where('created_at', '<=', $requestData['end_date']);
+        }
+        
+        if(!empty($requestData['begin_date'])){
+            $query = $query->where('created_at', '>=', $requestData['begin_date']);
+        } 
+
+        if(isset($requestData['status']) && $requestData['status'] != ''){
+
+            $query = $query->where('status', $requestData['status']);
+        }else{
+
+            $query = $query->where('status', '1');
+        }        
+
+        return $query;
+    }
 
 
     // 定义Plan表与Chance表一对多关系
