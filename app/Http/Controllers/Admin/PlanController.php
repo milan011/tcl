@@ -42,20 +42,21 @@ class PlanController extends Controller
     }
     /**
      * Display a listing of the resource.
-     *
+     * 用户参与的约车列表
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         // 先搜索属于该用户的销售机会，再得到约车信息
-        $request['participate'] = false;
-
-        $chances = $this->chance->getAllChances($request, false);
+        $request['participate'] = true;
+        // dd($request->all());
+        $plans              = $this->plan->getAllPlans($request);
+        $select_conditions  = $request->all();
         // dd(lastSql());
-        // dd($chances[0]->hasOnePlan);
-        // dd($chances);
+        // dd($plan_stauts_config);
+        // dd($plans);
 
-        return view('admin.plan.index', compact('chances'));
+        return view('admin.plan.index', compact('plans', 'select_conditions'));
     }
 
     /**
@@ -66,16 +67,17 @@ class PlanController extends Controller
     public function selfPlan(Request $request)
     {
         // p($request->method());
-        dd($request->all());
+        
         $request['participate'] = false;
-        $chances = $this->chance->getAllChances($request);
-        /*dd(lastSql());
-        dd($chances);*/
+        $plans = $this->plan->getAllPlans($request);
+        // dd(lastSql());
+        // dd($chances);
+        // dd($request->all());
         $select_conditions  = $request->all();
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
 
 
-        return view('admin.chance.self', compact('chances', 'chance_launch','select_conditions'));
+        return view('admin.plan.self', compact('plans', 'chance_launch','select_conditions'));
     }
 
     /**
@@ -139,7 +141,7 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($brandRequest->all());
+        // dd($request->all());
 
         $getInsertedId = $this->plan->create($request);
         // p(lastSql());exit;

@@ -47,8 +47,9 @@ class TranscationController extends Controller
     public function index(Request $request)
     {
         // dd($request->all());
+        $request['participate'] = true;
         $transcations = $this->transcation->getAllTranscations($request);
-
+        $select_conditions  = $request->all();
         /*p(lastSql());
         dd($transcations);
         dd($transcation[0]->belongsToChance);*/
@@ -64,16 +65,16 @@ class TranscationController extends Controller
     public function selfTranscation(Request $request)
     {
         // p($request->method());
-        dd($request->all());
+        // dd($request->all());
         $request['participate'] = false;
-        $chances = $this->chance->getAllChances($request);
-        /*dd(lastSql());
-        dd($chances);*/
+        $transcations = $this->transcation->getAllTranscations($request);
+        // dd(lastSql());
+        // dd($transcations);
         $select_conditions  = $request->all();
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
 
 
-        return view('admin.chance.self', compact('chances', 'chance_launch','select_conditions'));
+        return view('admin.transcation.self', compact('transcations', 'chance_launch','select_conditions'));
     }
 
     /**
