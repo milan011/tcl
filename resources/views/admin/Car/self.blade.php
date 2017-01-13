@@ -131,6 +131,11 @@
 												<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
 													<i class="icon-edit icon-white"></i> 编辑
 												</a>												
+											</li>
+											<li>
+												<a class="btn btn-warning" href="{{route('admin.car.editImg', ['car'=>$car->id])}}">
+													<i class="icon-edit icon-white"></i> 图片编辑
+												</a>												
 											</li>											
 											<li>
 												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
