@@ -138,7 +138,7 @@
       addRemoveLinks: false,
       previewsContainer: null,
       capture: null,
-      dictDefaultMessage: "Drop files here to upload",
+      dictDefaultMessage: "",
       dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
       dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
       dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
@@ -245,6 +245,7 @@
       },
       addedfile: function(file) {
         var node, removeFileEvent, removeLink, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
+        var node, fristFileEvent, fristLink, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref3, _results;
         if (this.element === this.previewsContainer) {
           this.element.classList.add("dz-started");
         }
@@ -264,7 +265,9 @@
           }
           if (this.options.addRemoveLinks) {
             file._removeLink = Dropzone.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\" data-dz-remove>" + this.options.dictRemoveFile + "</a>");
+            file._fristLink = Dropzone.createElement("<a class=\"dz-frist\" href=\"javascript:void(0);\" data-dz-frist>" + '设为首图' + "</a>");
             file.previewElement.appendChild(file._removeLink);
+            file.previewElement.appendChild(file._fristLink);
           }
           removeFileEvent = (function(_this) {
             return function(e) {
@@ -285,11 +288,25 @@
               }
             };
           })(this);
+          fristFileEvent = (function(_this) {
+            return function(e) {
+                var is_top = $(this).attr('data-dz-frist');
+                $(this).attr('data-dz-frist', '1');
+                $(this).parents().children('a.dz-frist').text('首图');
+                $(this).parents().siblings().children('a.dz-frist').attr('data-dz-frist', '0');
+                $(this).parents().siblings().children('a.dz-frist').text('设为首图');
+            };
+          })(this);
           _ref2 = file.previewElement.querySelectorAll("[data-dz-remove]");
           _results = [];
           for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
             removeLink = _ref2[_k];
             _results.push(removeLink.addEventListener("click", removeFileEvent));
+          }
+          _ref3 = file.previewElement.querySelectorAll("[data-dz-frist]");
+          for (_k = 0, _len3 = _ref3.length; _k < _len3; _k++) {
+            removeLink = _ref3[_k];
+            _results.push(removeLink.addEventListener("click", fristFileEvent));
           }
           return _results;
         }
