@@ -71,6 +71,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('car/follwQuickly', 'CarController@follwQuickly')->name('admin.car.follwQuickly');
     Route::post('car/interactiveAdd', 'CarController@interactiveAdd')->name('admin.car.interactiveAdd');  
     Route::post('car/getCarInfo', 'CarController@getCarInfo')->name('admin.car.getCarInfo');
+    Route::post('car/changeFristImg', 'CarController@changeFristImg')->name('admin.car.changeFristImg');
+    Route::get('car/editImg/{car}', 'CarController@editImg')->name('admin.car.editImg');
     Route::post('want/interactiveAdd', 'WantController@interactiveAdd')->name('admin.want.interactiveAdd');
     Route::post('want/getWantInfo', 'WantController@getWantInfo')->name('admin.want.getWantInfo');
     Route::post('want/changeStatus', 'wantController@changeStatus')->name('admin.want.changeStatus');
