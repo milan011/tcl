@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Gate;
 use App\Area;
+use App\Image;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
@@ -213,7 +214,36 @@ class CarController extends Controller
         return view('admin.car.edit', compact(
             'cars'
         ));
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     * 图片编辑
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editImg($id)
+    {
+        $car =  $this->car->find($id);
+        $imgs = $car->hasManyImages;
+
+        /*$out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
+        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
+        $car_type       = config('tcl.car_type'); //获取配置文件车源类型
+        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
+        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
+        $capacity       = config('tcl.capacity'); //获取配置文件排量*/
+        
+        /*if (Gate::denies('update', $cars)) {
+            //不允许编辑,基于Policy
+            dd('no no');
+        }*/
+
+        // dd($imgs);
+        return view('admin.car.editImg', compact(
+            'imgs','car'
+        ));
     }
 
     /**
@@ -334,5 +364,25 @@ class CarController extends Controller
             'msg' => 'ok',
             'data' => $car->toJson(),
         ));      
+    }
+
+    /**
+     * ajax修改首图
+     * @return \Illuminate\Http\Response
+     */
+    public function changeFristImg(Request $request){
+
+        $img = Image::where('original_name', $request->img_name)
+                    ->where('car_id', $request->img_car_id)
+                    ->first();
+
+        $img->is_top = '1';
+        $img->save();
+
+        return response()->json(array(
+            'status' => 1,
+            'msg' => 'ok',
+        ));
+        // dd($img);
     }
 }
