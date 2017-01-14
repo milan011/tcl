@@ -13,17 +13,21 @@ Dropzone.options.realDropzone = {
     dictCancelUploadConfirmation: true,
     dictRemoveFile: '删除',
     dictFileTooBig: '图片不能大于2MB',
+    dictRemoveFileConfirmation: "是否要删除图片",
 
     // The setting up of the dropzone
     init:function() {
 
         this.on("removedfile", function(file) {
-
+            var token = $("input[name='_token']").val();
             $.ajax({
                 type: 'POST',
-                url: 'imgUpload/delete',
+                url: '/admin/imgUpload/delete',
                 data: {id: file.name},
-                dataType: 'html',
+                dataType: 'json',
+                headers: {      
+                    'X-CSRF-TOKEN': token        
+                },
                 success: function(data){
                     var rep = JSON.parse(data);
                     if(rep.code == 200)
@@ -54,4 +58,9 @@ Dropzone.options.realDropzone = {
     success: function(file,done) {
         photo_counter++;
         $("#photoCounter").text( "(" + photo_counter + ")");
+        /*var img_alt = $('.dz-complete').last().children('.dz-image').children('img').attr('alt');
+
+        console.log(file);
+        console.log(done.filename);
+        alert(img_alt);*/
     }}

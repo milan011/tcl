@@ -11,5 +11,6 @@
 	    'icon_size'   => env('UPLOAD_ICON_SIZE'),*/
 	    'full_size'   => $full_size,
 	    'icon_size'   => $icon_size,
+	    'base_size'   => $base_dir,
 
 	];
