@@ -229,3 +229,29 @@
 
 		return $partner;
 	}
+
+	//获得车龄
+	function getCarAge($plate_date){
+
+		/*dd(Carbon::parse($requestData->plate_date));
+        dd(Carbon::now());*/
+        $plate = Carbon::parse($plate_date); //上牌日期对象
+        $now   = Carbon::now();              //当前日期对象
+
+        $plate_year  = $plate->year;
+        $plate_month = $plate->month;
+        $now_year    = $now->year;
+        $now_month   = $now->month;
+
+        if(($now_month - $plate_month) < 0){
+        	$now_month = $now_month + 12;
+        	$now_year  = $now_year - 1;
+        }
+
+        $dissimilarity_month = $now_month - $plate_month;
+        $dissimilarity_year  = $now_year  - $plate_year ;
+
+        $return_date = $dissimilarity_year + round(($dissimilarity_month/12), 1);
+
+        return $return_date;      
+	}
