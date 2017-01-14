@@ -114,27 +114,38 @@ class ImageRepository implements ImageRepositoryContract
     /**
      * Delete Image From Session folder, based on server created filename
      */
-    public function delete( $filename )
+    public function delete($requestData)
     {
 
         $full_size_dir = Config::get('images.full_size');
         $icon_size_dir = Config::get('images.icon_size');
+        $base_dir      = Config::get('images.base_size');
 
-        $sessionImage = Image::where('filename', 'like', $filename)->first();
+        /*p($full_size_dir);
+        p($icon_size_dir);*/
+        $sessionImage = Image::where('filename', $requestData->img_name)
+                             ->where('car_id', $requestData->img_car_id)
+                             ->first();
 
-
+        // dd($sessionImage);
         if(empty($sessionImage))
         {
             return Response::json([
                 'error' => true,
-                'code'  => 400
+                'code'  => 400,
+                'msg'   => '图片不存在'
             ], 400);
 
         }
 
-        $full_path1 = $full_size_dir . $sessionImage->filename;
-        $full_path2 = $icon_size_dir . $sessionImage->filename;
+        /*$full_path1 = $full_size_dir . $sessionImage->filename;
+        $full_path2 = $icon_size_dir . $sessionImage->filename;*/
 
+        $full_path1 = $base_dir . $sessionImage->filename;
+        $full_path2 = $base_dir . $sessionImage->filename;
+
+        /*p($full_path1);
+        p($full_path2);exit;*/
         if ( File::exists( $full_path1 ) )
         {
             File::delete( $full_path1 );
@@ -152,7 +163,8 @@ class ImageRepository implements ImageRepositoryContract
 
         return Response::json([
             'error' => false,
-            'code'  => 200
+            'code'  => 200,
+            'msg'   => '删除成功'
         ], 200);
     }
 
