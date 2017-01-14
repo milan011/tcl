@@ -292,38 +292,36 @@
 				</div>
 				<div id="images" class="tab-pane">
 					<div class="box-content">
-						<div class="masonry-gallery">
-							<div id="image-1" class="masonry-thumb thumbnail">
-								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
+							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
+								<a title="Sample Image 1" href="img/gallery/photo1.jpg">
 									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
 								</a>
 							</div>	
-							<div id="image-1" class="masonry-thumb thumbnail">
+							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
 								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
 									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
 								</a>
 							</div>
-							<div id="image-1" class="masonry-thumb thumbnail">
+							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
 								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
 									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
 								</a>
 							</div>
-							<div id="image-1" class="masonry-thumb thumbnail">
+							<div class="masonry-thumb thumbnail" style="width:23%;height:20%"> 
 								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
 									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
 								</a>
 							</div>
-							<div id="image-1" class="masonry-thumb thumbnail">
+							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
 								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
 									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
 								</a>
 							</div>
-							<div id="image-1" class="masonry-thumb thumbnail">
+							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
 								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
 									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
 								</a>
 							</div>													
-						</div>
 					</div>
 				</div>
 				<div id="follow" class="tab-pane">
