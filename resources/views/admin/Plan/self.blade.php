@@ -91,9 +91,15 @@
 							<td>{{$plan->belongsToChance->belongsToShop->shop_name}}</td>
 													
 							<td class="center">
+								@if($plan->status == '1')
 								<a class="btn btn-success" href="{{route('admin.plan.edit', ['plan'=>$plan->id])}}">
 									<i class="icon-edit icon-white"></i> 约车反馈
 								</a>
+								@else
+								<a class="btn btn-success" href="{{route('admin.plan.show', ['plan'=>$plan->id])}}">
+									<i class="icon-edit icon-white"></i> 查看
+								</a>
+								@endif
 								<!-- @if($plan->status == '1') 
 								<button class="btn btn-info changStatus" data-status="0">
 									<i class="icon-edit icon-white"></i> 废弃

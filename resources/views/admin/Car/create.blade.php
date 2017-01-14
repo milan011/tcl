@@ -254,16 +254,6 @@
 					  <input class="input-xlarge focused" id="mileage" name="mileage" type="text" value="{{old('mileage')}}"><span style="margin-left:5px;">万公里</span>
 					</div>
 				</div>
-
-				<div class="control-group ">
-					<label class="control-label" for="description">
-						<font style="color:red;">*&nbsp;</font>车况
-					</label>
-				<div class="controls">
-					<textarea id="description" name="description" required ></textarea>
-				</div>
-			  </div>
-
 			  <div class="control-group">
 					<label class="control-label" for="top_price">期望价格</label>
 					<div class="controls">
@@ -281,8 +271,8 @@
 					<label class="control-label" for="selectError3">是否推荐</label>
 					<div class="controls">
 					  <select id="recommend" name="recommend" >
-					  	<option  value="0">推荐</option>
-						<option  value="1">不推荐</option>						
+					  	<option  value="0">不推荐</option>
+						<option  value="1">推荐</option>						
 						</select>
 					</div>
 				</div>
@@ -290,8 +280,8 @@
 					<label class="control-label" for="is_top">是否置顶</label>
 					<div class="controls">
 					  <select id="is_top" name="is_top" >
-					  	<option  value="0">置顶</option>
-						<option  value="1">不置顶</option>						
+					  	<option  value="0">不置顶</option>
+						<option  value="1">置顶</option>						
 						</select>
 					</div>
 				</div>
@@ -306,15 +296,14 @@
                 	</div>
               	</div>
 
-				<!-- <div class="control-group">
-					<label class="control-label" for="selectError3">是否启用</label>
+				<div class="control-group ">
+					<label class="control-label" for="description">
+						<font style="color:red;">*&nbsp;</font>车况
+					</label>
 					<div class="controls">
-					  <select id="car_status" name="car_status">
-					  	<option  value="1">启用</option>
-						<option  value="0">停用</option>						
-						</select>
+					<textarea id="description" name="description" required ></textarea>
 					</div>
-				  </div> -->	
+			  	</div>	
 	  				
 				  <div class="form-actions">
 				  	<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
@@ -653,16 +642,6 @@
 					alert('Ajax error!');
 				}
 			});
-		});
-
-		$('.dz-first').click(function(){
-
-			alert('first');
-		});
-
-		$('.dz-remove').click(function(){
-			alert('remove');
-			return false;
 		});
 	});
 </script>

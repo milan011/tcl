@@ -208,6 +208,16 @@
 						</div>
 				</div> -->
               	<div class="control-group  ">
+                	<label class="control-label" for="age">车龄</label>
+                	<div class="controls">
+                  		<select id="age" name="age" >                       
+					  		@foreach($age as $key=>$ag)											
+					  		<option  value="{{$key}}">{{$ag}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              	</div>
+              	<div class="control-group  ">
                 	<label class="control-label" for="mileage">里程</label>
                 	<div class="controls">
                   		<select id="mileage" name="mileage" >                       
@@ -230,13 +240,21 @@
 					  <input class="input-xlarge focused" id="bottom_price" name="bottom_price" type="text" value="{{old('bottom_price')}}"><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
-				
+				<div class="control-group">
+					<label class="control-label" for="selectError3">是否推荐</label>
+					<div class="controls">
+					  <select id="recommend" name="recommend" >
+					  	<option  value="0">不推荐</option>
+						<option  value="1">推荐</option>						
+						</select>
+					</div>
+				</div>
 				<div class="control-group">
 					<label class="control-label" for="is_top">是否置顶</label>
 					<div class="controls">
 					  <select id="is_top" name="is_top" >
-					  	<option  value="0">置顶</option>
-						<option  value="1">不置顶</option>						
+					  	<option  value="0">不置顶</option>
+						<option  value="1">置顶</option>						
 						</select>
 					</div>
 				</div>
@@ -298,6 +316,12 @@
 		var customer_id      = $("input[name='customer_id']");	
 		// var want_id           = $("input[name='want_id']");	
 
+		if(customer_id.val() != ''){
+			// alert('客户已经添加');
+			customer_content.hide();
+			want_content.show();
+		}
+
 		$('.date-picker').datepicker({
             language: 'zh-CN',
             autoclose: true,
@@ -342,63 +366,6 @@
 			return false;
 		});
 
-		/*$('#want_add').click(function(){
-
-
-			$.ajax({
-				method: 'POST',
-				url: request_url,
-				data:$("#want_form").serialize(),
-				dataType: 'json',
-				headers: {		
-					'X-CSRF-TOKEN': '{{ csrf_token() }}'		
-				},
-				success:function(data){
-
-					//设置图片对应求购信息ID
-					want_id.val(data.id);
-					$('#content_title').text('图片上传');
-					want_content.hide();
-					img_content.show();
-				},
-				error: function(xhr, type){
-					
-					if(xhr.status == 422){ //表单验证失败，返回的状态
-						// console.log(JSON.parse(xhr.responseText));
-						var content_error = '';
-						
-						content_error += '<div>';
-						content_error += "<div class='alert alert-warning' style='text-align:center;'>";
-						$.each(JSON.parse(xhr.responseText),function(name,value) {
-							// console.log(name);
-							// console.log(value);							
-							content_error += value[0];
-							content_error += '<div>';							
-						});
-						content_error += '</div>';
-						content_error += '</div>';
-
-						var modal = new Modal({
-    						title: '',
-    						content: content_error,
-    						width: 560,
-    						
-    						onModalShow: function () {
-    						    var $form = this.$modal.find('div');
-    						}
-						});
-
-						modal.open();
-
-						return false;
-					}
-					alert('添加求购信息败，请重新添加或联系管理员');
-				}
-			});
-
-			return false;
-		});*/
-
 		$('#return_customer').click(function(){
 
 			customer_content.show();
@@ -407,19 +374,6 @@
 
 			return false;
 		});
-
-		/*$('#return_want').click(function(){
-
-			want_content.show();
-			customer_content.hide();
-
-			return false;
-		});*/
-
-		/*$('#img_add').click(function(){
-
-			window.location.href = 'self';
-		});*/
 	});
 </script>
 @endsection

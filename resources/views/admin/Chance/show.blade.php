@@ -56,12 +56,12 @@
 						<tr>
     						<td>车龄</td>
 							<td>{{$car_info->age}}</td>							
-							<td>{{$want_info->age}}</td>							
+							<td>{{$age[$want_info->age]}}</td>							
 						</tr>
 						<tr>
     						<td>行驶里程</td>
 							<td>{{$car_info->mileage}}</td>							
-							<td>{{$mileage[$want_info->mileage]}}</td>							
+							<td>{{$mileage_config[$want_info->mileage]}}</td>							
 						</tr>
 						<tr>
     						<td>变速箱</td>

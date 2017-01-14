@@ -68,7 +68,7 @@
                 				@foreach($imgs as $img)
 								<div class="dz-preview dz-processing dz-image-preview dz-error dz-complete">
 									<div class="dz-image">
-										<img data-dz-thumbnail="" alt="" src="{{URL::asset('uploads/car/'.$img->filename)}}" style="height:100%;">
+										<img data-dz-thumbnail="" alt="{{$img->filename}}" src="{{URL::asset('uploads/car/'.$img->filename)}}" style="height:100%;">
 									</div>
 									<a class="dz-remove" href="javascript:undefined;" data-dz-remove="">删除</a>
 									<a class="dz-frist" href="javascript:void(0);" data-dz-frist="{{$img->is_top}}">
@@ -154,7 +154,7 @@
 <script>
 	$(document).ready(function(){
 
-		var car_id           = $("input[name='car_id']");		
+		var car_id = $("input[name='car_id']");		
 
 		/*alert(customer_id.val());
 		alert(car_id.val());*/
@@ -167,12 +167,53 @@
             $(this).parents().siblings().children('a.dz-frist').text('设为首图');
 		});
 
+		$('.dz-remove').click(function(){
+
+			var img_name    = $(this).parents().children('.dz-image').children('img').attr('alt');
+			var img_car_id  = car_id.val();
+			var request_url = '{{route('admin.image.delete')}}';
+			var img_obj     = $(this).parent();
+			// alert(img_name);
+			$.ajax({
+				method: 'POST',
+				url: request_url,
+				data:{ img_name:img_name, img_car_id:img_car_id},
+				dataType: 'json',
+				headers: {		
+					'X-CSRF-TOKEN': '{{ csrf_token() }}'		
+				},
+				success:function(data){
+					console.log(img_obj);
+					img_obj.remove();
+					alert(data.msg);
+					return false;
+					// window.location.href = '{{route("admin.car.self")}}';
+				},
+				error: function(xhr, type){
+					/*console.log(JSON.parse(xhr.responseText));
+					console.log(JSON.parse(xhr.responseText).customer_name[0]);
+					console.log(JSON.parse(xhr.responseText).telephone[0]);
+					console.log(xhr.responseText);*/
+
+					/*if(xhr.status == 422){ //表单验证失败，返回的状态
+
+						alert('请输入用户名和真实手机号码');
+
+						return false;
+					}*/
+					alert('添加图片失败，请重新添加或联系管理员');
+					return false;
+				}
+			});
+		});
+
 		$('#img_edit').click(function(){
 
 			var img_name    = '';
 			var img_car_id  = car_id.val();
 			var request_url = '{{route('admin.car.changeFristImg')}}';
             $('.dz-frist').each(function(){
+
                 if($(this).attr('data-dz-frist') == 1){
 
                     img_name = $(this).parents().children('.dz-image').children('img').attr('alt');
@@ -187,7 +228,7 @@
 							'X-CSRF-TOKEN': '{{ csrf_token() }}'		
 						},
 						success:function(data){
-
+							alert(data.msg);
 							window.location.href = '{{route("admin.car.self")}}';
 						},
 						error: function(xhr, type){
@@ -202,7 +243,7 @@
 		
 								return false;
 							}*/
-							alert('添加图片，请重新添加或联系管理员');
+							alert('添加图片失败，请重新添加或联系管理员');
 							return false;
 						}
 					});
