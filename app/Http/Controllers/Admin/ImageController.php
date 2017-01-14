@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Image\ImageRepositoryContract;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 use App\Image;
 
 class ImageController extends Controller
@@ -26,21 +27,17 @@ class ImageController extends Controller
     {
         $photo = Input::all();
         $response = $this->image->upload($photo);
+
+        // dd($response);
         return $response;
 
     }
 
-    public function deleteUpload()
+    public function deleteUpload(Request $request)
     {
+        // dd($request->all());
 
-        $filename = Input::get('id');
-
-        if(!$filename)
-        {
-            return 0;
-        }
-
-        $response = $this->image->delete( $filename );
+        $response = $this->image->delete($request);
 
         return $response;
     }

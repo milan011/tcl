@@ -73,7 +73,13 @@ class PlanController extends Controller
         // dd(lastSql());
         // dd($chances);
         // dd($request->all());
-        $select_conditions  = $request->all();
+        if($request->method() == 'POST'){
+            //初始搜索条件
+            $select_conditions  = $request->all();
+        }else{
+            $select_conditions['status'] = '1';
+        }
+        // dd($select_conditions);
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
 
 
@@ -156,7 +162,7 @@ class PlanController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
     }
 
     /**

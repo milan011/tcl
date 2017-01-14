@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Auth;
 use Gate;
+use DB;
 use App\Area;
 use App\Image;
 use App\Http\Requests;
@@ -372,17 +373,26 @@ class CarController extends Controller
      */
     public function changeFristImg(Request $request){
 
-        $img = Image::where('original_name', $request->img_name)
-                    ->where('car_id', $request->img_car_id)
-                    ->first();
-
-        $img->is_top = '1';
-        $img->save();
+        DB::transaction(function() use ($request){
+            // dd($request->all());
+            $img = Image::where('original_name', $request->img_name)
+                        ->where('car_id',   $request->img_car_id)
+                        ->orWhere('filename', $request->img_name)
+                        ->first();
+            /*dd(lastSql());
+            dd($img);*/
+            $img->is_top = '1';
+            $img->save();
+            
+            Image::where('car_id', $request->img_car_id)
+                 ->where('id', '!=', $img->id)
+                 ->update(['is_top' => '0']);
+        // dd($img);      
+        }); 
 
         return response()->json(array(
-            'status' => 1,
-            'msg' => 'ok',
-        ));
-        // dd($img);
+            'status' => 200,
+            'msg' => '修改成功',
+        ));       
     }
 }
