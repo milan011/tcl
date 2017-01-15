@@ -570,7 +570,12 @@
 
 <script>
 	$(document).ready(function(){
-	
+		var select_category_id = "{{$select_conditions['category_id'] or '0'}}";
+		var select_factory_id  = "{{$select_conditions['car_factory'] or '0'}}";
+
+		$('#second_category').children().first().val(select_factory_id);
+		$('#thrid_category').children().first().val(select_category_id);
+
 		$('ul.pagination').children('li').children('a').click(function(){
 
 			// alert($(this).attr('href'));
@@ -705,6 +710,15 @@
 				}
 			});
 		});
+
+		$('#top_category').children('option').each(function(){
+
+        	var select_brand_id = "{{$select_conditions['brand_id'] or '0'}}";
+
+        	if($(this).val() == select_brand_id){
+        		$(this).attr('selected', 'selected');
+        	}
+        }); 
 	});	
 </script>
 @endsection

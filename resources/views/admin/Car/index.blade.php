@@ -109,6 +109,7 @@
 							<td>{{$car->belongsToShop->shop_name}}</td>							
 							<td>{{$car->belongsToUser->nick_name}}</td>		
 							<td class="center">
+								@if($car->car_status == 1)
 								<div class="btn-group">
 									<span>
 										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
@@ -124,6 +125,13 @@
 									</a> -->
 								</div>
 								<input id="current_car_id" type="hidden" value="{{$car->id}}">
+								@else
+								<div class="btn-group">
+									<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">
+										<i class="icon-edit icon-white"></i> 查看
+									</a>
+								</div>
+								@endif
 							</td>
 						</tr>
 						@endforeach							
