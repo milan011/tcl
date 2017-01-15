@@ -65,6 +65,21 @@ class Cars extends Model
                     $query = $query->where('creater_id', Auth::id());  
                 } 
             }           
+        }else{
+           if(!(Auth::user()->isSuperAdmin())){
+
+               if(Auth::user()->isMdLeader()){
+                    //店长
+                    $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
+        
+                    // $this->where('shop_id', $user_shop_id);
+                    $query = $query->where('shop_id', '!=', $user_shop_id);    
+                }else{
+                    //店员
+                    // $this->where('creater_id', Auth::id());
+                    $query = $query->where('creater_id', '!=', Auth::id());  
+                } 
+            }  
         }
 
         if(!empty($requestData['car_code'])){

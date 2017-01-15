@@ -3,6 +3,7 @@ namespace App\Repositories\Car;
 
 use App\Cars;
 use App\CarFollow;
+use App\Area;
 use Session;
 use Illuminate\Http\Request;
 use Gate;
@@ -147,13 +148,14 @@ class CarRepository implements CarRepositoryContract
             dd($diff);
             p($original_content);
             p($request_content);*/
+
             $changed_content = getDiffArray($request_content, $original_content);//比较提交的数据与原数据差别
             $update_content = '例行跟进';  //定义车源跟进时信息变化情况,即跟进描述
             // dd(json_decode($update_content));
             // dd($changed_content);
             if($changed_content->count() != 0){
                 $update_content = array();
-                $need_del_array = ['capacity', 'gearbox','out_color','inside_color','safe_type','sale_number','is_top','recommend', 'car_type',];
+                $need_del_array = ['capacity', 'gearbox','out_color','inside_color','safe_type','sale_number','is_top','recommend', 'car_type'];
                 foreach ($changed_content as $key => $value) {
                     /*p($this->columns_annotate[$key]);
                     p($requestData->$key);
@@ -166,6 +168,18 @@ class CarRepository implements CarRepositoryContract
                         $current_content = config('tcl.'.$key)[$original_content[$key]];
                         $updated_content = config('tcl.'.$key)[$value];
                         $update_content[] = $this->columns_annotate[$key].'['.$current_content.']修改为['.$updated_content.']';
+                    }elseif($key == 'plate_provence'){
+                        
+                        $area_before = Area::withTrashed()->findorFail($car->plate_provence);
+                        $area_after = Area::withTrashed()->findorFail($requestData->plate_provence);
+
+                        $update_content[] = $this->columns_annotate[$key].'['.$area_before->name.']修改为['.$area_after->name.']';                      
+                     }elseif($key == 'plate_city'){
+                        
+                        $city_before = Area::withTrashed()->findorFail($car->plate_city);
+                        $city_after = Area::withTrashed()->findorFail($requestData->plate_city);
+
+                        $update_content[] = $this->columns_annotate[$key].'['.$city_before->name.']修改为['.$city_after->name.']';
                     }else{
                         $update_content[] = $this->columns_annotate[$key].'['.$original_content[$key].']修改为['.$requestData->$key.']';
                     }
