@@ -129,7 +129,7 @@
 										<ul class="dropdown-menu pull-right">
 											<li>
 												<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
-													<i class="icon-edit icon-white"></i> 编辑
+													<i class="icon-edit icon-white"></i> 信息编辑
 												</a>												
 											</li>
 											<li>

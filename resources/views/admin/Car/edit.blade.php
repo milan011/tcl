@@ -111,7 +111,7 @@
 						</div>
 				</div>
 
-				<div class="control-group">
+				<!-- <div class="control-group">
 					<label class="control-label" for="plate_provence">上牌城市</label>
 					<div class="controls">
 					  	<select id="plate_provence" name="plate_provence" style="width:15%">
@@ -126,7 +126,21 @@
 					  		<option  value="2">唐山</option>											
 						</select>
 					</div>
-				  </div>
+				  </div> -->
+				  <div class="control-group">
+					<label class="control-label" for="plate_provence">所属城市</label>
+					<div class="controls">
+					  	<select id="provence_id" name="plate_provence">
+					  		<option value="{{$provence->id}}">{{$provence->name}}</option>
+					  		@foreach($area as $provence)
+					  		<option  value="{{$provence->id}}">{{$provence->name}}</option>
+					  		@endforeach									
+						</select>
+						<select id="city_id" name="plate_city">
+					  		<option  value="{{$city->id}}">{{$city->name}}</option>											
+						</select>
+					</div>
+				</div>
 
 				<div class="control-group  ">
                 	<label class="control-label" for="shiftType">过户次数</label>
@@ -243,6 +257,45 @@
             format: 'yyyy-mm-dd',
             todayHighlight: true
         });
+
+        $('#provence_id').change(function(){
+
+			var provence_id = $(this).val();
+			var request_url = "{{route('admin.area.getAreaInfo')}}";
+			
+			$('#city_id').hide();
+
+			$.ajax({
+
+				method: 'POST',
+				url: request_url,
+				data: { provence_id : provence_id},
+				dataType: 'json',
+				headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+				success: function(data){
+
+					var content = '<option  value="0">请选择城市</option>';
+					$.each(data.data, function(index, value){
+						content += '<option value="';
+						content += value.id;
+						content += '">';
+						content += value.name;
+						content += '</option>';
+					});
+					// $('#top_brand').append(content);
+					// console.log($('#city_id'));
+					$('#city_id').empty();
+					$('#city_id').append(content);
+					// console.log(content);
+					$('#city_id').show();
+					return false;
+				},
+				error: function(xhr, type){
+
+					alert('Ajax error!');
+				}
+			});
+		});
 	});
 </script>
 @endsection

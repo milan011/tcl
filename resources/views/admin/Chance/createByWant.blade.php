@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('head_content')
+<link id="bootstrap-style" href="{{ URL::asset('css/tcl/bootstrap-datepicker.min.css') }}" rel="stylesheet">
 	<style type="text/css">
 		.detial {
 			font-size: 14px;
@@ -347,21 +348,101 @@
 			<button type="button" class="close" data-dismiss="modal">×</button>
 			<h3>精确搜索</h3>
 		</div>
-		<div class="modal-body" style="max-height:none;">
+		<div class="modal-body">
 			<form class="form-horizontal" id="condition" action="/admin/chance/create" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="want_code">车源编号</label>
+						<label class="control-label" for="car_code">车源编号</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" name="cwant_code" id="want_code" type="text" value="">
+						  	<input class="input-xlarge focused" name="car_code" id="car_code" type="text" value="">
 						</div>
 					</div>		
 					<div class="control-group  ">
-            	    	<label class="control-label" for="want_status">车源状态</label>
+            	    	<label class="control-label" for="category_type">车辆类型</label>
             	    	<div class="controls">
-            	      		<select id="want_status" name="want_status" >
-            	      			<option value='1'>正常</option>                                           
+            	      		<select id="category_type" name="category_type" >
+            	      			@foreach($category_type as $key=>$category)
+            	      			<option @if(isset($select_conditions['category_type']) && $select_conditions['category_type'] == $key && $select_conditions['category_type'] != '') selected @endif value='{{$key}}'>{{$category}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group">
+					<label class="control-label" for="selectError3">车型品牌</label>
+						<div class="controls">
+						  	<select id="top_category" name="brand_id" style="width:25%">
+						  		<option value="0">请选择品牌</option>
+						  		@foreach ($all_top_brands as $brand)	
+						  		<option value="{{$brand->id}}">{{$brand->name}}</option>
+						  		@endforeach										
+							</select>
+							<select id="second_category" name="car_factory" style="display:none;width:25%;">
+						  		<option value="0">请选择厂家</option>											
+							</select>
+							<select id="thrid_category" name="category_id" style="display:none;width:25%;">
+						  		<option  value="0">请选择车系</option>											
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="bottom_price">价格范围</label>
+						<div class="controls">
+						  	<input class="input-xlarge one_line focused" name="bottom_price" id="bottom_price" type="text" value="{{$select_conditions['bottom_price'] or ''}}" placeholder="低价">
+						  	<input class="input-xlarge one_line focused" name="top_price" id="top_price" type="text" value="{{$select_conditions['top_price'] or ''}}" placeholder="高价">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="begin_date">日期范围</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge date-picker one_line" name="begin_date" id="begin_date" value="{{$select_conditions['begin_date'] or ''}}" placeholder="开始日期" >
+							<input type="text" class="input-xlarge one_line date-picker" name="end_date" id="end_date" value="{{$select_conditions['end_date'] or ''}}" placeholder="结束日期">
+						</div>
+					</div>
+					<div class="control-group  ">
+            	    	<label class="control-label" for="gearbox">变速箱</label>
+            	    	<div class="controls">
+            	      		<select id="gearbox" name="gearbox" >
+            	      			@foreach($gearbox as $key=>$box)
+            	      			<option @if(isset($select_conditions['gearbox']) && $select_conditions['gearbox'] == $key && $select_conditions['gearbox'] != '') selected @endif value='{{$key}}'>{{$box}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group  ">
+            	    	<label class="control-label" for="mileage">里程范围</label>
+            	    	<div class="controls">
+            	      		<input class="input-xlarge one_line focused" name="begin_mileage" id="begin_mileage" type="text" value="{{$select_conditions['begin_mileage'] or ''}}" placeholder="里程下限">
+            	      		<input class="input-xlarge one_line focused" name="end_mileage" id="end_mileage" type="text" value="{{$select_conditions['end_mileage'] or ''}}" placeholder="里程上限">
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group  ">
+            	    	<label class="control-label" for="out_color">外观</label>
+            	    	<div class="controls">
+            	      		<select id="out_color" name="out_color" >
+            	      			@foreach($out_color as $key=>$color)
+            	      			<option @if(isset($select_conditions['out_color']) && $select_conditions['out_color'] == $key && $select_conditions['out_color'] != '') selected @endif value='{{$key}}'>{{$color}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group  ">
+            	    	<label class="control-label" for="capacity">排量</label>
+            	    	<div class="controls">
+            	      		<select id="capacity" name="capacity" >
+            	      			@foreach($capacity as $key=>$value)
+            	      			<option @if(isset($select_conditions['capacity']) && $select_conditions['capacity'] == $key && $select_conditions['capacity'] != '') selected @endif value='{{$key}}'>{{$value}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group  ">
+            	    	<label class="control-label" for="sale_number">过户次数</label>
+            	    	<div class="controls">
+            	      		<select id="sale_number" name="sale_number" >
+            	      			@foreach($sale_number as $key=>$number)
+            	      			<option @if(isset($select_conditions['sale_number']) && $select_conditions['sale_number'] == $key && $select_conditions['sale_number'] != '') selected @endif value='{{$key}}'>{{$number}}</option>  
+            	      			@endforeach                                         
             	      		</select>
             	    	</div>
             	  	</div>				  
@@ -369,6 +450,7 @@
 				<div class="modal-footer">
 			<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
 			<input type="hidden" name="want_id" value="{{$waited_info->id}}">
+			<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
 			<button type="submit" class="btn btn-primary">搜索</button>
 		</div>
 			</form>				         
@@ -378,7 +460,7 @@
 @endsection
 @section('script_content')
 <!-- 引入车型级联js -->
-<!-- <script src="{{URL::asset('js/tcl/category.js')}}"></script>  -->
+<script src="{{URL::asset('js/tcl/category.js')}}"></script> 
 <!-- 引入对话框插件 -->
 <script src="{{URL::asset('js/tcl/dialog.js')}}"></script> 
 <!-- 引入日历插件 -->
@@ -523,6 +605,13 @@
 				}
 			});
 		});
+
+		$('.date-picker').datepicker({
+            language: 'zh-CN',
+            autoclose: true,
+            format: 'yyyy-mm-dd 00:00:00',
+            todayHighlight: true
+        });
 	});	
 </script>
 @endsection

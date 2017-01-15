@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('head_content')
+<link id="bootstrap-style" href="{{ URL::asset('css/tcl/bootstrap-datepicker.min.css') }}" rel="stylesheet">
 	<style type="text/css">
 		.detial {
 			font-size: 14px;
@@ -51,6 +52,12 @@
 		.tab-menu.nav-tabs > li{
 			float:left;
 		}
+
+		/*.timeslot{
+			min-height:64px !important;
+			height:64px;
+		}*/
+
 	</style>
 @endsection
 
@@ -75,7 +82,7 @@
 @section('content')
 
 @include('layouts.message')
-<div class="row-fluid sortable">
+<div class="row-fluid">
 	<div class="box span12" style="padding:10px;">
 		<div class="box-header">
 			<h2>
@@ -292,58 +299,19 @@
 				</div>
 				<div id="images" class="tab-pane">
 					<div class="box-content">
-							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
-								<a title="Sample Image 1" href="img/gallery/photo1.jpg">
-									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
-								</a>
-							</div>	
-							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
-								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
-									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
-								</a>
-							</div>
-							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
-								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
-									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
-								</a>
-							</div>
-							<div class="masonry-thumb thumbnail" style="width:23%;height:20%"> 
-								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
-									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
-								</a>
-							</div>
-							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
-								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
-									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
-								</a>
-							</div>
-							<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
-								<a  title="Sample Image 1" href="img/gallery/photo1.jpg">
-									<img class="grayscale" src="{{URL::asset('uploads/car/201701/images/252924860313292214.jpg')}}" alt="Sample Image 1">
-								</a>
-							</div>													
+						@foreach($img_info as $img)
+						<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
+							<a title="Sample Image 1" href="img/gallery/photo1.jpg">
+								<img class="grayscale" src="{{URL::asset('uploads/car/'.$img->filename)}}" alt="Sample Image 1">
+							</a>
+						</div>	
+						@endforeach											
 					</div>
 				</div>
 				<div id="follow" class="tab-pane">
-					<div class="box-content span4">
-						<div class="chat-form" style="text-align: right;margin:-10px -10px -10px -10px;">
-							<textarea id="textDesc"></textarea>
-				 			<label class="checkbox inline" style="padding-left:0px;margin-top: 0px;">
-								<input type="checkbox" name="checkFollow" id="inlineCheckbox1" value="1"> 记录
-				  			</label>
-				  			<label class="checkbox inline" style="padding-left:0px;">
-								<input type="checkbox" name="checkFollow" id="inlineCheckbox2" value="2"> 电话
-				  			</label>
-				  			<label class="checkbox inline" style="padding-left:0px;">
-								<input type="checkbox" name="checkFollow" id="inlineCheckbox3" value="3"> 拜访
-				  			</label>
-				  			<input type="hidden" name="user_name" value="{{Auth::User()->nick_name}}">
-				 			<button id="interactive" class="btn btn-info">发布</button>
-						</div>
-						<div class="clearfix"></div>						
-					</div>
-					<div class="box-content span6">
-						<div class="timeline"> <!-- <div class="timeslot alt"> -->
+					<div class="box" style="width:90%;margin:5px auto;">
+					<div class="box-content">
+						<div class="timeline"> 
 							@foreach ($follow_info as $key=>$info)
 					 		<div class="timeslot @if($key%2 == 0) alt @endif">
 								<div class="task">
@@ -371,6 +339,22 @@
 							@endforeach				
 						</div>
 						<div class="clearfix"></div>
+						<div class="chat-form" style="text-align: right;margin:-10px -10px -10px -10px;">
+							<textarea id="textDesc"></textarea>
+				 			<label class="checkbox inline" style="padding-left:0px;margin-top: 0px;">
+								<input type="checkbox" name="checkFollow" id="inlineCheckbox1" value="1"> 记录
+				  			</label>
+				  			<label class="checkbox inline" style="padding-left:0px;">
+								<input type="checkbox" name="checkFollow" id="inlineCheckbox2" value="2"> 电话
+				  			</label>
+				  			<label class="checkbox inline" style="padding-left:0px;">
+								<input type="checkbox" name="checkFollow" id="inlineCheckbox3" value="3"> 拜访
+				  			</label>
+				  			<input type="hidden" name="user_name" value="{{Auth::User()->nick_name}}">
+				 			<button id="interactive" class="btn btn-info">发布</button>
+						</div>
+						<div class="clearfix"></div>												
+					</div>
 					</div>
 				</div>
 			</div>
@@ -378,121 +362,206 @@
 	</div>	
 </div>
 <div class="row-fluid sortable">		
-		<div class="box span12">
-			<div class="box-content">
-				<!-- <ul style="background: none repeat scroll 0 0 #eee;border: 0 none;border-radius: 0;box-shadow: none;color: #aaa;line-height: 34px; margin: 0;margin-bottom:5px;">
-					<li style="display: inline-block;line-height: 20px;">
-						<a class="btn btn-primary" href="{{route('admin.car.create')}}">添加车源</a>
+	<div class="box span12">
+		<div class="box-content">
+			<div class="page-tabs">
+            	<ul class="nav nav-tabs">
+            		<li>
+            			<button class="btn">系统推荐</button>
+            		</li>
+            		<li style="display: inline-block;line-height:20px;float:right;">
+						<a class="btn btn-search" href="javascript:void(0);"><i class="halflings-icon search"></i>搜索求购信息</a>
 					</li>
-					<li style="display: inline-block;line-height: 20px;">
-						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
-					</li>
-				</ul> -->
-				<div class="page-tabs">
-            		<ul class="nav nav-tabs">
-            			<li>
-            				<button class="btn">系统推荐</button>
-            			</li>
-            		  	<li style="display: inline-block;line-height:20px;float:right;">
-							<a class="btn btn-search" href="javascript:void(0);"><i class="halflings-icon search"></i>搜索求购信息</a>
-						</li>
-            		</ul>
-        		</div>
-        		@if(!($match_info->isEmpty()))
-				<table  class="table table-striped table-bordered">
-					<thead>
-						<tr>
-							<th>求购信息编号</th>
-							<th>求购信息名称</th>
-							<th>预期价格</th>
-							<th>里程</th>							
-							<th>变速箱</th>
-							<th>车身颜色</th>
-							<th>过户次数</th>
-							<th>客户备注</th>
-							<th>登记日期</th>
-							<th>门店</th>
-							<th>负责人</th>
-							<th>操作</th>
-						</tr>
-					</thead> 
-					<tbody>
-						@foreach ($match_info as $match)
-    					<tr>
-							<td>{{$match->want_code}}</td>
-							<td>{{$match->name}}</td>
-							<td>{{$match->bottom_price}}-{{$match->top_price}}万</td>							
-							<td>{{$mileage_config[$match->mileage]}}</td>							
-							<td>{{$gearbox[$match->gearbox]}}</td>							
-							<td>{{$out_color[$match->out_color]}}</td>						
-							<td>{{$match->sale_number}}</td>							
-							<td>{{$match->remark}}</td>							
-							<td>{{substr($match->created_at, 0 ,10)}}</td>							
-							<td>{{$match->belongsToShop->shop_name}}</td>							
-							<td>{{$match->belongsToUser->nick_name}}</td>		
-							<td class="center">
-								<div class="btn-group">
-									<span>
-										<form action="{{route('admin.chance.store')}}" method="post" style="display: inherit;margin:0px;">
-										    {{ csrf_field() }}
+            	</ul>
+        	</div>
+        	@if(!($match_info->isEmpty()))
+			<table  class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>求购信息编号</th>
+						<th>求购信息名称</th>
+						<th>预期价格</th>
+						<th>里程</th>							
+						<th>变速箱</th>
+						<th>车身颜色</th>
+						<th>过户次数</th>
+						<th>客户备注</th>
+						<th>登记日期</th>
+						<th>门店</th>
+						<th>负责人</th>
+						<th>操作</th>
+					</tr>
+				</thead> 
+				<tbody>
+					@foreach ($match_info as $match)
+    				<tr>
+						<td>{{$match->want_code}}</td>
+						<td>{{$match->name}}</td>
+						<td>{{$match->bottom_price}}-{{$match->top_price}}万</td>							
+						<td>{{$mileage_config[$match->mileage]}}</td>							
+						<td>{{$gearbox[$match->gearbox]}}</td>							
+						<td>{{$out_color[$match->out_color]}}</td>						
+						<td>{{$match->sale_number}}</td>							
+						<td>{{$match->remark}}</td>							
+						<td>{{substr($match->created_at, 0 ,10)}}</td>							
+						<td>{{$match->belongsToShop->shop_name}}</td>							
+						<td>{{$match->belongsToUser->nick_name}}</td>		
+						<td class="center">
+							<div class="btn-group">
+								<span>
+									<form action="{{route('admin.chance.store')}}" method="post" style="display: inherit;margin:0px;">
+										{{ csrf_field() }}
             								           								
-            								<input type="hidden" name="want_id" value="{{$match->id}}">
-											<button class="btn btn-success create_chance" type="button">
-											<i class="icon-edit icon-white"></i> 对比
-											</button>
-											<input type="hidden" name="car_id" value="{{$waited_info->id}}">
-										</form>
-									</span>									
-								</div>
-							</td>
-						</tr>
-						@endforeach							
-					</tbody>
-				</table>
-				<div class="pagination pagination-centered">
-					 {!! $match_info->links() !!}
-				</div>
-				@endif 		
-			</div>			
-		</div>
+            							<input type="hidden" name="want_id" value="{{$match->id}}">
+										<button class="btn btn-success create_chance" type="button">
+										<i class="icon-edit icon-white"></i> 对比
+										</button>
+										<input type="hidden" name="car_id" value="{{$waited_info->id}}">
+									</form>
+								</span>									
+							</div>
+						</td>
+					</tr>
+					@endforeach							
+				</tbody>
+			</table>
+			<div class="pagination pagination-centered">
+				 {!! $match_info->links() !!}
+			</div>
+			@endif 		
+		</div>			
 	</div>
-	<div class="modal hide fade" id="myModal">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">×</button>
-			<h3>精确搜索</h3>
-		</div>
-		<div class="modal-body" style="max-height:none;">
-			<form class="form-horizontal" id="condition" action="/admin/chance/create" method="post">
-				{!! csrf_field() !!}
-				<fieldset>
+</div>
+<div class="modal hide fade" id="myModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>精确搜索</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal" id="condition" action="/admin/chance/create" method="post">
+			{!! csrf_field() !!}
+			<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="want_code">车源编号</label>
+						<label class="control-label" for="want_code">求购信息编号</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" name="cwant_code" id="want_code" type="text" value="">
+						  	<input class="input-xlarge focused" name="want_code" id="want_code" type="text" value="">
 						</div>
 					</div>		
 					<div class="control-group  ">
-            	    	<label class="control-label" for="want_status">车源状态</label>
+            	    	<label class="control-label" for="category_type">车辆类型</label>
             	    	<div class="controls">
-            	      		<select id="want_status" name="want_status" >
-            	      			<option value='1'>正常</option>                                           
+            	      		<select id="category_type" name="category_type" >
+            	      			@foreach($category_type as $key=>$category)
+            	      			<option value='{{$key}}'>{{$category}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group">
+					<label class="control-label" for="selectError3">车型品牌</label>
+						<div class="controls">
+						  	<select id="top_category" name="brand_id" style="width:25%">
+						  		<option value="0">请选择品牌</option>
+						  		@foreach ($all_top_brands as $brand)	
+						  		<option value="{{$brand->id}}">{{$brand->name}}</option>
+						  		@endforeach										
+							</select>
+							<select id="second_category" name="car_factory" style="display:none;width:25%;">
+						  		<option value="0">请选择厂家</option>											
+							</select>
+							<select id="thrid_category" name="category_id" style="display:none;width:25%;">
+						  		<option  value="0">请选择车系</option>											
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="bottom_price">价格范围</label>
+						<div class="controls">
+						  	<input class="input-xlarge one_line focused" name="bottom_price" id="bottom_price" type="text" value="{{$select_conditions['bottom_price'] or ''}}" placeholder="低价">
+						  	<input class="input-xlarge one_line focused" name="top_price" id="top_price" type="text" value="{{$select_conditions['top_price'] or ''}}" placeholder="高价">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="begin_date">日期范围</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge date-picker one_line" name="begin_date" id="begin_date" value="{{$select_conditions['begin_date'] or ''}}" placeholder="开始日期" >
+							<input type="text" class="input-xlarge one_line date-picker" name="end_date" id="end_date" value="{{$select_conditions['end_date'] or ''}}" placeholder="结束日期">
+						</div>
+					</div>
+					<div class="control-group  ">
+            	    	<label class="control-label" for="age">车龄</label>
+            	    	<div class="controls">
+            	      		<select id="age" name="age" >
+            	      			@foreach($age as $key=>$ag)
+            	      			<option @if(isset($select_conditions['age']) && $select_conditions['age'] == $key && $select_conditions['age'] != '') selected @endif value='{{$key}}'>{{$ag}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group  ">
+            	    	<label class="control-label" for="mileage">里程</label>
+            	    	<div class="controls">
+            	      		<select id="mileage" name="mileage" >
+            	      			@foreach($mileage_config as $key=>$mile)
+            	      			<option @if(isset($select_conditions['mileage']) && $select_conditions['mileage'] == $key && $select_conditions['mileage'] != '') selected @endif value='{{$key}}'>{{$mile}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+					<div class="control-group  ">
+            	    	<label class="control-label" for="gearbox">变速箱</label>
+            	    	<div class="controls">
+            	      		<select id="gearbox" name="gearbox" >
+            	      			@foreach($gearbox as $key=>$box)
+            	      			<option @if(isset($select_conditions['gearbox']) && $select_conditions['gearbox'] == $key && $select_conditions['gearbox'] != '') selected @endif value='{{$key}}'>{{$box}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group  ">
+            	    	<label class="control-label" for="out_color">外观</label>
+            	    	<div class="controls">
+            	      		<select id="out_color" name="out_color" >
+            	      			@foreach($out_color as $key=>$color)
+            	      			<option @if(isset($select_conditions['out_color']) && $select_conditions['out_color'] == $key && $select_conditions['out_color'] != '') selected @endif value='{{$key}}'>{{$color}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group  ">
+            	    	<label class="control-label" for="capacity">排量</label>
+            	    	<div class="controls">
+            	      		<select id="capacity" name="capacity" >
+            	      			@foreach($capacity as $key=>$value)
+            	      			<option @if(isset($select_conditions['capacity']) && $select_conditions['capacity'] == $key && $select_conditions['capacity'] != '') selected @endif value='{{$key}}'>{{$value}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
+            	  	<div class="control-group  ">
+            	    	<label class="control-label" for="sale_number">过户次数</label>
+            	    	<div class="controls">
+            	      		<select id="sale_number" name="sale_number" >
+            	      			@foreach($sale_number_config as $key=>$number)
+            	      			<option @if(isset($select_conditions['sale_number']) && $select_conditions['sale_number'] == $key && $select_conditions['sale_number'] != '') selected @endif value='{{$key}}'>{{$number}}</option>  
+            	      			@endforeach                                         
             	      		</select>
             	    	</div>
             	  	</div>				  
-				</fieldset>
-				<div class="modal-footer">
-			<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
-			<input type="hidden" name="car_id" value="{{$waited_info->id}}">
-			<button type="submit" class="btn btn-primary">搜索</button>
-		</div>
-			</form>				         
-		</div>
-		
-	</div>
+			</fieldset>
+			<div class="modal-footer">
+				<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
+				<input type="hidden" name="car_id" value="{{$waited_info->id}}">
+				<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
+				<button type="submit" class="btn btn-primary">搜索</button>
+			</div>
+		</form>				         
+	</div>		
+</div>
 @endsection
 @section('script_content')
 <!-- 引入车型级联js -->
-<!-- <script src="{{URL::asset('js/tcl/category.js')}}"></script>  -->
+<script src="{{URL::asset('js/tcl/category.js')}}"></script> 
 <!-- 引入对话框插件 -->
 <script src="{{URL::asset('js/tcl/dialog.js')}}"></script> 
 <!-- 引入日历插件 -->
@@ -510,6 +579,13 @@
 			$('#condition').submit();
 			return false;
 		});
+
+		$('.date-picker').datepicker({
+            language: 'zh-CN',
+            autoclose: true,
+            format: 'yyyy-mm-dd 00:00:00',
+            todayHighlight: true
+        });
 
 		$('.create_chance').click(function(){
 			var want_id          = $(this).prev("input[name='want_id']").val();
@@ -612,14 +688,15 @@
 					content_follow += '</div>';
 					content_follow += '<div class="clearfix"></div>';			   				
 							
-					alert(last_follow_left);
-					alert('匹配成功');
+					// alert(last_follow_left);
+					alert('信息添加成功');
 					console.log(content_follow);
 
 					$('.timeline').prepend(content_follow);
 					// location.reload();
 					// console.log(data);
 					// window.location.href = '{{route('admin.chance.index')}}';
+					// window.location.reload();
 					return false;
 				},
 				error: function(xhr, type){
