@@ -94,15 +94,16 @@ class ChanceController extends Controller
         // dd($request->all());
         $request['os_recommend'] = 'yes';
         $is_self = $request->has('is_self');
-  
-        $all_top_brands = $this->brands->getChildBrand(0);
+        
+        $select_conditions  = $request->all();
+        $all_top_brands     = $this->brands->getChildBrand(0);
 
         if($request->has('want_id')){
             //匹配求购信息
             $waited_info = $this->want->find($request->want_id);
             /*$request['top_price']    = $waited_info->top_price;          
             $request['bottom_price'] = $waited_info->bottom_price;*/
-            
+            $request['car_status']   = '1';
             $match_info = $this->car->getAllcars($request, $is_self);
             $createBy   = 'want';
 
@@ -120,7 +121,8 @@ class ChanceController extends Controller
                 'waited_info', 
                 'match_info',             
                 'follow_info',
-                'all_top_brands'
+                'all_top_brands',
+                'select_conditions'
             )); 
         
         }else{
@@ -129,7 +131,7 @@ class ChanceController extends Controller
             // dd($waited_info);
             /*$request['top_price']    = $waited_info->top_price;          
             $request['bottom_price'] = $waited_info->bottom_price;*/
-            
+            $request['want_status']   = '1';
             $match_info = $this->want->getAllWants($request, $is_self);
             // dd(lastSql());
             $createBy   = 'car';
@@ -152,7 +154,8 @@ class ChanceController extends Controller
                 'createBy',
                 'img_info',
                 'follow_info',
-                'all_top_brands'
+                'all_top_brands',
+                'select_conditions'
             )); 
         }        
     }
