@@ -95,26 +95,13 @@ class ChanceController extends Controller
         $request['os_recommend'] = 'yes';
         $is_self = $request->has('is_self');
   
-        /*$gearbox        = config('tcl.gearbox'); //获取配置文件中车型类别
-        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
-        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
-        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
-        $car_type       = config('tcl.car_type'); //获取配置文件车源类型
-        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
-        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
-        $capacity       = config('tcl.capacity'); //获取配置文件排量  
-        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
-        $car_stauts_config  = config('tcl.car_stauts'); //获取配置文件中车源状态
-        $mileage_config  = config('tcl.mileage'); //获取配置文件中车源状态
-        $sale_number_config  = config('tcl.want_sale_number'); //获取配置文件中车源状态
-        $follow_type     = config('tcl.follow_type'); //获取配置文件中车源状态
-        $age            = config('tcl.age'); //获取配置文件中车源状态*/
+        $all_top_brands = $this->brands->getChildBrand(0);
 
         if($request->has('want_id')){
             //匹配求购信息
             $waited_info = $this->want->find($request->want_id);
-            $request['top_price']    = $waited_info->top_price;          
-            $request['bottom_price'] = $waited_info->bottom_price;
+            /*$request['top_price']    = $waited_info->top_price;          
+            $request['bottom_price'] = $waited_info->bottom_price;*/
             
             $match_info = $this->car->getAllcars($request, $is_self);
             $createBy   = 'want';
@@ -132,16 +119,19 @@ class ChanceController extends Controller
              return view('admin.chance.createByWant',compact(
                 'waited_info', 
                 'match_info',             
-                'follow_info'
+                'follow_info',
+                'all_top_brands'
             )); 
         
         }else{
             // 匹配车源信息
             $waited_info = $this->car->find($request->car_id);
-            $request['top_price']    = $waited_info->top_price;          
-            $request['bottom_price'] = $waited_info->bottom_price;
+            // dd($waited_info);
+            /*$request['top_price']    = $waited_info->top_price;          
+            $request['bottom_price'] = $waited_info->bottom_price;*/
             
             $match_info = $this->want->getAllWants($request, $is_self);
+            // dd(lastSql());
             $createBy   = 'car';
             // dd($waited_info->categorey_type);
             $img_info = $waited_info->hasManyImages;
@@ -161,7 +151,8 @@ class ChanceController extends Controller
                 'match_info',
                 'createBy',
                 'img_info',
-                'follow_info'
+                'follow_info',
+                'all_top_brands'
             )); 
         }        
     }

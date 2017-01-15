@@ -198,22 +198,35 @@ class CarController extends Controller
     {
         $cars = $this->car->find($id);
 
-        /*$out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
-        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
-        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
-        $car_type       = config('tcl.car_type'); //获取配置文件车源类型
-        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
-        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
-        $capacity       = config('tcl.capacity'); //获取配置文件排量*/
-        
+        $area = Area::withTrashed()
+                    ->where('pid', '1')
+                    ->where('status', '1')
+                    ->get();
+        $citys = Area::withTrashed()
+                     ->where('pid', $cars->plate_provence)
+                     ->where('status', '1')
+                    ->get();
         /*if (Gate::denies('update', $cars)) {
             //不允许编辑,基于Policy
             dd('no no');
         }*/
 
+        foreach ($area as $key => $value) {
+            if($cars->plate_provence == $value->id){
+                $provence =  $value;
+            }
+        }
+
+        foreach ($citys as $key => $value) {
+            if($cars->plate_city == $value->id){
+                $city =  $value;
+            }
+        }
         // dd($cars);
+        // dd($area);
+        // dd($city);
         return view('admin.car.edit', compact(
-            'cars'
+            'cars','provence','city','area'
         ));
     }
 
