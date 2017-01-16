@@ -94,7 +94,7 @@ class ChanceController extends Controller
         // dd($request->all());
         $request['os_recommend'] = 'yes';
         $is_self = $request->has('is_self');
-        
+        // dd($is_self);
         $select_conditions  = $request->all();
         $all_top_brands     = $this->brands->getChildBrand(0);
 
