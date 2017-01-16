@@ -34,7 +34,7 @@
 		</div>
 		<div class="box-content">
 			<h2 align="center">{{$notice_info->title}}</h2>
-			<h4 align="center">发布人：{{$notice_info->belongsToUser->name}}</h4>
+			<h4 align="center">发布人：{{$notice_info->belongsToUser->nick_name}}</h4>
 			<h4 align="center">发布时间：{{$notice_info->created_at}}</h4>
 			<p>{!! $notice_info->content !!}</p>	
 			<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返&nbsp;&nbsp;回</a>		
