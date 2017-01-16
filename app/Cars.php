@@ -159,7 +159,11 @@ class Cars extends Model
         
         if(!empty($requestData['begin_date'])){
             $query = $query->where('created_at', '>=', $requestData['begin_date']);
-        }    
+        } 
+
+        if(!empty($requestData['need_follow'])){
+            $query = $query->where('created_at', '<=', $requestData['need_follow']);
+        }   
 
         return $query;
     }

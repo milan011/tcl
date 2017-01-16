@@ -98,5 +98,11 @@ class Transcation extends Model
 
       return $this->belongsTo('App\User', 'user_id', 'id');
     }
+
+    // 定义Transcation表与Shop表一对多关系
+    public function belongsToShop(){
+
+      return $this->belongsTo('App\Shop', 'shop_id', 'id');
+    }
 }
 

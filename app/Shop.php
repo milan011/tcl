@@ -65,4 +65,10 @@ class Shop extends Model
 
       return $this->hasMany('App\Chance', 'shop_id', 'id');
     }
+
+    // 定义Shop表与Transcation表一对多关系
+    public function hasManyTranscations(){
+
+      return $this->hasMany('App\Transcation', 'shop_id', 'id');
+    }
 }
