@@ -776,11 +776,11 @@ ul.messages li .message {
 
 	.statbox .footer {
 		background: rgba(0,0,0,.1);
-		background-color: #19FFFFFF;
+		background-color:gray;
 		position: absolute;
 		bottom: 0px;
 		left: 0px;
-		padding: 10px;
+		padding: 10px 0px;
 	}
 	
 	.statbox .footer:hover {

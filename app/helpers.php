@@ -255,3 +255,11 @@
 
         return $return_date;      
 	}
+
+	//获得过期日期
+	function getExpiredDate(){
+		
+		$date   = Carbon::parse('4 days ago')->toDateTimeString();
+
+		return $date;
+	}
