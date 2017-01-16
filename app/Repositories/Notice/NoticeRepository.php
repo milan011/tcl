@@ -19,6 +19,12 @@ class NoticeRepository implements NoticeRepositoryContract
         return Notice::findOrFail($id);
     }
 
+    //获取置顶公告
+    public function findTopNotice()
+    {
+        return Notice::Where('is_top', '1')->first();
+    }
+
     public function allNotices()
     {   
         /*$notice_user = new Notice;
