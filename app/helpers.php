@@ -152,9 +152,9 @@
 		if($type == 'car'){
 			$code = 'C-';
 		}else if($type == 'want'){
-			$code = 'W-';
+			$code = 'Q-';
 		}else if($type == 'chance'){
-			$code = 'X-';
+			$code = 'J-';
 		}
 		
 
