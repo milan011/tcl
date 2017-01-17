@@ -151,7 +151,7 @@ class PlanController extends Controller
 
         $getInsertedId = $this->plan->create($request);
         // p(lastSql());exit;
-        return redirect()->route('admin.plan.index')->withInput();
+        return redirect()->route('admin.plan.self')->withInput();
     }
 
     /**

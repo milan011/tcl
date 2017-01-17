@@ -105,10 +105,11 @@ class ChanceController extends Controller
             $request['bottom_price'] = $waited_info->bottom_price;*/
             $request['car_status']   = '1';
             $match_info = $this->car->getAllcars($request, $is_self);
+            // dd(lastSql());
             $createBy   = 'want';
 
             $follow_info = $waited_info->hasManyFollow;
-            // dd($match_info);
+            
             foreach ($follow_info as $key => $value) {
                 
                 $follow_info[$key]['description'] = json_decode($value->description);

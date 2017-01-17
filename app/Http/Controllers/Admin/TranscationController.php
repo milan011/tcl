@@ -124,7 +124,7 @@ class TranscationController extends Controller
             // dd('hehe sb');
             return redirect()->route('admin.transcation.edit', ['transcation'=>'1'])->withInput();
         }*/
-        return redirect()->route('admin.transcation.index')->withInput();
+        return redirect()->route('admin.transcation.self')->withInput();
     }
 
     /**
