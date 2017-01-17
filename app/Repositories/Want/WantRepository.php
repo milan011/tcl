@@ -17,24 +17,27 @@ use Debugbar;
 class WantRepository implements WantRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'want_code', 'name', 'want_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'sale_number', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_area', 'remark', 'want_status', 'shop_id', 'created_at', 'updated_at'];
+    protected $select_columns = ['id', 'want_code', 'name', 'want_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'sale_number', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_area', 'remark', 'want_status', 'shop_id', 'created_at', 'updated_at','recommend','is_top','xs_remark', 'alternate_car', 'alternate_car_another'];
 
     // 求购信息表列名称-注释对应
     protected $columns_annotate = [
 
-        'capacity'       => '排量',
-        'gearbox'        => '变速箱',
-        'out_color'      => '外观颜色',
-        'inside_color'   => '内饰颜色',
-        'age'            => '车龄',
-        'mileage'        => '行驶里程',
-        'remark'         => '车况',
-        'bottom_price'   => '期望价格',
-        'top_price'      => '可接受价格',
-        'guide_price'    => '指导价',
-        'want_status'    => '求购信息状态',
-        'is_top'         => '是否置顶推荐',
-        'recommend'      => '是否推荐求购信息',
+        'capacity'              => '排量',
+        'gearbox'               => '变速箱',
+        'out_color'             => '外观颜色',
+        'inside_color'          => '内饰颜色',
+        'age'                   => '车龄',
+        'mileage'               => '行驶里程',
+        'remark'                => '客户描述',
+        'bottom_price'          => '期望价格',
+        'top_price'             => '可接受价格',
+        'guide_price'           => '指导价',
+        'want_status'           => '求购信息状态',
+        'is_top'                => '是否置顶推荐',
+        'recommend'             => '是否推荐求购信息',
+        'xs_remark'             => '销售描述',
+        'alternate_car'         => '备选车型',
+        'alternate_car_another' => '备选车型',
     ];
 
     // 根据ID获得求购信息信息
@@ -70,9 +73,19 @@ class WantRepository implements WantRepositoryContract
     {   
         DB::transaction(function() use ($requestData){
             // 添加求购信息并返回实例
-            $requestData['creater_id'] = Auth::id();
-            $requestData['want_code']  = getCarCode('want');
-            
+            $requestData['creater_id']   = Auth::id();
+            $requestData['want_code']    = getCarCode('want');
+
+            if(empty($requestData->mileage)){
+                $requestData['mileage']      = '1';
+            }
+            if(empty($requestData->out_color)){
+                $requestData['out_color']    = '0';
+            }
+            if(empty($requestData->inside_color)){
+               $requestData['inside_color'] = '3';
+            }
+                                  
             if(empty($requestData->name)){
                 $requestData['name'] = '无具体意向车型';
             }
@@ -118,16 +131,25 @@ class WantRepository implements WantRepositoryContract
             p($request_content);*/
             $changed_content = getDiffArray($request_content, $original_content);//比较提交的数据与原数据差别
             $update_content = '例行跟进';  //定义求购信息跟进时信息变化情况,即跟进描述
+
+            $need_del_array = ['capacity', 'gearbox','out_color','inside_color','sale_number','is_top','recommend'];
+
             // dd($changed_content);
             if($changed_content->count() != 0){
                 $update_content = array();
                 foreach ($changed_content as $key => $value) {
     
-                    /*p($this->columns_annotate[$key]);
-                    p($requestData->$key);
-                    p($original_content[$key]);*/
-    
-                    $update_content[] = Auth::user()->nick_name.'修改'.$this->columns_annotate[$key].'['.$original_content    [$key].']至['.$requestData->$key.']';
+                    if(in_array($key, $need_del_array)){
+                        /*p($original_content[$key]);
+                        p($key);
+                        p($value);
+                        p(config('tcl.'.$key)[$value]);exit;*/
+                        $current_content = config('tcl.'.$key)[$original_content[$key]];
+                        $updated_content = config('tcl.'.$key)[$value];
+                        $update_content[] = $this->columns_annotate[$key].'['.$current_content.']修改为['.$updated_content.']';
+                    }else{
+                        $update_content[] = $this->columns_annotate[$key].'['.$original_content[$key].']修改为['.$requestData->$key.']';
+                    }
                 }
             }
 
@@ -138,17 +160,20 @@ class WantRepository implements WantRepositoryContract
             dd($changed_content);*/
         
             // 求购信息编辑信息
-            $want->capacity       = $requestData->capacity;
-            $want->gearbox        = $requestData->gearbox;
-            $want->out_color      = $requestData->out_color;
-            $want->inside_color   = $requestData->inside_color;
-            // $want->sale_number    = $requestData->sale_number;
-            $want->mileage        = $requestData->mileage;
-            $want->remark         = $requestData->remark;
-            $want->top_price      = $requestData->top_price;
-            $want->bottom_price   = $requestData->bottom_price;
-            $want->is_top         = $requestData->is_top;
-            $want->recommend      = $requestData->recommend;
+            $want->capacity              = $requestData->capacity;
+            $want->gearbox               = $requestData->gearbox;
+            // $want->out_color             = $requestData->out_color;
+            // $want->inside_color          = $requestData->inside_color;
+            // $want->sale_number           = $requestData->sale_number;
+            // $want->mileage               = $requestData->mileage;
+            $want->remark                = $requestData->remark;
+            $want->xs_remark             = $requestData->xs_remark;
+            $want->top_price             = $requestData->top_price;
+            $want->bottom_price          = $requestData->bottom_price;
+            $want->is_top                = $requestData->is_top;
+            $want->recommend             = $requestData->recommend;
+            $want->alternate_car         = $requestData->alternate_car;
+            $want->alternate_car_another = $requestData->alternate_car_another;
             $want->creater_id     = Auth::id();
     
             // 求购信息跟进信息

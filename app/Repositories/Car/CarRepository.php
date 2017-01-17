@@ -18,7 +18,7 @@ use Debugbar;
 class CarRepository implements CarRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'name', 'car_code', 'vin_code', 'capacity', 'top_price', 'plate_date', 'plate_end', 'mileage', 'age', 'out_color', 'inside_color', 'gearbox', 'plate_provence', 'plate_city', 'safe_end', 'sale_number', 'categorey_type', 'shop_id', 'creater_id', 'created_at', 'updated_at', 'description', 'bottom_price', 'safe_type','recommend', 'is_top', 'car_type', 'car_status', 'customer_id', 'guide_price', 'pg_description'];
+    protected $select_columns = ['id', 'name', 'car_code', 'vin_code', 'capacity', 'top_price', 'plate_date', 'plate_end', 'mileage', 'age', 'out_color', 'inside_color', 'gearbox', 'plate_provence', 'plate_city', 'safe_end', 'sale_number', 'categorey_type', 'shop_id', 'creater_id', 'created_at', 'updated_at', 'description', 'bottom_price', 'safe_type','recommend', 'is_top', 'car_type', 'car_status', 'customer_id', 'guide_price', 'pg_description','xs_description'];
 
     // 车源表列名称-注释对应
     protected $columns_annotate = [
@@ -46,6 +46,7 @@ class CarRepository implements CarRepositoryContract
         'is_top'         => '是否置顶推荐',
         'recommend'      => '是否推荐车源',
         'car_type'       => '车源类别',
+        'xs_description' => '销售描述',
     ];
 
     // 根据ID获得车源信息
@@ -205,6 +206,7 @@ class CarRepository implements CarRepositoryContract
             $car->safe_end       = $requestData->safe_end;
             $car->mileage        = $requestData->mileage;
             $car->description    = $requestData->description;
+            $car->xs_description = $requestData->xs_description;
             $car->top_price      = $requestData->top_price;
             $car->bottom_price   = $requestData->bottom_price;
             $car->pg_description = $requestData->pg_description;
