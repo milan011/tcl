@@ -21,7 +21,7 @@ class Want extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['want_code', 'name', 'car_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'sale_number', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_eara', 'remark', 'want_status', 'shop_id', 'is_top', 'recommend'];
+    protected $fillable = ['want_code', 'name', 'car_type', 'brand_id', 'categorey_id', 'car_factory', 'cate_id', 'capacity', 'gearbox', 'bottom_price', 'top_price', 'age', 'mileage', 'sale_number', 'out_color', 'inside_color', 'customer_id', 'creater_id', 'want_eara', 'remark', 'want_status', 'shop_id', 'is_top', 'recommend','xs_remark', 'alternate_car', 'alternate_car_another'];
 
     /**
      * The attributes excluded from the model's JSON form.

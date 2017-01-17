@@ -21,7 +21,7 @@ class Cars extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['car_code', 'name', 'brand_id', 'car_factory', 'category_id', 'cate_id', 'capacity', 'gearbox', 'out_color', 'inside_color', 'plate_date', 'plate_end', 'plate_provence', 'plate_city', 'age', 'safe_type', 'safe_end', 'sale_number', 'mileage', 'description', 'top_price', 'bottom_price', 'car_status', 'recommend', 'is_top', 'car_type', 'customer_id', 'creater_id', 'shop_id', 'want_area', 'vin_code', 'sale_tcl', 'pg_description', 'guide_price'];
+    protected $fillable = ['car_code', 'name', 'brand_id', 'car_factory', 'category_id', 'cate_id', 'capacity', 'gearbox', 'out_color', 'inside_color', 'plate_date', 'plate_end', 'plate_provence', 'plate_city', 'age', 'safe_type', 'safe_end', 'sale_number', 'mileage', 'description', 'top_price', 'bottom_price', 'car_status', 'recommend', 'is_top', 'car_type', 'customer_id', 'creater_id', 'shop_id', 'want_area', 'vin_code', 'sale_tcl', 'pg_description', 'guide_price', 'xs_description'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -65,21 +65,6 @@ class Cars extends Model
                     $query = $query->where('creater_id', Auth::id());  
                 } 
             }           
-        }else{
-           if(!(Auth::user()->isSuperAdmin())){
-
-               if(Auth::user()->isMdLeader()){
-                    //店长
-                    $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
-        
-                    // $this->where('shop_id', $user_shop_id);
-                    $query = $query->where('shop_id', '!=', $user_shop_id);    
-                }else{
-                    //店员
-                    // $this->where('creater_id', Auth::id());
-                    $query = $query->where('creater_id', '!=', Auth::id());  
-                } 
-            }  
         }
 
         if(!empty($requestData['car_code'])){
