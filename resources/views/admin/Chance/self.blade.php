@@ -100,7 +100,7 @@
             									@if($chance->creater == Auth::id())
             									<button class="btn btn-success plan_create" type="button">
 												<i class="icon-edit icon-white"></i> 
-													约车
+													发起约车
 												</button>
             									@else
             									<button class="btn btn-warning" type="button">

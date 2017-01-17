@@ -8,6 +8,10 @@
 	.dropzone{
 		padding: 30px 20px;
 	}
+	.one_line{
+		width:20%;
+		margin-bottom:5px;
+	}
 </style>
 @endsection
 
@@ -119,7 +123,13 @@
 					  	<input class="input-xlarge focused" readonly="readonly" id="name" name="name" type="text" value="">
 					</div>
 				  </div>
-
+				 <div class="control-group">
+					<label class="control-label" for="alternate_car">备选车型</label>
+					<div class="controls">
+						<input class="input-xlarge one_line focused" name="alternate_car" id="alternate_car" type="text" value="{{old('alternate_car')}}" placeholder="备选车型">
+						<input class="input-xlarge one_line focused" name="alternate_car_another" id="alternate_car_another" type="text" value="{{old('alternate_car_another')}}" placeholder="备选车型">
+					</div>
+				</div>
 				  <div class="control-group  ">
                 	<label class="control-label" for="capacity">排量</label>
                 	<div class="controls">
@@ -142,7 +152,7 @@
                 	</div>
               	</div>
 
-              	<div class="control-group  ">
+              	<!-- <div class="control-group  ">
                 	<label class="control-label" for="out_color">外观颜色</label>
                 	<div class="controls">
                   		<select id="out_color" name="out_color" >                        
@@ -151,9 +161,9 @@
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div>
+              	</div> -->
 
-              	<div class="control-group  ">
+              	<!-- <div class="control-group  ">
                 	<label class="control-label" for="inside_color">内饰颜色</label>
                 	<div class="controls">
                   		<select id="inside_color" name="inside_color" >                        
@@ -162,8 +172,8 @@
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div>
-              	<div class="control-group  ">
+              	</div> -->
+              	<!-- <div class="control-group  ">
                 	<label class="control-label" for="shiftType">过户次数</label>
                 	<div class="controls">
                   		<select id="sale_number" name="sale_number" >                        
@@ -172,7 +182,7 @@
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div>
+              	</div> -->
 				<!-- <div class="control-group">
 					<label class="control-label" for="plate_provence">上牌城市</label>
 					<div class="controls">
@@ -207,7 +217,7 @@
 							<input type="text" class="input-xlarge date-picker" name="safe_end" id="safe_end" value="">
 						</div>
 				</div> -->
-              	<div class="control-group  ">
+              	<!-- <div class="control-group  ">
                 	<label class="control-label" for="age">车龄</label>
                 	<div class="controls">
                   		<select id="age" name="age" >                       
@@ -216,8 +226,8 @@
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div>
-              	<div class="control-group  ">
+              	</div> -->
+              	<!-- <div class="control-group  ">
                 	<label class="control-label" for="mileage">里程</label>
                 	<div class="controls">
                   		<select id="mileage" name="mileage" >                       
@@ -226,21 +236,21 @@
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div>
+              	</div> -->
 			  <div class="control-group">
 					<label class="control-label" for="top_price">可接受价格</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="top_price" name="top_price" type="text" value="{{old('top_price')}}"><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge one_line focused" id="top_price" name="top_price" type="text" value="{{old('top_price')}}"><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="bottom_price">期望价格价</label>
+					<label class="control-label" for="bottom_price">期望格价</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="bottom_price" name="bottom_price" type="text" value="{{old('bottom_price')}}"><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge one_line focused" id="bottom_price" name="bottom_price" type="text" value="{{old('bottom_price')}}"><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
-				<div class="control-group">
+				<!-- <div class="control-group">
 					<label class="control-label" for="selectError3">是否推荐</label>
 					<div class="controls">
 					  <select id="recommend" name="recommend" >
@@ -267,16 +277,25 @@
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div>
+              	</div> -->
 
 				<div class="control-group ">
 					<label class="control-label" for="remark">
-						<font style="color:red;">*&nbsp;</font>备注
+						<font style="color:red;">*&nbsp;</font>客户描述
 					</label>
-				<div class="controls">
+					<div class="controls">
 					<textarea id="remark" name="remark" required ></textarea>
-				</div>
-			  </div>	
+					</div>
+			  	</div>	
+
+			  	<div class="control-group ">
+					<label class="control-label" for="xs_remark">
+						<font style="color:red;">*&nbsp;</font>销售描述
+					</label>
+					<div class="controls">
+					<textarea id="xs_remark" name="xs_remark" required ></textarea>
+					</div>
+			  	</div>
 	  				
 				  <div class="form-actions">
 				  	<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
@@ -315,7 +334,7 @@
 		// var img_content      = $('#img_content');
 		var customer_id      = $("input[name='customer_id']");	
 		// var want_id           = $("input[name='want_id']");	
-
+		// alert(customer_id.val());
 		if(customer_id.val() != ''){
 			// alert('客户已经添加');
 			customer_content.hide();

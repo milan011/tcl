@@ -85,7 +85,7 @@
 						</div>
 				  	</div>
 				  	<div class="control-group">
-						<label class="control-label" for="earnest">定金:</label>
+						<label class="control-label" for="earnest">买方定金:</label>
 						<div class="controls">
 						  	<input class="input-xlarge focused"  name="earnest" type="text" value="{{old('earnest')}}">
 						</div>
@@ -97,7 +97,7 @@
 						</div>
 				  	</div>
 				  	<div class="control-group">
-						<label class="control-label" for="last_pay">尾款:</label>
+						<label class="control-label" for="last_pay">卖方尾款:</label>
 						<div class="controls">
 						  	<input class="input-xlarge focused"  name="last_pay" type="text" value="{{old('last_pay')}}">
 						</div>

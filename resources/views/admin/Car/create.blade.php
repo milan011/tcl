@@ -257,17 +257,17 @@
 			  <div class="control-group">
 					<label class="control-label" for="top_price">期望价格</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="top_price" name="top_price" type="text" value="{{old('top_price')}}"><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge focused" id="top_price" name="top_price" type="text" value="{{old('top_price')}}" required><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="bottom_price">底价</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="bottom_price" name="bottom_price" type="text" value="{{old('bottom_price')}}"><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge focused" id="bottom_price" name="bottom_price" type="text" value="{{old('bottom_price')}}" required><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
-				<div class="control-group">
+				<!-- <div class="control-group">
 					<label class="control-label" for="selectError3">是否推荐</label>
 					<div class="controls">
 					  <select id="recommend" name="recommend" >
@@ -294,17 +294,24 @@
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div>
+              	</div> -->
 
 				<div class="control-group ">
 					<label class="control-label" for="description">
-						<font style="color:red;">*&nbsp;</font>车况
+						<font style="color:red;">*&nbsp;</font>客户描述
 					</label>
 					<div class="controls">
 					<textarea id="description" name="description" required ></textarea>
 					</div>
 			  	</div>	
-	  				
+	  			<div class="control-group ">
+					<label class="control-label" for="xs_description">
+						<font style="color:red;">*&nbsp;</font>销售描述
+					</label>
+					<div class="controls">
+					<textarea id="xs_description" name="xs_description" required ></textarea>
+					</div>
+			  	</div>
 				  <div class="form-actions">
 				  	<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
 				  	<input type="hidden" name="shop_id" value="{{Auth::user()->shop_id}}">

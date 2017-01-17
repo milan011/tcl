@@ -175,14 +175,7 @@
 					</div>
 				</div>
 
-				<div class="control-group ">
-					<label class="control-label" for="description">
-						<font style="color:red;">*&nbsp;</font>车况
-					</label>
-				<div class="controls">
-					<textarea id="description" name="description" required >{{$cars->description}}</textarea>
-				</div>
-			  </div>
+				
 
 			  <div class="control-group">
 					<label class="control-label" for="top_price">期望价格</label>
@@ -225,6 +218,22 @@
                   		</select>
                 	</div>
               	</div>
+              	<div class="control-group ">
+					<label class="control-label" for="description">
+						<font style="color:red;">*&nbsp;</font>客户描述
+					</label>
+				<div class="controls">
+					<textarea id="description" name="description" required >{{$cars->description}}</textarea>
+				</div>
+			  </div>
+			  <div class="control-group ">
+					<label class="control-label" for="xs_description">
+						<font style="color:red;">*&nbsp;</font>销售描述
+					</label>
+					<div class="controls">
+					<textarea id="xs_description" name="xs_description" required >{{$cars->xs_description}}</textarea>
+					</div>
+			  	</div>
 
 				<!-- <div class="control-group">
 					<label class="control-label" for="selectError3">是否启用</label>

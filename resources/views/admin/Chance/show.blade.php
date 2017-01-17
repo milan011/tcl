@@ -96,7 +96,8 @@
 					</tbody>
 				</table>
 				<span>
-					<form action="{{route('admin.plan.create')}}" method="post" style="display: inherit;margin:0px;">
+					@if(($chances->creater == Auth::id()) && ($chances->status == '1' || $chances->status == '3'))
+					<!-- <form action="{{route('admin.plan.create')}}" method="post" style="display: inherit;margin:0px;">
 						{{ csrf_field() }}
             			<input type="hidden" name="chance_id" value="{{$chances->id}}">
             			<input type="hidden" name="want_id" value="{{$want_info->id}}">
@@ -104,7 +105,8 @@
 						<button class="btn btn-success" type="submit">
 						<i class="icon-edit icon-white"></i> 约车
 						</button>
-					</form>
+					</form> -->
+					@endif
 					<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
 				</span> 		
 			</div>			

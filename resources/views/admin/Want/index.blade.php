@@ -137,7 +137,7 @@
 			<h3>求购信息搜索</h3>
 		</div>
 		<div class="modal-body">
-			<form class="form-horizontal" id="condition" action="{{route('admin.want.self')}}" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.want.index')}}/index" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">

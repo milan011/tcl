@@ -86,7 +86,7 @@
 											 编辑
 										</a>
 										<a class="btn btn-success" href="javascript:void(0);" style="float:right;">
-											 跟进
+											快速跟进
 										</a>
 										<!-- <button class="btn btn-success" id="follow_quickly">
 											<i class="icon-edit icon-white"></i> 跟进

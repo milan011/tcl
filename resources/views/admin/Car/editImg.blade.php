@@ -132,7 +132,7 @@
                 </ul>
             </div>
             <div class="form-actions">									
-				<button class="btn" id="return_car">返回</button>
+				<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
 				<button id="img_edit" class="btn btn-primary">确定</button>
 			</div>
 		</div>

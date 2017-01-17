@@ -47,7 +47,13 @@
 					  <input class="input-xlarge focused" id="want_code" readonly="readonly" name="want_code" type="text" value="{{$wants->want_code}}">
 					</div>
 				  </div>
-				  
+				  <div class="control-group">
+					<label class="control-label" for="alternate_car">备选车型</label>
+					<div class="controls">
+						<input class="input-xlarge one_line focused" name="alternate_car" id="alternate_car" type="text" value="{{$wants->alternate_car}}" placeholder="备选车型">
+						<input class="input-xlarge one_line focused" name="alternate_car_another" id="alternate_car_another" type="text" value="{{$wants->alternate_car_another}}" placeholder="备选车型">
+					</div>
+				</div>
 				  <div class="control-group  ">
                 	<label class="control-label" for="capacity">排量</label>
                 	<div class="controls">
@@ -72,7 +78,7 @@
                 	</div>
               	</div>
 
-              	<div class="control-group  ">
+              	<!-- <div class="control-group  ">
                 	<label class="control-label" for="out_color">外观颜色</label>
                 	<div class="controls">
                   		<select id="out_color" name="out_color" >                        
@@ -92,7 +98,7 @@
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div>
+              	</div> -->
               	
 
 				
@@ -113,36 +119,27 @@
 							<input type="text" class="input-xlarge date-picker" name="safe_end" id="safe_end" value="{{substr($wants->safe_end, 0 ,10)}}">
 						</div>
 				</div> -->
-              	<div class="control-group">
+              	<!-- <div class="control-group">
 					<label class="control-label" for="focusedInput">行驶里程</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="mileage" name="mileage" type="text" value="{{$wants->mileage}}"><span style="margin-left:5px;">万公里</span>
 					</div>
-				</div>
-
-				<div class="control-group ">
-					<label class="control-label" for="remark">
-						<font style="color:red;">*&nbsp;</font>备注
-					</label>
-				<div class="controls">
-					<textarea id="remark" name="remark" required >{{$wants->remark}}</textarea>
-				</div>
-			  </div>
+				</div> -->
 
 			  <div class="control-group">
 					<label class="control-label" for="top_price">可接受价格</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="top_price" name="top_price" type="text" value="{{$wants->top_price}}"><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge one_line focused" id="top_price" name="top_price" type="text" value="{{$wants->top_price}}"><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="bottom_price">期望价</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="bottom_price" name="bottom_price" type="text" value="{{$wants->bottom_price}}"><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge one_line focused" id="bottom_price" name="bottom_price" type="text" value="{{$wants->bottom_price}}"><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
-				<div class="control-group">
+				<!-- <div class="control-group">
 					<label class="control-label" for="recommend">是否推荐</label>
 					<div class="controls">
 					  <select id="recommend" name="recommend" >
@@ -159,17 +156,25 @@
 						<option @if($wants->is_top == '0') selected @endif value="0">不置顶</option>						
 						</select>
 					</div>
-				</div>
+				</div> -->
 
-				<!-- <div class="control-group">
-					<label class="control-label" for="selectError3">是否启用</label>
+				<div class="control-group ">
+					<label class="control-label" for="">
+						<font style="color:red;">*&nbsp;</font>客户描述
+					</label>
 					<div class="controls">
-					  <select id="want_status" name="want_status">
-					  	<option @if($wants->want_status == '1') selected @endif value="1">启用</option>
-						<option @if($wants->want_status == '0') selected @endif value="0">停用</option>						
-						</select>
+					<textarea id="remark" name="remark" required >{{$wants->remark}}</textarea>
 					</div>
-				  </div> -->	  				
+			  	</div>	
+
+			  	<div class="control-group ">
+					<label class="control-label" for="xs_remark">
+						<font style="color:red;">*&nbsp;</font>销售描述
+					</label>
+					<div class="controls">
+					<textarea id="xs_remark" name="xs_remark" required >{{$wants->xs_remark}}</textarea>
+					</div>
+			  	</div>	  				
 				  <div class="form-actions">
 					<button type="submit" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
