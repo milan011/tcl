@@ -261,7 +261,7 @@ class TranscationController extends Controller
         $transcation_id = isset($request->transcation_id) ? $request->transcation_id : old('transcation_id');
         // dd($transcation_id);
         $transcations = $this->transcation->find($transcation_id);
-        $chance_info  = $this->chance->find($transcations->id);
+        $chance_info  = $this->chance->find($transcations->chance_id);
         $car_info     = $this->car->find($chance_info->car_id);
         $want_info    = $this->want->find($chance_info->want_id);
 

@@ -127,13 +127,14 @@ class TranscationRepository implements TranscationRepositoryContract
             DB::transaction(function() use ($requestData, $id){
 
                 $transcation = Transcation::findorFail($id); //交易对象
-                $plan        = Plan::where('chance_id', $transcation->chance_id)->first();
+                $plan        = Chance::where('id', $transcation->chance_id)->first();
+                // dd(lastSql());
                 $chance      = $transcation->belongsToChance; //销售机会对象
                 $car         = $chance->belongsToCar;         //车源
                 $want        = $chance->belongsToWant;        //求购信息
     
-                // dd($transcation);
-                /*dd($plan);
+                /*dd($transcation);
+                dd($plan);
                 dd($car);
                 dd($want);
                 dd($chance);*/
