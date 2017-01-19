@@ -87,7 +87,12 @@
 							<input type="text" class="input-xlarge" readonly="readonly" name="plan_time" id="plan_time" value="{{$plan_info->plan_time}}">
 						</div>
 					</div>
-					  
+					<div class="control-group">
+					<label class="control-label" for="hafe_day">具体时间</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge" style="width:10%" readonly="readonly" value="{{$plan_info->definite_time}}">
+						</div>
+					</div>  
 					<div class="control-group">
 						<label class="control-label" for="plan_address">看车地址</label>
 						<div class="controls">

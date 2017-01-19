@@ -1,53 +1,7 @@
 @extends('layouts.main')
 
 @section('head_content')
-	<style type="text/css">
-		.detial {
-			font-size: 14px;
-			line-height: 24px;
-			color: #3A3A3A;
-			font-style: normal;
-			font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
-		}
 
-		.detial i {
-			font-style: normal;
-			color: #999;
-			font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
-		}
-
-		.detial span {
-			width: 30%;
-			display: inline-block;
-			font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
-		}
-		
-		.detial em {
-			color: #f84949;
-			font-size: 28px;
-			font-style: normal;
-			font-weight: bold;
-			line-height: 28px;
-			font-family: 'Microsoft YaHei', arial, tahoma, sans-serif;
-		}
-		
-		.title {
-			color: #333;
-			font-size: 20px;
-			line-height: 30px;
-			font-weight: normal;
-			font: 'Microsoft YaHei', arial, tahoma, sans-serif;
-		}
-		
-		.title em {
-			color: #f84949;
-			font-size: 28px;
-			font-style: normal;
-			font-weight: bold;
-			line-height: 30px;
-			font: 'Microsoft YaHei', arial, tahoma, sans-serif;
-		}
-	</style>
 @endsection
 
 @section('BreadcrumbTrail')
@@ -59,10 +13,10 @@
 		</li>
 		<li>
 			<i class="icon-home"></i>
-			<a href="{{route('admin.transcation.self')}}">交易列表</a>  
+			<a href="{{route('admin.plan.index')}}/index">参与的约车</a>  
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="javascript:void(0);">交易详情</a></li>
+		<li><a href="javascript:void(0);">约车详情</a></li>
 	</ul>
 @endsection
 
@@ -74,7 +28,7 @@
 			<div class="box-content">
 				<div class="box-header" data-original-title>
 				<h2>
-					<i class="halflings-icon user"></i><span class="break"></span>车源客源详情
+					<i class="halflings-icon user"></i><span class="break"></span>约车详情
 				</h2>	
 				<h2 style="float:right;">
 					<a  href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="">返回</a>
@@ -83,7 +37,7 @@
 				<table  class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>车源/客源</th>
+							<th></th>
 							<th>车源信息</th>
 							<th>求购信息</th>
 						</tr>
@@ -147,6 +101,7 @@
 					</tbody>
 				</table>
 				<span>
+					@if(($chances->creater == Auth::id()) && ($chances->status == '1' || $chances->status == '3'))
 					<!-- <form action="{{route('admin.plan.create')}}" method="post" style="display: inherit;margin:0px;">
 						{{ csrf_field() }}
             			<input type="hidden" name="chance_id" value="{{$chances->id}}">
@@ -156,81 +111,9 @@
 						<i class="icon-edit icon-white"></i> 约车
 						</button>
 					</form> -->
-					<!-- <a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a> -->
-				</span> 
-				<div style="padding:5px;border: 1px solid #ddd;">
-					<p class="title">【交易详情】</p>
-					<p class="detial">
-						<i>成交价:</i>
-						<em>{{$transcation->deal_price}}</em>
-						<i>万元</i>
-					</p>
-					<div class="col-xs-4">
-						<p class="detial">
-							<span>
-								<i>定金:</i>
-								<em>{{$transcation->earnest}}</em>
-								<i>万元</i>
-							</span>
-							<span>
-								<i>首款：</i>
-								<em>{{$transcation->first_pay}}</em>
-								<i>万元</i>
-							</span>
-							<span>
-								<i>尾款：</i>
-								<em>{{$transcation->last_pay}}</em>
-								<i>万元</i>
-							</span>
-						</p>
-					</div>
-					<div class="col-xs-4">
-						<p class="detial">
-							<span>
-								<i>应收佣金：</i>
-								<em>{{$transcation->commission}}</em>
-								<i>万元</i>
-							</span>
-							<span>
-								<i>实收佣金：</i>
-								<em>{{$transcation->commission_infact}}</em>
-								<i>万元</i>
-							</span>
-							<span>
-								<i>佣金备注：</i>
-								{{$transcation->commission_remark}}								
-							</span>
-						</p>
-					</div>
-					<div class="col-xs-4">
-						<p class="detial">
-							<span>
-								<i>违章未处理：</i>	
-								{{$transcation->violate}}							
-							</span>
-							<span>
-								<i>成交时间：</i>
-								{{$transcation->done_time}}								
-							</span>
-							<span>
-								<i>创建日期：</i>	
-								{{substr($transcation->created_at, 0 ,10)}}							
-							</span>
-						</p>
-					</div>
-					<div class="col-xs-4">
-						<p class="detial">
-							<span>
-								<i>门店：</i>
-								{{$transcation->belongsToShop->name}}								
-							</span>
-							<span>
-								<i>销售顾问：</i>
-								{{$transcation->belongsToUser->nick_name}}
-							</span>
-						</p>
-					</div>
-				</div>		
+					@endif
+					<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
+				</span> 		
 			</div>			
 		</div>
 	</div>

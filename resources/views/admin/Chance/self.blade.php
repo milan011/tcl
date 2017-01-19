@@ -7,7 +7,7 @@
 			width:40%;
 			margin-bottom:5px;
 		}
-		.dropdown-menu::after, .dropdown-menu::before{
+		ul.dropdown-menu::after, ul.dropdown-menu::before{
 			top: -1px;
 			left: 10px;
 			border-right: 9px solid transparent;
@@ -15,7 +15,7 @@
 			border-left: 9px solid transparent;
 			content: none;
 		}
-		.dropdown-menu{
+		ul.dropdown-menu{
 			min-width:100%;
 		}
 	</style>

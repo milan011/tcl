@@ -81,16 +81,16 @@
 					<div class="control-group">
 						<label class="control-label" for="deal_price">成交价:</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused"  name="deal_price" type="text" value="{{old('deal_price')}}">
+						  	<input class="input-xlarge focused"  name="deal_price" type="text" value="{{old('deal_price')}}"> 万
 						</div>
 				  	</div>
 				  	<div class="control-group">
 						<label class="control-label" for="earnest">买方定金:</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused"  name="earnest" type="text" value="{{old('earnest')}}">
+						  	<input class="input-xlarge focused"  name="earnest" type="text" value="{{old('earnest')}}">元
 						</div>
 				  	</div>
-				  	<div class="control-group">
+				  	<!-- <div class="control-group">
 						<label class="control-label" for="first_pay">首款:</label>
 						<div class="controls">
 						  	<input class="input-xlarge focused"  name="first_pay" type="text" value="{{old('first_pay')}}">
@@ -101,14 +101,14 @@
 						<div class="controls">
 						  	<input class="input-xlarge focused"  name="last_pay" type="text" value="{{old('last_pay')}}">
 						</div>
-				  	</div>
+				  	</div> -->
 				  	<div class="control-group">
 						<label class="control-label" for="commission">应收佣金:</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused"  name="commission" type="text" value="{{old('commission')}}">
+						  	<input class="input-xlarge focused" readonly="readonly" name="commission" type="text" value="{{old('commission')}}">元
 						</div>
 				  	</div>
-				  	<div class="control-group">
+				  	<!-- <div class="control-group">
 						<label class="control-label" for="commission_infact">实收佣金:</label>
 						<div class="controls">
 						  	<input class="input-xlarge focused"  name="commission_infact" type="text" value="{{old('commission_infact')}}">
@@ -119,22 +119,22 @@
 						<div class="controls">
 						 	<textarea id="address" name="commission_remark" class="autogrow">{{old('commission_remark')}}</textarea>
 						</div>
-				  	</div>
+				  	</div> -->
 				  	<div class="control-group">
 						<label class="control-label" for="violate">违章未处理:</label>
 						<div class="controls">
 						 	<textarea id="address" name="violate" class="autogrow">{{old('violate')}}</textarea>
 						</div>
 				  	</div>
-				  	<div class="control-group">
+				  	<!-- <div class="control-group">
 						<label class="control-label" for="sale_card">压卖方手续:</label>
 						<div class="controls">
 						  	<input class="input-xlarge focused"  name="sale_card" type="text" value="{{old('sale_card')}}">
 						</div>
-				  	</div>
+				  	</div> -->
 
 				  	<div class="control-group">
-					<label class="control-label" for="done_time">成交时间:</label>
+					<label class="control-label" for="done_time">预计成交时间:</label>
 						<div class="controls">
 							<input type="text" class="input-xlarge date-picker" name="done_time" id="done_time" value="{{old('done_time')}}">
 						</div>
@@ -166,6 +166,25 @@
             format: 'yyyy-mm-dd',
             todayHighlight: true
         });	
+
+		// $("input[name='deal_price']").unbind('blur');
+        $("input[name='deal_price']").blur(function(){
+
+        	var price      = $(this).val();
+        	var commission = 0;
+
+        	if(price <= 5){
+        		// alert('成交价小于5万');
+        		commission = '1000';
+        	}else{
+        		// alert('成交价大于5万');
+        		commission = price*200;
+        	}
+
+        	$("input[name='commission']").val(commission);
+
+        	return false;
+        });
 	});
 </script>
 @endsection

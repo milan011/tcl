@@ -8,7 +8,7 @@
 			width:40%;
 			margin-bottom:5px;
 		}
-		.dropdown-menu::after, .dropdown-menu::before{
+		ul.dropdown-menu::after, ul.dropdown-menu::before{
 			top: -1px;
 			left: 10px;
 			border-right: 9px solid transparent;
@@ -17,7 +17,7 @@
 			content: none;
 		}
 
-		.dropdown-menu{
+		ul.dropdown-menu{
 			min-width:100%;
 		}
 
@@ -288,7 +288,7 @@
 		$('.date-picker').datepicker({
             language: 'zh-CN',
             autoclose: true,
-            format: 'yyyy-mm-dd 00:00:00',
+            format: 'yyyy-mm-dd',
             todayHighlight: true
         });
 

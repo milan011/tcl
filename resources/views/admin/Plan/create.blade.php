@@ -86,7 +86,16 @@
 							<input type="text" class="input-xlarge date-picker" name="plan_time" id="plan_time" value="">
 						</div>
 					</div>
-					  
+					<div class="control-group">
+					<label class="control-label" for="selectError3">具体时间</label>
+						<div class="controls">
+						  	<select id="top_category" name="hafe_day" style="width:10%">
+						  		<option value="上午">上午</option>
+						  		<option value="下午">下午</option>									
+							</select>
+							<input type="text" class="input-xlarge" style="width:10%" name="hours" id="hours" value="">
+						</div>
+					</div>
 					<div class="control-group">
 						<label class="control-label" for="plan_address">看车地址</label>
 						<select id="plan_address" name="plan_address" >

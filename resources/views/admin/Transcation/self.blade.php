@@ -7,7 +7,7 @@
 			width:40%;
 			margin-bottom:5px;
 		}
-		.dropdown-menu::after, .dropdown-menu::before{
+		ul.dropdown-menu::after, ul.dropdown-menu::before{
 			top: -1px;
 			left: 10px;
 			border-right: 9px solid transparent;
@@ -15,7 +15,7 @@
 			border-left: 9px solid transparent;
 			content: none;
 		}
-		.dropdown-menu{
+		ul.dropdown-menu{
 			min-width:100%;
 		}
 	</style>
@@ -68,6 +68,7 @@
 							<th>订车客户</th>
 							<th>交车时间</th>
 							<th>登记时间</th>							
+							<th>状态</th>							
 							<th>负责人</th>
 							<th>门店</th>
 							<th>操作</th>
@@ -83,6 +84,7 @@
 							<td>{{$transcation->belongsToChance->belongsToCustomerOnWant->want_customer_name}}</td>
 							<td>{{$transcation->done_time}}</td>													
 							<td>{{substr($transcation->created_at, 0 ,10)}}</td>	
+							<td>{{$transcation_stauts_config[$transcation->trade_status]}}</td>	
 							<td>{{$transcation->belongsToChance->belongsToUser->nick_name}}</td>	
 							<td>{{$transcation->belongsToChance->belongsToShop->shop_name}}</td>
 							@if($transcation->user_id == Auth::id())		
@@ -158,7 +160,7 @@
             	    	<label class="control-label" for="trade_status">状态</label>
             	    	<div class="controls">
             	      		<select id="trade_status" name="trade_status" >
-            	      			<option value=''>选择</option>
+            	      			<option value=''>不限</option>
             	      			@foreach($transcation_stauts_config as $key=>$transcation)
             	      			<option @if(isset($select_conditions['trade_status']) && $select_conditions['trade_status'] == $key && $select_conditions['trade_status'] != '') selected @endif value='{{$key}}'>{{$transcation}}</option>  
             	      			@endforeach                                         
@@ -243,7 +245,7 @@
 		$('.date-picker').datepicker({
             language: 'zh-CN',
             autoclose: true,
-            format: 'yyyy-mm-dd 00:00:00',
+            format: 'yyyy-mm-dd',
             todayHighlight: true
         });
 	});

@@ -1,5 +1,19 @@
 @extends('layouts.main')
 
+@section('head_content')
+<link id="bootstrap-style" href="{{ URL::asset('css/tcl/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+<!-- <link id="bootstrap-style" href="{{ URL::asset('css/tcl/dropzone/dropzone.css') }}" rel="stylesheet"> -->
+	<style type="text/css">
+		.statbox .footer {
+    		background: rgba(0,0,0,.1);
+    		/*background-color: #FFC40D;*/
+    		position: absolute;
+    		bottom: 0px;
+    		left: 0px;
+    		padding: 0px;
+		}
+	</style>
+@endsection
 @section('BreadcrumbTrail')
 	<ul class="breadcrumb">
 		<li>
@@ -16,18 +30,18 @@
 		
 		<div class="number">{{$cars_num}}&nbsp; <i class="icon-truck"></i></div>
 		<div class="title">车&nbsp;源</div>
-		<div class="footer" style="width:100%;">
-			<a href="{{route('admin.car.self')}}">&nbsp; &nbsp; 我的车源 &nbsp; &nbsp;</a>
-			<a href="{{route('admin.car.create')}}" style="float:right;"> 车源添加 &nbsp; &nbsp;</a>
+		<div class="footer" style="width:100%;background:#FFC40D;">
+			<a class="btn btn-success" href="{{route('admin.car.self')}}" style="width:30%;float:left;">我的车源</a>
+			<a class="btn btn-success" href="{{route('admin.car.create')}}" style="width:30%;float:right;"> 车源添加</a>
 		</div>	
 	</div>
 	<div class="span2 statbox blue span3" ontablet="span6" ondesktop="span3">
 		
 		<div class="number">{{$wants_num}}&nbsp; <i class="icon-pushpin"></i></div>
 		<div class="title">客&nbsp;源</div>
-		<div class="footer" style="width:100%;">
-			<a href="{{route('admin.want.self')}}"> &nbsp; &nbsp;我的求购 &nbsp; &nbsp;</a>
-			<a href="{{route('admin.want.create')}}" style="float:right;"> 求购添加 &nbsp; &nbsp;</a>
+		<div class="footer" style="width:100%;background:#2D89EF;">
+			<a class="btn btn-success"  href="{{route('admin.want.self')}}" style="width:30%;float:left;">我的求购</a>
+			<a class="btn btn-success"  href="{{route('admin.want.create')}}" style="width:30%;float:right;"> 求购添加</a>
 		</div>
 	</div>
 	<div class="span2 statbox green  noMargin span3" ontablet="span6" ondesktop="span3">
@@ -35,7 +49,7 @@
 		<div class="number">{{$chances_num}}&nbsp; <i class="icon-eye-open"></i></div>
 		<div class="title">销售机会</div>
 		<div class="footer" >
-			<a href="{{route('admin.chance.self')}}"> &nbsp; &nbsp;我的销售机会&nbsp; &nbsp;</a>
+			<a class="btn btn-success"  href="{{route('admin.chance.self')}}">我的销售机会</a>
 		</div>
 	</div>
 	<div class="span2 statbox green  noMargin span3" ontablet="span6" ondesktop="span3">
@@ -43,7 +57,7 @@
 		<div class="number">{{$plans_num}}&nbsp; <i class="icon-legal"></i></div>
 		<div class="title">约&nbsp;车</div>
 		<div class="footer" >
-			<a href="{{route('admin.plan.self')}}"> &nbsp; &nbsp;我的约车信息&nbsp; &nbsp;</a>
+			<a class="btn btn-success"  href="{{route('admin.plan.self')}}">我的约车信息</a>
 		</div>
 	</div>
 	<div class="span2 statbox pink span3" ontablet="span6" ondesktop="span3">
@@ -51,7 +65,7 @@
 		<div class="number">{{$transcations_num}}&nbsp; <i class="icon-shopping-cart"></i></div>
 		<div class="title">交&nbsp;易</div>
 		<div class="footer">
-			<a href="{{route('admin.transcation.self')}}" style="float:right;"> &nbsp; &nbsp;我的交易信息 &nbsp; &nbsp;</a>
+			<a class="btn btn-success"  href="{{route('admin.transcation.self')}}" style="float:right;">我的交易信息</a>
 		</div>
 	</div>	
 </div>
@@ -75,7 +89,7 @@
 								<ul class="dashboard-list metro">
 									@foreach($need_follow_cars as $car)					
 									<li>
-										<a href="/order/edit?id=D-484533472">
+										<a href="javascript:void(0);">
 											<i class="icon-legal red  "></i> 
 											{{substr($car->created_at, 0 ,10)}}
 											<font style="color:#268bd2;">
@@ -85,9 +99,12 @@
 										<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}" style="float:right;">
 											 编辑
 										</a>
-										<a class="btn btn-success" href="javascript:void(0);" style="float:right;">
+										<input type="hidden" name="type" value="car">
+										<a class="btn btn-success follow_quickly" href="javascript:void(0);" style="float:right;">
 											快速跟进
 										</a>
+										<input type="hidden" value="{{$car->id}}">
+
 										<!-- <button class="btn btn-success" id="follow_quickly">
 											<i class="icon-edit icon-white"></i> 跟进
 										</button> -->
@@ -101,7 +118,7 @@
 								<ul class="dashboard-list metro">
 								@foreach($need_follow_wants as $want)					
 									<li>
-										<a href="/order/edit?id=D-484533472">
+										<a href="href="javascript:void(0);">
 											<i class="icon-legal red  "></i>           
 											{{substr($want->created_at, 0 ,10)}}
 											<font style="color:#268bd2;">
@@ -111,9 +128,12 @@
 										<a class="btn btn-warning" href="{{route('admin.want.edit', ['want'=>$want->id])}}" style="float:right;">
 											 编辑
 										</a>
-										<a class="btn btn-success" href="javascript:void(0);" style="float:right;">
-											 跟进
+										<input type="hidden" name="type" value="want">
+										<a class="btn  btn-success follow_quickly" href="javascript:void(0);" style="float:right;">
+											快速跟进
 										</a>
+										<input type="hidden" value="{{$want->id}}">
+										
 										<!-- <button class="btn btn-success" id="follow_quickly">
 											<i class="icon-edit icon-white"></i> 跟进
 										</button> -->
@@ -137,7 +157,7 @@
 			</div>
 		</div>
 		<div class="box-content">
-			<h2 style="text-align: center;">各店面重视车源和客源登记共享！
+			<h2 style="text-align: center;">{{$notice->belongsToUser->title}}
 			</h2>
 			<h2 style="text-align: center;">
 				<small>发布人：{{$notice->belongsToUser->nick_name}} 发布时间：{{substr($notice->created_at, 0 ,10)}}</small>
@@ -153,4 +173,49 @@
 		</div>
 	</div>	
 </div>
+@endsection
+@section('script_content')
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('.follow_quickly').click(function(){
+
+				var type   = $(this).prev().val();
+				var del_id = $(this).next().val();
+				var request_url = '';
+
+				/*alert(type);
+				alert(del_id);*/
+
+				if(type == 'car'){
+
+					request_url = "{{route('admin.car.follwQuickly')}}";					
+				}
+				if(type == 'want'){
+					request_url = "{{route('admin.want.follwQuickly')}}";
+				}
+				$.ajax({
+					
+					type: 'POST',
+					url: request_url,
+					data: { id : del_id},
+					dataType: 'json',
+					headers: {
+	
+						'X-CSRF-TOKEN': '{{ csrf_token() }}'
+					},
+					success: function(data){
+	
+						alert(data.msg);
+						location.reload();
+						// console.log(data);
+					},
+					error: function(xhr, type){
+	
+						alert('操作失败，请重新操作或联系管理员');
+					}
+				});
+			});
+		});
+	</script>
 @endsection
