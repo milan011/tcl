@@ -21,7 +21,7 @@ class Transcation extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id', 'shop_id'];
+    protected $fillable = ['chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id', 'shop_id', 'partner_shop','partner_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -81,7 +81,7 @@ class Transcation extends Model
             $query = $query->where('trade_status', $requestData['trade_status']);
         }else{
 
-            $query = $query->where('trade_status', '1');
+            $query = $query->whereIn('trade_status', ['1','2','3','4','5']);
         }
 
         return $query;

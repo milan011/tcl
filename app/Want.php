@@ -140,7 +140,7 @@ class Want extends Model
         } 
 
         if(!empty($requestData['need_follow'])){
-            $query = $query->where('created_at', '<=', $requestData['need_follow']);
+            $query = $query->where('updated_at', '<=', $requestData['need_follow']);
         }     
 
         return $query;

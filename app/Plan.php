@@ -21,7 +21,7 @@ class Plan extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['chance_id', 'user_id', 'plan_address', 'plan_remark', 'plan_time', 'plan_del', 'status','shop_id','partner_id','partner_shop'];
+    protected $fillable = ['chance_id', 'user_id', 'plan_address', 'plan_remark', 'plan_time', 'plan_del', 'status','shop_id','partner_id','partner_shop', 'definite_time'];
 
     /**
      * The attributes excluded from the model's JSON form.
