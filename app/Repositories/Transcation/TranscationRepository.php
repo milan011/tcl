@@ -20,7 +20,7 @@ use Debugbar;
 class TranscationRepository implements TranscationRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id','chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id','created_at', 'shop_id'];
+    protected $select_columns = ['id','chance_id', 'deal_price', 'earnest', 'first_pay', 'last_pay', 'done_time', 'commission', 'commission_infact', 'commission_remark', 'violate', 'sale_card', 'trade_status', 'user_id','created_at', 'shop_id','partner_shop','partner_id'];
 
     // 订车表列名称-注释对应
     protected $columns_annotate = [
@@ -72,8 +72,8 @@ class TranscationRepository implements TranscationRepositoryContract
                 $car    = Cars::findOrFail($requestData->car_id);
                 $want   = Want::findOrFail($requestData->want_id);
     
-                $car->car_status   = '3';
-                $want->want_status = '3';
+                $car->car_status   = '4';
+                $want->want_status = '4';
                 $chance->status    = '5';
                 $plan->status      = '2';
                 $plan->plan_del    = '1';
@@ -104,6 +104,7 @@ class TranscationRepository implements TranscationRepositoryContract
                 
                 $transcation = new Transcation();
                 $input =  array_replace($requestData->all());
+                // dd($input);
                 $transcation->fill($input);
                 $transcation = $transcation->create($input);
     
@@ -136,7 +137,7 @@ class TranscationRepository implements TranscationRepositoryContract
                 dd($car);
                 dd($want);
                 dd($chance);*/
-                $requestData['trade_status'] = '2';
+                $requestData['trade_status'] = $requestData->trade_status;
                 $input =  array_replace($requestData->all());
     
                 // dd($transcation->fill($input));

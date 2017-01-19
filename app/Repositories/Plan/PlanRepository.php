@@ -19,7 +19,7 @@ use Debugbar;
 class PlanRepository implements PlanRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'chance_id', 'user_id', 'plan_time', 'plan_remark', 'plan_address', 'plan_del', 'status', 'created_at'];
+    protected $select_columns = ['id', 'chance_id', 'user_id', 'plan_time', 'plan_remark', 'plan_address', 'plan_del', 'status', 'created_at', 'definite_time'];
 
     // 约车表列名称-注释对应
     protected $columns_annotate = [
@@ -88,12 +88,13 @@ class PlanRepository implements PlanRepositoryContract
             }
 
             $requestData['shop_id'] = $chance->shop_id;
-            
+            $requestData['definite_time'] = $requestData->hafe_day.$requestData->hours;
+            // dd($requestData->definite_time);
             $input  =  array_replace($requestData->all());
 
             //车源、求购、约车状态设置为已约车状态
-            $car->car_status       = '2';
-            $want->want_status     = '2';
+            $car->car_status       = '3';
+            $want->want_status     = '3';
             $chance->status        = '4';
             
             $plan->fill($input);
@@ -135,7 +136,7 @@ class PlanRepository implements PlanRepositoryContract
         *   可以再次被匹配并发起约车。    
         */
         // dd($requestData->all());
-        $plan   = Plan::select($this->select_columns)->findorFail($id); //约车对象
+        /*$plan   = Plan::select($this->select_columns)->findorFail($id); //约车对象
 
         $plan->status = '0';
         $plan->plan_remark = $requestData->plan_remark;
@@ -143,9 +144,9 @@ class PlanRepository implements PlanRepositoryContract
         Session::flash('sucess', '革命尚未成功，同志仍需努力');
         $plan->save();
 
-        return $plan;
+        return $plan;*/
 
-        /*DB::transaction(function() use ($requestData, $id){
+        DB::transaction(function() use ($requestData, $id){
 
             $plan   = Plan::select($this->select_columns)->findorFail($id); //约车对象
             $chance = Chance::findOrFail($plan->chance_id);
@@ -156,23 +157,14 @@ class PlanRepository implements PlanRepositoryContract
             // dd($chance);
             // dd($car);
             // dd($want);
-            if($requestData->plan_del == 1){
-                //看车成功
-                $car->car_status   = '3';
-                $want->want_status = '3';
-                $chance->status    = '5';
 
-                $plan->status = '1';
-                $plan->plan_remark = $requestData->plan_remark;
-            }else{
-                // 看车失败
-                $car->car_status   = '1';
-                $want->want_status = '1';
-                $chance->status    = '0';
-
-                $plan->status = '0';
-                $plan->plan_remark = $requestData->plan_remark;
-            }
+            // 看车失败
+            $car->car_status   = '1';
+            $want->want_status = '1';
+            $chance->status    = '0';
+            $plan->status = '0';
+            $plan->plan_remark = $requestData->plan_remark;
+            Session::flash('sucess', '革命尚未成功，同志仍需努力');
 
             $car->save();
             $want->save();
@@ -180,9 +172,7 @@ class PlanRepository implements PlanRepositoryContract
             $plan->save();
 
             return $plan;           
-        }); */    
-        // dd('sucess');
-        // dd($Plan->toJson());       
+        });           
     }
 
     // 删除约车
