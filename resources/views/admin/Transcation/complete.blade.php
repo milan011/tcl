@@ -129,13 +129,13 @@
               		<div class="control-group">
 						<label class="control-label" for="commission_remark">佣金备注</label>
 						<div class="controls">
-						 	<textarea id="address" name="commission_remark" class="autogrow"></textarea>
+						 	<textarea id="address" name="commission_remark" class="autogrow">{{$transcations->commission_remark}}</textarea>
 						</div>
 				  	</div>
 				  	<div class="control-group">
 						<label class="control-label" for="violate">违章未处理</label>
 						<div class="controls">
-						 	<textarea id="address" name="violate" class="autogrow"></textarea>
+						 	<textarea id="address" name="violate" class="autogrow">{{$transcations->violate}}</textarea>
 						</div>
 				  	</div>			   			
 				  <div class="form-actions">

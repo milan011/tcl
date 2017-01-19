@@ -132,7 +132,7 @@
               		<div class="control-group">
 						<label class="control-label" for="commission_remark">佣金备注</label>
 						<div class="controls">
-						 	<textarea id="address" name="commission_remark" class="autogrow"></textarea>
+						 	<textarea id="address" name="commission_remark" class="autogrow">{{$transcations->commission_remark}}</textarea>
 						</div>
 				  	</div>
 				  	<div class="control-group">
@@ -144,7 +144,7 @@
 				  <div class="form-actions">
 				  	<input type="hidden" name="car_id" value="{{$car_info->id}}">
 				  	<input type="hidden" name="want_id" value="{{$want_info->id}}">
-				  	<input type="hidden" name="chance_id" value="{{$chance_info->id}}">
+				  	<input type="hidden" name="chance_id" value="{{$transcations->chance_id}}">
 				  	<input type="hidden" name="current_trade_status" value="{{$transcations->trade_status}}">
 				  	<input type="hidden" name="trade_status" value="">
 					<button type="submit"  class="btn btn-primary">确定</button>
