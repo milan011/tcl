@@ -162,7 +162,21 @@ class PlanController extends Controller
      */
     public function show($id)
     {
-        dd($id);
+        $plans     = $this->plan->find($id);
+        $chances   =$this->chance->find($plans->chance_id);
+        $car_info  = $this->car->find($chances->car_id); //车源信息
+        $want_info = $this->want->find($chances->want_id); //求购信息
+        // dd($chances);
+        // dd($car_info);
+        // dd($want_info);
+        /*$gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $capacity       = config('tcl.capacity'); //获取配置文件排量
+        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
+        $mileage        = config('tcl.mileage'); //获取配置文件中车型类别
+*/
+        // dd($chances->hasManyImages()->get());
+        return view('admin.plan.show', compact('plans', 'chances',  'car_info', 'want_info'));
     }
 
     /**

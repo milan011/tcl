@@ -54,7 +54,7 @@ class TranscationController extends Controller
         dd($transcations);
         dd($transcation[0]->belongsToChance);*/
 
-        return view('admin.transcation.index', compact('transcations'));
+        return view('admin.transcation.index', compact('transcations', 'select_conditions'));
     }
 
     /**
