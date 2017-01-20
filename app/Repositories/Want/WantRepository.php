@@ -225,17 +225,19 @@ class WantRepository implements WantRepositoryContract
             $want         = Want::select($this->select_columns)->findorFail($id); //求购信息对象
             $follow_info = new WantFollow(); //求购信息跟进对象
 
-            if($requestData->status == 1){
+            if($requestData->status == 0){
 
                 $update_content = collect([Auth::user()->nick_name.'激活求购信息'])->toJson();
+                $want->Want_status = '1';
             }else{
 
                 $update_content = collect([Auth::user()->nick_name.'废弃求购信息'])->toJson();
+                $want->Want_status = '0';
             }
             
 
             // 求购信息编辑信息
-            $want->Want_status = $requestData->status;
+            // $want->Want_status = $requestData->status;
 
             // 求购信息跟进信息
             $follow_info->want_id       = $id;

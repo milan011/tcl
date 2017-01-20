@@ -2,7 +2,8 @@
 namespace App\Repositories\chance;
 
 use App\Chance;
-use App\chanceFollow;
+use App\Cars;
+use App\Want;
 use Session;
 use Illuminate\Http\Request;
 use Gate;
@@ -63,7 +64,7 @@ class chanceRepository implements chanceRepositoryContract
                     $query = $query->where('status', $request['status']);
                 }else{
     
-                    $query = $query->whereIn('status', ['1', '2', '3']);
+                    $query = $query->whereIn('status', ['1', '2', '3','5','6']);
                 }            
             }
         }
@@ -77,25 +78,35 @@ class chanceRepository implements chanceRepositoryContract
     public function create($requestData)
     {   
         // dd($requestData->all());
-        // $car_id = 
-        if($this->isRepeat($requestData)){
+        DB::transaction(function() use ($requestData){
+            if($this->isRepeat($requestData)){
+    
+                $chance = $this->isRepeat($requestData);
+    
+            }else{
+                // 添加销售机会并返回实例
+                $requestData['creater']     = Auth::id();
+                $requestData['chance_code'] = getCarCode('chance');
+    
+                $chance = new Chance();
+                $car    = Cars::findOrFail($requestData->car_id);
+                $want   = Want::findOrFail($requestData->want_id);
 
-            $chance = $this->isRepeat($requestData);
+                //车源、求购、约车状态设置为已匹配状态
+                $car->car_status       = '6';
+                $want->want_status     = '6';
 
-        }else{
-            // 添加销售机会并返回实例
-            $requestData['creater']     = Auth::id();
-            $requestData['chance_code'] = getCarCode('chance');
-
-            $chance = new Chance();
-            $input  =  array_replace($requestData->all());
-            $chance->fill($input);
-
-            $chance = $chance->create($input);
-        }        
-        // dd($chance);
-        Session::flash('sucess', '创建销售机会成功');
-        return $chance;
+                $input  =  array_replace($requestData->all());
+                $chance->fill($input);
+                
+                $car->save();
+                $want->save();
+                $chance = $chance->create($input);
+            }        
+            // dd($chance);
+            Session::flash('sucess', '创建销售机会成功');
+            return $chance;
+        });
     }
 
     // 修改销售机会
@@ -205,30 +216,36 @@ class chanceRepository implements chanceRepositoryContract
         // dd($requestData->all());
         DB::transaction(function() use ($requestData, $id){
 
-            $chance         = Chance::select($this->select_columns)->findorFail($id); //销售机会对象
-            $follow_info = new chanceFollow(); //销售机会跟进对象
+            $chance      = Chance::select($this->select_columns)->findorFail($requestData->id); //销售机会对象
+            // dd($chance);
+            $want        = Want::findOrFail($chance->want_id);
+            $car         = Cars::findOrFail($chance->car_id);
+            // $follow_info = new ChanceFollow(); //销售机会跟进对象
 
             if($requestData->status == 1){
 
-                $update_content = collect([Auth::user()->nick_name.'激活销售机会'])->toJson();
+                // $update_content = collect([Auth::user()->nick_name.'废弃销售机会'])->toJson();
+                $chance->status = '0';
             }else{
 
-                $update_content = collect([Auth::user()->nick_name.'废弃销售机会'])->toJson();
+                // $update_content = collect([Auth::user()->nick_name.'激活销售机会'])->toJson();
+                $chance->status = '1';
             }
-            
-
-            // 销售机会编辑信息
-            $chance->chance_status = $requestData->status;
 
             // 销售机会跟进信息
-            $follow_info->chance_id       = $id;
+            /*$follow_info->chance_id    = $id;
             $follow_info->user_id      = Auth::id();
             $follow_info->follow_type  = '1';
             $follow_info->operate_type = '2';
             $follow_info->description  = collect($update_content)->toJson();
-            $follow_info->prev_update  = $chance->updated_at;
-         
-            $follow_info->save();
+            $follow_info->prev_update  = $chance->updated_at;*/
+
+            //车源、求购、约车状态设置为正常状态
+            $car->car_status   = '1';
+            $want->want_status = '1';
+            // $follow_info->save();
+            $car->save();
+            $want->save();
             $chance->save(); 
 
             return $chance;

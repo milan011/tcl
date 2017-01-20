@@ -263,17 +263,15 @@ class CarRepository implements CarRepositoryContract
             $car         = Cars::select($this->select_columns)->findorFail($id); //车源对象
             $follow_info = new CarFollow(); //车源跟进对象
 
-            if($requestData->status == 1){
+            if($requestData->status == 0){
 
                 $update_content = collect([Auth::user()->nick_name.'激活车源'])->toJson();
+                $car->car_status = '1';
             }else{
 
                 $update_content = collect([Auth::user()->nick_name.'废弃车源'])->toJson();
-            }
-            
-
-            // 车源编辑信息
-            $car->car_status = $requestData->status;
+                $car->car_status = '0';
+            }          
 
             // 车源跟进信息
             $follow_info->car_id       = $id;
