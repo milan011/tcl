@@ -89,6 +89,7 @@
 							<td>{{$transcation->belongsToChance->belongsToShop->shop_name}}</td>
 							@if($transcation->user_id == Auth::id())		
 							<td class="center">
+								@if(($transcation->trade_status != 5) &&  ($transcation->trade_status != 0))
 								<a class="btn btn-success" href="{{route('admin.transcation.edit', ['transcation'=>$transcation->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>
@@ -101,14 +102,14 @@
 										<ul class="dropdown-menu pull-right">
 											<li>
 												<a class="btn btn-warning" href="{{route('admin.transcation.show', ['transcation'=>$transcation->id])}}">
-													<i class="icon-edit icon-white"></i> 查看
+													 查看
 												</a>												
 											</li>	
 											<li>
-												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
-													<i class="icon-edit icon-white"></i> 废弃
+												<button class="btn btn-info changStatus" data-status="{{$transcation->trade_status}}" style="width:100%;"">
+													 废弃
 												</button>	
-												<input type="hidden" value="{{$transcation->id}}">		
+												<input class="current_transcation_id" type="hidden" value="{{$transcation->id}}">		
 											</li>
 											<li>
 												<span>
@@ -116,13 +117,19 @@
 										    			{{ csrf_field() }}
             											<input type="hidden" name="transcation_id" value="{{$transcation->id}}">
 														<button class="btn btn-success" type="submit">
-														<i class="icon-edit icon-white"></i> 交易完成
+														 交易完成
 														</button>
 													</form>
 												</span>
-											</li>
+											</li>										
 										</ul>
+										
  							 		</div>
+ 							 		@else
+ 							 		<a class="btn btn-warning" href="{{route('admin.transcation.show', ['transcation'=>$transcation->id])}}">
+													 查看
+									</a>
+ 							 		@endif
 							</td>
 							@else
 							<td class="center">
@@ -204,42 +211,55 @@
 			return false;
 		});
 
+		// 废弃-激活
 		$('.changStatus').click(function(){
 
 			var id     = $(this).next().val();
 			var status = $(this).attr('data-status');
-			var token = $("input[name='_token']").val();
+			var token  = $("input[name='_token']").val();
+			var obj   = $(this);
 
 			/*alert(id);
 			alert(status);*/
 			// alert($("input[name='_token']").val());
 
-			$.ajax({
+			$.confirm({
+    		    title: '注意!',
+    		    content: '确认要废弃吗？',
+    		    cancelButton: '取消',
+    		    confirmButtonClass: 'btn-warning',
+    		    confirm: function () {
+    		        $.ajax({
 
-				type: 'POST',
-
-				url: 'transcation/changeStatus',
-
-				data: { id : id, status : status},
-
-				dataType: 'json',
-
-				headers: {
-					'X-CSRF-TOKEN': '{{ csrf_token() }}'
-				},
-
-				success: function(data){
-
-					alert(data.msg);
-					location.reload();
-					// console.log(data);
-				},
-
-				error: function(xhr, type){
-
-					alert('Ajax error!');
-				}
-			});
+						type: 'POST',
+		
+						url: 'transcation/changeStatus',
+		
+						data: { id : id, status : status},
+		
+						dataType: 'json',
+		
+						headers: {
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
+						},
+		
+						success: function(data){
+		
+							alert(data.msg);
+							$('#condition').submit();
+							// console.log(data);
+						},
+		
+						error: function(xhr, type){
+		
+							alert('Ajax error!');
+						}
+					});
+    		    },
+    		    cancel: function () {
+    		        return false;
+    		    }
+    		});
 		});
 
 		$('.date-picker').datepicker({

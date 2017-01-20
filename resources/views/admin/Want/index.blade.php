@@ -104,6 +104,7 @@
 							<td>{{$want->belongsToUser->nick_name}}</td>							
 														
 							<td class="center">
+								@if($want->want_status == 1)
 								<div class="btn-group">
 									<span>
 										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
@@ -120,6 +121,13 @@
 									</a> -->
 								</div>
 								<input id="current_want_id" type="hidden" value="{{$want->id}}">
+								@else
+								<div class="btn-group">
+									<a class="btn btn-warning" href="{{route('admin.want.show', ['want'=>$want->id])}}">
+										<i class="icon-edit icon-white"></i> 查看
+									</a>
+								</div>
+								@endif
 							</td>
 						</tr>
 						@endforeach							

@@ -401,7 +401,7 @@
 						<td>{{$mileage_config[$match->mileage]}}</td>							
 						<td>{{$gearbox[$match->gearbox]}}</td>							
 						<td>{{$out_color[$match->out_color]}}</td>						
-						<td>{{$match->sale_number}}</td>							
+						<td>{{$sale_number_config[$match->sale_number]}}</td>							
 						<td>{{$match->remark}}</td>							
 						<td>{{substr($match->created_at, 0 ,10)}}</td>							
 						<td>{{$match->belongsToShop->shop_name}}</td>							
@@ -614,7 +614,7 @@
 					$("input[name='pipei_want_id']").val(want.id);
 					$('#want_code').text(want.want_code);
 					$('#name').text(want.name);
-					$('#created_at').text(want.created_at);
+					$('#created_at').text(want.created_at.substr(0, 10));
 					$('#capacity').text(want.capacity);
 					$('#want_price').text(want.bottom_price+'-'+want.top_price+'万');
 					$('#gearbox').text(want.gearbox);

@@ -107,7 +107,7 @@
 												<i class="icon-edit icon-white"></i> 
 													待发起
 												</button>
-            									@endif										
+            									@endif	
 											@elseif($chance->status == 2)
 												@if($chance->creater == Auth::id())
 												<button class="btn btn-warning" type="button">
@@ -140,27 +140,15 @@
 										</form>
 									</span>
 									
-									<div class="btn-group">
-									
-									<div class="btn-group " role=”group”>
-										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-											更多
-											<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu pull-right">
-											<li>
-												<a class="btn btn-success" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
-													详情
-												</a>												
-											</li>											
-											<li>
-												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
-													<i class="icon-edit icon-white"></i> 废弃
-												</button>												
-											</li>
-										</ul>
- 							 		</div>
-								</div>
+									<a class="btn btn-success" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
+									详情
+									</a>
+									@if($chance->status == 1 || $chance->status == 2 || $chance->status == 3)
+									<button class="btn btn-info changStatus" data-status="1">
+										<i class="icon-edit icon-white"></i> 废弃
+									</button>
+									<input class="current_chance_id" type="hidden" value="{{$chance->id}}">
+									@endif
 								</div>
 							</td>
 						</tr>
@@ -192,6 +180,7 @@
             	    	<label class="control-label" for="status">状态</label>
             	    	<div class="controls">
             	      		<select id="status" name="status" >
+            	      			<option value="">不限</option>
             	      			@foreach($chance_status as $key=>$chance)
             	      			<option @if(isset($select_conditions['status']) && $select_conditions['status'] == $key && $select_conditions['status'] != '') selected @endif value='{{$key}}'>{{$chance}}</option>  
             	      			@endforeach                                         
@@ -314,6 +303,57 @@
             format: 'yyyy-mm-dd 00:00:00',
             todayHighlight: true
         });
+
+        // 废弃-激活
+		$('.changStatus').click(function(){
+
+			var status = $(this).attr('data-status');
+			var obj = $(this);
+			var content = '';
+			var confirmButton = '';
+			var current_chance_id  = $(this).next().val();
+			// alert(current_chance_id);
+			if(status != 0){
+				//废弃
+				content = '确实要废弃吗?';
+				confirmButton = 'btn-danger';
+			}
+
+			$.confirm({
+    		    title: '注意!',
+    		    content: content,
+    		    cancelButton: '取消',
+    		    confirmButtonClass: confirmButton,
+    		    confirm: function () {
+    		        $.ajax({
+				
+						type: 'POST',
+						url: 'chance/changeStatus',
+						data: { id : current_chance_id, status : status},
+						dataType: 'json',
+						headers: {
+		
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
+						},
+						success: function(data){
+		
+							alert(data.msg);
+							// $('#condition').attr('action', '{{route('admin.want.self')}}');
+							$('#condition').submit();
+							// location.reload();
+							// console.log(data);
+						},
+						error: function(xhr, type){
+		
+							alert('操作失败，请重新操作或联系管理员');
+						}
+					});
+    		    },
+    		    cancel: function () {
+    		        return false;
+    		    }
+    		});
+		});
 	});
 </script>
 @endsection

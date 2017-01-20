@@ -97,9 +97,10 @@
 								@if($want->want_status == '0') 
 								<!-- 废弃状态查询 -->
 								<div class="btn-group">
-									<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
+									<button class="btn btn-info changStatus" data-status="0" style="width:100%;">
 										<i class="icon-edit icon-white"></i> 激活
 									</button>
+									<input id="current_want_id" type="hidden" value="{{$want->id}}">
 								</div>
 								<div class="btn-group">
 									<a class="btn btn-warning" href="{{route('admin.want.show', ['want'=>$want->id])}}">
@@ -134,9 +135,10 @@
 												</a>												
 											</li>											
 											<li>
-												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
+												<button class="btn btn-info changStatus" data-status="1" style="width:100%;>
 													<i class="icon-edit icon-white"></i> 废弃
-												</button>												
+												</button>
+												<input id="current_want_id" type="hidden" value="{{$want->id}}">												
 											</li>
 											<li>
 												<button class="btn btn-success" id="follow_quickly">
@@ -146,7 +148,7 @@
 										</ul>
  							 		</div>
 								</div>
-								@elseif($want->want_status == '3' || $want->want_status == '4' || $want->want_status == '5')<a class="btn btn-warning" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
+								@elseif($want->want_status == '3' || $want->want_status == '4' || $want->want_status == '5'|| $want->want_status == '6')<a class="btn btn-warning" href="{{route('admin.want.edit', ['want'=>$want->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>		
 								@else 
@@ -157,7 +159,7 @@
 									</a>
 								</div>	
 								@endif
-								<input id="current_want_id" type="hidden" value="{{$want->id}}">
+								
 							</td>
 						</tr>
 						@endforeach							
@@ -319,7 +321,6 @@
 <script>
 	$(document).ready(function(){
 
-		var current_want_id     = $('#current_want_id').val();
 		var select_category_id = "{{$select_conditions['category_id'] or '0'}}";
 		var select_factory_id  = "{{$select_conditions['car_factory'] or '0'}}";
 
@@ -330,33 +331,55 @@
 		$('.changStatus').click(function(){
 
 			var status = $(this).attr('data-status');
-			/*alert(id);
-			alert(status);*/
-			// alert($("input[name='_token']").val());
+			var obj = $(this);
+			var content = '';
+			var confirmButton = '';
+			var current_want_id  = $(this).next().val();
+			// alert(status);
+			if(status != 0){
+				//废弃
+				content = '确实要废弃吗?';
+				confirmButton = 'btn-danger';
+			}else{
+				//激活
+				content = '确实要激活吗?'; 
+				confirmButton = 'btn-success';
+			}
 
-			$.ajax({
+			$.confirm({
+    		    title: '注意!',
+    		    content: content,
+    		    cancelButton: '取消',
+    		    confirmButtonClass: confirmButton,
+    		    confirm: function () {
+    		        $.ajax({
 				
-				type: 'POST',
-				url: 'want/changeStatus',
-				data: { id : current_want_id, status : status},
-				dataType: 'json',
-				headers: {
-
-					'X-CSRF-TOKEN': '{{ csrf_token() }}'
-				},
-				success: function(data){
-
-					alert(data.msg);
-					$('#condition').attr('action', '{{route('admin.want.self')}}');
-					$('#condition').submit();
-					// location.reload();
-					// console.log(data);
-				},
-				error: function(xhr, type){
-
-					alert('操作失败，请重新操作或联系管理员');
-				}
-			});
+						type: 'POST',
+						url: 'want/changeStatus',
+						data: { id : current_want_id, status : status},
+						dataType: 'json',
+						headers: {
+		
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
+						},
+						success: function(data){
+		
+							alert(data.msg);
+							// $('#condition').attr('action', '{{route('admin.want.self')}}');
+							$('#condition').submit();
+							// location.reload();
+							// console.log(data);
+						},
+						error: function(xhr, type){
+		
+							alert('操作失败，请重新操作或联系管理员');
+						}
+					});
+    		    },
+    		    cancel: function () {
+    		        return false;
+    		    }
+    		});
 		});
 
 		$('li.select_want_status').click(function(){

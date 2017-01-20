@@ -99,9 +99,10 @@
 								@if($car->car_status == '0') 
 								<!-- 废弃状态 -->
 								<div class="btn-group">
-									<button class="btn btn-info changStatus" data-status="1" style="width:100%;">
+									<button class="btn btn-info changStatus" data-status="{{$car->car_status}}" style="width:100%;">
 										<i class="icon-edit icon-white"></i> 激活
 									</button>
+									<input class="current_car_id" type="hidden" value="{{$car->id}}">
 								</div>
 								<div class="btn-group">
 									<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">
@@ -134,13 +135,14 @@
 											</li>
 											<li>
 												<a class="btn btn-warning" href="{{route('admin.car.editImg', ['car'=>$car->id])}}">
-													<i class="icon-edit icon-white"></i> 图片编辑
+													<i class="icon-edit icon-white"></i> 图片
 												</a>												
 											</li>											
 											<li>
-												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
+												<button class="btn btn-info changStatus" data-status="{{$car->car_status}}" style="width:100%;>
 													<i class="icon-edit icon-white"></i> 废弃
-												</button>												
+												</button>
+												<input class="current_car_id" type="hidden" value="{{$car->id}}">												
 											</li>
 											<li>
 												<button class="btn btn-success" id="follow_quickly">
@@ -150,13 +152,13 @@
 										</ul>
  							 		</div>
 								</div>
-								@elseif($car->car_status == '3' || $car->car_status == '4' || $car->car_status == '5')
+								@elseif($car->car_status == '3' || $car->car_status == '4' || $car->car_status == '5' || $car->car_status == '6')
 								<div class="btn-group">
 								<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
 								</a>
 								<a class="btn btn-warning" href="{{route('admin.car.editImg', ['car'=>$car->id])}}">
-									<i class="icon-edit icon-white"></i> 图片编辑
+									<i class="icon-edit icon-white"></i> 图片
 								</a>
 								</div>											
 								@else 
@@ -166,8 +168,7 @@
 										<i class="icon-edit icon-white"></i> 查看
 									</a>
 								</div>	
-								@endif
-								<input id="current_car_id" type="hidden" value="{{$car->id}}">	
+								@endif	
 							</td>
 						</tr>
 						@endforeach							
@@ -328,7 +329,6 @@
 <script>
 	$(document).ready(function(){
 
-		var current_car_id     = $('#current_car_id').val();
 		var redirect_url       = '{{route('admin.car.self')}}';
 		var select_category_id = "{{$select_conditions['category_id'] or '0'}}";
 		var select_factory_id  = "{{$select_conditions['car_factory'] or '0'}}";
@@ -347,29 +347,55 @@
 		$('.changStatus').click(function(){
 
 			var status = $(this).attr('data-status');
+			var obj = $(this);
+			var content = '';
+			var confirmButton = '';
+			var current_car_id  = $(this).next().val();
+			/*console.log(current_car_id);
+			return false;*/
+			if(status != 0){
+				//废弃
+				content       = '确实要废弃吗?';
+				confirmButton = 'btn-danger';
+			}else{
+				//激活
+				content       = '确实要激活吗?'; 
+				confirmButton = 'btn-success';
+			}
 
-			$.ajax({
+			$.confirm({
+    		    title: '注意!',
+    		    content: content,
+    		    cancelButton: '取消',
+    		    confirmButtonClass: confirmButton,
+    		    confirm: function () {
+    		        $.ajax({
 				
-				type: 'POST',
-				url: 'car/changeStatus',
-				data: { id : current_car_id, status : status},
-				dataType: 'json',
-				headers: {
-
-					'X-CSRF-TOKEN': '{{ csrf_token() }}'
-				},
-				success: function(data){
-
-					alert(data.msg);
-					// location.reload();
-					$('#condition').submit();
-					// console.log(data);
-				},
-				error: function(xhr, type){
-
-					alert('操作失败，请重新操作或联系管理员');
-				}
-			});
+						type: 'POST',
+						url: 'car/changeStatus',
+						data: { id : current_car_id, status : status},
+						dataType: 'json',
+						headers: {
+		
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
+						},
+						success: function(data){
+		
+							alert(data.msg);
+							// location.reload();
+							$('#condition').submit();
+							// console.log(data);
+						},
+						error: function(xhr, type){
+		
+							alert('操作失败，请重新操作或联系管理员');
+						}
+					});
+    		    },
+    		    cancel: function () {
+    		        return false;
+    		    }
+    		});
 		});
 
 		/*$('li.select_car_status').click(function(){

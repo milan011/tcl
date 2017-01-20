@@ -140,28 +140,15 @@
 										</form>
 									</span>
 									
-									<div class="btn-group">
-									
-									<div class="btn-group " role=”group”>
-										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-											更多
-											<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu pull-right">
-											<li>
-												<a class="btn btn-success" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
-													详情
-												</a>												
-											</li>											
-											<li>
-												<button class="btn btn-info changStatus" data-status="0" style="width:100%;>
-													<i class="icon-edit icon-white"></i> 废弃
-												</button>												
-											</li>
-										</ul>
- 							 		</div>
-								</div>
-								</div>
+									<a class="btn btn-success" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
+									详情
+									</a>
+									@if($chance->status == 1 || $chance->status == 2 || $chance->status == 3)
+									<button class="btn btn-info changStatus" data-status="1">
+										<i class="icon-edit icon-white"></i> 废弃
+									</button>
+									<input class="current_chance_id" type="hidden" value="{{$chance->id}}">
+									@endif
 							</td>
 						</tr>
 						@endforeach							
@@ -323,6 +310,57 @@
             format: 'yyyy-mm-dd 00:00:00',
             todayHighlight: true
         });
+
+        // 废弃-激活
+		$('.changStatus').click(function(){
+
+			var status = $(this).attr('data-status');
+			var obj = $(this);
+			var content = '';
+			var confirmButton = '';
+			var current_chance_id  = $(this).next().val();
+			// alert(current_chance_id);
+			if(status != 0){
+				//废弃
+				content = '确实要废弃吗?';
+				confirmButton = 'btn-danger';
+			}
+
+			$.confirm({
+    		    title: '注意!',
+    		    content: content,
+    		    cancelButton: '取消',
+    		    confirmButtonClass: confirmButton,
+    		    confirm: function () {
+    		        $.ajax({
+				
+						type: 'POST',
+						url: '/admin/chance/changeStatus',
+						data: { id : current_chance_id, status : status},
+						dataType: 'json',
+						headers: {
+		
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
+						},
+						success: function(data){
+		
+							alert(data.msg);
+							// $('#condition').attr('action', '{{route('admin.want.self')}}');
+							$('#condition').submit();
+							// location.reload();
+							// console.log(data);
+						},
+						error: function(xhr, type){
+		
+							alert('操作失败，请重新操作或联系管理员');
+						}
+					});
+    		    },
+    		    cancel: function () {
+    		        return false;
+    		    }
+    		});
+		});
 	});
 </script>
 @endsection

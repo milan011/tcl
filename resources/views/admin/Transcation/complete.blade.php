@@ -144,6 +144,7 @@
 				  	<input type="hidden" name="chance_id" value="{{$chance_info->id}}">
 				  	<input type="hidden" name="transcation_id" value="{{$transcations->id}}">
 				  	<input type="hidden" name="complete" value="1">
+				  	<input type="hidden" name="trade_status" value="5">
 					<button type="submit"  class="btn btn-primary">完成交易</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>

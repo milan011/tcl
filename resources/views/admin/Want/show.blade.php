@@ -153,13 +153,13 @@
 			</span>
 		</div>
 		<span>
-			<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
+			<!-- <form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
 				{{ csrf_field() }}
             		<input type="hidden" name="car_id" value="{{$wants->id}}">
 					<button class="btn btn-success" type="submit">
 					<i class="icon-edit icon-white"></i> 匹配
 					</button>
-			</form>
+			</form> -->
 			<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
 		</span>
 	</div>		
