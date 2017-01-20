@@ -208,7 +208,7 @@ class TranscationController extends Controller
         // dd($transcationRequest->all());
         $transcation = $this->transcation->update($transcationRequest, $id);
         
-        return redirect()->route('admin.transcation.index')->withInput();
+        return redirect()->route('admin.transcation.self')->withInput();
     }
 
     /**
@@ -246,7 +246,7 @@ class TranscationController extends Controller
 
         return response()->json(array(
             'status' => 1,
-            'msg' => 'ok',
+            'msg' => '交易已经废弃',
         ));      
     }
 

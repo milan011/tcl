@@ -293,8 +293,8 @@ class CarController extends Controller
     {    
         /*if($request->ajax()){
             echo "zhen de shi AJAX";
-        }
-        p($request->input('id'));
+        }*/
+        /*p($request->input('id'));
         p($request->input('status'));
         p($request->method());exit;*/
 
@@ -306,9 +306,15 @@ class CarController extends Controller
 
         $this->car->statusChange($request, $request->input('id'));
 
+        if($request->input('status') == '0'){
+            $msg = '车源已经激活';
+        }else{
+            $msg = '车源已经废弃';
+        }
+
         return response()->json(array(
             'status' => 1,
-            'msg' => '跟进成功',
+            'msg' => $msg,
         ));      
     }
 

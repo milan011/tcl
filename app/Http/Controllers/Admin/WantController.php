@@ -238,9 +238,15 @@ class WantController extends Controller
 
         $this->want->statusChange($request, $request->input('id'));
 
+        if($request->input('status') == '0'){
+            $msg = '求购已经激活';
+        }else{
+            $msg = '求购已经废弃';
+        }
+
         return response()->json(array(
             'status' => 1,
-            'msg' => '跟进成功',
+            'msg'    => $msg,
         ));      
     }
 
@@ -267,7 +273,7 @@ class WantController extends Controller
 
         return response()->json(array(
             'status' => 1,
-            'msg' => 'ok',
+            'msg' => '跟进成功',
         ));      
     }
 

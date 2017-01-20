@@ -37,7 +37,7 @@ class UserController extends Controller
         $this->users = $users;
         $this->roles = $roles;
         $this->shops = $shops;
-        $this->middleware('user.create', ['only' => ['create']]);
+        // $this->middleware('user.create', ['only' => ['create']]);
     }
 
     /**
@@ -58,91 +58,6 @@ class UserController extends Controller
             'users'
         ));
     }
-
-    public function anyData()
-    {
-        $canUpdateUser = auth()->user()->canDo('update.user');
-        $users = User::select(['id', 'name', 'email', 'work_number']);
-        return Datatables::of($users)
-        ->addColumn('namelink', function ($users) {
-                return '<a href="users/'.$users->id.'" ">'.$users->name.'</a>';
-        })
-
-        ->add_column('edit','
-                <a href="{{ route(\'users.edit\', $id) }}" class="btn btn-success" >Edit</a>')
-        ->add_column('delete', '
-                <form action="{{ route(\'users.destroy\', $id) }}" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" name="submit" value="Delete" class="btn btn-danger" onClick="return confirm(\'Are you sure?\')"">
-
-            {{csrf_field()}}
-            </form>')
-        ->make(true);
-    }
-
-    public function taskData($id)
-    {
-        
-        $tasks = Tasks::select(
-            ['id', 'title', 'created_at', 'deadline', 'fk_user_id_assign']
-        )
-        ->where('fk_user_id_assign', $id)->where('status', 1);
-        return Datatables::of($tasks)
-        ->addColumn('titlelink', function ($tasks) {
-                return '<a href="' . route('tasks.show', $tasks->id). '">'.$tasks->title.'</a>';
-        })
-        ->editColumn('created_at', function ($tasks) {
-                return $tasks->created_at ? with(new Carbon($tasks->created_at))
-                ->format('d/m/Y') : '';
-        })
-        ->editColumn('deadline', function ($tasks) {
-                return $tasks->created_at ? with(new Carbon($tasks->created_at))
-                ->format('d/m/Y') : '';
-        })
-        ->make(true);
-    }
-
-    public function closedTaskData($id)
-    {
-        
-        $tasks = Tasks::select(
-            ['id', 'title', 'created_at', 'deadline', 'fk_user_id_assign']
-        )
-        ->where('fk_user_id_assign', $id)->where('status', 2);
-        return Datatables::of($tasks)
-        ->addColumn('titlelink', function ($tasks) {
-                return '<a href="' . route('tasks.show', $tasks->id). '">'.$tasks->title.'</a>';
-        })
-        ->editColumn('created_at', function ($tasks) {
-                return $tasks->created_at ? with(new Carbon($tasks->created_at))
-                ->format('d/m/Y') : '';
-        })
-        ->editColumn('deadline', function ($tasks) {
-                return $tasks->created_at ? with(new Carbon($tasks->created_at))
-                ->format('d/m/Y') : '';
-        })
-        ->make(true);
-    }
-
-    public function clientData($id)
-    {
-        
-        $clients = Client::select(['id', 'name', 'company_name', 'primary_number', 'email'])->where('fk_user_id', $id);
-        return Datatables::of($clients)
-        ->addColumn('clientlink', function ($clients) {
-                return '<a href="' . route('clients.show', $clients->id). '">'.$clients->name.'</a>';
-        })
-        ->editColumn('created_at', function ($clients) {
-                return $clients->created_at ? with(new Carbon($clients->created_at))
-                ->format('d/m/Y') : '';
-        })
-        ->editColumn('deadline', function ($clients) {
-                return $clients->created_at ? with(new Carbon($clients->created_at))
-                ->format('d/m/Y') : '';
-        })
-        ->make(true);
-    }
-
 
     /**
      * Show the form for creating a new resource.

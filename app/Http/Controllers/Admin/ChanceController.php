@@ -278,7 +278,7 @@ class ChanceController extends Controller
     }
 
     /**
-     * 修改车源状态
+     * 修改销售机会状态
      * 暂时只有激活-废弃转换
      * @return \Illuminate\Http\Response
      */
@@ -297,11 +297,17 @@ class ChanceController extends Controller
 
         $car->save();*/
 
+        if($request->input('status') == '0'){
+            $msg = '机会已经激活';
+        }else{
+            $msg = '机会已经废弃';
+        }
+
         $this->chance->statusChange($request, $request->input('id'));
 
         return response()->json(array(
             'status' => 1,
-            'msg' => 'ok',
+            'msg' => $msg,
         ));      
     }
 }
