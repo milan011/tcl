@@ -311,7 +311,7 @@
 				<div class="modal-footer">
 				</div>
 				<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
-				<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
+				<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
 				<button type="submit" class="btn btn-primary">搜索</button>
 			</form>	
 		</div>						         
