@@ -46,6 +46,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'home', 'namespace' => 'Home'],
 });
 
 Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+
     Route::get('/', 'HomeController@index')->name('admin.index');     
     Route::match(['get', 'post'], 'car/index', 'CarController@index')->name('admin.car.index'); 
     // Route::post('car', 'CarController@list')->name('admin.car.list'); 
@@ -67,7 +68,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('transcation/changeStatus', 'TranscationController@changeStatus')->name('admin.transcation.changeStatus');    
     Route::match(['get', 'post'],'transcation/complete', 'TranscationController@complete')->name('admin.transcation.complete');    
     Route::post('transcation/completeDel/{transcation}', 'TranscationController@completeDel')->name('admin.transcation.completeDel');    
-    Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('shop.changeStatus');
+    Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('admin.shop.changeStatus');
     Route::post('car/changeStatus', 'CarController@changeStatus')->name('admin.car.changeStatus');
     Route::post('car/follwQuickly', 'CarController@follwQuickly')->name('admin.car.follwQuickly');
     Route::post('car/interactiveAdd', 'CarController@interactiveAdd')->name('admin.car.interactiveAdd');  
@@ -78,8 +79,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('want/getWantInfo', 'WantController@getWantInfo')->name('admin.want.getWantInfo');
     Route::post('want/changeStatus', 'wantController@changeStatus')->name('admin.want.changeStatus');
     Route::post('want/follwQuickly', 'wantController@follwQuickly')->name('admin.want.follwQuickly');
-    Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('brand.getChildBrand');
-    Route::post('brand/changeStatus', 'brandController@changeStatus')->name('brand.changeStatus');
+    Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('admin.brand.getChildBrand');
+    Route::post('brand/changeStatus', 'brandController@changeStatus')->name('admin.brand.changeStatus');
     Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
     Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');    
     Route::put('role/updatePermission', 'RoleController@updatePermission')->name('admin.role.updatePermission');
@@ -110,8 +111,9 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('transcation', 'TranscationController');  
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {
-        Route::get('/', 'PagesController@dashboard');           
+Route::group(['middleware' => ['web', 'auth']], function () {                      
+        // Route::get('/', 'PagesController@dashboard');           
+        Route::get('/', 'HomeController@index');           
         Route::get('users/data', 'UsersController@anyData')->name('users.data');
         Route::get('users/taskdata/{id}', 'UsersController@taskData')->name('users.taskdata');
         Route::get('users/closedtaskdata/{id}', 'UsersController@closedTaskData')->name('users.closedtaskdata');
