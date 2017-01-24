@@ -157,7 +157,7 @@
 			</div>
 		</div>
 		<div class="box-content">
-			<h2 style="text-align: center;">{{$notice->belongsToUser->title}}
+			<h2 style="text-align: center;">{{$notice->title}}
 			</h2>
 			<h2 style="text-align: center;">
 				<small>发布人：{{$notice->belongsToUser->nick_name}} 发布时间：{{substr($notice->created_at, 0 ,10)}}</small>

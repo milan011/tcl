@@ -81,43 +81,43 @@
 					<div class="control-group">
 						<label class="control-label" for="deal_price">成交价</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused"  name="deal_price" type="text" value="{{$transcations->deal_price}}">
+						  	<input class="input-xlarge focused" readonly="readonly"  name="deal_price" type="text" value="{{$transcations->deal_price}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
 						<label class="control-label" for="earnest">定金</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" name="earnest" type="text" value="{{$transcations->earnest}}">
+						  	<input class="input-xlarge focused" readonly="readonly" name="earnest" type="text" value="{{$transcations->earnest}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
 						<label class="control-label" for="first_pay">首款</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused"  name="first_pay" type="text" value="{{$transcations->first_pay}}">
+						  	<input class="input-xlarge focused" readonly="readonly" name="first_pay" type="text" value="{{$transcations->first_pay}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
 						<label class="control-label" for="last_pay">尾款</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused"  name="last_pay" type="text" value="{{$transcations->last_pay}}">
+						  	<input class="input-xlarge focused" readonly="readonly" name="last_pay" type="text" value="{{$transcations->last_pay}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
 						<label class="control-label" for="commission">应收佣金</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused"   name="commission" type="text" value="{{$transcations->commission}}">
+						  	<input class="input-xlarge focused"  readonly="readonly" name="commission" type="text" value="{{$transcations->commission}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
 						<label class="control-label" for="commission_infact">实收佣金</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused"   name="commission_infact" type="text" value="{{$transcations->commission_infact}}">
+						  	<input class="input-xlarge focused"  readonly="readonly" name="commission_infact" type="text" value="{{$transcations->commission_infact}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
 						<label class="control-label" for="sale_card">压卖方手续</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused"   name="sale_card" type="text" value="{{$transcations->sale_card}}">
+						  	<input class="input-xlarge focused" readonly="readonly"  name="sale_card" type="text" value="{{$transcations->sale_card}}">
 						</div>
 				  	</div>
 				  	<div class="control-group">
@@ -129,13 +129,13 @@
               		<div class="control-group">
 						<label class="control-label" for="commission_remark">佣金备注</label>
 						<div class="controls">
-						 	<textarea id="address" name="commission_remark" class="autogrow">{{$transcations->commission_remark}}</textarea>
+						 	<textarea id="address" name="commission_remark" readonly="readonly" class="autogrow">{{$transcations->commission_remark}}</textarea>
 						</div>
 				  	</div>
 				  	<div class="control-group">
 						<label class="control-label" for="violate">违章未处理</label>
 						<div class="controls">
-						 	<textarea id="address" name="violate" class="autogrow">{{$transcations->violate}}</textarea>
+						 	<textarea id="address" name="violate" readonly="readonly" class="autogrow">{{$transcations->violate}}</textarea>
 						</div>
 				  	</div>			   			
 				  <div class="form-actions">

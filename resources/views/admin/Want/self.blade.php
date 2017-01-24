@@ -85,7 +85,7 @@
 							<td>{{$want->name}}</td>
 							<td>{{$want->bottom_price}}-{{$want->top_price}}万</td>							
 							<td>1年</td>
-							<td>{{$want->mileage}}万公里</td>							
+							<td>{{$mileage_config[$want->mileage]}}</td>							
 							<td>@if($want->gearbox == 0) 不限 @else {{$gearbox[$want->gearbox]}} @endif</td>			
 							<td>{{$out_color[$want->out_color]}}</td>						
 							<td>@if($want->capacity == 0) 不限 @else {{$capacity[$want->capacity]}} @endif</td>

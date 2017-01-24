@@ -301,7 +301,7 @@
 					<div class="box-content">
 						@foreach($img_info as $img)
 						<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
-							<a title="Sample Image 1" href="img/gallery/photo1.jpg">
+							<a title="Sample Image 1" href="javascript:void:(0);">
 								<img class="grayscale" src="{{URL::asset('uploads/car/'.$img->filename)}}" alt="Sample Image 1">
 							</a>
 						</div>	
