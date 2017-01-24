@@ -5,7 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Tasks;
-use App\shop;
+use App\Shop;
 use Illuminate\Http\Request;
 use Gate;
 use Datatables;
@@ -77,7 +77,7 @@ class UserController extends Controller
         // 允许当前用户添加的门店列表
         $shop_id = Auth::user()->shop_id;
 
-        if($shop_id != 21){
+        if($shop_id != 2){
 
             $shop_add_allow = Shop::where('id', $shop_id)->select(['id', 'name'])->get();
         }else{

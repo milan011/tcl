@@ -69,11 +69,9 @@ class CarController extends Controller
         $all_top_brands = $this->brands->getChildBrand(0);
         $cars = $this->car->getAllcars($request, true);
         
-        /*dd(lastSql());
-        dd($cars);*/
+        // dd(lastSql());
+        // dd($cars);
 
-        
-        // dd($select_conditions['car_status']);
         if($request->method() == 'POST'){
             //初始搜索条件
             $select_conditions  = $request->all();
@@ -81,7 +79,7 @@ class CarController extends Controller
             $select_conditions['car_status'] = '';
         }
         
-        // dd($car_status);
+        // dd($select_conditions['car_status']);
 
         return view('admin.car.self', compact('cars', 'select_conditions','all_top_brands'));
     }

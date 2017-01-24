@@ -51,7 +51,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        
         $user = $request->user();
         $cars_num = $this->car->getAllCars($request, true)->toArray()['total'];
         $wants_num = $this->want->getAllWants($request, true)->toArray()['total'];
