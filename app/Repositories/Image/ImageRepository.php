@@ -51,13 +51,14 @@ class ImageRepository implements ImageRepositoryContract
         }
 
         $img_dir = date('Ym', time());
-        $img_dir .= '\\'.'images\\';
+        $img_dir .= '/'.'images/';
         $img_dir .= $allowed_filename; //存储的图片包含路径信息
         $sessionImage = new Image;
         $sessionImage->filename      = $img_dir;
         // p($img_dir);exit;
         $sessionImage->original_name = $originalName;
         $sessionImage->car_id        = $form_data['car_id'];
+        // dd('hehe');
         $sessionImage->save();
 
         return Response::json([
