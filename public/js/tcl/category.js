@@ -126,6 +126,8 @@ $(document).ready(function(){
 			var top_brand   = $(this).val();
 			var token       = $("input[name='_token']").val();
 			var is_car_add  = $('#auto_add_name').val(); //添加车源则请求
+			var cat_request_url = $("input[name='cate_ajax_request_url']").val();
+
 
 			$('#four_category').hide();
 			$('#name').val('');
@@ -135,7 +137,7 @@ $(document).ready(function(){
 				//获得该顶级品牌子品牌
         		$.ajax({
 					type: 'POST',		
-					url: '/admin/category/getChildCategory',		
+					url: cat_request_url,		
 					data: { pid : top_brand},		
 					dataType: 'json',		
 					headers: {		
