@@ -298,7 +298,8 @@
 			  	</div>
 	  				
 				  <div class="form-actions">
-				  	<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
+				  	<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
+				  	<input type="hidden" name="cate_ajax_request_url" value="{{route('admin.category.getChildCategory')}}">
 				  	<input type="hidden" name="shop_id" value="{{Auth::user()->shop_id}}">
 				  	<input type="hidden" name="want_area" value="{{$city_id}}">					
 				  	<input type="hidden" name="customer_id" value="">					

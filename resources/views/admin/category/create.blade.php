@@ -97,7 +97,7 @@
 					</div>
 				  </div>	  				
 				  <div class="form-actions">
-				  	<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
+				  	<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
 					<button type="submit" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>

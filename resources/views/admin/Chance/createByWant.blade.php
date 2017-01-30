@@ -450,7 +450,7 @@
 				<div class="modal-footer">
 			<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
 			<input type="hidden" name="want_id" value="{{$waited_info->id}}">
-			<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
+			<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
 			<button type="submit" class="btn btn-primary">搜索</button>
 		</div>
 			</form>				         
