@@ -10,8 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Want\WantRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
-use App\Http\Requests\want\UpdateWantRequest;
-use App\Http\Requests\want\StoreWantRequest;
+use App\Http\Requests\Want\UpdateWantRequest;
+use App\Http\Requests\Want\StoreWantRequest;
 
 class WantController extends Controller
 {
