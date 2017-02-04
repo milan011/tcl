@@ -27,7 +27,7 @@ class UpdateCategoryRequest extends Request
         return [
             'name'     => 'required',
             // 'name'     => "unique:tcl_category,name,".$id,
-            'brand_id' => 'required',
+            'brand_id' => 'required|numeric|min:1',
             'year_type'=> 'required',
         ];
     }
@@ -41,7 +41,7 @@ class UpdateCategoryRequest extends Request
         return [
             'name.required'      => '请输入车型名称',
             // 'name.unique'        => '车型名称已经存在',
-            'brand_id.required'  => '请选择二级品牌',
+            'brand_id.min'  => '请选择车型品牌',
             'year_type.required' => '请选择车款年份',
 
         ];
