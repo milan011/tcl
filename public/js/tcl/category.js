@@ -126,6 +126,7 @@ $(document).ready(function(){
 			var top_brand   = $(this).val();
 			var token       = $("input[name='_token']").val();
 			var is_car_add  = $('#auto_add_name').val(); //添加车源则请求
+			var is_want     = $('#is_want').val(); //添加车源则请求
 			var cat_request_url = $("input[name='cate_ajax_request_url']").val();
 			var car_brand    = '';
 			var car_factory  = '';
@@ -170,9 +171,11 @@ $(document).ready(function(){
 							$('#four_category').empty();
 							$('#four_category').append(content);
 							// console.log(content);
-							auto_name = car_brand + car_category;
-							// console.log(auto_name);
-							$('#name').val(auto_name);
+							if(is_want == 1){
+								auto_name = car_brand + car_category;
+								// console.log(auto_name);
+								$('#name').val(auto_name);
+							}
 							$('#four_category').show();
 						}else{
 							alert(data.message);
