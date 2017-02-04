@@ -51,15 +51,15 @@
 			{!! csrf_field() !!}
 			<fieldset>
 				<div class="control-group">
-					<label class="control-label" for="customer_name">客户姓名</label>
+					<label class="control-label" for="customer_name"><font style="color:red;">*&nbsp;</font>客户姓名</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="customer_name" name="customer_name" type="text" value="">
+					  <input class="input-xlarge focused" id="customer_name" name="customer_name" type="text" value="" required>
 					</div>
 				 </div>
 				 <div class="control-group">
-					<label class="control-label" for="telephone">手机号</label>
+					<label class="control-label" for="telephone"><font style="color:red;">*&nbsp;</font>手机号</label>
 					<div class="controls">
-					  	<input class="input-xlarge focused" id="telephone" name="telephone" type="text" value="">
+					  	<input class="input-xlarge focused" id="telephone" name="telephone" type="text" value="" required>
 					</div>
 				 </div>
 				<div class="control-group  ">
@@ -117,7 +117,7 @@
 					</div>
 				  </div>
 				  <div class="control-group">
-					<label class="control-label" for="name">求购信息名称</label>
+					<label class="control-label" for="name"><font style="color:red;">*&nbsp;</font>求购信息名称</label>
 					<div class="controls">
 						<input type="hidden" name="auto_add_name" id="auto_add_name" value="1">
 					  	<input class="input-xlarge focused" readonly="readonly" id="name" name="name" type="text" value="">
@@ -238,16 +238,16 @@
                 	</div>
               	</div> -->
 			  <div class="control-group">
-					<label class="control-label" for="top_price">可接受价格</label>
+					<label class="control-label" for="top_price"><font style="color:red;">*&nbsp;</font>可接受价格</label>
 					<div class="controls">
-					  <input class="input-xlarge one_line focused" id="top_price" name="top_price" type="text" value="{{old('top_price')}}"><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge one_line focused" id="top_price" name="top_price" type="text" value="{{old('top_price')}}" required><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="bottom_price">期望格价</label>
+					<label class="control-label" for="bottom_price"><font style="color:red;">*&nbsp;</font>期望格价</label>
 					<div class="controls">
-					  <input class="input-xlarge one_line focused" id="bottom_price" name="bottom_price" type="text" value="{{old('bottom_price')}}"><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge one_line focused" id="bottom_price" name="bottom_price" type="text" value="{{old('bottom_price')}}" required><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
 				<!-- <div class="control-group">
