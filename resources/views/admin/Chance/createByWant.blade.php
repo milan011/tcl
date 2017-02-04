@@ -490,6 +490,8 @@
 			var car_id           = $(this).prev("input[name='car_id']").val();
 			var request_url      = "{{route('admin.car.getCarInfo')}}";
 			
+			$('#info').show();
+			$('#follow').hide();
 			/*alert(want_id);
 			alert(car_id);*/
 			// return false;

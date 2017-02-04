@@ -212,6 +212,24 @@
 			var img_name    = '';
 			var img_car_id  = car_id.val();
 			var request_url = '{{route('admin.car.changeFristImg')}}';
+			var img_frist_list = [];
+
+			
+
+			$('.dz-frist').each(function(index){
+
+				console.log($(this).attr('data-dz-frist'));
+				img_frist_list[index] = $(this).attr('data-dz-frist');
+			});
+
+			// $.inArray("js", arr); 
+
+			if($.inArray("1", img_frist_list) < 0 ){
+				
+				alert('请选择首图');
+				return false;
+			}
+
             $('.dz-frist').each(function(){
 
                 if($(this).attr('data-dz-frist') == 1){

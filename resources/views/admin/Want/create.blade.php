@@ -120,6 +120,7 @@
 					<label class="control-label" for="name"><font style="color:red;">*&nbsp;</font>求购信息名称</label>
 					<div class="controls">
 						<input type="hidden" name="auto_add_name" id="auto_add_name" value="1">
+						<input type="hidden" name="is_want" id="is_want" value="1">
 					  	<input class="input-xlarge focused" readonly="readonly" id="name" name="name" type="text" value="">
 					</div>
 				  </div>

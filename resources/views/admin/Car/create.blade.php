@@ -255,14 +255,14 @@
 					</div>
 				</div>
 			  <div class="control-group">
-					<label class="control-label" for="top_price">期望价格</label>
+					<label class="control-label" for="top_price"><font style="color:red;">*&nbsp;</font>期望价格</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="top_price" name="top_price" type="text" value="{{old('top_price')}}" required><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="bottom_price">底价</label>
+					<label class="control-label" for="bottom_price"><font style="color:red;">*&nbsp;</font>底价</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="bottom_price" name="bottom_price" type="text" value="{{old('bottom_price')}}" required><span style="margin-left:5px;">万元</span>
 					</div>
@@ -398,7 +398,7 @@
                 </ul>
             </div>
             <div class="form-actions">									
-				<button class="btn" id="return_car">返回</button>
+				<!-- <button class="btn" id="return_car">返回</button> -->
 				<button id="img_add" class="btn btn-primary">确定</button>
 			</div>
 		</div>
@@ -574,6 +574,26 @@
 			var img_name    = '';
 			var img_car_id  = car_id.val();
 			var request_url = '{{route('admin.car.changeFristImg')}}';
+			var img_frist_list = [];
+
+			
+
+			$('.dz-frist').each(function(index){
+
+				console.log($(this).attr('data-dz-frist'));
+				img_frist_list[index] = $(this).attr('data-dz-frist');
+			});
+
+			// $.inArray("js", arr); 
+
+			if($.inArray("1", img_frist_list) < 0 ){
+
+				alert('请选择首图');
+				return false;
+			}
+
+			/*console.log($.inArray("1", img_frist_list));
+			return false;*/
             $('.dz-frist').each(function(){
                 if($(this).attr('data-dz-frist') == 1){
 

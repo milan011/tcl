@@ -143,7 +143,24 @@
 							</ul>
 						</li>
 						@endif
-						
+						@ifUserCan('role.manage')
+						<li>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">权限管理</span><span style="float:right;">>></span></a>
+							<ul>
+								<li><a class="submenu" href="{{route('admin.permission.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">权限管理</span></a></li>
+								<li><a class="submenu" href="{{route('admin.role.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">角色管理</span></a></li>
+							</ul>	
+						</li>
+						@endif
+						@ifUserCan('category.check')
+						<li>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车型管理</span><span style="float:right;">>></span></a>
+							<ul>
+								<li><a class="submenu" href="{{route('admin.brand.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">品牌管理</span></a></li>
+								<li><a class="submenu" href="{{route('admin.category.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">车型管理</span></a></li>
+							</ul>	
+						</li>
+						@endif
 						@ifUserCan('deal.check')
 							<li><a class="submenu"href="/guohu">
 									<i class="icon-retweet"></i> <span class="hidden-tablet">
@@ -176,24 +193,7 @@
 										公告列表</span>
 							</a></li>
 						@endif
-						@ifUserCan('role.manage')
-						<li>
-							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">权限管理</span><span style="float:right;">>></span></a>
-							<ul>
-								<li><a class="submenu" href="{{route('admin.permission.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">权限管理</span></a></li>
-								<li><a class="submenu" href="{{route('admin.role.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">角色管理</span></a></li>
-							</ul>	
-						</li>
-						@endif
-						@ifUserCan('category.check')
-						<li>
-							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车型管理</span><span style="float:right;">>></span></a>
-							<ul>
-								<li><a class="submenu" href="{{route('admin.brand.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">品牌管理</span></a></li>
-								<li><a class="submenu" href="{{route('admin.category.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">车型管理</span></a></li>
-							</ul>	
-						</li>
-						@endif
+						
 					</ul>
 				</div>
 			</div>
