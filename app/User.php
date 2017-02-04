@@ -56,14 +56,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     // 是否超级管理员
     public function isSuperAdmin(){
 
-        return Auth::id() === 1;
+        // return Auth::id() === 1;
+        $user_role_id  = Auth::user()->hasManyUserRole[0]->role_id; //用户角色id
+
+        return ($user_role_id == config('tcl.user_role_type')['超级管理员']) || ($user_role_id == config('tcl.user_role_type')['总部管理员']);
     }
 
     // 是否店长
     public function isMdLeader(){
 
         $user_role_id  = Auth::user()->hasManyUserRole[0]->role_id; //用户角色id
-        $user_role_id  = '6';
+        // $user_role_id  = '6';
         return $user_role_id == config('tcl.user_role_type')['门店店长'];
     }
 
