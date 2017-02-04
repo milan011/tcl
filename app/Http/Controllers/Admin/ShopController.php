@@ -145,7 +145,7 @@ class ShopController extends Controller
 
         return response()->json(array(
             'status' => 1,
-            'msg' => 'ok',
+            'msg' => '修改成功',
         ));      
     }
 }
