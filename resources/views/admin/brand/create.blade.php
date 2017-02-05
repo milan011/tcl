@@ -33,7 +33,7 @@
 					  <select id="brand_type" name="brand_type">
 					  	<option  value="0">顶级品牌</option>
 						<option  value="1">一级品牌</option>						
-						<option  value="2">二级品牌</option>						
+						<option  value="2">车系</option>						
 						</select>
 					</div>
 				  </div>
@@ -56,7 +56,7 @@
 				  <div class="control-group">
 					<label class="control-label" for="focusedInput">品牌名称</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="name" name="name" type="text" value="{{old('name')}}">
+					  <input class="input-xlarge focused" id="name" name="name" type="text" value="">
 					</div>
 				  </div>
 				  <div class="control-group">
@@ -104,8 +104,8 @@
 					</div>
 				  </div>	  				
 				  <div class="form-actions">
-				  	<input type="hidden" name="ajax_request_url" value="{{route('brand.getChildBrand')}}">
-					<button type="submit" class="btn btn-primary">确定</button>
+				  	<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
+					<button type="submit" id="brand_add" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>
 				</fieldset>
@@ -118,6 +118,46 @@
 <!-- 引入品牌级联js -->
 <script src="{{URL::asset('js/tcl/brand.js')}}"></script> 
 <script>
+	$(document).ready(function(){
 
+		$('#brand_add').click(function(){
+
+			var brand_type   = $('#brand_type').val();  //品牌级别
+			var top_brand    = $('#top_brand').val();   //顶级品牌
+			var second_brand = $('#second_brand').val(); //一级品牌
+
+			/*alert(brand_type);
+			alert(top_brand);
+			alert(second_brand);*/
+
+			if(brand_type < 0 ){
+				//没有选择品牌级别
+				alert('请选择品牌级别');
+				return false;
+			}else{
+
+				if(brand_type == 0){
+					//顶级品牌添加
+					/*alert('可以添加');
+					return false;*/
+				}else if(brand_type == 1){
+					//一级级品牌添加
+					if(top_brand == 0){
+
+						alert('请选择顶级品牌');
+						return false;
+					}
+
+				}else if(brand_type == 2){
+					//车系添加
+					if(second_brand == 0 || top_brand == 0){
+						
+						alert('请选择一级品牌');
+						return false;
+					}
+				}
+			}
+		});
+	});
 </script>
 @endsection

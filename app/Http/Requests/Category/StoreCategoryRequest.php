@@ -41,7 +41,7 @@ class StoreCategoryRequest extends Request
         return [
             'name.required'      => '请输入车型名称',
             // 'name.unique'        => '车型名称已经存在',
-            'brand_id.min'  => '请选择二级品牌',
+            'brand_id.min'  => '请选择车型品牌',
             'year_type.required' => '请选择车款年份',
 
         ];

@@ -1,6 +1,10 @@
 // 品牌级联菜单js
 $(document).ready(function(){
 
+	$("#brand_type").val("0");
+	$("#top_brand").val("0");
+	$("#second_brand").val("0");
+
 		$('#brand_type').change(function(){
 
 			var brand_type = $('#brand_type').val();
@@ -33,7 +37,6 @@ $(document).ready(function(){
 			// alert(brand_type);
 
 			if(brand_type == 2){
-
 				//获得该顶级品牌下二级品牌
         		$.ajax({
 					type: 'POST',		
