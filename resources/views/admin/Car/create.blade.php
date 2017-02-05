@@ -449,9 +449,13 @@
 
 		$('.date-picker').datepicker({
             language: 'zh-CN',
+            changeMonth: true,
+      		changeYear: true,
+      		yearRange : '1990:2010',
             autoclose: true,
             format: 'yyyy-mm-dd',
             todayHighlight: true
+            
         });	
 
 		$('#customer_add').click(function(){

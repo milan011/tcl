@@ -346,6 +346,8 @@
 		$('.date-picker').datepicker({
             language: 'zh-CN',
             autoclose: true,
+            changeMonth: true,
+      		changeYear: true,
             format: 'yyyy-mm-dd',
             todayHighlight: true
         });	
