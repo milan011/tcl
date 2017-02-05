@@ -203,8 +203,8 @@
 						{{ csrf_field() }}
             			<input type="hidden" name="pipei_want_id" value="{{$waited_info->id}}">
             			<input type="hidden" name="pipei_car_id" value="">
-						<button class="btn btn-success" type="submit">
-						<i class="icon-edit icon-white"></i> 匹配
+						<button id="chance_create" class="btn btn-success" type="submit">
+						<i class="icon-edit icon-white"></i> 创建销售机会
 						</button>
 					</form>
 					<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
@@ -485,6 +485,20 @@
 			return false;
 		});
 
+		// 检查车源、求购是否为空
+        $('#chance_create').click(function(){
+
+        	var pipei_want_id = $("input[name='pipei_want_id']").val();
+        	var pipei_car_id  = $("input[name='pipei_car_id']").val();
+
+        	if((pipei_car_id == '') || (pipei_want_id == '')){
+
+        		alert('没有车源或求购');
+        		return false;
+        	}
+        });
+
+        //创建销售机会
 		$('.create_chance').click(function(){
 			var want_id          = $(this).next("input[name='want_id']").val();
 			var car_id           = $(this).prev("input[name='car_id']").val();
