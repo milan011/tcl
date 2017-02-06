@@ -217,19 +217,25 @@ class BrandRepository implements BrandRepositoryContract
     protected function getAllParent($brand_id, $lev=1){
 
         $parent = array();
-
+        // dd($brand_id);
+        // dd(!$this->isTopBrand($brand_id));
+        $brand_info = $this->getParentBrand('98');
+        // dd(lastSql());
+        // dd($brand_info);
         if(!$this->isTopBrand($brand_id)){
-
+            // dd('hehe');
             $brand_info = $this->getParentBrand($brand_id)->toArray();
-            // dd($brand_info);
-            
+            // $brand_info = $this->getParentBrand($brand_id);
+            /*p($brand_id);
+            p($brand_info);
+            p(lastSql());*/
             $brand_info['lev'] = $lev;   
             $parent[]          = $brand_info;
 
             $parent = array_merge($parent, $this->getAllParent($brand_info['id'], $lev+1));
 
         }   
-
+        // dd($parent);
         return $parent;
     }
 

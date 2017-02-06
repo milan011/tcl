@@ -46,8 +46,7 @@ class StoreBrandRequest extends Request
             'frist_letter.required' => '请输车型首字母',
             'frist_letter.alpha'    => '车型首字母必须是字母',
             'frist_letter.min'      => '请输入一位字母',
-            'frist_letter.max'      => '请输入一位字母',
-            
+            'frist_letter.max'      => '请输入一位字母',           
         ];
     }
 }

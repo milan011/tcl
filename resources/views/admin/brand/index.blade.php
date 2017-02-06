@@ -33,6 +33,7 @@
 					<thead>
 						<tr>
 							<th>品牌名称</th>
+							<th>品牌级别</th>
 							<th>品牌Logo</th>
 							<th>品牌状态</th>
 							<th>操作</th>
@@ -42,6 +43,7 @@
 						@foreach ($brands as $brand)
     					<tr>
 							<td>{{$brand->name}}</td>
+							<td>{{$brand->brand_level}}</td>
 							<td>
 								<img style="width:32px;height:32px;" src="{{ URL::asset('uploads/brand/') }}/{{$brand->logo_img}}">
 							</td>							

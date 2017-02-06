@@ -34,9 +34,27 @@ class BrandController extends Controller
         $brands = $this->brands->getAllBrands();
         // dd(lastSql());
         // dd($brands);
-        /*foreach ($Brands as $key => $value) {
-           dd($value->belongsToShop);
-        }*/
+
+        foreach ($brands as $key => $value) {
+            $parent_brand = $this->brands->getBrandTree($value->id);
+            // dd($parent_brand['parent']);
+            switch (count($parent_brand['parent'])) {
+                case '0':
+                    $brands[$key]['brand_level'] = '顶级品牌';
+                    break;
+                case '1':
+                    $brands[$key]['brand_level'] = '一级品牌';
+                    break;
+                case '2':
+                    $brands[$key]['brand_level'] = '车系';
+                    break;
+                default:
+                    $brands[$key]['brand_level'] = '未知';
+                    break;
+            }
+        }
+
+        // dd($brands[0]);
         return view('admin.brand.index', compact('brands'));
     }
 
