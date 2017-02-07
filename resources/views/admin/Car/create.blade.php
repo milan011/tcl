@@ -180,15 +180,21 @@
               	</div>
               	<div class="control-group">
 					<label class="control-label" for="plate_date">上牌日期</label>
-						<div class="controls">
-							<input type="text" class="input-xlarge date-picker" name="plate_date" id="plate_date" value="">
-						</div>
+					<div class="controls">
+						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="plate_date" id="plate_date" value="">
+					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="plate_end">到检日期</label>
-						<div class="controls">
-							<input type="text" class="input-xlarge date-picker" name="plate_end" id="plate_end" value="">
-						</div>
+					<div class="controls">
+						<input type="text" readonly="readonly" class="input-xlarge" name="plate_end" id="plate_end" value="">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="safe_end">到保日期</label>
+					<div class="controls">
+						<input type="text" readonly="readonly" class="input-xlarge" name="safe_end" id="safe_end" value="">
+					</div>
 				</div>
 
 				<!-- <div class="control-group">
@@ -242,12 +248,7 @@
                   		</select>
                 	</div>
               	</div>
-              	<div class="control-group">
-					<label class="control-label" for="safe_end">到保日期</label>
-						<div class="controls">
-							<input type="text" class="input-xlarge date-picker" name="safe_end" id="safe_end" value="">
-						</div>
-				</div>
+              	
               	<div class="control-group">
 					<label class="control-label" for="focusedInput">行驶里程</label>
 					<div class="controls">
@@ -407,6 +408,8 @@
 </div>  
 @endsection
 @section('script_content')
+<!-- 引入全局辅助commonjs -->
+<script src="{{URL::asset('js/tcl/common.js')}}"></script>
 <!-- 引入车型级联js -->
 <script src="{{URL::asset('js/tcl/category.js')}}"></script> 
 <!-- 引入对话框插件 -->
@@ -453,7 +456,7 @@
       		changeYear: true,
       		yearRange : '1990:2010',
             autoclose: true,
-            format: 'yyyy-mm-dd',
+            format: 'yyyy-mm',
             todayHighlight: true
             
         });	
