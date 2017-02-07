@@ -207,13 +207,21 @@
 							<td class="info" id="out_color"></td>
 						</tr>
 						<tr>
-    						<td>备注</td>
+    						<td>客户描述</td>
 							<td class="info">{{$waited_info->description}}</td>							
 							<td class="info" id="remark"></td>
 							<td>过户次数</td>
 							<td class="info">{{$waited_info->sale_number}}</td>							
 							<td class="info" id="sale_number"></td>
-						</tr>						
+						</tr>	
+						<tr>
+    						<td>销售顾问备注</td>
+							<td class="info">{{$waited_info->xs_description}}</td>							
+							<td class="info" id="xs_remark"></td>
+							<td></td>
+							<td class="info" ></td>		
+							<td class="info"></td>
+						</tr>					
 					</tbody>
 				</table>
 				<span>
@@ -651,6 +659,7 @@
 					$('#creater').text(want.creater+'('+want.creater_tel+')');
 					$('#shop_name').text(want.shop_name);
 					$('#remark').text(want.remark);
+					$('#xs_remark').text(want.xs_remark);
 					$('#want_type').text(want.want_type);
 					$('#car_age').text(want.car_age);
 					$('#customer_info').text(want.customer_info);
