@@ -374,6 +374,11 @@ class CarController extends Controller
         $car->creater = $car->belongsToUser->nick_name;
         $car->creater_tel = $car->belongsToUser->creater_telephone;
         $car->shop_name = $car->belongsToShop->shop_name;
+        if(Auth::id() == $car->creater_id){
+            $car->customer_info = $car->belongsToCustomer->customer_name.'('.$car->belongsToCustomer->customer_telephone.')';
+        }else{
+            $car->customer_info = $car->belongsToCustomer->customer_name;
+        }       
         $car->created = substr((date($car->created_at)), 0, 10);
         
         // dd($car);

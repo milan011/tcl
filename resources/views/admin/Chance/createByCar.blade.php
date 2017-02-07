@@ -58,6 +58,9 @@
 			height:64px;
 		}*/
 
+		td.info{
+			width:20%;
+		}
 	</style>
 @endsection
 
@@ -112,96 +115,104 @@
 					<tbody>
     					<tr>
     						<td>编号</td>
-							<td>{{$waited_info->car_code}}</td>							
-							<td id="want_code"></td>
+							<td class="info">{{$waited_info->car_code}}</td>							
+							<td class="info" id="want_code"></td>
 							<td>车架号</td>
-							<td>{{$waited_info->vin_code}}</td>							
-							<td></td>
+							<td class="info">{{$waited_info->vin_code}}</td>							
+							<td class="info"></td>
 						</tr>
 						<tr>
     						<td>名称</td>
-							<td>{{$waited_info->name}}</td>							
-							<td id="name"></td>
+							<td class="info">{{$waited_info->name}}</td>							
+							<td class="info" id="name"></td>
 							<td>车型类别</td>
-							<td>{{$category_type[$waited_info->categorey_type]}}</td>							
-							<td id="want_type"></td>
+							<td class="info">{{$category_type[$waited_info->categorey_type]}}</td>						
+							<td class="info" id="want_type"></td>
 						</tr>
 						<tr>
     						<td>期望价格</td>
-							<td>{{$waited_info->bottom_price}}-{{$waited_info->top_price}}万</td>
-							<td id="want_price"></td>	
-							<td>外观颜色</td>
-							<td>{{$out_color[$waited_info->out_color]}}</td>
-							<td id="out_color"></td>				
+							<td class="info">{{$waited_info->bottom_price}}-{{$waited_info->top_price}}万</td>
+							<td class="info" id="want_price"></td>
+							<td>指导价</td>
+							<td class="info">{{$waited_info->guide_price}}</td>							
+							<td class="info"></td>					
 						</tr>
 						<tr>
     						<td>车龄</td>
-							<td>{{$waited_info->age}}</td>							
-							<td id="car_age"></td>
+							<td class="info">{{$waited_info->age}}</td>							
+							<td class="info" id="car_age"></td>
 							<td>内饰颜色</td>
-							<td>{{$inside_color[$waited_info->inside_color]}}</td>
-							<td id="inside_color"></td>
+							<td class="info">{{$inside_color[$waited_info->inside_color]}}</td>
+							<td class="info" id="inside_color"></td>
 						</tr>
 						<tr>
     						<td>行驶里程</td>
-							<td>{{$waited_info->mileage}}</td>							
-							<td id="mileage"></td>
+							<td class="info">{{$waited_info->mileage}}</td>							
+							<td class="info" id="mileage"></td>
 							<td>上牌日期</td>
-							<td>{{substr($waited_info->plate_date, 0 ,10)}}</td>
-							<td></td>
+							<td class="info">{{substr($waited_info->plate_date, 0 ,10)}}</td>
+							<td class="info"></td>
 						</tr>
 						<tr>
     						<td>变速箱</td>
-							<td>{{$gearbox[$waited_info->gearbox]}}</td>							
-							<td id="gearbox"></td>
+							<td class="info">{{$gearbox[$waited_info->gearbox]}}</td>							
+							<td class="info" id="gearbox"></td>
 							<td>到检日期</td>
-							<td>{{substr($waited_info->plate_end, 0 ,10)}}</td>
-							<td></td>
+							<td class="info">{{substr($waited_info->plate_end, 0 ,10)}}</td>
+							<td class="info"></td>
 						</tr>
 						<tr>
     						<td>排量</td>
-							<td>{{$capacity[$waited_info->capacity]}}</td>							
-							<td id="capacity"></td>
+							<td class="info">{{$capacity[$waited_info->capacity]}}</td>							
+							<td class="info" id="capacity"></td>
 							<td>上牌城市</td>
-							<td>石家庄</td>							
-							<td>石家庄</td>
+							<td class="info">石家庄</td>							
+							<td class="info">石家庄</td>
 						</tr>
 						<tr>
     						<td>登记日期</td>
-							<td>{{substr($waited_info->created_at, 0 ,10)}}</td>							
-							<td id="created_at"></td>
+							<td class="info">{{substr($waited_info->created_at, 0 ,10)}}</td>							
+							<td class="info" id="created_at"></td>
 							<td>保险类别</td>
-							<td>{{$safe_type[$waited_info->safe_type]}}</td>							
-							<td></td>
+							<td class="info">{{$safe_type[$waited_info->safe_type]}}</td>							
+							<td class="info"></td>
 						</tr>
 						<tr>
     						<td>所属门店</td>
-							<td>{{$waited_info->belongsToShop->shop_name}}</td>							
-							<td id="shop_name"></td>
+							<td class="info">{{$waited_info->belongsToShop->shop_name}}</td>							
+							<td class="info" id="shop_name"></td>
 							<td>保险到期</td>
-							<td>{{substr($waited_info->safe_end, 0 ,10)}}</td>							
-							<td></td>
+							<td class="info">{{substr($waited_info->safe_end, 0 ,10)}}</td>							
+							<td class="info"></td>
 						</tr>
 						<tr>
     						<td>负责人</td>
-							<td>{{$waited_info->belongsToUser->nick_name}}({{$waited_info->belongsToUser->creater_telephone}})</td>							
-							<td id="creater"></td>
-							<td>过户次数</td>
-							<td>{{$waited_info->sale_number}}</td>							
-							<td id="sale_number"></td>
+							<td class="info">{{$waited_info->belongsToUser->nick_name}}({{$waited_info->belongsToUser->creater_telephone}})</td>							
+							<td class="info" id="creater"></td>
+							<td>客户信息</td>
+							<td class="info">
+								{{$waited_info->belongsToCustomer->customer_name}}
+								@if(Auth::id() == $waited_info->creater_id)
+								({{$waited_info->belongsToCustomer->customer_telephone}})
+								@endif
+							</td>				
+							<td class="info" id="customer_info"></td>
 						</tr>
 						<tr>
     						<td>评估师描述</td>
-							<td>{{$waited_info->pg_description}}</td>							
-							<td></td>
-							<td>指导价</td>
-							<td>{{$waited_info->guide_price}}</td>							
-							<td></td>
+							<td class="info">{{$waited_info->pg_description}}</td>							
+							<td class="info"></td>
+							<td>外观颜色</td>
+							<td class="info">{{$out_color[$waited_info->out_color]}}</td>
+							<td class="info" id="out_color"></td>
 						</tr>
 						<tr>
     						<td>备注</td>
-							<td>{{$waited_info->description}}</td>							
-							<td id="remark"></td>
+							<td class="info">{{$waited_info->description}}</td>							
+							<td class="info" id="remark"></td>
+							<td>过户次数</td>
+							<td class="info">{{$waited_info->sale_number}}</td>							
+							<td class="info" id="sale_number"></td>
 						</tr>						
 					</tbody>
 				</table>
@@ -552,6 +563,7 @@
 			<div class="modal-footer">
 				<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
 				<input type="hidden" name="car_id" value="{{$waited_info->id}}">
+				<input type="hidden" name="is_self" value="1">
 				<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
 				<button type="submit" class="btn btn-primary">搜索</button>
 			</div>
@@ -641,7 +653,8 @@
 					$('#remark').text(want.remark);
 					$('#want_type').text(want.want_type);
 					$('#car_age').text(want.car_age);
-
+					$('#customer_info').text(want.customer_info);
+					$('#sale_number').text(want.sale_number);
 					// alert('匹配成功');
 					console.log(want);
 					// window.location.href = '{{route('admin.chance.index')}}';

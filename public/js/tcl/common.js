@@ -77,8 +77,8 @@ function checkCarDate(){
 		next_baoxian = now_year + '-' + date_month;
 	}
 
-	alert(next_check);
-	alert(next_baoxian);
+	/*alert(next_check);
+	alert(next_baoxian);*/
 
 	plate_end.val(next_check);
 	safe_end.val(next_baoxian);

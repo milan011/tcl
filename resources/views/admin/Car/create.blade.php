@@ -196,23 +196,6 @@
 						<input type="text" readonly="readonly" class="input-xlarge" name="safe_end" id="safe_end" value="">
 					</div>
 				</div>
-
-				<!-- <div class="control-group">
-					<label class="control-label" for="plate_provence">上牌城市</label>
-					<div class="controls">
-					  	<select id="plate_provence" name="plate_provence" style="width:15%">
-					  		<option value="0">请选择省份</option>
-					  		<option value="1">河北</option>
-					  		<option value="2">河南</option>
-									
-						</select>
-						<select id="plate_city" name="plate_city" style="width:15%;">
-					  		<option  value="0">请选择城市</option>											
-					  		<option  value="1">石家庄</option>											
-					  		<option  value="2">唐山</option>											
-						</select>
-					</div>
-				  </div> -->
 				 <div class="control-group">
 					<label class="control-label" for="provence_id">所属城市</label>
 					<div class="controls">
@@ -268,35 +251,6 @@
 					  <input class="input-xlarge focused" id="bottom_price" name="bottom_price" type="text" value="{{old('bottom_price')}}" required><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
-				<!-- <div class="control-group">
-					<label class="control-label" for="selectError3">是否推荐</label>
-					<div class="controls">
-					  <select id="recommend" name="recommend" >
-					  	<option  value="0">不推荐</option>
-						<option  value="1">推荐</option>						
-						</select>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="is_top">是否置顶</label>
-					<div class="controls">
-					  <select id="is_top" name="is_top" >
-					  	<option  value="0">不置顶</option>
-						<option  value="1">置顶</option>						
-						</select>
-					</div>
-				</div>
-				<div class="control-group  ">
-                	<label class="control-label" for="car_type">车源类型</label>
-                	<div class="controls">
-                  		<select id="car_type" name="car_type" >                        
-					  		@foreach($car_type as $key=>$type)											
-					  		<option  value="{{$key}}">{{$type}}</option>	
-					  		@endforeach	                     
-                  		</select>
-                	</div>
-              	</div> -->
-
 				<div class="control-group ">
 					<label class="control-label" for="description">
 						<font style="color:red;">*&nbsp;</font>客户描述

@@ -309,7 +309,11 @@ class WantController extends Controller
         $want->creater = $want->belongsToUser->nick_name;
         $want->creater_tel = $want->belongsToUser->creater_telephone;
         $want->shop_name = $want->belongsToShop->shop_name;
-        
+        if(Auth::id() == $want->creater_id){
+            $want->customer_info = $want->belongsToCustomer->customer_name.'('.$want->belongsToCustomer->customer_telephone.')';
+        }else{
+            $want->customer_info = $want->belongsToCustomer->customer_name;
+        } 
         // dd($want);
         return response()->json(array(
             'status' => 1,

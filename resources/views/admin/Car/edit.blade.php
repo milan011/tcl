@@ -101,16 +101,21 @@
               	<div class="control-group">
 					<label class="control-label" for="plate_date">上牌日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge date-picker" name="plate_date" id="plate_date" value="{{substr($cars->plate_date, 0 ,10)}}">
+							<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="plate_date" id="plate_date" value="{{substr($cars->plate_date, 0 ,10)}}">
 						</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="plate_end">到检日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge date-picker" name="plate_end" id="plate_end" value="{{substr($cars->plate_end, 0 ,10)}}">
+							<input type="text" class="input-xlarge" readonly="readonly" name="plate_end" id="plate_end" value="{{substr($cars->plate_end, 0 ,10)}}">
 						</div>
 				</div>
-
+				<div class="control-group">
+					<label class="control-label" for="safe_end">到保日期</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge" readonly="readonly" name="safe_end" id="safe_end" value="{{substr($cars->safe_end, 0 ,10)}}">
+						</div>
+				</div>
 				<!-- <div class="control-group">
 					<label class="control-label" for="plate_provence">上牌城市</label>
 					<div class="controls">
@@ -162,12 +167,6 @@
                   		</select>
                 	</div>
               	</div>
-              	<div class="control-group">
-					<label class="control-label" for="safe_end">到保日期</label>
-						<div class="controls">
-							<input type="text" class="input-xlarge date-picker" name="safe_end" id="safe_end" value="{{substr($cars->safe_end, 0 ,10)}}">
-						</div>
-				</div>
               	<div class="control-group">
 					<label class="control-label" for="focusedInput">行驶里程</label>
 					<div class="controls">
@@ -255,6 +254,8 @@
 </div>   
 @endsection
 @section('script_content')
+<!-- 引入全局辅助commonjs -->
+<script src="{{URL::asset('js/tcl/common.js')}}"></script>
 <!-- 引入日历插件 -->
 <script src="{{URL::asset('js/tcl/bootstrap-datepicker.js')}}"></script> 
 <script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script> 
@@ -263,7 +264,7 @@
 		$('.date-picker').datepicker({
             language: 'zh-CN',
             autoclose: true,
-            format: 'yyyy-mm-dd',
+            format: 'yyyy-mm',
             todayHighlight: true
         });
 
