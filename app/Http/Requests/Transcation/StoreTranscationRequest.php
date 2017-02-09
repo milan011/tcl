@@ -25,7 +25,7 @@ class StoreTranscationRequest extends Request
     {        
         return [
             'deal_price'        => 'required|numeric',
-            'earnest'           => 'numeric',
+            'earnest'           => 'required|numeric',
             'first_pay'         => 'numeric',
             'last_pay'          => 'numeric',
             'commission'        => 'numeric',
@@ -42,6 +42,7 @@ class StoreTranscationRequest extends Request
         return [
             'deal_price.numeric'        => '成交价应该是数字',
             'deal_price.required'       => '请输入成交价格',
+            'earnest.required'          => '请输入定金',
             'earnest.numeric'           => '定金应该是数字',
             'first_pay.numeric'         => '首款应该是数字',
             'last_pay.numeric'          => '尾款应该是数字',
