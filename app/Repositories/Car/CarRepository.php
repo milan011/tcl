@@ -71,10 +71,11 @@ class CarRepository implements CarRepositoryContract
         }       
         // dd($query);
         $query = $query->where('name', '!=', '');
+        $query = $query->orWhere('car_status', '6');
         // $query = $query->where('car_status', $request->input('car_status', '1'));
 
         return $query->select($this->select_columns)
-                     ->orderBy('created_at', 'desc')
+                     ->orderBy('updated_at', 'desc')
                      ->paginate(10);
     }
 

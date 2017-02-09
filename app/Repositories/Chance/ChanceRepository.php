@@ -207,6 +207,7 @@ class chanceRepository implements chanceRepositoryContract
                        ->where('car_id', $car_id)
                        ->where('want_id', $want_id)
                        ->where('creater', Auth::id())
+                       ->where('status', '1')
                        ->first();
     }
 
