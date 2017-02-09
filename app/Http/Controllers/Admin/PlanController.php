@@ -96,9 +96,14 @@ class PlanController extends Controller
         $shops = Shop::where('status', '1')->select('id', 'name')->get();
         // dd($shops);
         // dd($request->all());
-        $chance_info = $this->chance->find($request->chance_id);
-        $car_info    = $this->car->find($request->car_id);
-        $want_info   = $this->want->find($request->want_id);
+
+        $chance_id = isset($request->chance_id) ? $request->chance_id : old('chance_id');
+        $car_id    = isset($request->car_id) ? $request->car_id : old('car_id');
+        $want_id   = isset($request->want_id) ? $request->want_id : old('want_id');
+
+        $chance_info = $this->chance->find($chance_id);
+        $car_info    = $this->car->find($car_id);
+        $want_info   = $this->want->find($want_id);
 
         // dd($chance_info);
         // dd($car_info->belongsToCustomer);
@@ -145,7 +150,7 @@ class PlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePlanRequest $request)
     {
         // dd($request->all());
 
@@ -211,9 +216,9 @@ class PlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePlanRequest $request, $id)
     {
-        // dd($request->all());
+        dd($request->all());
         $plan = $this->plan->update($request, $id);
         
         return redirect()->route('admin.plan.self')->withInput();

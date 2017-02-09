@@ -52,6 +52,11 @@ class CarController extends Controller
         $cars = $this->car->getAllcars($request);
         // dd(lastSql());
         // dd($cars);
+        /*foreach ($cars as $key => $value) {
+            p($value->id);
+            p($value->belongsToUser->nick_name);
+        }
+        exit;*/
         $car_status_current = '1';
 
         return view('admin.car.index', compact('cars','car_status_current', 'all_top_brands', 'select_conditions'));
