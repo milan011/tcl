@@ -166,7 +166,7 @@
 			<h3>销售机会搜索</h3>
 		</div>
 		<div class="modal-body" style="max-height:none;">
-			<form class="form-horizontal" id="condition" action="/admin/chance/index" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.chance.index')}}/index" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">

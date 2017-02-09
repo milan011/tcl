@@ -109,7 +109,7 @@
 							<td>{{$car->belongsToShop->shop_name}}</td>							
 							<td>{{$car->belongsToUser->nick_name}}</td>		
 							<td class="center">
-								@if($car->car_status == 1)
+								@if(($car->car_status == 1) || ($car->car_status == 6))
 								<div class="btn-group">
 									<span>
 										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
@@ -150,7 +150,7 @@
 			<h3>车源搜索</h3>
 		</div>
 		<div class="modal-body"">
-			<form class="form-horizontal" id="condition" action="/admin/car/index" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.car.index')}}/index" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">

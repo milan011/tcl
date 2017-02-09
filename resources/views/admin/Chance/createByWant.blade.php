@@ -329,7 +329,7 @@
 							<td>{{$match->car_code}}</td>
 							<td>{{$match->name}}</td>
 							<td>{{$match->bottom_price}}-{{$match->top_price}}万</td>							
-							<td>{{$match->mileage}}</td>							
+							<td>{{$match->mileage}}万公里</td>							
 							<td>{{$gearbox[$match->gearbox]}}</td>							
 							<td>{{$out_color[$match->out_color]}}</td>						
 							<td>{{$match->sale_number}}</td>							
@@ -369,7 +369,7 @@
 			<h3>精确搜索</h3>
 		</div>
 		<div class="modal-body">
-			<form class="form-horizontal" id="condition" action="/admin/chance/create" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.chance.create')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">

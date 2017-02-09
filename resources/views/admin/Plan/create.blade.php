@@ -83,17 +83,17 @@
 				  	<div class="control-group">
 					<label class="control-label" for="plan_time">看车日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge date-picker" name="plan_time" id="plan_time" value="">
+							<input type="text" class="input-xlarge date-picker" name="plan_time" id="plan_time" value="{{old('plan_time')}}">
 						</div>
 					</div>
 					<div class="control-group">
 					<label class="control-label" for="selectError3">具体时间</label>
 						<div class="controls">
 						  	<select id="top_category" name="hafe_day" style="width:10%">
-						  		<option value="上午">上午</option>
-						  		<option value="下午">下午</option>									
+						  		<option  @if(old('hafe_day') == '上午') selected @endif value="上午">上午</option>
+						  		<option  @if(old('hafe_day') == '下午') selected @endif value="下午">下午</option>									
 							</select>
-							<input type="text" class="input-xlarge" style="width:10%" name="hours" id="hours" value="">
+							<input type="text" class="input-xlarge" style="width:10%" name="hours" id="hours" value="{{old('hours')}}">
 						</div>
 					</div>
 					<div class="control-group">
@@ -101,7 +101,7 @@
 						<select id="plan_address" name="plan_address" >
 							<option  value="">请选择门店</option>                        
 					  		@foreach($shops as $key=>$shop)											
-					  			<option  value="{{$shop->name}}">{{$shop->name}}</option>	
+					  			<option @if(old('plan_address') == ($shop->name)) selected @endif value="{{$shop->name}}">{{$shop->name}}</option>	
 					  		@endforeach	                     
                   		</select>
 				  	</div>

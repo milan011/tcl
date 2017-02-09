@@ -212,7 +212,7 @@
         	    commission.attr('readonly', 'readonly');
         	    first_pay.attr('readonly', 'readonly');
         	    sale_card.attr('readonly', 'readonly');
-        	    next_status.val('5');
+        	    next_status.val('4');
         	    break;
         	default :
             // alert('未知');

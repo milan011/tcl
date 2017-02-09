@@ -457,7 +457,7 @@
 		<h3>精确搜索</h3>
 	</div>
 	<div class="modal-body">
-		<form class="form-horizontal" id="condition" action="/admin/chance/create" method="post">
+		<form class="form-horizontal" id="condition" action="{{route('admin.chance.create')}}" method="post">
 			{!! csrf_field() !!}
 			<fieldset>
 					<div class="control-group">

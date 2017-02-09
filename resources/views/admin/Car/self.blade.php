@@ -109,8 +109,8 @@
 										<i class="icon-edit icon-white"></i> 查看
 									</a>
 								</div>								
-								@elseif($car->car_status == '1' || $car->car_status == '2')
-								<!-- 正常或待跟进状态 -->
+								@elseif($car->car_status == '1' || $car->car_status == '2'|| $car->car_status == '6')
+								<!-- 正常、待跟进、已匹配状态 -->
 								<div class="btn-group">
 									<span>
 										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
@@ -152,7 +152,7 @@
 										</ul>
  							 		</div>
 								</div>
-								@elseif($car->car_status == '3' || $car->car_status == '4' || $car->car_status == '5' || $car->car_status == '6')
+								@elseif($car->car_status == '3' || $car->car_status == '4' || $car->car_status == '6')
 								<div class="btn-group">
 								<a class="btn btn-warning" href="{{route('admin.car.edit', ['car'=>$car->id])}}">
 									<i class="icon-edit icon-white"></i> 编辑
