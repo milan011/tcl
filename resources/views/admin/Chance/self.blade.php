@@ -139,8 +139,28 @@
 											@endif
 										</form>
 									</span>
-									
-									<a class="btn btn-success" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
+									<div class="btn-group " role=”group”>
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+											更多
+											<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu pull-right">
+											<li>
+												<a class="btn btn-success" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
+													详情
+												</a>												
+											</li>
+											<li>
+												@if($chance->status == 1 || $chance->status == 2 || $chance->status == 3)
+												<button class="btn btn-info changStatus" data-status="1">
+													<i class="icon-edit icon-white"></i> 废弃
+												</button>
+												<input class="current_chance_id" type="hidden" value="{{$chance->id}}">
+												@endif											
+											</li>		
+										</ul>
+ 							 		</div>
+									<!-- <a class="btn btn-success" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
 									详情
 									</a>
 									@if($chance->status == 1 || $chance->status == 2 || $chance->status == 3)
@@ -148,7 +168,7 @@
 										<i class="icon-edit icon-white"></i> 废弃
 									</button>
 									<input class="current_chance_id" type="hidden" value="{{$chance->id}}">
-									@endif
+									@endif -->
 								</div>
 							</td>
 						</tr>

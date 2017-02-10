@@ -160,8 +160,8 @@
 							<td class="info" >{{$capacity[$waited_info->capacity]}}</td>							
 							<td class="info"  id="capacity"></td>
 							<td>上牌城市</td>
-							<td class="info" >石家庄</td>							
-							<td class="info" >石家庄</td>
+							<td class="info" ></td>							
+							<td class="info" id="plate_city"></td>
 						</tr>
 						<tr>
 							<td>登记日期</td>
@@ -546,7 +546,7 @@
 					$('#name').text(car.name);
 					$('#created_at').text(car.created);
 					$('#capacity').text(car.capacity);
-					$('#car_price').text(car.bottom_price+'-'+car.top_price+'万');
+					$('#want_price').text(car.bottom_price+'-'+car.top_price+'万');
 					$('#gearbox').text(car.gearbox);
 					$('#age').text(car.age);
 					$('#mileage').text(car.mileage);
@@ -561,6 +561,7 @@
 					$('#vin_code').text(car.vin_code);
 					$('#plate_date').text(car.plate_date);
 					$('#plate_end').text(car.plate_end);
+					$('#plate_city').text(car.plate_city);
 					$('#safe_type').text(car.safe_type);
 					$('#safe_end').text(car.safe_end);
 					$('#pg_description').text(car.pg_description);

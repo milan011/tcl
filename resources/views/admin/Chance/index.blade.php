@@ -138,17 +138,16 @@
 												</button>
 											@endif
 										</form>
-									</span>
-									
+									</span>								
 									<a class="btn btn-success" href="{{route('admin.chance.show', ['chance'=>$chance->id])}}">
 									详情
 									</a>
-									@if($chance->status == 1 || $chance->status == 2 || $chance->status == 3)
+									<!-- @if($chance->status == 1 || $chance->status == 2 || $chance->status == 3)
 									<button class="btn btn-info changStatus" data-status="1">
 										<i class="icon-edit icon-white"></i> 废弃
 									</button>
 									<input class="current_chance_id" type="hidden" value="{{$chance->id}}">
-									@endif
+									@endif -->
 							</td>
 						</tr>
 						@endforeach							
@@ -185,9 +184,9 @@
             	    	</div>
             	  	</div> -->
             	  	<div class="control-group  ">
-            	    	<label class="control-label" for="sale_number">状态</label>
+            	    	<label class="control-label" for="status">状态</label>
             	    	<div class="controls">
-            	      		<select id="sale_number" name="sale_number" >
+            	      		<select id="status" name="status" >
             	      			@foreach($chance_status as $key=>$chance)
             	      			<option @if(isset($select_conditions['chance_status']) && $select_conditions['chance_status'] == $key && $select_conditions['chance_status'] != '') selected @endif value='{{$key}}'>{{$chance}}</option>  
             	      			@endforeach                                         

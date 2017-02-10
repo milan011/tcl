@@ -166,8 +166,8 @@
 							<td class="info">{{$capacity[$waited_info->capacity]}}</td>							
 							<td class="info" id="capacity"></td>
 							<td>上牌城市</td>
-							<td class="info">石家庄</td>							
-							<td class="info">石家庄</td>
+							<td class="info">{{$waited_info->belongsToCity->city_name}}</td>							
+							<td class="info" id="plate_city"></td>
 						</tr>
 						<tr>
     						<td>登记日期</td>

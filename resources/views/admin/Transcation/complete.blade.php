@@ -51,7 +51,11 @@
 							<td>{{$car_info->car_code}}</td>
 							<td>{{$car_info->name}}</td>
 							<td>{{$car_info->belongsToCustomer->customer_name}}</td>	
-							<td>110</td>
+							<td>
+								@if(Auth::id() == $car_info->creater_id)
+								({{$car_info->belongsToCustomer->customer_telephone}})
+								@endif
+							</td>
 							<td>{{$car_info->belongsToUser->nick_name}}</td>
 							<td>{{$car_info->belongsToUser->creater_telephone}}</td>
 							<td>{{$car_info->description}}</td>										
@@ -61,7 +65,11 @@
     						<td>{{$want_info->want_code}}</td>														
 							<td>{{$want_info->name}}</td>									
 							<td>{{$want_info->belongsToCustomer->customer_name}}</td>
-							<td>119</td>
+							<td>
+								@if(Auth::id() == $want_info->creater_id)
+								({{$want_info->belongsToCustomer->customer_telephone}})
+								@endif
+							</td>
 							<td>{{$want_info->belongsToUser->nick_name}}</td>
 							<td>{{$want_info->belongsToUser->creater_telephone}}</td>
 							<td>{{$want_info->remark}}</td>							
