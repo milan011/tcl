@@ -196,6 +196,12 @@ class Cars extends Model
       return $this->belongsTo('App\Customer', 'customer_id', 'id')->select('id', 'name as customer_name', 'telephone as customer_telephone');
     }
 
+    // 定义customer表与Area表一对多关系
+    public function belongsToCity(){
+
+      return $this->belongsTo('App\Area', 'plate_city', 'id')->select('id', 'name as city_name');
+    }
+
     // 定义Car表与car_follow表一对多关系
     public function hasManyFollow()
     {

@@ -34,27 +34,16 @@ class Area extends Model
      */
     protected $hidden = [ ];
 
-    // 定义Shop表与User表一对多关系
-    public function hasManyUser(){
+    // 定义Area表与User表一对多关系
+    /*public function hasManyUser(){
 
         return $this->hasMany('App\User', 'creater_id', 'id');
-    }
+    }*/
 
-    // 定义Shop表与Cars表一对多关系
+    // 定义Area表与Cars表一对多关系
     public function hasManyCars(){
 
-      return $this->hasMany('App\Cars', 'shop_id', 'id');
+      return $this->hasMany('App\Cars', 'plate_city', 'id');
     }
 
-    // 定义Shop表与Want表一对多关系
-    public function hasManyWants(){
-
-      return $this->hasMany('App\Want', 'shop_id', 'id');
-    }
-
-    // 定义Shop表与Chance表一对多关系
-    public function hasManyChances(){
-
-      return $this->hasMany('App\Chance', 'shop_id', 'id');
-    }
 }
