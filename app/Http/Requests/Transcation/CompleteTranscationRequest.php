@@ -32,6 +32,7 @@ class CompleteTranscationRequest extends Request
             'commission'        => 'required|numeric',
             'commission_infact' => 'required|numeric',          
             'done_time'         => 'required|date',          
+            'commission_remark' => 'required',         
         ];
     }
 
@@ -48,6 +49,7 @@ class CompleteTranscationRequest extends Request
             'first_pay.required'         => '请输入首款',
             'last_pay.required'          => '请输入尾款',
             'commission.required'        => '请输入佣金',
+            'commission_remark.required' => '请输入佣金备注',
             'commission_infact.required' => '请输入实际佣金',
             'done_time.required'         => '请输入成交时间',
             'earnest.numeric'            => '定金应该是数字',
