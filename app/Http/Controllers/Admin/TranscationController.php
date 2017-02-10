@@ -68,7 +68,7 @@ class TranscationController extends Controller
         // dd($request->all());
         $request['participate'] = false;
         $transcations = $this->transcation->getAllTranscations($request);
-        // dd(lastSql());
+        dd(lastSql());
         // dd($transcations);
         $select_conditions  = $request->all();
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';
@@ -168,7 +168,8 @@ class TranscationController extends Controller
         $want_info    = $this->want->find($chance_info->want_id);
 
         // dd($chance_info);
-        // dd($car_info);
+        /*dd($want_info->creater_id);
+        dd($car_info->belongsToCustomer->customer_telephone);*/
         // dd($want_info);
         // dd($transcations);
 

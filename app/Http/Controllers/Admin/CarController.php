@@ -385,8 +385,10 @@ class CarController extends Controller
             $car->customer_info = $car->belongsToCustomer->customer_name;
         }       
         $car->created = substr((date($car->created_at)), 0, 10);
+        $car->want_price = $car->bottom_price.'-'.$car->top_price;
+        $car->plate_city = $car->belongsToCity->city_name;
         
-        // dd($car);
+        // dd($car->belongsToArea->city_name);
         return response()->json(array(
             'status' => 1,
             'msg' => 'ok',

@@ -52,8 +52,8 @@ class ChanceController extends Controller
         
         $request['participate'] = true;
         
-        /*p($request->method());
-        dd($request->all());*/
+        // p($request->method());
+        // dd($request->all());
         $chances = $this->chance->getAllChances($request);
         /*p(lastSql());
         dd($chances);*/
@@ -129,7 +129,7 @@ class ChanceController extends Controller
         }else{
             // 匹配车源信息
             $waited_info = $this->car->find($request->car_id);
-            // dd($waited_info);
+            // dd($waited_info->belongsToCity->city_name);
             /*$request['top_price']    = $waited_info->top_price;          
             $request['bottom_price'] = $waited_info->bottom_price;*/
             $request['want_status']   = '1';
