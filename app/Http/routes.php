@@ -38,11 +38,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 });
 
-Route::group(['middleware' => 'web', 'prefix' => 'home', 'namespace' => 'Home'], function () {
-    Route::get('/', function(){
+Route::group(['middleware' => 'web', 'prefix' => 'home1', 'namespace' => 'Home'], function () {
+    /*Route::get('/', function(){
 
-        return view('home.home');
-    });  
+        return view('home.home.index');
+        // return 'hehe';
+    }); */
+
+    Route::get('/', 'HomeController@index')->name('home.index'); 
 });
 
 Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
