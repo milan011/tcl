@@ -1,0 +1,18 @@
+@import "defined";
+
+.pagination {
+  text-align: center;
+  .item {
+    color: @cWhite;
+    background: @cBlack;
+    border: 1px solid @cMidGray;
+    margin: 0 5px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    &.active{
+      background: @cRed;
+      border-color: @cRed;
+    }
+  }
+}

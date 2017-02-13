@@ -1,0 +1,79 @@
+.combo {
+  border: 1px solid #dddddd;
+  position: relative;
+}
+.combo .text {
+  cursor: pointer;
+  background: #FFFFFF;
+  padding-left: 15px;
+  height: 45px;
+}
+.combo .icon {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  background: #f1f1f1 url("../img/common/dropDown.png") no-repeat center center;
+}
+.combo .optionList {
+  font-size: 16px;
+  position: absolute;
+  z-index: 1;
+  height: 0;
+  left: -1px;
+  letter-spacing: normal;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid transparent;
+  -webkit-transition: height ease-in 0.3s;
+  -moz-transition: height ease-in 0.3s;
+  -ms-transition: height ease-in 0.3s;
+  -o-transition: height ease-in 0.3s;
+  transition: height ease-in 0.3s;
+}
+.combo ul {
+  background: #fff;
+  list-style: none;
+  padding: 10px 0;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  height: 95px;
+}
+.combo li {
+  padding-left: 15px;
+  cursor: pointer;
+}
+.combo li:hover {
+  color: #e80c0a;
+}
+.combo.active .icon {
+  background-image: url("../img/common/dropUp.png");
+}
+.combo.active .optionList {
+  height: 115px;
+  border: 1px solid #ddd;
+}
+section {
+  width: 100%;
+}
+.banner {
+  background: url("../img/joinIn/banner.png") center no-repeat #ef4939;
+  height: 672px;
+}
+.trade {
+  background: url("../img/joinIn/trade.png") center no-repeat #f7f7f7;
+  height: 625px;
+}
+.prospect {
+  background: url("../img/joinIn/prospect.png") center no-repeat;
+  height: 663px;
+}
+.benefit {
+  background: url("../img/joinIn/benefit.png") center no-repeat;
+  height: 677px;
+}
+.join {
+  background: url("../img/joinIn/join.png") center no-repeat;
+  height: 1416px;
+}

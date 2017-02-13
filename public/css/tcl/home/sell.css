@@ -1,0 +1,294 @@
+.combo {
+  border: 1px solid #dddddd;
+  position: relative;
+}
+.combo .text {
+  cursor: pointer;
+  background: #FFFFFF;
+  padding-left: 15px;
+  height: 45px;
+}
+.combo .icon {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  background: #f1f1f1 url("../img/common/dropDown.png") no-repeat center center;
+}
+.combo .optionList {
+  font-size: 16px;
+  position: absolute;
+  z-index: 1;
+  height: 0;
+  left: -1px;
+  letter-spacing: normal;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid transparent;
+  -webkit-transition: height ease-in 0.3s;
+  -moz-transition: height ease-in 0.3s;
+  -ms-transition: height ease-in 0.3s;
+  -o-transition: height ease-in 0.3s;
+  transition: height ease-in 0.3s;
+}
+.combo ul {
+  background: #fff;
+  list-style: none;
+  padding: 10px 0;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  height: 95px;
+}
+.combo li {
+  padding-left: 15px;
+  cursor: pointer;
+}
+.combo li:hover {
+  color: #e80c0a;
+}
+.combo.active .icon {
+  background-image: url("../img/common/dropUp.png");
+}
+.combo.active .optionList {
+  height: 115px;
+  border: 1px solid #ddd;
+}
+.banner {
+  height: 450px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.banner img {
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  position: absolute;
+}
+.banner .container {
+  height: 0;
+  position: relative;
+  z-index: 1;
+}
+.banner .dateSell {
+  margin: 65px 30px;
+  width: 285px;
+  padding: 0 55px;
+  height: 320px;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
+}
+.banner .dateSell .logo {
+  height: 75px;
+  margin: 0 -55px;
+  background: url("../img/sell/helpSellIcon.jpg") no-repeat center #fff;
+}
+.banner .dateSell .combo {
+  margin: 18px 0;
+}
+.banner .dateSell .combo .text {
+  font-size: 18px;
+  height: 37px;
+  line-height: 37px;
+  width: 230px;
+}
+.banner .dateSell .combo .icon {
+  border-left: 1px dashed #ddd;
+  height: 37px;
+  width: 37px;
+  line-height: 37px;
+}
+.banner .dateSell .combo .optionList {
+  font-size: 18px;
+}
+.banner .dateSell .mobile input {
+  padding: 0 0 0 10px;
+  height: 35px;
+  font-size: 18px;
+  width: 271px;
+  line-height: 35px;
+}
+.banner .dateSell .buttonArea {
+  margin-top: 18px;
+}
+.banner .dateSell .buttonArea button {
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
+  border: 0;
+  background: #e80c0a;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
+.banner .dateSell .buttonArea .consult {
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.bannerAdd {
+  padding: 30px 0;
+}
+.bannerAdd .item {
+  width: 25%;
+  background: url("../img/sell/bannerAddIcon.jpg") no-repeat;
+  padding: 20px 0;
+}
+.bannerAdd .item p {
+  margin: 0 0 0 80px;
+}
+.bannerAdd .item .title {
+  font-size: 18px;
+  color: #333;
+}
+.bannerAdd .item .desc {
+  font-size: 12px;
+  color: #9d9c9c;
+}
+.bannerAdd .item.assess {
+  background-position: 0 -80px;
+}
+.bannerAdd .item.extension {
+  background-position: 0 -160px;
+}
+.bannerAdd .item.trade {
+  background-position: 0 -240px;
+}
+.newestSell {
+  background: #f7f7f7;
+  padding-top: 12px;
+}
+.newestSell .title {
+  font-size: 24px;
+  margin: 12px 0;
+  color: #333;
+}
+.newestSell .title .small {
+  font-size: 12px;
+  color: #888888;
+}
+.newestSell .title .red {
+  color: #e80c0a;
+}
+.newestSell .content {
+  background: #fff;
+  padding: 7px 0;
+  border: 1px solid #ddd;
+}
+.newestSell .cars .item {
+  position: relative;
+  margin-bottom: 24px;
+}
+.newestSell .cars .item:hover .car {
+  border-color: #e80c0a;
+}
+.newestSell .cars .item:hover .connect {
+  display: block;
+}
+.newestSell .cars .fr {
+  float: right;
+}
+.newestSell .cars .car {
+  border: 3px solid transparent;
+  padding: 0 15px 15px;
+}
+.newestSell .cars .car img {
+  max-height: 180px;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+.newestSell .cars .car .carName {
+  font-size: 14px;
+  color: #333;
+}
+.newestSell .cars .car .carPrice {
+  color: #e80c0a;
+  font-weight: bold;
+  margin: 4px 0;
+}
+.newestSell .cars .car .carDesc {
+  font-size: 12px;
+  color: #a1a1a1;
+}
+.newestSell .cars .connect {
+  display: none;
+  background: #e80c0a;
+  position: absolute;
+  color: #fff;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  font-size: 14px;
+  left: 0;
+  z-index: 1;
+}
+.newestSell .cars .connect .fr {
+  font-size: 12px;
+  margin-right: 8px;
+}
+.newestSell .cars .connect .mobile {
+  margin-left: 15px;
+}
+.newestSell .rightContent {
+  margin-left: -30px;
+  padding: 0 10px;
+  width: 208px;
+}
+.newestSell .itemContent .title {
+  font-size: 18px;
+  border-bottom: 1px solid #e80c0a;
+  padding: 9px 0;
+  margin: 0;
+}
+.newestSell .historySearch .combo {
+  margin: 10px 0;
+}
+.newestSell .historySearch .combo .text {
+  font-size: 18px;
+  height: 37px;
+  line-height: 37px;
+  width: 150px;
+}
+.newestSell .historySearch .combo .icon {
+  border-left: 1px dashed #ddd;
+  height: 37px;
+  width: 37px;
+  line-height: 37px;
+}
+.newestSell .historySearch .combo .optionList {
+  font-size: 18px;
+}
+.newestSell .historySearch .searchButton {
+  width: 205px;
+  height: 34px;
+  line-height: 34px;
+  color: #fff;
+  background: #e80c0a;
+  padding: 0;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+.newestSell .historySearch .onSellTitle {
+  font-size: 14px;
+  color: #333;
+  margin: 10px 0 0 0;
+}
+.newestSell .historySearch .onSellBrands .item {
+  font-size: 14px;
+  margin-right: 14px;
+  line-height: 26px;
+}
+.newestSell .newestOrder .orderItem {
+  margin: 14px 0;
+}
+.newestSell .newestOrder .dib {
+  font-size: 14px;
+  width: 33.333%;
+  overflow: hidden;
+  white-space: nowrap;
+}

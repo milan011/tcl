@@ -1,0 +1,576 @@
+@import "common/defined";
+@import "comboBox";
+
+.banner {
+  .container {
+    position: relative;
+  }
+  .bannerBg {
+    width: 100%;
+    height: 430px;
+  }
+  .storeInfo {
+    position: absolute;
+    background: #ffffff;
+    padding: 20px;
+    top: 50px;
+    left: 45px;
+  }
+  .storeName {
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+  }
+  .storeProp {
+    .label {
+      font-weight: bold;
+    }
+    .prop {
+      color: #747070;
+    }
+  }
+  .storeDetail {
+    background: @cLightGray;
+    padding: 30px 20px 45px;
+    margin: 0 -20px -20px;
+    .item {
+      width: 25%;
+      text-align: center;
+      border-left: 1px solid @cMidGray;
+      margin-left: -1px;
+      &.noBorder {
+        border: 0;
+      }
+    }
+    .label {
+      font-size: 12px;
+      color: @cLightBlack;
+    }
+    .content {
+      color: @cRed;
+      font-weight: bold;
+    }
+  }
+}
+
+.recommend {
+  padding: 20px 0;
+  background: @cWhite;
+  .title {
+    margin: 0 0 10px;
+    span {
+      font-size: 18px;
+    }
+    .red {
+      padding: 0 10px;
+      color: @cWhite;
+      background: @cRed;
+    }
+  }
+  .content {
+    border: 1px solid @cMidGray;
+    background: @cWhite;
+  }
+}
+
+//好车推荐
+.goodCar {
+  background: @cLightGray;
+  .translationalSlider {
+    position: relative;
+  }
+  .sliderContainer {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .sliderItem {
+    .pic {
+      height: 260px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .desc {
+      margin-left: 10px;
+      padding: 20px 0;
+      height: 220px;
+      position: relative;
+    }
+    .carTitle {
+      font-size: 18px;
+      color: @cDarkBlack;
+      font-weight: bolder;
+    }
+    .carDesc {
+      font-size: 12px;
+      color: #999;
+    }
+    .level {
+      width: 150px;
+      height: 100px;
+      color: @cRed;
+      background: url("../img/storeDetail/levelBg.png") no-repeat center;
+      text-align: center;
+      line-height: 80px;
+      font-size: 36px;
+    }
+    .textContent {
+      white-space: normal;
+      width: 230px;
+      p {
+        margin: 0;
+      }
+      .appraiserTitle {
+        color: @cDarkBlack;
+        font-size: 12px;
+      }
+      .appraiserText {
+        font-size: 12px;
+        color: #999;
+      }
+    }
+    .carPrice {
+      position: absolute;
+      bottom: 20px;
+      font-size: 24px;
+      color: @cRed;
+      white-space: normal;
+      letter-spacing: normal;
+      .small {
+        font-size: 16px;
+      }
+    }
+  }
+  .sliderControl {
+    position: absolute;
+    right: 40px;
+    bottom: 30px;
+    border: 1px solid @cRed;
+    .borderRadius(5px);
+    .item {
+      padding: 12px;
+      background: url("../img/storeDetail/slider_control.png") no-repeat;
+      cursor: pointer;
+      &:hover {
+        background-position-y: -24px;
+      }
+      &.right {
+        background-position-x: -24px;
+      }
+    }
+  }
+  .testing {
+    background: @cRed;
+    height: 260px;
+    margin-left: 8px;
+    .title {
+      margin: 50px 0 30px 50px;
+      font-size: 34px;
+      line-height: 1em;
+    }
+    .special {
+      font-size: 32px;
+      color: #3e4a68;
+      background: url("../img/storeDetail/specialBg.png") no-repeat;
+      padding: 3px 18px;
+      margin-left: 10px;
+    }
+    p {
+      margin: 0 0 0 50px;
+      font-size: 12px;
+      color: #ffffff;
+      line-height: 29px;
+    }
+    span {
+      background: url("../img/storeDetail/serialBg.png") no-repeat right bottom;
+      padding: 4px 5px;
+      margin-right: 5px;
+    }
+  }
+}
+
+//新车推荐
+.newCar {
+  background: #f3f3f3;
+  .content {
+    padding: 18px 10px;
+  }
+  .item {
+    width: 25%;
+  }
+  .car {
+    margin: 0 40px;
+    &:hover {
+      .carName {
+        color: @cRed;
+      }
+    }
+    img {
+      width: 220px;
+      height: 160px;
+    }
+    p {
+      margin: 0;
+    }
+    .carName {
+      font-size: 14px;
+      color: @cBlack;
+    }
+    .carPrice {
+      margin: 5px 0;
+      font-size: 24px;
+      color: @cRed;
+      .small {
+        font-size: 16px;
+      }
+    }
+    .carDesc {
+      font-size: 12px;
+      color: @cA1;
+    }
+  }
+}
+
+//车列表
+.carList {
+  .itemContent {
+    border: 1px solid @cMidGray;
+    padding: 0 10px;
+    .contentTitle {
+      color: @cBlack;
+      line-height: 42px;
+      border-bottom: 1px solid @cRed;
+      padding-left: 10px;
+    }
+  }
+  .searchTags {
+    .tagItem {
+      padding: 10px;
+      border-bottom: 1px solid @cF2;
+      border-top: 1px solid @cF2;
+      margin-bottom: -1px;
+      .title {
+        font-weight: bold;
+        color: @cDarkBlack;
+        line-height: 34px;
+      }
+      .tagLinks {
+        line-height: 24px;
+      }
+      .linkItem {
+        color: #444;
+        font-size: 14px;
+        margin-right: 20px;
+        &.active {
+          color: @cRed;
+        }
+        &:hover {
+          color: @cRed;
+        }
+      }
+    }
+  }
+  .brand {
+    position: relative;
+    .moreBrands {
+      position: absolute;
+      background: url("../img/storeDetail/moreBranIcon.png") no-repeat;
+      width: 12px;
+      height: 12px;
+      right: 0;
+      top: 20px;
+      cursor: pointer;
+      &.active {
+        background-position: 0 -12px;
+      }
+    }
+    .brandList {
+      position: absolute;
+      width: 200px;
+      background: #ffffff;
+      border: 1px solid @cMidGray;
+      border-top: 3px solid @cRed;
+      top: -3px;
+      right: -212px;
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+    .linkTags {
+      width: 29px;
+      border-right: 1px solid @cMidGray;
+    }
+    .linkItem {
+      font-size: 12px;
+      width: 29px;
+      text-align: center;
+      line-height: 22px;
+    }
+    .brandGroups {
+      width: 170px;
+      height: 570px;
+      overflow-y: scroll;
+      .tag {
+        .brandItem {
+        }
+      }
+      .brandItem {
+        font-size: 12px;
+        line-height: 32px;
+        padding: 0 10px;
+        text-align: center;
+        .text {
+          margin-top: -12px;
+        }
+      }
+      .title {
+        background: @cLightGray;
+        font-weight: normal;
+        color: #999;
+        font-size: 12px;
+        padding-left: 1em;
+      }
+    }
+  }
+  .hotType {
+    margin-top: 15px;
+    .carTypeList {
+      list-style: none;
+      margin: 0;
+      padding: 10px 10px 30px;
+      li {
+        line-height: 34px;
+        border-bottom: 1px dashed @cMidGray;
+        color: @cBlack;
+        padding-left: 30px;
+        position: relative;
+        &:hover {
+          color: @cRed;
+        }
+      }
+      .num {
+        position: absolute;
+        left: 0;
+        width: 16px;
+        height: 16px;
+        .borderRadius(100%);
+        background: @cMidGray;
+        color: @cWhite;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        top: 50%;
+        margin-top: -8px;
+        &.c1 {
+          background: #e93a34;
+        }
+        &.c2 {
+          background: #f38c26;
+        }
+        &.c3 {
+          background: #f7b352;
+        }
+      }
+    }
+  }
+  .leftAdd {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .cars {
+    margin-left: 10px;
+    .tabTitle {
+      border: 1px solid @cMidGray;
+      .titleItem {
+        line-height: 42px;
+        border-left: 1px solid @cMidGray;
+        border-top: 2px solid transparent;
+        margin: -2px -1px 0;
+        width: 100px;
+        text-align: center;
+        color: @cBlack;
+        cursor: pointer;
+        &.active {
+          border-top-color: @cRed;
+          color: @cRed;
+        }
+      }
+    }
+    .sortBar {
+      background: @cLightGray;
+      border: 1px solid @cMidGray;
+      margin: -1px 0;
+      line-height: 40px;
+      .sortItem {
+        margin: 0 10px;
+        cursor: pointer;
+      }
+      .arrows {
+        width: 17px;
+        height: 12px;
+        vertical-align: middle;
+      }
+      .arrowItem {
+        width: 17px;
+        height: 6px;
+        background: url("../img/storeDetail/sortArrow.png") no-repeat;
+        &.up {
+          background-position-x: 0;
+        }
+        &.down {
+          background-position-x: -17px;
+        }
+        &.active {
+          background-position-y: -6px;
+        }
+      }
+      .position {
+        padding-right: 10px;
+        .icon {
+          background: url("../img/storeDetail/positionIcon.png") no-repeat;
+          width: 10px;
+          height: 14px;
+          vertical-align: middle;
+        }
+        .area {
+          margin-left: 7px;
+          font-size: 12px;
+        }
+        .drop {
+          cursor: pointer;
+          position: relative;
+          line-height: 24px;
+          vertical-align: middle;
+          border: 1px solid @cMidGray;
+          background: @cWhite;
+          &.active {
+            .dropList {
+              display: block;
+            }
+          }
+          .text {
+            font-size: 12px;
+            padding: 0 20px 0 0;
+            width: 50px;
+            text-align: center;
+            height: 24px;
+            line-height: 24px;
+          }
+          .dropIcon {
+            height: 24px;
+            width: 20px;
+            background: url("../img/storeDetail/dropDownIcon.png") no-repeat center;
+          }
+          .dropList {
+            position: absolute;
+            display: none;
+            width: 100%;
+            left: -1px;
+            border: 1px solid @cMidGray;
+            background: @cWhite;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            li {
+              margin-left: 10px;
+              padding: 0;
+              &:hover {
+                color: @cRed;
+              }
+            }
+          }
+        }
+      }
+    }
+    .carList {
+    }
+    .carItem {
+      border: 1px solid @cMidGray;
+      margin-top: -1px;
+      padding: 20px;
+      .carImg {
+        width: 220px;
+        height: 160px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .carDesc {
+        width: 460px;
+        margin: 0 0 0 20px;
+      }
+      .carName {
+        color: @cBlack;
+      }
+      .carTags {
+        overflow: hidden;
+        line-height: 24px;
+        max-height: 48px;
+        margin-left: -10px;
+        .dib {
+          color: @cB2;
+          font-size: 12px;
+          margin-left: -1px;
+          border-left: 1px solid @cMidGray;
+          padding: 0 10px;
+        }
+      }
+      .carTextDesc {
+        margin-top: 15px;
+        font-size: 12px;
+        line-height: 18px;
+        max-height: 36px;
+        overflow: hidden;
+        .label {
+          color: #666;
+          font-weight: bold;
+          margin-right: 10px;
+        }
+        .descText {
+          color: #9c9c9c;
+        }
+      }
+      .carTag {
+        margin-top: 10px;
+        .tagItem {
+          background: url("../img/storeDetail/tagBg.png") no-repeat;
+          font-size: 12px;
+          padding-left: 25px;
+          width: 70px;
+          line-height: 25px;
+          text-align: center;
+          &.high {
+            background-position: -96px 0;
+            margin-left: 10px;
+          }
+        }
+      }
+      .carPrice {
+        font-size: 24px;
+        font-weight: bold;
+        color: @cRed;
+        letter-spacing: normal;
+        .small {
+          font-size: 16px;
+        }
+      }
+    }
+    .loadMore {
+      padding: 0 24px 0 36px;
+      margin: 30px auto 10px;
+      color: @cWhite;
+      line-height: 45px;
+      width: 135px;
+      text-align: center;
+      background: url("../img/storeDetail/loadMoreIcon.png") no-repeat @cRed 22px center;
+    }
+  }
+}
+

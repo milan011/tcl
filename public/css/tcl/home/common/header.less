@@ -1,0 +1,130 @@
+@import "defined";
+
+.topNav {
+  background: @cMidLightGray;
+  line-height: 25px;
+  .siteName {
+    color: @cBlack;
+    font-size: 12px;
+  }
+  .quickLink {
+    .item {
+      color: @cBlack;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.top {
+  padding: 12px 0;
+  height: 56px;
+  .left {
+
+  }
+  .cityArea {
+    width: 75px;
+    height: 36px;
+    float: right;
+    margin: 12px 15px 0;
+    position: relative;
+    z-index: 3;
+    border: 1px solid @cWhite;
+    border-bottom: 0;
+    &.active {
+      background: #ffffff;
+      border-color: @cMidGray;
+      -webkit-box-shadow: 0px -5px 13px 2px #ddd;
+      -moz-box-shadow: 0px -5px 13px 2px #ddd;
+      box-shadow: 0px -5px 13px 2px #ddd;
+      .city {
+        color: @cRed;
+        background: #ffffff url("../../img/common/areaUp.png") no-repeat 55px center;
+      }
+      .cityListArea {
+        -webkit-box-shadow: 0px 0px 13px 3px #ddd;
+        -moz-box-shadow: 0px 0px 13px 3px #ddd;
+        box-shadow: 0px 0px 13px 3px #ddd;
+      }
+    }
+  }
+  .city {
+    font-size: 12px;
+    text-align: center;
+    padding: 0 12px 0 0;
+    margin-top: 9px;
+    background: #000 url("../../img/common/areaDown.png") no-repeat 55px center;
+    color: #ffffff;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  .cityListArea {
+    background: #ffffff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    height: 0;
+    -webkit-transition: all ease-in .3s;
+    -moz-transition: all ease-in .3s;
+    -ms-transition: all ease-in .3s;
+    -o-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+  .cityList {
+    width: 315px;
+    margin: 20px;
+    .cityItem {
+      text-align: left;
+      font-size: 14px;
+      line-height: 22px;
+      width: 20%;
+      color: @cBlack;
+    }
+  }
+
+  .mainNav {
+    padding: 19px 0;
+    .item {
+      padding: 0 18px;
+      &.active, &:hover {
+        span {
+          border-bottom: 6px solid @cRed;
+        }
+      }
+      span {
+        color: @cDarkBlack;
+        padding: 0 5px;
+      }
+    }
+  }
+  .mobileAdd {
+    padding: 15px 0;
+    margin: 0 20px;
+  }
+  .right {
+    float: right;
+    display: block;
+    padding: 15px 0;
+  }
+  .searchInput {
+    background: url("../../img/common/searchIcon.png") no-repeat 8px center;
+    padding-left: 26px;
+    outline: none;
+    border: 1px solid @cMidGray;
+    font-size: 12px;
+    height: 28px;
+    vertical-align: middle;
+    line-height: 28px;
+  }
+  .searchButton {
+    color: @cWhite;
+    background: @cRed;
+    border: 1px solid @cRed;
+    height: 28px;
+    padding: 1px 10px;
+    cursor: pointer;
+  }
+}

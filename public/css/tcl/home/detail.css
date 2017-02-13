@@ -1,0 +1,359 @@
+.overlay {
+  position: fixed;
+  background: #000000;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=63);
+  opacity: 0.63;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=63);
+  filter: alpha(opacity=63);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+}
+main {
+  border-top: 1px solid #ddd;
+}
+.breadNav {
+  line-height: 62px;
+}
+.breadNav .item {
+  color: #222;
+  font-size: 14px;
+}
+.breadNav .split {
+  padding: 0 12px;
+}
+.carDetail {
+  border: 1px solid #ddd;
+}
+.carDetail .carDetailImg {
+  width: 600px;
+  height: 400px;
+}
+.carDetail .carDetailImg img {
+  width: 100%;
+  height: 100%;
+}
+.carDetail .carDetailText {
+  width: 550px;
+  padding: 0 20px;
+}
+.carDetail .carName {
+  font-size: 22px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 12px 0;
+}
+.carDetail .carTag {
+  margin-top: 10px;
+}
+.carDetail .carTag .tagItem {
+  background: url("../img/storeDetail/tagBg.png") no-repeat;
+  font-size: 12px;
+  padding-left: 25px;
+  width: 70px;
+  line-height: 25px;
+  text-align: center;
+}
+.carDetail .carTag .tagItem.high {
+  background-position: -96px 0;
+  margin-left: 10px;
+}
+.carDetail .carPrice {
+  line-height: 38px;
+  font-size: 38px;
+  font-weight: bold;
+  color: #e80c0a;
+  letter-spacing: normal;
+  margin: 12px 0;
+}
+.carDetail .carPrice .small {
+  font-size: 12px;
+  vertical-align: top;
+}
+.carDetail .carPrice .gray {
+  font-size: 12px;
+  color: #999;
+  vertical-align: top;
+}
+.carDetail .carProps {
+  border: 1px dashed #ddd;
+  border-left: 0;
+  border-right: 0;
+  padding: 18px 0;
+  overflow: hidden;
+}
+.carDetail .carProps .item {
+  width: 25%;
+  text-align: center;
+  border-left: 1px solid #ddd;
+  margin-left: -1px;
+}
+.carDetail .carProps .label {
+  font-size: 12px;
+  color: #888;
+}
+.carDetail .carProps .text {
+  color: #222;
+}
+.carDetail .service {
+  margin: 10px 0;
+}
+.carDetail .service p {
+  margin: 0;
+  font-size: 12px;
+  color: #444;
+  line-height: 22px;
+}
+.carDetail .buttonArea {
+  margin: 10px 0;
+}
+.carDetail .buttonArea .dateCar {
+  cursor: pointer;
+  background: #e80c0a;
+  color: #fff;
+  font-size: 18px;
+  width: 125px;
+  text-align: center;
+  line-height: 36px;
+}
+.carDetail .buttonArea .share {
+  background: url("../img/carDetail/sharedBg.png") no-repeat center center #3a3a3a;
+  width: 43px;
+  height: 36px;
+  cursor: pointer;
+}
+.carDetail .connectInfo {
+  margin: 20px -20px 0;
+  padding: 10px 20px;
+  background: #f7f7f7;
+}
+.carDetail .connectInfo .item {
+  font-size: 12px;
+  color: #343434;
+  line-height: 22px;
+}
+.carDetail .connectInfo .gray {
+  color: #807e7e;
+}
+.carDetail .connectInfo .storeLink {
+  line-height: 44px;
+}
+.carDetail .connectInfo .storeLink .linkItem {
+  padding-left: 20px;
+  font-size: 12px;
+  line-height: 33px;
+  vertical-align: middle;
+  color: #949393;
+  background: url("../img/carDetail/storeLinkIcon.png") no-repeat 0 center;
+}
+.floor {
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  margin-top: 20px;
+}
+.floor .title {
+  padding: 0 40px 0 20px;
+  line-height: 48px;
+  margin-top: -1px;
+  background: #e80c0a url("../img/carDetail/floorTitleBg.png") no-repeat right;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  color: #fff;
+  font-size: 24px;
+}
+.floor .content {
+  padding: 20px 30px;
+  background: #fff;
+}
+.carSimpleInfo table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.carSimpleInfo tr {
+  width: 100%;
+}
+.carSimpleInfo td {
+  width: 12.5%;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  line-height: 36px;
+  color: #222;
+}
+.carSimpleInfo .label {
+  background: #eee;
+}
+.carDesc img {
+  width: 100%;
+}
+.certInfo .content {
+  background: url("../img/carDetail/checkResultBg.jpg") no-repeat center center;
+  width: 1130px;
+  height: 650px;
+}
+.certInfo p {
+  margin: 0;
+}
+.certInfo .certContent {
+  padding: 50px 100px;
+}
+.certInfo .certTitle {
+  font-size: 30px;
+  color: #222;
+  text-align: center;
+  margin-top: 35px;
+}
+.certInfo .certTarget {
+  margin: 0 0 70px;
+}
+.certInfo .certTarget .item {
+  font-size: 12px;
+  color: #b2b0b0;
+  width: 50%;
+  text-align: center;
+}
+.certInfo .certLabel {
+  font-size: 14px;
+  color: #000;
+  line-height: 24px;
+}
+.certInfo .certText {
+  color: #7e7c7c;
+  font-size: 14px;
+  line-height: 24px;
+}
+.certInfo .split {
+  border-top: 1px dashed #ed100f;
+  margin: 28px -50px;
+}
+.certInfo .checkTerms .item {
+  width: 25%;
+}
+.certInfo .checkTerms .termLabel {
+  font-size: 18px;
+  color: #7b7b7b;
+}
+.certInfo .checkTerms .termList {
+  line-height: 22px;
+}
+.certInfo .checkTerms .termList .label {
+  color: #111;
+  font-size: 14px;
+  width: 120px;
+}
+.certInfo .checkTerms .termList .num {
+  font-size: 14px;
+  color: #949494;
+  width: 45px;
+  text-align: center;
+}
+.certInfo .checkTerms .termList .icon {
+  min-width: 20px;
+  min-height: 20px;
+}
+.certInfo .checkTerms .termList .icon.checkRight {
+  background: url("../img/carDetail/checkRight.jpg") no-repeat;
+}
+.certInfo .dateCar {
+  width: 165px;
+  height: 40px;
+  background: url("../img/carDetail/phoneIcon.png") no-repeat #e80c0a 15px center;
+  line-height: 40px;
+  font-size: 18px;
+  color: #fff;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  padding-left: 15px;
+  margin: 20px auto;
+  display: block;
+}
+.recommend .rightLink {
+  font-size: 12px;
+  color: #878787;
+  line-height: 48px;
+}
+.recommend .content {
+  padding: 18px 10px;
+}
+.recommend .item {
+  width: 25%;
+}
+.recommend .car {
+  margin: 0 40px;
+}
+.recommend .car:hover .carName {
+  color: #e80c0a;
+}
+.recommend .car img {
+  width: 220px;
+  height: 160px;
+}
+.recommend .car p {
+  margin: 0;
+}
+.recommend .car .carName {
+  font-size: 14px;
+  color: #333;
+}
+.recommend .car .carPrice {
+  margin: 5px 0;
+  font-size: 24px;
+  color: #e80c0a;
+}
+.recommend .car .carPrice .small {
+  font-size: 16px;
+}
+.recommend .car .carDesc {
+  font-size: 12px;
+  color: #a1a1a1;
+}
+#dateCarModal .buttonArea {
+  width: auto;
+}
+.messageBox p {
+  margin: 0;
+  line-height: 1.5em;
+}
+.messageBox .carNameTips {
+  font-size: 18px;
+  color: #838383;
+}
+.messageBox .carName {
+  font-size: 18px;
+  color: #000;
+}
+.messageBox .mobileArea {
+  margin-top: 20px;
+}
+.messageBox .mobileArea input {
+  width: 300px;
+  height: 42px;
+  outline: none;
+  border: 1px solid #e80c0a;
+  font-size: 14px;
+  line-height: 42px;
+  padding: 0 16px;
+}
+.messageBox .mobileArea button {
+  width: 125px;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+  color: #fff;
+  font-size: 18px;
+  background: #e80c0a;
+  border: 0;
+  outline: none;
+}
+.messageBox .tips {
+  font-size: 12px;
+  color: #aaaaaa;
+  margin-top: 5px;
+}

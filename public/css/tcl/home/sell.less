@@ -1,0 +1,259 @@
+@import "comboBox";
+@import "common/defined";
+
+.banner {
+  height: 450px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  img {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    position: absolute;
+  }
+  .container {
+    height: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .dateSell {
+    margin: 65px 30px;
+    width: 285px;
+    padding: 0 55px;
+    height: 320px;
+    background: @cWhite;
+    background: rgba(255, 255, 255, .7);
+    .logo {
+      height: 75px;
+      margin: 0 -55px;
+      background: url("../img/sell/helpSellIcon.jpg") no-repeat center @cWhite;
+    }
+    .combo {
+      margin: 18px 0;
+      .text {
+        font-size: 18px;
+        height: 37px;
+        line-height: 37px;
+        width: 230px;
+      }
+      .icon {
+        border-left: 1px dashed @cMidGray;
+        height: 37px;
+        width: 37px;
+        line-height: 37px;
+      }
+      .optionList {
+        font-size: 18px;
+      }
+    }
+    .mobile {
+      input {
+        padding: 0 0 0 10px;
+        height: 35px;
+        font-size: 18px;
+        width: 271px;
+        line-height: 35px;
+      }
+    }
+    .buttonArea {
+      margin-top: 18px;
+      button {
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        outline: none;
+        border: 0;
+        background: @cRed;
+        color: @cWhite;
+        font-weight: bold;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      .consult {
+        line-height: 40px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.bannerAdd {
+  padding: 30px 0;
+  .item {
+    width: 25%;
+    background: url("../img/sell/bannerAddIcon.jpg") no-repeat;
+    padding: 20px 0;
+    p {
+      margin: 0 0 0 80px;
+    }
+    .title {
+      font-size: 18px;
+      color: @cBlack;
+    }
+    .desc {
+      font-size: 12px;
+      color: #9d9c9c;
+    }
+    &.assess {
+      background-position: 0 -80px;
+    }
+    &.extension {
+      background-position: 0 -160px;
+    }
+    &.trade {
+      background-position: 0 -240px;
+    }
+  }
+}
+
+.newestSell {
+  background: @cLightGray;
+  padding-top: 12px;
+  .title {
+    font-size: 24px;
+    margin: 12px 0;
+    color: @cBlack;
+    .small {
+      font-size: 12px;
+      color: #888888;
+    }
+    .red {
+      color: @cRed;
+    }
+  }
+  .content {
+    background: @cWhite;
+    padding: 7px 0;
+    border: 1px solid @cMidGray;
+  }
+  .cars {
+    .item {
+      position: relative;
+      margin-bottom: 24px;
+      &:hover {
+        .car {
+          border-color: @cRed;
+        }
+        .connect {
+          display: block;
+        }
+      }
+    }
+    .fr {
+      float: right;
+    }
+    .car {
+      border: 3px solid transparent;
+      padding: 0 15px 15px;
+      img {
+        max-height: 180px;
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+      .carName {
+        font-size: 14px;
+        color: @cBlack;
+      }
+      .carPrice {
+        color: @cRed;
+        font-weight: bold;
+        margin: 4px 0;
+      }
+      .carDesc {
+        font-size: 12px;
+        color: @cA1;
+      }
+    }
+    .connect {
+      display: none;
+      background: @cRed;
+      position: absolute;
+      color: @cWhite;
+      width: 100%;
+      height: 45px;
+      line-height: 45px;
+      font-size: 14px;
+      left: 0;
+      z-index: 1;
+      .fr {
+        font-size: 12px;
+        margin-right: 8px;
+      }
+      .mobile {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .rightContent {
+    margin-left: -30px;
+    padding: 0 10px;
+    width: 208px;
+  }
+  .itemContent {
+    .title {
+      font-size: 18px;
+      border-bottom: 1px solid @cRed;
+      padding: 9px 0;
+      margin: 0;
+    }
+  }
+  .historySearch {
+    .combo {
+      margin: 10px 0;
+      .text {
+        font-size: 18px;
+        height: 37px;
+        line-height: 37px;
+        width: 150px;
+      }
+      .icon {
+        border-left: 1px dashed @cMidGray;
+        height: 37px;
+        width: 37px;
+        line-height: 37px;
+      }
+      .optionList {
+        font-size: 18px;
+      }
+    }
+    .searchButton {
+      width: 205px;
+      height: 34px;
+      line-height: 34px;
+      color: @cWhite;
+      background: @cRed;
+      padding: 0;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+    }
+    .onSellTitle {
+      font-size: 14px;
+      color: @cBlack;
+      margin: 10px 0 0 0;
+    }
+    .onSellBrands {
+      .item {
+        font-size: 14px;
+        margin-right: 14px;
+        line-height: 26px;
+      }
+    }
+  }
+  .newestOrder {
+    .orderItem {
+      margin: 14px 0;
+    }
+    .dib {
+      font-size: 14px;
+      width: 33.333%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+}

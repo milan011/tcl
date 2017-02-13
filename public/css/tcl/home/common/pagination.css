@@ -1,0 +1,16 @@
+.pagination {
+  text-align: center;
+}
+.pagination .item {
+  color: #fff;
+  background: #333;
+  border: 1px solid #ddd;
+  margin: 0 5px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.pagination .item.active {
+  background: #e80c0a;
+  border-color: #e80c0a;
+}

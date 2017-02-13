@@ -1,0 +1,120 @@
+.topNav {
+  background: #ececec;
+  line-height: 25px;
+}
+.topNav .siteName {
+  color: #333;
+  font-size: 12px;
+}
+.topNav .quickLink .item {
+  color: #333;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.top {
+  padding: 12px 0;
+  height: 56px;
+}
+.top .cityArea {
+  width: 75px;
+  height: 36px;
+  float: right;
+  margin: 12px 15px 0;
+  position: relative;
+  z-index: 3;
+  border: 1px solid #fff;
+  border-bottom: 0;
+}
+.top .cityArea.active {
+  background: #ffffff;
+  border-color: #ddd;
+  -webkit-box-shadow: 0px -5px 13px 2px #ddd;
+  -moz-box-shadow: 0px -5px 13px 2px #ddd;
+  box-shadow: 0px -5px 13px 2px #ddd;
+}
+.top .cityArea.active .city {
+  color: #e80c0a;
+  background: #ffffff url("../../img/common/areaUp.png") no-repeat 55px center;
+}
+.top .cityArea.active .cityListArea {
+  -webkit-box-shadow: 0px 0px 13px 3px #ddd;
+  -moz-box-shadow: 0px 0px 13px 3px #ddd;
+  box-shadow: 0px 0px 13px 3px #ddd;
+}
+.top .city {
+  font-size: 12px;
+  text-align: center;
+  padding: 0 12px 0 0;
+  margin-top: 9px;
+  background: #000 url("../../img/common/areaDown.png") no-repeat 55px center;
+  color: #ffffff;
+  line-height: 20px;
+  cursor: pointer;
+}
+.top .cityListArea {
+  background: #ffffff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+  height: 0;
+  -webkit-transition: all ease-in 0.3s;
+  -moz-transition: all ease-in 0.3s;
+  -ms-transition: all ease-in 0.3s;
+  -o-transition: all ease-in 0.3s;
+  transition: all ease-in 0.3s;
+}
+.top .cityList {
+  width: 315px;
+  margin: 20px;
+}
+.top .cityList .cityItem {
+  text-align: left;
+  font-size: 14px;
+  line-height: 22px;
+  width: 20%;
+  color: #333;
+}
+.top .mainNav {
+  padding: 19px 0;
+}
+.top .mainNav .item {
+  padding: 0 18px;
+}
+.top .mainNav .item.active span,
+.top .mainNav .item:hover span {
+  border-bottom: 6px solid #e80c0a;
+}
+.top .mainNav .item span {
+  color: #222;
+  padding: 0 5px;
+}
+.top .mobileAdd {
+  padding: 15px 0;
+  margin: 0 20px;
+}
+.top .right {
+  float: right;
+  display: block;
+  padding: 15px 0;
+}
+.top .searchInput {
+  background: url("../../img/common/searchIcon.png") no-repeat 8px center;
+  padding-left: 26px;
+  outline: none;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  height: 28px;
+  vertical-align: middle;
+  line-height: 28px;
+}
+.top .searchButton {
+  color: #fff;
+  background: #e80c0a;
+  border: 1px solid #e80c0a;
+  height: 28px;
+  padding: 1px 10px;
+  cursor: pointer;
+}

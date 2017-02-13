@@ -1,0 +1,59 @@
+@cRed:#e80c0a;
+
+@cLightGray:#f7f7f7;
+@cF2:#f2f2f2;
+@cF1:#f1f1f1;
+@cMidLightGray:#ececec;
+@cMidGray:#ddd;
+@cB2:#b2b2b2;
+@cA1:#a1a1a1;
+@cNormalGray:#878787;
+
+@cLightBlack:#484848;
+@cBlack:#333;
+@cDarkBlack:#222;
+
+@cWhite:#fff;
+
+@column:40/16em;
+@COLUMN:50/16em;
+@gutter:10/16em;
+
+.borderRadius(@value){
+  -webkit-border-radius:@value;
+  -moz-border-radius:@value;
+  border-radius:@value;
+}
+
+.swing(@leftWidth,@rightWidth,@height,@display:true) {
+  width: 100%;
+  & when (@display) {
+    display: inline-block;
+  }
+  .main {
+    float: left;
+    width: 100%;
+    .wrapper {
+      margin-left: @leftWidth;
+      margin-right: @rightWidth;
+      height: @height;
+    }
+  }
+  .left {
+    float: left;
+    width: @leftWidth;
+    margin-left: -100%;
+    height: @height;
+  }
+  .right {
+    float: left;
+    width: @rightWidth;
+    margin-left: -@rightWidth;
+    height: @height;
+  }
+}
+.opacity(@opacity){
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=@opacity);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=@opacity);
+  opacity: @opacity/100;
+}

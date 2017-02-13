@@ -1,0 +1,549 @@
+.pagination {
+  text-align: center;
+}
+.pagination .item {
+  color: #fff;
+  background: #333;
+  border: 1px solid #ddd;
+  margin: 0 5px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.pagination .item.active {
+  background: #e80c0a;
+  border-color: #e80c0a;
+}
+.combo {
+  border: 1px solid #dddddd;
+  position: relative;
+}
+.combo .text {
+  cursor: pointer;
+  background: #FFFFFF;
+  padding-left: 15px;
+  height: 45px;
+}
+.combo .icon {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  background: #f1f1f1 url("../img/common/dropDown.png") no-repeat center center;
+}
+.combo .optionList {
+  font-size: 16px;
+  position: absolute;
+  z-index: 1;
+  height: 0;
+  left: -1px;
+  letter-spacing: normal;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid transparent;
+  -webkit-transition: height ease-in 0.3s;
+  -moz-transition: height ease-in 0.3s;
+  -ms-transition: height ease-in 0.3s;
+  -o-transition: height ease-in 0.3s;
+  transition: height ease-in 0.3s;
+}
+.combo ul {
+  background: #fff;
+  list-style: none;
+  padding: 10px 0;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  height: 95px;
+}
+.combo li {
+  padding-left: 15px;
+  cursor: pointer;
+}
+.combo li:hover {
+  color: #e80c0a;
+}
+.combo.active .icon {
+  background-image: url("../img/common/dropUp.png");
+}
+.combo.active .optionList {
+  height: 115px;
+  border: 1px solid #ddd;
+}
+main {
+  border-top: 1px solid #ddd;
+}
+.breadNav {
+  line-height: 62px;
+}
+.breadNav .item {
+  color: #222;
+  font-size: 14px;
+}
+.breadNav .split {
+  padding: 0 12px;
+}
+.searchTags {
+  border: 1px solid #ddd;
+}
+.searchTags .selectedTag {
+  background: #f7f7f7;
+  padding: 9px 0;
+  line-height: 22px;
+}
+.searchTags .selectedTag .label {
+  margin-left: 24px;
+  font-size: 14px;
+  color: #333;
+}
+.searchTags .selectedTag .item {
+  line-height: 20px;
+  font-size: 12px;
+  border: 1px solid #e80c0a;
+  padding: 0 0 0 8px;
+  background: #fff;
+}
+.searchTags .selectedTag .item .closeIcon {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  padding: 10px;
+  vertical-align: top;
+  margin-left: 5px;
+  background: url("../img/list/searchTagRemoveIcon.png") no-repeat right 1px;
+  cursor: pointer;
+}
+.searchTags .selectedTag .clearAll {
+  font-size: 14px;
+  margin-right: 10px;
+  color: #333;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+.searchTags .tagRow {
+  margin: 20px 0;
+}
+.searchTags .tagRow.active .more {
+  background-position-y: -16px;
+}
+.searchTags .tagRow .label {
+  width: 75px;
+  text-align: center;
+  color: #9d9ea2;
+  font-size: 14px;
+}
+.searchTags .tagRow .tags {
+  width: 1035px;
+  height: 22px;
+  overflow: hidden;
+}
+.searchTags .tagRow .tagItem {
+  margin-right: 35px;
+  font-size: 14px;
+  color: #444;
+}
+.searchTags .tagRow .tagItem.active {
+  color: #e80c0a;
+}
+.searchTags .tagRow .more {
+  width: 42px;
+  font-size: 12px;
+  color: #e80c0a;
+  border: 1px solid #ffc5c4;
+  background: url("../img/list/searchTagMoreIcon.png") no-repeat right 0;
+  padding-left: 3px;
+  cursor: pointer;
+}
+.searchTags .tagRow .brandKinds {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+}
+.searchTags .tagRow .brandKinds .kindTag {
+  margin: 10px;
+}
+.searchTags .tagRow .brandKinds .kindTag .item {
+  padding: 0 5px;
+  color: #e80c0a;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+.searchTags .tagRow .brandKinds .kindTag .item.active {
+  background: #e80c0a;
+  color: #fff;
+  border-color: #e80c0a;
+}
+.searchTags .tagRow .brandKinds .brands {
+  margin: 10px;
+}
+.searchTags .tagRow .brandKinds .brandPanel {
+  display: none;
+}
+.searchTags .tagRow .brandKinds .brandPanel.active {
+  display: block;
+}
+.searchTags .tagRow .brandKinds .brandPanel .item {
+  font-size: 14px;
+  padding: 0 10px;
+  line-height: 20px;
+  color: #333;
+}
+.searchTags .tagRow .brandKinds .brandPanel .item.active {
+  color: #e80c0a;
+}
+.picAdds {
+  padding: 10px 0;
+  background: #f7f7f7;
+}
+.picAdds .item {
+  font-size: 0;
+  width: 20%;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  margin: 0 -1px;
+}
+.picAdds .item img {
+  width: 100%;
+}
+.mainArea {
+  margin-top: 20px;
+}
+.mainArea .cars .tabTitle {
+  border: 1px solid #ddd;
+}
+.mainArea .cars .tabTitle .titleItem {
+  line-height: 42px;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-top: 2px solid transparent;
+  margin: -2px -1px 0;
+  width: 100px;
+  text-align: center;
+  color: #333;
+  cursor: pointer;
+}
+.mainArea .cars .tabTitle .titleItem.active {
+  border-top-color: #e80c0a;
+  border-left-color: #ddd;
+  border-right-color: #ddd;
+  color: #e80c0a;
+}
+.mainArea .cars .sortBar {
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  margin: -1px 0;
+  line-height: 40px;
+}
+.mainArea .cars .sortBar .sortItem {
+  margin: 0 10px;
+  cursor: pointer;
+}
+.mainArea .cars .sortBar .sortItem .dib {
+  color: #333;
+}
+.mainArea .cars .sortBar .arrows {
+  width: 17px;
+  height: 12px;
+  vertical-align: middle;
+}
+.mainArea .cars .sortBar .arrowItem {
+  width: 17px;
+  height: 6px;
+  background: url("../img/storeDetail/sortArrow.png") no-repeat;
+}
+.mainArea .cars .sortBar .arrowItem.up {
+  background-position-x: 0;
+}
+.mainArea .cars .sortBar .arrowItem.down {
+  background-position-x: -17px;
+}
+.mainArea .cars .sortBar .arrowItem.active {
+  background-position-y: -6px;
+}
+.mainArea .cars .sortBar .position {
+  padding-right: 10px;
+}
+.mainArea .cars .sortBar .position .icon {
+  background: url("../img/storeDetail/positionIcon.png") no-repeat;
+  width: 10px;
+  height: 14px;
+  vertical-align: middle;
+}
+.mainArea .cars .sortBar .position .area {
+  margin-left: 7px;
+  font-size: 12px;
+}
+.mainArea .cars .sortBar .position .drop {
+  cursor: pointer;
+  position: relative;
+  line-height: 24px;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.mainArea .cars .sortBar .position .drop.active .dropList {
+  display: block;
+}
+.mainArea .cars .sortBar .position .drop .text {
+  font-size: 12px;
+  padding: 0 20px 0 0;
+  width: 50px;
+  text-align: center;
+  height: 24px;
+  line-height: 24px;
+}
+.mainArea .cars .sortBar .position .drop .dropIcon {
+  height: 24px;
+  width: 20px;
+  background: url("../img/storeDetail/dropDownIcon.png") no-repeat center;
+}
+.mainArea .cars .sortBar .position .drop .dropList {
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: -1px;
+  border: 1px solid #ddd;
+  background: #fff;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+.mainArea .cars .sortBar .position .drop .dropList li {
+  margin-left: 10px;
+  padding: 0;
+}
+.mainArea .cars .sortBar .position .drop .dropList li:hover {
+  color: #e80c0a;
+}
+.mainArea .cars .carItem {
+  border: 1px solid #ddd;
+  margin-top: -1px;
+  padding: 20px;
+}
+.mainArea .cars .carItem:hover .carName {
+  color: #e80c0a;
+}
+.mainArea .cars .carItem .carImg {
+  width: 220px;
+  height: 160px;
+}
+.mainArea .cars .carItem .carImg img {
+  width: 100%;
+  height: 100%;
+}
+.mainArea .cars .carItem .carDesc {
+  width: 460px;
+  margin: 0 0 0 20px;
+}
+.mainArea .cars .carItem .carName {
+  color: #333;
+}
+.mainArea .cars .carItem .carTags {
+  overflow: hidden;
+  line-height: 24px;
+  max-height: 48px;
+  margin-left: -10px;
+}
+.mainArea .cars .carItem .carTags .dib {
+  color: #b2b2b2;
+  font-size: 12px;
+  margin-left: -1px;
+  border-left: 1px solid #ddd;
+  padding: 0 10px;
+}
+.mainArea .cars .carItem .carTextDesc {
+  margin-top: 15px;
+  font-size: 12px;
+  line-height: 18px;
+  max-height: 36px;
+  overflow: hidden;
+}
+.mainArea .cars .carItem .carTextDesc .label {
+  color: #666;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.mainArea .cars .carItem .carTextDesc .descText {
+  color: #9c9c9c;
+}
+.mainArea .cars .carItem .carTag {
+  margin-top: 10px;
+}
+.mainArea .cars .carItem .carTag .tagItem {
+  background: url("../img/storeDetail/tagBg.png") no-repeat;
+  font-size: 12px;
+  padding-left: 25px;
+  width: 70px;
+  line-height: 25px;
+  text-align: center;
+}
+.mainArea .cars .carItem .carTag .tagItem.high {
+  background-position: -96px 0;
+  margin-left: 10px;
+}
+.mainArea .cars .carItem .carPrice {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e80c0a;
+  letter-spacing: normal;
+}
+.mainArea .cars .carItem .carPrice .small {
+  font-size: 16px;
+}
+.mainArea .cars .loadMore {
+  padding: 0 24px 0 36px;
+  margin: 30px auto 10px;
+  color: #fff;
+  line-height: 45px;
+  width: 135px;
+  text-align: center;
+  background: url("../img/storeDetail/loadMoreIcon.png") no-repeat #e80c0a 22px center;
+}
+.mainArea .leftContent {
+  margin-left: 10px;
+}
+.mainArea .leftContent .itemContent {
+  border: 1px solid #ddd;
+  padding: 0 10px;
+}
+.mainArea .leftContent .itemContent .contentTitle {
+  color: #333;
+  line-height: 42px;
+  border-bottom: 1px solid #e80c0a;
+  padding-left: 10px;
+}
+.mainArea .leftContent .rssCars {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 0 12px;
+}
+.mainArea .leftContent .rssCars p {
+  margin: 0;
+}
+.mainArea .leftContent .rssCars .rssTitle {
+  margin-top: 25px;
+  font-size: 18px;
+  text-align: center;
+}
+.mainArea .leftContent .rssCars .rssTitle .icon {
+  padding: 8px;
+  font-size: 0;
+  vertical-align: middle;
+  background: url("../img/list/rssIcon.png") no-repeat;
+}
+.mainArea .leftContent .rssCars .rssDesc {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 15px;
+  line-height: 36px;
+}
+.mainArea .leftContent .rssCars .rssOption {
+  border: 1px solid #ddd;
+  background: #fff;
+  margin: 10px 0;
+}
+.mainArea .leftContent .rssCars .rssOption .label {
+  font-size: 12px;
+  width: 50px;
+  text-align: center;
+  line-height: 36px;
+  border-right: 1px solid #ddd;
+}
+.mainArea .leftContent .rssCars .rssOption .rssCombo {
+  border: 0;
+}
+.mainArea .leftContent .rssCars .rssOption .rssCombo .text {
+  width: 159px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 12px;
+}
+.mainArea .leftContent .rssCars .rssOption .rssCombo .icon {
+  height: 36px;
+  width: 36px;
+  background-color: #fff;
+}
+.mainArea .leftContent .rssCars .rssOption .rssCombo li {
+  font-size: 14px;
+}
+.mainArea .leftContent .rssCars .rssOption .textArea {
+  width: 210px;
+  font-size: 0;
+}
+.mainArea .leftContent .rssCars .rssOption .textArea input {
+  padding-left: 15px;
+  height: 100%;
+  width: 190px;
+  border: 0;
+  outline: none;
+  margin: 0;
+  line-height: 36px;
+  height: 36px;
+}
+.mainArea .leftContent .rssCars .rssSubmit {
+  width: 100%;
+  line-height: 36px;
+  color: #fff;
+  background: #e80c0a;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  margin: 20px 0;
+}
+.mainArea .leftContent .hotType {
+  margin-top: 15px;
+}
+.mainArea .leftContent .hotType .carTypeList {
+  list-style: none;
+  margin: 0;
+  padding: 10px 10px 30px;
+}
+.mainArea .leftContent .hotType .carTypeList li {
+  line-height: 34px;
+  border-bottom: 1px dashed #ddd;
+  color: #333;
+  padding-left: 30px;
+  position: relative;
+}
+.mainArea .leftContent .hotType .carTypeList li:hover {
+  color: #e80c0a;
+}
+.mainArea .leftContent .hotType .carTypeList .num {
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background: #ddd;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  top: 50%;
+  margin-top: -8px;
+}
+.mainArea .leftContent .hotType .carTypeList .num.c1 {
+  background: #e93a34;
+}
+.mainArea .leftContent .hotType .carTypeList .num.c2 {
+  background: #f38c26;
+}
+.mainArea .leftContent .hotType .carTypeList .num.c3 {
+  background: #f7b352;
+}
+.mainArea .leftContent .leftAdd {
+  width: 100%;
+  margin-top: 15px;
+}
+.mainArea .leftContent .leftAdd img {
+  width: 100%;
+}
+.pagination {
+  margin: 30px 0;
+}

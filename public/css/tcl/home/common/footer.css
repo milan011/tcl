@@ -1,0 +1,218 @@
+footer {
+  background: #f7f7f7;
+}
+footer .adds {
+  border-bottom: 1px solid #ddd;
+  padding: 40px 0;
+}
+footer .adds .item {
+  width: 20%;
+  text-align: center;
+  height: 26px;
+}
+footer .adds .item .icon {
+  vertical-align: middle;
+  display: inline-block;
+  background: url("../../img/common/bottomIcons.png") no-repeat;
+  width: 26px;
+  height: 26px;
+}
+footer .adds .item span {
+  vertical-align: middle;
+  font-size: 18px;
+}
+footer .adds .item span.bold {
+  font-weight: bold;
+}
+footer .friendLinks {
+  padding-top: 40px;
+}
+footer .friendLinks .title {
+  margin: 0 5px;
+}
+footer .friendLinks .link {
+  font-size: 12px;
+  color: #b2b2b2;
+  line-height: 3em;
+  margin-right: 20px;
+}
+footer .friendLinks .link:hover {
+  color: #333;
+}
+footer .qrCode {
+  margin-left: 10px;
+}
+footer .qrCode img {
+  max-width: 100px;
+  max-height: 100px;
+  width: 100%;
+  height: 100%;
+}
+footer .qrCode .textDesc {
+  margin-left: 10px;
+}
+footer .qrCode .textDesc .title {
+  margin: 0;
+  font-size: #484848;
+}
+footer .qrCode .textDesc p {
+  font-size: 12px;
+  margin: 1em 0;
+  color: #999;
+}
+footer .connect {
+  margin-left: 10px;
+}
+footer .connect .phoneIcon {
+  background: url("../../img/common/phoneGrayIcon.png") no-repeat;
+  width: 30px;
+  height: 30px;
+}
+footer .connect .text {
+  margin-left: 10px;
+}
+footer .connect .text p {
+  font-size: 12px;
+  color: #999;
+}
+footer .copyRight {
+  padding: 20px 0;
+  width: 100%;
+  background: #272c2e;
+  font-size: 12px;
+  line-height: 28px;
+  text-align: center;
+}
+footer .copyRight p {
+  color: #aaa;
+}
+.overlay {
+  position: fixed;
+  background: #000000;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=63);
+  opacity: 0.63;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=63);
+  filter: alpha(opacity=63);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+}
+@media screen and (max-width: 1350px) {
+  .rightIcon {
+    right: 0;
+  }
+}
+.rightFixed {
+  position: relative;
+}
+.rightPosition {
+  position: absolute;
+  right: -10px;
+}
+.rightIcon {
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  margin-top: -28px;
+}
+.rightIcon .item {
+  border: 1px solid #ddd;
+  background: #e80c0a;
+  width: 57px;
+  cursor: pointer;
+}
+.rightIcon .icon {
+  height: 37px;
+  width: 100%;
+  background: url("../../img/storeDetail/rightIcon.png") no-repeat 0 3px;
+}
+.rightIcon .text {
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
+.messageBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -170px -375px;
+  background: url("../../img/storeDetail/messageBoxBg.png") #ffffff;
+  padding: 18px;
+  border: 1px solid #e80c0a;
+  display: none;
+  z-index: 11;
+}
+.messageBox .closeIcon {
+  background: url("../../img/common/messageBoxCloseIcon.png") no-repeat;
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+.messageBox .leftTopCorner {
+  position: absolute;
+  width: 56px;
+  height: 83px;
+  background: url("../../img/storeDetail/messageBoxLeftTopCorner.png") no-repeat;
+  top: -8px;
+  left: -24px;
+}
+.messageBox .content {
+  border: 1px solid #f7f7f7;
+  background: #fff;
+  padding: 40px 60px;
+}
+.messageBox .combo .text {
+  width: 160px;
+  height: 40px;
+  line-height: 40px;
+}
+.messageBox .combo .icon {
+  height: 40px;
+  width: 40px;
+}
+.messageBox .input {
+  margin-left: 20px;
+}
+.messageBox .input input {
+  padding: 0 14px;
+  line-height: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  color: #333;
+  width: 130px;
+}
+.messageBox .messageContent {
+  width: 100%;
+  margin-top: 18px;
+}
+.messageBox .messageContent textarea {
+  resize: none;
+  border: 1px solid #ddd;
+  padding: 0;
+  outline: none;
+  width: 100%;
+  height: 125px;
+}
+.messageBox .buttonArea {
+  width: 100%;
+  text-align: center;
+}
+.messageBox .submitMessage {
+  margin-top: 20px;
+  color: #fff;
+  background: #e80c0a;
+  font-weight: bold;
+  outline: none;
+  border: 0;
+  width: 150px;
+  line-height: 38px;
+  text-align: center;
+  cursor: pointer;
+}

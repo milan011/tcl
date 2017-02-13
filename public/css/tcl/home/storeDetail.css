@@ -1,0 +1,605 @@
+.combo {
+  border: 1px solid #dddddd;
+  position: relative;
+}
+.combo .text {
+  cursor: pointer;
+  background: #FFFFFF;
+  padding-left: 15px;
+  height: 45px;
+}
+.combo .icon {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  background: #f1f1f1 url("../img/common/dropDown.png") no-repeat center center;
+}
+.combo .optionList {
+  font-size: 16px;
+  position: absolute;
+  z-index: 1;
+  height: 0;
+  left: -1px;
+  letter-spacing: normal;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid transparent;
+  -webkit-transition: height ease-in 0.3s;
+  -moz-transition: height ease-in 0.3s;
+  -ms-transition: height ease-in 0.3s;
+  -o-transition: height ease-in 0.3s;
+  transition: height ease-in 0.3s;
+}
+.combo ul {
+  background: #fff;
+  list-style: none;
+  padding: 10px 0;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  height: 95px;
+}
+.combo li {
+  padding-left: 15px;
+  cursor: pointer;
+}
+.combo li:hover {
+  color: #e80c0a;
+}
+.combo.active .icon {
+  background-image: url("../img/common/dropUp.png");
+}
+.combo.active .optionList {
+  height: 115px;
+  border: 1px solid #ddd;
+}
+.banner .container {
+  position: relative;
+}
+.banner .bannerBg {
+  width: 100%;
+  height: 430px;
+}
+.banner .storeInfo {
+  position: absolute;
+  background: #ffffff;
+  padding: 20px;
+  top: 50px;
+  left: 45px;
+}
+.banner .storeName {
+  font-size: 24px;
+  color: #000;
+  font-weight: bold;
+}
+.banner .storeProp .label {
+  font-weight: bold;
+}
+.banner .storeProp .prop {
+  color: #747070;
+}
+.banner .storeDetail {
+  background: #f7f7f7;
+  padding: 30px 20px 45px;
+  margin: 0 -20px -20px;
+}
+.banner .storeDetail .item {
+  width: 25%;
+  text-align: center;
+  border-left: 1px solid #ddd;
+  margin-left: -1px;
+}
+.banner .storeDetail .item.noBorder {
+  border: 0;
+}
+.banner .storeDetail .label {
+  font-size: 12px;
+  color: #484848;
+}
+.banner .storeDetail .content {
+  color: #e80c0a;
+  font-weight: bold;
+}
+.recommend {
+  padding: 20px 0;
+  background: #fff;
+}
+.recommend .title {
+  margin: 0 0 10px;
+}
+.recommend .title span {
+  font-size: 18px;
+}
+.recommend .title .red {
+  padding: 0 10px;
+  color: #fff;
+  background: #e80c0a;
+}
+.recommend .content {
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.goodCar {
+  background: #f7f7f7;
+}
+.goodCar .translationalSlider {
+  position: relative;
+}
+.goodCar .sliderContainer {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.goodCar .sliderItem .pic {
+  height: 260px;
+}
+.goodCar .sliderItem .pic img {
+  width: 100%;
+  height: 100%;
+}
+.goodCar .sliderItem .desc {
+  margin-left: 10px;
+  padding: 20px 0;
+  height: 220px;
+  position: relative;
+}
+.goodCar .sliderItem .carTitle {
+  font-size: 18px;
+  color: #222;
+  font-weight: bolder;
+}
+.goodCar .sliderItem .carDesc {
+  font-size: 12px;
+  color: #999;
+}
+.goodCar .sliderItem .level {
+  width: 150px;
+  height: 100px;
+  color: #e80c0a;
+  background: url("../img/storeDetail/levelBg.png") no-repeat center;
+  text-align: center;
+  line-height: 80px;
+  font-size: 36px;
+}
+.goodCar .sliderItem .textContent {
+  white-space: normal;
+  width: 230px;
+}
+.goodCar .sliderItem .textContent p {
+  margin: 0;
+}
+.goodCar .sliderItem .textContent .appraiserTitle {
+  color: #222;
+  font-size: 12px;
+}
+.goodCar .sliderItem .textContent .appraiserText {
+  font-size: 12px;
+  color: #999;
+}
+.goodCar .sliderItem .carPrice {
+  position: absolute;
+  bottom: 20px;
+  font-size: 24px;
+  color: #e80c0a;
+  white-space: normal;
+  letter-spacing: normal;
+}
+.goodCar .sliderItem .carPrice .small {
+  font-size: 16px;
+}
+.goodCar .sliderControl {
+  position: absolute;
+  right: 40px;
+  bottom: 30px;
+  border: 1px solid #e80c0a;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.goodCar .sliderControl .item {
+  padding: 12px;
+  background: url("../img/storeDetail/slider_control.png") no-repeat;
+  cursor: pointer;
+}
+.goodCar .sliderControl .item:hover {
+  background-position-y: -24px;
+}
+.goodCar .sliderControl .item.right {
+  background-position-x: -24px;
+}
+.goodCar .testing {
+  background: #e80c0a;
+  height: 260px;
+  margin-left: 8px;
+}
+.goodCar .testing .title {
+  margin: 50px 0 30px 50px;
+  font-size: 34px;
+  line-height: 1em;
+}
+.goodCar .testing .special {
+  font-size: 32px;
+  color: #3e4a68;
+  background: url("../img/storeDetail/specialBg.png") no-repeat;
+  padding: 3px 18px;
+  margin-left: 10px;
+}
+.goodCar .testing p {
+  margin: 0 0 0 50px;
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 29px;
+}
+.goodCar .testing span {
+  background: url("../img/storeDetail/serialBg.png") no-repeat right bottom;
+  padding: 4px 5px;
+  margin-right: 5px;
+}
+.newCar {
+  background: #f3f3f3;
+}
+.newCar .content {
+  padding: 18px 10px;
+}
+.newCar .item {
+  width: 25%;
+}
+.newCar .car {
+  margin: 0 40px;
+}
+.newCar .car:hover .carName {
+  color: #e80c0a;
+}
+.newCar .car img {
+  width: 220px;
+  height: 160px;
+}
+.newCar .car p {
+  margin: 0;
+}
+.newCar .car .carName {
+  font-size: 14px;
+  color: #333;
+}
+.newCar .car .carPrice {
+  margin: 5px 0;
+  font-size: 24px;
+  color: #e80c0a;
+}
+.newCar .car .carPrice .small {
+  font-size: 16px;
+}
+.newCar .car .carDesc {
+  font-size: 12px;
+  color: #a1a1a1;
+}
+.carList .itemContent {
+  border: 1px solid #ddd;
+  padding: 0 10px;
+}
+.carList .itemContent .contentTitle {
+  color: #333;
+  line-height: 42px;
+  border-bottom: 1px solid #e80c0a;
+  padding-left: 10px;
+}
+.carList .searchTags .tagItem {
+  padding: 10px;
+  border-bottom: 1px solid #f2f2f2;
+  border-top: 1px solid #f2f2f2;
+  margin-bottom: -1px;
+}
+.carList .searchTags .tagItem .title {
+  font-weight: bold;
+  color: #222;
+  line-height: 34px;
+}
+.carList .searchTags .tagItem .tagLinks {
+  line-height: 24px;
+}
+.carList .searchTags .tagItem .linkItem {
+  color: #444;
+  font-size: 14px;
+  margin-right: 20px;
+}
+.carList .searchTags .tagItem .linkItem.active {
+  color: #e80c0a;
+}
+.carList .searchTags .tagItem .linkItem:hover {
+  color: #e80c0a;
+}
+.carList .brand {
+  position: relative;
+}
+.carList .brand .moreBrands {
+  position: absolute;
+  background: url("../img/storeDetail/moreBranIcon.png") no-repeat;
+  width: 12px;
+  height: 12px;
+  right: 0;
+  top: 20px;
+  cursor: pointer;
+}
+.carList .brand .moreBrands.active {
+  background-position: 0 -12px;
+}
+.carList .brand .brandList {
+  position: absolute;
+  width: 200px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-top: 3px solid #e80c0a;
+  top: -3px;
+  right: -212px;
+  display: none;
+}
+.carList .brand .brandList.active {
+  display: block;
+}
+.carList .brand .linkTags {
+  width: 29px;
+  border-right: 1px solid #ddd;
+}
+.carList .brand .linkItem {
+  font-size: 12px;
+  width: 29px;
+  text-align: center;
+  line-height: 22px;
+}
+.carList .brand .brandGroups {
+  width: 170px;
+  height: 570px;
+  overflow-y: scroll;
+}
+.carList .brand .brandGroups .brandItem {
+  font-size: 12px;
+  line-height: 32px;
+  padding: 0 10px;
+  text-align: center;
+}
+.carList .brand .brandGroups .brandItem .text {
+  margin-top: -12px;
+}
+.carList .brand .brandGroups .title {
+  background: #f7f7f7;
+  font-weight: normal;
+  color: #999;
+  font-size: 12px;
+  padding-left: 1em;
+}
+.carList .hotType {
+  margin-top: 15px;
+}
+.carList .hotType .carTypeList {
+  list-style: none;
+  margin: 0;
+  padding: 10px 10px 30px;
+}
+.carList .hotType .carTypeList li {
+  line-height: 34px;
+  border-bottom: 1px dashed #ddd;
+  color: #333;
+  padding-left: 30px;
+  position: relative;
+}
+.carList .hotType .carTypeList li:hover {
+  color: #e80c0a;
+}
+.carList .hotType .carTypeList .num {
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background: #ddd;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  top: 50%;
+  margin-top: -8px;
+}
+.carList .hotType .carTypeList .num.c1 {
+  background: #e93a34;
+}
+.carList .hotType .carTypeList .num.c2 {
+  background: #f38c26;
+}
+.carList .hotType .carTypeList .num.c3 {
+  background: #f7b352;
+}
+.carList .leftAdd {
+  width: 100%;
+}
+.carList .leftAdd img {
+  width: 100%;
+}
+.carList .cars {
+  margin-left: 10px;
+}
+.carList .cars .tabTitle {
+  border: 1px solid #ddd;
+}
+.carList .cars .tabTitle .titleItem {
+  line-height: 42px;
+  border-left: 1px solid #ddd;
+  border-top: 2px solid transparent;
+  margin: -2px -1px 0;
+  width: 100px;
+  text-align: center;
+  color: #333;
+  cursor: pointer;
+}
+.carList .cars .tabTitle .titleItem.active {
+  border-top-color: #e80c0a;
+  color: #e80c0a;
+}
+.carList .cars .sortBar {
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  margin: -1px 0;
+  line-height: 40px;
+}
+.carList .cars .sortBar .sortItem {
+  margin: 0 10px;
+  cursor: pointer;
+}
+.carList .cars .sortBar .arrows {
+  width: 17px;
+  height: 12px;
+  vertical-align: middle;
+}
+.carList .cars .sortBar .arrowItem {
+  width: 17px;
+  height: 6px;
+  background: url("../img/storeDetail/sortArrow.png") no-repeat;
+}
+.carList .cars .sortBar .arrowItem.up {
+  background-position-x: 0;
+}
+.carList .cars .sortBar .arrowItem.down {
+  background-position-x: -17px;
+}
+.carList .cars .sortBar .arrowItem.active {
+  background-position-y: -6px;
+}
+.carList .cars .sortBar .position {
+  padding-right: 10px;
+}
+.carList .cars .sortBar .position .icon {
+  background: url("../img/storeDetail/positionIcon.png") no-repeat;
+  width: 10px;
+  height: 14px;
+  vertical-align: middle;
+}
+.carList .cars .sortBar .position .area {
+  margin-left: 7px;
+  font-size: 12px;
+}
+.carList .cars .sortBar .position .drop {
+  cursor: pointer;
+  position: relative;
+  line-height: 24px;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.carList .cars .sortBar .position .drop.active .dropList {
+  display: block;
+}
+.carList .cars .sortBar .position .drop .text {
+  font-size: 12px;
+  padding: 0 20px 0 0;
+  width: 50px;
+  text-align: center;
+  height: 24px;
+  line-height: 24px;
+}
+.carList .cars .sortBar .position .drop .dropIcon {
+  height: 24px;
+  width: 20px;
+  background: url("../img/storeDetail/dropDownIcon.png") no-repeat center;
+}
+.carList .cars .sortBar .position .drop .dropList {
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: -1px;
+  border: 1px solid #ddd;
+  background: #fff;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+.carList .cars .sortBar .position .drop .dropList li {
+  margin-left: 10px;
+  padding: 0;
+}
+.carList .cars .sortBar .position .drop .dropList li:hover {
+  color: #e80c0a;
+}
+.carList .cars .carItem {
+  border: 1px solid #ddd;
+  margin-top: -1px;
+  padding: 20px;
+}
+.carList .cars .carItem .carImg {
+  width: 220px;
+  height: 160px;
+}
+.carList .cars .carItem .carImg img {
+  width: 100%;
+  height: 100%;
+}
+.carList .cars .carItem .carDesc {
+  width: 460px;
+  margin: 0 0 0 20px;
+}
+.carList .cars .carItem .carName {
+  color: #333;
+}
+.carList .cars .carItem .carTags {
+  overflow: hidden;
+  line-height: 24px;
+  max-height: 48px;
+  margin-left: -10px;
+}
+.carList .cars .carItem .carTags .dib {
+  color: #b2b2b2;
+  font-size: 12px;
+  margin-left: -1px;
+  border-left: 1px solid #ddd;
+  padding: 0 10px;
+}
+.carList .cars .carItem .carTextDesc {
+  margin-top: 15px;
+  font-size: 12px;
+  line-height: 18px;
+  max-height: 36px;
+  overflow: hidden;
+}
+.carList .cars .carItem .carTextDesc .label {
+  color: #666;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.carList .cars .carItem .carTextDesc .descText {
+  color: #9c9c9c;
+}
+.carList .cars .carItem .carTag {
+  margin-top: 10px;
+}
+.carList .cars .carItem .carTag .tagItem {
+  background: url("../img/storeDetail/tagBg.png") no-repeat;
+  font-size: 12px;
+  padding-left: 25px;
+  width: 70px;
+  line-height: 25px;
+  text-align: center;
+}
+.carList .cars .carItem .carTag .tagItem.high {
+  background-position: -96px 0;
+  margin-left: 10px;
+}
+.carList .cars .carItem .carPrice {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e80c0a;
+  letter-spacing: normal;
+}
+.carList .cars .carItem .carPrice .small {
+  font-size: 16px;
+}
+.carList .cars .loadMore {
+  padding: 0 24px 0 36px;
+  margin: 30px auto 10px;
+  color: #fff;
+  line-height: 45px;
+  width: 135px;
+  text-align: center;
+  background: url("../img/storeDetail/loadMoreIcon.png") no-repeat #e80c0a 22px center;
+}
