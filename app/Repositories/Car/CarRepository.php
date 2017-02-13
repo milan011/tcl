@@ -74,6 +74,12 @@ class CarRepository implements CarRepositoryContract
         $query = $query->orWhere('car_status', '6');
         // $query = $query->where('car_status', $request->input('car_status', '1'));
 
+        if($request->has('home')){
+
+            return $query->select($this->select_columns)
+                     ->orderBy('updated_at', 'desc')
+                     ->paginate(12);
+        }
         return $query->select($this->select_columns)
                      ->orderBy('updated_at', 'desc')
                      ->paginate(10);
