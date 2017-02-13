@@ -214,6 +214,12 @@ class Cars extends Model
         return $this->hasMany('App\Image', 'car_id', 'id');
     }
 
+    // 定义Car表与images表一对多关系
+    public function hasOneImagesOnFirst()
+    {
+        return $this->hasOne('App\Image', 'car_id', 'id')->where('is_top', '1');
+    }
+
     // 定义Car表与chance表一对多关系
     public function hasManyChances()
     {
