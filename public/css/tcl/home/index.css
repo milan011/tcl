@@ -209,7 +209,7 @@
   padding: 15px 0 20px;
 }
 .floor {
-  height: 580px;
+  height: auto;
   background: #fff;
 }
 .floor.auth {

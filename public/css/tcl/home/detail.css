@@ -190,7 +190,7 @@ main {
   background: #eee;
 }
 .carDesc img {
-  width: 100%;
+  width: 48%;
 }
 .certInfo .content {
   background: url("../img/carDetail/checkResultBg.jpg") no-repeat center center;

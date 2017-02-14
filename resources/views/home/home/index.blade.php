@@ -1,5 +1,14 @@
 @extends('home.main')
 
+@section('title')
+    <title>首页</title>
+@endsection
+
+@section('head_content')
+    <!-- 首页样式 -->
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('css/tcl/home/index.css')}}">
+@endsection
+
 @section('content')
 <main>
     <div class="banner">
@@ -152,7 +161,7 @@
             <div class="dib col-25 dib-con cars">
                 @foreach($cars as $car)
                 <div class="dib col-6 item">
-                    <a href="#">
+                    <a href="{{route('home.car.index', ['car'=>$car->id])}}">
                         <div class="car">
                             <!-- <img src="../img/index/dbfile/carItem.png" alt="哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版" /> -->
                             @if(isset($car->hasOneImagesOnFirst->filename))

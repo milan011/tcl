@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
+    @yield('title')
     <!-- 公共样式 -->
     <!-- <link type="text/css" rel="stylesheet" href="../css/common/common.css"> -->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('css/tcl/home/common/common.css')}}">
-
-    <!-- 首页样式 -->
-    <!-- <link type="text/css" rel="stylesheet" href="../css/index.css"> -->
-    <link type="text/css" rel="stylesheet" href="{{URL::asset('css/tcl/home/index.css')}}">
 
     <!-- 公共脚本 -->
     <!-- <script type="text/javascript" src="../js/common/jQuery-1.12.0.min.js"></script> -->
@@ -25,6 +21,7 @@
     <!-- 首页脚本  -->
     <!-- <script type="text/javascript" src="../js/index.js"></script> -->
     <script type="text/javascript" src="{{URL::asset('js/tcl/home/index.js')}}"></script>
+    @yield('head_content')
 </head>
 <body>
 <section class="topNav">
