@@ -71,7 +71,7 @@ class CarRepository implements CarRepositoryContract
         }       
         // dd($query);
         $query = $query->where('name', '!=', '');
-        $query = $query->orWhere('car_status', '6');
+        // $query = $query->orWhere('car_status', '6');
         // $query = $query->where('car_status', $request->input('car_status', '1'));
 
         if($request->has('home')){

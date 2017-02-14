@@ -77,6 +77,10 @@ class Cars extends Model
         if(isset($requestData['car_status']) && $requestData['car_status'] != ''){
 
             $query = $query->where('car_status', $requestData['car_status']);
+
+            if($requestData['car_status'] == '1'){
+                $query = $query->orWhere('car_status', '6');
+            }
         }else{
 
             $query = $query->whereIn('car_status', ['1', '2', '3', '4', '5', '6']);
