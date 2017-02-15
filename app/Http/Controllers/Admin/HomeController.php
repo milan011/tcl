@@ -64,6 +64,7 @@ class HomeController extends Controller
         $request['car_status']  = '1';
         $request['want_status']  = '1';
         $need_follow_cars  = $this->car->getAllCars($request, true); //待跟进车源
+        // dd(lastSql());
         $need_follow_wants = $this->want->getAllWants($request, true); //待跟进客源
 
         $notice = $this->notice->findTopNotice();

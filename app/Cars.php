@@ -55,8 +55,7 @@ class Cars extends Model
 
                if(Auth::user()->isMdLeader()){
                     //店长
-                    $user_shop_id = Auth::user()->belongsToShop->id; //用户所属门店id
-        
+                    $user_shop_id = Auth::user()->shop_id; //用户所属门店id
                     // $this->where('shop_id', $user_shop_id);
                     $query = $query->where('shop_id', $user_shop_id);    
                 }else{
@@ -75,11 +74,17 @@ class Cars extends Model
         }
 
         if(isset($requestData['car_status']) && $requestData['car_status'] != ''){
-
-            $query = $query->where('car_status', $requestData['car_status']);
-
+            
             if($requestData['car_status'] == '1'){
-                $query = $query->orWhere('car_status', '6');
+
+                $query = $query->where(function($query) use ($requestData){
+
+                    $query = $query->where('car_status', $requestData['car_status']);
+                    $query = $query->orWhere('car_status', '6');
+                });
+            }else{
+
+                $query = $query->where('car_status', $requestData['car_status']);
             }
         }else{
 
