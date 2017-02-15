@@ -29,9 +29,13 @@ class CarController extends Controller
      */
     public function index($id)
     {
+        // 车源详情
         $cars = $this->car->find($id);
 
-        // dd($cars);
+        // 推荐车源
+        $recommend_cars = $this->car->getRecommendCars($cars->top_price);
+        // dd(lastsql());
+        // dd($recommend_cars);
 
         $gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
@@ -39,6 +43,6 @@ class CarController extends Controller
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
         $sale_number    = config('tcl.sale_number'); //获取配置文件中车型类别
 
-        return view('home.car.index', compact('cars', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number'));
+        return view('home.car.index', compact('cars', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number', 'recommend_cars'));
     }
 }

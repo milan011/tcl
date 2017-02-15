@@ -78,7 +78,7 @@
             					@endforeach
                 			</div>
                 			<h4 style="text-align: center;color:#428bca;margin-top:20px;">
-                				点击上传
+                				点击下方空白区域上传
                 				<span class="glyphicon glyphicon-hand-down">
                 					
                 				</span>

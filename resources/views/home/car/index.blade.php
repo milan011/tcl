@@ -215,69 +215,28 @@
     </section>
     <section class="floor recommend container">
         <div class="title">店铺推荐</div>
-        <a href="#"><div class="rightLink fr">进入店铺查看更多</div></a>
+        <a href="javascript:void(0);"><div class="rightLink fr">进入店铺查看更多</div></a>
+        
         <div class="content dib-con">
+        @foreach($recommend_cars as $rcar)
             <div class="dib col-5 item">
                 <div class="car">
-                    <a href="#">
-                        <img src="../img/storeDetail/dbfile/tuijianItem.png"
-                             alt="哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版"/>
-                        <p class="carName">哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版</p>
-                        <p class="carPrice"><span class="small">￥</span><span>7.80</span><span
+                    <a href="{{route('home.car.index', ['car'=>$rcar->id])}}">
+                        <img src="{{URL::asset('uploads/car/'.$image->filename)}}"
+                             alt="{{$rcar->name}}"/>
+                        <p class="carName">{{$rcar->name}}</p>
+                        <p class="carPrice"><span class="small">￥</span><span>{{$rcar->top_price}}</span><span
                                 class="small">万</span></p>
                         <div class="carDesc">
-                            <span>上牌：2012年04月</span>
-                            <span class="fr">里程：5.5万公里</span>
+                            <span>上牌：{{$rcar->plate_date}}</span>
+                            <span class="fr">里程：{{$rcar->mileage}}万公里</span>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="dib col-5 item">
-                <div class="car">
-                    <a href="#">
-                        <img src="../img/storeDetail/dbfile/tuijianItem.png"
-                             alt="哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版"/>
-                        <p class="carName">哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版</p>
-                        <p class="carPrice"><span class="small">￥</span><span>7.80</span><span
-                                class="small">万</span></p>
-                        <div class="carDesc">
-                            <span>上牌：2012年04月</span>
-                            <span class="fr">里程：5.5万公里</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="dib col-5 item">
-                <div class="car">
-                    <a href="#">
-                        <img src="../img/storeDetail/dbfile/tuijianItem.png"
-                             alt="哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版"/>
-                        <p class="carName">哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版</p>
-                        <p class="carPrice"><span class="small">￥</span><span>7.80</span><span
-                                class="small">万</span></p>
-                        <div class="carDesc">
-                            <span>上牌：2012年04月</span>
-                            <span class="fr">里程：5.5万公里</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="dib col-5 item">
-                <div class="car">
-                    <a href="#">
-                        <img src="../img/storeDetail/dbfile/tuijianItem.png"
-                             alt="哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版"/>
-                        <p class="carName">哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版</p>
-                        <p class="carPrice"><span class="small">￥</span><span>7.80</span><span
-                                class="small">万</span></p>
-                        <div class="carDesc">
-                            <span>上牌：2012年04月</span>
-                            <span class="fr">里程：5.5万公里</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
+        @endforeach
         </div>
+        
     </section>
 </main> 
 @endsection

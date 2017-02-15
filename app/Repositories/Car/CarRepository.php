@@ -85,6 +85,22 @@ class CarRepository implements CarRepositoryContract
                      ->paginate(10);
     }
 
+    //获得推荐车源
+    public function getRecommendCars($price){
+
+        // dd($price);
+        $query = new Cars();
+        $query = $query->where('name', '!=', '');
+        $query = $query->where('car_status', '1');
+        $query = $query->where('top_price', '<=', ($price*1.2));
+        $query = $query->where('top_price', '>=', ($price*0.8));
+
+        return $query->select($this->select_columns)
+                     ->orderBy('updated_at', 'desc')
+                     ->limit(4)
+                     ->get();
+    }
+
     // 创建车源
     public function create($requestData)
     {   
@@ -256,7 +272,7 @@ class CarRepository implements CarRepositoryContract
     //判断车架号号是否被使用
     public function isRepeat($vin_code){
 
-        return Car::select('id', 'name')
+        return Cars::select('id', 'name')
                        ->where('vin_code', $vin_code)
                        ->first();
     }
