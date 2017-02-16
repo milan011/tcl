@@ -86,6 +86,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('admin.brand.getChildBrand');
     Route::post('brand/changeStatus', 'BrandController@changeStatus')->name('admin.brand.changeStatus');
     Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
+    Route::post('category/checkRepeat', 'CategoryController@checkRepeat')->name('admin.category.checkRepeat');
     Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');    
     Route::put('role/updatePermission', 'RoleController@updatePermission')->name('admin.role.updatePermission');
     // 文件、图片上传路由

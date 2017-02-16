@@ -24,7 +24,7 @@
 <div class="row-fluid sortable">
 	<div class="box span12">
 		<div class="box-content">
-			<form class="form-horizontal" action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
+			<form class="form-horizontal" id="category_form" action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
 				{!! csrf_field() !!}
 				<fieldset>
 				  <div class="control-group">
@@ -98,7 +98,7 @@
 				  </div>	  				
 				  <div class="form-actions">
 				  	<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
-					<button type="submit" class="btn btn-primary">确定</button>
+					<button type="button" id="category_add" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>
 				</fieldset>
@@ -110,4 +110,38 @@
 @section('script_content')
 <!-- 引入车型级联js -->
 <script src="{{URL::asset('js/tcl/category.js')}}"></script> 
+<script>
+	$(document).ready(function(){
+
+		$('#category_add').click(function(){
+
+			var request_url = '{{route('admin.category.checkRepeat')}}';
+
+			$.ajax({
+				method: 'POST',
+				url: request_url,
+				data:$("#category_form").serialize(),
+				dataType: 'json',
+				headers: {		
+					'X-CSRF-TOKEN': '{{ csrf_token() }}'		
+				},
+				success:function(data){
+
+					if(data.status == '1'){
+						//车型重复
+						alert(data.message);
+						return false;
+					}else{
+						//车型不重复
+						$('#category_form').submit();
+					}
+				},
+				error: function(xhr, type){
+	
+					alert('添加车型失败，请重新添加或联系管理员');
+				}
+			});
+		});
+	});
+</script>
 @endsection

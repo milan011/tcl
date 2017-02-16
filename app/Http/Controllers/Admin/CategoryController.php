@@ -155,4 +155,24 @@ class CategoryController extends Controller
             ));
         }        
     }
+
+    //ajax判断车型是否重复
+    public function checkRepeat(Request $request){
+
+        // dd($request->all());
+        if($this->category->isRepeat($request)){
+            //车型重复
+            return response()->json(array(
+                'status' => 1,
+                // 'data'   => $category,
+                'message'   => '该车型已经添加'
+            ));
+        }else{
+            //车型不重复
+            return response()->json(array(
+                'status' => 0,
+                'message'   => '车型不重复'
+            ));
+        }
+    }
 }

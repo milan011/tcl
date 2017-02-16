@@ -86,4 +86,16 @@ class CategoryRepository implements CategoryRepositoryContract
                     ->where('status', '1')
                     ->get();
     }
+
+    //判断车型是否重复
+    public function isRepeat($requestData){
+
+        $cate = Category::select('id', 'name')
+                        ->where('brand_id', $requestData->brand_id)
+                        ->where('name', $requestData->name)
+                        ->where('year_type', $requestData->year_type)
+                        ->first();
+        // dd(isset($cate));
+        return isset($cate);
+    }
 }
