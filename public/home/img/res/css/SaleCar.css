@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+/*提交信息*/
+.SaleCar_Xx{ background:url(../images/SaleCar_Login.jpg) no-repeat left top; height:502px; position:relative; }
+.SaleCar_Mess{ position:absolute; right:36px; top:158px; background:#fff; height:306px; width:363px; border:1px solid #ce6136; text-align:center;}
+.SaleCar_Mess select{width:175px; border:1px solid #dadada; height:25px; color:#646464;}
+.SaleCar_Mess input{width:170px; padding-left:5px;border:1px solid #dadada; height:25px; color:#646464;}
+.SaleCar_Mess p{padding-top:15px;}
+.SaleCar_Tis{line-height:70px; font-size:18px;}
+.SaleCar_Mess input{width:175px;}
+.SaleCar_Mess p span{width:50px; display:inline-block;}
+.SaleCar_Mess p a{ background:#e14900; height:36px; line-height:36px; color:#fff; font-size:16px; display:inline-block; width:227px;}
+
+.SaleCar_Title{ border-left:14px solid #e14900; height:36px; line-height:36px; padding-left:10px; font-style:italic; font-size:20px; font-weight:bold;}
+.SaleCar_Left{ text-align:left;}
+.SaleCar_Right{ text-align:right;}

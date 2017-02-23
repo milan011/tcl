@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+.Lindex_banner{position:relative; height:335px;}
+.LindexBanner_Roll{position:absolute; top:0; left:0; background:#000; height:335px; width:1000px; overflow:hidden;}
+.LindexBanner_Roll img{ position:absolute; height:335px; width:1000px;}
+.LindexBanner_Search{position:absolute; right:27px; top:8px; background:#fff;width:264px; height:300px;padding:10px 30px;}
+.LindexSearch_input{ border:2px solid #f37d13; height:26px; background:url(../images/LindexSearch.jpg) no-repeat 7px center;}
+.LindexSearch_input input{ background:none; height:24px; border:0 none;padding-left:26px; color:#7d7d7d;width:164px;}
+.LindexSearch_input a{ height:26px; background:#f37d13;width:70px; display:inline-block;color:#fff; font-size:14px; text-align:center; float:right;}
+.LindexSearch_Tab{ overflow:hidden; padding-top:6px;}
+.LindexSearch_Tab a{ background:#f6f6f6; display:inline-block; height:27px; width:132px; float:left; line-height:27px; color:#5b5b5b; font-weight:bold; text-align:center; font-size:14px;}
+.LindexSearch_Tab a.Act{ background:#fff;}
+.LSearch_List li{ border-bottom:1px dashed #efefef; line-height:22px;}
+.LSearch_List li h4{color:#f32d00; font-size:12px;}
+.LSearch_List li p{ overflow:hidden;}
+.LSearch_List li a{color:#646464; display:inline-block; float:left; width:52px;}
+.LSearch_List li a.SearchMore{ background:url(../images/SearchMore.jpg) no-repeat 30px center; color:#f32d00;}
+.LSearch_List li a:hover{color:#f32d00;}
+.Index_Title{ border-left:6px solid #fc5300; height:18px; margin-top:24px;padding-left:5px; font-weight:bold; font-size:14px; line-height:18px;}
+.Index_Title a{color:#000; padding-left:5px; font-size:12px;}
+.Index_Title a:hover{color:#f32d00;}
+.IndexTitle_Right span{ background:url(../images/IndexTitle_RightBG.jpg) no-repeat left center;padding-left:13px; margin-left:5px; color:#fc5300;}
+.IndexJY_List{width:1000px; overflow:hidden;}
+.IndexJY_List ul{width:1020px; overflow:hidden;}
+.IndexJY_List ul li{float:left; width:235px; margin:10px 20px 10px 0;}
+.IndexJYlist_Img{width:235px;}
+.IndexJYlist_Img img{width:235px; height:178px; }
+.IndexJYlist_Title a{color:#333; font-size:15px; line-height:24px;}
+.IndexJYlist_Price{color:#da0003;}
+.IndexJYlist_Price span{ font-size:30px; font-weight:bold;}
+.IndexJYlist_Text{color:#2d2d2d;}
+.IndexJYlist_Text em{color:#9b9b9b; font-style:normal;}
+.IndexJYlist_Text span{margin-left:20px;}
+.IndexJYlist_More{ text-align:center;}
+.IndexJYlist_More a{padding:10px 48px;  background:#f64f00; font-size:14px; font-weight:bold; color:#fff; display:inline-block;}
+.Index_ad{ text-align:center;}
+.IndexGood_Price span{ font-size:18px; font-weight:normal;}
+.IndexGood_Price em{ font-style:normal;color:#2d2d2d;padding-left:12px;}

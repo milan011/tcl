@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{margin:0;padding:0; position:relative;}
+ul,ol{list-style:none; } 
+body{font:12px/1.5 微软雅黑,Arial; }
+select,input,button{vertical-align:middle;font-size:100%;}
+fieldset,img{border:0;}
+.clear {clear:both;display:block;height:0; visibility:hidden; font:0/0 arial}
+.clearfix:after {content:"."; display: block; height: 0; clear: both; visibility: hidden; font-size:0;}
+.clearfix {*zoom:1;}
+em{ font-style:normal;}
+/* Hides from IE-mac \*/ 
+* html .clearfix {height: 1%;} 
+.clearfix {display: block;} 
+a{text-decoration:none; }
+html{ overflow:-moz-scrollbars-vertical;}/*在Firefox浏览器下始终显示滚动条；不同浏览器的显示效果都将一致*/
+/* End hide from IE-mac */
+
+.fr{float:right;}
+.fl{float:left;}
+.mt10{margin-top:10px;}
+.warpper{width:1000px; margin:0 auto;}
+/*导航 */
+.TOP{ height:90px; background:#393738; border-bottom:3px solid #c8c8c8;}
+.TOP_Nav{padding-right:34px;}
+.TOP_Nav ul li{float:left;height:90px; width:97px; text-align:center; line-height:90px;}
+.TOP_Nav ul li.TOP_NavAct{ background:#f17103;}
+.TOP_Nav ul li a{color:#fff; font-size:16px;}
+/*切换地址 */
+.TOP_LogoAdress{padding:30px 0 0 34px; }
+.TOP_LogoAdress a{float:left;}
+.TOP_Adress{float:left;margin-left:30px; padding-top:8px; position:relative; z-index:1;}
+.TOP_AdressText{color:#494846; line-height:34px; padding:0 8px 0 27px; height:34px; cursor:pointer; background:url(../images/TOP_Adress.jpg) no-repeat 10px 9px #fff;}
+.TOPadress_Main{ background:#fff; top:33px; left:-1px; padding:5px;  position:absolute; line-height:24px; z-index:5; display:none; border:1px solid #393738; border-top:0 none;}
+.TOPadress_Main a{color:#000; padding:0 8px;}
+.TOP_Adress:hover .TOPadress_Main{ display:block;}
+/*不同颜色板块*/
+.IndexBtn_list ul li{float:left; width:120px; margin-right:2px; margin-top:35px; padding:8px 44px 0 84px; height:80px; color:#fff; line-height:20px; cursor:pointer;}
+.IndexBtn_list ul li h3{ font-size:14px; color:#fff; line-height:30px;}
+.IndexBtn_Yellow{background:url(../images/IndexBtn_Yellow.jpg) no-repeat 22px 16px #f9ba46;}
+.IndexBtn_Red{ background:url(../images/IndexBtn_Red.jpg) no-repeat 22px 16px #ed6942;}
+.IndexBtn_Blue{background:url(../images/IndexBtn_Blue.jpg) no-repeat 22px 16px #16ade4;}
+.IndexBtn_Green{background:url(../images/zijinanquan.jpg) no-repeat 22px 16px #2DC099;}
+/*友情链接*/
+.Llink{ margin-top:20px;}
+.Llink_Title{ border-bottom:1px solid #e2e2e2;}
+.Llink_Title span{height:34px; display:inline-block; width:100px; text-align:center; line-height:34px; border:1px solid #e2e2e2; border-top:2px solid #e2490d; border-bottom:0 none; font-weight:bold; font-size:14px;}
+.Llink_list{ overflow:hidden; padding:5px 0;}
+.Llink_list a{ color:#646464; line-height:34px; float:left; display:inline-block; width:120px;}
+.TOPadress_Main a:hover,.lFooter_Link a:hover,.Llink_list a:hover{color:#ed6942}
+/*Footer*/
+.lFooter{ text-align:center; color:#000; line-height:30px;}
+.lFooter_Link a{color:#666; padding:0 15px; font-size:14px; line-height:40px;}
+/*排序*/
+.Car_sort{overflow:hidden; margin:20px 0; border-left:1px solid #d2d2d2; }
+.Car_sort a{float:left; display:inline-block; border:1px solid #d2d2d2; width:66px; height:30px; line-height:30px;  padding-left:15px; color:#333;}
+.Car_sort a.Carsort_First{color:#ef7103;}
+.Car_sort a img{margin-bottom:-2px;}
+
+.clearfix-footer:after {content:"."; display: block; height: 0; clear: both; visibility: hidden; font-size:0;}
+.clearfix-footer {*zoom:1;}

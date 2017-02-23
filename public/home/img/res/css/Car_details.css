@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+.CarDetails_Title{ background:#f8f8f8; height:40px; line-height:40px;}
+.CarDetails_Title span{ float:right; background:url(../images/Collect.jpg) no-repeat left center; line-height:40px; height:40px; padding:0 10px 0 26px;}
+.CarDetails_Title span a{color:#333; font-size:14px;}
+.CarDetails_Title h2{ font-size:16px; color:#000; padding-left:18px;}
+.CarDetails_Intro{ overflow:hidden; padding-top:20px;}
+
+.CarDetailsIntro_Img{ width:361px; height:z56px;}
+.CarDetailsIntro_Text{width:630px; font-size:14px; line-height:34px;}
+.CarDetails_Prices em{ color:#d40000; font-size:28px; font-weight:bold; line-height:44px;}
+.CarDetailsIntro_Text i{color:#646464; font-style:normal;font-size:14px;}
+.CarDetailsIntro_Text span{width:315px; display:inline-block;}
+.CarDetails_Tel{ background:url(../images/CarDetails_TelBG.jpg) no-repeat 10px 6px #fafafa; height:54px; line-height:54px; border:1px solid #f7f7f7;padding-left:65px;color:#646464;}
+.CarDetails_Tel em{ font-size:24px; color:#d60000; font-style:normal; font-weight:bold; padding-right:8px;}
+
+/*汽车详情*/
+.CarD_Tab{ border-bottom:2px solid #f45d04;}
+.CarD_Tab span{ background:#f45d04; display:inline-block; padding:0 40px; height:42px; line-height:42px; color:#fff; font-size:16px;}
+.CarDtab_Main{ border:1px solid #ececec; border-bottom:0 none; overflow:hidden;}
+.CarDtab_Main ul li{float:left; border:1px solid #ececec; border-right:0 none; border-top:0 none; height:44px; font-size:14px; line-height:44px; width:498px;}
+.CarDtab_Main ul li span{width:140px; background:#f6f6f6;padding-left:10px; display:inline-block; border-right:1px solid #ececec; height:44px; line-height:44px; }
+.CarDtab_Main ul li em{font-style:normal; padding-left:8px; color:#626262;}
+.CarDtab_Title{ background:url(../images/CarDtab_Title.jpg) no-repeat 8px 15px #f6f6f6; height:45px; line-height:45px;padding-left:28px;}
+.CarDtab_List{ border:1px solid #ececec; overflow:hidden; font-size:16px; font-weight:bold; }
+.CarDtabList_main{padding:14px;}
+.CarDtabList_main p{font-size:12px; font-weight:normal; line-height:24px;}

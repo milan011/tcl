@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+.Service_Banner{position:relative; height:330px; overflow:hidden;}
+.Service_Banner img{ position:absolute; height:330px; width:1000px;lleft:0; top:0;}
+.Service_title{padding:10px;padding-left:36px;}
+.Service_bg1{ background:#004a57;}
+.Service_Text img{float:right; padding:0 15px; vertical-align:bottom;}
+.Service_Text{ overflow:hidden;padding:10px 24px;line-height:26px; text-indent:2em; font-size:14px;}
+.Service_bg2{ background:#f64f00;}
+.Service_bg3{ background:#5d9f01}
+.Service_Text h2{ font-size:20px; font-style:italic; color:#f55000; line-height:34px;}
