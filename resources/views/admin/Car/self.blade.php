@@ -135,9 +135,14 @@
 											</li>
 											<li>
 												<a class="btn btn-warning" href="{{route('admin.car.editImg', ['car'=>$car->id])}}">
-													<i class="icon-edit icon-white"></i> 图片
+													<i class="icon-edit icon-white"></i> 图片编辑
 												</a>												
-											</li>											
+											</li>	
+											<li>
+												<a target="_blank" class="btn btn-success" href="{{route('home.car.index', ['car'=>$car->id])}}">
+													<i class="icon-edit icon-white"></i> 网站查看
+												</a>												
+											</li>										
 											<li>
 												<button class="btn btn-info changStatus" data-status="{{$car->car_status}}" style="width:100%;>
 													<i class="icon-edit icon-white"></i> 废弃
