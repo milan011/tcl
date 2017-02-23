@@ -110,7 +110,7 @@ main {
   padding: 10px;
   vertical-align: top;
   margin-left: 5px;
-  background: url("../img/list/searchTagRemoveIcon.png") no-repeat right 1px;
+  /*background: url("../img/list/searchTagRemoveIcon.png") no-repeat right 1px;*/
   cursor: pointer;
 }
 .searchTags .selectedTag .clearAll {
