@@ -222,8 +222,10 @@
             <div class="dib col-5 item">
                 <div class="car">
                     <a href="{{route('home.car.index', ['car'=>$rcar->id])}}">
-                        <img src="{{URL::asset('uploads/car/'.$image->filename)}}"
+                        @if(isset($rcar->hasOneImagesOnFirst->filename))
+                        <img src="{{URL::asset('uploads/car/'.$rcar->hasOneImagesOnFirst->filename)}}"
                              alt="{{$rcar->name}}"/>
+                        @endif
                         <p class="carName">{{$rcar->name}}</p>
                         <p class="carPrice"><span class="small">￥</span><span>{{$rcar->top_price}}</span><span
                                 class="small">万</span></p>

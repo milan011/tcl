@@ -17,10 +17,6 @@
     <!--[if lt IE 9]>
     <script type="text/javascript" src="../js/common/html5shiv.min.js"></script>
     <![endif]-->
-
-    <!-- 首页脚本  -->
-    <!-- <script type="text/javascript" src="../js/index.js"></script> -->
-    <script type="text/javascript" src="{{URL::asset('js/tcl/home/index.js')}}"></script>
     @yield('head_content')
 </head>
 <body>
@@ -58,7 +54,7 @@
         </div>
         <div class="main dib">
             <nav class="mainNav dib-con">
-                <div class="item dib active"><a href="#"><span>首页</span></a></div>
+                <div class="item dib active"><a href="{{route('home.index')}}"><span>首页</span></a></div>
                 <div class="item dib"><a href="#"><span>我要买车</span></a></div>
                 <div class="item dib"><a href="#"><span>我要卖车</span></a></div>
                 <div class="item dib"><a href="#"><span>我要加盟</span></a></div>
@@ -133,6 +129,7 @@
         <p>CopyRight &copy; 2012 All right reserved 淘车乐二手车交易网 版权所有</p>
         <p>电话0311-87785683 传真：0311-87220080 冀ICP备案12011064</p>
     </div>
+    @yield('script_content')
 </footer>
 </body>
 </html>

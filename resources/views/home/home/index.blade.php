@@ -7,6 +7,9 @@
 @section('head_content')
     <!-- 首页样式 -->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('css/tcl/home/index.css')}}">
+    <!-- 首页脚本  -->
+    <!-- <script type="text/javascript" src="../js/index.js"></script> -->
+    <script type="text/javascript" src="{{URL::asset('js/tcl/home/index.js')}}"></script>
 @endsection
 
 @section('content')
@@ -52,53 +55,55 @@
                     <div class="group row4">
                         <div class="title">品牌</div>
                         <div class="dib-con">
-                            <div class="dib item"><a href="#">大众</a></div>
-                            <div class="dib item"><a href="#">宝马</a></div>
-                            <div class="dib item"><a href="#">丰田</a></div>
-                            <div class="dib item"><a href="#">现代</a></div>
-                            <div class="dib item"><a href="#">福特</a></div>
-                            <div class="dib item"><a href="#">奥迪</a></div>
-                            <div class="dib item"><a href="#">雪佛兰</a></div>
-                            <div class="dib item"><a href="#">别克</a></div>
-                            <div class="dib item"><a href="#">奔驰</a></div>
-                            <div class="dib item"><a href="#">本田</a></div>
-                            <div class="dib item"><a href="#">更多&gt;</a></div>
+                            @foreach($recomment_brands as $brand)
+                            <div class="dib item"><a data-info="1" data-stype="brand_id" class="cate" href="{{route('home.cate.index')}}/b{{$brand->id}}">{{$brand->name}}</a></div>
+                            @endforeach                         
+                            <div class="dib item"><a data-info="" class="cate brand_id" href="{{route('home.cate.index')}}">更多&gt;</a></div>
                         </div>
                     </div>
                     <div class="group row4">
                         <div class="title">级别</div>
                         <div class="dib-con">
-                            <div class="dib item"><a href="#">轿车</a></div>
-                            <div class="dib item"><a href="#">SUV</a></div>
-                            <div class="dib item"><a href="#">MPV</a></div>
-                            <div class="dib item"><a href="#">跑车</a></div>
-                            <div class="dib item"><a href="#">皮卡</a></div>
-                            <div class="dib item"><a href="#">面包车</a></div>
-                            <div class="dib item"><a href="#">客车</a></div>
-                            <div class="dib item"><a href="#">货车</a></div>
+                            <div class="dib item"><a data-info="1" data-stype="categorey_type" class="cate" href="{{route('home.cate.index')}}/t1">轿车</a></div>
+                            <div class="dib item"><a data-info="2" data-stype="categorey_type" class="cate" href="javascript:void(0);">SUV</a></div>
+                            <div class="dib item"><a data-info="3" data-stype="categorey_type" class="cate" href="javascript:void(0);">MPV</a></div>
+                            <div class="dib item"><a data-info="4" data-stype="categorey_type" class="cate" href="javascript:void(0);">跑车</a></div>
+                            <div class="dib item"><a data-info="5" data-stype="categorey_type" class="cate" href="javascript:void(0);">皮卡</a></div>
+                            <div class="dib item"><a data-info="6" data-stype="categorey_type" class="cate" href="javascript:void(0);">面包车</a></div>
+                            <div class="dib item"><a data-info="7" data-stype="categorey_type" class="cate" href="javascript:void(0);">客车</a></div>
+                            <div class="dib item"><a data-info="8" data-stype="categorey_type" class="cate" href="javascript:void(0);">货车</a></div>
                         </div>
                     </div>
                     <div class="group row3">
                         <div class="title">价格</div>
                         <div class="dib-con">
-                            <div class="dib item"><a href="#">3万以下</a></div>
-                            <div class="dib item"><a href="#">3-5万</a></div>
-                            <div class="dib item"><a href="#">5-10万</a></div>
-                            <div class="dib item"><a href="#">10-20万</a></div>
-                            <div class="dib item"><a href="#">20-30万</a></div>
-                            <div class="dib item"><a href="#">30-40万</a></div>
-                            <div class="dib item"><a href="#">40万以上</a></div>
+                            <div class="dib item"><a data-info="1" data-stype="top_price" class="cate" href="{{route('home.cate.index')}}/p1">3万以下</a></div>
+                            <div class="dib item"><a data-info="2" data-stype="top_price" class="cate" href="javascript:void(0);">3-5万</a></div>
+                            <div class="dib item"><a data-info="3" data-stype="top_price" class="cate" href="javascript:void(0);">5-10万</a></div>
+                            <div class="dib item"><a data-info="4" data-stype="top_price" class="cate" href="javascript:void(0);">10-20万</a></div>
+                            <div class="dib item"><a data-info="5" data-stype="top_price" class="cate" href="javascript:void(0);">20-30万</a></div>
+                            <div class="dib item"><a data-info="6" data-stype="top_price" class="cate" href="javascript:void(0);">30-40万</a></div>
+                            <div class="dib item"><a data-info="7" data-stype="top_price" class="cate" href="javascript:void(0);">40万以上</a></div>
                         </div>
                     </div>
                     <div class="group row4 noborder">
                         <div class="title">车龄</div>
                         <div class="dib-con">
-                            <div class="dib item"><a href="#">1年以内</a></div>
-                            <div class="dib item"><a href="#">1-3年</a></div>
-                            <div class="dib item"><a href="#">3-5年</a></div>
-                            <div class="dib item"><a href="#">5年以上</a></div>
+                            <div class="dib item"><a data-info="1" data-stype="age" class="cate" href="{{route('home.cate.index')}}/a1">1年以内</a></div>
+                            <div class="dib item"><a data-info="2" data-stype="age" class="cate" href="javascript:void(0);">1-3年</a></div>
+                            <div class="dib item"><a data-info="3" data-stype="age" class="cate" href="javascript:void(0);">3-5年</a></div>
+                            <div class="dib item"><a data-info="4" data-stype="age" class="cate" href="javascript:void(0);">5年以上</a></div>
                         </div>
                     </div>
+                    <form class="form-horizontal" id="cate_form" action="{{route('home.cate.index')}}" method="post">
+                        {!! csrf_field() !!}
+                        <div>
+                            <input type="hidden" name="brand_id" value="">
+                            <input type="hidden" name="categorey_type" value="">
+                            <input type="hidden" name="top_price" value="">
+                            <input type="hidden" name="age"   value="">
+                        </div>                    
+                    </form>
                 </nav>
             </div>
         </div>
@@ -204,4 +209,49 @@
         </div>
     </section>
 </main>    
+@endsection
+@section('script_content')
+<script>
+    $(document).ready(function(){
+
+        $("input[name='brand_id']").val('');
+        $("input[name='categorey_type']").val('');
+        $("input[name='top_price']").val('');
+        $("input[name='age']").val('');
+
+        $('a.cate').click(function(){
+
+            var s_type = $(this).attr('data-stype'); //搜索类型
+            var s_info = $(this).attr('data-info');  //搜索条件
+
+            switch(s_type){
+                case 'brand_id':
+                    $("input[name='brand_id']").val(s_info);
+                    $("input[name='brand_id']").siblings().val('');
+                break;
+
+                case 'categorey_type':
+                    $("input[name='categorey_type']").val(s_info);
+                    $("input[name='categorey_type']").siblings().val('');
+                break;
+
+                case 'top_price':
+                    $("input[name='top_price']").val(s_info);
+                    $("input[name='top_price']").siblings().val('');
+                break;
+
+                case 'age':
+                    $("input[name='age']").val(s_info);
+                    $("input[name='age']").siblings().val('');
+                break;
+
+                default:
+                    
+                break;
+            }
+
+            $('#cate_form').submit();
+        });
+    });
+</script>
 @endsection
