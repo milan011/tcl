@@ -263,3 +263,45 @@
 
 		return $date;
 	}
+
+	//获得字符串首字母,即筛选项目
+	function getConditionType($str){
+
+		return substr($str, 0, 1);
+	}
+
+	//获得字符串首个字符后的部分,即筛选条件
+	function getConditionContent($str){
+
+		return substr($str, 1);
+	}
+
+	//生成超级链接
+	function getSelectUrl($conditions){
+		$base_url   = route('home.cate.index'). '/';
+		$brand_url  = '';
+		$orther_url = '';
+
+		//dd($base_url);
+		// p($conditions);
+
+		if(!empty($conditions['c'])){
+			$brand_url = 'c'.$conditions['c']. '/';
+			unset($conditions['c']);
+			unset($conditions['b']);
+		}elseif(!empty($conditions['b'])){
+			$brand_url = 'b'.$conditions['b']. '/';
+			unset($conditions['b']);
+			unset($conditions['c']);
+		}
+
+		$url = $base_url.$brand_url;
+
+		foreach (array_filter($conditions) as $key => $value) {
+			$orther_url .= $key.$value.'-';
+		}
+
+		$url .= $orther_url;
+		// dd(substr($url,0,strlen($url)-1));
+		return substr($url,0,strlen($url)-1);
+	}

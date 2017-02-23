@@ -47,6 +47,9 @@ Route::group(['middleware' => 'web', 'prefix' => 'home1', 'namespace' => 'Home']
 
     Route::get('/', 'HomeController@index')->name('home.index'); 
     Route::get('car/{id}', 'CarController@index')->name('home.car.index'); 
+    // Route::get( 'cate/{brand_id?}/{category_type?}/{price?}/{age?}/{category_id?}/{shop_id?}', 'CateController@index')->name('home.cate.index'); 
+    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index'); 
+    // Route::match(['get', 'post'], 'cate/{cate?}', 'CateController@index')->name('home.cate.index'); 
 });
 
 Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
