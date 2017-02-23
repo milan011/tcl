@@ -18,7 +18,7 @@ class ShopRepository implements ShopRepositoryContract
 
     // 根据ID获得门店信息
     public function find($id)
-    {
+    {   
         return Shop::select(['id', 'name', 'city_id'])->findOrFail($id);
     }
 

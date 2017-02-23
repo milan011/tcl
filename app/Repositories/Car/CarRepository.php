@@ -85,6 +85,58 @@ class CarRepository implements CarRepositoryContract
                      ->paginate(10);
     }
 
+    // 前端显示车源列表
+    public function getAllCarsWithBefore($condition){   
+
+        // dd($condition);
+        // $query = Cars::query();  // 返回的是一个 QueryBuilder 实例
+        $query = new Cars();       // 返回的是一个Cars实例,两种方法均可
+
+        //品牌筛选
+        if(!empty($condition['brand_id'])){
+            $query = $query->where('brand_id', $condition['brand_id']);
+        }
+        //车型类别筛选
+        if(!empty($condition['category_type'])){
+            $query = $query->where('categorey_type', $condition['category_type']);
+        }
+        //价格筛选
+        if(!empty($condition['price'])){
+            
+            $query = $query->where(function($query) use ($condition){
+
+                $query = $query->where('top_price', '<=', '6');
+                $query = $query->where('top_price', '>=', '2.2');
+            });
+        }
+        //车龄筛选
+        if(!empty($condition['age'])){
+            $query = $query->where(function($query) use ($condition){
+
+                $query = $query->where('age', '<=', '6');
+                $query = $query->where('age', '>=', '2.2');
+            });
+        }
+        //车系筛选
+        if(!empty($condition['category_id'])){
+            $query = $query->where('category_id', $condition['category_id']);
+        }
+        //门店筛选
+        if(!empty($condition['shop_id'])){
+            $query = $query->where('shop_id', $condition['shop_id']);
+        }
+
+        $query = $query->where(function($query) use ($condition){
+
+                $query = $query->where('car_status', '1');
+                $query = $query->orWhere('car_status', '6');
+            });
+
+        return $query->select($this->select_columns)
+                     ->orderBy('updated_at', 'desc')
+                     ->paginate(12);
+    }
+
     //获得推荐车源
     public function getRecommendCars($price){
 

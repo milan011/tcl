@@ -267,4 +267,97 @@ class BrandRepository implements BrandRepositoryContract
         }
     }
 
+    //获得推荐品牌列表，前端列表页使用
+    public function getRecommentBrandsWithBefore(){
+
+        return Brand::select(['id', 'pid', 'name', 'sort', 'logo_img'])
+                    ->where('pid', '0')
+                    ->where('status', '1')
+                    ->where('recommend', '1')
+                    ->orderBy('sort', 'desc')
+                    ->limit(10)
+                    ->get();
+    }
+
+    //首字母存在品牌的字母列表
+    public function getBransLetter(){
+
+        $info = Brand::select(['id', 'frist_letter'])
+                     ->where('pid', '0')
+                     ->where('status', '1')
+                     ->groupBy('frist_letter')
+                     ->get();
+
+        foreach ($info as $key => $value) {
+            $letter_list[] = $value->frist_letter;
+        }
+
+        return $letter_list;
+    }
+
+    //品牌分类根据首字母
+    public function getBransWithLetter(){
+
+        $brand_list_with_letter = [];
+
+        $letter_list = $this->getBransLetter();
+
+        foreach ($letter_list as $key => $value) {
+
+            $brand_list_with_letter[$value] = Brand::select(['id', 'name'])
+                                                   ->where('pid', '0')
+                                                   ->where('status', '1')
+                                                   ->where('frist_letter', $value)
+                                                   ->get();
+        }
+        // dd($brand_list_with_letter);
+
+        return $brand_list_with_letter;
+    }
+
+    //当前品牌车系信息
+    public function getCurrentBrand($condition){
+
+        $brand_info    = '';
+        $category_info = '';
+        $info          = [];
+        // dd($condition);
+        if(empty($condition['brand_id']) && empty($condition['category_id'])){
+          $condition['brand_id'] = '1';  
+        }
+        if(isset($condition['brand_id'])){
+            //品牌筛选
+            $brand_info = $this->getAllChild($condition['brand_id']);
+            foreach ($brand_info as $key => $value) {
+                if($value['lev'] == '1'){
+                    unset($brand_info[$key]);
+                }
+            }
+
+            $category_info = $this->find($condition['brand_id'])->toArray();
+        }else{
+            // 车型筛选
+            if(isset($condition['category_id'])){
+               $category_info = $this->getAllParent($condition['category_id']); 
+            }
+            
+            if(isset($category_info)){
+               $category_info = $category_info[1]; 
+            }
+            
+            $brand_info = $this->getAllChild($category_info['id']);
+            foreach ($brand_info as $key => $value) {
+                if($value['lev'] == '1'){
+                    unset($brand_info[$key]);
+                }
+            }
+        }
+
+        $info['brand']    = $category_info;
+        $info['category'] = $brand_info;
+
+        // dd($info);
+        return $info;
+    }
+
 }
