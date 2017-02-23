@@ -10,15 +10,19 @@ use Carbon;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Car\CarRepositoryContract;
+use App\Repositories\Brand\BrandRepositoryContract;
 
 class HomeController extends Controller
 {   
     protected $car;
+    protected $brand;
 
     public function __construct(
-        CarRepositoryContract $car
+        CarRepositoryContract $car,
+        BrandRepositoryContract $brand
     ) {
-        $this->car = $car;
+        $this->brand = $brand;
+        $this->car   = $car;
         // $this->middleware('brand.create', ['only' => ['create']]);
     }
 
@@ -36,7 +40,10 @@ class HomeController extends Controller
         $request['home']       = '1';
 
         $cars = $this->car->getAllcars($request);
-        // dd(lastSql());
+
+        // 推荐品牌
+        $recomment_brands = $this->brand->getRecommentBrandsWithBefore();
+        // dd($recomment_brands);
         // dd($cars);
         /*foreach ($cars as $key => $value) {
             p($value->id);
@@ -44,6 +51,6 @@ class HomeController extends Controller
         }
         exit;*/
 
-        return view('home.home.index', compact('cars'));
+        return view('home.home.index', compact('cars', 'recomment_brands'));
     }
 }

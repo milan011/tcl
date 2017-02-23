@@ -68,7 +68,7 @@ class TranscationController extends Controller
         // dd($request->all());
         $request['participate'] = false;
         $transcations = $this->transcation->getAllTranscations($request);
-        dd(lastSql());
+        // dd(lastSql());
         // dd($transcations);
         $select_conditions  = $request->all();
         $chance_launch = isset($request->chance_launch) ? $request->chance_launch : '1';

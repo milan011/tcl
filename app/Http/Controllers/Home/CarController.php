@@ -31,11 +31,11 @@ class CarController extends Controller
     {
         // 车源详情
         $cars = $this->car->find($id);
-
+        // dd($cars);
         // 推荐车源
         $recommend_cars = $this->car->getRecommendCars($cars->top_price);
         // dd(lastsql());
-        // dd($recommend_cars);
+        // dd($recommend_cars[0]);
 
         $gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
