@@ -35,6 +35,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('admin/login', 'Auth\AuthController@showLoginForm');
     Route::post('admin/login', 'Auth\AuthController@login');
     Route::get('admin/logout', 'Auth\AuthController@logout');
+    Route::get('admin/resetPassword', 'Admin\UserController@resetPassword')->name('admin.user.resetPass');
+    Route::post('admin/resetPass', 'Admin\UserController@resetPass')->name('admin.user.reset');
     Route::auth();
 });
 
@@ -119,7 +121,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('transcation', 'TranscationController');  
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {                      
+/*Route::group(['middleware' => ['web', 'auth']], function () {                      
         // Route::get('/', 'PagesController@dashboard');           
         Route::get('/', 'HomeController@index');           
         Route::get('users/data', 'UsersController@anyData')->name('users.data');
@@ -167,4 +169,4 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::post('invoice/sentinvoice/{id}', 'InvoicesController@updateSentStatus')->name('invoice.sent');
         Route::post('invoice/reopensentinvoice/{id}', 'InvoicesController@updateSentReopen')->name('invoice.sent.reopen');
         Route::post('invoice/newitem/{id}', 'InvoicesController@newItem')->name('invoice.new.item');
-});
+});*/

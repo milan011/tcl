@@ -69,7 +69,7 @@
 								<li class="dropdown-menu-title">
  									<span>用户信息</span>
 								</li>
-								<li><a href="JavaScript:void(0);"><i class="halflings-icon user"></i>修改密码</a></li>
+								<li><a href="{{route('admin.user.resetPass')}}"><i class="halflings-icon user"></i>修改密码</a></li>
 								<li><a href="{{ url('admin/logout') }}"><i class="halflings-icon off"></i>退出</a></li>
 							</ul>
 						</li>

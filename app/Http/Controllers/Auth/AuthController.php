@@ -85,7 +85,7 @@ class AuthController extends Controller
         if (Auth::attempt(['name' => $name, 'password' => $password], $remember)) {  
             return redirect()->intended('/admin');
         }
-        return redirect('login')->withInput($request->except('password'))->with('msg', '用户名或密码错误')->withErrors('fall to login');
+        return redirect('login')->withInput($request->except('password'))->with('msg', '用户名或密码错误')->withErrors('用户名或密码错误');
     }
 
     /**@pma

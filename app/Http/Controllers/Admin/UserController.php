@@ -14,6 +14,8 @@ use Auth;
 use PHPZen\LaravelRbac\Traits\Rbac;
 use Illuminate\Support\Facades\Input;
 use App\Client;
+use Validator;
+use Session;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Repositories\User\UserRepositoryContract;
@@ -176,5 +178,42 @@ class UserController extends Controller
         $this->users->destroy($id);
         
         return redirect()->route('admin.user.index');
+    }
+
+    public function resetPassword(){
+    
+        return view('auth.reset');
+    }
+
+    public function resetPass(Request $request){
+ 
+        $oldpassword = $request->input('oldpassword');
+        $password = $request->input('password');
+        $data = $request->all();
+        $rules = [
+            'oldpassword'=>'required|between:6,20',
+            'password'=>'required|between:6,20|confirmed',
+        ];
+        $messages = [
+            'required' => '密码不能为空',
+            'between' => '密码必须是6~20位之间',
+            'confirmed' => '新密码和确认密码不匹配'
+        ];
+        $validator = Validator::make($data, $rules, $messages);
+        $user = Auth::user();
+        $validator->after(function($validator) use ($oldpassword, $user) {
+            if (!\Hash::check($oldpassword, $user->password)) {
+                $validator->errors()->add('oldpassword', '原密码错误');
+            }
+        });
+        if ($validator->fails()) {
+            return back()->withErrors($validator);  //返回一次性错误
+        }
+        $user->password = bcrypt($password);
+        $user->save();
+
+        Auth::logout();  //更改完这次密码后，退出这个用户
+
+        return redirect('admin/login');
     }
 }
