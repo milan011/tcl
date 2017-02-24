@@ -52,7 +52,7 @@
             </div>
             <div class="service">
                 <p>保障服务：车辆认证 专业检测 1年2万公里质保</p>
-                <p>服 务 费：2000元（车价 X 3%，最低2000起）</p>
+                <!-- <p>服 务 费：2000元（车价 X 3%，最低2000起）</p> -->
             </div>
             <!-- <div class="buttonArea dib-con">
                 <div class="dib dateCar modalControl" target="#dateCarModal">预约看车</div>

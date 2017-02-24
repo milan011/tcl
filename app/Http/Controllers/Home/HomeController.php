@@ -43,6 +43,14 @@ class HomeController extends Controller
 
         // 推荐品牌
         $recomment_brands = $this->brand->getRecommentBrandsWithBefore();
+
+        $category_type   = config('tcl.category_type'); //获取配置文件中车型类别
+        $sale_number     = config('tcl.sale_number'); //获取配置文件中车型类别
+        $price_interval  = config('tcl.price_interval'); //获取配置文件中价格区间
+        $age             = config('tcl.age'); //获取配置文件中车龄区间
+        $age_begin_end   = config('tcl.age_begin_end'); //获取配置文件中车龄区间起始
+        $price_begin_end = config('tcl.price_begin_end'); //获取配置文件中价格区间起始
+
         // dd($recomment_brands);
         // dd($cars);
         /*foreach ($cars as $key => $value) {
@@ -51,6 +59,6 @@ class HomeController extends Controller
         }
         exit;*/
 
-        return view('home.home.index', compact('cars', 'recomment_brands'));
+        return view('home.home.index', compact('cars', 'recomment_brands','age','price_interval','category_type'));
     }
 }

@@ -64,35 +64,25 @@
                     <div class="group row4">
                         <div class="title">级别</div>
                         <div class="dib-con">
-                            <div class="dib item"><a data-info="1" data-stype="categorey_type" class="cate" href="{{route('home.cate.index')}}/t1">轿车</a></div>
-                            <div class="dib item"><a data-info="2" data-stype="categorey_type" class="cate" href="javascript:void(0);">SUV</a></div>
-                            <div class="dib item"><a data-info="3" data-stype="categorey_type" class="cate" href="javascript:void(0);">MPV</a></div>
-                            <div class="dib item"><a data-info="4" data-stype="categorey_type" class="cate" href="javascript:void(0);">跑车</a></div>
-                            <div class="dib item"><a data-info="5" data-stype="categorey_type" class="cate" href="javascript:void(0);">皮卡</a></div>
-                            <div class="dib item"><a data-info="6" data-stype="categorey_type" class="cate" href="javascript:void(0);">面包车</a></div>
-                            <div class="dib item"><a data-info="7" data-stype="categorey_type" class="cate" href="javascript:void(0);">客车</a></div>
-                            <div class="dib item"><a data-info="8" data-stype="categorey_type" class="cate" href="javascript:void(0);">货车</a></div>
+                        @foreach($category_type as $key=>$category)
+                            <div class="dib item"><a data-info="1" data-stype="categorey_type" class="cate" href="{{route('home.cate.index')}}/t{{$key}}">{{$category}}</a></div>
+                        @endforeach 
                         </div>
                     </div>
                     <div class="group row3">
                         <div class="title">价格</div>
                         <div class="dib-con">
-                            <div class="dib item"><a data-info="1" data-stype="top_price" class="cate" href="{{route('home.cate.index')}}/p1">3万以下</a></div>
-                            <div class="dib item"><a data-info="2" data-stype="top_price" class="cate" href="javascript:void(0);">3-5万</a></div>
-                            <div class="dib item"><a data-info="3" data-stype="top_price" class="cate" href="javascript:void(0);">5-10万</a></div>
-                            <div class="dib item"><a data-info="4" data-stype="top_price" class="cate" href="javascript:void(0);">10-20万</a></div>
-                            <div class="dib item"><a data-info="5" data-stype="top_price" class="cate" href="javascript:void(0);">20-30万</a></div>
-                            <div class="dib item"><a data-info="6" data-stype="top_price" class="cate" href="javascript:void(0);">30-40万</a></div>
-                            <div class="dib item"><a data-info="7" data-stype="top_price" class="cate" href="javascript:void(0);">40万以上</a></div>
+                        @foreach($price_interval as $key=>$price)
+                            <div class="dib item"><a data-info="1" data-stype="top_price" class="cate" href="{{route('home.cate.index')}}/p{{$key}}">{{$price}}</a></div>
+                        @endforeach 
                         </div>
                     </div>
                     <div class="group row4 noborder">
                         <div class="title">车龄</div>
                         <div class="dib-con">
-                            <div class="dib item"><a data-info="1" data-stype="age" class="cate" href="{{route('home.cate.index')}}/a1">1年以内</a></div>
-                            <div class="dib item"><a data-info="2" data-stype="age" class="cate" href="javascript:void(0);">1-3年</a></div>
-                            <div class="dib item"><a data-info="3" data-stype="age" class="cate" href="javascript:void(0);">3-5年</a></div>
-                            <div class="dib item"><a data-info="4" data-stype="age" class="cate" href="javascript:void(0);">5年以上</a></div>
+                        @foreach($age as $key=>$ag)
+                            <div class="dib item"><a data-info="1" data-stype="age" class="cate" href="{{route('home.cate.index')}}/a{{$key}}">{{$ag}}</a></div>
+                        @endforeach
                         </div>
                     </div>
                     <form class="form-horizontal" id="cate_form" action="{{route('home.cate.index')}}" method="post">
@@ -214,7 +204,7 @@
 <script>
     $(document).ready(function(){
 
-        $("input[name='brand_id']").val('');
+        /*$("input[name='brand_id']").val('');
         $("input[name='categorey_type']").val('');
         $("input[name='top_price']").val('');
         $("input[name='age']").val('');
@@ -251,7 +241,7 @@
             }
 
             $('#cate_form').submit();
-        });
+        });*/
     });
 </script>
 @endsection
