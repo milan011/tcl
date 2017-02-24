@@ -157,8 +157,8 @@ $(document).ready(function(){
 								content += value.id;
 								content += '">';
 								content += value.name + ' ';
-								content += value.year_type;
-								content += '款';
+								// content += value.year_type;
+								// content += '款';
 								content += '</option>';
 							});
 
