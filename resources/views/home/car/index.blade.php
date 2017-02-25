@@ -47,7 +47,7 @@
                 </div>
                 <div class="item dib">
                     <div class="label">车辆所在地</div>
-                    <div class="text">北京</div>
+                    <div class="text">石家庄</div>
                 </div>
             </div>
             <div class="service">
@@ -110,7 +110,7 @@
             <!-- <img src="../img/carDetail/dbFile/carDesc2.png" /> -->
         </div>
     </section>
-    <section class="floor certInfo container">
+    <!-- <section class="floor certInfo container">
         <div class="title">检测说明</div>
         <div class="content" style="background: url('{{URL::asset('home/img/carDetail/checkResultBg.jpg')}}') no-repeat;">
             <div class="certContent">
@@ -212,7 +212,7 @@
                 <button class="modalControl dateCar" target="#dateCarModal">预约看车</button>
             </div>
         </div>
-    </section>
+    </section> -->
     <section class="floor recommend container">
         <div class="title">店铺推荐</div>
         <a href="javascript:void(0);"><div class="rightLink fr">进入店铺查看更多</div></a>

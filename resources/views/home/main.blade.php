@@ -55,9 +55,9 @@
         <div class="main dib">
             <nav class="mainNav dib-con">
                 <div class="item dib active"><a href="{{route('home.index')}}"><span>首页</span></a></div>
-                <div class="item dib"><a href="#"><span>我要买车</span></a></div>
-                <div class="item dib"><a href="#"><span>我要卖车</span></a></div>
-                <div class="item dib"><a href="#"><span>我要加盟</span></a></div>
+                <div class="item dib"><a href="{{route('home.cate.index')}}"><span>我要买车</span></a></div>
+                <div class="item dib"><a href="javascript:void(0);"><span>我要卖车</span></a></div>
+                <div class="item dib"><a href="javascript:void(0);"><span>我要加盟</span></a></div>
             </nav>
         </div>
         <div class="dib mobileAdd">
