@@ -21,15 +21,6 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-/*Route::get('/', function(){
-
-        return 'hehe';
-});
-
-Route::get('haha', function(){
-
-        return 'hehe1';
-});*/
 
 Route::group(['middleware' => 'web'], function () {
     Route::get('admin/login', 'Auth\AuthController@showLoginForm');
@@ -40,19 +31,19 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 });
 
-Route::group(['middleware' => 'web', 'prefix' => 'home1', 'namespace' => 'Home'], function () {
-    /*Route::get('/', function(){
+Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
+    
+    Route::get('/', 'HomeController@index')->name('home.index'); 
+    Route::get('car/{id}', 'CarController@index')->name('home.car.index');  
+    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');  
+});
 
-        return view('home.home.index');
-        // return 'hehe';
-    }); */
-
+/*Route::group(['middleware' => 'web', 'prefix' => 'home1', 'namespace' => 'Home'], function () {
+    
     Route::get('/', 'HomeController@index')->name('home.index'); 
     Route::get('car/{id}', 'CarController@index')->name('home.car.index'); 
-    // Route::get( 'cate/{brand_id?}/{category_type?}/{price?}/{age?}/{category_id?}/{shop_id?}', 'CateController@index')->name('home.cate.index'); 
-    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index'); 
-    // Route::match(['get', 'post'], 'cate/{cate?}', 'CateController@index')->name('home.cate.index'); 
-});
+    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');  
+});*/
 
 Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 

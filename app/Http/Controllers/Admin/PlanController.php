@@ -218,7 +218,7 @@ class PlanController extends Controller
      */
     public function update(UpdatePlanRequest $request, $id)
     {
-        dd($request->all());
+        // dd($request->all());
         $plan = $this->plan->update($request, $id);
         
         return redirect()->route('admin.plan.self')->withInput();
