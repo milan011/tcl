@@ -12,18 +12,22 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Car\CarRepositoryContract;
 use App\Repositories\Brand\BrandRepositoryContract;
 
-class HomeController extends Controller
+class HomeController extends CommonController
 {   
     protected $car;
     protected $brand;
+    protected $request;
 
     public function __construct(
         CarRepositoryContract $car,
-        BrandRepositoryContract $brand
+        BrandRepositoryContract $brand,
+        Request $request
     ) {
         $this->brand = $brand;
         $this->car   = $car;
+        $this->request = $request;
         // $this->middleware('brand.create', ['only' => ['create']]);
+        parent::__construct($request);
     }
 
     /**

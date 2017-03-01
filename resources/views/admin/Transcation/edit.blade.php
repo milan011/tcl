@@ -14,7 +14,7 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.chance.index')}}">交易管理</a> 
+		<a href="{{route('admin.transcation.index')}}">交易管理</a> 
 		<i class="icon-angle-right"></i>
 	</li>
 	<li><a href="javascript:void(0);">交易跟进</a></li>

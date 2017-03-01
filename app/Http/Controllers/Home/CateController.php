@@ -15,21 +15,25 @@ use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
 
 
-class CateController extends Controller
+class CateController extends CommonController
 {   
     protected $car;
     protected $brand;
     protected $shop;
+    protected $request;
 
     public function __construct(
         CarRepositoryContract $car,
         BrandRepositoryContract $brand,
-        ShopRepositoryContract $shop
+        ShopRepositoryContract $shop,
+        Request $request
     ) {
         $this->car = $car;
         $this->brand = $brand;
         $this->shop = $shop;
+        $this->request = $request;
         // $this->middleware('brand.create', ['only' => ['create']]);
+        parent::__construct($request);
     }
 
     /**

@@ -102,7 +102,7 @@
             <div>
                 <!-- <div> -->
                    @foreach($cars->hasManyImages as $image)
-                    <img style="margin-left:1%;" src="{{URL::asset('uploads/car/'.$image->filename)}}" />
+                    <img style="margin-left:1%;max-height: 400px;" src="{{URL::asset('uploads/car/'.$image->filename)}}" />
                     @endforeach 
                 <!-- </div>              -->
             </div>

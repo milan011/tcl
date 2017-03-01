@@ -5,21 +5,29 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use DB;
 use Debugbar;
+use Session;
 use View;
 use Carbon;
 use App\Http\Requests;
+use App\Area;
 use App\Http\Controllers\Controller;
 use App\Repositories\Car\CarRepositoryContract;
 
-class CarController extends Controller
+class CarController extends CommonController
 {   
     protected $car;
+    protected $request;
 
     public function __construct(
-        CarRepositoryContract $car
+        CarRepositoryContract $car,
+        Request $request
     ) {
-        $this->car = $car;
+        
+        $this->car     = $car;
+        $this->request = $request;
         // $this->middleware('brand.create', ['only' => ['create']]);
+        parent::__construct($request);
+
     }
 
     /**
@@ -32,6 +40,8 @@ class CarController extends Controller
         // 车源详情
         $cars = $this->car->find($id);
         // dd($cars);
+        // p('xixi');
+        // dd(Session::all());
         // 推荐车源
         $recommend_cars = $this->car->getRecommendCars($cars->top_price);
         // dd(lastsql());

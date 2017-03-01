@@ -316,7 +316,7 @@
 							<th>变速箱</th>
 							<th>车身颜色</th>
 							<th>过户次数</th>
-							<th>客户备注</th>
+							<!-- <th>客户备注</th> -->
 							<th>登记日期</th>
 							<th>门店</th>
 							<th>负责人</th>
@@ -333,7 +333,7 @@
 							<td>{{$gearbox[$match->gearbox]}}</td>							
 							<td>{{$out_color[$match->out_color]}}</td>						
 							<td>{{$match->sale_number}}</td>							
-							<td>{{$match->description}}</td>							
+							<!-- <td>{{$match->description}}</td>							 -->
 							<td>{{substr($match->created_at, 0 ,10)}}</td>							
 							<td>{{$match->belongsToShop->shop_name}}</td>							
 							<td>{{$match->belongsToUser->nick_name}}</td>		
