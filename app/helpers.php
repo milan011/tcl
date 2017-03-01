@@ -305,3 +305,13 @@
 		// dd(substr($url,0,strlen($url)-1));
 		return substr($url,0,strlen($url)-1);
 	}
+
+	// 根据ip获得用户所在城市
+	function getCurrentCityByIp($ip){
+
+		$city_info = @file_get_contents('http://ip.taobao.com/service/getIpInfo.php?ip=' . $ip);
+		$city_info = json_decode($city_info, true);
+		// dd($city_info['data']['city']);
+
+		return $city_info['data']['city'];
+	}

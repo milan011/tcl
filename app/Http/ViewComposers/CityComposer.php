@@ -2,6 +2,8 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
+use Request;
+use Session;
 use App\Area;
 
 class CityComposer
