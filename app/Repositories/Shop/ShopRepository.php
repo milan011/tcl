@@ -77,4 +77,10 @@ class ShopRepository implements ShopRepositoryContract
             Session()->flash('faill', '删除门店失败');
         }      
     }
+
+    //获得城市所有门店
+    public function getShopsInCity($city_id){
+
+        return Shop::select('id')->where('city_id', $city_id)->get();
+    }
 }

@@ -147,6 +147,8 @@ class CarRepository implements CarRepositoryContract
         //门店筛选
         if(!empty($condition['shop_id'])){
             $query = $query->where('shop_id', $condition['shop_id']);
+        }else{
+            $query = $query->whereIn('shop_id', $condition['shop_list']);
         }
 
         $query = $query->where(function($query) use ($condition){
