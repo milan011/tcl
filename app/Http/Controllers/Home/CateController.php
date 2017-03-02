@@ -101,14 +101,33 @@ class CateController extends CommonController
                     $select_condition['age'] = getConditionContent($value);
                     $url_condition['a'] = getConditionContent($value);
                     break;
-                
+                case 'd':
+                    # 城市
+                    $select_condition['city'] = getConditionContent($value);
+                    $url_condition['d'] = getConditionContent($value);
+                    break;
                 default:
                     # code...
                     break;
             }
         }
         // dd($url_condition);
-        // dd($select_condition['brand_id']);
+        // dd(Session('current_city'));
+        // dd($select_condition);
+
+        if(!empty($select_condition['city'])){
+            // 选择城市，筛选该城市所有门店
+            $city_shops = $this->shop->getShopsInCity($select_condition['city']);
+        }else{
+            //未选择城市，默认为用户所在城市
+            $city_shops = $this->shop->getShopsInCity(Session('current_city'));
+        }
+
+        foreach ($city_shops as $key => $value) {
+            $shop_list[] = $value->id;
+        }
+
+        $select_condition['shop_list'] = $shop_list;
         // 符合条件车源
         $cars = $this->car->getAllCarsWithBefore($select_condition);
         // dd(lastsql()); 

@@ -31,6 +31,7 @@ class CommonController extends Controller
         // dd(lastSql());
         // dd($current_city);
         session(['current_city' => $current_city->id]); //当前城市存入session
+        session(['current_city_name' => $current_city->name]); //当前城市存入session
 
         // dd(Session::all());
     }
