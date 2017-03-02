@@ -37,16 +37,15 @@
                 <input class="searchButton" type="button" value="搜索">
             </div>
         </div>
-
         <div class="left dib">
             <!-- <img class="logo" src="../img/common/logo.png" alt="淘车乐"> -->
             <img class="logo" src="{{URL::asset('home/img/common/logo.png')}}" alt="淘车乐">
             <div class="cityArea">
-                <div class="city">石家庄</div>
+                <div class="city">@yield('current_city_name')</div>
                 <div class="cityListArea">
                     <div class="cityList dib-con">
                     	@foreach($citysHasTcl as $city)
-                        <div class="dib cityItem">{{$city->name}}</div>
+                            <a href="{{route('home.index')}}/d{{$city->id}}"><div class="dib cityItem">{{$city->name}}</div></a>
                         @endforeach
                     </div>
                 </div>

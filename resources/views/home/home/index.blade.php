@@ -12,6 +12,8 @@
     <script type="text/javascript" src="{{URL::asset('js/tcl/home/index.js')}}"></script>
 @endsection
 
+@section('current_city_name', $current_city_name)
+
 @section('content')
 <main>
     <div class="banner">
@@ -56,7 +58,7 @@
                         <div class="title">品牌</div>
                         <div class="dib-con">
                             @foreach($recomment_brands as $brand)
-                            <div class="dib item"><a data-info="1" data-stype="brand_id" class="cate" href="{{route('home.cate.index')}}/b{{$brand->id}}">{{$brand->name}}</a></div>
+                            <div class="dib item"><a data-info="1" data-stype="brand_id" class="cate" href="{{route('home.cate.index')}}/b{{$brand->id}}@if(isset($chose_city))/d{{$chose_city}} @endif">{{$brand->name}}</a></div>
                             @endforeach                         
                             <div class="dib item"><a data-info="" class="cate brand_id" href="{{route('home.cate.index')}}">更多&gt;</a></div>
                         </div>
@@ -65,7 +67,7 @@
                         <div class="title">级别</div>
                         <div class="dib-con">
                         @foreach($category_type as $key=>$category)
-                            <div class="dib item"><a data-info="1" data-stype="categorey_type" class="cate" href="{{route('home.cate.index')}}/t{{$key}}">{{$category}}</a></div>
+                            <div class="dib item"><a data-info="1" data-stype="categorey_type" class="cate" href="{{route('home.cate.index')}}/t{{$key}}@if(isset($chose_city))/d{{$chose_city}} @endif">{{$category}}</a></div>
                         @endforeach 
                         </div>
                     </div>
@@ -73,7 +75,7 @@
                         <div class="title">价格</div>
                         <div class="dib-con">
                         @foreach($price_interval as $key=>$price)
-                            <div class="dib item"><a data-info="1" data-stype="top_price" class="cate" href="{{route('home.cate.index')}}/p{{$key}}">{{$price}}</a></div>
+                            <div class="dib item"><a data-info="1" data-stype="top_price" class="cate" href="{{route('home.cate.index')}}/p{{$key}}@if(isset($chose_city))/d{{$chose_city}} @endif">{{$price}}</a></div>
                         @endforeach 
                         </div>
                     </div>
@@ -81,7 +83,7 @@
                         <div class="title">车龄</div>
                         <div class="dib-con">
                         @foreach($age as $key=>$ag)
-                            <div class="dib item"><a data-info="1" data-stype="age" class="cate" href="{{route('home.cate.index')}}/a{{$key}}">{{$ag}}</a></div>
+                            <div class="dib item"><a data-info="1" data-stype="age" class="cate" href="{{route('home.cate.index')}}/a{{$key}}@if(isset($chose_city))/d{{$chose_city}} @endif">{{$ag}}</a></div>
                         @endforeach
                         </div>
                     </div>

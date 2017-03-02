@@ -66,7 +66,7 @@
 							<th>求购信息编号</th>
 							<th>意向车型</th>
 							<th>意向价格</th>
-							<th>年限</th>
+							<!-- <th>年限</th> -->
 							<th>里程</th>							
 							<th>变速箱</th>
 							<th>车身颜色</th>
@@ -84,7 +84,7 @@
 							<td>{{$want->want_code}}</td>
 							<td>{{$want->name}}</td>
 							<td>{{$want->bottom_price}}-{{$want->top_price}}万</td>							
-							<td>1年</td>
+							<!-- <td>1年</td> -->
 							<td>{{$mileage_config[$want->mileage]}}</td>							
 							<td>@if($want->gearbox == 0) 不限 @else {{$gearbox[$want->gearbox]}} @endif</td>			
 							<td>{{$out_color[$want->out_color]}}</td>						
