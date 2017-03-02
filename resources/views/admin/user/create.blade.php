@@ -75,11 +75,11 @@
 							</select>
 						</div>
 					</div>
-					<div class="control-group" id="shop_show" style="display:none;">
+					<div class="control-group" id="shop_show">
 						<label class="control-label" for="selectError3">所属门店</label>
 						<div class="controls">
 						  <select id="shop_id" name="shop_id">
-						  	<option  value="21">--请选择门店--</option>
+						  	<option  value="">--请选择门店--</option>
 						  	@foreach($shop_add_allow as $shop)
 						  	<option  value="{{$shop->id}}">{{$shop->name}}</option>
 						  	@endforeach
@@ -135,7 +135,7 @@
 @endsection
 @section('script_content')
 <script>
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 
 		$('#role_id').change(function(){
 
@@ -149,6 +149,6 @@
 				$('#shop_show').hide();
 			}
 		});
-	});
+	});*/
 </script>
 @endsection

@@ -53,8 +53,8 @@ class UserRepository implements UserRepositoryContract
 
     public function create($requestData)
     {
-        /*p('hehe');
-        dd($requestData->all());*/
+
+        // dd($requestData->all());
         $password =  bcrypt($requestData->password);
         $role_id  = $requestData->role_id;
 
