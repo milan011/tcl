@@ -33,7 +33,7 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
     
-    Route::get('/', 'HomeController@index')->name('home.index'); 
+    Route::get('/{city?}', 'HomeController@index')->name('home.index'); 
     Route::get('car/{id}', 'CarController@index')->name('home.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');  
 });
