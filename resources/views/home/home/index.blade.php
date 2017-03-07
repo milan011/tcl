@@ -12,7 +12,16 @@
     <script type="text/javascript" src="{{URL::asset('js/tcl/home/index.js')}}"></script>
 @endsection
 
-@section('current_city_name', $current_city_name)
+
+
+
+@section('current_city_name')
+    @if(null !== Session('chosen_city_name'))
+        {{Session('chosen_city_name')}}
+    @else
+        {{Session('current_city_name')}}
+    @endif
+@endsection
 
 @section('content')
 <main>

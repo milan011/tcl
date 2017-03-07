@@ -58,22 +58,23 @@ section {
   width: 100%;
 }
 .banner {
-  background: url("../img/joinIn/banner.png") center no-repeat #ef4939;
+  /*background: url("{{URL::asset('home/img/index/dbfile/slider.png')}}") center no-repeat #ef4939;*/
+  background: url("./img/joinIn/banner.png") center no-repeat #ef4939;
   height: 672px;
 }
 .trade {
-  background: url("../img/joinIn/trade.png") center no-repeat #f7f7f7;
+  background: url("./img/joinIn/trade.png") center no-repeat #f7f7f7;
   height: 625px;
 }
 .prospect {
-  background: url("../img/joinIn/prospect.png") center no-repeat;
+  background: url("./img/joinIn/prospect.png") center no-repeat;
   height: 663px;
 }
 .benefit {
-  background: url("../img/joinIn/benefit.png") center no-repeat;
+  background: url("./img/joinIn/benefit.png") center no-repeat;
   height: 677px;
 }
 .join {
-  background: url("../img/joinIn/join.png") center no-repeat;
+  background: url("./img/joinIn/join.png") center no-repeat;
   height: 1416px;
 }

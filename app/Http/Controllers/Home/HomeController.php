@@ -48,18 +48,23 @@ class HomeController extends CommonController
 
         if(!empty($city)){
 
-            $city_id = getConditionContent($city);
-            $city_shops = $this->shop->getShopsInCity($city_id);
-            $city_name = Area::select('name')->find($city_id)->name;
+            // $city_id = getConditionContent($city);
+            // dd($city_id);
+            $city_shops = $this->shop->getShopsInCity($city);
+            $city_name = Area::select('name')->find($city)->name;
 
-            $current_city_name = $city_name;
-            $chose_city = $city_id;
+            // dd(Session('current_city_name'));
+            // $current_city_name = $city_name;
+            session(['chosen_city_name' => $city_name]);
+            // dd(Session('current_city_name'));
+            $chose_city = $city;
         }else{
             $current_city_name = Session('current_city_name');
+            session(['chosen_city_name' => NULL]);
             $city_shops = $this->shop->getShopsInCity(Session('current_city'));
         }
         // dd(count($city_shops));
-
+        // p(Session('chosen_city_name'));
         $shop_list = [];
 
         if(count($city_shops) == 0 ){

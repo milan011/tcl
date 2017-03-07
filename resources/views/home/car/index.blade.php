@@ -9,13 +9,21 @@
     <title>详情页</title>
 @endsection
 
+@section('current_city_name')
+    @if(null !== Session('chosen_city_name'))
+        {{Session('chosen_city_name')}}
+    @else
+        {{Session('current_city_name')}}
+    @endif
+@endsection
+
 @section('content')
 <main>
     <nav class="breadNav dib-con container">
         <div class="dib item">当前位置：</div>
-        <a href="#"><div class="dib item">首页</div></a>
+        <a href="{{route('home.index')}}"><div class="dib item">首页</div></a>
         <div class="dib split item">&gt;</div>
-        <a href="#"><div class="dib item">我要买车</div></a>
+        <a href="{{route('home.cate.index')}}"><div class="dib item">我要买车</div></a>
         <div class="dib split item">&gt;</div>
         <div class="dib item">{{$cars->name}}</div>
     </nav>

@@ -8,6 +8,7 @@ use Debugbar;
 use View;
 use Carbon;
 use App\Shop;
+use App\Area;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Car\CarRepositoryContract;
@@ -118,11 +119,25 @@ class CateController extends CommonController
         if(!empty($select_condition['city'])){
             // 选择城市，筛选该城市所有门店
             $city_shops = $this->shop->getShopsInCity($select_condition['city']);
+
+            $city_name = Area::select('name')->find($select_condition['city'])->name;
+
+            // $current_city_name = $city_name;
+            session(['chosen_city_name' => $city_name]);
+            $chose_city = $select_condition['city'];
+
         }else{
             //未选择城市，默认为用户所在城市
             $city_shops = $this->shop->getShopsInCity(Session('current_city'));
+            session(['chosen_city_name' => NULL]);
+            $current_city_name = Session('current_city_name');
         }
+        // dd($current_city_name);
+        if(count($city_shops) == 0 ){
 
+            $city_shops = $this->shop->getShopsInCity('138');
+        }
+        
         foreach ($city_shops as $key => $value) {
             $shop_list[] = $value->id;
         }
@@ -349,7 +364,9 @@ class CateController extends CommonController
             'clean_shop_url',
             'current_brand',
             'clean_current_category_url',
-            'current_condition'
+            'current_condition',
+            'current_city_name',
+            'chose_city'
         ));
     }
 }

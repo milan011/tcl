@@ -32,10 +32,12 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
-    
-    Route::get('/{city?}', 'HomeController@index')->name('home.index'); 
+       
     Route::get('car/{id}', 'CarController@index')->name('home.car.index');  
-    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');  
+    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');
+    Route::get('/', 'HomeController@index')->name('home.index');  
+    Route::get('/city/{city?}', 'HomeController@index')->name('home.indexWithCity');  
+    Route::get('/join', 'JoinController@index')->name('home.join.index');  
 });
 
 /*Route::group(['middleware' => 'web', 'prefix' => 'home1', 'namespace' => 'Home'], function () {

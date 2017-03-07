@@ -41,7 +41,7 @@ class CarController extends CommonController
         $cars = $this->car->find($id);
         // dd($cars);
         // p('xixi');
-        // dd(Session::all());
+        // p(Session('chosen_city_name'));
         // 推荐车源
         $recommend_cars = $this->car->getRecommendCars($cars->top_price);
         // dd(lastsql());
