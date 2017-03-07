@@ -173,7 +173,7 @@ class BrandController extends Controller
         $brand_id = $request->input('pid');
 
         $brands = $this->brands->getChildBrand($brand_id);
-
+        
         // p($brands->toJson());exit;
         if($brands->count() > 0){
 

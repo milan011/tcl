@@ -38,6 +38,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
     Route::get('/', 'HomeController@index')->name('home.index');  
     Route::get('/city/{city?}', 'HomeController@index')->name('home.indexWithCity');  
     Route::get('/join', 'JoinController@index')->name('home.join.index');  
+    Route::get('/sale', 'SaleController@index')->name('home.sale.index');  
 });
 
 /*Route::group(['middleware' => 'web', 'prefix' => 'home1', 'namespace' => 'Home'], function () {
