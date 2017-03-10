@@ -15,7 +15,7 @@ use App\Repositories\Car\CarRepositoryContract;
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
 
-class SaleController extends CommonController
+class CustomerSaleController extends CommonController
 {   
     protected $car;
     protected $brand;
@@ -41,8 +41,9 @@ class SaleController extends CommonController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function store(Request $request)
     {
+        dd($request->all());
         $all_top_brands = $this->brand->getChildBrand(0);
         // dd($all_top_brands);
         return view('home.sale.index', compact('all_top_brands'));

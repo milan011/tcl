@@ -170,10 +170,11 @@ class BrandController extends Controller
     //获得子品牌
     public function getChildBrand(Request $request){
 
+        // dd($request->all());
         $brand_id = $request->input('pid');
 
         $brands = $this->brands->getChildBrand($brand_id);
-        
+
         // p($brands->toJson());exit;
         if($brands->count() > 0){
 

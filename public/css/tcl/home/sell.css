@@ -48,7 +48,7 @@
   color: #e80c0a;
 }
 .combo.active .icon {
-  background-image: url("../img/common/dropUp.png");
+  background-image: url("./img/common/dropUp.png");
 }
 .combo.active .optionList {
   height: 115px;
@@ -85,7 +85,7 @@
   background: url("./img/sell/helpSellIcon.jpg") no-repeat center #fff;
 }
 .banner .dateSell .combo {
-  margin: 18px 0;
+  margin: 8px 0;
 }
 .banner .dateSell .combo .text {
   font-size: 18px;
@@ -134,7 +134,7 @@
 }
 .bannerAdd .item {
   width: 25%;
-  background: url("../img/sell/bannerAddIcon.jpg") no-repeat;
+  background: url("./img/sell/bannerAddIcon.jpg") no-repeat;
   padding: 20px 0;
 }
 .bannerAdd .item p {
