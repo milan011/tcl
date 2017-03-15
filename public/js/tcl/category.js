@@ -201,12 +201,20 @@ $(document).ready(function(){
 					var auto_name     = '';*/
 					var car_base_name = $('#four_category').find("option:selected").text();
 
-					/*console.log(car_brand);
-					console.log(car_factory);
-					console.log(car_category);
-					console.log(car_base_name);*/
+					//console.log(car_brand);
+					//console.log(car_factory);
+					//console.log(car_category);
+					//console.log(car_base_name);
 
-					auto_name1 = car_category + car_base_name;
+					if(car_base_name == '请选择车型'){
+
+						// car_base_name = car_category;
+						auto_name1 = car_brand + car_category;
+					}else{
+						auto_name1 = car_category + car_base_name;
+					}
+
+					
 					// console.log(auto_name);
 					$('#name').val(auto_name1);
 				});
