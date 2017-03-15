@@ -343,6 +343,8 @@ class CateController extends CommonController
 
         // dd($current_condition);
 
+        $current_page   = 'cate';
+
         return view('home.cate.index', compact(
             'cars', 
             'gearbox', 
@@ -366,7 +368,8 @@ class CateController extends CommonController
             'clean_current_category_url',
             'current_condition',
             'current_city_name',
-            'chose_city'
+            'chose_city',
+            'current_page'
         ));
     }
 }

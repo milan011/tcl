@@ -87,6 +87,7 @@ class HomeController extends CommonController
 
         $cars = $this->car->getAllCarsWithBefore($select_condition);
         // dd(lastSql());
+        // dd($cars);
         // 推荐品牌
         $recomment_brands = $this->brand->getRecommentBrandsWithBefore();
 
@@ -96,6 +97,7 @@ class HomeController extends CommonController
         $age             = config('tcl.age'); //获取配置文件中车龄区间
         $age_begin_end   = config('tcl.age_begin_end'); //获取配置文件中车龄区间起始
         $price_begin_end = config('tcl.price_begin_end'); //获取配置文件中价格区间起始
+        $current_page    = 'home';
 
         // dd($recomment_brands);
         // dd($cars);
@@ -105,6 +107,6 @@ class HomeController extends CommonController
         }
         exit;*/
 
-        return view('home.home.index', compact('cars', 'recomment_brands','age','price_interval','category_type','current_city_name','chose_city'));
+        return view('home.home.index', compact('cars', 'recomment_brands','age','price_interval','category_type','current_city_name','chose_city', 'current_page'));
     }
 }

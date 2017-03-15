@@ -44,7 +44,8 @@ class SaleController extends CommonController
     public function index()
     {
         $all_top_brands = $this->brand->getChildBrand(0);
+        $current_page   = 'sale';
         // dd($all_top_brands);
-        return view('home.sale.index', compact('all_top_brands'));
+        return view('home.sale.index', compact('all_top_brands', 'current_page'));
     }
 }

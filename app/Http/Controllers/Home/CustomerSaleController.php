@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Car\CarRepositoryContract;
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
+use App\Http\Requests\CustomerSale\StoreCustomerSaleRequest;
 
 class CustomerSaleController extends CommonController
 {   
@@ -37,15 +38,28 @@ class CustomerSaleController extends CommonController
     }
 
     /**
-     * Display a listing of the resource.
-     *
+     * Store a newly created resource in storage.
+     * 客户卖车信息登记
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCustomerSaleRequest $customerSaleRequest)
     {
-        dd($request->all());
-        $all_top_brands = $this->brand->getChildBrand(0);
-        // dd($all_top_brands);
-        return view('home.sale.index', compact('all_top_brands'));
+        p($customerSaleRequest->all());
+        $current_ip = $customerSaleRequest->getClientIp();
+        $current_ip = '106.117.13.179';
+        $city_info  = getCurrentCityByIp($current_ip);
+
+        $current_city = Area::where('name', substr($city_info, 0, (strlen($city_info)-3)))->first();
+
+        dd($current_city);
+        // dd($transcationRequest->all());
+        $getInsertedId = $this->transcation->create($transcationRequest);
+        // p(lastSql());exit;
+        /*if(!$getInsertedId){
+            // dd('hehe sb');
+            return redirect()->route('admin.transcation.edit', ['transcation'=>'1'])->withInput();
+        }*/
+        return redirect()->route('admin.transcation.self')->withInput();
     }
 }

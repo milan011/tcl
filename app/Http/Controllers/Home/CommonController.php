@@ -16,13 +16,13 @@ class CommonController extends Controller
 {   
     public function __construct(
 
-        Request $ruquest
+        Request $request
     ) {
 
-        $this->ruquest = $ruquest;
+        $this->request = $request;
         // $this->middleware('brand.create', ['only' => ['create']]);
 
-        $current_ip = $ruquest->getClientIp();
+        $current_ip = $request->getClientIp();
         $current_ip = '106.117.13.179';
         $city_info  = getCurrentCityByIp($current_ip);
 

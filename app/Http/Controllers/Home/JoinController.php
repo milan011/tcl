@@ -30,6 +30,7 @@ class JoinController extends CommonController
     public function index()
     {
         // dd('join us');
-        return view('home.join.index');
+        $current_page    = 'join';
+        return view('home.join.index', compact('current_page'));
     }
 }

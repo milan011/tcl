@@ -39,7 +39,7 @@ class CarController extends CommonController
     {
         // 车源详情
         $cars = $this->car->find($id);
-        // dd($cars);
+        // dd($cars->belongsToShop->belongsToArea);
         // p('xixi');
         // p(Session('chosen_city_name'));
         // 推荐车源
@@ -52,7 +52,8 @@ class CarController extends CommonController
         $capacity       = config('tcl.capacity'); //获取配置文件排量
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
         $sale_number    = config('tcl.sale_number'); //获取配置文件中车型类别
+        $current_page   = 'cate';
 
-        return view('home.car.index', compact('cars', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number', 'recommend_cars'));
+        return view('home.car.index', compact('cars', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number', 'recommend_cars', 'current_page'));
     }
 }
