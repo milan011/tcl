@@ -150,7 +150,7 @@ class CarRepository implements CarRepositoryContract
         }else{
             $query = $query->whereIn('shop_id', $condition['shop_list']);
         }
-
+        // dd($query);
         $query = $query->where(function($query) use ($condition){
 
                 $query = $query->where('car_status', '1');
@@ -185,6 +185,8 @@ class CarRepository implements CarRepositoryContract
             //存在车架号并且存在该车架号记录
 
             $car = $this->isRepeat($requestData->vin_code);
+
+            $car->isRepeat = true;
             return $car;
         }else{
             $car_obj = (object) '';
