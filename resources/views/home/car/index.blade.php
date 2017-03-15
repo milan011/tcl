@@ -55,7 +55,7 @@
                 </div>
                 <div class="item dib">
                     <div class="label">车辆所在地</div>
-                    <div class="text">石家庄</div>
+                    <div class="text">{{$cars->belongsToShop->belongsToArea->city_name}}</div>
                 </div>
             </div>
             <div class="service">
@@ -68,10 +68,11 @@
                 <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
             </div> -->
             <div class="connectInfo">
-                <div class="dib-con storeLink fr">
+                <!-- <div class="dib-con storeLink fr">
                     <a href="#"><div class="linkItem dib enterStore">进入店铺</div></a>
-                </div>
+                </div> -->
                 <div class="connectName item">联系信息： {{$cars->belongsToUser->nick_name}}<span class="gray">（{{$cars->belongsToShop->shop_name}}）</span></div>
+                <div class="connectMobile item">门店地址： {{$cars->belongsToShop->shop_address}}</div>
                 <div class="connectMobile item">联系电话： {{$cars->belongsToUser->creater_telephone}}</div>
             </div>
         </div>
@@ -87,18 +88,20 @@
                     <td class="text">{{$cars->plate_end}}</td>
                     <td class="label">交强险到期时间</td>
                     <td class="text">{{$cars->safe_end}}</td>
-                    <td class="label">商业保险到期时间</td>
-                    <td class="text">{{$cars->safe_end}}</td>
+                    <!-- <td class="label">商业保险到期时间</td>
+                    <td class="text">{{$cars->safe_end}}</td> -->
                 </tr>
                 <tr>
                     <td class="label">归属地</td>
-                    <td class="text">北京</td>
+                    <td class="text">{{$cars->belongsToShop->belongsToArea->city_name}}</td>
                     <td class="label">过户次数</td>
                     <td class="text">{{$sale_number[$cars->sale_number]}}</td>
-                    <td class="label">有无购车发票</td>
+                    <td class="label">商业保险到期时间</td>
+                    <td class="text">{{$cars->safe_end}}</td>
+                    <!-- <td class="label">有无购车发票</td>
                     <td class="text">有</td>
                     <td class="label">是否4S店保养</td>
-                    <td class="text">是</td>
+                    <td class="text">是</td> -->
                 </tr>
             </table>
         </div>

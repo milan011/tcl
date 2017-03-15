@@ -455,6 +455,7 @@
 		$('#car_add').click(function(){
 
 			var request_url = '{{route('admin.car.ajaxAdd')}}';
+			var is_repead   = false;
 
 			$.ajax({
 				method: 'POST',
@@ -469,6 +470,14 @@
 					//设置图片对应车源ID
 					/*alert(data.scalar.id);
 					console.log(data);*/
+					is_repead = data.isRepeat;
+
+					if(is_repead){
+
+						alert('该车源已经存在');
+						return false;
+					}
+					
 					car_id.val(data.scalar.id);
 					$('#content_title').text('图片上传');
 					car_content.hide();
@@ -585,7 +594,7 @@
 		
 								return false;
 							}*/
-							alert('添加图片，请重新添加或联系管理员');
+							alert('添加图片失败,请重新添加或联系管理员');
 							return false;
 						}
 					});

@@ -177,7 +177,7 @@
                             <p class="carPrice">￥{{$car->top_price}}万</p>
                             <div class="carDesc">
                                 <span>上牌：{{$car->plate_date}}</span>
-                                <span class="fr">里程：{{$car->milage}}万公里</span>
+                                <span class="fr">里程：{{$car->mileage}}万公里</span>
                             </div>
                         </div>
                     </a>

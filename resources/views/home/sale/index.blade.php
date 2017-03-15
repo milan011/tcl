@@ -26,7 +26,7 @@
         <div class="container">
             <div class="dateSell">
                 <div class="logo"></div>
-                <form class="form-horizontal" id="want_form" action="{{route('home.coustomerSale.store')}}" method="post">
+                <form class="form-horizontal" id="want_form" action="" method="post">
                     {!! csrf_field() !!}
                 <div id="brand" class="dib combo dib-con brand">
                     <input type="hidden" name="brand" id="brands1"  value="-1"/>
@@ -66,7 +66,7 @@
                 <div class="buttonArea">
                     <div class="consult fr">咨询：400-670-6969</div>
                     <input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
-                    <button tyoe="submit">我要预约</button>
+                    <button type="button" id="storeInfo">我要预约</button>
                 </div>
                 </form>
             </div>
@@ -384,7 +384,12 @@
 @section('script_content')
 <script>
     $(document).ready(function(){
-    
+        
+        $("input[name='brand']").val('');
+        $("input[name='company']").val('');
+        $("input[name='type']").val('');
+        $("input[name='mobile']").val('');
+
         $('#brands1').change(function(){
 
             var top_brand   = $(this).val();
@@ -447,7 +452,7 @@
             $('#four_category').hide();
             $('#name').val('');
             // alert(top_brand);return false;
-            console.log($(this).val());
+            // console.log($(this).val());
             //获得该顶级品牌子品牌
             $.ajax({
                 type: 'POST',       
@@ -460,7 +465,7 @@
                 success: function(data){        
                     if(data.status == 1){
                         var content = '';
-                        console.log(data.data);
+                        // console.log(data.data);
                         $.each(data.data, function(index, value){
                             content += '<li value="';
                             content += value.id;
@@ -484,6 +489,84 @@
                     alert('Ajax error!');
                 }
             });
+        });
+
+        $('#storeInfo').click(function(){
+
+            var request_url = '{{route('home.coustomerSale.store')}}';
+
+            var brand   = $("input[name='brand']").val();
+            var company = $("input[name='company']").val();
+            var type    = $("input[name='type']").val();
+            var mobile  = $("input[name='mobile']").val();
+
+            console.log(brand);
+            console.log(company);
+            console.log(type);
+            console.log(mobile);
+
+            if(brand == ''){
+
+                alert('请选择品牌');
+                return false;
+            }
+
+            if(company == ''){
+
+                alert('请选择厂家');
+                return false;
+            }
+
+            if(type == ''){
+
+                alert('请选择车系');
+                return false;
+            }
+
+            if(!(/^1(3|4|5|7|8)\d{9}$/.test(mobile))){ 
+                alert("请填写正确的手机号码");  
+                return false; 
+            }
+
+            $.ajax({
+                method: 'POST',
+                url: request_url,
+                data:$("#want_form").serialize(),
+                dataType: 'json',
+                headers: {      
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'        
+                },
+                success:function(data){
+
+                    //设置图片对应车源ID
+                    alert('我们已收录您的信息,销售顾问会及时跟您联系');
+                    
+                },
+                error: function(xhr, type){
+                    
+                    /*if(xhr.status == 422){ //表单验证失败，返回的状态
+                        console.log(JSON.parse(xhr.responseText));
+                        var content_error = '';
+                        
+                        content_error += '<div>';
+                        content_error += "<div class='alert alert-warning' style='text-align:center;'>";
+                        $.each(JSON.parse(xhr.responseText),function(name,value) {
+                            // console.log(name);
+                            // console.log(value);                          
+                            content_error += value[0];
+                            content_error += '<div>';                           
+                        });
+                        content_error += '</div>';
+                        content_error += '</div>';
+                        console.log(content_error);
+
+                        return false;
+                    }*/
+                    alert('请正确选择车型并填写正确的手机号码');
+                }
+            });
+
+            return false;
         });
     });
 </script>

@@ -38,7 +38,7 @@
 	<div class="span2 statbox blue span3" ontablet="span6" ondesktop="span3">
 		
 		<div class="number">{{$wants_num}}&nbsp; <i class="icon-pushpin"></i></div>
-		<div class="title">客&nbsp;源</div>
+		<div class="title">求&nbsp;购</div>
 		<div class="footer" style="width:100%;background:#2D89EF;">
 			<a class="btn btn-success"  href="{{route('admin.want.self')}}" style="width:30%;float:left;">我的求购</a>
 			<a class="btn btn-success"  href="{{route('admin.want.create')}}" style="width:30%;float:right;"> 求购添加</a>

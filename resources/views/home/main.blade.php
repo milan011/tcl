@@ -24,7 +24,7 @@
     <div class="container">
         <div class="fr quickLink dib-con">
             <a href="#" onclick="AddFavorite('河北淘车乐',location.href)"><div class="item dib">收藏本站</div></a>
-            <div class="item dib">商户登录</div>
+            <!-- <div class="item dib">商户登录</div> -->
         </div>
         <div class="siteName">河北淘车乐</div>
     </div>
@@ -45,7 +45,7 @@
                 <div class="cityListArea">
                     <div class="cityList dib-con">
                     	@foreach($citysHasTcl as $city)
-                            <a href="{{route('home.index')}}/d{{$city->id}}"><div class="dib cityItem">{{$city->name}}</div></a>
+                            <a href="{{route('home.index')}}/city/{{$city->id}}"><div class="dib cityItem">{{$city->name}}</div></a>
                         @endforeach
                     </div>
                 </div>
@@ -53,10 +53,10 @@
         </div>
         <div class="main dib">
             <nav class="mainNav dib-con">
-                <div class="item dib active"><a href="{{route('home.index')}}"><span>首页</span></a></div>
-                <div class="item dib"><a href="{{route('home.cate.index')}}"><span>我要买车</span></a></div>
-                <div class="item dib"><a href="{{route('home.sale.index')}}"><span>我要卖车</span></a></div>
-                <div class="item dib"><a href="{{route('home.join.index')}}"><span>我要加盟</span></a></div>
+                <div class="item dib  @if($current_page == 'home') active @endif"><a href="{{route('home.index')}}"><span>首页</span></a></div>
+                <div class="item dib @if($current_page == 'cate') active @endif"><a href="{{route('home.cate.index')}}"><span>我要买车</span></a></div>
+                <div class="item dib @if($current_page == 'sale') active @endif"><a href="{{route('home.sale.index')}}"><span>我要卖车</span></a></div>
+                <div class="item dib @if($current_page == 'join') active @endif"><a href="{{route('home.join.index')}}"><span>我要加盟</span></a></div>
             </nav>
         </div>
         <div class="dib mobileAdd">

@@ -3,6 +3,11 @@
 @section('head_content')
 <link id="bootstrap-style" href="{{ URL::asset('css/tcl/bootstrap-datepicker.min.css') }}" rel="stylesheet">
 	<style type="text/css">
+		.one_line{
+			width:40%;
+			margin-bottom:5px;
+		}
+		
 		.detial {
 			font-size: 14px;
 			line-height: 24px;
