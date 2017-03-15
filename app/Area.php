@@ -46,4 +46,10 @@ class Area extends Model
       return $this->hasMany('App\Cars', 'plate_city', 'id');
     }
 
+    // 定义Area表与Shop表一对多关系
+    public function hasManyshops(){
+
+      return $this->hasMany('App\Shop', 'shop_id', 'id');
+    }
+
 }

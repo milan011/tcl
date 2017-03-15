@@ -71,4 +71,10 @@ class Shop extends Model
 
       return $this->hasMany('App\Transcation', 'shop_id', 'id');
     }
+
+    // 定义Shop表与Area表一对多关系
+    public function belongsToArea(){
+
+      return $this->belongsTo('App\Area', 'city_id', 'id')->select('id', 'name AS city_name');
+    }
 }

@@ -39,7 +39,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
     Route::get('/city/{city?}', 'HomeController@index')->name('home.indexWithCity');  
     Route::get('/join', 'JoinController@index')->name('home.join.index');  
     Route::get('/sale', 'SaleController@index')->name('home.sale.index');  
-    Route::post('/customerSale/store', 'customerSaleController@store')->name('home.coustomerSale.store');  
+    Route::post('/customerSale/store', 'customerSaleController@store')->name('home.coustomerSale.store');    
 });
 
 /*Route::group(['middleware' => 'web', 'prefix' => 'home1', 'namespace' => 'Home'], function () {
