@@ -269,6 +269,7 @@
 			  	</div>
 				  <div class="form-actions">
 				  	<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
+				  	<input type="hidden" name="remove_img" value="{{route('admin.image.delete')}}">
 				  	<input type="hidden" name="cate_ajax_request_url" value="{{route('admin.category.getChildCategory')}}">
 				  	<input type="hidden" name="shop_id" value="{{Auth::user()->shop_id}}">
 				  	<input type="hidden" name="want_area" value="{{$city_id}}">					
@@ -477,7 +478,7 @@
 						alert('该车源已经存在');
 						return false;
 					}
-					
+
 					car_id.val(data.scalar.id);
 					$('#content_title').text('图片上传');
 					car_content.hide();
@@ -600,7 +601,7 @@
 					});
                 }
                 // console.log($(this).attr('data-dz-frist'));
-            });			
+            });	
 		});
 
 		$('#provence_id').change(function(){

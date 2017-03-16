@@ -1041,14 +1041,40 @@
     };
 
     Dropzone.prototype.removeFile = function(file) {
-      if (file.status === Dropzone.UPLOADING) {
-        this.cancelUpload(file);
-      }
-      this.files = without(this.files, file);
-      this.emit("removedfile", file);
-      if (this.files.length === 0) {
-        return this.emit("reset");
-      }
+
+        var img_name    = file.name;
+        var request_url = $("input[name='remove_img']").val();
+        var _token      = $("input[name='_token']").val();
+        // alert(img_name);
+        console.log(img_name);
+
+        $.ajax({
+            method: 'POST',
+            url: request_url,
+            data:{ img_name:img_name},
+            dataType: 'json',
+            headers: {      
+                'X-CSRF-TOKEN': _token        
+            },
+            success:function(data){
+                // alert(data.msg);
+                //return false;
+                // window.location.href = '{{route("admin.car.self")}}';
+            },
+            error: function(xhr, type){
+                    
+                alert('删除图片失败，请重新添加或联系管理员');
+                return false;
+            }
+        });
+        if (file.status === Dropzone.UPLOADING) {
+          this.cancelUpload(file);
+        }
+        this.files = without(this.files, file);
+        this.emit("removedfile", file);
+        if (this.files.length === 0) {
+          return this.emit("reset");
+        }
     };
 
     Dropzone.prototype.removeAllFiles = function(cancelIfNecessary) {

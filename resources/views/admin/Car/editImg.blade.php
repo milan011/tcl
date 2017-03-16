@@ -84,6 +84,7 @@
                 				</span>
                 			</h4>
                 			<input type="hidden" name="car_id" value="{{$car->id}}">
+                			<input type="hidden" name="remove_img" value="{{route('admin.image.delete')}}">
 						</form>
 					
     				<div id="preview-template" style="display: none;">	
@@ -185,7 +186,7 @@
 				success:function(data){
 					console.log(img_obj);
 					img_obj.remove();
-					alert(data.msg);
+					// alert(data.msg);
 					return false;
 					// window.location.href = '{{route("admin.car.self")}}';
 				},
@@ -201,7 +202,7 @@
 
 						return false;
 					}*/
-					alert('添加图片失败，请重新添加或联系管理员');
+					alert('删除图片失败，请重新添加或联系管理员');
 					return false;
 				}
 			});

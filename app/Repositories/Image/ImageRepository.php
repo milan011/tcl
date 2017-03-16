@@ -129,10 +129,20 @@ class ImageRepository implements ImageRepositoryContract
 
         /*p($full_size_dir);
         p($icon_size_dir);*/
-        $sessionImage = Image::where('filename', $requestData->img_name)
-                             ->where('car_id', $requestData->img_car_id)
-                             ->first();
+        // dd($requestData->all());
+        if(empty($requestData->img_car_id)){
 
+            $sessionImage = Image::where('original_name', $requestData->img_name)
+                             ->orderBy('created_at', 'DESC')
+                             ->first();
+        }else{
+
+            $sessionImage = Image::where('filename', $requestData->img_name)
+                             ->where('car_id', $requestData->img_car_id)
+                             ->orderBy('created_at', 'DESC')
+                             ->first();
+        }
+        
         // dd($sessionImage);
         if(empty($sessionImage))
         {
