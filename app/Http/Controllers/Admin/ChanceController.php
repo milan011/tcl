@@ -93,8 +93,8 @@ class ChanceController extends Controller
     {
         // dd($request->all());
         $request['os_recommend'] = 'yes';
-        $is_self = $request->has('is_self');
-        // dd($is_self);
+        // $is_self = $request->has('is_self');      
+        
         $select_conditions  = $request->all();
         $all_top_brands     = $this->brands->getChildBrand(0);
 
@@ -104,7 +104,11 @@ class ChanceController extends Controller
             /*$request['top_price']    = $waited_info->top_price;          
             $request['bottom_price'] = $waited_info->bottom_price;*/
             $request['car_status']   = '1';
-            $match_info = $this->car->getAllcars($request, $is_self);
+
+            $is_self_want = $this->want->is_self_want($request->want_id);
+            // dd($is_self_want);
+
+            $match_info = $this->car->getAllcars($request, !$is_self_want);
             // dd(lastSql());
             $createBy   = 'want';
 
@@ -132,8 +136,12 @@ class ChanceController extends Controller
             // dd($waited_info->belongsToCity->city_name);
             /*$request['top_price']    = $waited_info->top_price;          
             $request['bottom_price'] = $waited_info->bottom_price;*/
-            $request['want_status']   = '1';
-            $match_info = $this->want->getAllWants($request, $is_self);
+            $request['want_status']   = '1';         
+
+            $is_self_car = $this->car->is_self_car($request->car_id);
+            // dd($is_self_car);
+
+            $match_info = $this->want->getAllWants($request, !$is_self_car);
             // dd(lastSql());
             $createBy   = 'car';
             // dd($waited_info->categorey_type);

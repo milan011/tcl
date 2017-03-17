@@ -449,4 +449,14 @@ class CarRepository implements CarRepositoryContract
             return $car;
         });
     }
+
+    //判断车源是否属于自己
+    public function is_self_car($car_id){
+
+        $car = $this->find($car_id);
+
+        // dd($car);
+
+        return $car->creater_id == Auth::id();
+    }
 }

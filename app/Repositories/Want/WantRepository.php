@@ -312,4 +312,14 @@ class WantRepository implements WantRepositoryContract
             return $want;
         });
     }
+
+    //判断求购是否属于自己
+    public function is_self_want($want_id){
+
+        $want = $this->find($want_id);
+
+        // dd($want);
+
+        return $want->creater_id == Auth::id();
+    }
 }
