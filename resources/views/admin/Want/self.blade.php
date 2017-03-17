@@ -144,6 +144,7 @@
 												<button class="btn btn-success" id="follow_quickly">
 													<i class="icon-edit icon-white"></i> 快速跟进
 												</button>
+												<input id="current_want_id" type="hidden" value="{{$want->id}}">
 											</li>
 										</ul>
  							 		</div>
@@ -406,8 +407,10 @@
 			return false;
 		});
 
-		// 快速跟进
+		// 快速跟进 
 		$('#follow_quickly').click(function(){
+
+			var current_want_id  = $(this).next().val();
 
 			$.ajax({
 				
