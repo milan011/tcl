@@ -153,6 +153,7 @@
 												<button class="btn btn-success" id="follow_quickly">
 													<i class="icon-edit icon-white"></i> 快速跟进
 												</button>
+												<input class="current_car_id" type="hidden" value="{{$car->id}}">
 											</li>
 										</ul>
  							 		</div>
@@ -429,6 +430,8 @@
 
 		$('#follow_quickly').click(function(){
 
+			var current_car_id  = $(this).next().val();
+			
 			$.ajax({
 				
 				type: 'POST',
