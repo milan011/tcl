@@ -49,6 +49,18 @@ Dropzone.options.realDropzone = {
         file.previewElement.classList.add("dz-error");
         _ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
         _results = [];
+        alert(message);
+        console.log(file.name);
+
+        var all_img = $('.dz-preview.dz-error');
+
+        all_img.each(function(){
+            if(!$(this).hasClass("dz-processing")){
+                console.log($(this));
+                $(this).remove();
+            }
+        });
+
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             node = _ref[_i];
             _results.push(node.textContent = message);

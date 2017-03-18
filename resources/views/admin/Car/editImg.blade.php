@@ -87,7 +87,7 @@
                 			<input type="hidden" name="remove_img" value="{{route('admin.image.delete')}}">
 						</form>
 					
-    				<div id="preview-template" style="display: none;">	
+    				<div id="preview-template" style="display:none;">	
         				<div class="dz-preview dz-file-preview">
             				<div class="dz-image"><img data-dz-thumbnail="">
             				</div>
@@ -202,7 +202,7 @@
 
 						return false;
 					}*/
-					alert('删除图片失败，请重新添加或联系管理员');
+					// alert('删除图片失败，请重新添加或联系管理员');
 					return false;
 				}
 			});
@@ -247,7 +247,7 @@
 							'X-CSRF-TOKEN': '{{ csrf_token() }}'		
 						},
 						success:function(data){
-							alert(data.msg);
+							// alert(data.msg);
 							window.location.href = '{{route("admin.car.self")}}';
 						},
 						error: function(xhr, type){
@@ -262,7 +262,7 @@
 		
 								return false;
 							}*/
-							alert('添加图片失败，请重新添加或联系管理员');
+							alert('设置首图失败,请重新设置或联系管理员');
 							return false;
 						}
 					});
