@@ -22,7 +22,8 @@ class NoticeRepository implements NoticeRepositoryContract
     //获取置顶公告
     public function findTopNotice()
     {
-        return Notice::Where('is_top', '1')->first();
+        // return Notice::Where('is_top', '1')->first();
+        return Notice::first();
     }
 
     public function allNotices()
