@@ -44,7 +44,7 @@ class ImageRepository implements ImageRepositoryContract
 
             return Response::json([
                 'error' => true,
-                'message' => 'Server error while uploading',
+                'message' => '图片上传失败',
                 'code' => 500
             ], 500);
 
