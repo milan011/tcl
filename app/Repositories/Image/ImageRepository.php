@@ -97,7 +97,7 @@ class ImageRepository implements ImageRepositoryContract
         p(Config::get('images.full_size'));
         p(Config::get('images.icon_size'));exit;*/
         // $image = $manager->make( $photo )->save(Config::get('images.full_size') . $filename ); //无处理
-        //$image = $manager->make( $photo )->resize(800, 600)->insert('images/warter.jpg', 'bottom-right', 15, 10)->save(Config::get('images.full_size') . $filename ); // 图片为800*600并加水印
+        // $image = $manager->make( $photo )->resize(800, 600)->insert('images/warter_img.png', 'bottom-right', 15, 10)->save(Config::get('images.full_size') . $filename ); // 图片为800*600并加水印
         $image = $manager->make( $photo )->resize(800, 600)->save(Config::get('images.full_size') . $filename );
 
         return $image;
