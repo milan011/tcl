@@ -39,7 +39,7 @@ class CarController extends CommonController
     {
         // 车源详情
         $cars = $this->car->find($id);
-        // dd($cars->belongsToShop->belongsToArea);
+        // dd($cars);
         // p('xixi');
         // p(Session('chosen_city_name'));
         // 推荐车源
@@ -53,7 +53,9 @@ class CarController extends CommonController
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
         $sale_number    = config('tcl.sale_number'); //获取配置文件中车型类别
         $current_page   = 'cate';
+        $title          = $cars->name.'_石家庄淘车乐真实车源';
+        $meta_des       = $cars->name.'淘车乐为您提供最真实的二手车报价,最详细的二手车车源情况';
 
-        return view('home.car.index', compact('cars', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number', 'recommend_cars', 'current_page'));
+        return view('home.car.index', compact('cars', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number', 'recommend_cars', 'current_page', 'title', 'meta_des'));
     }
 }

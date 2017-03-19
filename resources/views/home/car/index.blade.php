@@ -6,7 +6,9 @@
 @endsection
 
 @section('title')
-    <title>详情页</title>
+    <title>{{$title}}</title>
+    <meta name="keywords" content="二手车,二手车交易市场,二手车网上交易平台,石家庄二手车，石家庄淘车乐,石家庄二手车交易平台，石家庄二手车交易">
+    <meta name="description" content="{{$meta_des}}">
 @endsection
 
 @section('current_city_name')

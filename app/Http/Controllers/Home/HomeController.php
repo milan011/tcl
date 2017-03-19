@@ -98,6 +98,7 @@ class HomeController extends CommonController
         $age_begin_end   = config('tcl.age_begin_end'); //获取配置文件中车龄区间起始
         $price_begin_end = config('tcl.price_begin_end'); //获取配置文件中价格区间起始
         $current_page    = 'home';
+        $title           = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
 
         // dd($recomment_brands);
         // dd($cars);
@@ -107,6 +108,6 @@ class HomeController extends CommonController
         }
         exit;*/
 
-        return view('home.home.index', compact('cars', 'recomment_brands','age','price_interval','category_type','current_city_name','chose_city', 'current_page'));
+        return view('home.home.index', compact('cars', 'recomment_brands','age','price_interval','category_type','current_city_name','chose_city', 'current_page', 'title'));
     }
 }

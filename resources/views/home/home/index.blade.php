@@ -1,7 +1,9 @@
 @extends('home.main')
 
 @section('title')
-    <title>首页</title>
+    <title>{{$title}}</title>
+    <meta name="keywords" content="二手车,二手车交易市场,二手车网上交易平台,石家庄二手车，石家庄淘车乐,石家庄二手车交易平台，石家庄二手车交易">
+    <meta name="description" content="石家庄淘车乐是河北省最大的二手车交易平台,二手车源信息最真实,最值得信赖的网上二手车交易市场,提供二手车评估,二手车报价,二手车交易等相关服务,买卖二手车就上淘车乐">
 @endsection
 
 @section('head_content')

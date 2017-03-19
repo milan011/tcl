@@ -344,6 +344,7 @@ class CateController extends CommonController
         // dd($current_condition);
 
         $current_page   = 'cate';
+        $title          = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
 
         return view('home.cate.index', compact(
             'cars', 
@@ -369,7 +370,8 @@ class CateController extends CommonController
             'current_condition',
             'current_city_name',
             'chose_city',
-            'current_page'
+            'current_page',
+            'title'
         ));
     }
 }

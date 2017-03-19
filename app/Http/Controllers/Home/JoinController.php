@@ -31,6 +31,8 @@ class JoinController extends CommonController
     {
         // dd('join us');
         $current_page    = 'join';
-        return view('home.join.index', compact('current_page'));
+        $title           = '加盟石家庄淘车乐二手车交易有限公司';
+        
+        return view('home.join.index', compact('current_page', 'title'));
     }
 }
