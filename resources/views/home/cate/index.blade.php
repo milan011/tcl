@@ -181,19 +181,19 @@
                         <div class="down arrowItem"></div>
                     </div>
                 </div>
-                <div class="fr position dib-con">
+                <!-- <div class="fr position dib-con">
                     <div class="icon dib"></div>
                     <div class="area dib">车源地：</div>
                     <div class="drop dib combo">
                         <div class="fr dropIcon"></div>
                         <div class="text">石家庄</div>
-                        <!-- <ul class="dropList optionList">
+                        <ul class="dropList optionList">
                             <li>石家庄</li>
                             <li>邢台</li>
                             <li>沧州</li>
-                        </ul> -->
+                        </ul>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="tabContent carList">            
                 @foreach($cars as $car)
@@ -202,9 +202,9 @@
                     <div class="carImg dib">
                         <a target="_blank" href="{{route('home.car.index', ['car'=>$car->id])}}">
                         @if(isset($car->hasOneImagesOnFirst->filename))
-                        <img src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}">
+                        <img src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}" onerror="this.src='{{URL::asset("images/default.jpg")}}'">
                         @else
-                        <img src="{{URL::asset('home/img/res/images/default.jpg')}}">
+                            <img src="{{URL::asset('images/default.jpg')}}" alt="" />
                         @endif
                         <!-- <img src="../img/storeDetail/dbfile/carListItem.png"> -->
                         </a>
@@ -215,7 +215,7 @@
                         <div class="carTags dib-con">
                             <div class="dib">{{$car->plate_date}}上牌</div>
                             <div class="dib">{{$car->mileage}}万公里</div>
-                            <div class="dib">{{$car->belongsToCity->city_name}}</div>
+                            <div class="dib">{{$car->belongsToShop->belongsToArea->city_name}}</div>
                             <div class="dib">{{$car->age}}年</div>
                             <div class="dib">{{$gearbox[$car->gearbox]}}</div>
                             <div class="dib">{{$out_color[$car->out_color]}}</div>

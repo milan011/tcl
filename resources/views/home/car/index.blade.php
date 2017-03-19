@@ -30,7 +30,9 @@
     <section class="carDetail dib-con container">
         <div class="dib carDetailImg">
             @if(isset($cars->hasOneImagesOnFirst->filename))
-                <img src="{{URL::asset('uploads/car/'.$cars->hasOneImagesOnFirst->filename)}}" alt="{{$cars->name}}" />
+                <img src="{{URL::asset('uploads/car/'.$cars->hasOneImagesOnFirst->filename)}}" onerror="this.src='{{URL::asset("images/default.jpg")}}'" alt="{{$cars->name}}" />
+            @else
+                <img src="{{URL::asset('images/default.jpg')}}" alt="" />
             @endif
         </div>
         <div class="dib carDetailText">
@@ -49,10 +51,10 @@
                     <div class="label">公里数</div>
                     <div class="text">{{$cars->mileage}}万公里</div>
                 </div>
-                <div class="item dib">
+                <!-- <div class="item dib">
                     <div class="label">排放标准</div>
                     <div class="text">国五</div>
-                </div>
+                </div> -->
                 <div class="item dib">
                     <div class="label">车辆所在地</div>
                     <div class="text">{{$cars->belongsToShop->belongsToArea->city_name}}</div>
@@ -113,7 +115,7 @@
             <div>
                 <!-- <div> -->
                    @foreach($cars->hasManyImages as $image)
-                    <img style="margin-left:1%;max-height: 400px;" src="{{URL::asset('uploads/car/'.$image->filename)}}" />
+                    <img style="margin-left:1%;max-height: 400px;" src="{{URL::asset('uploads/car/'.$image->filename)}}"   onerror="this.src='{{URL::asset("images/default.jpg")}}'"/>
                     @endforeach 
                 <!-- </div>              -->
             </div>

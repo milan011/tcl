@@ -171,7 +171,9 @@
                         <div class="car">
                             <!-- <img src="../img/index/dbfile/carItem.png" alt="哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版" /> -->
                             @if(isset($car->hasOneImagesOnFirst->filename))
-                            <img src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}" alt="{{$car->name}}" />
+                            <img src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}" onerror="this.src='{{URL::asset("images/default.jpg")}}'" alt="{{$car->name}}" />
+                            @else
+                            <img src="{{URL::asset('images/default.jpg')}}" alt="" />
                             @endif
                             <p class="carName">{{$car->name}}</p>
                             <p class="carPrice">￥{{$car->top_price}}万</p>

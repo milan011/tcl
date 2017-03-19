@@ -145,7 +145,7 @@ class CarController extends Controller
      */
     public function ajaxAdd(StoreCarsRequest $carRequest)
     {
-        // p($carRequest->all());exit;
+        // dd($carRequest->all());
         $cars = $this->car->create($carRequest);
         /*p('hehe');
         dd($car);*/
