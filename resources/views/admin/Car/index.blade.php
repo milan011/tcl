@@ -78,13 +78,13 @@
 				<table  class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>车源编号</th>
-							<th>车源名称</th>
-							<th>预售价</th>
-							<th>上牌时间</th>
+							<th>编号</th>
+							<th>名称</th>
+							<th>价格</th>
+							<th>上牌</th>
 							<th>里程</th>							
 							<th>变速箱</th>
-							<th>车身颜色</th>
+							<th>颜色</th>
 							<th>过户</th>
 							<th>状态</th>
 							<th>登记日期</th>

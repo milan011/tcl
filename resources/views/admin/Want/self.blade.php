@@ -63,13 +63,13 @@
 				<table  class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>求购信息编号</th>
-							<th>意向车型</th>
-							<th>意向价格</th>
+							<th>编号</th>
+							<th>车型</th>
+							<th>价格</th>
 							<!-- <th>年限</th> -->
 							<th>里程</th>							
 							<th>变速箱</th>
-							<th>车身颜色</th>
+							<th>颜色</th>
 							<th>排量</th>
 							<th>状态</th>
 							<th>登记日期</th>
