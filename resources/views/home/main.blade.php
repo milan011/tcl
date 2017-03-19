@@ -24,7 +24,7 @@
     <div class="container">
         <div class="fr quickLink dib-con">
             <a href="#" onclick="AddFavorite('河北淘车乐',location.href)"><div class="item dib">收藏本站</div></a>
-            <!-- <div class="item dib">商户登录</div> -->
+            <a href="http://www.sjztcl.com/admin" target="_blank"><div class="item dib">商户登录</div></a>
         </div>
         <div class="siteName">河北淘车乐</div>
     </div>

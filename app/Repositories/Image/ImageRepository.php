@@ -92,7 +92,8 @@ class ImageRepository implements ImageRepositoryContract
         $manager = new ImageManager();
         $url = asset('img/photo.jpg');
 
-        // dd($url);
+        // dd($manager->make( $photo )['core']);
+        // dd($photo);
         /*p($filename);
         p(Config::get('images.full_size'));
         p(Config::get('images.icon_size'));exit;*/
