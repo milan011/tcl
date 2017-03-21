@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <title>淘车乐管理系统</title>
     <meta name="description" content="淘车乐管理系统">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta name="author" content="{{ Auth::user()->nick_name }}">
     <meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <!-- end: Meta -->

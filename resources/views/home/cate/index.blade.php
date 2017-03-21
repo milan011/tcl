@@ -33,7 +33,7 @@
     </nav>
     <section class="searchTags container">
         <div class="selectedTag dib-con">
-            <a href="{{route('home.cate.index')}}"><div class="fr clearAll">清楚全部条件</div></a>
+            <a href="{{route('home.cate.index')}}"><div class="fr clearAll">清除全部条件</div></a>
             <div class="dib label">已选条件：</div>
             @foreach($current_condition as $condition)
             <div class="dib item" row="level">

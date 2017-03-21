@@ -53,10 +53,10 @@
                     <div class="label">公里数</div>
                     <div class="text">{{$cars->mileage}}万公里</div>
                 </div>
-                <!-- <div class="item dib">
-                    <div class="label">排放标准</div>
-                    <div class="text">国五</div>
-                </div> -->
+                <div class="item dib">
+                    <div class="label">档位/排量</div>
+                    <div class="text">{{$gearbox[$cars->gearbox]}}/{{$capacity[$cars->capacity]}}</div>
+                </div>
                 <div class="item dib">
                     <div class="label">车辆所在地</div>
                     <div class="text">{{$cars->belongsToShop->belongsToArea->city_name}}</div>

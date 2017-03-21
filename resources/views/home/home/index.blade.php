@@ -112,41 +112,51 @@
         </div>
     </div>
     <div class="searchForm dib-con container">
-        <div class="dib img">
-            <img src="{{URL::asset('home/img/index/sell.png')}}">
-        </div>
+        <form class="form-horizontal" id="want_form" action="" method="post">
+                    {!! csrf_field() !!}
+            <div class="dib img">
+                <img src="{{URL::asset('home/img/index/sell.png')}}">
+            </div>
         <!-- combo 节点结构 表单提交时提交  隐藏文本框的值  ul 中的列表 为下拉框的列表  选中的li的value值 会填充在 隐藏文本域中  -->
-        <div id="brand" class="dib combo dib-con brand">
-            <input type="hidden" name="brand" />
-            <div class="dib text"></div>
-            <div class="dib icon"></div>
-            <div class="optionList">
-                <ul>
-                    <li value="benz">梅赛德斯</li>
-                    <li value="benz">梅赛德斯</li>
-                    <li value="benz">梅赛德斯</li>
-                    <li value="benz">梅赛德斯</li>
-                    <li value="benz">梅赛德斯</li>
-                    <li value="benz">梅赛德斯</li>
-                    <li value="benz">梅赛德斯</li>
-                    <li value="benz">梅赛德斯</li>
-                </ul>
+        
+            <div id="brand" class="dib combo dib-con brand">
+                <input type="hidden" name="brand" id="brands1"  value="-1"/>
+                <div class="dib text">品牌</div>
+                <div class="dib icon"></div>
+                <div class="optionList">
+                    <ul>
+                        @foreach($all_top_brands as $brand)
+                        <li value="{{$brand->id}}">{{$brand->name}}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div id="car" class="dib combo dib-con car">
-            <input type="hidden" name="car" />
-            <div class="dib text"></div>
-            <div class="dib icon"></div>
-            <div class="optionList">
-                <ul>
-                    <li value="benz">梅赛德斯</li>
-                </ul>
+            <div id="kind" class="dib combo dib-con brand">
+                <input type="hidden" name="company" id="company" value="" />
+                <div class="dib text" id="company_name">厂家</div>
+                <div class="dib icon"></div>
+                <div class="optionList">
+                    <ul id="company_content">
+                        
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="dib textInput mobile">
-            <input name="mobile" type="text" class="text" placeholder="手机号">
-        </div>
-        <div class="dib button submit">预约卖车</div>
+            <div id="kind" class="dib combo dib-con brand">
+                <input type="hidden" name="type" id="type" value="" />
+                <div class="dib text" id="type_name">车系</div>
+                <div class="dib icon"></div>
+                <div class="optionList">
+                    <ul id="type_content">
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="dib textInput mobile">
+                <input name="mobile" type="text" class="text" placeholder="手机号">
+                <input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
+            </div>
+            <div class="dib button" id="storeInfo">预约卖车</div>
+        </form>
     </div>
     <section class="authSection">
         <div class="container floor auth dib-con" style="height:auto;">
@@ -218,45 +228,190 @@
 @section('script_content')
 <script>
     $(document).ready(function(){
+        
+        $("input[name='brand']").val('');
+        $("input[name='company']").val('');
+        $("input[name='type']").val('');
+        $("input[name='mobile']").val('');
 
-        /*$("input[name='brand_id']").val('');
-        $("input[name='categorey_type']").val('');
-        $("input[name='top_price']").val('');
-        $("input[name='age']").val('');
+        $('#brands1').change(function(){
 
-        $('a.cate').click(function(){
+            var top_brand   = $(this).val();
+            var token       = $("input[name='_token']").val();
+            var request_url = $("input[name='ajax_request_url']").val();
 
-            var s_type = $(this).attr('data-stype'); //搜索类型
-            var s_info = $(this).attr('data-info');  //搜索条件
+            $('#second_category').hide();
+            $('#thrid_category').hide();
+            $('#four_category').hide();
+            $('#name').val('');
+            // alert(top_brand);return false;
 
-            switch(s_type){
-                case 'brand_id':
-                    $("input[name='brand_id']").val(s_info);
-                    $("input[name='brand_id']").siblings().val('');
-                break;
+            //获得该顶级品牌子品牌
+            $.ajax({
+                type: 'POST',       
+                url: request_url,       
+                data: { pid : top_brand},       
+                dataType: 'json',       
+                headers: {      
+                    'X-CSRF-TOKEN': token       
+                },      
+                success: function(data){        
+                    if(data.status == 1){
+                        var content = '';
+                        // console.log(data.data);
+                        $.each(data.data, function(index, value){
+                            content += '<li value="';
+                            content += value.id;
+                            content += '">';
+                            content += value.name;
+                            content += '</li>';
+                        });
+                        // $('#top_brand').append(content);
+                        // console.log($('#second_category'));
+                        $('#company_content').empty();
+                        $('#company_name').text('厂家');
+                        $('#type_name').text('车系');
+                        $('#company_content').append(content);
+                    }else{
+                        alert(data.message);
+                        $('#company_content').empty();
+                        return false;
+                    }
+                },      
+                error: function(xhr, type){
+    
+                    alert('Ajax error!');
+                }
+            });
+        });
 
-                case 'categorey_type':
-                    $("input[name='categorey_type']").val(s_info);
-                    $("input[name='categorey_type']").siblings().val('');
-                break;
+        $('#company').change(function(){
 
-                case 'top_price':
-                    $("input[name='top_price']").val(s_info);
-                    $("input[name='top_price']").siblings().val('');
-                break;
+            var company     = $(this).val();
+            var token       = $("input[name='_token']").val();
+            var request_url = $("input[name='ajax_request_url']").val();
 
-                case 'age':
-                    $("input[name='age']").val(s_info);
-                    $("input[name='age']").siblings().val('');
-                break;
+            $('#second_category').hide();
+            $('#thrid_category').hide();
+            $('#four_category').hide();
+            $('#name').val('');
+            // alert(top_brand);return false;
+            // console.log($(this).val());
+            //获得该顶级品牌子品牌
+            $.ajax({
+                type: 'POST',       
+                url: request_url,       
+                data: { pid : company},       
+                dataType: 'json',       
+                headers: {      
+                    'X-CSRF-TOKEN': token       
+                },      
+                success: function(data){        
+                    if(data.status == 1){
+                        var content = '';
+                        // console.log(data.data);
+                        $.each(data.data, function(index, value){
+                            content += '<li value="';
+                            content += value.id;
+                            content += '">';
+                            content += value.name;
+                            content += '</li>';
+                        });
+                        // $('#top_brand').append(content);
+                        // console.log($('#second_category'));
+                        $('#type_content').empty();
+                        $('#type_name').text('车系');
+                        $('#type_content').append(content);
+                    }else{
+                        alert(data.message);
+                        $('#company_content').empty();
+                        return false;
+                    }
+                },      
+                error: function(xhr, type){
+    
+                    alert('Ajax error!');
+                }
+            });
+        });
 
-                default:
-                    
-                break;
+        $('#storeInfo').click(function(){
+
+            var request_url = '{{route('home.coustomerSale.store')}}';
+
+            var brand   = $("input[name='brand']").val();
+            var company = $("input[name='company']").val();
+            var type    = $("input[name='type']").val();
+            var mobile  = $("input[name='mobile']").val();
+
+            console.log(brand);
+            console.log(company);
+            console.log(type);
+            console.log(mobile);
+
+            if(brand == ''){
+
+                alert('请选择品牌');
+                return false;
             }
 
-            $('#cate_form').submit();
-        });*/
+            if(company == ''){
+
+                alert('请选择厂家');
+                return false;
+            }
+
+            if(type == ''){
+
+                alert('请选择车系');
+                return false;
+            }
+
+            if(!(/^1(3|4|5|7|8)\d{9}$/.test(mobile))){ 
+                alert("请填写正确的手机号码");  
+                return false; 
+            }
+
+            $.ajax({
+                method: 'POST',
+                url: request_url,
+                data:$("#want_form").serialize(),
+                dataType: 'json',
+                headers: {      
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'        
+                },
+                success:function(data){
+
+                    //设置图片对应车源ID
+                    alert('我们已收录您的信息,销售顾问会及时跟您联系');
+                    
+                },
+                error: function(xhr, type){
+                    
+                    /*if(xhr.status == 422){ //表单验证失败，返回的状态
+                        console.log(JSON.parse(xhr.responseText));
+                        var content_error = '';
+                        
+                        content_error += '<div>';
+                        content_error += "<div class='alert alert-warning' style='text-align:center;'>";
+                        $.each(JSON.parse(xhr.responseText),function(name,value) {
+                            // console.log(name);
+                            // console.log(value);                          
+                            content_error += value[0];
+                            content_error += '<div>';                           
+                        });
+                        content_error += '</div>';
+                        content_error += '</div>';
+                        console.log(content_error);
+
+                        return false;
+                    }*/
+                    alert('请正确选择车型并填写正确的手机号码');
+                }
+            });
+
+            return false;
+        });
     });
 </script>
 @endsection

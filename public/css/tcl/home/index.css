@@ -12,7 +12,7 @@
   cursor: pointer;
   width: 45px;
   height: 45px;
-  background: #f1f1f1 url("../img/common/dropDown.png") no-repeat center center;
+  background: #f1f1f1 url("./img/common/dropDown.png") no-repeat center center;
 }
 .combo .optionList {
   font-size: 16px;
@@ -48,7 +48,7 @@
   color: #e80c0a;
 }
 .combo.active .icon {
-  background-image: url("../img/common/dropUp.png");
+  background-image: url("./img/common/dropUp.png");
 }
 .combo.active .optionList {
   height: 115px;
@@ -158,7 +158,7 @@
   display: inline-block;
   margin: 15px 15px 0 15px;
   vertical-align: top;
-  background: url("../img/common/icons.png") no-repeat;
+  background: url("./img/common/icons.png") no-repeat;
 }
 .bannerContent .right .auth .icon {
   background-position: 0 0;
@@ -174,7 +174,7 @@
   margin-top: 40px;
   padding: 5px 0;
 }
-.searchForm > .dib {
+.searchForm > form > .dib {
   margin-left: 15px;
 }
 .searchForm .img {
@@ -182,7 +182,7 @@
 }
 .searchForm .brand .text,
 .searchForm .car .text {
-  width: 190px;
+  width: 100px;
   padding-left: 15px;
   line-height: 45px;
   font-size: 18px;
@@ -251,7 +251,7 @@
   margin-left: 20px;
   width: 80px;
   height: 80px;
-  background: url("../img/common/icons.png") no-repeat 0 -45px;
+  background: url("./img/common/icons.png") no-repeat 0 -45px;
   vertical-align: middle;
 }
 .floor .content .text {

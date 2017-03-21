@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     @yield('title')
     <!-- 公共样式 -->
-    <!-- <link type="text/css" rel="stylesheet" href="../css/common/common.css"> -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('css/tcl/home/common/common.css')}}">
 
     <!-- 公共脚本 -->

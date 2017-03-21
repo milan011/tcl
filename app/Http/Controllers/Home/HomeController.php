@@ -90,7 +90,7 @@ class HomeController extends CommonController
         // dd($cars);
         // 推荐品牌
         $recomment_brands = $this->brand->getRecommentBrandsWithBefore();
-
+        $all_top_brands   = $this->brand->getChildBrand(0);
         $category_type   = config('tcl.category_type'); //获取配置文件中车型类别
         $sale_number     = config('tcl.sale_number'); //获取配置文件中车型类别
         $price_interval  = config('tcl.price_interval'); //获取配置文件中价格区间
@@ -108,6 +108,6 @@ class HomeController extends CommonController
         }
         exit;*/
 
-        return view('home.home.index', compact('cars', 'recomment_brands','age','price_interval','category_type','current_city_name','chose_city', 'current_page', 'title'));
+        return view('home.home.index', compact('cars', 'recomment_brands','age','price_interval','category_type','current_city_name','chose_city', 'current_page', 'title','all_top_brands'));
     }
 }
