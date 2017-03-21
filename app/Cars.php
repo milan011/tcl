@@ -226,7 +226,8 @@ class Cars extends Model
     // 定义Car表与images表一对多关系
     public function hasOneImagesOnFirst()
     {
-        return $this->hasOne('App\Image', 'car_id', 'id')->where('is_top', '1');
+        // return $this->hasOne('App\Image', 'car_id', 'id')->where('is_top', '1');
+        return $this->hasOne('App\Image', 'car_id', 'id')->orderBy('is_top', 'asc');
     }
 
     // 定义Car表与chance表一对多关系
