@@ -145,7 +145,7 @@ class CateController extends CommonController
         $select_condition['shop_list'] = $shop_list;
         // 符合条件车源
         $cars = $this->car->getAllCarsWithBefore($select_condition);
-        // dd(lastsql()); 
+        // dd($cars); 
         // dd($cars[0]->hasOneImagesOnFirst);
 
         // 推荐品牌

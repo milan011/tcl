@@ -153,7 +153,7 @@
             </div>
             <div class="dib textInput mobile">
                 <input name="mobile" type="text" class="text" placeholder="手机号">
-                <input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
+                <input type="hidden" name="ajax_request_url" value="{{route('home.sale.getChildBrand')}}">
             </div>
             <div class="dib button" id="storeInfo">预约卖车</div>
         </form>
@@ -205,7 +205,7 @@
             <div style="width:100%;margin-top:24px;">
                <div class="title" style="width:20%;margin:1px auto;">
                     <span>查看更多车源</span>
-                    <a href="#" style="font-size:18px;">更多>></a>
+                    <a href="{{route('home.cate.index')}}" style="font-size:18px;">更多>></a>
                 </div> 
             </div>
             <!-- <div class="dib col-4 right" style="background-image: url(../img/index/authRightBg.png);">
@@ -337,7 +337,7 @@
 
         $('#storeInfo').click(function(){
 
-            var request_url = '{{route('home.coustomerSale.store')}}';
+            var request_url = '{{route('home.sale.store')}}';
 
             var brand   = $("input[name='brand']").val();
             var company = $("input[name='company']").val();

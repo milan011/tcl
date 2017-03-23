@@ -71,6 +71,8 @@ class HomeController extends CommonController
 
             $city_shops = $this->shop->getShopsInCity('138');
         }
+        /*dd(lastSql());
+        dd($city_shops);*/
 
         foreach ($city_shops as $key => $value) {
             $shop_list[] = $value->id;

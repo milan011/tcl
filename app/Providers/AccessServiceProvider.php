@@ -130,5 +130,11 @@ class AccessServiceProvider extends ServiceProvider
             \App\Repositories\Transcation\TranscationRepositoryContract::class,
             \App\Repositories\Transcation\TranscationRepository::class
         );
+
+        //绑定SaleRepository
+        $this->app->bind(
+            \App\Repositories\Sale\SaleRepositoryContract::class,
+            \App\Repositories\Sale\SaleRepository::class
+        );
     }
 }

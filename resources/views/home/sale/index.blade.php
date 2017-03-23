@@ -66,7 +66,7 @@
                 </div>
                 <div class="buttonArea">
                     <div class="consult fr">咨询：400-670-6969</div>
-                    <input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
+                    <input type="hidden" name="ajax_request_url" value="{{route('home.sale.getChildBrand')}}">
                     <button type="button" id="storeInfo">我要预约</button>
                 </div>
                 </form>
@@ -206,7 +206,7 @@
 
         $('#storeInfo').click(function(){
 
-            var request_url = '{{route('home.coustomerSale.store')}}';
+            var request_url = '{{route('home.sale.store')}}';
 
             var brand   = $("input[name='brand']").val();
             var company = $("input[name='company']").val();
@@ -252,7 +252,7 @@
                 success:function(data){
 
                     //设置图片对应车源ID
-                    alert('我们已收录您的信息,销售顾问会及时跟您联系');
+                    alert(data.msg);
                     
                 },
                 error: function(xhr, type){

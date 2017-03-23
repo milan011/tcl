@@ -95,11 +95,11 @@
             <div class="dib col-10">
                 <div class="title">友情链接</div>
                 <div class="dib-con links">
-                    <a href="#"><div class="link dib">二手车之家</div></a>
-                    <a href="#"><div class="link dib">衡水淘车乐</div></a>
-                    <a href="#"><div class="link dib">唐山淘车乐</div></a>
-                    <a href="#"><div class="link dib">邯郸磁县淘车乐</div></a>
-                    <a href="#"><div class="link dib">邢台宁晋店</div></a>
+                    <a href="http://dealers.che168.com/shop/index_161051.html"><div class="link dib">二手车之家</div></a>
+                    <a href="http://www.che168.com/dealer/146535.html#pvareaid=102118"><div class="link dib">衡水淘车乐</div></a>
+                    <a href="http://www.che168.com/dealer/256572.html#pvareaid=102118"><div class="link dib">张家口淘车乐</div></a>
+                    <a href="http://www.che168.com/dealer/283212.html#pvareaid=102118"><div class="link dib">保定淘车乐</div></a>
+                    <a href="http://www.che168.com/dealer/283215.html#pvareaid=102118"><div class="link dib">沧州淘车乐</div>
                     
                 </div>
             </div>

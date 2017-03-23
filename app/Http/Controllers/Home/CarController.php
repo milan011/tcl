@@ -39,7 +39,10 @@ class CarController extends CommonController
     {
         // 车源详情
         $cars = $this->car->find($id);
-        // dd($cars);
+
+        $img = $cars->hasOneImagesOnFirst;
+        // dd(lastsql());
+        // dd($cars->hasOneImagesOnFirst);
         // p('xixi');
         // p(Session('chosen_city_name'));
         // 推荐车源
