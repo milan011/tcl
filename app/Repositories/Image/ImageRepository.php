@@ -97,7 +97,7 @@ class ImageRepository implements ImageRepositoryContract
         $img_height = $img_size[1];
         $img_bili   = round((($img_width)/($img_height)) ,2);
 
-        /*p($img_bili);
+        /*p($img_bili);exit;
         p($img_width);
         p($img_height);
         dd(getimagesize($photo));*/
@@ -105,10 +105,10 @@ class ImageRepository implements ImageRepositoryContract
         /*p($filename);
         p(Config::get('images.full_size'));
         p(Config::get('images.icon_size'));exit;*/
-        $image = $manager->make( $photo )->save(Config::get('images.full_size') . $filename ); //无处理
+        // $image = $manager->make( $photo )->save(Config::get('images.full_size') . $filename ); //无处理
         // $image = $manager->make( $photo )->resize(800, 600)->insert('images/warter_img.png', 'bottom-right', 15, 10)->save(Config::get('images.full_size') . $filename ); // 图片为800*600并加水印
-        // $image = $manager->make( $photo )->resize((430*$img_bili), 430)->save(Config::get('images.full_size') . $filename );
-        // $image = $manager->make( $photo )->resize(800, 600)->save(Config::get('images.full_size') . $filename );
+        // $image = $manager->make( $photo )->resize((960*$img_bili), 960)->save(Config::get('images.full_size') . $filename );
+        $image = $manager->make( $photo )->resize((600*$img_bili), 600)->resizeCanvas(800, 600, 'center', false)->save(Config::get('images.full_size') . $filename );
 
         return $image;
     }
