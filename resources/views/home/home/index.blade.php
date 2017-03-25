@@ -179,7 +179,7 @@
             <div class="dib col-25 dib-con cars">
                 @foreach($cars as $car)
                 <div class="dib col-6 item">
-                    <a href="{{route('home.car.index', ['car'=>$car->id])}}">
+                    <a href="{{route('home.car.index', ['car'=>$car->id])}}" target="_blank">
                         <div class="car">
                             <!-- <img src="../img/index/dbfile/carItem.png" alt="哈佛 2011年款 哈佛 H5 2.4 手动尊爵 四驱超豪华差速版" /> -->
                             @if(isset($car->hasOneImagesOnFirst->filename))

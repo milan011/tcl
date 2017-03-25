@@ -72,7 +72,7 @@
         <div class="adds dib-con">
             <div class="item dib warranty">
                 <div class="icon" style="background: url('{{URL::asset('home/img/common/bottomIcons.png')}}') no-repeat;"></div>
-                <span>一年/两万公里质保</span>
+                <span class="bold">一年/两万公里质保</span>
             </div>
             <div class="item dib unAccident">
                 <div class="icon" style="background: url('{{URL::asset('home/img/common/bottomIcons.png')}}') no-repeat;"></div>
@@ -80,11 +80,11 @@
             </div>
             <div class="item dib check">
                 <div class="icon" style="background: url('{{URL::asset('home/img/common/bottomIcons.png')}}') no-repeat;"></div>
-                <span>专业检测</span>
+                <span class="bold">专业检测</span>
             </div>
             <div class="item dib resource">
                 <div class="icon" style="background: url('{{URL::asset('home/img/common/bottomIcons.png')}}') no-repeat;"></div>
-                <span>100%个人车源</span>
+                <span class="bold">100%个人车源</span>
             </div>
             <div class="item dib monitor">
                 <div class="icon" style="background: url('{{URL::asset('home/img/common/bottomIcons.png')}}') no-repeat;"></div>
