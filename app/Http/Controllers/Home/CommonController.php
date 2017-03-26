@@ -25,13 +25,17 @@ class CommonController extends Controller
         $current_ip = $request->getClientIp();
         $current_ip = '106.117.13.179';
         $city_info  = getCurrentCityByIp($current_ip);
-
-        $current_city = Area::where('name', substr($city_info, 0, (strlen($city_info)-3)))->first();
+        $city_name  = substr($city_info, 0, (strlen($city_info)-3));
+        // dd($city_info);
+        $current_city = Area::where('name', $city_name)->first();
 
         // dd(lastSql());
         // dd($current_city);
+        //session(['current_city' => '138']); //当前城市存入session
+        //session(['current_city_name' => '石家庄']); //当前城市存入session
         session(['current_city' => $current_city->id]); //当前城市存入session
         session(['current_city_name' => $current_city->name]); //当前城市存入session
+        
 
         // dd(Session::all());
     }

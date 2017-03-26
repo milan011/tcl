@@ -45,7 +45,7 @@ class CateController extends CommonController
     public function index($brand='', $condition='')
     {
 
-        $begin = $this->getCurrentTime();
+        // $begin = $this->getCurrentTime();
         //p($conditon);exit;  //{品牌b，车系c}，{车辆类型t，门店s}，{车龄a，价格p}
 
         $conditions = $brand .'-'. $condition;
@@ -234,6 +234,8 @@ class CateController extends CommonController
 
             $url_condition_b      = $url_condition;
             $url_condition_b['b'] = $value->id;
+            // dd($url_condition_b);
+            unset($url_condition_b['c']);
             $select_url = getSelectUrl($url_condition_b);
             $value['url'] = $select_url;
         }
@@ -243,8 +245,8 @@ class CateController extends CommonController
             unset($url_condition_b['b']);
             $clean_recomment_brands_url =  getSelectUrl($url_condition_b);
         }
-
-        //dd($recomment_brands);
+        // dd($url_condition_b);
+        // dd($recomment_brands);
         
         foreach ($category_type as $key => $value) { //车辆类型信息添加筛选超链接
 
@@ -347,10 +349,10 @@ class CateController extends CommonController
         $current_page   = 'cate';
         $title          = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
 
-        $end = $this->getCurrentTime();
+        /*$end = $this->getCurrentTime();
         $spend = $end - $begin;
 
-        echo "脚本执行时间为:".$spend."\n";
+        echo "脚本执行时间为:".$spend."\n";*/
         return view('home.cate.index', compact(
             'cars', 
             'gearbox', 
@@ -380,8 +382,8 @@ class CateController extends CommonController
         ));
     }
 
-    public function getCurrentTime ()  {  
+    /*public function getCurrentTime ()  {  
         list ($msec, $sec) = explode(" ", microtime());  
         return (float)$msec + (float)$sec;  
-    }
+    }*/
 }
