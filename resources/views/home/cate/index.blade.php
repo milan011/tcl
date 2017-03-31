@@ -331,7 +331,7 @@
                 <button class="rssSubmit">立即订阅</button>
             </div>
             <div class="leftAdd dib-con">
-                <img src="../img/storeDetail/dbfile/leftAdd1.png"/>
+                <img src="{{URL::asset('home/img/storeDetail/dbfile/leftAdd1.png')}}"/>
             </div>
             <div class="hotType itemContent">
                 <div class="contentTitle">热销车型排行榜</div>

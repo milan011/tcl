@@ -71,7 +71,7 @@ class SaleController extends CommonController
         $current_city = Area::where('name', substr($city_info, 0, (strlen($city_info)-3)))->first();
 
         // dd($current_city);
-        // dd($transcationRequest->all());
+        // dd($customerSaleRequest->all());
         $customerSaleRequest['city_id']   = $current_city->id;
         $customerSaleRequest['city_name'] = $current_city->name;
         $getInsertedId = $this->sale->create($customerSaleRequest);

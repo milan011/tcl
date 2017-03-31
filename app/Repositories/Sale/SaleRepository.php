@@ -35,8 +35,9 @@ class SaleRepository implements SaleRepositoryContract
         // 添加信息
         $customerCar = new CustomerCar();
         $requestData['category_id'] = $requestData->type;
+        $requestData['brand_id'] = $requestData->brand;
         $requestData['car_factory'] = $requestData->company;
-        // dd($requestData->all());
+        dd($requestData->all());
         $input =  array_replace($requestData->all());
         $customerCar->fill($input);
         $customerCar  = $customerCar->create($input);             

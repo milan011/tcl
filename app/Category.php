@@ -71,4 +71,10 @@ class Category extends Model
 
       return $this->hasMany('App\Want', 'cate_id', 'id');
     }
+
+    // 定义Category表与customer_car表一对多关系
+    public function hasManyCustomerCars(){
+
+      return $this->hasMany('App\CustomerCar', 'category_id', 'id');
+    }
 }

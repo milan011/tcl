@@ -43,18 +43,94 @@ Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('home.sale.getChildBrand');  
 });
 
-/*Route::group(['middleware' => 'web', 'prefix' => 'home1', 'namespace' => 'Home'], function () {
-    
-    Route::get('/', 'HomeController@index')->name('home.index'); 
-    Route::get('car/{id}', 'CarController@index')->name('home.car.index'); 
-    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');  
+/*Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+
+    Route::any('/', function(){
+
+        return '系统维护,请稍后登录';
+    }); 
+
+    Route::any('/car/index', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/selfcar', function(){
+
+        return '系统维护,请稍后登录';
+    });  
+
+    Route::any('/want/index', function(){
+
+        return '系统维护,请稍后登录';
+    }); 
+
+    Route::any('/selfwant', function(){
+
+        return '系统维护,请稍后登录';
+    });   
+
+    Route::any('/selfChance', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/chance/index', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/selfPlan', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/plan/index', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/selfTranscation', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/transcation/index', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/user', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/shop', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/notice', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/brand', function(){
+
+        return '系统维护,请稍后登录';
+    });
+
+    Route::any('/category', function(){
+
+        return '系统维护,请稍后登录';
+    });
+     
 });*/
 
 Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('/', 'HomeController@index')->name('admin.index');     
     Route::match(['get', 'post'], 'car/index', 'CarController@index')->name('admin.car.index'); 
-    // Route::post('car', 'CarController@list')->name('admin.car.list'); 
     Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('admin.car.self'); 
     Route::match(['get', 'post'], 'want/index', 'WantController@index')->name('admin.want.index'); 
     Route::match(['get', 'post'], 'transcation/index', 'TranscationController@index')->name('admin.transcation.index'); 
@@ -114,7 +190,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('brand', 'BrandController');  
     Route::resource('chance', 'ChanceController');  
     Route::resource('plan', 'PlanController');    
-    Route::resource('transcation', 'TranscationController');  
+    Route::resource('transcation', 'TranscationController');   
+    Route::resource('carCustomer', 'CarCustomerController');   
 });
 
 /*Route::group(['middleware' => ['web', 'auth']], function () {                      

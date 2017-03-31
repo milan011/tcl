@@ -58,7 +58,7 @@ class CarController extends Controller
         }
         exit;*/
         $car_status_current = '1';
-
+        
         return view('admin.car.index', compact('cars','car_status_current', 'all_top_brands', 'select_conditions'));
     }
 

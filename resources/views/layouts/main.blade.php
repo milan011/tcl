@@ -195,6 +195,14 @@
 							</ul>	
 						</li>
 						@endif
+						@ifUserCan('customerCar.check')
+						<li>
+							<a class="submenu" href="{{route('admin.carCustomer.index')}}">
+									<i class="icon-bullhorn"></i> <span class="hidden-tablet">
+										客户卖车信息</span>
+							</a>
+						</li>
+						@endif
 					</ul>
 				</div>
 			</div>

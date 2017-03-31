@@ -135,8 +135,10 @@
                 	<label class="control-label" for="capacity">排量</label>
                 	<div class="controls">
                   		<select id="capacity" name="capacity" >                       
-					  		@foreach($capacity as $key=>$capa)											
-					  		<option  value="{{$key}}">{{$capa}}</option>	
+					  		@foreach($capacity as $key=>$capa)
+					  		@if($key != 0)											
+					  		<option  value="{{$key}}">{{$capa}}</option>
+					  		@endif	
 					  		@endforeach	                     
                   		</select>
                 	</div>
@@ -146,23 +148,39 @@
                 	<label class="control-label" for="shiftType">变速箱</label>
                 	<div class="controls">
                   		<select id="gearbox" name="gearbox" >                        
-					  		@foreach($gearbox as $key=>$gear)											
-					  		<option  value="{{$key}}">{{$gear}}</option>	
+					  		@foreach($gearbox as $key=>$gear)
+					  		@if($key != 0)											
+					  		<option  value="{{$key}}">{{$gear}}</option>
+					  		@endif	
 					  		@endforeach	                     
                   		</select>
                 	</div>
               	</div>
 
-              	<!-- <div class="control-group  ">
+              	<div class="control-group  ">
                 	<label class="control-label" for="out_color">外观颜色</label>
                 	<div class="controls">
                   		<select id="out_color" name="out_color" >                        
-					  		@foreach($out_color as $key=>$color)											
+					  		@foreach($out_color as $key=>$color)
+					  		@if($key > 0)											
 					  		<option  value="{{$key}}">{{$color}}</option>	
+					  		@endif
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div> -->
+              	</div>
+              	<div class="control-group  ">
+              	<label class="control-label" for="mileage">里程</label>
+                	<div class="controls">
+                  		<select id="mileage" name="mileage" >                       
+					  		@foreach($mileage_config as $key=>$mileage)	
+					  		@if($key > 1)									
+					  		<option  value="{{$key}}">{{$mileage}}</option>	
+					  		@endif
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+                </div>
 
               	<!-- <div class="control-group  ">
                 	<label class="control-label" for="inside_color">内饰颜色</label>

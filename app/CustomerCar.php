@@ -41,5 +41,17 @@ class CustomerCar extends Model
      */
     protected $dates = ['deleted_at'];
 
+    // 定义customer_car表与Category表一对多关系
+    public function belongsToCategory(){
+
+      return $this->belongsTo('App\Brand', 'category_id', 'id')->select('id', 'name AS category_name');
+    }
+
+    // 定义customer_car表与Brand表一对多关系
+    public function belongsToBrand(){
+
+      return $this->belongsTo('App\Brand', 'brand_id', 'id')->select('id', 'name AS brand_name');
+    }
+
     
 }
