@@ -318,8 +318,8 @@ class CateController extends CommonController
         }
 
         if(!empty($url_condition['s'])){ //当前门店
-
-            $shop = $this->shop->find('1');
+            // dd($url_condition['s']);
+            $shop = $this->shop->find($url_condition['s']);
             // dd(lastsql());
             // dd($shop);
             $current_condition['shop']['content'] = '门店：'.$shop->name;

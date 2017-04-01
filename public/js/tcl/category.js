@@ -172,7 +172,7 @@ $(document).ready(function(){
 							$('#four_category').append(content);
 							// console.log(content);
 							if(is_want == 1){
-								auto_name = car_brand + car_category;
+								auto_name = car_brand + ' ' + car_category;
 								// console.log(auto_name);
 								$('#name').val(auto_name);
 							}
@@ -209,9 +209,9 @@ $(document).ready(function(){
 					if(car_base_name == '请选择车型'){
 
 						// car_base_name = car_category;
-						auto_name1 = car_brand + car_category;
+						auto_name1 = car_brand + ' ' + car_category;
 					}else{
-						auto_name1 = car_category + car_base_name;
+						auto_name1 = car_category + ' ' + car_base_name;
 					}
 
 					
