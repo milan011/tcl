@@ -6,7 +6,7 @@ interface SaleRepositoryContract
     
     public function find($id);
     
-    public function getAllCustomersCars();
+    public function getAllCustomersCars($request);
 
     public function create($requestData);
 

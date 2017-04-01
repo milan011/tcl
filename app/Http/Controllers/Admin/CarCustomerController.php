@@ -35,8 +35,8 @@ class CarCustomerController extends Controller
     public function index(Request $request)
     {
 
-        $all_customer_cars = $this->customerCar->getAllCustomersCars();
-        
+        $all_customer_cars = $this->customerCar->getAllCustomersCars($request);
+        // dd(lastSql());
         // dd($all_customer_cars[0]->belongsToBrand);
         
         return view('admin.carCustomer.index', compact('all_customer_cars'));

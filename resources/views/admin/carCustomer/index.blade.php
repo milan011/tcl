@@ -44,11 +44,25 @@
 	<div class="row-fluid sortable">		
 		<div class="box span12">
 			<div class="box-content">
+				<div class="page-tabs">
+            		<ul class="nav nav-tabs">
+            		  
+            		  <li style="display: inline-block;line-height:20px;">
+						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索信息</a>
+					</li>
+            		
+					<li style="display:inline-block;line-height:20px;">
+						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
+					</li>
+            		</ul>
+        		</div>
+
 				<table  class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th>电话</th>
 							<th>品牌</th>
+							<th>厂家</th>
 							<th>车系</th>
 							<th>城市</th>
 							<th>时间</th>						
@@ -59,6 +73,7 @@
     					<tr>
 							<td>{{$car->mobile}}</td>
 							<td>{{$car->belongsToBrand->brand_name}}</td>
+							<td>{{$car->belongsToCompnay->compnay_name}}</td>
 							<td>{{$car->belongsToCategory->category_name}}</td>							
 							<td>{{$car->city_name}}</td>							
 							<td>{{substr($car->created_at, 0 ,10)}}</td>							
@@ -78,7 +93,7 @@
 			<h3>车源搜索</h3>
 		</div>
 		<div class="modal-body"">
-			<form class="form-horizontal" id="condition" action="{{route('admin.car.index')}}/index" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.carCustomer.index')}}/index" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 									
@@ -104,7 +119,7 @@
 
 @section('script_content')
 <!-- 引入车型级联js -->
-<script src="{{URL::asset('js/tcl/category.js')}}"></script> 
+<!-- <script src="{{URL::asset('js/tcl/category.js')}}"></script>  -->
 <!-- 引入日历插件 -->
 <script src="{{URL::asset('js/tcl/bootstrap-datepicker.js')}}"></script> 
 <script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script> 
@@ -113,7 +128,12 @@
 <script>
 	$(document).ready(function(){
 
-		    
+		$('.date-picker').datepicker({
+            language: 'zh-CN',
+            autoclose: true,
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
+        });   
 	});
 </script>
 @endsection

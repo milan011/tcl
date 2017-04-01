@@ -41,10 +41,31 @@ class CustomerCar extends Model
      */
     protected $dates = ['deleted_at'];
 
+    // 搜索条件处理
+    public function addCondition($requestData){
+
+        $query = $this;
+
+        if(!empty($requestData['end_date'])){
+            $query = $query->where('created_at', '<=', $requestData['end_date']);
+        }
+        
+        if(!empty($requestData['begin_date'])){
+            $query = $query->where('created_at', '>=', $requestData['begin_date']);
+        } 
+        return $query;
+    }
+
     // 定义customer_car表与Category表一对多关系
     public function belongsToCategory(){
 
       return $this->belongsTo('App\Brand', 'category_id', 'id')->select('id', 'name AS category_name');
+    }
+
+    // 定义customer_car表与Category表一对多关系
+    public function belongsToCompnay(){
+
+      return $this->belongsTo('App\Brand', 'car_factory', 'id')->select('id', 'name AS compnay_name');
     }
 
     // 定义customer_car表与Brand表一对多关系

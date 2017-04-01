@@ -24,9 +24,16 @@ class SaleRepository implements SaleRepositoryContract
     }
 
     // 获得客户车源信息列表
-    public function getAllCustomersCars()
+    public function getAllCustomersCars($request)
     {   
-        return CustomerCar::paginate(10);
+        $query = new CustomerCar();       // 返回的是一个CustomerCar实例,两种方法均可
+
+        $query = $query->addCondition($request->all()); //根据条件组合语句
+
+        return $query->orderBy('created_at', 'desc')
+                     ->paginate(12);
+
+        // return CustomerCar::paginate(10);
     }
 
     // 创建客户车源信息
@@ -37,7 +44,7 @@ class SaleRepository implements SaleRepositoryContract
         $requestData['category_id'] = $requestData->type;
         $requestData['brand_id'] = $requestData->brand;
         $requestData['car_factory'] = $requestData->company;
-        dd($requestData->all());
+        // dd($requestData->all());
         $input =  array_replace($requestData->all());
         $customerCar->fill($input);
         $customerCar  = $customerCar->create($input);             
