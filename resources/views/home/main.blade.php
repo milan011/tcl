@@ -31,12 +31,12 @@
 </section>
 <header class="container">
     <div class="top dib-con">
-        <div class="right dib">
+        <!-- <div class="right dib">
             <div class="search">
                 <input class="searchInput" type="text" name="keyword" placeholder="请输入车辆名称">
                 <input class="searchButton" type="button" value="搜索">
             </div>
-        </div>
+        </div> -->
         <div class="left dib">
             <!-- <img class="logo" src="../img/common/logo.png" alt="淘车乐"> -->
             <img class="logo" src="{{URL::asset('home/img/common/logo.png')}}" alt="淘车乐">
