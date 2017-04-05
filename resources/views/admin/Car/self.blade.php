@@ -150,7 +150,7 @@
 												<input class="current_car_id" type="hidden" value="{{$car->id}}">												
 											</li>
 											<li>
-												<button class="btn btn-success" id="follow_quickly">
+												<button class="btn btn-success follow_quickly">
 													<i class="icon-edit icon-white"></i> 快速跟进
 												</button>
 												<input class="current_car_id" type="hidden" value="{{$car->id}}">
@@ -428,15 +428,17 @@
 			return false;
 		});
 
-		$('#follow_quickly').click(function(){
+		$('.follow_quickly').click(function(){
 
-			var current_car_id  = $(this).next().val();
+			var current_follow_car_id  = $(this).next().val();
+
+			// alert(current_follow_car_id);
 
 			$.ajax({
 				
 				type: 'POST',
 				url: 'car/follwQuickly',
-				data: { id : current_car_id},
+				data: { id : current_follow_car_id},
 				dataType: 'json',
 				headers: {
 

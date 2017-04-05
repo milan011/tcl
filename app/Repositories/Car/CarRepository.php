@@ -401,7 +401,7 @@ class CarRepository implements CarRepositoryContract
             $update_content = collect(['例行跟进'])->toJson();
             
             // 车源编辑信息
-            $car->creater_id = Auth::id();
+            // $car->creater_id = Auth::id();
             $car->car_status = '1';
 
             // 车源跟进信息

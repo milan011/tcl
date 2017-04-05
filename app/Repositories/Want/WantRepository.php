@@ -264,7 +264,7 @@ class WantRepository implements WantRepositoryContract
             $update_content = collect(['例行跟进'])->toJson();
             
             // 求购信息编辑信息
-            $want->creater_id  = Auth::id();
+            // $want->creater_id  = Auth::id();
             $want->want_status = '1';
 
             // 求购信息跟进信息
