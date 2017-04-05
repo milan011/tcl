@@ -60,6 +60,7 @@ class HomeController extends CommonController
             $chose_city = $city;
         }else{
             $current_city_name = Session('current_city_name');
+            // dd(Session('current_city_name'));
             session(['chosen_city_name' => NULL]);
             $city_shops = $this->shop->getShopsInCity(Session('current_city'));
         }
@@ -70,10 +71,13 @@ class HomeController extends CommonController
         if(count($city_shops) == 0 ){
 
             $city_shops = $this->shop->getShopsInCity('138');
+            
         }
         /*dd(lastSql());
         dd($city_shops);*/
 
+        $city_shops = $this->shop->getShopsInProvence('10');
+        
         foreach ($city_shops as $key => $value) {
             $shop_list[] = $value->id;
         }
