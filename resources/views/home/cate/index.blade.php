@@ -154,7 +154,7 @@
                 <!-- <div class="titleItem dib">优质车源</div> -->
             </div>
             <div class="sortBar dib-con">
-                <div class="sortItem dib active">综合排序</div>
+                <!-- <div class="sortItem dib active">综合排序</div>
                 <div class="sortItem dib dib-con">
                     <div class="dib">发布时间</div>
                     <div class="dib arrows">

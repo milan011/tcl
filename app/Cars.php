@@ -88,7 +88,8 @@ class Cars extends Model
             }
         }else{
 
-            $query = $query->whereIn('car_status', ['1', '2', '3', '4', '5', '6']);
+            // $query = $query->whereIn('car_status', ['1', '2', '3', '4', '5', '6']);
+            $query = $query->where('car_status', '1');
         }  
 
         if(!empty($requestData['gearbox'])){

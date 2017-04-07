@@ -108,7 +108,7 @@ class ImageRepository implements ImageRepositoryContract
         // $image = $manager->make( $photo )->save(Config::get('images.full_size') . $filename ); //无处理
         // $image = $manager->make( $photo )->resize(800, 600)->insert('images/warter_img.png', 'bottom-right', 15, 10)->save(Config::get('images.full_size') . $filename ); // 图片为800*600并加水印
         // $image = $manager->make( $photo )->resize((960*$img_bili), 960)->save(Config::get('images.full_size') . $filename );
-        $image = $manager->make( $photo )->resize((600*$img_bili), 600)->resizeCanvas(800, 600, 'center', false)->save(Config::get('images.full_size') . $filename );
+        $image = $manager->make( $photo )->resize((600*$img_bili), 600)->resizeCanvas(800, 600, 'center', false)->insert('images/water_img.png', 'bottom-right', 0, 2)->save(Config::get('images.full_size') . $filename );
 
         return $image;
     }

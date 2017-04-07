@@ -194,32 +194,32 @@
         switch (status) {
         	case '1':
         	    // alert('订车确认');
-        	    deal_price.attr('readonly', 'readonly');
-        	    earnest.attr('readonly', 'readonly');
-        	    commission.attr('readonly', 'readonly');
+        	    //deal_price.attr('readonly', 'readonly');
+        	    //earnest.attr('readonly', 'readonly');
+        	    //commission.attr('readonly', 'readonly');
         	    break;
         	case '2':
         	    // alert('已订车');
-        	    deal_price.attr('readonly', 'readonly');
-        	    earnest.attr('readonly', 'readonly');
-        	    commission.attr('readonly', 'readonly');
+        	    //deal_price.attr('readonly', 'readonly');
+        	    //earnest.attr('readonly', 'readonly');
+        	    //commission.attr('readonly', 'readonly');
         	    next_status.val('4');
         	    break;
         	case '3':
         	    // alert('车款确认');
-        	    deal_price.attr('readonly', 'readonly');
-        	    earnest.attr('readonly', 'readonly');
-        	    commission.attr('readonly', 'readonly');
-        	    first_pay.attr('readonly', 'readonly');
-        	    sale_card.attr('readonly', 'readonly');
+        	    //deal_price.attr('readonly', 'readonly');
+        	    //earnest.attr('readonly', 'readonly');
+        	    //commission.attr('readonly', 'readonly');
+        	    //first_pay.attr('readonly', 'readonly');
+        	    //sale_card.attr('readonly', 'readonly');
         	    break;
         	case '4':
         	    // alert('已付车款');
-        	    deal_price.attr('readonly', 'readonly');
-        	    earnest.attr('readonly', 'readonly');
-        	    commission.attr('readonly', 'readonly');
-        	    first_pay.attr('readonly', 'readonly');
-        	    sale_card.attr('readonly', 'readonly');
+        	    //deal_price.attr('readonly', 'readonly');
+        	    //earnest.attr('readonly', 'readonly');
+        	    //commission.attr('readonly', 'readonly');
+        	    //first_pay.attr('readonly', 'readonly');
+        	    //sale_card.attr('readonly', 'readonly');
         	    next_status.val('4');
         	    break;
         	default :
