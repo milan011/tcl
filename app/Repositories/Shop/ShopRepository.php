@@ -19,7 +19,7 @@ class ShopRepository implements ShopRepositoryContract
     // 根据ID获得门店信息
     public function find($id)
     {   
-        return Shop::select(['id', 'name', 'city_id', 'telephone', 'address', 'qq_number', 'wx_number', 'email', 'status','user_id'])->findOrFail($id);
+        return Shop::select(['id', 'name', 'provence_id', 'city_id', 'telephone', 'address', 'qq_number', 'wx_number', 'email', 'status','user_id'])->findOrFail($id);
     }
 
     // 获得门店列表

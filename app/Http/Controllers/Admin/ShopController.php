@@ -53,7 +53,6 @@ class ShopController extends Controller
                     ->where('status', '1')
                     ->get();
 
-        // dd($area);
         return view('admin.shop.create', compact('area'));
     }
 
@@ -89,12 +88,26 @@ class ShopController extends Controller
      */
     public function edit($id)
     {       
+
         $shop_info = $this->shop->find($id);
+
+        $area = Area::withTrashed()
+                    ->where('pid', '1')
+                    ->where('status', '1')
+                    ->get();
+
+        $city_list = Area::withTrashed()
+                    ->where('pid', $shop_info->provence_id)
+                    ->where('status', '1')
+                    ->get();
         // dd(lastSql());
         // dd($shop_info);
+        // dd($city_list);
         return view('admin.shop.edit', compact(
 
-            'shop_info'
+            'shop_info',
+            'area',
+            'city_list'
         ));
     }
 

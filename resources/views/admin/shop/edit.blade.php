@@ -65,22 +65,21 @@
 					</div>
 				</div>	
 				<div class="control-group">
-					<label class="control-label" for="selectError3">所属省份</label>
+					<label class="control-label" for="provence_id">所属城市</label>
 					<div class="controls">
-					  <select id="provence_id" name="provence_id" data-rel="chosen">
-					  	<option @if($shop_info->provence_id == '1') selected @endif  value="1">河北</option>
-					  	<option @if($shop_info->provence_id == '2') selected @endif  value="2">河南</option>
+					  	<select id="provence_id" name="provence_id">
+					  		<option value="0">请选择省份</option>
+					  		@foreach($area as $provence)
+					  		<option @if($shop_info->provence_id == $provence->id) selected @endif  value="{{$provence->id}}">{{$provence->name}}</option>
+					  		@endforeach									
 						</select>
-					</div>					
-				</div>	
-				<div class="control-group">
-					<label class="control-label" for="selectError3">所属城市</label>
-					<div class="controls">
-					  <select id="city_id" name="city_id" data-rel="chosen">
-					  	<option @if($shop_info->city_id == '1') selected @endif  value="1">石家庄</option>
-					  	<option @if($shop_info->city_id == '2') selected @endif value="2">郑州</option>
+						<select id="city_id" name="city_id">
+					  		<option  value="0">请选择城市</option>	
+					  		@foreach($city_list as $city)
+					  		<option @if($shop_info->city_id == $city->id) selected @endif value="{{$city->id}}">{{$city->name}}</option>
+					  		@endforeach											
 						</select>
-					</div>					
+					</div>
 				</div>		  
 				<div class="control-group">
 					<label class="control-label" for="focusedInput">地址</label>
