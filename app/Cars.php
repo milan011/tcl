@@ -97,6 +97,11 @@ class Cars extends Model
             $query = $query->where('gearbox', $requestData['gearbox']);
         }
 
+        if(!empty($requestData['shop_id'])){
+
+            $query = $query->where('shop_id', $requestData['shop_id']);
+        }
+
         if(!empty($requestData['sale_number'])){
 
             $query = $query->where('sale_number', $requestData['sale_number']);

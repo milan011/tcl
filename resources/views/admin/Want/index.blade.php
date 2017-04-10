@@ -164,6 +164,17 @@
             	      		</select>
             	    	</div>
             	  	</div>
+            	  	<div class="control-group  ">
+            	    	<label class="control-label" for="shop_id">所属门店</label>
+            	    	<div class="controls">
+            	      		<select id="shop_id" name="shop_id" >
+            	      			<option value="0">所有门店</option>
+            	      			@foreach($shops as $key=>$shop)
+            	      			<option @if(isset($select_conditions['shop_id']) && $select_conditions['shop_id'] == $shop->id && $select_conditions['shop_id'] != '') selected @endif value='{{$shop->id}}'>{{$shop->name}}</option>  
+            	      			@endforeach                                         
+            	      		</select>
+            	    	</div>
+            	  	</div>
             	  	<div class="control-group">
 					<label class="control-label" for="selectError3">车型品牌</label>
 						<div class="controls">

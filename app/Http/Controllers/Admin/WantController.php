@@ -46,11 +46,12 @@ class WantController extends Controller
         // dd(lastSql());
         // dd($wants);
         $all_top_brands = $this->brands->getChildBrand(0);
+        $shops = $this->shop->getShopsInProvence('10');
         // dd($request->all());
         $want_status_current = '1';
         $select_conditions  = $request->all();
         
-        return view('admin.want.index', compact('wants', 'want_status_current','all_top_brands', 'select_conditions'));
+        return view('admin.want.index', compact('wants', 'shops', 'want_status_current','all_top_brands', 'select_conditions'));
     }
 
     /**

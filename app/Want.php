@@ -72,8 +72,13 @@ class Want extends Model
             $query = $query->where('want_status', $requestData['want_status']);
         }else{
 
-            $query = $query->whereIn('want_status', ['1', '2', '3', '4', '5', '6']);
-        }  
+            $query = $query->where('want_status', '1');
+        } 
+
+        if(!empty($requestData['shop_id'])){
+
+            $query = $query->where('shop_id', $requestData['shop_id']);
+        } 
 
         if(!empty($requestData['gearbox'])){
 
