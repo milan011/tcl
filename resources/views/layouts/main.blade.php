@@ -108,6 +108,12 @@
 							</ul>	
 						</li>
 						@endif
+						@ifUserCan('pinggu.check')
+							<li><a class="submenu" href="{{route('admin.appraiser.index')}}/index">
+									<i class="icon-money"></i> <span class="hidden-tablet">
+										评估车源</span>
+							</a></li>
+						@endif
 						@ifUserCan('want.check')	
 						<li>
 							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">求购信息</span><span style="float:right;">>></span></a>

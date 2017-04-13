@@ -170,7 +170,7 @@
 							<span>
 								<i>定金:</i>
 								<em>{{$transcation->earnest}}</em>
-								<i>万元</i>
+								<i>元</i>
 							</span>
 							<span>
 								<i>首款：</i>
@@ -180,7 +180,7 @@
 							<span>
 								<i>尾款：</i>
 								<em>{{$transcation->last_pay}}</em>
-								<i>万元</i>
+								<i>元</i>
 							</span>
 						</p>
 					</div>
@@ -189,12 +189,12 @@
 							<span>
 								<i>应收佣金：</i>
 								<em>{{$transcation->commission}}</em>
-								<i>万元</i>
+								<i>元</i>
 							</span>
 							<span>
 								<i>实收佣金：</i>
 								<em>{{$transcation->commission_infact}}</em>
-								<i>万元</i>
+								<i>元</i>
 							</span>
 							<span>
 								<i>佣金备注：</i>

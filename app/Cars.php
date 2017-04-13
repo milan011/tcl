@@ -102,6 +102,11 @@ class Cars extends Model
             $query = $query->where('shop_id', $requestData['shop_id']);
         }
 
+        if(!empty($requestData['is_appraiser'])){
+
+            $query = $query->where('is_appraiser', $requestData['is_appraiser']);
+        }
+
         if(!empty($requestData['sale_number'])){
 
             $query = $query->where('sale_number', $requestData['sale_number']);

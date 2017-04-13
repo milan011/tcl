@@ -131,6 +131,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
 
     Route::get('/', 'HomeController@index')->name('admin.index');     
     Route::match(['get', 'post'], 'car/index', 'CarController@index')->name('admin.car.index'); 
+    Route::match(['get', 'post'], 'appraiser/index', 'AppraiserController@index')->name('admin.appraiser.index'); 
     Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('admin.car.self'); 
     Route::match(['get', 'post'], 'want/index', 'WantController@index')->name('admin.want.index'); 
     Route::match(['get', 'post'], 'transcation/index', 'TranscationController@index')->name('admin.transcation.index'); 
@@ -195,6 +196,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('plan', 'PlanController');    
     Route::resource('transcation', 'TranscationController');   
     Route::resource('carCustomer', 'CarCustomerController');   
+    Route::resource('appraiser', 'AppraiserController');   
 });
 
 /*Route::group(['middleware' => ['web', 'auth']], function () {                      

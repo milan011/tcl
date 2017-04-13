@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
             'admin.want.*',            
             'admin.plan.*',            
             'admin.transcation.*',           
+            'admin.appraiser.*',           
         );
 
         view()->composer(
