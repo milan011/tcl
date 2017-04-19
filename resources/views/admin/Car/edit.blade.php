@@ -107,13 +107,13 @@
 				<div class="control-group">
 					<label class="control-label" for="plate_end">到检日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge" readonly="readonly" name="plate_end" id="plate_end" value="{{substr($cars->plate_end, 0 ,10)}}">
+							<input type="text" class="input-xlarge date-picker"  name="plate_end" id="plate_end" value="{{substr($cars->plate_end, 0 ,10)}}">
 						</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="safe_end">到保日期</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge" readonly="readonly" name="safe_end" id="safe_end" value="{{substr($cars->safe_end, 0 ,10)}}">
+							<input type="text" class="input-xlarge date-picker"  name="safe_end" id="safe_end" value="{{substr($cars->safe_end, 0 ,10)}}">
 						</div>
 				</div>
 				<!-- <div class="control-group">
@@ -222,7 +222,7 @@
 						<font style="color:red;">*&nbsp;</font>客户描述
 					</label>
 				<div class="controls">
-					<textarea id="description" name="description" required >{{$cars->description}}</textarea>
+					<textarea id="description" name="description" required style="width:400px;">{{$cars->description}}</textarea>
 				</div>
 			  </div>
 			  <div class="control-group ">
@@ -230,7 +230,7 @@
 						<font style="color:red;">*&nbsp;</font>销售描述
 					</label>
 					<div class="controls">
-					<textarea id="xs_description" name="xs_description" required >{{$cars->xs_description}}</textarea>
+					<textarea id="xs_description" name="xs_description" required style="width:400px;">{{$cars->xs_description}}</textarea>
 					</div>
 			  	</div>
 
