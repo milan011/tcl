@@ -99,16 +99,19 @@
 								@if($car->car_status == '0') 
 								<!-- 废弃状态 -->
 								<div class="btn-group">
-									<button class="btn btn-info changStatus" data-status="{{$car->car_status}}" style="width:100%;">
+									<button class="btn btn-info changStatus" data-status="{{$car->car_status}}">
 										<i class="icon-edit icon-white"></i> 激活
 									</button>
 									<input class="current_car_id" type="hidden" value="{{$car->id}}">
-								</div>
-								<div class="btn-group">
 									<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">
 										<i class="icon-edit icon-white"></i> 查看
 									</a>
-								</div>								
+								</div>
+								<!-- <div class="btn-group">
+									<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">
+										<i class="icon-edit icon-white"></i> 查看
+									</a>
+								</div> -->								
 								@elseif($car->car_status == '1' || $car->car_status == '2'|| $car->car_status == '6')
 								<!-- 正常、待跟进、已匹配状态 -->
 								<div class="btn-group">

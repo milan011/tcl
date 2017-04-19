@@ -186,7 +186,7 @@ class CarRepository implements CarRepositoryContract
             //存在车架号并且存在该车架号记录
 
             $car = $this->isRepeat($requestData->vin_code);
-
+            // dd(lastSql());
             $car->isRepeat = true;
             return $car;
         }else{
@@ -444,9 +444,25 @@ class CarRepository implements CarRepositoryContract
     //判断车架号号是否被使用
     public function isRepeat($vin_code){
 
-        return Cars::select('id', 'name')
-                       ->where('vin_code', $vin_code)
-                       ->first();
+        $car = Cars::select('id', 'name')
+                          ->where('vin_code', $vin_code)
+                          ->whereIn('car_status', ['1', '2', '3', '4', '6'])
+                          ->first();
+
+        // dd($car);
+        return $car;
+    }
+
+    //判断车架号号使用次数
+    public function repeatCarNum($vin_code){
+
+        $car = Cars::select('id', 'name')
+                          ->where('vin_code', $vin_code)
+                          ->whereIn('car_status', ['1', '2', '3', '4', '6'])
+                          ->count();
+
+        // dd($car);
+        return $car;
     }
 
     //车源状态转换，暂时只有激活-废弃转换
@@ -459,7 +475,8 @@ class CarRepository implements CarRepositoryContract
             $follow_info = new CarFollow(); //车源跟进对象
 
             if($requestData->status == 0){
-
+                
+                // dd('not have sb');
                 $update_content = collect([Auth::user()->nick_name.'激活车源'])->toJson();
                 $car->car_status = '1';
             }else{

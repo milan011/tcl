@@ -305,20 +305,27 @@ class CarController extends Controller
         p($request->input('status'));
         p($request->method());exit;*/
 
-        /*$car = $this->car->find($request->id);
+        $car = $this->car->find($request->id);
 
-        $car->status = $request->input('status');
-
-        $car->save();*/
-
-        $this->car->statusChange($request, $request->input('id'));
+        // $is_repeat = $this->car->isRepeat($car->vin_code);
 
         if($request->input('status') == '0'){
-            $msg = '车源已经激活';
-        }else{
-            $msg = '车源已经废弃';
-        }
+            //激活车源
+            if($this->car->repeatCarNum($car->vin_code) > 0){
 
+                $msg = '已存在该车架号,无法激活';
+            }else{
+                $this->car->statusChange($request, $request->input('id'));
+                $msg = '车源已经激活';
+            }
+           
+        }else{
+            //废弃车源
+            $this->car->statusChange($request, $request->input('id'));
+            $msg = '车源已经废弃';
+
+        }
+        
         return response()->json(array(
             'status' => 1,
             'msg' => $msg,
