@@ -61,6 +61,11 @@
 		td.info{
 			width:20%;
 		}
+
+		.pg_info{
+
+			color:red;
+		}
 	</style>
 @endsection
 
@@ -132,18 +137,26 @@
 							<td>期望价格</td>
 							<td class="info" >{{$waited_info->bottom_price}}-{{$waited_info->top_price}}万</td>
 							<td class="info"  id="want_price"></td>
-							<td>指导价</td>
-							<td class="info" >{{$waited_info->guide_price}}</td>							
-							<td class="info" ></td>					
-						</tr>
-						<tr>
 							<td>车龄</td>
 							<td class="info" >{{$age[$waited_info->age]}}</td>							
-							<td class="info"  id="age"></td>
+							<td class="info"  id="age"></td>				
+						</tr>
+						<tr>
+							<td>指导价</td>
+							<td class="info" >{{$waited_info->guide_price}}</td>							
+							<td class="info"><span class="pg_info" id="guide_price"></span></td>
 							<td>内饰颜色</td>
 							<td class="info" >{{$inside_color[$waited_info->inside_color]}}</td>
 							<td class="info"  id="inside_color"></td>
 						</tr>
+						<tr>
+							<td>评估价</td>
+							<td class="info" >{{$waited_info->guide_price}}</td>							
+							<td class="info"><span class="pg_info" id="appraiser_price"></span></td>
+							<td>过户次数</td>
+							<td class="info" >{{$sale_number_config[$waited_info->sale_number]}}</td>		
+							<td class="info"  id="sale_number"></td>
+						</tr>					
 						<tr>
 							<td>行驶里程</td>
 							<td class="info" >{{$mileage_config[$waited_info->mileage]}}</td>					
@@ -200,7 +213,7 @@
 						<tr>
 						   	<td>评估师描述</td>
 							<td class="info" >{{$waited_info->pg_description}}</td>							
-							<td class="info" ></td>
+							<td class="info pg_info" id="pg_description"></td>
 							<td>外观颜色</td>
 							<td class="info" >{{$out_color[$waited_info->out_color]}}</td>
 							<td class="info"  id="out_color"></td>
@@ -209,18 +222,18 @@
 						   	<td>客户备注</td>
 							<td class="info">{{$waited_info->remark}}</td>							
 							<td class="info" id="remark"></td>
-							<td>过户次数</td>
-							<td class="info" >{{$sale_number_config[$waited_info->sale_number]}}</td>		
-							<td class="info"  id="sale_number"></td>
+							<td>销售顾问备注</td>
+							<td class="info">{{$waited_info->xs_remark}}</td>							
+							<td class="info" id="xs_remark"></td>
 						</tr>	
-						<tr>
+						<!-- <tr>
 						   	<td>销售顾问备注</td>
 							<td class="info">{{$waited_info->xs_remark}}</td>							
 							<td class="info" id="xs_remark"></td>
 							<td></td>
 							<td class="info" ></td>		
 							<td class="info"></td>
-						</tr>					
+						</tr> -->					
 					</tbody>
 				</table>
 				<span>
@@ -570,13 +583,17 @@
 					$('#safe_type').text(car.safe_type);
 					$('#safe_end').text(car.safe_end);
 					$('#pg_description').text(car.pg_description);
-					$('#guide_price').text(car.guide_price);
 					$('#description').text(car.description);
 					$('#sale_number').text(car.sale_number);
 					$('#customer_info').text(car.customer_info);
 
-					// alert('匹配成功');
-					// console.log(car);
+					if(car.show_pg_info){
+						$('#guide_price').text(car.guide_price);
+						$('#appraiser_price').text(car.appraiser_price);
+					}
+					
+					/*console.log(car.show_pg_info);
+					console.log(car);*/
 					// window.location.href = '{{route('admin.chance.index')}}';
 					return false;
 				},

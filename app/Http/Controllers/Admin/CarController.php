@@ -398,6 +398,10 @@ class CarController extends Controller
         $car->created = substr((date($car->created_at)), 0, 10);
         $car->want_price = $car->bottom_price.'-'.$car->top_price;
         $car->plate_city = $car->belongsToCity->city_name;
+
+        if(Auth::id() == $car->creater_id || Auth::user()->isSuperAdmin()){
+            $car->show_pg_info = true;
+        }
         
         // dd($car->belongsToArea->city_name);
         return response()->json(array(

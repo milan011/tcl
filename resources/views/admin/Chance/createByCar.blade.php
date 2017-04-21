@@ -66,6 +66,11 @@
 		td.info{
 			width:20%;
 		}
+
+		.pg_info{
+
+			color:red;
+		}
 	</style>
 @endsection
 
@@ -137,18 +142,35 @@
 						<tr>
     						<td>期望价格</td>
 							<td class="info">{{$waited_info->bottom_price}}-{{$waited_info->top_price}}万</td>
-							<td class="info" id="want_price"></td>
-							<td>指导价</td>
-							<td class="info">{{$waited_info->guide_price}}</td>							
-							<td class="info"></td>					
+							<td class="info" id="want_price"></td>						
+							<td>车龄</td>
+							<td class="info">{{$waited_info->age}}</td>							
+							<td class="info" id="car_age"></td>				
 						</tr>
 						<tr>
-    						<td>车龄</td>
-							<td class="info">{{$waited_info->age}}</td>							
-							<td class="info" id="car_age"></td>
+    						<td>指导价</td>
+							<td class="info">
+								@if((Auth::id() == $waited_info->creater_id) || (Auth::user()->isSuperAdmin())) 
+									<span class="pg_info">{{$waited_info->guide_price}}</span>
+								@endif
+							</td>
+							<td class="info"></td>	
 							<td>内饰颜色</td>
 							<td class="info">{{$inside_color[$waited_info->inside_color]}}</td>
 							<td class="info" id="inside_color"></td>
+						</tr>
+						<tr>
+    						<td>评估价</td>
+							<td class="info">
+								@if((Auth::id() == $waited_info->creater_id) || (Auth::user()->isSuperAdmin())) 
+									<span class="pg_info">{{$waited_info->appraiser_price}}</span>
+								@endif
+							
+							</td>							
+							<td class="info"></td>	
+							<td>过户次数</td>
+							<td class="info">{{$waited_info->sale_number}}</td>							
+							<td class="info" id="sale_number"></td>
 						</tr>
 						<tr>
     						<td>行驶里程</td>
@@ -205,7 +227,7 @@
 						</tr>
 						<tr>
     						<td>评估师描述</td>
-							<td class="info">{{$waited_info->pg_description}}</td>							
+							<td class="info"><span class="pg_info">{{$waited_info->pg_description}}</span></td>							
 							<td class="info"></td>
 							<td>外观颜色</td>
 							<td class="info">{{$out_color[$waited_info->out_color]}}</td>
@@ -215,18 +237,19 @@
     						<td>客户描述</td>
 							<td class="info">{{$waited_info->description}}</td>							
 							<td class="info" id="remark"></td>
-							<td>过户次数</td>
-							<td class="info">{{$waited_info->sale_number}}</td>							
-							<td class="info" id="sale_number"></td>
+							<td>销售顾问备注</td>
+							<td class="info">{{$waited_info->xs_description}}</td>							
+							<td class="info" id="xs_remark"></td>
+							
 						</tr>	
-						<tr>
+						<!-- <tr>
     						<td>销售顾问备注</td>
 							<td class="info">{{$waited_info->xs_description}}</td>							
 							<td class="info" id="xs_remark"></td>
 							<td></td>
 							<td class="info" ></td>		
 							<td class="info"></td>
-						</tr>					
+						</tr> -->					
 					</tbody>
 				</table>
 				<span>

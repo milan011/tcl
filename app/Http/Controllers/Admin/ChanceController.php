@@ -91,7 +91,7 @@ class ChanceController extends Controller
      */
     public function create(Request $request)
     {
-        // dd($request->all());
+        // dd(Auth::user()->isSuperAdmin());
         $request['os_recommend'] = 'yes';
         // $is_self = $request->has('is_self');      
         
