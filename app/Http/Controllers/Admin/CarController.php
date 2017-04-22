@@ -8,6 +8,7 @@ use Gate;
 use DB;
 use App\Area;
 use App\Image;
+use App\Cars;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
@@ -425,6 +426,13 @@ class CarController extends Controller
                         ->first();
             /*dd(lastSql());
             dd($img);*/
+            /*$car = Cars::where('id', $request->img_car_id)->first();
+            $car->is_show = '1';
+            $car->save();*/
+
+            Cars::where('id', $request->img_car_id)->update(['is_show'=>'1']);
+
+            // dd($car);
             $img->is_top = '1';
             $img->save();
             
