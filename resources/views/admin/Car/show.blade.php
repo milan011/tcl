@@ -125,7 +125,7 @@
 					{{$cars->plate_end}}
 				</span>
 				<span>
-					<i>登记日期：</i>
+					<i>上传日期：</i>
 					{{$cars->created_at}}
 				</span>
 			</p>

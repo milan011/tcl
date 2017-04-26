@@ -197,7 +197,7 @@
 							<td class="info" id="plate_city"></td>
 						</tr>
 						<tr>
-    						<td>登记日期</td>
+    						<td>上传日期</td>
 							<td class="info">{{substr($waited_info->created_at, 0 ,10)}}</td>							
 							<td class="info" id="created_at"></td>
 							<td>保险类别</td>
