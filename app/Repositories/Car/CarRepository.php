@@ -18,7 +18,7 @@ use Debugbar;
 class CarRepository implements CarRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'name', 'car_code', 'vin_code', 'capacity', 'top_price', 'plate_date', 'plate_end', 'mileage', 'age', 'out_color', 'inside_color', 'gearbox', 'plate_provence', 'plate_city', 'safe_end', 'sale_number', 'categorey_type', 'shop_id', 'creater_id', 'created_at', 'updated_at', 'description', 'bottom_price', 'safe_type','recommend', 'is_top', 'car_type', 'car_status', 'customer_id', 'guide_price', 'pg_description','xs_description', 'cate_id', 'appraiser_price', 'is_appraiser'];
+    protected $select_columns = ['id', 'name', 'car_code', 'vin_code', 'capacity', 'top_price', 'plate_date', 'plate_end', 'mileage', 'age', 'out_color', 'inside_color', 'gearbox', 'plate_provence', 'plate_city', 'safe_end', 'sale_number', 'categorey_type', 'shop_id', 'creater_id', 'created_at', 'updated_at', 'description', 'bottom_price', 'safe_type','recommend', 'is_top', 'car_type', 'car_status', 'customer_id', 'guide_price', 'pg_description','xs_description', 'cate_id', 'appraiser_price', 'is_appraiser', 'appraiser_at'];
 
     // 车源表列名称-注释对应
     protected $columns_annotate = [
@@ -79,11 +79,11 @@ class CarRepository implements CarRepositoryContract
         if($request->has('home')){
 
             return $query->select($this->select_columns)
-                     ->orderBy('updated_at', 'desc')
+                     ->orderBy('created_at', 'desc')
                      ->paginate(12);
         }
         return $query->select($this->select_columns)
-                     ->orderBy('updated_at', 'desc')
+                     ->orderBy('created_at', 'desc')
                      ->paginate(10);
     }
 
@@ -409,8 +409,9 @@ class CarRepository implements CarRepositoryContract
             $car->guide_price     = $requestData->guide_price;
             $car->pg_description  = $requestData->pg_description;
             $car->is_appraiser    = '1';
+            $car->appraiser_at    = Carbon::now()->toDateString();
             
-    
+            // dd(Carbon::now()->toDateString());
             // 车源跟进信息
             $follow_info->car_id       = $id;
             $follow_info->user_id      = Auth::id();

@@ -87,7 +87,8 @@
 							<th>颜色</th>
 							<th>过户</th>
 							<th>状态</th>
-							<th>登记日期</th>
+							<th>上传日期</th>
+							<th>评估日期</th>
 							<th>门店</th>
 							<th>负责人</th>
 							<th>操作</th>
@@ -112,6 +113,13 @@
 								@endif
 							</td>							
 							<td>{{substr($car->created_at, 0 ,10)}}</td>							
+							<td>
+							@if($car->is_appraiser == 2)
+									未评估
+								@else
+									{{substr($car->appraiser_at, 0 ,10)}}
+								@endif
+							</td>							
 							<td>{{$car->belongsToShop->shop_name}}</td>							
 							<td>{{$car->belongsToUser->nick_name}}</td>		
 							<td class="center">
