@@ -52,7 +52,7 @@
             		  <li style="display: inline-block;line-height:20px;">
 						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索车源</a>
 					</li>
-            		  <li style="display: inline-block;line-height:20px;float:right;">
+            		<li style="display: inline-block;line-height:20px;float:right;">
 						<a class="btn btn-primary" href="{{route('admin.car.create')}}">添加车源</a>
 					</li>
 					<li style="display:inline-block;line-height:20px;float:right;">

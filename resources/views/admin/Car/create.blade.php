@@ -387,6 +387,7 @@
 		var img_content      = $('#img_content');
 		var customer_id      = $("input[name='customer_id']");	
 		var car_id           = $("input[name='car_id']");		
+		var user_role        = $("input[name='user_role']");		
 
 		/*alert(customer_id.val());
 		alert(car_id.val());*/
@@ -581,7 +582,7 @@
 						},
 						success:function(data){
 
-							window.location.href = '{{route("admin.car.self")}}';
+							window.location.href = '{{route("admin.car.self")}}';				
 						},
 						error: function(xhr, type){
 							/*console.log(JSON.parse(xhr.responseText));
