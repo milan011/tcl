@@ -49,9 +49,12 @@ class HomeController extends CommonController
         if(!empty($city)){
 
             // $city_id = getConditionContent($city);
-            // dd($city_id);
+            // dd($city);
             $city_shops = $this->shop->getShopsInCity($city);
+            // dd($city_shops);
             $city_name = Area::select('name')->find($city)->name;
+            //dd(lastSql());
+            //dd($city_name);
 
             // dd(Session('current_city_name'));
             // $current_city_name = $city_name;

@@ -154,7 +154,7 @@ class CateController extends CommonController
         // dd(lastsql());
         // dd($recomment_brands);
         //门店列表
-        $all_shop = Shop::where('status', '1')->get();
+        $all_shop = Shop::where('status', '1')->where('is_show', '1')->orderBy('sort', 'desc')->get();
         // dd($all_shop);
 
         //根据首字母取得所有品牌分类列表
