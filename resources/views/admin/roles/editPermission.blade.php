@@ -120,8 +120,16 @@
 
 			var role_permission = $("input[name='role_permission']").val(); //当前角色已拥有权限
 
+			// $(".permissions_effect").trigger("click");
+
 			$('.permissions_effect').toggle(permissions_show, permissions_hide);
 
+			$(".permissions_effect").each(function(index, element){
+    			// this === element
+    			console.log($(element));
+    			$(element).trigger("click"); 
+			});
+			
 			//已经拥有的权限默认选中
 			$("input[name='chouse_permission[]']").each(function(){
 
