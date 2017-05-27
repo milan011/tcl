@@ -47,6 +47,7 @@
                     	@foreach($citysHasTcl as $city)
                             <a href="{{route('home.index')}}/city/{{$city->id}}"><div class="dib cityItem">{{$city->name}}</div></a>
                         @endforeach
+                        <a href="{{route('home.index')}}/city/75"><div class="dib cityItem">张掖</div></a>
                     </div>
                 </div>
             </div>
