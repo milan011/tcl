@@ -36,6 +36,8 @@ class ConfigComposer
         $sale_number_config        = config('tcl.want_sale_number'); //获取配置文件中求购信息过户配置
         $follow_type               = config('tcl.follow_type'); //获取配置文件中跟踪类别
         $age                       = config('tcl.age'); //获取配置文件中车龄
+        $loan_channels             = config('tcl.loan_channels'); //获取配置文件中贷款渠道
+        $loan_stauts_config        = config('tcl.loan_stauts'); //获取配置文件中贷款状态
 
         $view->with('year_type', $year_type);
         $view->with('category_type', $category_type);
@@ -57,6 +59,8 @@ class ConfigComposer
         $view->with('age', $age);
         $view->with('plan_stauts_config', $plan_stauts_config);
         $view->with('transcation_stauts_config', $transcation_stauts_config);
+        $view->with('loan_channels', $loan_channels);
+        $view->with('loan_stauts_config', $loan_stauts_config);
         
     }
 }

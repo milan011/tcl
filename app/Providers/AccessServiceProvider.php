@@ -136,5 +136,17 @@ class AccessServiceProvider extends ServiceProvider
             \App\Repositories\Sale\SaleRepositoryContract::class,
             \App\Repositories\Sale\SaleRepository::class
         );
+
+        //绑定InsuranceRepository
+        $this->app->bind(
+            \App\Repositories\Insurance\InsuranceRepositoryContract::class,
+            \App\Repositories\Insurance\InsuranceRepository::class
+        );
+
+        //绑定LoanRepository
+        $this->app->bind(
+            \App\Repositories\Loan\LoanRepositoryContract::class,
+            \App\Repositories\Loan\LoanRepository::class
+        );
     }
 }

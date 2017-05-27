@@ -132,6 +132,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::get('/', 'HomeController@index')->name('admin.index');     
     Route::match(['get', 'post'], 'car/index', 'CarController@index')->name('admin.car.index'); 
     Route::match(['get', 'post'], 'appraiser/index', 'AppraiserController@index')->name('admin.appraiser.index'); 
+    Route::match(['get', 'post'], 'insurance/index', 'InsuranceController@index')->name('admin.insurance.index');
+    Route::match(['get', 'post'], 'loan/index', 'LoanController@index')->name('admin.loan.index');
     Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('admin.car.self'); 
     Route::match(['get', 'post'], 'want/index', 'WantController@index')->name('admin.want.index'); 
     Route::match(['get', 'post'], 'transcation/index', 'TranscationController@index')->name('admin.transcation.index'); 
@@ -166,6 +168,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('want/follwQuickly', 'WantController@follwQuickly')->name('admin.want.follwQuickly');
     Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('admin.brand.getChildBrand');
     Route::post('brand/changeStatus', 'BrandController@changeStatus')->name('admin.brand.changeStatus');
+    Route::post('insurance/changeStatus', 'InsuranceController@changeStatus')->name('admin.insurance.changeStatus');
+    Route::post('loan/changeStatus', 'LoanController@changeStatus')->name('admin.loan.changeStatus');
     Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
     Route::post('category/checkRepeat', 'CategoryController@checkRepeat')->name('admin.category.checkRepeat');
     Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');    
@@ -197,6 +201,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('transcation', 'TranscationController');   
     Route::resource('carCustomer', 'CarCustomerController');   
     Route::resource('appraiser', 'AppraiserController');   
+    Route::resource('insurance', 'InsuranceController');   
+    Route::resource('loan', 'LoanController');   
 });
 
 /*Route::group(['middleware' => ['web', 'auth']], function () {                      

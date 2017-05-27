@@ -16,20 +16,20 @@ use Debugbar;
 class CustomerRepository implements CustomerRepositoryContract
 {
 
-    // 根据ID获得车源信息
+    // 根据ID获得用户信息
     public function find($id)
     {
         return Customer::select(['id', 'name', 'telephone'])
                        ->findOrFail($id);
     }
 
-    // 获得车源列表
+    // 获得用户列表
     public function getAllCustomers()
     {   
         return Customer::paginate(10);
     }
 
-    // 创建车源
+    // 创建用户
     public function create($requestData)
     {   
         
@@ -55,7 +55,7 @@ class CustomerRepository implements CustomerRepositoryContract
         return $customer;
     }
 
-    // 修改车源
+    // 修改用户
     public function update($requestData, $id)
     {
         
@@ -64,20 +64,20 @@ class CustomerRepository implements CustomerRepositoryContract
         // dd($customer->fill($input));
         $customer->fill($input)->save();
         // dd($customer->toJson());
-        Session::flash('sucess', '修改车源成功');
+        Session::flash('sucess', '修改用户成功');
         return $customer;
     }
 
-    // 删除车源
+    // 删除用户
     public function destroy($id)
     {
         try {
             $customer = Customer::findorFail($id);
             $customer->delete();
-            Session::flash('sucess', '删除车源成功');
+            Session::flash('sucess', '删除用户成功');
            
         } catch (\Illuminate\Database\QueryException $e) {
-            Session()->flash('faill', '删除车源失败');
+            Session()->flash('faill', '删除用户失败');
         }      
     }
 

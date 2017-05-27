@@ -70,6 +70,22 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $user_role_id == config('tcl.user_role_type')['门店店长'];
     }
 
+    // 是否贷款主管
+    public function isDkLeader(){
+
+        $user_role_id  = Auth::user()->hasManyUserRole[0]->role_id; //用户角色id
+        // $user_role_id  = '6';
+        return $user_role_id == config('tcl.user_role_type')['贷款主管'];
+    }
+
+    // 是否保险主管
+    public function isBxLeader(){
+
+        $user_role_id  = Auth::user()->hasManyUserRole[0]->role_id; //用户角色id
+        // $user_role_id  = '6';
+        return $user_role_id == config('tcl.user_role_type')['保险主管'];
+    }
+
     public function tasksAssign()
     {
         return $this->hasMany('App\Tasks', 'fk_user_id_assign', 'id')
@@ -180,5 +196,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function hasManyTranscations()
     {
         return $this->hasMany('App\Transcation', 'user_id', 'id');
+    }
+
+    // 定义User表与Insurance表一对多关系
+    public function hasManyLoans()
+    {
+        return $this->hasMany('App\Loan', 'user_id', 'id');
     }
 }

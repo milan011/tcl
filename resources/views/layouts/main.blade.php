@@ -109,10 +109,21 @@
 						</li>
 						@endif
 						@ifUserCan('pinggu.check')
-							<li><a class="submenu" href="{{route('admin.appraiser.index')}}/index">
+							<li>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车源评估</span><span style="float:right;">>></span></a>
+							<ul>
+								<li>
+									<a class="submenu" href="{{route('admin.appraiser.index')}}/index">
 									<i class="icon-money"></i> <span class="hidden-tablet">
 										评估车源</span>
-							</a></li>
+									</a>
+								</li>
+								<li>
+									<a class="submenu" href="{{route('admin.car.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">我的车源</span></a>
+								</li>
+							</ul>	
+							</li>
+							
 						@endif
 						@ifUserCan('want.check')	
 						<li>
@@ -162,6 +173,14 @@
 									<i class="icon-money"></i> <span class="hidden-tablet">
 										财务管理</span>
 							</a></li>
+						@endif
+						@ifUserCan('loan.check')
+							<li>
+							<a class="submenu" href="{{route('admin.loan.index')}}/index">
+								<i class="icon-user"></i> 
+								<span class="hidden-tablet">贷款管理</span>
+							</a>
+						</li>
 						@endif
 						@ifUserCan('tcl_user.check')
 							<li>

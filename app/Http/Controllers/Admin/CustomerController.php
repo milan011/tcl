@@ -63,9 +63,19 @@ class CustomerController extends Controller
      */
     public function ajaxStore(StoreCustomerRequest $customerRequest)
     {
-        // p($customerRequest->all());exit;
-        $customer = $this->customer->create($customerRequest);
+        // dd($customerRequest->all());exit;
 
+        /*$is_repeat = $this->customer->isRepeat($customerRequest->telephone);
+        dd($is_repeat);*/
+        if($this->customer->isRepeat($customerRequest->telephone)){
+            //已有用户,更新并返回
+            $customer_id = $this->customer->isRepeat($customerRequest->telephone)->id;
+            $customer = $this->customer->update($customerRequest, $customer_id); 
+        }else{
+            //尚无记录,添加并返回
+            $customer = $this->customer->create($customerRequest); 
+        }
+        // dd('hehe');
         return response()->json($customer); 
     }
 

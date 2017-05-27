@@ -77,4 +77,10 @@ class Shop extends Model
 
       return $this->belongsTo('App\Area', 'city_id', 'id')->select('id', 'name AS city_name');
     }
+
+    // 定义Shop表与Insurance表一对多关系
+    public function hasManyLoans(){
+
+      return $this->hasMany('App\Loan', 'shop_id', 'id');
+    }
 }
