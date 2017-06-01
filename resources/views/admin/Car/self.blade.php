@@ -93,7 +93,7 @@
 							<td>{{$car_stauts_config[$car->car_status]}}</td>							
 							<td>{{substr($car->created_at, 0 ,10)}}</td>							
 							<td>{{$car->belongsToShop->shop_name}}</td>							
-							<td>{{$car->belongsToUser->nick_name}}</td>							
+							<td>{{$car->belongsToUser->nick_name or '未知'}}</td>							
 														
 							<td class="center">
 								@if($car->car_status == '0') 
