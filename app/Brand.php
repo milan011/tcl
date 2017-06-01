@@ -57,4 +57,10 @@ class Brand extends Model
 
       return $this->hasMany('App\CustomerCar', 'brand_id', 'id');
     }
+
+    // 定义Brand表与Loan表一对多关系
+    public function hasManyLoans(){
+
+      return $this->hasMany('App\Loan', 'category_id', 'id');
+    }
 }

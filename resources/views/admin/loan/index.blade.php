@@ -82,7 +82,7 @@
 						@foreach ($loans as $loan)
     					<tr>
 							<td>{{$loan->loan_code}}</td>
-							<td>{{$loan->car_name}}</td>
+							<td>{{$loan->belongsToBrand->brand_name or '未知'}}</td>
 							<td>{{$loan->name}}</td>							
 							<td>{{$loan->telephone}}</td>
 							<td>{{$loan->bill_day}}</td>							

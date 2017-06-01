@@ -111,6 +111,12 @@ class Loan extends Model
       return $this->belongsTo('App\Category', 'cate_id', 'id')->select('id', 'name AS category_name');
     }
 
+    // 定义Brand表与Loan表一对多关系
+    public function belongsToBrand(){
+
+      return $this->belongsTo('App\Brand', 'category_id', 'id')->select('id', 'name AS brand_name');
+    }
+
     // 定义Shop表与insurance表一对多关系
     public function belongsToShop(){
 
