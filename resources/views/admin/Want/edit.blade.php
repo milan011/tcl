@@ -59,7 +59,7 @@
                 	<div class="controls">
                   		<select id="capacity" name="capacity" >                        
 					  		@foreach($capacity as $key=>$capa)											
-					  		<option @if(($wants->capacity-1) == $key) selected @endif  value="{{$key}}">
+					  		<option @if(($wants->capacity) == $key) selected @endif  value="{{$key}}">
 					  			{{$capa}}
 					  		</option>	
 					  		@endforeach	                     

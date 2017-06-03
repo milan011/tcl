@@ -174,7 +174,7 @@ class WantRepository implements WantRepositoryContract
             $want->recommend             = $requestData->recommend;
             $want->alternate_car         = $requestData->alternate_car;
             $want->alternate_car_another = $requestData->alternate_car_another;
-            $want->creater_id     = Auth::id();
+            // $want->creater_id     = Auth::id();
     
             // 求购信息跟进信息
             $follow_info->want_id       = $id;
