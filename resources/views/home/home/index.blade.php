@@ -30,12 +30,12 @@
     <div class="banner">
         <div id="bannerSlider" class="slider" style="background-color: #000;">
             <div class="sliderItem active transition" bgColor="#000">
-                <img src="{{URL::asset('home/img/index/dbfile/slider.png')}}" alt="真车源 真放心">
+                <img src="{{URL::asset('home/img/index/dbfile/kaiye.png')}}" alt="真车源 真放心">
             </div>
-            <div class="sliderItem transition" bgColor="#fff">
-                <img src="{{URL::asset('home/img/index/dbfile/slider1.png')}}" alt="一站式卖车">
+            <div class="sliderItem transition" bgColor="#000">
+                <img src="{{URL::asset('home/img/index/dbfile/slider.png')}}" alt="一站式卖车">
             </div>
-            <div class="sliderItem transition" bgColor="#fff">
+            <div class="sliderItem transition" bgColor="#000">
                 <img src="{{URL::asset('home/img/sell/dbfile/bannerBg.jpg')}}" alt="一站式卖车">
             </div>
             <div class="container bannerContent">

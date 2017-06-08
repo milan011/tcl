@@ -174,6 +174,14 @@
 										财务管理</span>
 							</a></li>
 						@endif
+						@ifUserCan('insurance.check')
+							<li>
+							<a class="submenu" href="{{route('admin.insurance.index')}}/index">
+								<i class="icon-user"></i> 
+								<span class="hidden-tablet">保险管理</span>
+							</a>
+						</li>
+						@endif
 						@ifUserCan('loan.check')
 							<li>
 							<a class="submenu" href="{{route('admin.loan.index')}}/index">
