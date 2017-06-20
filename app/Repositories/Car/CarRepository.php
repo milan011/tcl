@@ -196,16 +196,17 @@ class CarRepository implements CarRepositoryContract
             $car_obj = (object) '';
             DB::transaction(function() use ($requestData, $car_obj){
                 // 添加车源并返回实例,处理跟进(添加车源)
-                $requestData['creater_id'] = Auth::id();
-                $requestData['car_code']   = getCarCode('car');
-                $requestData['age']        = getCarAge($requestData->plate_date);
+                $requestData['creater_id']      = Auth::id();
+                $requestData['car_code']        = getCarCode('car');
+                $requestData['age']             = getCarAge($requestData->plate_date);
+                $requestData['categorey_type']  = $requestData['category_type'];
 
-                // dd($requestData->age);
+                //dd($requestData->all());
                 /*dd(Carbon::parse($requestData->plate_date));
                 dd(Carbon::now());*/
 
-                unset($requestData['_token']);
-                unset($requestData['ajax_request_url']);
+                //unset($requestData['_token']);
+                //unset($requestData['ajax_request_url']);
 
                 $car = new Cars();
                 $input =  array_replace($requestData->all());
