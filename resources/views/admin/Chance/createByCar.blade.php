@@ -379,7 +379,7 @@
 									<i class="icon-globe"></i>
 								</div>
 								<div class="time">
-									<strong>{{$info->belongsToUsers->nick_name}}</strong> 于 {{$info->created_at}}
+									<strong>{{$info->belongsToUsers->nick_name or ''}}</strong> 于 {{$info->created_at}}
 								</div>	
 			   				</div>
 							<div class="clearfix"></div>

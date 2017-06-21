@@ -147,7 +147,7 @@ class ChanceController extends Controller
             // dd($waited_info->categorey_type);
             $img_info = $waited_info->hasManyImages;
             $follow_info = $waited_info->hasManyFollow;
-            // dd($img_info);
+            // dd($follow_info);
             foreach ($follow_info as $key => $value) {
                 
                 $follow_info[$key]['description'] = json_decode($value->description);
