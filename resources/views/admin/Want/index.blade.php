@@ -226,7 +226,7 @@
             	      		</select>
             	    	</div>
             	  	</div>
-					<div class="control-group  ">
+					<!-- <div class="control-group  ">
             	    	<label class="control-label" for="gearbox">变速箱</label>
             	    	<div class="controls">
             	      		<select id="gearbox" name="gearbox" >
@@ -234,6 +234,20 @@
             	      			<option @if(isset($select_conditions['gearbox']) && $select_conditions['gearbox'] == $key && $select_conditions['gearbox'] != '') selected @endif value='{{$key}}'>{{$box}}</option>  
             	      			@endforeach                                         
             	      		</select>
+            	    	</div>
+            	  	</div> -->
+            	  	<div class="control-group">
+            	    	<label class="control-label" for="gearbox">变速箱</label>
+            	    	<div class="controls">
+            	    		
+            	    		<label class="checkbox-inline">
+            	    			@foreach($gearbox as $key=>$box)
+            	    			@if($key > 0)
+									<input type="checkbox" name="gearbox[]" value="{{$key}}" @if(isset($select_conditions['gearbox']) && in_array($key, $select_conditions['gearbox'])) checked @endif>{{$box}}
+								@endif
+								@endforeach
+							</label>
+							
             	    	</div>
             	  	</div>
             	  	<div class="control-group  ">

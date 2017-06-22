@@ -82,7 +82,12 @@ class Want extends Model
 
         if(!empty($requestData['gearbox'])){
 
-            $query = $query->where('gearbox', $requestData['gearbox']);
+            // $query = $query->where('gearbox', $requestData['gearbox']);
+            $query = $query->where(function($query) use ($requestData){
+                foreach ($requestData['gearbox'] as $key => $gear) {
+                    $query = $query->orWhere('gearbox', $gear);
+                }                       
+            });
         }
 
         if(!empty($requestData['sale_number'])){

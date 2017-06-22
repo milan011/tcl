@@ -319,7 +319,7 @@
             				<button class="btn">系统推荐</button>
             			</li>
             		  	<li style="display: inline-block;line-height:20px;float:right;">
-							<a class="btn btn-search" href="javascript:void(0);"><i class="halflings-icon search"></i>搜索求购信息</a>
+							<a class="btn btn-search" href="javascript:void(0);"><i class="halflings-icon search"></i>搜索车源信息</a>
 						</li>
             		</ul>
         		</div>
@@ -437,14 +437,18 @@
 							<input type="text" class="input-xlarge one_line date-picker" name="end_date" id="end_date" value="{{$select_conditions['end_date'] or ''}}" placeholder="结束日期">
 						</div>
 					</div>
-					<div class="control-group  ">
+					<div class="control-group">
             	    	<label class="control-label" for="gearbox">变速箱</label>
             	    	<div class="controls">
-            	      		<select id="gearbox" name="gearbox" >
-            	      			@foreach($gearbox as $key=>$box)
-            	      			<option @if(isset($select_conditions['gearbox']) && $select_conditions['gearbox'] == $key && $select_conditions['gearbox'] != '') selected @endif value='{{$key}}'>{{$box}}</option>  
-            	      			@endforeach                                         
-            	      		</select>
+            	    		
+            	    		<label class="checkbox-inline">
+            	    			@foreach($gearbox as $key=>$box)
+            	    			@if($key > 0)
+									<input type="checkbox" name="gearbox[]" value="{{$key}}" @if(isset($select_conditions['gearbox']) && in_array($key, $select_conditions['gearbox'])) checked @endif>{{$box}}
+								@endif
+								@endforeach
+							</label>
+							
             	    	</div>
             	  	</div>
             	  	<div class="control-group  ">
