@@ -53,9 +53,27 @@ class Area extends Model
     }
 
     // 定义Area表与Insurance表一对多关系
-    public function hasManyInsurances(){
+    public function hasManyInsurancesByCity(){
 
       return $this->hasMany('App\Insurance', 'insurance_city', 'id');
+    }
+
+    // 定义Area表与Insurance表一对多关系
+    public function hasManyInsurancesByProvence(){
+
+      return $this->hasMany('App\Insurance', 'insurance_city', 'id');
+    }
+
+    // 定义Area表与Loans表一对多关系
+    public function hasManyLoansByCity(){
+
+      return $this->hasMany('App\Loan', 'insurance_city', 'id');
+    }
+
+    // 定义Area表与Loans表一对多关系
+    public function hasManyLoansByProvence(){
+
+      return $this->hasMany('App\Loan', 'insurance_city', 'id');
     }
 
 }

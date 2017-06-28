@@ -71,7 +71,7 @@
 
 @include('layouts.message')
 
-<div class="row-fluid sortable">
+<div class="row-fluid">
 	<div class="box span12" style="padding:10px;">
 
 		<p class="title">[编号]:{{$loan->loan_code}}</p>
@@ -254,7 +254,7 @@
 			<p class="detial">
 				<span>
 					<i>贷款渠道:</i>
-					{{$loan->loan_channels}}
+					{{$loan_channels[$loan->loan_channels]}}
 				</span>
 				<span>
 					<i>客户来源:</i>
@@ -262,7 +262,7 @@
 				</span>
 				<span>
 					<i>贷款状态:</i>
-					{{$loan->loan_status}}
+					{{$loan_stauts_config[$loan->loan_status]}}
 				</span>
 			</p>
 		</div>
@@ -275,11 +275,11 @@
 				</span>
 				<span>
 					<i>贷款省份:</i>
-					{{$loan->insurance_provence}}
+					{{$loan->belongsToProvence->provence_name}}
 				</span>
 				<span>
 					<i>贷款城市:</i>
-					{{$loan->insurance_city}}
+					{{$loan->belongsToCity->city_name or ''}}
 				</span>
 			</p>
 		</div>

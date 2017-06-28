@@ -71,7 +71,7 @@
 
 @include('layouts.message')
 
-<div class="row-fluid sortable">
+<div class="row-fluid">
 	<div class="box span12" style="padding:10px;">
 
 		<p class="title">[编号]:{{$insurance->insurance_code}}</p>
@@ -176,14 +176,18 @@
 					{{$insurance->need_pay}}
 				</span>
 				<span>
-					<i>保险城市:</i>
-					{{$insurance->belongsToCity->city_name or ''}}
+					<i>保险省份:</i>
+					{{$insurance->belongsToProvence->provence_name}}
 				</span>
 			</p>
 		</div>
 
 		<div class="col-xs-4">
 			<p class="detial">
+				<span>
+					<i>保险城市:</i>
+					{{$insurance->belongsToCity->city_name or ''}}
+				</span>
 				<span>
 					<i>创建者:</i>
 					{{$insurance->belongsTouser->nick_name or ''}}
@@ -192,15 +196,16 @@
 					<i>创建时间:</i>
 					{{$insurance->created_at}}
 				</span>
-				<span>
-					<i>备注:</i>
-					{{$insurance->remark}}
-				</span>
+				
 			</p>
 		</div>
 
 		<div class="col-xs-4">
 			<p class="detial">
+				<span>
+					<i>备注:</i>
+					{{$insurance->remark}}
+				</span>
 				<span>
 					<i>保险明细:</i>
 					{{$insurance->detail}}

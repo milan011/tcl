@@ -134,9 +134,15 @@ class Insurance extends Model
       return $this->belongsTo('App\Customer', 'customer_id', 'id')->select('id', 'name as customer_name', 'telephone as customer_telephone');
     }*/
 
-    // 定义customer表与Area表一对多关系
+    // 定义insurance表与Area表一对多关系
     public function belongsToCity(){
 
       return $this->belongsTo('App\Area', 'insurance_city', 'id')->select('id', 'name as city_name');
+    }
+
+    // 定义insurance表与Area表一对多关系
+    public function belongsToProvence(){
+
+      return $this->belongsTo('App\Area', 'insurance_provence', 'id')->select('id', 'name as provence_name');
     }
 }
