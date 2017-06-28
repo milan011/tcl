@@ -16,10 +16,10 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.insurance.index')}}">贷款列表</a> 
+		<a href="{{route('admin.insurance.index')}}">保险列表</a> 
 		<i class="icon-angle-right"></i>
 	</li>
-	<li><a href="#1f">修改贷款</a></li>
+	<li><a href="#1f">修改保险</a></li>
 </ul>
 @endsection
 <!-- 主体 -->
@@ -35,214 +35,157 @@
 				{{ method_field('PUT') }}
 				<fieldset>
 				  
-				  <div class="control-group">
-					<label class="control-label" for="name">贷款名称</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="name" readonly="readonly" name="name" type="text" value="{{$insurance->name}}">
+				  	<div class="control-group">
+						<label class="control-label" for="insurance_code">保险编号</label>
+						<div class="controls">
+					  		<input class="input-xlarge focused" id="insurance_code" readonly="readonly" name="insurance_code" type="text" value="{{$insurance->insurance_code}}">
+						</div>
+				  	</div>
+
+				  	<div class="control-group">
+						<label class="control-label" for="name">客户</label>
+						<div class="controls">
+					  		<input class="input-xlarge focused" id="name" readonly="readonly" name="name" type="text" value="{{$insurance->name}}">
+						</div>
+				  	</div>
+
+				  	<div class="control-group  ">
+                		<label class="control-label" for="company">保险公司</label>
+                		<div class="controls">
+                  			<select id="company" name="company" >                          
+						  		@foreach($insurance_company as $key=>$com)											
+						  		<option @if(($insurance->company) == $key) selected @endif  value="{{$key}}">
+						  			{{$com}}
+						  		</option>	
+						  		@endforeach	                   
+                  			</select>
+                		</div>
+              		</div>
+				 
+
+					<div class="control-group">
+						<label class="control-label" for="car_plate">车牌号</label>
+						<div class="controls">
+					  		<input class="input-xlarge focused" id="car_plate" readonly="readonly" name="car_plate" type="text" value="{{$insurance->car_plate}}">
+						</div>
 					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label" for="car_code">贷款编号</label>
+
+					<div class="control-group  ">
+                		<label class="control-label" for="source">保险来源</label>
+                		<div class="controls">
+                  			<select id="source" name="source" >                          
+						  		@foreach($insurance_sor as $key=>$sor)											
+						  		<option @if(($insurance->source) == $key) selected @endif  value="{{$key}}">
+						  			{{$sor}}
+						  		</option>	
+						  		@endforeach	                   
+                  			</select>
+                		</div>
+              		</div>
+
+
+              		<div class="control-group">
+					<label class="control-label" for="traffic_price">交强金额</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="car_code" readonly="readonly" name="car_code" type="text" value="{{$insurance->loan_code}}">
+					  <input class="input-xlarge focused tra_price_add" id="traffic_price" name="traffic_price" type="text" value="{{$insurance->traffic_price}}"><span style="margin-left:5px;">元</span>
 					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label" for="card">银行卡号</label>
+				</div>
+
+              	<div class="control-group">
+					<label class="control-label" for="traffic_date">交强到期</label>
 					<div class="controls">
-					  	<input class="input-xlarge focused" id="card" name="card" type="text" value="{{$insurance->card}}">
+						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="traffic_date" id="traffic_date" value="{{$insurance->traffic_date}}">
 					</div>
-				  </div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="vehicle_price">商业金额</label>
+					<div class="controls">
+					  <input class="input-xlarge focused tra_price_add" id="vehicle_price" name="vehicle_price" type="text" value="{{$insurance->vehicle_price}}"><span style="margin-left:5px;">元</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="vehicle_date">商业到期</label>
+					<div class="controls">
+						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="vehicle_date" id="vehicle_date" value="{{$insurance->vehicle_date}}">
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="vehicle_tax">车船税</label>
+					<div class="controls">
+					  <input class="input-xlarge focused tra_price_add" id="vehicle_tax" name="vehicle_tax" type="text" value="{{$insurance->vehicle_tax}}"><span style="margin-left:5px;">元</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="total_price">总保费</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" readonly id="total_price" name="total_price" type="text" value="{{$insurance->total_price}}"><span style="margin-left:5px;">元</span>
+					</div>
+				</div>
+
+				<div class="control-group ">
+					<label class="control-label" for="detail">
+						保险明细
+					</label>
+					<div class="controls">
+					<textarea id="detail" name="detail" style="width:400px;">{{$insurance->detail}}</textarea>
+					</div>
+			  	</div>
+
+			  	<div class="control-group">
+					<label class="control-label" for="interest_rate">利率</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="interest_rate" name="interest_rate" type="text" value="{{$insurance->interest_rate}}" /><span style="margin-left:5px;">%</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="rebeat">返点</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" readonly id="rebeat" name="rebeat" type="text" value="{{$insurance->rebeat}}"><span style="margin-left:5px;">元</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="royalty_ratio">提成比例</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="royalty_ratio" name="royalty_ratio" type="text" value="{{$insurance->royalty_ratio}}"><span style="margin-left:5px;">%</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="royalty">提成</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" readonly id="royalty" name="royalty" type="text" value="{{$insurance->royalty}}"><span style="margin-left:5px;">元</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="profit">利润</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="profit" name="profit" type="text" value="{{$insurance->profit}}"><span style="margin-left:5px;"></span>
+					</div>
+				</div>
 
 				<div class="control-group  ">
-                	<label class="control-label" for="bill_day">账单日</label>
+                	<label class="control-label" for="salesman">业务员</label>
                 	<div class="controls">
-                  		<input class="input-xlarge focused" id="bill_day" name="bill_day" type="text" value="{{$insurance->bill_day}}">
-                	</div>
-              	</div>
-              	<div class="control-group">
-					<label class="control-label" for="appraiser_price"><font style="color:red;">*&nbsp;</font>评估价格</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="appraiser_price" name="appraiser_price" type="text" value="{{$insurance->appraiser_price}}" required><span style="margin-left:5px;">万元</span>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="loan_price"><font style="color:red;">*&nbsp;</font>车贷金额</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="loan_price" name="loan_price" type="text" value="{{$insurance->loan_price}}" required><span style="margin-left:5px;">万元</span>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="insurance_loan"><font style="color:red;">*&nbsp;</font>保险贷款</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="insurance_loan" name="insurance_loan" type="text" value="{{$insurance->insurance_loan}}" required><span style="margin-left:5px;">万元</span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="orther_loan"><font style="color:red;">*&nbsp;</font>其他衍生贷款</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="orther_loan" name="orther_loan" type="text" value="{{$insurance->orther_loan}}" required><span style="margin-left:5px;">万元</span>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="total_loan"><font style="color:red;">*&nbsp;</font>总贷款</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="total_loan" name="total_loan" type="text" value="{{$insurance->total_loan}}" required><span style="margin-left:5px;">万元</span>
-					</div>
-				</div>
-				<div class="control-group  ">
-                	<label class="control-label" for="loan_phase">期数</label>
-                	<div class="controls">
-                  		<input class="input-xlarge focused" id="loan_phase" name="loan_phase" type="text" value="{{$insurance->loan_phase}}">
-                	</div>
-              	</div>
-              	<div class="control-group">
-					<label class="control-label" for="loan_date">放款日期</label>
-					<div class="controls">
-						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="loan_date" id="loan_date" value="{{$insurance->loan_date}}">
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="repayment_frist"><font style="color:red;">*&nbsp;</font>首月还款</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="repayment_frist" name="repayment_frist" type="text" value="{{$insurance->repayment_frist}}" required><span style="margin-left:5px;">万元</span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="repayment_everymonth"><font style="color:red;">*&nbsp;</font>每月还款</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="repayment_everymonth" name="repayment_everymonth" type="text" value="{{$insurance->repayment_everymonth}}" required><span style="margin-left:5px;">万元</span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="loan_begin_date">保险起始日期</label>
-					<div class="controls">
-						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="loan_begin_date" id="loan_begin_date" value="{{$insurance->loan_begin_date}}">
-					</div>
-				</div>
-
-				<div class="control-group  ">
-                	<label class="control-label" for="car_plate_old">车牌号(旧)</label>
-                	<div class="controls">
-                  		<input class="input-xlarge focused" id="car_plate_old" name="car_plate_old" type="text" value="{{$insurance->car_plate_old}}">
-                	</div>
-              	</div>
-              	<div class="control-group  ">
-                	<label class="control-label" for="car_plate_new">车牌号(新)</label>
-                	<div class="controls">
-                  		<input class="input-xlarge focused" id="car_plate_new" name="car_plate_new" type="text" value="{{$insurance->car_plate_new}}">
+                  		<input class="input-xlarge focused" id="salesman" name="salesman" type="text" value="{{$insurance->salesman}}">
                 	</div>
               	</div>
 
-              	<div class="control-group">
-						<label class="control-label" for="other_contact1">其他联系人1</label>
-						<div class="controls">
-						  <input class="input-xlarge focused" id="other_contact1" name="other_contact1" type="text" value="{{$insurance->other_contact1}}">
-						</div>
-				 	</div>
-				 	<div class="control-group">
-						<label class="control-label" for="other_contact1_phone">联系人1电话</label>
-						<div class="controls">
-						  	<input class="input-xlarge focused" id="other_contact1_phone" name="other_contact1_phone" type="text" value="{{$insurance->other_contact1_phone}}">
-						</div>
-				 	</div>
-
-				 	<div class="control-group">
-						<label class="control-label" for="other_contact2">其他联系人2</label>
-						<div class="controls">
-						  <input class="input-xlarge focused" id="other_contact2" name="other_contact2" type="text" value="{{$insurance->other_contact2}}">
-						</div>
-				 	</div>
-				 	<div class="control-group">
-						<label class="control-label" for="other_contact2_phone">联系人2电话</label>
-						<div class="controls">
-						  	<input class="input-xlarge focused" id="other_contact2_phone" name="other_contact2_phone" type="text" value="{{$insurance->other_contact2_phone}}">
-						</div>
-				 	</div>
-
-				 	<div class="control-group">
-						<label class="control-label" for="recognizor">担保人</label>
-						<div class="controls">
-						  <input class="input-xlarge focused" id="recognizor" name="recognizor" type="text" value="{{$insurance->recognizor}}">
-						</div>
-				 	</div>
-				 	<div class="control-group">
-						<label class="control-label" for="recognizor_phone">担保人电话</label>
-						<div class="controls">
-						  	<input class="input-xlarge focused" id="recognizor_phone" name="recognizor_phone" type="text" value="{{$insurance->recognizor_phone}}">
-						</div>
-				 	</div>
-				 	<div class="control-group">
-						<label class="control-label" for="recognizor_adress">担保人地址</label>
-						<div class="controls">
-						  	<input class="input-xlarge focused" id="recognizor_adress" name="recognizor_adress" type="text" value="{{$insurance->recognizor_adress}}">
-						</div>
-				 	</div>
-				 <div class="control-group">
-					<label class="control-label" for="plate_date">上牌日期</label>
+				<div class="control-group">
+					<label class="control-label" for="need_pay">业务员提成</label>
 					<div class="controls">
-						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="plate_date" id="plate_date" value="{{$insurance->plate_date}}">
+					  <input class="input-xlarge focused" id="need_pay" name="need_pay" type="text" value="{{$insurance->need_pay}}"><span style="margin-left:5px;"></span>
 					</div>
 				</div>
+
 
 				<div class="control-group">
-					<label class="control-label" for="appraiser_cost"><font style="color:red;">*&nbsp;</font>评估定位费</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="appraiser_cost" name="appraiser_cost" type="text" value="{{$insurance->appraiser_cost}}" required><span style="margin-left:5px;">元</span>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="poundage"><font style="color:red;">*&nbsp;</font>手续费</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="poundage" name="poundage" type="text" value="{{$insurance->poundage}}" required><span style="margin-left:5px;">元</span>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="qm_profits"><font style="color:red;">*&nbsp;</font>汽贸利润</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="qm_profits" name="qm_profits" type="text" value="{{$insurance->qm_profits}}" required><span style="margin-left:5px;">元</span>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="loan_profits"><font style="color:red;">*&nbsp;</font>贷款部利润</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="loan_profits" name="loan_profits" type="text" value="{{$insurance->loan_profits}}" required><span style="margin-left:5px;">元</span>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="visits_profits"><font style="color:red;">*&nbsp;</font>家访费用</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="visits_profits" name="visits_profits" type="text" value="{{$insurance->visits_profits}}" required><span style="margin-left:5px;">元</span>
-					</div>
-				</div>
-
-				  <div class="control-group  ">
-                	<label class="control-label" for="loan_channels">贷款渠道</label>
-                	<div class="controls">
-                  		<select id="loan_channels" name="loan_channels" >                          
-					  		@foreach($loan_channels as $key=>$channel)											
-					  		<option @if(($insurance->loan_channels) == $key) selected @endif  value="{{$key}}">
-					  			{{$channel}}
-					  		</option>	
-					  		@endforeach	                   
-                  		</select>
-                	</div>
-              	</div>
-
-              	<div class="control-group  ">
-                	<label class="control-label" for="customer_sorcue">客户来源</label>
-                	<div class="controls">
-                  		<input class="input-xlarge focused" id="customer_sorcue" name="customer_sorcue" type="text" value="{{$insurance->customer_sorcue}}">
-                	</div>
-              	</div>
-              	<div class="control-group">
 					<label class="control-label" for="insurance_provence">所属城市</label>
 					<div class="controls">
 					  	<select id="provence_id" name="insurance_provence">
@@ -256,14 +199,15 @@
 						</select>
 					</div>
 				</div>
-              	<div class="control-group ">
+
+				<div class="control-group ">
 					<label class="control-label" for="remark">
 						<font style="color:red;">*&nbsp;</font>备注
 					</label>
 					<div class="controls">
 					<textarea id="remark" name="remark" required style="width:400px;">{{$insurance->remark}}</textarea>
 					</div>
-			  	</div>  				
+			  	</div>				
 				  <div class="form-actions">
 					<button type="submit" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
@@ -285,7 +229,7 @@
 		$('.date-picker').datepicker({
             language: 'zh-CN',
             autoclose: true,
-            format: 'yyyy-mm',
+            format: 'yyyy-mm-dd',
             todayHighlight: true
         });
 
@@ -327,6 +271,142 @@
 				}
 			});
 		});
+
+		//总保费自动计算
+		$('.tra_price_add').change(function(){
+
+			var total_price   = 0; //总金额
+			var veh_pric      = 0; //商业险
+			var tra_pric      = 0; //交强险
+			var veh_tax       = 0; //车船税
+			var interest_rate = 0; //返点比例
+			var royalty_ratio = 0; //提成比例
+			var tc_price      = 0; //计算返点及提成费用和(商险+交强)
+
+			if (isNaN(this.value)) {
+　　　　 			alert("请输入数字");
+　　　　			return false;
+　　　　		}
+			
+			if($('#vehicle_price').val() !== '') {
+				
+				veh_pric = parseFloat($('#vehicle_price').val()); //商业险
+			}
+
+			if($('#traffic_price').val() !== '') {
+
+				tra_pric= parseFloat($('#traffic_price').val()); //交强险
+			}
+
+			if($('#vehicle_tax').val() !== '') {
+				// console.log(parseFloat($('#vehicle_tax').val()));
+				veh_tax = parseFloat($('#vehicle_tax').val()); //车船税
+			}
+
+			if($('#interest_rate').val() !== '') {
+				// console.log(parseFloat($('#vehicle_tax').val()));
+				interest_rate = parseFloat($('#interest_rate').val()); //返点比例
+			}
+
+			if($('#royalty_ratio').val() !== '') {
+				// console.log(parseFloat($('#vehicle_tax').val()));
+				royalty_ratio = parseFloat($('#royalty_ratio').val()); //提成比例
+			}
+
+			/*console.log((typeof($('#vehicle_tax').val())));
+			console.log(isNaN($('#vehicle_tax').val()));*/
+
+			/*console.log(veh_pric);
+			console.log(tra_pric);
+			console.log(veh_tax);*/
+
+			total_price = veh_pric + tra_pric + veh_tax; //保险总额
+			tc_price    = veh_pric + tra_pric;           //计算提成及返点金额
+
+			rate_price = tc_price/1.06*interest_rate*0.01; //返点
+			ratio_price = tc_price/1.06*royalty_ratio*0.01; //提成
+
+			console.log(tc_price);
+
+			$('#total_price').val(total_price.toFixed(2));
+			$('#rebeat').val(rate_price.toFixed(2));
+			$('#royalty').val(ratio_price.toFixed(2));
+		});
+
+		//返点自动计算
+		$('#interest_rate').change(function(){
+			var rate_price    = parseFloat(0);  //返点金额
+			var tat_price     = parseFloat(0);  //总金额
+			var veh_pric      = parseFloat(0); //商业险
+			var tra_pric      = parseFloat(0); //交强险
+			var interest_rate = parseFloat(0); //返点比例
+
+			if (isNaN(this.value)) {
+　　　　 			alert("请输入数字");
+　　　　			return false;
+　　　　		}
+
+			if($('#vehicle_price').val() !== '') {
+				
+				veh_pric = parseFloat($('#vehicle_price').val()); //商业险
+			}
+
+			if($('#traffic_price').val() !== '') {
+
+				tra_pric= parseFloat($('#traffic_price').val()); //交强险
+			}
+
+			if($('#interest_rate').val() !== '') {
+				// console.log(parseFloat($('#vehicle_tax').val()));
+				interest_rate = parseFloat($('#interest_rate').val()); //返点比例
+			}
+
+			tat_price = veh_pric + tra_pric;
+			rate_price = tat_price/1.06*interest_rate*0.01;
+
+
+			$('#rebeat').val(rate_price.toFixed(2));
+			console.log(rate_price);
+
+
+		});
+
+		//提成自动计算
+		$('#royalty_ratio').change(function(){
+			var ratio_price   = parseFloat(0);  //提成金额
+			var tat_price     = parseFloat(0);  //总金额
+			var veh_pric      = parseFloat(0); //商业险
+			var tra_pric      = parseFloat(0); //交强险
+			var royalty_ratio = parseFloat(0); //提成比例
+
+			if (isNaN(this.value)) {
+　　　　 			alert("请输入数字");
+　　　　			return false;
+　　　　		}
+
+			if($('#vehicle_price').val() !== '') {
+				
+				veh_pric = parseFloat($('#vehicle_price').val()); //商业险
+			}
+
+			if($('#traffic_price').val() !== '') {
+
+				tra_pric= parseFloat($('#traffic_price').val()); //交强险
+			}
+
+			if($('#royalty_ratio').val() !== '') {
+				// console.log(parseFloat($('#vehicle_tax').val()));
+				royalty_ratio = parseFloat($('#royalty_ratio').val()); //提成比例
+			}
+
+			tat_price   = veh_pric + tra_pric;
+			ratio_price = tat_price/1.06*royalty_ratio*0.01;
+
+			console.log(ratio_price);
+			$('#royalty').val(ratio_price.toFixed(2));
+
+		});
+		
 	});
 </script>
 @endsection

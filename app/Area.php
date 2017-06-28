@@ -52,4 +52,10 @@ class Area extends Model
       return $this->hasMany('App\Shop', 'shop_id', 'id');
     }
 
+    // 定义Area表与Insurance表一对多关系
+    public function hasManyInsurances(){
+
+      return $this->hasMany('App\Insurance', 'insurance_city', 'id');
+    }
+
 }

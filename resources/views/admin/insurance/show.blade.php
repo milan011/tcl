@@ -60,10 +60,10 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.car.index')}}/index">所有车源信息</a> 
+		<a href="{{route('admin.insurance.index')}}/index">保险列表</a> 
 		<i class="icon-angle-right"></i>
 	</li>
-	<li><a href="javascript:void(0);">车源详情</a></li>
+	<li><a href="javascript:void(0);">保险详情</a></li>
 </ul>
 @endsection
 <!-- 主体 -->
@@ -74,95 +74,140 @@
 <div class="row-fluid sortable">
 	<div class="box span12" style="padding:10px;">
 
-		<p class="title">【出售】{{$cars->name}}</p>
+		<p class="title">[编号]:{{$insurance->insurance_code}}</p>
 		<p class="detial">
-			<i>底价:</i>
-			<em>{{$cars->top_price}}</em>
-			<i>万元</i>
+			<i>客户:</i>
+			<em>{{$insurance->name}}</em>
 		</p>
 
 		<div class="col-xs-4">
 			<p class="detial">
 				<span>
-					<i>排量:</i>
-					{{$capacity[$cars->capacity]}}
+					<i>电话:</i>
+					{{$insurance->telephone}}
 				</span>
 				<span>
-					<i>变速箱：</i>
-					{{$gearbox[$cars->gearbox]}}
+					<i>保险公司:</i>
+					{{$insurance_company[$insurance->company]}}
 				</span>
 				<span>
-					<i>里程：</i>
-					{{$cars->mileage}}万公里
-				</span>
-			</p>
-		</div>
-		<div class="col-xs-4">
-			<p class="detial">
-				<span>
-					<i>过户次数：</i>
-					{{$cars->sale_number}}
-				<i>次</i>
-				</span>
-				<span>
-					<i>车身颜色：</i>
-					{{$out_color[$cars->out_color]}}
-				</span>
-				<span>
-					<i>车辆类别：</i>
-					{{$category_type[$cars->car_type]}}
+					<i>车牌号:</i>
+					{{$insurance->car_plate}}
 				</span>
 			</p>
 		</div>
 		<div class="col-xs-4">
 			<p class="detial">
 				<span>
-					<i>上牌日期：</i>
-					{{$cars->plate_date}}
+					<i>保险来源:</i>
+					{{$insurance_sor[$insurance->source]}}
 				</span>
 				<span>
-					<i>检车日期：</i>
-					{{$cars->plate_end}}
+					<i>交强金额:</i>
+					{{$insurance->traffic_price}}
 				</span>
 				<span>
-					<i>上传日期：</i>
-					{{$cars->created_at}}
+					<i>交强到期:</i>
+					{{$insurance->traffic_date}}
 				</span>
 			</p>
 		</div>
 		<div class="col-xs-4">
 			<p class="detial">
 				<span>
-					<i>编号：</i>
-					{{$cars->car_code}}
+					<i>商业金额:</i>
+					{{$insurance->vehicle_price}}
 				</span>
 				<span>
-					<i>车况：</i>
-					{{$cars->description}}
+					<i>商业到期:</i>
+					{{$insurance->vehicle_date}}
+				</span>
+				<span>
+					<i>车船税:</i>
+					{{$insurance->vehicle_tax}}
 				</span>
 			</p>
 		</div>
 
-		<div class="detial">
-			<span>
-				<i>销售顾问：</i>{{$cars->belongsTouser->nick_name}}{{$cars->belongsTouser->creater_telephone}}
-			<em></em>
-			</span>
-			<span>
-				<i>车主：</i>{{$cars->belongsToCustomer->customer_name}}{{$cars->belongsToCustomer->customer_telephone}}
-			<em></em>
-			</span>
+		<div class="col-xs-4">
+			<p class="detial">
+				<span>
+					<i>总保费:</i>
+					{{$insurance->total_price}}
+				</span>
+				<span>
+					<i>利率:</i>
+					{{$insurance->interest_rate}}
+				</span>
+				<span>
+					<i>返点:</i>
+					{{$insurance->rebeat}}
+				</span>
+			</p>
 		</div>
-		<!-- <span>
-			<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
-				{{ csrf_field() }}
-            		<input type="hidden" name="car_id" value="{{$cars->id}}">
-					<button class="btn btn-success" type="submit">
-					<i class="icon-edit icon-white"></i> 匹配
-					</button>
-			</form>
-			<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
-		</span> -->
+
+		<div class="col-xs-4">
+			<p class="detial">
+				<span>
+					<i>提成比例:</i>
+					{{$insurance->royalty_ratio}}
+				</span>
+				<span>
+					<i>提成:</i>
+					{{$insurance->royalty}}
+				</span>
+				<span>
+					<i>利润:</i>
+					{{$insurance->profit}}
+				</span>
+			</p>
+		</div>
+
+		
+
+		<div class="col-xs-4">
+			<p class="detial">
+				<span>
+					<i>业务员:</i>
+					{{$insurance->salesman}}
+				</span>
+				<span>
+					<i>业务员提成:</i>
+					{{$insurance->need_pay}}
+				</span>
+				<span>
+					<i>保险城市:</i>
+					{{$insurance->belongsToCity->city_name or ''}}
+				</span>
+			</p>
+		</div>
+
+		<div class="col-xs-4">
+			<p class="detial">
+				<span>
+					<i>创建者:</i>
+					{{$insurance->belongsTouser->nick_name or ''}}
+				</span>
+				<span>
+					<i>创建时间:</i>
+					{{$insurance->created_at}}
+				</span>
+				<span>
+					<i>备注:</i>
+					{{$insurance->remark}}
+				</span>
+			</p>
+		</div>
+
+		<div class="col-xs-4">
+			<p class="detial">
+				<span>
+					<i>保险明细:</i>
+					{{$insurance->detail}}
+				</span>
+			</p>
+		</div>
+		
 	</div>	
 </div>   
 @endsection

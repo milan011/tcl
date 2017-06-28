@@ -38,6 +38,8 @@ class ConfigComposer
         $age                       = config('tcl.age'); //获取配置文件中车龄
         $loan_channels             = config('tcl.loan_channels'); //获取配置文件中贷款渠道
         $loan_stauts_config        = config('tcl.loan_stauts'); //获取配置文件中贷款状态
+        $insurance_sor             = config('tcl.insurance_sor'); //获取配置文件中保险来源
+        $insurance_company         = config('tcl.insurance_company'); //获取配置文件中保险公司列表
 
         $view->with('year_type', $year_type);
         $view->with('category_type', $category_type);
@@ -61,6 +63,8 @@ class ConfigComposer
         $view->with('transcation_stauts_config', $transcation_stauts_config);
         $view->with('loan_channels', $loan_channels);
         $view->with('loan_stauts_config', $loan_stauts_config);
+        $view->with('insurance_sor', $insurance_sor);
+        $view->with('insurance_company', $insurance_company);
         
     }
 }

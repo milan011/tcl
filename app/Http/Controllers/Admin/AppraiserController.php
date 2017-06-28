@@ -44,7 +44,7 @@ class AppraiserController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->method());
+        // dd($request->all());
         $all_top_brands = $this->brands->getChildBrand(0);
         $request['car_status']   = '1';
 
