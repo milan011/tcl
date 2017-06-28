@@ -100,7 +100,7 @@
 										</button>
 										<ul class="dropdown-menu pull-right">
 											<li>
-												<a class="btn btn-warning" href="{{route('admin.insurance.show', ['insurance'=>$insurance->id])}}">
+												<a target="_blank" class="btn btn-warning" href="{{route('admin.insurance.show', ['insurance'=>$insurance->id])}}">
 													 查看
 												</a>												
 											</li>										
