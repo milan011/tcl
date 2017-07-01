@@ -75,9 +75,9 @@
                 <!-- <div class="dib-con storeLink fr">
                     <a href="#"><div class="linkItem dib enterStore">进入店铺</div></a>
                 </div> -->
-                <div class="connectName item">联系信息： {{$cars->belongsToUser->nick_name}}<span class="gray">（{{$cars->belongsToShop->shop_name}}）</span></div>
+                <div class="connectName item">联系信息： {{$cars->belongsToUser->nick_name or ''}}<span class="gray">（{{$cars->belongsToShop->shop_name}}）</span></div>
                 <div class="connectMobile item">门店地址： {{$cars->belongsToShop->shop_address}}</div>
-                <div class="connectMobile item">联系电话： {{$cars->belongsToUser->creater_telephone}}</div>
+                <div class="connectMobile item">联系电话： {{$cars->belongsToUser->creater_telephone or ''}}</div>
                 <div class="connectMobile item">发布时间： {{substr($cars->created_at, 0 ,10)}}</div>
             </div>
         </div>
