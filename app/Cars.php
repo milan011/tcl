@@ -205,7 +205,7 @@ class Cars extends Model
     // 定义Shop表与Cars表一对多关系
     public function belongsToShop(){
 
-      return $this->belongsTo('App\Shop', 'shop_id', 'id')->select('id', 'city_id', 'name AS shop_name', 'address as shop_address');
+      return $this->belongsTo('App\Shop', 'shop_id', 'id')->select('id', 'city_id', 'name AS shop_name', 'address as shop_address', 'telephone as shop_tele');
     }
 
     // 定义User表与Cars表一对多关系
