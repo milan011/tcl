@@ -7,6 +7,7 @@ use DB;
 use Debugbar;
 use View;
 use Carbon;
+use Session;
 use App\Shop;
 use App\Area;
 use App\Http\Requests;
@@ -115,35 +116,18 @@ class CateController extends CommonController
         }
         // dd($url_condition);
         // dd(Session('current_city'));
-        // dd($select_condition);
-
-        if(!empty($select_condition['city'])){
-            // 选择城市，筛选该城市所有门店
-            $city_shops = $this->shop->getShopsInCity($select_condition['city']);
-
-            $city_name = Area::select('name')->find($select_condition['city'])->name;
-
-            // $current_city_name = $city_name;
-            session(['chosen_city_name' => $city_name]);
-            $chose_city = $select_condition['city'];
-
-        }else{
-            //未选择城市，默认为用户所在城市
-            $city_shops = $this->shop->getShopsInCity(Session('current_city'));
-            session(['chosen_city_name' => NULL]);
-            $current_city_name = Session('current_city_name');
-        }
-        // dd($current_city_name);
-        if(count($city_shops) == 0 ){
-
-            $city_shops = $this->shop->getShopsInCity('138');
-        }
         
-        foreach ($city_shops as $key => $value) {
-            $shop_list[] = $value->id;
-        }
+        $sel_city_id   = (null !==Session('chosen_city_id')) ? Session('chosen_city_id') : Session('current_city');
 
-        $select_condition['shop_list'] = $shop_list;
+        // dd(Session::all());
+        $sel_city = getSelCity($sel_city_id, $this->shop); //车源来自城市信息
+
+        $show_city_name = $sel_city['show_city_name'];
+
+        /*dd($sel_city);
+        dd($select_condition);*/
+
+        $select_condition['shop_list'] = $sel_city['shop_list'];
         // 符合条件车源
         $cars = $this->car->getAllCarsWithBefore($select_condition);
         // dd($cars); 
@@ -375,8 +359,7 @@ class CateController extends CommonController
             'current_brand',
             'clean_current_category_url',
             'current_condition',
-            'current_city_name',
-            'chose_city',
+            'show_city_name',
             'current_page',
             'title'
         ));

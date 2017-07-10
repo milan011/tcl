@@ -80,7 +80,7 @@ class CarRepository implements CarRepositoryContract
 
             return $query->select($this->select_columns)
                      ->orderBy('created_at', 'desc')
-                     ->paginate(12);
+                     ->paginate(20);
         }
         return $query->select($this->select_columns)
                      ->orderBy('created_at', 'desc')
@@ -163,7 +163,7 @@ class CarRepository implements CarRepositoryContract
 
         return $query->select($this->select_columns)
                      ->orderBy('updated_at', 'desc')
-                     ->paginate(12);
+                     ->paginate(20);
     }
 
     //获得推荐车源

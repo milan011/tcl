@@ -1,5 +1,7 @@
 <?php
-	
+	use App\Area;
+	use App\Repositories\Shop\ShopRepositoryContract;
+
 	//打印测试数据函数
 	function p($s){
 
@@ -313,10 +315,63 @@
 	// 根据ip获得用户所在城市
 	function getCurrentCityByIp($ip){
 
-		$city_info = file_get_contents('http://ip.taobao.com/service/getIpInfo.php?ip=' . $ip);
-		$city_info = json_decode($city_info, true);
+		//$city_info = file_get_contents('http://ip.taobao.com/service/getIpInfo.php?ip=' . $ip);
+		//$city_info = json_decode($city_info, true);
 		/*dd($city_info);
 		dd($city_info['data']['city']);*/
 
-		return $city_info['data']['city'];
+		$ip2region = new Ip2Region();
+		$city_info = $ip2region->btreeSearch($ip);
+        $city_info_arr = explode("|",$city_info['region']);
+        $city_name  = substr($city_info_arr[3], 0, (strlen($city_info_arr[3])-3));
+        $current_city = Area::where('name', $city_name)->first();
+
+        // dd($current_city);
+
+		return $current_city;
+	}
+
+	//车源来自城市信息,城市信息,城市门店列表等
+	function getSelCity($city = '', $shop){
+
+		$sel_city  = []; //返回的城市信息
+		$shop_list = []; //返回城市门店列表
+
+		//若选择城市,则显示选择的城市信息,若没有选择,则为用户所在城市信息
+		if(!empty($city)){
+
+            $city_info = Area::select('name', 'id')->find($city);
+            session(['chosen_city_name' => $city_info->name]);
+            session(['chosen_city_id'   => $city_info->id]);
+        }/*else{
+
+            session(['chosen_city_name' => NULL]);
+            session(['chosen_city_id'   => NULL]);
+        }*/
+        // dd(Session::all());
+        $sel_city_id   = (null !==Session('chosen_city_id')) ? Session('chosen_city_id') : Session('current_city');
+        $sel_city_name = (null !==Session('chosen_city_name')) ? Session('chosen_city_name') : Session('current_city_name');
+
+        $city_shops = $shop->getShopsInCity($sel_city_id);
+        // dd(count($city_shops));
+        if(count($city_shops) == 0 ){
+
+            $city_shops = $shop->getShopsInProvence('10');         
+        }
+
+        // dd($city_shops);
+
+        // $city_shops = $this->shop->getShopsInProvence('10');
+        
+        foreach ($city_shops as $key => $value) {
+            $shop_list[] = $value->id;
+        }
+
+        // dd($shop_list);
+
+        $sel_city['show_city_id']   = $sel_city_id;
+        $sel_city['show_city_name'] = $sel_city_name;
+        $sel_city['shop_list']      = $shop_list;
+
+        return $sel_city;
 	}

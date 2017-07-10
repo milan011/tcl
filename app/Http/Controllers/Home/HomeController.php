@@ -43,60 +43,21 @@ class HomeController extends CommonController
      */
     public function index(Request $request, $city='')
     {
-        // dd($city);
-        // dd($request->method());
+        $sel_city = getSelCity($city, $this->shop); //车源来自城市信息
 
-        if(!empty($city)){
-
-            // $city_id = getConditionContent($city);
-            // dd($city);
-            $city_shops = $this->shop->getShopsInCity($city);
-            // dd($city_shops);
-            $city_name = Area::select('name')->find($city)->name;
-            //dd(lastSql());
-            //dd($city_name);
-
-            // dd(Session('current_city_name'));
-            // $current_city_name = $city_name;
-            session(['chosen_city_name' => $city_name]);
-            // dd(Session('current_city_name'));
-            $chose_city = $city;
-        }else{
-            $current_city_name = Session('current_city_name');
-            // dd(Session('current_city_name'));
-            session(['chosen_city_name' => NULL]);
-            $city_shops = $this->shop->getShopsInCity(Session('current_city'));
-        }
-        // dd(count($city_shops));
-        // p(Session('chosen_city_name'));
-        $shop_list = [];
-
-        if(count($city_shops) == 0 ){
-
-            $city_shops = $this->shop->getShopsInCity('138');
-            
-        }
-        /*dd(lastSql());
-        dd($city_shops);*/
-
-        $city_shops = $this->shop->getShopsInProvence('10');
-        
-        foreach ($city_shops as $key => $value) {
-            $shop_list[] = $value->id;
-        }
-
+        // dd($sel_city);
 
         // dd($shop_list);
         // dd($current_city_name);
+        $show_city_name = $sel_city['show_city_name'];
 
         $select_condition['car_status'] = '1';
-        $select_condition['shop_list']  = $shop_list;
+        $select_condition['shop_list']  = $sel_city['shop_list'];
 
         // dd($select_condition);
 
         $cars = $this->car->getAllCarsWithBefore($select_condition);
-        // dd(lastSql());
-        // dd($cars);
+
         // 推荐品牌
         $recomment_brands = $this->brand->getRecommentBrandsWithBefore();
         $all_top_brands   = $this->brand->getChildBrand(0);
@@ -109,14 +70,6 @@ class HomeController extends CommonController
         $current_page    = 'home';
         $title           = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
 
-        // dd($recomment_brands);
-        // dd($cars);
-        /*foreach ($cars as $key => $value) {
-            p($value->id);
-            dd($value->hasOneImagesOnFirst->filename);
-        }
-        exit;*/
-
-        return view('home.home.index', compact('cars', 'recomment_brands','age','price_interval','category_type','current_city_name','chose_city', 'current_page', 'title','all_top_brands'));
+        return view('home.home.index', compact('cars', 'recomment_brands','age','price_interval','category_type','show_city_name', 'current_page', 'title','all_top_brands'));
     }
 }

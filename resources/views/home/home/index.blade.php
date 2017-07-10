@@ -18,11 +18,7 @@
 
 
 @section('current_city_name')
-    @if(null !== Session('chosen_city_name'))
-        {{Session('chosen_city_name')}}
-    @else
-        {{Session('current_city_name')}}
-    @endif
+    {{$show_city_name}}
 @endsection
 
 @section('content')
