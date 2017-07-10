@@ -21,9 +21,15 @@
  <main>
     <nav class="breadNav dib-con container">
         <div class="dib item">当前位置：</div>
+        @if (!empty($chosen_city_selection))
+        <a href="{{route('home.index')}}/city/{{$chosen_city_selection}}" >
+            <div class="dib item">首页</div>
+        </a>
+        @else
         <a href="{{route('home.index')}}">
             <div class="dib item">首页</div>
         </a>
+        @endif
         <div class="dib split item">&gt;</div>
         <a href="javascript:void(0);"><div class="dib item">我要买车</div></a>
     </nav>

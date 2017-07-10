@@ -339,15 +339,15 @@
 
 		//若选择城市,则显示选择的城市信息,若没有选择,则为用户所在城市信息
 		if(!empty($city)){
-
+			// p('hh');
             $city_info = Area::select('name', 'id')->find($city);
             session(['chosen_city_name' => $city_info->name]);
             session(['chosen_city_id'   => $city_info->id]);
-        }/*else{
-
+        }else{
+        	// p('xixi');
             session(['chosen_city_name' => NULL]);
             session(['chosen_city_id'   => NULL]);
-        }*/
+        }
         // dd(Session::all());
         $sel_city_id   = (null !==Session('chosen_city_id')) ? Session('chosen_city_id') : Session('current_city');
         $sel_city_name = (null !==Session('chosen_city_name')) ? Session('chosen_city_name') : Session('current_city_name');

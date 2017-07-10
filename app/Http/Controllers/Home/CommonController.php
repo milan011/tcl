@@ -32,6 +32,8 @@ class CommonController extends Controller
             $city_info  = getCurrentCityByIp($current_ip); //根据ip获取城市信息
 
             // p(($city_info));
+            session(['current_city' => NUll]); 
+            session(['current_city_name' => NUll]); 
 
             if(isset($city_info)){
                 //获取正确的城市信息,存入session

@@ -122,8 +122,10 @@ class CateController extends CommonController
         // dd(Session::all());
         $sel_city = getSelCity($sel_city_id, $this->shop); //车源来自城市信息
 
-        $show_city_name = $sel_city['show_city_name'];
-
+        $show_city_name = $sel_city['show_city_name'];       
+        $chosen_city_selection = Session('chosen_city_id');
+        
+        // dd($chosen_city_selection);
         /*dd($sel_city);
         dd($select_condition);*/
 
@@ -361,7 +363,8 @@ class CateController extends CommonController
             'current_condition',
             'show_city_name',
             'current_page',
-            'title'
+            'title',
+            'chosen_city_selection'
         ));
     }
 

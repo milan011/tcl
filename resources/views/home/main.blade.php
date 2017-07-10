@@ -54,7 +54,12 @@
         </div>
         <div class="main dib">
             <nav class="mainNav dib-con">
-                <div class="item dib  @if($current_page == 'home') active @endif"><a href="{{route('home.index')}}"><span>首页</span></a></div>
+                
+                @if (!empty($chosen_city_selection))
+                    <div class="item dib  @if($current_page == 'home') active @endif"><a href="{{route('home.index')}}/city/{{$chosen_city_selection}}"><span>首页</span></a></div>
+                @else
+                    <div class="item dib  @if($current_page == 'home') active @endif"><a href="{{route('home.index')}}"><span>首页</span></a></div>
+                @endif
                 <div class="item dib @if($current_page == 'cate') active @endif"><a href="{{route('home.cate.index')}}"><span>我要买车</span></a></div>
                 <div class="item dib @if($current_page == 'sale') active @endif"><a href="{{route('home.sale.index')}}"><span>我要卖车</span></a></div>
                 <div class="item dib @if($current_page == 'join') active @endif"><a href="{{route('home.join.index')}}"><span>我要加盟</span></a></div>
