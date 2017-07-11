@@ -192,8 +192,8 @@
                         </div>
                     </a>
                     <div class="connect">
-                        <span class="fr">{{$car->belongsToUser->nick_name}}({{$car->belongsToShop->shop_name}})</span>
-                        <div class="mobile">{{$car->belongsToUser->creater_telephone}}</div>
+                        <span class="fr">{{$car->belongsToUser->nick_name or ''}}({{$car->belongsToShop->shop_name or ''}})</span>
+                        <div class="mobile">{{$car->belongsToUser->creater_telephone or $cars->belongsToShop->shop_tele}}</div>
                     </div>
                 </div>
                 @endforeach
