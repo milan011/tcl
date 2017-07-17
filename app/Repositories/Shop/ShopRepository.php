@@ -42,7 +42,7 @@ class ShopRepository implements ShopRepositoryContract
     public function create($requestData)
     {   
         $requestData['user_id'] = Auth::id();
-        // dd($requestData->all());
+        // dd(Auth::user()->shop_id);
         $shop = new Shop();
         $input =  array_replace($requestData->all());
         $shop->fill($input);

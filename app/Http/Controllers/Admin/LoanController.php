@@ -40,7 +40,7 @@ class LoanController extends Controller
 
     /**
      * Display a listing of the resource.
-     * 所有车源列表
+     * 所有保险列表
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)

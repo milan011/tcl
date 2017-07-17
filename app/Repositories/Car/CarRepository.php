@@ -574,4 +574,17 @@ class CarRepository implements CarRepositoryContract
 
         return $car->creater_id == Auth::id();
     }
+
+    //获得客户名下车源信息
+    public function getListByCustomerId($customer_id){      
+
+        $car = Cars::select($this->select_columns)
+                          ->where('customer_id', $customer_id)
+                          ->paginate(5);
+
+        // dd($car);
+
+        return $car;
+
+    }
 }

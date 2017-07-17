@@ -322,4 +322,14 @@ class WantRepository implements WantRepositoryContract
 
         return $want->creater_id == Auth::id();
     }
+
+    //获得客户名下求购信息
+    public function getListByCustomerId($customer_id){
+
+        $want = Want::select($this->select_columns)
+                          ->where('customer_id', $customer_id)
+                          ->paginate(5);
+
+        return $want;
+    }
 }

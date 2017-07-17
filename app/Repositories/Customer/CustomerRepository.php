@@ -16,18 +16,53 @@ use Debugbar;
 class CustomerRepository implements CustomerRepositoryContract
 {
 
+    //默认查询数据
+    protected $select_columns = ['id', 'name', 'password', 'telephone',  'qq_number', 'indentily_card', 'wx_number', 'address', 'creater_id','status', 'sex', 'type', 'customer_res', 'shop_id', 'created_at', 'remark'];
+
     // 根据ID获得用户信息
     public function find($id)
     {
-        return Customer::select(['id', 'name', 'telephone'])
+        return Customer::select($this->select_columns)
                        ->findOrFail($id);
     }
 
     // 获得用户列表
-    public function getAllCustomers()
+    public function getAllCustomers($request)
     {   
-        return Customer::paginate(10);
+        $query = new Customer();       // 返回的是一个Cars实例,两种方法均可
+
+        $query = $query->addCondition($request->all()); //根据条件组合语句
+
+        return $query->select($this->select_columns)
+                     ->orderBy('created_at', 'desc')
+                     ->paginate(10);
     }
+
+    /*function addShopId(){
+        根据创建者添加shop_id
+        $query = new Customer();       // 返回的是一个Cars实例,两种方法均可
+
+        $all_customers =  $query->select($this->select_columns)
+                                ->where('id', '>=', '1800')
+                                ->where('id', '<=', '1900')
+                                ->orderBy('created_at', 'asc')
+                                ->get();
+
+        //根据creter_id获得shop_id,更新shop_id
+
+        foreach ($all_customers as $key => $value) {
+            // dd($value);
+            //dd($value->belongsToUser->shop_id);
+            $change_id = empty($value->belongsToUser->shop_id) ? 1 : $value->belongsToUser->shop_id;
+
+            $value->shop_id = $change_id;
+
+            $value->save();
+
+            p($value->id);
+        }
+        // dd($all_customers);
+    }*/
 
     // 创建用户
     public function create($requestData)
@@ -39,6 +74,7 @@ class CustomerRepository implements CustomerRepositoryContract
         }else{
             // 注册用户并返回实例
             $requestData['creater_id'] = Auth::id();
+            $requestData['shop_id']    = Auth::user()->shop_id;
             $requestData['name']       = $requestData['customer_name'];
             $requestData['password']   = bcrypt('123465');
 

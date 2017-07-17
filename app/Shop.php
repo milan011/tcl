@@ -83,4 +83,10 @@ class Shop extends Model
 
       return $this->hasMany('App\Loan', 'shop_id', 'id');
     }
+
+    // 定义Shop表与Customers表一对多关系
+    public function hasManyCustomers(){
+
+      return $this->hasMany('App\Customer', 'shop_id', 'id');
+    }
 }

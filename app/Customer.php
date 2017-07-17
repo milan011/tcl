@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
+use Auth;
 
 class Customer extends Model
 {
@@ -24,7 +25,7 @@ class Customer extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['name', 'password', 'telephone',  'qq_number', 'indentily_card', 'wx_number', 'address', 'creater_id','status', 'user_img', 'sex', 'type', 'customer_res'];
+    protected $fillable = ['name', 'password', 'telephone',  'qq_number', 'indentily_card', 'wx_number', 'address', 'creater_id','status', 'user_img', 'sex', 'type', 'customer_res', 'shop_id', 'remark'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -47,10 +48,50 @@ class Customer extends Model
             ') values (?'.str_repeat(',?',count($array) - 1).')',array_values($array));
     }
 
+    // 搜索条件处理
+    public function addCondition($requestData){
+
+        $query = $this;
+
+        if(!(Auth::user()->isSuperAdmin())){
+
+           if(Auth::user()->isMdLeader()){
+                //店长
+                $user_shop_id = Auth::user()->shop_id; //用户所属门店id
+                // $this->where('shop_id', $user_shop_id);
+                $query = $query->where('shop_id', $user_shop_id);    
+            }else{
+                //店员
+                // $this->where('creater_id', Auth::id());
+                $query = $query->where('creater_id', Auth::id());  
+            } 
+        }           
+
+        if(!empty($requestData['telephone'])){
+
+            $query = $query->where('telephone', $requestData['telephone']);
+        }
+
+        if(!empty($requestData['name'])){
+
+            $query = $query->where('name','LIKE','%'.$requestData['name'].'%');
+        } 
+
+        if(!empty($requestData['end_date'])){
+            $query = $query->where('created_at', '<=', $requestData['end_date']);
+        }
+        
+        if(!empty($requestData['begin_date'])){
+            $query = $query->where('created_at', '>=', $requestData['begin_date']);
+        } 
+
+        return $query;  
+    }
+
     // 定义User表与Customer表一对多关系
     public function belongsToUser(){
 
-      return $this->belongsTo('App\User', 'user_id', 'id');
+      return $this->belongsTo('App\User', 'creater_id', 'id');
     }
 
     // 定义Customer表与Cars表一对多关系
@@ -75,5 +116,11 @@ class Customer extends Model
     public function hasManyChancesOnWant()
     {
         return $this->hasMany('App\Chance', 'want_customer_id', 'id');
+    }
+
+    // 定义Shop表与Customer表一对多关系
+    public function belongsToShop(){
+
+      return $this->belongsTo('App\Shop', 'shop_id', 'id')->select('id', 'city_id', 'name AS shop_name', 'address as shop_address', 'telephone as shop_tele');
     }
 }

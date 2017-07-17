@@ -134,6 +134,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::match(['get', 'post'], 'appraiser/index', 'AppraiserController@index')->name('admin.appraiser.index'); 
     Route::match(['get', 'post'], 'insurance/index', 'InsuranceController@index')->name('admin.insurance.index');
     Route::match(['get', 'post'], 'loan/index', 'LoanController@index')->name('admin.loan.index');
+    Route::match(['get', 'post'], 'customer/index', 'CustomerController@index')->name('admin.customer.index');
     Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('admin.car.self'); 
     Route::match(['get', 'post'], 'want/index', 'WantController@index')->name('admin.want.index'); 
     Route::match(['get', 'post'], 'transcation/index', 'TranscationController@index')->name('admin.transcation.index'); 
@@ -203,7 +204,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::resource('carCustomer', 'CarCustomerController');   
     Route::resource('appraiser', 'AppraiserController');   
     Route::resource('insurance', 'InsuranceController');   
-    Route::resource('loan', 'LoanController');   
+    Route::resource('loan', 'LoanController');    
 });
 
 /*Route::group(['middleware' => ['web', 'auth']], function () {                      

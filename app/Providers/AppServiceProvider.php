@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
             'admin.appraiser.*',           
             'admin.insurance.*',           
             'admin.loan.*',           
+            'admin.customer.*',           
         );
 
         view()->composer(

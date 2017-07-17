@@ -6,7 +6,7 @@ interface CustomerRepositoryContract
     
     public function find($id);
     
-    public function getAllCustomers();
+    public function getAllCustomers($requestData);
 
     public function create($requestData);
 

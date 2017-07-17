@@ -4,34 +4,53 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
+use App\Area;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
 use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Repositories\Customer\CustomerRepositoryContract;
+use App\Repositories\Car\CarRepositoryContract;
+use App\Repositories\Want\WantRepositoryContract;
+
 
 class CustomerController extends Controller
 {
     protected $customer;
+    protected $car;
+    protected $want;
 
     public function __construct(
 
-        CustomerRepositoryContract $customer
+        CustomerRepositoryContract $customer,
+        CarRepositoryContract $car,
+        WantRepositoryContract $want
     ) {
     
         $this->customer = $customer;
+        $this->car      = $car;
+        $this->want     = $want;
 
         // $this->middleware('brand.create', ['only' => ['create']]);
     }
 
     /**
      * Display a listing of the resource.
-     *
+     * 所有客户列表
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        dd('coustomer');
+        //初始搜索条件
+        $select_conditions  = $request->all();
+        // dd($request->all());
+        // dd($select_conditions);
+
+        $customers = $this->customer->getAllCustomers($request);
+
+        // dd($customers[0]->belongsToUser->nick_name);
+        
+        return view('admin.customer.index', compact('customers','select_conditions'));
     }
 
     /**
@@ -87,7 +106,17 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+       
+        $customer           = $this->customer->find($id);
+        $customer_car_list  = $this->car->getListByCustomerId($customer->id);
+        $customer_want_list = $this->want->getListByCustomerId($customer->id);
+
+        //dd($customer_car_list);
+        // dd(LastSql());
+       // dd($customer_want_list);
+        //dd($customer->id);
+
+        return view('admin.customer.show', compact('customer', 'customer_car_list', 'customer_want_list'));
     }
 
     /**
@@ -98,7 +127,13 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = $this->customer->find($id);
+
+        // dd($customer);
+
+        return view('admin.customer.edit', compact(
+            'customer'
+        ));
     }
 
     /**
@@ -108,9 +143,13 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCustomerRequest $customerRequest, $id)
     {
-        //
+        // p($id);
+        // dd($customerRequest->all());
+
+        $this->customer->update($customerRequest, $id);
+        return redirect()->route('admin.customer.index')->withInput();
     }
 
     /**

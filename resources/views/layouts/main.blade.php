@@ -161,21 +161,16 @@
 							</ul>
 						</li>
 						@endif
-						
-						@ifUserCan('deal.check')
-							<li><a class="submenu"href="/guohu">
-									<i class="icon-retweet"></i> <span class="hidden-tablet">
-										成交管理</span>
-							</a></li>
-						@endif
-						@ifUserCan('finance.check')
-							<li><a class="submenu"href="/finance">
-									<i class="icon-money"></i> <span class="hidden-tablet">
-										财务管理</span>
-							</a></li>
+						@ifUserCan('customer.check')
+						<li>
+							<a class="submenu" href="{{route('admin.customer.index')}}/index">
+								<i class="icon-user"></i> 
+								<span class="hidden-tablet">客户管理</span>
+							</a>
+						</li>
 						@endif
 						@ifUserCan('insurance.check')
-							<li>
+						<li>
 							<a class="submenu" href="{{route('admin.insurance.index')}}/index">
 								<i class="icon-user"></i> 
 								<span class="hidden-tablet">保险管理</span>
