@@ -53,7 +53,7 @@ class StoreLoanRequest extends Request
             // 'card.numeric'                  => '银行卡号均为数字',
             'appraiser_price.required'      => '请输入评估价',
             'loan_price.required'           => '请输入车贷金额',
-            'plate_date.required'           => '请输入上牌日期',
+            // 'plate_date.required'           => '请输入上牌日期',
             'plate_date.date'               => '上牌日期格式错误',
             // 'loan_date.required'            => '请输入放款日期',
             'loan_date.date'                => '放款日期格式错误',
