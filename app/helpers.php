@@ -375,3 +375,18 @@
 
         return $sel_city;
 	}
+
+	//判断是否奇数
+	function is_odd($num){
+
+		$num  = (int)$num;
+
+		if(is_numeric($num)&($num&1) == 1){
+
+			return true;
+		}else{
+
+			return false;
+		}
+       	// return (is_numeric($num)&($num&1));
+   	}

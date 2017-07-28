@@ -117,7 +117,7 @@
             <p>{{$cars->description}}</p>
             <div>
                 <!-- <div> -->
-                   @foreach($cars->hasManyImages as $image)
+                   @foreach($images as $image)
                     <img style="margin-left:1%;max-height: 400px;" src="{{URL::asset('uploads/car/'.$image->filename)}}"   onerror="this.src='{{URL::asset("images/default.jpg")}}'"/>
                     @endforeach 
                 <!-- </div>              -->

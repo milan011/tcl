@@ -41,10 +41,24 @@ class CarController extends CommonController
         $cars = $this->car->find($id);
 
         $img = $cars->hasOneImagesOnFirst;
+        $images = $cars->hasManyImages; // 车源图片
         // dd(lastsql());
-        // dd($cars->hasOneImagesOnFirst);
-        // p('xixi');
-        // p(Session('chosen_city_name'));
+        // dd($images);
+        // dd(is_odd(10));
+        // dd(is_odd(count($images)));
+        
+        if(is_odd(count($images))){
+            //车源图片数目单数
+            // dd($images->all());
+            $images_arr = $images->all();
+            // dd($images_arr);
+            array_pop($images_arr);
+            // dd($images_arr);
+            $images = collect($images_arr);
+        }
+
+        // dd($images);
+
         // 推荐车源
         $recommend_cars = $this->car->getRecommendCars($cars->top_price);
         // dd(lastsql());
@@ -59,6 +73,6 @@ class CarController extends CommonController
         $title          = $cars->name.'_石家庄淘车乐真实车源';
         $meta_des       = $cars->name.'淘车乐为您提供最真实的二手车报价,最详细的二手车车源情况';
 
-        return view('home.car.index', compact('cars', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number', 'recommend_cars', 'current_page', 'title', 'meta_des'));
+        return view('home.car.index', compact('cars', 'images', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number', 'recommend_cars', 'current_page', 'title', 'meta_des'));
     }
 }

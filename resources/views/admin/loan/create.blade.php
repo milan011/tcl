@@ -445,8 +445,6 @@
 					if(xhr.status == 422){ //表单验证失败，返回的状态
 
 						var content_error = '';
-						var customer_content = $('#customer_content');
-						var loan_content     = $('#loan_content');
 						
 						content_error += '<div>';
 						content_error += "<div class='alert alert-warning' style='text-align:center;'>";
@@ -469,8 +467,6 @@
     						}
 						});
 
-						customer_content.hide();
-						loan_content.show();
 						modal.open();
 
 						return false;
