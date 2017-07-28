@@ -148,9 +148,9 @@
 				  </div>
 
 				<div class="control-group  ">
-                	<label class="control-label" for="bill_day">账单日</label>
+                	<label class="control-label" for="bill_day"><font style="color:red;">*&nbsp;</font>账单日</label>
                 	<div class="controls">
-                  		<input class="input-xlarge focused" id="bill_day" name="bill_day" type="text" value="{{old('bill_day')}}">
+                  		<input class="input-xlarge focused" id="bill_day" name="bill_day" type="text" value="{{old('bill_day')}}" required>
                 	</div>
               	</div>
               	<div class="control-group">
@@ -187,21 +187,21 @@
 					</div>
 				</div>
 				<div class="control-group  ">
-                	<label class="control-label" for="loan_phase">期数</label>
+                	<label class="control-label" for="loan_phase"><font style="color:red;">*&nbsp;</font>期数</label>
                 	<div class="controls">
-                  		<input class="input-xlarge focused" id="loan_phase" name="loan_phase" type="text" value="{{old('loan_phase')}}">
+                  		<input class="input-xlarge focused" id="loan_phase" name="loan_phase" type="text" value="{{old('loan_phase')}}" required>
                 	</div>
               	</div>
               	<div class="control-group">
-					<label class="control-label" for="loan_date">放款日期</label>
+					<label class="control-label" for="loan_date"><font style="color:red;">*&nbsp;</font>放款日期</label>
 					<div class="controls">
-						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="loan_date" id="loan_date" value="{{old('loan_date')}}">
+						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="loan_date" id="loan_date" value="{{old('loan_date')}}" required>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="repayment_frist"><font style="color:red;">*&nbsp;</font>首月还款</label>
+					<label class="control-label" for="repayment_frist">首月还款</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="repayment_frist" name="repayment_frist" type="text" value="{{old('repayment_frist')}}" required><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge focused" id="repayment_frist" name="repayment_frist" type="text" value="{{old('repayment_frist')}}"><span style="margin-left:5px;">万元</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -211,9 +211,9 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="loan_begin_date">保险起始日期</label>
+					<label class="control-label" for="loan_begin_date"><font style="color:red;">*&nbsp;</font>保险起始日期</label>
 					<div class="controls">
-						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="loan_begin_date" id="loan_begin_date" value="{{old('loan_begin_date')}}">
+						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="loan_begin_date" id="loan_begin_date" value="{{old('loan_begin_date')}}" required>
 					</div>
 				</div>
 
@@ -391,7 +391,7 @@
 		var telephone        = $('#telephone').val();
 		var customer_res     = $('#customer_res').val();*/
 		var customer_content = $('#customer_content');
-		var loan_content = $('#loan_content');
+		var loan_content     = $('#loan_content');
 		var img_content      = $('#img_content');
 		var customer_id      = $("input[name='customer_id']");			
 		var user_role        = $("input[name='user_role']");		
@@ -445,6 +445,8 @@
 					if(xhr.status == 422){ //表单验证失败，返回的状态
 
 						var content_error = '';
+						var customer_content = $('#customer_content');
+						var loan_content     = $('#loan_content');
 						
 						content_error += '<div>';
 						content_error += "<div class='alert alert-warning' style='text-align:center;'>";
@@ -467,6 +469,8 @@
     						}
 						});
 
+						customer_content.hide();
+						loan_content.show();
 						modal.open();
 
 						return false;

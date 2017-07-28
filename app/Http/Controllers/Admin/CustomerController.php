@@ -149,6 +149,7 @@ class CustomerController extends Controller
         // dd($customerRequest->all());
 
         $this->customer->update($customerRequest, $id);
+        Session::flash('sucess', '修改用户成功');
         return redirect()->route('admin.customer.index')->withInput();
     }
 

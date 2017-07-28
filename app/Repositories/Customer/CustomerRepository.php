@@ -100,7 +100,7 @@ class CustomerRepository implements CustomerRepositoryContract
         // dd($customer->fill($input));
         $customer->fill($input)->save();
         // dd($customer->toJson());
-        Session::flash('sucess', '修改用户成功');
+        // Session::flash('sucess', '修改用户成功');
         return $customer;
     }
 

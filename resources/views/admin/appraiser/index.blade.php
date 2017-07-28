@@ -98,7 +98,11 @@
 						@foreach ($cars as $car)
     					<tr>
 							<td>{{$car->car_code}}</td>
-							<td>{{$car->name}}</td>
+							<td>
+								<a target="_blank" href="{{route('home.car.index', ['car'=>$car->id])}}">
+									{{$car->name}}
+								</a>
+							</td>
 							<td>{{$car->top_price}}万</td>							
 							<td>{{substr($car->plate_date, 0 ,10)}}</td>
 							<td>{{$car->mileage}}万公里</td>							
@@ -121,7 +125,7 @@
 								@endif
 							</td>							
 							<td>{{$car->belongsToShop->shop_name}}</td>							
-							<td>{{$car->belongsToUser->nick_name}}</td>		
+							<td>{{$car->belongsToUser->nick_name or ''}}</td>		
 							<td class="center">
 								@if(($car->car_status == 1) || ($car->car_status == 6))
 								<div class="btn-group">

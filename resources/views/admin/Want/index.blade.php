@@ -101,7 +101,7 @@
 							<td>{{$want_stauts_config[$want->want_status]}}</td>							
 							<td>{{substr($want->created_at, 0 ,10)}}</td>							
 							<td>{{$want->belongsToShop->shop_name}}</td>							
-							<td>{{$want->belongsToUser->nick_name}}</td>							
+							<td>{{$want->belongsToUser->nick_name or ''}}</td>							
 														
 							<td class="center">
 								@if($want->want_status == 1)
