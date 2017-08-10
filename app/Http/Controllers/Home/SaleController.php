@@ -62,18 +62,21 @@ class SaleController extends CommonController
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCustomerSaleRequest $customerSaleRequest)
-    {
+    {   
+        // dd('hah ');
         // dd($customerSaleRequest->all());
         $current_ip = $customerSaleRequest->getClientIp();
-        $current_ip = '106.117.13.179';
+        // $current_ip = '106.117.13.179';
         $city_info  = getCurrentCityByIp($current_ip);
-
-        $current_city = Area::where('name', substr($city_info, 0, (strlen($city_info)-3)))->first();
+        // dd('hehe');
+        // dd($current_ip);
+        // dd($city_info);
+        // $current_city = Area::where('name', substr($city_info, 0, (strlen($city_info)-3)))->first();
 
         // dd($current_city);
         // dd($customerSaleRequest->all());
-        $customerSaleRequest['city_id']   = $current_city->id;
-        $customerSaleRequest['city_name'] = $current_city->name;
+        $customerSaleRequest['city_id']   = $city_info->id;
+        $customerSaleRequest['city_name'] = $city_info->name;
         $getInsertedId = $this->sale->create($customerSaleRequest);
         // p(lastSql());exit;
         /*if(!$getInsertedId){
