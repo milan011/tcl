@@ -375,6 +375,8 @@
 <!-- 引入图片上传插件 -->
 <script src="{{URL::asset('js/tcl/dropzone/dropzone.js')}}"></script> 
 <script src="{{URL::asset('js/tcl/dropzone/dropzone-config.js')}}"></script> 
+<!-- 引入确认框js -->
+<script src="{{URL::asset('js/tcl/confirm.js')}}"></script>
 <script>
 	$(document).ready(function(){
 
@@ -476,7 +478,28 @@
 
 					if(is_repead){
 
-						alert('该车源已经存在');
+						var contents  = '车源已经存在';
+						// var car_id    = data.id;
+						var href_info = "{{route('home.index')}}" + '/car/' + data.id;
+
+						contents += '<a style="color:red" target="_blank" href = "';
+						contents += href_info;
+						contents += '">';
+						contents += '点击查看';
+						contents += '</a>';
+
+						$.confirm({
+    		    			title: '注意!',
+    		    			content: contents,
+    		    			cancelButton: '取消',
+    		    			confirmButtonClass: 'btn-danger',
+    		    			confirm: function () {
+    		        			return false;
+    		    			},
+    		    			cancel: function () {
+    		        			return false;
+    		    			}
+    					});
 						return false;
 					}
 
