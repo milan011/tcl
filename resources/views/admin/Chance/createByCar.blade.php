@@ -218,9 +218,9 @@
 							<td class="info" id="creater"></td>
 							<td>客户信息</td>
 							<td class="info">
-								{{$waited_info->belongsToCustomer->customer_name}}
+								{{$waited_info->belongsToCustomer->customer_name or ''}}
 								@if(Auth::id() == $waited_info->creater_id)
-								({{$waited_info->belongsToCustomer->customer_telephone}})
+								({{$waited_info->belongsToCustomer->customer_telephone or ''}})
 								@endif
 							</td>				
 							<td class="info" id="customer_info"></td>
@@ -263,85 +263,7 @@
 					</form>
 					<a href="javascript:void(0);" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
 				</span>
-						<!-- <p class="title">【出售】{{$waited_info->name}}</p>
-						<p class="detial">
-							<i>底价:</i>
-							<em>{{$waited_info->top_price}}</em>
-							<i>万元</i>
-						</p>
-
-						<div class="col-xs-4">
-							<p class="detial">
-								<span>
-									<i>排量:</i>
-									{{$capacity[$waited_info->capacity]}}
-								</span>
-								<span>
-									<i>变速箱：</i>
-									{{$gearbox[$waited_info->gearbox]}}
-								</span>
-								<span>
-									<i>里程：</i>
-									{{$waited_info->mileage}}万公里
-								</span>
-							</p>
-						</div>
-						<div class="col-xs-4">
-							<p class="detial">
-								<span>
-									<i>过户次数：</i>
-									{{$waited_info->sale_number}}
-								<i>次</i>
-								</span>
-								<span>
-									<i>车身颜色：</i>
-									{{$out_color[$waited_info->out_color]}}
-								</span>
-								<span>
-									<i>车辆类别：</i>
-									{{$category_type[$waited_info->categorey_type]}}
-								</span>
-							</p>
-						</div>
-						<div class="col-xs-4">
-							<p class="detial">
-								<span>
-									<i>上牌日期：</i>
-									{{$waited_info->plate_date}}
-								</span>
-								<span>
-									<i>检车日期：</i>
-									{{$waited_info->plate_end}}
-								</span>
-								<span>
-									<i>登记日期：</i>
-									{{$waited_info->created_at}}
-								</span>
-							</p>
-						</div>
-						<div class="col-xs-4">
-							<p class="detial">
-								<span>
-									<i>编号：</i>
-									{{$waited_info->car_code}}
-								</span>
-								<span>
-									<i>车况：</i>
-									{{$waited_info->description}}
-								</span>
-							</p>
-						</div>
-				
-						<div class="detial">
-							<span>
-								<i>销售顾问：</i>{{$waited_info->belongsTouser->nick_name}}{{$waited_info->belongsTouser->creater_telephone}}
-							<em></em>
-							</span>
-							<span>
-								<i>车主：</i>{{$waited_info->belongsToCustomer->customer_name}}{{$waited_info->belongsToCustomer->customer_telephone}}
-							<em></em>
-							</span>
-						</div> -->
+						
 					</div>
 				</div>
 				<div id="images" class="tab-pane">

@@ -76,18 +76,17 @@ class CarController extends Controller
     {
         
         // dd($request->all());
-        $all_top_brands = $this->brands->getChildBrand(0);
-        $cars = $this->car->getAllcars($request, true);
-        
-        // dd(lastSql());
-        // dd($cars);
 
         if($request->method() == 'POST'){
             //初始搜索条件
             $select_conditions  = $request->all();
         }else{
             $select_conditions['car_status'] = '';
+            $request['car_status'] = '1';
         }
+
+        $all_top_brands = $this->brands->getChildBrand(0);
+        $cars = $this->car->getAllcars($request, true);
         
         // dd($select_conditions['car_status']);
 

@@ -66,15 +66,16 @@ class Cars extends Model
             }           
         }
 
-        if(!empty($requestData['car_code'])){
+        if(!empty($requestData['car_code'])){  //有车源编码选择
 
             $query = $query->where('car_code', $requestData['car_code']);
 
             return $query;
         }
 
-        if(isset($requestData['car_status']) && $requestData['car_status'] != ''){
-            
+        //if(isset($requestData['car_status']) && $requestData['car_status'] != ''){
+        if(!empty($requestData['car_status'])){
+            //有车源状态选项
             if($requestData['car_status'] == '1'){
 
                 $query = $query->where(function($query) use ($requestData){
@@ -89,7 +90,10 @@ class Cars extends Model
         }else{
 
             // $query = $query->whereIn('car_status', ['1', '2', '3', '4', '5', '6']);
-            $query = $query->where('car_status', '1');
+            if(!$is_self){
+                //非自身车源
+                $query = $query->where('car_status', '1');
+            }       
         }  
 
         if(!empty($requestData['gearbox'])){

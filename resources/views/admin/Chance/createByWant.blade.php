@@ -203,9 +203,9 @@
 							<td class="info"  id="creater"></td>
 							<td>客户信息</td>
 							<td class="info">
-								{{$waited_info->belongsToCustomer->customer_name}}
+								{{$waited_info->belongsToCustomer->customer_name or ''}}
 								@if(Auth::id() == $waited_info->creater_id)
-								({{$waited_info->belongsToCustomer->customer_telephone}})
+								({{$waited_info->belongsToCustomer->customer_telephone or ''}})
 								@endif
 							</td>				
 							<td class="info"  id="customer_info"></td>
@@ -612,17 +612,17 @@
 		$('#interactive').click(function(){
 
 			var content = $('#textDesc').val();
-			var car_id  = '{{$waited_info->id}}';
-			var request_url  = "{{route('admin.car.interactiveAdd')}}";
+			var want_id  = '{{$waited_info->id}}';
+			var request_url  = "{{route('admin.want.interactiveAdd')}}";
 
 			/*alert(content);
-			alert(car_id);*/
+			alert(want_id);*/
 
 			$.ajax({
 
 				method: 'POST',
 				url: request_url,
-				data: { content : content, car_id : car_id},
+				data: { content : content, want_id : want_id},
 				dataType: 'json',
 				headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
 				success: function(data){
@@ -662,7 +662,7 @@
 					content_follow += '<div class="clearfix"></div>';			   				
 							
 					// alert(last_follow_left);
-					// alert('匹配成功');
+					alert('信息添加成功');
 					console.log(content_follow);
 
 					$('.timeline').prepend(content_follow);

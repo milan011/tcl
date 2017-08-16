@@ -58,22 +58,28 @@ class Want extends Model
             $query = $query->where('want_code', $requestData['want_code']);
             return $query;
         }
-/*
-        if(isset($requestData['want_status']) && $requestData['want_status'] != ''){
 
-            $query = $query->where('want_status', $requestData['want_status']);
+        if(!empty($requestData['want_status'])){
+            //有车源状态选项
+            if($requestData['want_status'] == '1'){
+
+                $query = $query->where(function($query) use ($requestData){
+
+                    $query = $query->where('want_status', $requestData['want_status']);
+                    $query = $query->orWhere('want_status', '6');
+                });
+            }else{
+
+                $query = $query->where('want_status', $requestData['want_status']);
+            }
         }else{
 
-            $query = $query->where('want_status', '1');
-        }*/
-
-        if(isset($requestData['want_status']) && $requestData['want_status'] != ''){
-
-            $query = $query->where('want_status', $requestData['want_status']);
-        }else{
-
-            $query = $query->where('want_status', '1');
-        } 
+            // $query = $query->whereIn('want_status', ['1', '2', '3', '4', '5', '6']);
+            if(!$is_self){
+                //非自身车源
+                $query = $query->where('want_status', '1');
+            }       
+        }
 
         if(!empty($requestData['shop_id'])){
 
