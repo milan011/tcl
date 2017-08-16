@@ -67,7 +67,7 @@ class WantController extends Controller
             //初始搜索条件
             $select_conditions  = $request->all();
         }else{
-            $select_conditions['want_status'] = '';
+            $select_conditions['want_status'] = '1';
             $request['want_status'] = '1';
         }
         

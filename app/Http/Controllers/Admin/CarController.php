@@ -75,13 +75,13 @@ class CarController extends Controller
     public function carself(Request $request)
     {
         
-        // dd($request->all());
+        // dd($request->method());
 
         if($request->method() == 'POST'){
             //初始搜索条件
             $select_conditions  = $request->all();
         }else{
-            $select_conditions['car_status'] = '';
+            $select_conditions['car_status'] = '1';
             $request['car_status'] = '1';
         }
 
