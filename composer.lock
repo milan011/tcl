@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2ab5ed8aba24713c7ae9357904174b64",
-    "content-hash": "879f30f9cf9e32ecc1812f6e9e74adfa",
+    "hash": "dc2ad7a44ee8202937a678ef453471d7",
+    "content-hash": "d5a01ae1d74d3d8b1a2233045a312261",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1036,44 +1036,44 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "2.1.4",
+            "version": "v2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
-                "reference": "b5c91156f6bd29f68f4f2c51186faae4310a5a68"
+                "reference": "bd9428da19fb3de9bbdd80f18f31b744485dc250"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/b5c91156f6bd29f68f4f2c51186faae4310a5a68",
-                "reference": "b5c91156f6bd29f68f4f2c51186faae4310a5a68",
+                "url": "https://files.phpcomposer.com/files/Maatwebsite/Laravel-Excel/bd9428da19fb3de9bbdd80f18f31b744485dc250.zip",
+                "reference": "bd9428da19fb3de9bbdd80f18f31b744485dc250",
                 "shasum": ""
             },
             "require": {
-                "illuminate/cache": "5.0.*|5.1.*|5.2.*|5.3.*",
-                "illuminate/config": "5.0.*|5.1.*|5.2.*|5.3.*",
-                "illuminate/filesystem": "5.0.*|5.1.*|5.2.*|5.3.*",
-                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*",
+                "illuminate/cache": "~5.0|~5.1",
+                "illuminate/config": "~5.0|~5.1",
+                "illuminate/filesystem": "~5.0|~5.1",
+                "illuminate/support": "~5.0|~5.1",
                 "nesbot/carbon": "~1.0",
-                "php": ">=5.5",
-                "phpoffice/phpexcel": "1.8.*",
+                "php": ">=5.3.0",
+                "phpoffice/phpexcel": "~1.8.0",
                 "tijsverkoyen/css-to-inline-styles": "~1.5"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
-                "orchestra/testbench": "3.1.*",
-                "phpseclib/phpseclib": "~1.0",
+                "orchestra/testbench": "~3.0.0",
+                "phpseclib/phpseclib": ">=0.3.7",
                 "phpunit/phpunit": "~4.0"
             },
             "suggest": {
-                "illuminate/http": "5.0.*|5.1.*|5.2.*|5.3.*",
-                "illuminate/queue": "5.0.*|5.1.*|5.2.*|5.3.*",
-                "illuminate/routing": "5.0.*|5.1.*|5.2.*|5.3.*",
-                "illuminate/view": "5.0.*|5.1.*|5.2.*|5.3.*"
+                "illuminate/http": "~5.0|~5.1",
+                "illuminate/routing": "~5.0|~5.1",
+                "illuminate/view": "~5.0|~5.1"
             },
             "type": "library",
             "autoload": {
                 "classmap": [
-                    "src/Maatwebsite/Excel"
+                    "src/Maatwebsite/Excel",
+                    "tests/TestCase.php"
                 ],
                 "psr-0": {
                     "Maatwebsite\\Excel\\": "src/"
@@ -1099,7 +1099,7 @@
                 "import",
                 "laravel"
             ],
-            "time": "2016-08-28 20:25:51"
+            "time": "2015-10-26 10:15:37"
         },
         {
             "name": "maximebf/debugbar",
@@ -3003,7 +3003,7 @@
             "version": "0.9.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
+                "url": "https://github.com/mockery/mockery.git",
                 "reference": "4db079511a283e5aba1b3c2fb19037c645e70fc2"
             },
             "dist": {

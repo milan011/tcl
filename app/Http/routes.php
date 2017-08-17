@@ -188,6 +188,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('chance/store', 'ChanceController@store')->name('admin.chance.store');
     Route::post('car/ajaxAdd', 'CarController@ajaxAdd')->name('admin.car.ajaxAdd');
     Route::post('area/getAreaInfo', 'AreaController@getAreaInfo')->name('admin.area.getAreaInfo');
+    Route::get('excel/export','ExcelController@export'); //Excel路由
+    Route::get('excel/import','ExcelController@import');
     Route::resource('user', 'UserController'); 
     Route::resource('car', 'CarController');  
     Route::resource('want', 'WantController');  

@@ -34,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             'home.*', 'App\Http\ViewComposers\CityComposer'
         );
+
+        view()->composer(
+            'show.*', 'App\Http\ViewComposers\CityComposer'
+        );
     }
 
     /**
