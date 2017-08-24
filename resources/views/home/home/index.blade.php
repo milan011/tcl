@@ -32,7 +32,7 @@
                 <img src="{{URL::asset('home/img/index/dbfile/slider.png')}}" alt="一站式卖车">
             </div>
             <div class="sliderItem transition" bgColor="#000">
-                <img src="{{URL::asset('home/img/sell/dbfile/bannerBg.jpg')}}" alt="一站式卖车">
+                <img src="{{URL::asset('home/img/sell/dbfile/11111.png')}}" alt="一站式卖车">
             </div>
             <div class="container bannerContent">
                 <div class="sliderControl dib-con">

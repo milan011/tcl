@@ -231,14 +231,14 @@
 						  		<option value="0">请选择厂家</option>											
 							</select>
 							<select id="thrid_category" name="category_id" style="display:none;width:25%;">
-						  		<option  value="0">请选择车系</option>											
+						  		<option value="0">请选择车系</option>											
 							</select>
 						</div>
 					</div>
 					<div class="control-group  ">
             	    	<label class="control-label" for="car_status">车源状态</label>
             	    	<div class="controls">
-            	      		<select id="car_status" name="car_status" >
+            	      		<select id="car_status" name="car_status" >                        
             	      			<option value=''>不限</option>                        
 								@foreach($car_stauts_config as $key=>$status)								
 									<option @if($select_conditions['car_status'] == $key && $select_conditions['car_status'] != '') selected @endif value="{{$key}}">	{{$status}}
