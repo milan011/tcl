@@ -1,0 +1,1170 @@
+.index-area {
+	background:#f5f5f5
+}
+.sel-op {
+	width:1190px;
+	height:413px;
+	margin:0 auto
+}
+.sel-area {
+	width:294px;
+	height:399px;
+	padding:10px 0 0 22px;
+	background:#fff;
+	border:2px solid #e7e7e7
+}
+.buy-tit {
+	height:35px;
+	line-height:35px;
+	font-size:16px;
+	color:#000;
+	border-bottom:1px solid #e7e7e7
+}
+.buy-tit span {
+	color:#999;
+	font-size:12px;
+	margin-left:5px
+}
+.buy-tit span em {
+	color:#22ac38
+}
+.buy-tit span em.orgtext {
+	color:#ff7e00;
+	margin-right:5px
+}
+.sx {
+	margin-top:6px
+}
+.sx .active {
+	position:relative;
+	z-index:40
+}
+.sx-pinpai {
+	border:2px solid #fff;
+	padding-bottom:6px
+}
+.sx .dt {
+	font-size:14px;
+	color:#000;
+	line-height:32px
+}
+.sx-pinpai .dd {
+	margin:0 -10px;
+	height:42px
+}
+.ser-gua li i,.submit-suc i,.sx-chexing .dd a,.tip-right {
+	background-image:url(//sta.guazistatic.com/c2c_web/index_icon.8b79f4d2cb0f62d300935bc342505a0e.png);
+	background-repeat:no-repeat
+}
+.sx-pinpai .dd a {
+	display:inline-block;
+	float:left;
+	width:43px;
+	height:42px;
+	color:#666;
+	line-height:66px;
+	text-align:center;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	background-position:top;
+	background-repeat:no-repeat
+}
+.tip-right {
+	background-position:-260px -150px;
+	display:block;
+	float:left;
+	width:11px;
+	height:20px;
+	margin:10px 0 0 15px
+}
+.i-dazhong {
+	background:url(//sta.guazistatic.com/c2c_web/dazhong.7d2b9e81d92911fc7c5389635afc9fa3.png)
+}
+.i-toyota {
+	background:url(//sta.guazistatic.com/c2c_web/toyota.7fde064a1cb9ae24beda19a66ff93d7e.png)
+}
+.i-honda {
+	background:url(//sta.guazistatic.com/c2c_web/honda.c8a2cad7fee5fd93f0131142a00ad58f.png)
+}
+.i-benz {
+	background:url(//sta.guazistatic.com/c2c_web/benz.e18506708d2c38b040aec01354d266bd.png)
+}
+.i-bmw {
+	background:url(//sta.guazistatic.com/c2c_web/bmw.98f4d2227e0e6307b6481d27cf3d1018.png)
+}
+.i-audi {
+	background:url(//sta.guazistatic.com/c2c_web/audi.186c33fd1713cf60d868442af4e80a3e.png)
+}
+.i-buick {
+	background:url(//sta.guazistatic.com/c2c_web/buick.0afec73a0cac02b55d512a2734878493.png)
+}
+.i-chevrolet {
+	background:url(//sta.guazistatic.com/c2c_web/chevrolet.fde886cd8a358bbcf80d8629c8486139.png)
+}
+.i-ford {
+	background:url(//sta.guazistatic.com/c2c_web/ford.56c8a07eab46f4f9a3ab887a541b4bdd.png)
+}
+.i-hyundai {
+	background:url(//sta.guazistatic.com/c2c_web/hyundai.8600f8e780f19b22ed53b388b87541b1.png)
+}
+.i-kia {
+	background:url(//sta.guazistatic.com/c2c_web/kia.ff4169b3c09e30dc4f28695888cdd8db.png)
+}
+.i-richan {
+	background:url(//sta.guazistatic.com/c2c_web/richan.df6535e3e20ed8228298b94ffdad7d95.png)
+}
+.i-biaozhi {
+	background:url(//sta.guazistatic.com/c2c_web/biaozhi.d0191836f41aee63872b802d9f631fd3.png)
+}
+.i-mazda {
+	background:url(//sta.guazistatic.com/c2c_web/mazda.5f799fc86fe18cdd3366799b4572b24d.png)
+}
+.i-citroen {
+	background:url(//sta.guazistatic.com/c2c_web/citroen.167e8cd15998a93884f367aa63a7b2bf.png)
+}
+.i-byd {
+	background:url(//sta.guazistatic.com/c2c_web/byd.c5d89ae9a353fb4b850a2fae937a57e8.png)
+}
+.i-chery {
+	background:url(//sta.guazistatic.com/c2c_web/chery.2b0e83426a0920075569ecf600d05117.png)
+}
+.i-jili {
+	background:url(//sta.guazistatic.com/c2c_web/jili.2599502a0b1be3a74942b81446cfa79f.png)
+}
+.i-acura {
+	background:url(//sta.guazistatic.com/c2c_web/acura.a0e136b6e5d2a735200b245fa1ed557b.png)
+}
+.i-anchi {
+	background:url(//sta.guazistatic.com/c2c_web/anchi.62562d9c6350f17a3e744f9e19b4355b.png)
+}
+.i-astonmartin {
+	background:url(//sta.guazistatic.com/c2c_web/astonmartin.d29329a4e491cbf480a942383a4206c7.png)
+}
+.i-baojun {
+	background:url(//sta.guazistatic.com/c2c_web/baojun.831704ec4c2279c3c19b019693dd809a.png)
+}
+.i-beijingqiche {
+	background:url(//sta.guazistatic.com/c2c_web/beijingqiche.76ccfc731f82b5dd3cc58465ad22e2b3.png)
+}
+.i-beiqi {
+	background:url(//sta.guazistatic.com/c2c_web/beiqi.36d9e70defffbe48013aa8d1f67d242c.png)
+}
+.i-benteng {
+	background:url(//sta.guazistatic.com/c2c_web/benteng.be5e82ed1d321ac8847818ceb1f1b828.png)
+}
+.i-bentley {
+	background:url(//sta.guazistatic.com/c2c_web/bentley.a46ebb0d587f6b9384ee2ff5583ef9ae.png)
+}
+.i-brand-xiali {
+	background:url(//sta.guazistatic.com/c2c_web/brand-xiali.813a7e108bef32edaea9cc316d7bd133.png)
+}
+.i-cadillac {
+	background:url(//sta.guazistatic.com/c2c_web/cadillac.e705ab7611522d201f06f8a779248ee0.png)
+}
+.i-changan {
+	background:url(//sta.guazistatic.com/c2c_web/changan.82f4dad3a7dbbc67fae7db07abe532ad.png)
+}
+.i-changanshangyong {
+	background:url(//sta.guazistatic.com/c2c_web/changanshangyong.ba31993cf62bc31ba2236f39f2dd5696.png)
+}
+.i-changhe {
+	background:url(//sta.guazistatic.com/c2c_web/changhe.b22059aeb9bf24cf44b62c9aa0e14f14.png)
+}
+.i-changcheng {
+	background:url(//sta.guazistatic.com/c2c_web/changcheng.e100dff4d84da98c0842dd78a87fe887.png)
+}
+.i-chrysler {
+	background:url(//sta.guazistatic.com/c2c_web/chrysler.71e9c3a9fd9f36622d7b395c2ee7fed8.png)
+}
+.i-chuanqi1 {
+	background:url(//sta.guazistatic.com/c2c_web/chuanqi1.2132b0b8bc7afddfe210f4b16b8b5740.png)
+}
+.i-chuanqiyema {
+	background:url(//sta.guazistatic.com/c2c_web/chuanqiyema.b77bd1ceeaaca784a2058b8049df494b.png)
+}
+.i-daoqi {
+	background:url(//sta.guazistatic.com/c2c_web/daoqi.9a9c072aa792ce699b16749077af5ef9.png)
+}
+.i-datong {
+	background:url(//sta.guazistatic.com/c2c_web/datong.53b51f0c0c735f45cc8402fc7167a5ed.png)
+}
+.i-dongfeng {
+	background:url(//sta.guazistatic.com/c2c_web/dongfeng.a6aaab7a605dfc2a9153af945ff99f7d.png)
+}
+.i-dongfengfengdu {
+	background:url(//sta.guazistatic.com/c2c_web/dongfengfengdu.56f64c70f88f48b4bb7f71352bcdf307.png)
+}
+.i-dongfengfengshen {
+	background:url(//sta.guazistatic.com/c2c_web/dongfengfengshen.a874a331204aa37871eefca3c5731dc5.png)
+}
+.i-dongfengxiaokang {
+	background:url(//sta.guazistatic.com/c2c_web/dongfengxiaokang.5fefd201d6821757c0b5506928bfa586.png)
+}
+.i-dongfengyulongnazhijie {
+	background:url(//sta.guazistatic.com/c2c_web/dongfengyulongnazhijie.73c467d1941ff4898db8dcfa1a11cfdb.png)
+}
+.i-dongnan {
+	background:url(//sta.guazistatic.com/c2c_web/dongnan.faa5c28f66ea47cd265576af2e2a84a4.png)
+}
+.i-ds {
+	background:url(//sta.guazistatic.com/c2c_web/ds.f05aa0f2c86be9954aba1d060566a2ec.png)
+}
+.i-fengxing {
+	background:url(//sta.guazistatic.com/c2c_web/fengxing.831e0e48f83e939773449155e2c891e3.png)
+}
+.i-ferrari {
+	background:url(//sta.guazistatic.com/c2c_web/ferrari.cb386507a9624db612770591ae2ed28f.png)
+}
+.i-fiat {
+	background:url(//sta.guazistatic.com/c2c_web/fiat.4ca1696d131013d3c8aa4534f6157d0a.png)
+}
+.i-fudi {
+	background:url(//sta.guazistatic.com/c2c_web/fudi.013d5fc344ab74375b8667c8e8846a20.png)
+}
+.i-fuqiqiteng {
+	background:url(//sta.guazistatic.com/c2c_web/fuqiqiteng.4a2c55b3730433001342d1dad6db0c21.png)
+}
+.i-futian {
+	background:url(//sta.guazistatic.com/c2c_web/futian.8a80936cb6c9ca433e7e28f9cbc007d2.png)
+}
+.i-gmc {
+	background:url(//sta.guazistatic.com/c2c_web/gmc.1113c2194df6c007aaa171671a44078f.png)
+}
+.i-guanzhi {
+	background:url(//sta.guazistatic.com/c2c_web/guanzhi.abeccd6df67995c834480e7f0277e07c.png)
+}
+.i-hafei {
+	background:url(//sta.guazistatic.com/c2c_web/hafei.ea736a7b065a83ba9682cc04a72e0ccb.png)
+}
+.i-hafu {
+	background:url(//sta.guazistatic.com/c2c_web/hafu.92fee2fe298ee2b80c829b907c3b7cc8.png)
+}
+.i-haige {
+	background:url(//sta.guazistatic.com/c2c_web/haige.b6538262d261e66533b37b50fd114267.png)
+}
+.i-haima {
+	background:url(//sta.guazistatic.com/c2c_web/haima.d0a777ac08ae0a6e9192ebb9f713326d.png)
+}
+.i-hanma {
+	background:url(//sta.guazistatic.com/c2c_web/hanma.d7558370a6862f14c964bc4ce3bf71d1.png)
+}
+.i-hongqi {
+	background:url(//sta.guazistatic.com/c2c_web/hongqi.f520edaefef9b1e6da7f2c38b7ac974a.png)
+}
+.i-huachen {
+	background:url(//sta.guazistatic.com/c2c_web/huachen.ec3b657398f9e1284a4295bcb37f920b.png)
+}
+.i-huachen-zhonghua {
+	background:url(//sta.guazistatic.com/c2c_web/huachen-zhonghua.d72b53ae0de03265fb7240e417076127.png)
+}
+.i-huanghai {
+	background:url(//sta.guazistatic.com/c2c_web/huanghai.1cee7b0d8377c8cea81a2ebec73dbf8b.png)
+}
+.i-huansu {
+	background:url(//sta.guazistatic.com/c2c_web/huansu.11b5a4115ba0fc175aad6bdce4797dd9.png)
+}
+.i-huasong {
+	background:url(//sta.guazistatic.com/c2c_web/huasong.860a5d05fa33ea0b8e34a366f60a7020.png)
+}
+.i-huatai {
+	background:url(//sta.guazistatic.com/c2c_web/huatai.1595571478bb40e5653bcee0780cef42.png)
+}
+.i-infiniti {
+	background:url(//sta.guazistatic.com/c2c_web/infiniti.955c76081f53f5aac0fa5f6a72537bf2.png)
+}
+.i-jeep {
+	background:url(//sta.guazistatic.com/c2c_web/jeep.a69bd4bc96d7ded7d9871096ab27ed72.png)
+}
+.i-jianghuai {
+	background:url(//sta.guazistatic.com/c2c_web/jianghuai.8876f609d771ce0dd95eb96d2c90b543.png)
+}
+.i-jiangling {
+	background:url(//sta.guazistatic.com/c2c_web/jiangling.ddc7a904abadb6e28a5e9c234ecb5275.png)
+}
+.i-jiao {
+	background:url(//sta.guazistatic.com/c2c_web/jiao.176b72abce785fe68b826144b7974320.png)
+}
+.i-jiebao {
+	background:url(//sta.guazistatic.com/c2c_web/jiebao.cf80777a86507d9535773ffa7ec55047.png)
+}
+.i-jincheng {
+	background:url(//sta.guazistatic.com/c2c_web/jincheng.1fb9ef1b9fdab060624cf26ad75951f2.png)
+}
+.i-jlshwuche {
+	background:url(//sta.guazistatic.com/c2c_web/jlshwuche.6a1bb21bee378e23ffcd07cb2bf16f79.png)
+}
+.i-kaiyi {
+	background:url(//sta.guazistatic.com/c2c_web/kaiyi.ad3475b0d3a7b4e721aa2667dec0d8be.png)
+}
+.i-kawei {
+	background:url(//sta.guazistatic.com/c2c_web/kawei.87f844e8a4e65d036d6b43f58df03081.png)
+}
+.i-krui {
+	background:url(//sta.guazistatic.com/c2c_web/krui.2874b7f98cc8fa1536f82ef394bffacc.png)
+}
+.i-lamborghini {
+	background:url(//sta.guazistatic.com/c2c_web/lamborghini.85b96508b37200e421c1b97dd5fc3285.png)
+}
+.i-landrover {
+	background:url(//sta.guazistatic.com/c2c_web/landrover.38f7b3e8222ad6b47ba4a7811b95a482.png)
+}
+.i-lexus {
+	background:url(//sta.guazistatic.com/c2c_web/lexus.0aca65d94b4d3c812fdba22bfe017c5c.png)
+}
+.i-liebao {
+	background:url(//sta.guazistatic.com/c2c_web/liebao.de73786c827da03ea20366d6e410e559.png)
+}
+.i-lifan {
+	background:url(//sta.guazistatic.com/c2c_web/lifan.3a5943c5eb9a9cb2fc601c831bf4b059.png)
+}
+.i-lincoln {
+	background:url(//sta.guazistatic.com/c2c_web/lincoln.53ccbe1ee62d047a76ea6351689a540b.png)
+}
+.i-linian {
+	background:url(//sta.guazistatic.com/c2c_web/linian.995f749f28be5a6ce628d8801c7eab9b.png)
+}
+.i-lotus {
+	background:url(//sta.guazistatic.com/c2c_web/lotus.75debe86e8bbc30a123a9fe164360485.png)
+}
+.i-lufeng {
+	background:url(//sta.guazistatic.com/c2c_web/lufeng.3e988c9ab833faaa3c1a532845fb6243.png)
+}
+.i-maserati {
+	background:url(//sta.guazistatic.com/c2c_web/maserati.1c3c5ed9f41a5d1f9c9a1f74f41fbb80.png)
+}
+.i-mg {
+	background:url(//sta.guazistatic.com/c2c_web/mg.c7b438780def3b8fb2560cdcd8ebe3b3.png)
+}
+.i-mini {
+	background:url(//sta.guazistatic.com/c2c_web/mini.27c6810b9637facd3b80bb82b78ca8ad.png)
+}
+.i-mitsubishi {
+	background:url(//sta.guazistatic.com/c2c_web/mitsubishi.dfc3ec8c44b3e1d3c7d4236402250e03.png)
+}
+.i-nj-iveco {
+	background:url(//sta.guazistatic.com/c2c_web/nj-iveco.b9d3dcd268bcad74e110ae229189e15f.png)
+}
+.i-opel {
+	background:url(//sta.guazistatic.com/c2c_web/opel.d8fdcc4caada95392045fb1ff67f8c85.png)
+}
+.i-oulang {
+	background:url(//sta.guazistatic.com/c2c_web/oulang.e04808c71e60e445a0d1bdc2942ba552.png)
+}
+.i-porsche {
+	background:url(//sta.guazistatic.com/c2c_web/porsche.6cabcfe2d2af5666dbb661f5de73b6d5.png)
+}
+.i-qichen {
+	background:url(//sta.guazistatic.com/c2c_web/qichen.38b0ef09c6412fb8b67d614fdd62ffe4.png)
+}
+.i-renault {
+	background:url(//sta.guazistatic.com/c2c_web/renault.3e921e94653640f0824c1d44cff496fa.png)
+}
+.i-rolls-royce {
+	background:url(//sta.guazistatic.com/c2c_web/rolls-royce.cdc3ec84bf2f18921591abe82fe4377c.png)
+}
+.i-rongwei {
+	background:url(//sta.guazistatic.com/c2c_web/rongwei.8a6fb7531c170416239b2aedf77d7c66.png)
+}
+.i-ruilin {
+	background:url(//sta.guazistatic.com/c2c_web/ruilin.7754170f532734b7a32f1825cd6f98a1.png)
+}
+.i-saab {
+	background:url(//sta.guazistatic.com/c2c_web/saab.10f832a8d3763cdffa91a935c60c2c7e.png)
+}
+.i-shenbao {
+	background:url(//sta.guazistatic.com/c2c_web/shenbao.ee583a01774bc9650c9b151fd986a2e4.png)
+}
+.i-shuanghuan {
+	background:url(//sta.guazistatic.com/c2c_web/shuanghuan.b400aba2ae9061f6f11a354846a79b1c.png)
+}
+.i-shuanglong {
+	background:url(//sta.guazistatic.com/c2c_web/shuanglong.5fcec53e29f00f4f9d7e326ff6ff15f2.png)
+}
+.i-siming {
+	background:url(//sta.guazistatic.com/c2c_web/siming.d22badc4696641394d75ebd93c8e38a1.png)
+}
+.i-skoda {
+	background:url(//sta.guazistatic.com/c2c_web/skoda.34eff9fb1fd80a74ddc23c0641cbbf70.png)
+}
+.i-smart {
+	background:url(//sta.guazistatic.com/c2c_web/smart.1655cc3fe77f74e7f428cbee25a89310.png)
+}
+.i-subaru {
+	background:url(//sta.guazistatic.com/c2c_web/subaru.a6dd866840cc7919017e47d9fd4f4dfa.png)
+}
+.i-suzuki {
+	background:url(//sta.guazistatic.com/c2c_web/suzuki.b1fdc70d35b08029232bbc82662260ed.png)
+}
+.i-tesila {
+	background:url(//sta.guazistatic.com/c2c_web/tesila.d20bcee750bdd596e104592745df7b55.png)
+}
+.i-tj-yiqi {
+	background:url(//sta.guazistatic.com/c2c_web/tj-yiqi.d7b4c30798ebb6ba6077b29c73c4f5f5.png)
+}
+.i-volvo {
+	background:url(//sta.guazistatic.com/c2c_web/volvo.b9496e6f8aeef7ba7834054d6168c9b1.png)
+}
+.i-weilin {
+	background:url(//sta.guazistatic.com/c2c_web/weilin.c7777f94494db262819ff669c06115c7.png)
+}
+.i-weiwang {
+	background:url(//sta.guazistatic.com/c2c_web/weiwang.3818f5cd7f2f7d4a09562e58c72d579d.png)
+}
+.i-wuling {
+	background:url(//sta.guazistatic.com/c2c_web/wuling.5df24e0eb1f02b8b63def4ebd49b4a8c.png)
+}
+.i-xiaqitongjia {
+	background:url(//sta.guazistatic.com/c2c_web/xiaqitongjia.ca1526daeeee97de114493298cd2b2e0.png)
+}
+.i-xiyate {
+	background:url(//sta.guazistatic.com/c2c_web/xiyate.a71d647de0a66155b68041a086086665.png)
+}
+.i-yingzhi {
+	background:url(//sta.guazistatic.com/c2c_web/yingzhi.602713428c7e6476c855bb178df01ae2.png)
+}
+.i-yongyuanqiche {
+	background:url(//sta.guazistatic.com/c2c_web/yongyuanqiche.c2cf62c61c09728e30ef073d35c3d3fe.png)
+}
+.i-zhongou {
+	background:url(//sta.guazistatic.com/c2c_web/zhongou.6d17d40484eaaf43c65846039122742e.png)
+}
+.i-zhongtai {
+	background:url(//sta.guazistatic.com/c2c_web/zhongtai.7eb5c85d9ede07dae3bb53ab692db110.png)
+}
+.i-zhongxing {
+	background:url(//sta.guazistatic.com/c2c_web/zhongxing.237b2654254b4772d6426faec8c6bc54.png)
+}
+.sx .active {
+	width:292px;
+	border:2px solid #22ac38;
+	border-right:0;
+	margin-left:-24px;
+	padding-left:24px
+}
+.ppmore {
+	display:none
+}
+.sx .active .ppmore {
+	position:absolute;
+	left:316px;
+	top:-158px;
+	display:block;
+	background-color:#fff;
+	width:660px;
+	padding:15px 25px;
+	border:2px solid #22ac38;
+	z-index:4
+}
+.leftline {
+	position:absolute;
+	left:-2px;
+	top:156px;
+	width:2px;
+	background:#fff;
+	height:80px
+}
+.ppmore p {
+	font-size:14px;
+	color:#333;
+	margin-bottom:15px
+}
+.ppmore table td {
+	vertical-align:top;
+	padding:5px 0;
+	line-height:22px
+}
+.ppmore table a {
+	margin-right:13px;
+	white-space:nowrap;
+	color:#666
+}
+.zm {
+	font-size:14px;
+	font-weight:700;
+	width:40px;
+	color:#22ac38
+}
+.tbl,.tbr {
+	width:310px;
+	float:left
+}
+.tbl {
+	margin-right:30px
+}
+.sx-price .dd a {
+	display:inline-block;
+	margin-right:15px;
+	font-size:14px;
+	line-height:28px;
+	color:#666
+}
+.sx-chexing .dd {
+	font-size:0
+}
+.sx-chexing .dd a {
+	display:inline-block;
+	height:46px;
+	width:50px;
+	font-size:12px;
+	color:#666;
+	line-height:60px;
+	margin-right:22px;
+	text-align:center;
+	_overflow:hidden
+}
+.change-car:hover,.ppmore table a:hover,.sx-chexing .dd a:hover,.sx-pinpai .dd a:hover,.sx-price .dd a:hover {
+	color:#e30;
+	text-decoration:none
+}
+.x-sanxiang {
+	background-position:-50px -150px
+}
+.x-suv {
+	background-position:-100px -150px
+}
+.x-mpv {
+	background-position:-150px -150px
+}
+.x-paoche {
+	background-position:-200px -150px
+}
+.sx-chexing .dt,.sx-price .dt {
+	padding-top:0
+}
+.sell-car-box {
+	height:36px;
+	padding-top:15px;
+	padding-bottom:15px
+}
+.sell-phone-input {
+	width:150px;
+	height:18px;
+	line-height:18px;
+	padding:8px 10px;
+	border:1px solid #e7e7e7;
+	border-radius:5px;
+	color:#333
+}
+.sell-phone-input,.sell-phone-submit {
+	float:left;
+	font-size:14px;
+	font-family:microsoft yahei
+}
+.sell-phone-submit {
+	width:98px;
+	height:36px;
+	background:#22ac38;
+	color:#fff;
+	border:none;
+	border-radius:5px;
+	margin-left:5px
+}
+.sell-phone-submit:hover {
+	background:#179500
+}
+.sell-phone-error {
+	line-height:22px;
+	color:red;
+	padding-left:10px
+}
+.submit-suc {
+	height:46px;
+	line-height:46px;
+	font-size:18px;
+	color:#999;
+	padding-left:37px
+}
+.submit-suc i {
+	display:block;
+	width:46px;
+	height:46px;
+	float:left;
+	margin-right:14px;
+	background-position:-250px -200px
+}
+.submit-suc a {
+	color:#22ac38;
+	margin-left:25px;
+	font-size:14px
+}
+.submit-suc a:hover {
+	color:#e30;
+	text-decoration:none
+}
+.op-area {
+	width:860px;
+	height:413px
+}
+.op-slide {
+	position:relative;
+	z-index:10;
+	overflow:hidden
+}
+.op-slide,.slide-li,.slide-li a {
+	width:860px;
+	height:305px
+}
+.slide-li a {
+	display:block
+}
+.slide-ctrl {
+	position:absolute;
+	bottom:10px;
+	left:0;
+	width:100%;
+	height:10px;
+	text-align:center;
+	font-size:0;
+	line-height:0
+}
+.slide-ctrl span {
+	display:inline-block;
+	width:10px;
+	height:10px;
+	border-radius:5px;
+	background:#bce9c3;
+	margin:0 5px;
+	cursor:pointer
+}
+.slide-ctrl span.active {
+	background:#fff;
+	width:20px
+}
+.op-img {
+	width:860px;
+	height:98px;
+	overflow:hidden;
+	padding-top:10px
+}
+.op-img ul {
+	margin-right:-10px
+}
+.op-img li {
+	float:left;
+	margin-right:4px;
+	width:284px;
+	height:98px
+}
+.ser-gua {
+	width:1110px;
+	margin:0 auto;
+	padding:15px 0 15px 90px
+}
+.ser-gua,.ser-gua li {
+	height:60px;
+	line-height:60px
+}
+.ser-gua li {
+	width:262px;
+	float:left;
+	font-size:14px;
+	color:#666
+}
+.ser-gua li i {
+	display:block;
+	width:60px;
+	height:60px;
+	float:left;
+	margin-right:25px
+}
+.ser-1 {
+	background-position:0 -200px
+}
+.ser-2 {
+	background-position:-60px -200px
+}
+.ser-3 {
+	background-position:-120px -200px
+}
+.ser-4 {
+	background-position:-180px -200px
+}
+.high-value {
+	display:none;
+	height:256px;
+	padding-bottom:50px
+}
+.value-tit {
+	height:61px;
+	line-height:61px;
+	border-bottom:1px solid #e7e7e7
+}
+.v-tit {
+	font-size:22px;
+	color:#000
+}
+.v-tit span {
+	font-size:14px;
+	color:#999;
+	margin-left:10px
+}
+.change-car {
+	float:right;
+	font-size:16px;
+	color:#22ac38
+}
+.slide-box {
+	width:1190px;
+	height:194px;
+	padding-top:10px;
+	overflow:hidden
+}
+.slide-con {
+	margin-right:-10px
+}
+.slide-con li {
+	float:left;
+	background:#fff;
+	margin-right:10px
+}
+.car-info,.slide-con li {
+	width:590px;
+	height:194px
+}
+.car-img {
+	position:relative;
+	display:block;
+	width:290px;
+	height:194px;
+	float:left
+}
+.car-img:hover {
+	*text-decoration:none
+}
+.car-img img {
+	display:block;
+	width:290px;
+	height:194px
+}
+.car-txt {
+	float:left;
+	width:280px;
+	padding:0 10px
+}
+.car-link {
+	padding:5px 0 0;
+	line-height:30px;
+	height:30px;
+	overflow:hidden
+}
+.car-link a {
+	color:#333;
+	font-size:16px
+}
+.car-link a:hover {
+	color:#e30;
+	text-decoration:none
+}
+.car-basic {
+	line-height:20px;
+	color:#999
+}
+.car-basic span {
+	color:#ddd;
+	margin:0 5px
+}
+.sell-price {
+	line-height:28px;
+	font-size:20px;
+	color:#ff7e00;
+	padding:3px 0 14px
+}
+.new-car-price {
+	float:right;
+	line-height:28px;
+	color:#999;
+	font-size:12px;
+	text-decoration:line-through
+}
+.ass-div,.ass-info {
+	height:85px
+}
+.ass-info {
+	float:left;
+	width:70px;
+	text-align:center;
+	font-size:12px;
+	color:#666;
+	line-height:26px
+}
+.ass-info img {
+	display:block;
+	margin-left:6px;
+	*margin-left:2px;
+	width:58px;
+	height:58px;
+	border-radius:50%
+}
+.ass-txt {
+	height:60px;
+	width:200px;
+	padding:15px 0 0;
+	float:right
+}
+.ass-txt p {
+	float:left;
+	margin:0 5px 5px 0;
+	width:58px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	font-size:12px
+}
+.sl-red {
+	color:#fd8e4e;
+	border:1px solid #fd8e4e
+}
+.sl-green {
+	color:#22ac38;
+	border:1px solid #22ac38
+}
+.sl-blue {
+	color:#18c6ea;
+	border:1px solid #18c6ea
+}
+.title {
+	height:62px;
+	line-height:62px;
+	margin-bottom:10px;
+	border-bottom:1px solid #e7e7e7
+}
+.all-car {
+	float:right;
+	font-size:16px;
+	color:#22ac38
+}
+.all-car:hover {
+	color:#e30;
+	text-decoration:none
+}
+.ti-left {
+	display:inline-block;
+	height:62px;
+	float:left
+}
+.ti-left span {
+	color:#000;
+	font-size:22px;
+	float:left;
+	margin-right:20px
+}
+.ti-left a {
+	display:inline-block;
+	height:61px;
+	line-height:61px;
+	font-size:16px;
+	color:#666;
+	padding:0 20px;
+	border-bottom:1px solid #f5f5f5
+}
+.ti-left a.on,.ti-left a:hover {
+	color:#22ac38;
+	border-bottom:2px solid #22ac38;
+	text-decoration:none
+}
+.all-car-link {
+	height:45px;
+	padding:15px 0 5px;
+	text-align:center
+}
+.all-car-link a {
+	display:inline-block;
+	width:231px;
+	height:43px;
+	line-height:43px;
+	text-align:center;
+	border:1px solid #22ac38;
+	border-radius:5px;
+	color:#22ac38;
+	font-size:16px
+}
+.all-car-link a:hover {
+	background:#22ac38;
+	text-decoration:none;
+	color:#fff
+}
+.gz-finance,.gz-recommend {
+	display:block;
+	width:284px;
+	height:98px
+}
+.gz-recommend {
+	background:url(//sta.guazistatic.com/c2c_web/guazi_recommend.3318135a5b7f31bc2d2a077bdfd4b03b.jpg) no-repeat
+}
+.gz-finance {
+	background:url(//sta.guazistatic.com/c2c_web/guazi_finance.0e4043cdfcc23cfe41064013afe0f17c.png) no-repeat
+}
+.gz-zq {
+	padding-bottom:55px
+}
+.zq-crm {
+	padding-top:10px;
+	width:1190px;
+	height:202px
+}
+.zq-area {
+	width:882px;
+	height:202px;
+	overflow:hidden;
+	position:relative;
+	z-index:1
+}
+.zhuantui-ul {
+	width:4000px;
+	height:202px
+}
+.zhuantui-ul li {
+	width:436px;
+	float:left;
+	margin-right:10px
+}
+.zhuantui-ul li img {
+	vertical-align:top;
+	width:436px;
+	height:202px
+}
+.slider-next,.slider-prev {
+	position:absolute;
+	top:50%;
+	margin-top:-18px;
+	display:block;
+	width:36px;
+	height:36px;
+	line-height:40px;
+	text-align:center;
+	font-size:36px;
+	font-weight:700;
+	vertical-align:middle;
+	color:#000;
+	font-family:simsun;
+	background:#fff;
+	opacity:.4;
+	filter:alpha(opacity=40)
+}
+.slider-next:hover,.slider-prev:hover {
+	background:#fff;
+	text-decoration:none;
+	color:#000;
+	opacity:.8;
+	filter:alpha(opacity=80)
+}
+.slider-prev {
+	left:10px
+}
+.slider-next {
+	right:10px
+}
+.crm-area {
+	width:278px;
+	height:186px;
+	padding:8px 10px;
+	background:#e5e5e5
+}
+.crm-area li {
+	height:30px;
+	line-height:30px;
+	margin-left:18px;
+	vertical-align:top;
+	list-style:disc
+}
+.crm-area li.crm-link {
+	list-style-type:none;
+	text-align:right;
+	padding-top:6px
+}
+.crm-area li a {
+	color:#666;
+	font-size:14px;
+	display:inline-block;
+	overflow:hidden;
+	width:260px;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	vertical-align:top
+}
+.crm-area li.crm-link a {
+	color:#22ac38
+}
+.crm-area li a:hover {
+	color:#e30;
+	text-decoration:none
+}
+.country .sx-pinpai {
+	margin-top:25px
+}
+.country .sx .active .ppmore {
+	top:-77px
+}
+.country .leftline {
+	top:75px
+}
+.country .sx-chexing,.country .sx-price {
+	padding-top:30px
+}
+.notice {
+	width:100%;
+	height:44px;
+	line-height:44px;
+	background:#ed7f31;
+	text-align:center;
+	font-size:14px;
+	color:#fff
+}
+.notice-close {
+	display:inline-block;
+	width:44px;
+	height:44px;
+	float:right;
+	background:url(//sta.guazistatic.com/c2c_web/index_icon-close.9048080419b1a6046345ee17f66be9e4.png) no-repeat 0 0;
+	cursor:pointer
+}
+.notice-close:hover {
+	background-position:0 -50px
+}
+.video-box {
+	width:100%;
+	height:578px;
+	overflow:hidden;
+	background:url(//sta.guazistatic.com/c2c_web/index_img-bg.49ea4fd2dce3d02dbd3b50223d1dc407.png)
+}
+.video-con {
+	width:1028px;
+	height:578px;
+	margin:0 auto;
+	position:relative;
+	z-index:888
+}
+.video-con .dui-1,.video-con .dui-2,.video-con .vedio-close {
+	position:absolute;
+	top:0;
+	display:block
+}
+.video-con .dui-1 {
+	width:59px;
+	height:540px;
+	left:-81px;
+	background:url(//sta.guazistatic.com/c2c_web/index_dui-1.99adff9600ee10a522464faea45402ae.png) no-repeat
+}
+.video-con .dui-2 {
+	width:59px;
+	height:540px;
+	right:-81px;
+	background:url(//sta.guazistatic.com/c2c_web/index_dui-2.b80c890c2890bee4522e0a30f2c78759.png) no-repeat
+}
+.video-con .vedio-close {
+	width:32px;
+	height:32px;
+	right:0;
+	background:url(//sta.guazistatic.com/c2c_web/index_close.9c0da6a884e0f5d64582d2886c366b59.png) no-repeat;
+	cursor:pointer;
+	z-index:888
+}
+.body-nav-right {
+	position:fixed;
+	right:0;
+	top:0;
+	width:38px;
+	height:100%;
+	background:#fff;
+	z-index:1000;
+	-webkit-box-shadow:0 1px 10px rgba(0,0,0,.2);
+	-moz-box-shadow:0 1px 10px rgba(0,0,0,.2);
+	box-shadow:0 1px 10px rgba(0,0,0,.2);
+	z-index:1001
+}
+.body-nav-right ul {
+	height:306px;
+	position:relative;
+	top:50%;
+	margin-top:-153px
+}
+.body-nav-right li {
+	position:relative;
+	float:left
+}
+.popup-left2 i.triangle-r,.popup-left i.triangle-r,a.app,a.app:hover,a.gongzhonghao,a.gongzhonghao:hover,a.liuyan,a.liuyan:hover,a.yijian,a.yijian:hover,a.zixun,a.zixun:hover {
+	background-image:url(//sta.guazistatic.com/c2c_web/nav_icon_right.ee8a8db7e741a47908ff3e59df8238f9.png);
+	background-repeat:no-repeat;
+	background-position:-38px 0;
+	width:38px;
+	height:52px;
+	display:inline-block
+}
+.body-nav-right li.hover a.zixun,a.zixun:hover {
+	background-position:0 0
+}
+a.liuyan {
+	background-position:-38px -56px
+}
+.body-nav-right li.hover a.liuyan,a.liuyan:hover {
+	background-position:0 -56px
+}
+a.yijian {
+	background-position:-38px -115px
+}
+.body-nav-right li.hover a.yijian,a.yijian:hover {
+	background-position:0 -115px
+}
+a.app {
+	background-position:-38px -177px
+}
+.body-nav-right li.hover a.app,a.app:hover {
+	background-position:0 -177px
+}
+a.gongzhonghao {
+	height:78px;
+	background-position:-38px -239px
+}
+.body-nav-right li.hover a.gongzhonghao,a.gongzhonghao:hover {
+	height:78px;
+	background-position:0 -239px
+}
+.popup-left,.popup-left2 {
+	width:108px;
+	height:50px;
+	border:1px solid #d2d2d2;
+	position:absolute;
+	right:38px;
+	top:50%;
+	margin-top:-26px;
+	background:#fff;
+	font-size:14px;
+	color:#666;
+	line-height:50px;
+	text-align:center;
+	z-index:100;
+	display:none
+}
+.popup-left2 {
+	height:158px;
+	width:158px;
+	margin-top:-79px
+}
+.popup-left2 i.triangle-r,.popup-left i.triangle-r {
+	position:absolute;
+	right:-5px;
+	top:50%;
+	margin:-5px 0 0;
+	overflow:hidden;
+	width:5px;
+	height:10px;
+	background-position:0 -317px;
+	display:inline-block;
+	z-index:101
+}
+.popup-left2 .gz-ewm-app {
+	display:block;
+	width:158px;
+	height:158px;
+	background-image:url(http://sta.guazi.com/static/c2c/web/common/ewm-app-2.png)
+}
+.popup-left2 .gz-ewm-gongzhonghao {
+	display:block;
+	width:158px;
+	height:158px;
+	background-image:url(http://sta.guazi.com/static/c2c/web/common/ewm-wx-2.png)
+}
+.body-nav-right li.hover .popup-left,.body-nav-right li.hover .popup-left2 {
+	display:block
+}
