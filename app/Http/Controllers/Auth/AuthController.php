@@ -30,7 +30,7 @@ class AuthController extends Controller
      * 登录跳转地址
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = 'admin';
 
     // 退出后跳转地址
     protected $redirectAfterLogout = '/admin/login';
@@ -82,10 +82,11 @@ class AuthController extends Controller
             $remember = $request->input('remember');
         }
         //如果要使用记住密码的话，需要在数据表里有remember_token字段
-        if (Auth::attempt(['name' => $name, 'password' => $password], $remember)) {  
+        if (Auth::attempt(['name' => $name, 'password' => $password, 'status' => '1'], $remember)) {  
+
             return redirect()->intended('/admin');
         }
-        return redirect('login')->withInput($request->except('password'))->with('msg', '用户名或密码错误')->withErrors('用户名或密码错误');
+        return redirect('admin/login')->withInput($request->except('password'))->with('msg', '用户名或密码错误')->withErrors('用户名或密码错误');
     }
 
     /**@pma
