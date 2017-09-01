@@ -178,6 +178,7 @@
             	    	<label class="control-label" for="category_type">车辆类型</label>
             	    	<div class="controls">
             	      		<select id="category_type" name="category_type" >
+            	      		<option value=''>不限</option>
             	      			@foreach($category_type as $key=>$category)
             	      			<option @if(isset($select_conditions['category_type']) && $select_conditions['category_type'] == $key && $select_conditions['category_type'] != '') selected @endif value='{{$key}}'>{{$category}}</option>  
             	      			@endforeach                                         
@@ -215,16 +216,6 @@
 							<input type="text" class="input-xlarge one_line date-picker" name="end_date" id="end_date" value="{{$select_conditions['end_date'] or ''}}" placeholder="结束日期">
 						</div>
 					</div>
-					<div class="control-group">
-            	    	<label class="control-label" for="gearbox">变速箱</label>
-            	    	<div class="controls">
-            	      		<select id="gearbox" name="gearbox" >
-            	      			@foreach($gearbox as $key=>$box)
-            	      			<!-- <option @if(isset($select_conditions['gearbox']) && $select_conditions['gearbox'] == $key && $select_conditions['gearbox'] != '') selected @endif value='{{$key}}'>{{$box}}</option>   -->
-            	      			@endforeach                                         
-            	      		</select>
-            	    	</div>
-            	  	</div>
             	  	<div class="control-group">
             	    	<label class="control-label" for="gearbox">变速箱</label>
             	    	<div class="controls">
