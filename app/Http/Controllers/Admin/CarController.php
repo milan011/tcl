@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Gate;
 use DB;
+use Carbon;
 use App\Area;
 use App\Image;
 use App\Cars;
@@ -447,31 +448,17 @@ class CarController extends Controller
         ));       
     }
 
-    public function checkCount(){
+    public function autoWasteCar(Request $request){
 
-        /*$cars = $users = DB::select(SELECT
-tcl_cars.id,
-tcl_cars.`name`,
-tcl_user.nick_name,
-tcl_user.id as user_id
-FROM
-tcl_cars JOIN tcl_user ON tcl_cars.creater_id = tcl_user.id
-WHERE
-tcl_cars.created_at >= '2017-06-02' AND
-tcl_cars.created_at <= '2017-06-03' AND
-tcl_cars.creater_id IN (63,64,65,70,72,78,79,36,37) AND
-tcl_cars.creater_id = '70'
-ORDER BY tcl_cars.creater_id);*/
-        // dd('hehe');
+        // dd($request->method());
+        $now         = Carbon::today();  //当前日期对象
+        $waster_date = $now->modify('-40 days');
+
+        // dd($waster_date);
+        // dd($now);
         $cars = DB::table('tcl_cars')
-            ->join('tcl_user', 'tcl_user.id', '=', 'tcl_cars.creater_id')
-            ->select('tcl_cars.id', 'tcl_cars.name', 'tcl_user.nick_name')
-            ->where('tcl_cars.created_at', '>=', '2017-06-02')
-            ->where('tcl_cars.created_at', '<=', '2017-06-03')
-            ->whereIn('tcl_cars.creater_id', [63,64,65,70,72,78,79,36,37])
-            ->where('tcl_cars.creater_id', '70')
-            ->get();
-
-        dd($cars);
+                  ->where('tcl_cars.updated_at', '<=', $waster_date)
+                  ->where('tcl_cars.car_status', '1')
+                  ->update(['car_status'=>'0']);
     }
 }

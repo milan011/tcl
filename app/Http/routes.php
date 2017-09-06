@@ -163,6 +163,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('car/getCarInfo', 'CarController@getCarInfo')->name('admin.car.getCarInfo');
     Route::post('car/changeFristImg', 'CarController@changeFristImg')->name('admin.car.changeFristImg');
     Route::get('car/editImg/{car}', 'CarController@editImg')->name('admin.car.editImg');
+    Route::get('car/autoWasteCar', 'CarController@autoWasteCar')->name('admin.car.autoWasteCar');
     Route::get('car/checkCount', 'CarController@checkCount')->name('admin.car.checkCount');
     Route::post('want/interactiveAdd', 'WantController@interactiveAdd')->name('admin.want.interactiveAdd');
     Route::post('want/getWantInfo', 'WantController@getWantInfo')->name('admin.want.getWantInfo');
