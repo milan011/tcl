@@ -126,12 +126,29 @@ class CateController extends CommonController
         $chosen_city_selection = Session('chosen_city_id');
         
         // dd($chosen_city_selection);
-        /*dd($sel_city);
-        dd($select_condition);*/
+        // dd($sel_city);
 
-        $select_condition['shop_list'] = $sel_city['shop_list'];
+        if(!empty($select_condition['shop_id'])){
+            //有门店选择条件,门店是否为县级门店,若真则显示该门店的下级门店
+            if($this->shop->isXianJiMenDian($select_condition['shop_id'])){
+                //获取该门店下级列表,并删除门店条件,增加shop_list条件
+                $shops = $this->shop->getShopsBelongs($select_condition['shop_id']);
+
+                foreach ($shops as $key => $value) {
+                    $shop_list[] = $value->id;
+                }
+
+                $select_condition['shop_list'] = $shop_list;
+                unset($select_condition['shop_id']);
+            }       
+        }else{
+            //无门店选择,则获取该城市所有门店
+           $select_condition['shop_list'] = $sel_city['shop_list']; 
+        }
+        // dd($select_condition);
         // 符合条件车源
         $cars = $this->car->getAllCarsWithBefore($select_condition);
+        // dd(lastSql());
         // dd($cars); 
         // dd($cars[0]->hasOneImagesOnFirst);
 
@@ -140,8 +157,8 @@ class CateController extends CommonController
         // dd(lastsql());
         // dd($recomment_brands);
         //门店列表
-        $all_shop = Shop::where('status', '1')->where('is_show', '1')->orderBy('sort', 'desc')->get();
-        // dd($all_shop);
+        $all_shop = $this->shop->getAllshopsWithBefore();
+        // dd($all_shop[37]);
 
         //根据首字母取得所有品牌分类列表
         $letter_list       = $this->brand->getBransLetter();

@@ -25,7 +25,7 @@ class Shop extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['name', 'type', 'qq_number', 'wx_number', 'provence_id', 'city_id', 'telephone', 'address', 'email', 'user_id', 'status'];
+    protected $fillable = [ 'pid','name', 'type', 'qq_number', 'wx_number', 'provence_id', 'city_id', 'telephone', 'address', 'email', 'user_id', 'status'];
 
     /**
      * The attributes excluded from the model's JSON form.

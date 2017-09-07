@@ -19,7 +19,7 @@ class ShopRepository implements ShopRepositoryContract
     // 根据ID获得门店信息
     public function find($id)
     {   
-        return Shop::select(['id', 'name', 'provence_id', 'city_id', 'telephone', 'address', 'qq_number', 'wx_number', 'email', 'status','user_id'])->findOrFail($id);
+        return Shop::select(['id', 'pid', 'name', 'provence_id', 'city_id', 'telephone', 'address', 'qq_number', 'wx_number', 'email', 'status','user_id'])->findOrFail($id);
     }
 
     // 获得门店列表
@@ -28,14 +28,17 @@ class ShopRepository implements ShopRepositoryContract
         return Shop::paginate(10);
     }
 
-    public function getAllUsersWithDepartments()
-    {
-        return  User::select(array
-            ('users.name', 'users.id',
-                DB::raw('CONCAT(users.name, " (", departments.name, ")") AS full_name')))
-        ->join('department_user', 'users.id', '=', 'department_user.user_id')
-        ->join('departments', 'department_user.department_id', '=', 'departments.id')
-        ->lists('full_name', 'id');
+    /**
+     * 获得前端显示的门店,县级店只显示总店
+     * @return [type] [description]
+     */
+    public function getAllshopsWithBefore(){
+
+        return Shop::where('status', '1')
+                   ->where('is_show', '1')
+                   ->where('pid', '0')
+                   ->orderBy('sort', 'desc')
+                   ->get();
     }
 
     // 创建门店
@@ -88,5 +91,19 @@ class ShopRepository implements ShopRepositoryContract
     public function getShopsInProvence($provence_id){
 
         return Shop::select('id', 'name')->where('provence_id', $provence_id)->get();
+    }
+
+    // 门店是否县级门店
+    public function isXianJiMenDian($shop_id){
+
+        $shop = Shop::select('id', 'name', 'pid', 'type')->find($shop_id);
+        // dd($shop->type == '2');
+        return ($shop->type == '3');       
+    }
+
+    //获得下级门店
+    public function getShopsBelongs($ship_id){
+
+        return Shop::select('id', 'name')->where('pid', $ship_id)->get();
     }
 }

@@ -8,8 +8,6 @@ interface ShopRepositoryContract
     
     public function getAllShops();
 
-    public function getAllUsersWithDepartments();
-
     public function create($requestData);
 
     public function update($id, $requestData);

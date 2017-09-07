@@ -171,7 +171,7 @@ class BrandRepository implements BrandRepositoryContract {
 	//获得指定品牌的品牌树(递归获取该品牌所有子品牌及父品牌)
 	public function getBrandTree($brand_id) {
 
-		$brandTree['child'] = $this->getAllChild($brand_id);
+		$brandTree['child']  = $this->getAllChild($brand_id);
 		$brandTree['parent'] = $this->getAllParent($brand_id);
 		// dd($brandTree);
 		return $brandTree;
@@ -207,7 +207,6 @@ class BrandRepository implements BrandRepositoryContract {
 		$parent = array();
 		// dd($brand_id);
 		// dd(!$this->isTopBrand($brand_id));
-		$brand_info = $this->getParentBrand('98');
 		// dd(lastSql());
 		// dd($brand_info);
 		if (!$this->isTopBrand($brand_id)) {
