@@ -51,6 +51,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $request['car_status']  = '1';
+        $request['want_status']  = '1';
         
         $user = $request->user();
         $cars_num = $this->car->getAllCars($request, true)->toArray()['total'];
@@ -61,8 +63,7 @@ class HomeController extends Controller
         $chances_num = $this->chance->getAllChances($request)->toArray()['total'];
 
         $request['need_follow'] = getExpiredDate();
-        $request['car_status']  = '1';
-        $request['want_status']  = '1';
+        
         $need_follow_cars  = $this->car->getAllCars($request, true); //待跟进车源
         // dd(lastSql());
         $need_follow_wants = $this->want->getAllWants($request, true); //待跟进客源
