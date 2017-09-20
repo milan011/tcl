@@ -38,8 +38,8 @@
 					<label class="control-label" for="selectError3">是否置顶</label>
 					<div class="controls">
 					  <select id="is_top" name="is_top">
-					  	<option  @if($notice_info->status == '0') selected @endif  value="0">不置顶</option>
-					  	<option  @if($notice_info->status == '1') selected @endif  value="1">置顶</option>
+					  	<option  @if($notice_info->is_top == '0') selected @endif  value="0">不置顶</option>
+					  	<option  @if($notice_info->is_top == '1') selected @endif  value="1">置顶</option>
 						</select>
 					</div>
 				</div>	
@@ -47,8 +47,8 @@
 					<label class="control-label" for="selectError3">公告类型</label>
 					<div class="controls">
 					  <select id="type" name="type">
-					  	<option  @if($notice_info->status == '1') selected @endif  value="1">系统公告</option>
-					  	<option  @if($notice_info->status == '2') selected @endif  value="2">临时公告</option>
+					  	<option  @if($notice_info->type == '1') selected @endif  value="1">系统公告</option>
+					  	<option  @if($notice_info->type == '2') selected @endif  value="2">临时公告</option>
 						</select>
 					</div>
 				</div>				

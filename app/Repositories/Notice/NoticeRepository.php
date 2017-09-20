@@ -23,7 +23,7 @@ class NoticeRepository implements NoticeRepositoryContract
     public function findTopNotice()
     {
         // return Notice::Where('is_top', '1')->first();
-        return Notice::first();
+        return Notice::Where('is_top', '1')->orderBy('created_at', 'DESC')->first();
     }
 
     public function allNotices()
