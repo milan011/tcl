@@ -6,7 +6,7 @@
     <!-- 公共样式 -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('css/tcl/home/common/common.css')}}">
-
+    
     <!-- 公共脚本 -->
     <!-- <script type="text/javascript" src="../js/common/jQuery-1.12.0.min.js"></script> -->
     <script type="text/javascript" src="{{URL::asset('js/tcl/home/common/jQuery-1.12.0.min.js')}}"></script>

@@ -1,0 +1,937 @@
+.shuxian {
+    color: #ddd;
+    margin: 0 10px
+}
+
+.view-more a {
+    color: #fff;
+    font-family: Microsoft yahei;
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    margin: 20px auto 50px;
+    width: 250px;
+    display: block;
+    background-color: #22ac38
+}
+
+.view-more a:hover {
+    text-decoration: none;
+    background: #50931e;
+    color: #fff
+}
+
+.cft {
+    background: #eee;
+    text-align: center
+}
+
+.comfilter-bd {
+    margin: 0 auto 20px
+}
+
+.filterBox {
+    padding: 20px 20px 0;
+    background: #f9f9f9;
+    border: 1px solid #f5f5f5;
+    font-size: 12px;
+    font-family: Microsoft yahei;
+    margin-top: 20px
+}
+
+.fliter-bd {
+    line-height: 24px;
+    color: #666;
+    padding-bottom: 10px
+}
+
+.fliter-bd dt {
+    float: left;
+    font-weight: 700;
+    width: 50px;
+    font-size: 14px;
+}
+
+.fliter-bd dd {
+    display: block;
+    width: 1095px;
+    float: left
+}
+
+.fliter-bd dd a {
+    color: #666;
+    padding: 0 6px;
+    white-space: nowrap;
+    float: left;
+    margin: 0 8px 5px 0;
+    font-size: 14px;
+}
+
+.fliter-bd dd a.on,
+.fliter-bd dd a.on:hover {
+    background: #22ac38;
+    color: #fff;
+    text-decoration: none
+}
+
+.fliter-bd dd a:hover {
+    color: #e30;
+    background: #eee;
+    text-decoration: none
+}
+
+.seqBox {
+    margin: 0 0 10px;
+    font-family: Microsoft yahei;
+    font-size: 14px;
+}
+
+.sequen {
+    float: left
+}
+
+.sequen li {
+    float: left;
+    height: 32px
+}
+
+.sequen li.first a {
+    color: #22ac38;
+    font-weight: 700
+}
+
+.sequen a {
+    border: 1px solid #ddd;
+    color: #666;
+    display: inline-block;
+    position: relative;
+    margin-left: -1px;
+    padding: 6px 20px;
+    _line-height: 18px;
+    _height: 18px;
+    _padding: 10px 20px 2px
+}
+
+.sequen a:hover {
+    background: #f5f5f5;
+    text-decoration: none;
+    color: #22ac38;
+    font-weight: 700
+}
+
+.seqtype {
+    color: #999;
+    line-height: 34px
+}
+
+.seqtype b {
+    margin: 0 5px
+}
+
+.screen-input,
+.screen-input li {
+    float: left;
+    height: 32px
+}
+
+.screen-input li {
+    line-height: 32px;
+    font-size: 12px;
+    color: #666;
+    padding: 0 0 0 20px
+}
+
+.screen-input input {
+    margin-right: 5px;
+    vertical-align: -2px
+}
+
+.sel-menu {
+    height: 24px;
+    padding-top: 10px
+}
+
+.sel-p {
+    float: left;
+    color: #666;
+    line-height: 24px;
+    padding-right: 14px
+}
+
+.sel-p b {
+    margin: 0 5px
+}
+
+.sel-a {
+    display: inline-block;
+    float: left;
+    height: 22px;
+    padding: 0 30px 0 5px;
+    color: #333;
+    line-height: 22px;
+    border: 1px solid #dfdfdf;
+    background-color: #f9f9f9;
+    background-image: url(//sta.guazistatic.com/c2c_web/list_icon-close.39e5a1b14b9c538be8f8a4fc03708c35.png);
+    background-repeat: no-repeat;
+    background-position: right -30px;
+    margin-right: 6px
+}
+
+.sel-a:hover {
+    background-color: #fff;
+    border: 1px solid #f60;
+    background-position: right 0;
+    color: #f60;
+    text-decoration: none
+}
+
+.sel-reset {
+    float: left;
+    display: inline-block;
+    line-height: 22px;
+    color: #22ac38;
+    margin-right: 20px
+}
+
+.sel-reset:hover {
+    color: #e30;
+    text-decoration: none
+}
+
+.pageLink {
+    margin: 20px 0 30px;
+    clear: both;
+    text-align: center
+}
+
+.pageLink li {
+    display: inline;
+    margin: 0 0 0 7px
+}
+
+.pageLink li a {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #4b4b4b;
+    vertical-align: top;
+    display: inline-block;
+    font-weight: 400
+}
+
+.pageLink a.linkOn,
+.pageLink li.linkOn a,
+.pageLink li a:hover {
+    background: #22ac38;
+    border-color: #22ac38;
+    color: #fff;
+    text-decoration: none
+}
+
+.pageLink li a span {
+    background: none;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    padding-right: 0
+}
+
+.moreitem {
+    color: #666;
+    line-height: 24px;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.moreitem dt {
+    float: left;
+    font-weight: 700;
+    width: 50px
+}
+
+.moreitem dd {
+    float: left;
+    margin-right: 5px
+}
+
+.moreitem-box {
+    border: 1px solid #bbb;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    z-index: 43;
+    display: none;
+    top: 23px
+}
+
+.moreitem-box a {
+    color: #707070
+}
+
+.moreitem-box a:hover {
+    color: #e30;
+    text-decoration: none
+}
+
+.moreitem-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    display: inline-block;
+    float: left;
+    line-height: 20px;
+    line-height: 22px\9;
+    padding: 0 10px 2px;
+    padding: 0 10px\9
+}
+
+.moreitem-btn a {
+    background: url(//sta.guazistatic.com/c2c_web/list_icon-a-s.53b2e3837f5ae5b8ec6e920f5e7fa5ad.png) no-repeat right -51px;
+    display: inline-block;
+    padding-right: 20px;
+    vertical-align: top;
+    color: #707070;
+    text-decoration: none
+}
+
+.moreitem-btn a.active,
+.moreitem-btn a.active:hover {
+    color: #22ac38;
+    text-decoration: none
+}
+
+.active .moreitem-btn a,
+.moreitem-btn a:hover {
+    color: #707070;
+    background-position: right -75px;
+    vertical-align: top;
+    text-decoration: none
+}
+
+.colorsort a.one,
+.moreitem-opts a.one {
+    border-top: 0
+}
+
+.moreitem-opts a {
+    display: block;
+    line-height: 28px;
+    font-size: 12px;
+    padding: 0;
+    text-indent: 10px;
+    height: 28px;
+    border-top: 1px solid #f5f5f5
+}
+
+.moreitem-opts a.d-on,
+.moreitem-opts a:hover {
+    color: #e30;
+    background-color: #f5f5f5
+}
+
+.moreitem .active {
+    position: relative;
+    z-index: 42
+}
+
+.active .moreitem-btn {
+    border: 1px solid #bbb;
+    z-index: 44;
+    position: relative;
+    border-bottom: 0;
+    height: 21px;
+    height: 23px\9
+}
+
+.active .moreitem-box {
+    display: block
+}
+
+.moreitem .moreitem-btn .active {
+    position: static
+}
+
+.m-i-w1 {
+    width: 114px
+}
+
+.m-i-w2 {
+    width: 93px
+}
+
+.m-i-w3 {
+    width: 198px;
+    overflow: hidden
+}
+
+.m-i-w4 {
+    width: 64px
+}
+
+.m-i-w5 {
+    width: 76px
+}
+
+.moreitem dd.hot-zq {
+    float: right
+}
+
+.moreitem dd.hot-zq a {
+    color: #707070;
+    margin: 0 10px
+}
+
+.moreitem dd.hot-zq a:hover {
+    color: #f60
+}
+
+.input-box {
+    float: left;
+    padding-left: 5px
+}
+
+.input-box label {
+    color: #707070;
+    float: left;
+    margin-right: 5px
+}
+
+.input-box input {
+    border: 1px solid #ddd;
+    height: 18px;
+    line-height: 18px;
+    vertical-align: middle;
+    padding: 0 8px;
+    text-align: center;
+    width: 32px
+}
+
+.input-line {
+    color: #ccc;
+    display: inline-block;
+    height: 18px;
+    line-height: 16px
+}
+
+.fliter-bd dd .input-btn {
+    background: none repeat scroll 0 0 #f5f5f5;
+    border: 1px solid #dcdcdc;
+    color: #666;
+    cursor: pointer;
+    float: left;
+    font-family: SimSun;
+    height: 18px;
+    line-height: 18px;
+    margin: 3px 0 0 5px;
+    padding: 0 10px
+}
+
+*+html .fliter-bd dd .input-btn {
+    margin: 1px 0 0 5px
+}
+
+.brand-all {
+    position: relative;
+    z-index: 10;
+    float: left;
+    _padding-top: 5px
+}
+
+.brand-all em {
+    color: #666;
+    float: left;
+    padding: 0 6px;
+    white-space: nowrap;
+    cursor: pointer
+}
+
+.brand-all em i,
+.sequen li a i {
+    background-image: url(//sta.guazistatic.com/c2c_web/list_hc-icons-new.521d975afe41c87d4ed742b17c13ab71.png);
+    background-repeat: no-repeat
+}
+
+.brand-all em i {
+    width: 11px;
+    height: 6px;
+    display: inline-block;
+    margin-left: 3px;
+    vertical-align: 1px;
+    *vertical-align: 6px;
+    _vertical-align: 4px;
+    overflow: hidden
+}
+
+.brand-all em i.up {
+    background-position: 0 -8px
+}
+
+.brand-all em i.down {
+    background-position: 0 0
+}
+
+.sequen li a i {
+    width: 7px;
+    height: 11px;
+    line-height: 11px;
+    display: inline-block;
+    margin-left: 5px;
+    overflow: hidden;
+    vertical-align: middle;
+    _vertical-align: 3px
+}
+
+.sequen li a i.up {
+    background-position: 0 -16px
+}
+
+.sequen li a i.down {
+    background-position: 0 -55px
+}
+
+.sequen li.first a i.up,
+.sequen li a:hover i.up {
+    background-position: 0 -29px
+}
+
+.sequen li.first a i.down,
+.sequen li a:hover i.down {
+    background-position: 0 -42px
+}
+
+.otherbrand {
+    background-color: #fff;
+    border-bottom: 2px solid #eaeaea;
+    display: none;
+    left: -440px;
+    position: absolute;
+    top: 28px;
+    width: 520px;
+    z-index: 81
+}
+
+.active .otherbrand {
+    display: block
+}
+
+.otherbrand .arrow {
+    border-color: transparent transparent #ddd;
+    left: 450px;
+    top: -14px
+}
+
+.otherbrand .arrow,
+.otherbrand .arrow s {
+    border-style: dashed dashed solid;
+    border-width: 7px;
+    position: absolute
+}
+
+.otherbrand .arrow s {
+    border-color: transparent transparent #fff;
+    left: -7px;
+    line-height: 0;
+    top: -6px
+}
+
+.o-b-box {
+    border: 1px solid #ddd;
+    color: #666;
+    height: 240px;
+    line-height: 24px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0 10px
+}
+
+.o-b-box p {
+    padding: 3px 10px 0
+}
+
+.o-b-box a.more {
+    float: right;
+    margin: 0;
+    padding: 0
+}
+
+.o-b-list {
+    margin-top: -1px
+}
+
+.o-b-list li {
+    border-top: 1px solid #f5f5f5;
+    line-height: 20px;
+    padding: 6px 10px
+}
+
+.o-b-list li a {
+    color: #666
+}
+
+.o-b-list li a.d-on,
+.o-b-list li a:hover {
+    color: #e30;
+    text-decoration: none;
+    background: transparent
+}
+
+.o-b-list span {
+    color: #22ac38;
+    float: left;
+    font-size: 14px;
+    width: 27px
+}
+
+.o-b-list div {
+    overflow: hidden
+}
+
+.z30 {
+    z-index: 30;
+    float: right;
+}
+
+.fc-9 {
+    color: #999
+}
+
+.nodate {
+    font-family: Microsoft Yahei, SimHei;
+    font-size: 14px;
+    padding: 60px 0 95px 125px
+}
+
+.nodate .cry {
+    background: url(//sta.guazistatic.com/c2c_web/list_cry.d9e09302c4c9afd0805e85ef15528830.png);
+    width: 125px;
+    height: 154px;
+    float: left;
+    margin-right: 50px
+}
+
+.nodate .word {
+    float: left
+}
+
+.nodate .p1 {
+    line-height: 54px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    width: 590px
+}
+
+.nodate .p1 span {
+    font-size: 24px;
+    color: #22ac38
+}
+
+.nodate .p2 {
+    line-height: 52px;
+    color: #666
+}
+
+.nodate .i-text {
+    width: 230px;
+    padding: 0 0 0 8px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #ccc;
+    margin: 0 10px 0 20px
+}
+
+.nodate .i-text,
+.nodate .pub-btn {
+    vertical-align: middle;
+    font-size: 14px
+}
+
+.nodate .pub-btn {
+    border: 0;
+    width: 96px;
+    height: 30px;
+    line-height: 29px;
+    font-family: Microsoft Yahei, SimHei;
+    background: #fd8000;
+    color: #fff
+}
+
+.nodate .pub-btn:hover {
+    background: #fd6000
+}
+
+.maybeyoulove {
+    font-size: 16px;
+    font-family: Microsoft Yahei, SimHei;
+    line-height: 46px
+}
+
+.maybeyoulove span {
+    float: left;
+    width: 4px;
+    height: 16px;
+    overflow: hidden;
+    background: #22ac38;
+    margin: 16px 8px 0 0
+}
+
+input:-moz-placeholder {
+    color: #999
+}
+
+::-webkit-input-placeholder {
+    color: #999
+}
+
+.moreitem-color {
+    width: 225px
+}
+
+.moreitem-color a {
+    float: left;
+    width: 74px;
+    border-right: 1px solid #f5f5f5
+}
+
+.moreitem-color i {
+    display: inline-block;
+    width: 12px;
+    height: 12px
+}
+
+.c-lump01,
+.c-lump02,
+.c-lump03,
+.c-lump04,
+.c-lump05,
+.c-lump06,
+.c-lump07,
+.c-lump08,
+.c-lump09,
+.c-lump10,
+.c-lump11,
+.c-lump12,
+.c-lump13,
+.c-lump14,
+.c-lump15 {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    font-size: 0;
+    margin: 0 5px 0 0;
+    vertical-align: -2px
+}
+
+.c-lump01 {
+    background: #f2f2f2;
+    border: 1px solid #ccc;
+    width: 11px;
+    height: 11px
+}
+
+.c-lump02 {
+    background: #22ac38
+}
+
+.c-lump03 {
+    background: #333
+}
+
+.c-lump04 {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    width: 11px;
+    height: 11px
+}
+
+.c-lump05 {
+    background: #039
+}
+
+.c-lump06 {
+    background: #82371e
+}
+
+.c-lump07 {
+    background: #7d02bc
+}
+
+.c-lump08 {
+    background: #b49766
+}
+
+.c-lump09 {
+    background: #c00
+}
+
+.c-lump10 {
+    background: #c9c7c5
+}
+
+.c-lump11 {
+    background: #fd8301
+}
+
+.c-lump12,
+.c-lump14 {
+    background: url(//sta.guazistatic.com/c2c_web/list_colorlump.806effb5027e27fd44c42e39a299fea2.png) no-repeat
+}
+
+.c-lump13 {
+    background: #fdd601
+}
+
+.c-lump14 {
+    background-position: -17px 0
+}
+
+.c-lump15 {
+    background: #666
+}
+
+.dd-label .cv-lab {
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-left: 15px
+}
+
+.cut-off-txt {
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    color: #333;
+    font-family: Microsoft YaHei;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    margin-top: 10px
+}
+
+.cut-off-txt i {
+    display: block;
+    width: 4px;
+    height: 15px;
+    background: #22ac38;
+    line-height: 0;
+    font-size: 0;
+    float: left;
+    margin: 10px 10px 0 0
+}
+
+.c-mask {
+    background: rgba(0, 0, 0, .1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#19000000, endcolorstr=#19000000);
+    bottom: 1px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    position: absolute
+}
+
+.list-bigimg .booked,
+.list-bigimg .saled {
+    position: absolute;
+    z-index: 3;
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+    background-color: hsla(0, 0%, 100%, .8);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#C8ffffff, endcolorstr=#C8ffffff);
+    font-size: 24px;
+    color: #999;
+    text-align: center;
+    line-height: 90px;
+    left: 100px;
+    top: 51px
+}
+
+:root .c-mask,
+:root .list-bigimg .booked,
+:root .list-bigimg .saled {
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#00000000, endcolorstr=#00000000)
+}
+
+.sale-right a {
+    background: url(//sta.guazistatic.com/c2c_web/list_right_btnbg.62ce11f2aae0bc1e83f9a13c62c6bf2d.png) no-repeat;
+    width: 44px;
+    height: 194px;
+    position: fixed;
+    top: 30%;
+    right: 5%;
+    display: block;
+    z-index: 99
+}
+
+.guid-img {
+    width: 1190px;
+    height: 120px
+}
+
+.guid-img img {
+    vertical-align: top
+}
+
+.guid-app,
+.guid-app-link,
+.guid-app span {
+    background-image: url(//sta.guazistatic.com/c2c_web/list_guid_app.8b93ddd55c32bcbe795ade4766b07b0f.png);
+    background-repeat: no-repeat
+}
+
+.guid-app {
+    display: block;
+    width: 268px;
+    height: 34px;
+    margin-left: 380px;
+    background-position: 0 0
+}
+
+.guid-app:hover {
+    position: relative
+}
+
+.guid-app span {
+    position: absolute;
+    display: none
+}
+
+.guid-app:hover span {
+    position: absolute;
+    left: 0;
+    top: -170px;
+    display: block;
+    width: 154px;
+    height: 154px;
+    border: 1px solid #22ac38;
+    background-position: 0 -40px
+}
+
+.guid-app:hover span em {
+    border-color: #22ac38 transparent transparent;
+    bottom: -16px;
+    left: 70px
+}
+
+.guid-app:hover span em,
+.guid-app:hover span i {
+    position: absolute;
+    border-width: 8px;
+    border-style: solid dashed dashed
+}
+
+.guid-app:hover span i {
+    line-height: 0;
+    border-color: #fff transparent transparent;
+    left: -8px;
+    top: -9px
+}
+
+.guid-app-link {
+    display: block;
+    width: 474px;
+    height: 86px;
+    background-position: 0 -200px;
+    margin: 0 auto 30px
+}

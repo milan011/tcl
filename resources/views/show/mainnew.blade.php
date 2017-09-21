@@ -14,7 +14,7 @@
     <!-- <link type="text/css" rel="stylesheet" href="{{URL::asset('css/tcl/common.css')}}"> -->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/base.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/footer.css')}}">
-    <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/list.css')}}">
+    <!--  -->
     <!-- <link type="text/css" rel="stylesheet" href="{{URL::asset('css/tcl/show/content.css')}}"> -->
 
     <!-- 公共脚本 -->
@@ -71,7 +71,7 @@
                     商户登录
                     <!-- <div class="app-guide">
                         <div class="guide-ewm">
-                            <img src="picture/ewm-app-2.png" alt="瓜子二手车app下载">
+                            <img src="picture/ewm-app-2.png" alt="淘车乐二手车app下载">
                         </div>
                         <div class="guide-txt">
                             <p class="guide-txt-1">下载APP使用更多功能</p>
@@ -104,10 +104,10 @@
             <div class="w">
 
                 <!-- <a class="fr app-web" baidu_alog="pc_index_top_tab&click&pc_index_top_tab_appdownload_c"
-                   target="_blank" href="/zq_app/" data-gzlog="tracking_type=click&eventid=0010190000000012" title="瓜子二手车直卖网APP">APP下载
+                   target="_blank" href="/zq_app/" data-gzlog="tracking_type=click&eventid=0010190000000012" title="淘车乐二手车直卖网APP">APP下载
                     <div class="app-guide">
                         <div class="guide-ewm">
-                            <img src="picture/ewm-app-2.png" alt="瓜子二手车app下载">
+                            <img src="picture/ewm-app-2.png" alt="淘车乐二手车app下载">
                         </div>
                         <div class="guide-txt">
                             <p class="guide-txt-1">下载APP使用更多功能</p>
@@ -120,18 +120,19 @@
                 </a> -->
                                     <!-- <a class="fr " baidu_alog="pc_index_top_tab&click&pc_index_top_tab_carfina_c"
                        href="https://jr.guazi.com/sjz/"  data-gzlog="tracking_type=click&eventid=0010000000000011" title="二手车分期付款">分期购车</a> -->
-                <a class="fl active" baidu_alog="pc_index_top_tab&click&pc_index_top_tab_index_c"
-                   href="/sjz/"  data-gzlog="tracking_type=click&eventid=0010000000000007" title="瓜子二手车">首页</a>
-                <a class="fl " baidu_alog="pc_index_top_tab&click&pc_index_top_tab_buy_c"
-                   href="/sjz/buy/"  data-gzlog="tracking_type=click&eventid=0010000000000008"
-                    title="石家庄个人二手车"                    >我要买车</a>
-                <a class="fl " baidu_alog="pc_index_top_tab&click&pc_index_top_tab_sell_c"
-                   href="/sjz/sell/?clueS=01" data-gzlog="tracking_type=click&eventid=0010050000000009"
-                    title="石家庄二手车出售"                    >我要卖车</a>
-                <a class="fl " baidu_alog="pc_index_top_tab&click&pc_index_top_tab_intro_c"
-                   href="/sjz/intro/"  data-gzlog="tracking_type=click&eventid=0010000000000010" title="瓜子二手车服务保障">服务保障</a>
+                @if (!empty($chosen_city_selection))
+                    <a class="fl @if($current_page == 'home') active @endif"  href="{{route('home.index')}}/city/{{$chosen_city_selection}}"  title="淘车乐二手车">首页
+                </a>
+                @else
+                    <a class="fl @if($current_page == 'home') active @endif" href="{{route('home.index')}}"  title="淘车乐二手车">首页
+                </a>
+                @endif
+                <a class="fl @if($current_page == 'cate') active @endif" href="{{route('home.cate.index')}}" title="石家庄个人二手车">我要买车</a>
+                <a class="fl @if($current_page == 'sale') active @endif" href="{{route('home.sale.index')}}" title="石家庄二手车出售">我要卖车</a>
+                <a class="fl @if($current_page == 'join') active @endif" href="{{route('home.join.index')}}" title="淘车乐二手车服务保障">服务保障</a>
+                <a class="fl @if($current_page == 'join') active @endif" href="{{route('home.join.index')}}" title="淘车乐二手车加盟">我要加盟</a>
 
-                <!-- <a class="fl " href="/ask/"  title="瓜子二手车问答系统">二手车问答</a> -->
+                <!-- <a class="fl " href="/ask/"  title="淘车乐二手车问答系统">二手车问答</a> -->
             </div>
         </div>
         <!-- menu e-->

@@ -47,7 +47,7 @@ class CateController extends CommonController
     {
 
         // $begin = $this->getCurrentTime();
-        //p($conditon);exit;  //{品牌b，车系c}，{车辆类型t，门店s}，{车龄a，价格p}
+        // p($this->request->method());exit;  //{品牌b，车系c}，{车辆类型t，门店s}，{车龄a，价格p}
 
         $conditions = $brand .'-'. $condition;
 
@@ -356,7 +356,7 @@ class CateController extends CommonController
         $spend = $end - $begin;
 
         echo "脚本执行时间为:".$spend."\n";*/
-        return view('home.cate.index', compact(
+        return view('show.cate.index', compact(
             'cars', 
             'gearbox', 
             'out_color',
