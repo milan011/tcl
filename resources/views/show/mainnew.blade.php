@@ -20,6 +20,7 @@
     <!-- 公共脚本 -->
     <!-- <script type="text/javascript" src="../js/common/jQuery-1.12.0.min.js"></script> -->
     <script type="text/javascript" src="{{URL::asset('newShow/js/common/jQuery-1.12.0.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('newShow/js/common/common.js')}}"></script>
 
     <!--[if lt IE 9]>
     <script type="text/javascript" src="{{URL::asset('js/tcl/show/common/common/html5shiv.min.js')}}"></script>
@@ -121,16 +122,16 @@
                                     <!-- <a class="fr " baidu_alog="pc_index_top_tab&click&pc_index_top_tab_carfina_c"
                        href="https://jr.guazi.com/sjz/"  data-gzlog="tracking_type=click&eventid=0010000000000011" title="二手车分期付款">分期购车</a> -->
                 @if (!empty($chosen_city_selection))
-                    <a class="fl @if($current_page == 'home') active @endif"  href="{{route('home.index')}}/city/{{$chosen_city_selection}}"  title="淘车乐二手车">首页
+                    <a class="fl @if($current_page == 'home') active @endif"  href="{{route('show.index')}}/city/{{$chosen_city_selection}}"  title="淘车乐二手车">首页
                 </a>
                 @else
-                    <a class="fl @if($current_page == 'home') active @endif" href="{{route('home.index')}}"  title="淘车乐二手车">首页
+                    <a class="fl @if($current_page == 'home') active @endif" href="{{route('show.index')}}"  title="淘车乐二手车">首页
                 </a>
                 @endif
-                <a class="fl @if($current_page == 'cate') active @endif" href="{{route('home.cate.index')}}" title="石家庄个人二手车">我要买车</a>
-                <a class="fl @if($current_page == 'sale') active @endif" href="{{route('home.sale.index')}}" title="石家庄二手车出售">我要卖车</a>
-                <a class="fl @if($current_page == 'join') active @endif" href="{{route('home.join.index')}}" title="淘车乐二手车服务保障">服务保障</a>
-                <a class="fl @if($current_page == 'join') active @endif" href="{{route('home.join.index')}}" title="淘车乐二手车加盟">我要加盟</a>
+                <a class="fl @if($current_page == 'cate') active @endif" href="{{route('show.cate.index')}}" title="石家庄个人二手车">我要买车</a>
+                <a class="fl @if($current_page == 'sale') active @endif" href="{{route('show.sale.index')}}" title="石家庄二手车出售">我要卖车</a>
+                <a class="fl @if($current_page == 'join') active @endif" href="{{route('show.join.index')}}" title="淘车乐二手车服务保障">服务保障</a>
+                <a class="fl @if($current_page == 'join') active @endif" href="{{route('show.join.index')}}" title="淘车乐二手车加盟">我要加盟</a>
 
                 <!-- <a class="fl " href="/ask/"  title="淘车乐二手车问答系统">二手车问答</a> -->
             </div>
@@ -209,7 +210,7 @@
 
 <script type="text/javascript">
 
-    (function($) {
+    /*(function($) {
         $.fn.hoverDelay = function(options) {
             var defaults = {
                 hoverDuring: 1000,
@@ -234,7 +235,7 @@
                 });
             });
         }
-    })(jQuery);
+    })(jQuery);*/
 
     $(document).ready(function(){
 

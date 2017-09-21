@@ -172,7 +172,7 @@
     line-height: 22px;
     border: 1px solid #dfdfdf;
     background-color: #f9f9f9;
-    background-image: url(//sta.guazistatic.com/c2c_web/list_icon-close.39e5a1b14b9c538be8f8a4fc03708c35.png);
+    /*background-image: url(//sta.guazistatic.com/c2c_web/list_icon-close.39e5a1b14b9c538be8f8a4fc03708c35.png);*/
     background-repeat: no-repeat;
     background-position: right -30px;
     margin-right: 6px
@@ -450,7 +450,7 @@
 
 .brand-all em i,
 .sequen li a i {
-    background-image: url(//sta.guazistatic.com/c2c_web/list_hc-icons-new.521d975afe41c87d4ed742b17c13ab71.png);
+    /*background-image: url(//sta.guazistatic.com/c2c_web/list_hc-icons-new.521d975afe41c87d4ed742b17c13ab71.png);*/
     background-repeat: no-repeat
 }
 

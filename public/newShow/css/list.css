@@ -1,89 +1,261 @@
-a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,font,form,h1,h2,h3,h4,h5,h6,html,i,iframe,img,ins,kbd,label,legend,li,object,ol,p,pre,q,s,samp,small,span,strike,strong,sub,sup,table,tbody,td,tfoot,th,thead,tr,tt,u,ul,var {
-	margin:0;
-	padding:0;
-	border:0;
-	outline:0
+a,
+abbr,
+acronym,
+address,
+applet,
+b,
+big,
+blockquote,
+body,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+font,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+object,
+ol,
+p,
+pre,
+q,
+s,
+samp,
+small,
+span,
+strike,
+strong,
+sub,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr,
+tt,
+u,
+ul,
+var {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0
 }
-li,ol,ul {
-	list-style:none
+
+li,
+ol,
+ul {
+    list-style: none
 }
-blockquote,q {
-	quotes:none
+
+blockquote,
+q {
+    quotes: none
 }
-blockquote:after,blockquote:before,q:after,q:before {
-	content:'';
-	content:none
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+    content: '';
+    content: none
 }
+
 :focus {
-	outline:0
+    outline: 0
 }
+
 del {
-	text-decoration:line-through
+    text-decoration: line-through
 }
+
 table {
-	border-collapse:collapse;
-	border-spacing:0
+    border-collapse: collapse;
+    border-spacing: 0
 }
-address,cite,code,dfn,em,i,var {
-	font-style:normal
+
+address,
+cite,
+code,
+dfn,
+em,
+i,
+var {
+    font-style: normal
 }
-button,input[type=button],input[type=reset],input[type=submit] {
-	cursor:pointer;
-	-webkit-appearance:none
+
+button,
+input[type=button],
+input[type=reset],
+input[type=submit] {
+    cursor: pointer;
+    -webkit-appearance: none
 }
+
 .vm {
-	vertical-align:middle
+    vertical-align: middle
 }
+
 .clearfix:after {
-	content:" ";
-	display:block;
-	clear:both;
-	height:0;
-	visibility:hidden
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden
 }
-*+html .clearfix,* html .clearfix {
-	zoom:1
+
+*+html .clearfix,
+* html .clearfix {
+    zoom: 1
 }
+
 .fl {
-	float:left
+    float: left
 }
+
 .fr {
-	float:right
+    float: right
 }
+
 body {
-	background:#fff
+    background: #fff
 }
-body,button,input,select,textarea {
-	font:12px/1.5 arial,helvetica,clean,sans-serif
+
+body,
+button,
+input,
+select,
+textarea {
+    font: 12px/1.5 arial, helvetica, clean, sans-serif
 }
+
 a {
-	text-decoration:none;
-	color:#24d
+    text-decoration: none;
+    color: #24d
 }
+
 a:hover {
-	text-decoration:underline;
-	color:#c00
+    text-decoration: underline;
+    color: #c00
 }
+
 .year-2017 {
-	height:36px;
-	background-color:#fefcec;
-	border-bottom:1px solid #f1efe0
+    height: 36px;
+    background-color: #fefcec;
+    border-bottom: 1px solid #f1efe0
 }
+
 .year-2017-text {
-	position:relative;
-	width:1190px;
-	margin:0 auto;
-	font:14px/36px Microsoft yahei;
-	color:#f86b25;
-	text-align:center
+    position: relative;
+    width: 1190px;
+    margin: 0 auto;
+    font: 14px/36px Microsoft yahei;
+    color: #f86b25;
+    text-align: center
 }
+
 .year-2017-close {
-	position:absolute;
-	top:2px;
-	right:0;
-	width:32px;
-	height:32px;
-	text-indent:-100px;
-	overflow:hidden;
-	background:url(//sta.guazistatic.com/c2c_web/icon-year2017.46af7181baa70675a32c703858472b78.png) no-repeat 50%
+    position: absolute;
+    top: 2px;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    text-indent: -100px;
+    overflow: hidden;
+    background: url(//sta.guazistatic.com/c2c_web/icon-year2017.46af7181baa70675a32c703858472b78.png) no-repeat 50%
+}
+
+.pageLink {
+    margin: 0 0 30px;
+    clear: both;
+    text-align: center
+}
+
+.pageLink li {
+    display: inline;
+    margin: 0 0 0 5px
+}
+
+.pageLink li a {
+    background: #fafafa;
+    border: 1px solid #e6e6e6;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #495056;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    font-weight: 400
+}
+
+.pageLink li a:hover {
+    background: #22ac38;
+    border-color: #22ac38;
+    color: #fff;
+    text-decoration: none
+}
+
+.pageLink li.link-on a {
+    border: 1px solid #fff;
+    background: #fff;
+    color: #22ac38
+}
+
+.pageLink li a span {
+    background: none;
+    border: none;
+    display: inline-block
+}
+
+.pageLink li a.next,
+.pageLink li a.prev {
+    width: 83px
+}
+
+.pageLink li a.next em {
+    margin-left: 6px
+}
+
+.pageLink li a.next em,
+.pageLink li a.prev em {
+    font-family: simsun;
+    font-size: 15px;
+    font-weight: 700
+}
+
+.pageLink li a.prev em {
+    margin-right: 6px
+}
+
+.pageLink li.point a,
+.pageLink li.point a:hover {
+    border: none;
+    background: none;
+    color: #495056
 }

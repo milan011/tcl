@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Show;
 
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Car\CarRepositoryContract;
@@ -62,6 +62,6 @@ class HomeController extends CommonController {
 		$current_page = 'home';
 		$title = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
 
-		return view('home.home.index', compact('cars', 'recomment_brands', 'age', 'price_interval', 'category_type', 'show_city_name', 'current_page', 'title', 'all_top_brands'));
+		return view('show.home.index', compact('cars', 'recomment_brands', 'age', 'price_interval', 'category_type', 'show_city_name', 'current_page', 'title', 'all_top_brands'));
 	}
 }

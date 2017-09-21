@@ -1,0 +1,710 @@
+.screen {
+    width: 1198px;
+    border: 1px solid #e6e6e6;
+    border-bottom: none
+}
+
+.screen dl {
+    border-bottom: 1px solid #e6e6e6;
+    min-height: 50px;
+    position: relative
+}
+
+.screen dt {
+    float: left;
+    width: 70px;
+    height: 100%;
+    position: absolute;
+    line-height: 50px;
+    font-size: 14px;
+    color: #7a838d;
+    text-align: center;
+    background: #fafafa
+}
+
+.screen dd {
+    float: right;
+    width: 1128px
+}
+
+.dd-top {
+    height: 20px;
+    padding: 15px 0 15px 6px
+}
+
+.dd-top .a-box {
+    float: left;
+    width: 940px;
+    height: 20px;
+    overflow: hidden
+}
+
+.dd-top a {
+    float: left;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 6px;
+    color: #495056;
+    margin: 0 8px
+}
+
+.dd-top a:hover {
+    color: #22ac38;
+    text-decoration: none
+}
+
+.dd-top a.active {
+    color: #fff;
+    background: #22ac38;
+    text-decoration: none
+}
+
+.dd-btn {
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    padding: 0 7px;
+    color: #495056;
+    cursor: pointer
+}
+
+.dd-btn:hover {
+    color: #22ac38
+}
+
+.dd-btn i {
+    display: inline-block;
+    width: 11px;
+    height: 6px;
+    margin-left: 4px;
+    font-size: 0;
+    line-height: 0;
+    background-position: -40px 0;
+    vertical-align: 2px
+}
+
+.dd-btn.active i {
+    background-position: -40px -10px
+}
+
+.dd-all {
+    width: 1128px;
+    border-top: 1px solid #e6e6e6
+}
+
+.dd-all ul {
+    width: 350px;
+    padding: 20px 0 0 20px;
+    float: left
+}
+
+.dd-all li {
+    overflow: hidden;
+    padding-bottom: 20px
+}
+
+.dd-all label {
+    float: left;
+    width: 20px;
+    height: 24px;
+    line-height: 24px;
+    color: #22ac38;
+    font-size: 14px;
+    font-weight: 700
+}
+
+.dd-all p {
+    float: left;
+    width: 330px
+}
+
+.dd-all a {
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 15px;
+    font-size: 14px;
+    color: #495056
+}
+
+.dd-all a:hover {
+    text-decoration: none;
+    color: #22ac38
+}
+
+.dd-car {
+    width: 1128px;
+    border-top: 1px solid #e6e6e6
+}
+
+.dd-car ul {
+    padding: 20px 0 0 20px
+}
+
+.dd-car li {
+    float: left;
+    width: 550px;
+    overflow: hidden;
+    padding-bottom: 20px
+}
+
+.dd-car label {
+    float: left;
+    width: 56px;
+    padding-right: 8px;
+    text-align: right;
+    line-height: 24px;
+    font-size: 14px;
+    color: #22ac38;
+    font-weight: 700
+}
+
+.dd-car p {
+    float: left;
+    width: 485px
+}
+
+.dd-car a {
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 15px;
+    font-size: 14px;
+    color: #495056
+}
+
+.dd-car a:hover {
+    text-decoration: none;
+    color: #22ac38
+}
+
+.screen-price {
+    width: 38px;
+    border: 1px solid #e6e6e6;
+    font-size: 12px;
+    margin-top: -1px
+}
+
+.screen-em,
+.screen-price {
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px;
+    color: #495056
+}
+
+.screen-em {
+    display: inline-block;
+    font-size: 14px
+}
+
+.price-btn {
+    float: left;
+    width: 54px;
+    height: 22px;
+    line-height: 18px;
+    font-size: 12px;
+    margin-top: -1px;
+    margin-left: 5px;
+    background: #f6fcf7;
+    color: #22ac38;
+    border: 1px solid #22ac38
+}
+
+.dd-more {
+    float: left;
+    width: 1030px;
+    padding: 6px 0 6px 14px
+}
+
+.dd-more li {
+    float: left;
+    margin: 5px 12px 5px 0
+}
+
+.dd-more li.hidden {
+    display: none
+}
+
+.dd-more+span {
+    margin-top: 15px
+}
+
+.dd-more li.active {
+    position: relative
+}
+
+.dd-sel {
+    height: 26px;
+    line-height: 26px;
+    padding: 0 5px;
+    font-size: 14px;
+    color: #495056;
+    width: 78px;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.dd-sel-disabled {
+    color: #aaa;
+    cursor: default
+}
+
+.dd-sel-100 {
+    width: 88px
+}
+
+li.active .dd-sel {
+    border: 1px solid #22ac38
+}
+
+.dd-sel i {
+    float: right;
+    width: 11px;
+    height: 6px;
+    line-height: 0;
+    font-size: 0;
+    margin-top: 10px;
+    background-position: -40px 0
+}
+
+li.active .dd-sel i {
+    background-position: -40px -10px
+}
+
+.dd-option {
+    display: none;
+    position: absolute;
+    top: 27px;
+    left: 0;
+    z-index: 21;
+    width: 88px;
+    height: auto;
+    padding: 5px 0;
+    background: #fff;
+    border: 1px solid #22ac38
+}
+
+.dd-option-100 {
+    width: 98px
+}
+
+.dd-option a,
+li.active .dd-option {
+    display: block
+}
+
+.dd-option a {
+    padding: 0 0 0 5px;
+    height: 26px;
+    line-height: 26px;
+    color: #495056;
+    font-size: 14px
+}
+
+.dd-option a:hover {
+    background: #22ac38;
+    color: #fff;
+    text-decoration: none
+}
+
+.dd-color {
+    display: none;
+    position: absolute;
+    top: 26px;
+    left: 0;
+    z-index: 21;
+    width: 188px;
+    height: auto;
+    padding: 5px 0;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #22ac38
+}
+
+li.active .dd-color {
+    display: block
+}
+
+.dd-color a {
+    float: left;
+    padding-left: 5px;
+    width: 89px;
+    line-height: 26px;
+    color: #495056;
+    font-size: 14px
+}
+
+.dd-color a:hover {
+    background: #22ac38;
+    color: #fff;
+    text-decoration: none
+}
+
+.dd-color i {
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin: 8px 5px 0 0;
+    line-height: 0;
+    font-size: 0
+}
+
+.dd-color i.icon-black {
+    background: #000
+}
+
+.dd-color i.icon-grey {
+    background: #c9c7c5
+}
+
+.dd-color i.icon-grey2 {
+    background: #666
+}
+
+.dd-color i.icon-red {
+    background: #cc1c00
+}
+
+.dd-color i.icon-blue {
+    background: #003298
+}
+
+.dd-color i.icon-orange {
+    background: #fd8301
+}
+
+.dd-color i.icon-green {
+    background: #21ab38
+}
+
+.dd-color i.icon-brown {
+    background: #82371d
+}
+
+.dd-color i.icon-purple {
+    background: #7d27bc
+}
+
+.dd-color i.icon-champagne {
+    background: #b39665
+}
+
+.dd-color i.icon-yellow {
+    background: #fed601
+}
+
+.dd-color i.icon-multicolor {
+    background-position: -55px -20px
+}
+
+.dd-color i.icon-other {
+    background-position: -55px -30px
+}
+
+.dd-color i.icon-white {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #e6e6e6;
+    background: #fff
+}
+
+.screen-result {
+    padding: 8px 0;
+    height: auto;
+    overflow: hidden
+}
+
+.result-p1,
+.result-p2,
+.result-p3 {
+    float: left;
+    padding: 0 3px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #a5abb2
+}
+
+.result-p1 {
+    width: 79px
+}
+
+.result-p2 a {
+    color: #495056;
+    margin-left: 10px;
+    margin-right: 14px
+}
+
+.result-p2 a:hover {
+    color: #22ac38;
+    text-decoration: none
+}
+
+.result-p3 {
+    color: #a5abb2
+}
+
+.result-li {
+    float: left;
+    max-width: 850px
+}
+
+.result-li li {
+    float: left;
+    margin: 2px 4px 2px 0;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 5px 0 8px;
+    border: 1px solid #e6e6e6;
+    font-size: 14px;
+    cursor: pointer
+}
+
+.result-li li:hover {
+    border-color: #22ac38
+}
+
+.result-li li a {
+    color: #22ac38
+}
+
+.result-li li a:hover {
+    text-decoration: none;
+    color: #22ac38
+}
+
+.result-li i {
+    float: right;
+    width: 8px;
+    height: 8px;
+    line-height: 0;
+    font-size: 0;
+    margin-top: 8px;
+    margin-left: 5px;
+    background-position: -65px -100px
+}
+
+.result-li li:hover i {
+    background-position: -55px -10px
+}
+
+.result-li span {
+    color: #495056
+}
+
+.list-filter {
+    height: 57px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+    box-sizing: border-box
+}
+
+.list-tab {
+    float: left
+}
+
+.list-tab a {
+    float: left;
+    height: 46px;
+    line-height: 46px;
+    padding: 3px 10px 0;
+    font-size: 22px;
+    color: #495056
+}
+
+.list-tab a:hover {
+    text-decoration: none
+}
+
+.list-tab em {
+    float: left;
+    width: 10px;
+    height: 16px;
+    border-left: 1px solid #e6e6e6;
+    margin-left: 10px;
+    margin-top: 18px
+}
+
+.list-tab a.active {
+    border-bottom: 3px solid #22ac38
+}
+
+.list-tab a.loan {
+    position: relative
+}
+
+.loan i {
+    position: absolute;
+    top: 17px;
+    right: -25px;
+    display: block;
+    width: 30px;
+    height: 18px;
+    background-position: -65px 0
+}
+
+.list-sort {
+    width: 470px;
+    height: 28px;
+    margin-top: 12px
+}
+
+.hot-screen,
+.list-sort {
+    float: right
+}
+
+.hot-screen.active {
+    position: relative
+}
+
+.hot-sel {
+    height: 26px;
+    line-height: 26px;
+    padding: 0 8px;
+    font-size: 14px;
+    color: #495056;
+    width: 72px;
+    border: 1px solid #e6e6e6;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.hot-sel i {
+    float: right;
+    width: 9px;
+    height: 9px;
+    line-height: 0;
+    font-size: 0;
+    margin-top: 8px;
+    background-position: -55px 0
+}
+
+.hot-option,
+.hot-screen.active .hot-sel {
+    border: 1px solid #22ac38
+}
+
+.hot-option {
+    display: none;
+    position: absolute;
+    z-index: 20;
+    top: 27px;
+    left: 0;
+    width: 88px;
+    padding: 5px 0;
+    overflow: hidden;
+    background: #fff
+}
+
+.hot-screen.active .hot-option {
+    display: block
+}
+
+.hot-option a {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 5px;
+    color: #495056;
+    font-size: 14px
+}
+
+.hot-option a:hover {
+    color: #fff;
+    background: #22ac38;
+    text-decoration: none
+}
+
+.hot-option i {
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 7px 5px 0 0;
+    line-height: 0;
+    font-size: 0;
+    background-position: -40px -40px
+}
+
+.hot-option i.on {
+    background-position: -40px -55px
+}
+
+.sort-a {
+    float: right;
+    width: 72px;
+    height: 18px;
+    margin-top: 5px;
+    line-height: 18px;
+    font-size: 14px;
+    text-align: center;
+    color: #495056;
+    cursor: pointer;
+    border-left: 1px solid #e6e6e6
+}
+
+.sort-a.active,
+.sort-a:hover {
+    color: #22ac38;
+    text-decoration: none
+}
+
+.sort-a i {
+    display: inline-block;
+    width: 7px;
+    height: 9px;
+    margin-left: 5px;
+    background-position: -65px -110px
+}
+
+.sort-a i.green-top {
+    background-position: -65px -120px
+}
+
+.sort-a i.green-bottom {
+    background-position: -65px -130px
+}
+
+.list-sort .sort-a:last-child {
+    border: none
+}
+
+.list-wrap {
+    width: 1200px;
+    margin: 0 auto
+}
+
+.con-sel>p i,
+.dd-btn i,
+.dd-color i.icon-multicolor,
+.dd-color i.icon-other,
+.dd-color i.white,
+.dd-sel i,
+.hot-option i,
+.hot-sel i,
+.icon-new,
+.icon-sale,
+.loan i,
+.rank-num,
+.result-li i,
+.search-btn,
+.sort-a i,
+.sub-error span {
+    background-image: url(//sta.guazistatic.com/c2c_web/icon.cccdd6106c22fa2cc2fbd5f5c65a1f27.png);
+    background-repeat: no-repeat
+}
+
+.list .footer {
+    margin-top: 30px
+}

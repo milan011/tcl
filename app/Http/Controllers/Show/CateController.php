@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Show;
 
 use Illuminate\Http\Request;
 use DB;
@@ -356,7 +356,7 @@ class CateController extends CommonController
         $spend = $end - $begin;
 
         echo "脚本执行时间为:".$spend."\n";*/
-        return view('home.cate.index', compact(
+        return view('show.cate.index', compact(
             'cars', 
             'gearbox', 
             'out_color',
