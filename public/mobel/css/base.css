@@ -1,0 +1,1053 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+article,
+aside,
+blockquote,
+body,
+button,
+code,
+dd,
+details,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+input,
+legend,
+li,
+menu,
+nav,
+ol,
+p,
+pre,
+section,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
+
+audio,
+canvas,
+video {
+    display: inline-block
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font: 16px/1.5 tahoma, arial, sans-serif
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 1em
+}
+
+b,
+cite,
+code,
+em,
+i,
+small,
+th {
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 500
+}
+
+em,
+i {
+    font-weight: 400
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 1em
+}
+
+button,
+input[type=button],
+input[type=reset],
+input[type=submit] {
+    -webkit-appearance: button;
+    -webkit-user-select: none;
+    cursor: pointer
+}
+
+button[disabled],
+input[disabled] {
+    cursor: default
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0 none;
+    padding: 0
+}
+
+input[type=checkbox],
+input[type=radio] {
+    box-sizing: border-box
+}
+
+input[type=search] {
+    -webkit-appearance: textfield;
+    box-sizing: content-box
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+input:-webkit-autofill {
+    background-color: transparent
+}
+
+::-webkit-inner-spin-button {
+    -webkit-appearance: none
+}
+
+textarea {
+    overflow: auto;
+    vertical-align: top;
+    resize: vertical
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+fieldset,
+iframe,
+img {
+    border: 0 none
+}
+
+img {
+    display: inline-block;
+    -ms-interpolation-mode: bicubic
+}
+
+li,
+ol,
+ul {
+    list-style: none
+}
+
+q:after,
+q:before {
+    content: ""
+}
+
+a {
+    text-decoration: none;
+    -webkit-touch-callout: none
+}
+
+a:active {
+    outline: 0 none
+}
+
+html {
+    height: 100%
+}
+
+body {
+    min-height: 100%
+}
+
+a {
+    color: #404040
+}
+
+::-webkit-input-placeholder {
+    color: #bfbfbf;
+    font-family: helvetica neue, tahoma, arial, hiragino sans gb, microsoft yahei, sans-serif
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.clear {
+    clear: both
+}
+
+.clearfix {
+    zoom: 1
+}
+
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden
+}
+
+.none {
+    display: none
+}
+
+.inline {
+    display: inline
+}
+
+.block {
+    display: block
+}
+
+.inline-block {
+    display: inline-block
+}
+
+.disabled {
+    color: #999;
+    cursor: default;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+.touch {
+    background-color: #e6e6e6;
+    border-radius: 2px
+}
+
+.no-select {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    text-indent: -999em;
+    overflow: hidden
+}
+
+.icon,
+.icon:after {
+    width: 20px;
+    height: 20px
+}
+
+.icon:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url(//sta.guazistatic.com/c2c_wap/icon.4c4d7d4156e54e692029a08438a31d7b.png) no-repeat;
+    background-size: 80px auto;
+    -webkit-background-size: 80px auto;
+    -ms-background-size: 80px auto;
+    margin: -10px 0 0 -10px
+}
+
+.icon-close:after {
+    background-position: -20px 0
+}
+
+.icon-push,
+.icon-renz {
+    width: 12px;
+    height: 12px
+}
+
+.icon-push:after,
+.icon-renz:after {
+    width: 12px;
+    height: 12px;
+    background-position: -45px -40px;
+    margin: -6px 0 0 -6px
+}
+
+.icon-push:after {
+    background-position: -58px -40px
+}
+
+.icon-phone:after {
+    background-position: -40px -20px
+}
+
+.icon-status,
+.icon-status:after {
+    width: 8px;
+    height: 8px
+}
+
+.icon-status:after {
+    background: none;
+    background-color: #f50;
+    border-radius: 4px;
+    margin: -4px 0 0 -4px
+}
+
+.btn {
+    display: inline-block;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    background-clip: padding-box;
+    border: 0 none;
+    border-radius: 3px;
+    font-family: helvetica neue, tahoma, arial, hiragino sans gb, microsoft yahei, sans-serif;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer
+}
+
+.btn:active,
+.btn:focus {
+    outline: 0 none
+}
+
+.btn.touch {
+    border-radius: 3px
+}
+
+.btn[disabled] {
+    cursor: default
+}
+
+.btn[disabled] .icon {
+    opacity: .5
+}
+
+.btn-pub {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    width: 64px;
+    height: 64px;
+    background-color: #56ba22;
+    border-radius: 32px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 14px;
+    margin-left: -32px;
+    z-index: 89
+}
+
+.btn-pub.touch {
+    background-color: #4da71f;
+    border-radius: 32px
+}
+
+.btn-pub.disabled,
+.btn-pub[disabled] {
+    color: hsla(0, 0%, 100%, .5);
+    cursor: default
+}
+
+.btn-pub.disabled.touch,
+.btn-pub[disabled].touch {
+    background-color: #56ba22;
+    color: hsla(0, 0%, 100%, .5)
+}
+
+.btn-default {
+    height: 34px;
+    background-color: #e6f5de;
+    color: #5b2;
+    font-size: 14px;
+    line-height: 34px;
+    padding: 0 12px
+}
+
+.btn-default.touch {
+    background-color: #cfdcc7
+}
+
+.btn-default[disabled] {
+    color: #a7d994
+}
+
+.btn-default[disabled].touch {
+    background-color: #e6f5de;
+    color: #a7d994
+}
+
+.btn-primary {
+    height: 34px;
+    background-color: #55ba21;
+    color: #fff;
+    font-size: 14px;
+    line-height: 34px;
+    padding: 0 12px
+}
+
+.btn-primary.touch {
+    background-color: #4da71f
+}
+
+.btn-primary[disabled] {
+    color: #b7dea9
+}
+
+.btn-primary[disabled].touch {
+    background-color: #55ba21;
+    color: #b7dea9
+}
+
+.btn-common {
+    height: 34px;
+    background-color: #fff;
+    border: 1px solid #c8c6c4;
+    color: #333;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 12px
+}
+
+.btn-common.touch {
+    background-color: #f2f2f2
+}
+
+.btn-common[disabled] {
+    color: #858585
+}
+
+.btn-common[disabled].touch {
+    background-color: #fff;
+    color: #858585
+}
+
+.btn-info {
+    height: 34px;
+    background-color: #daeace;
+    color: #5b2;
+    font-size: 14px;
+    line-height: 34px;
+    padding: 0 12px
+}
+
+.btn-info.touch {
+    background-color: #c9deb9
+}
+
+.btn-info[disabled] {
+    color: #8cb578
+}
+
+.btn-info[disabled].touch {
+    background-color: #daeace;
+    color: #8cb578
+}
+
+.btn-danger {
+    height: 34px;
+    background-color: #f1dbcb;
+    color: #ff7505;
+    font-size: 14px;
+    line-height: 34px;
+    padding: 0 12px
+}
+
+.btn-danger.touch {
+    background-color: #e7cdba
+}
+
+.btn-danger[disabled] {
+    color: #faaa69
+}
+
+.btn-danger[disabled].touch {
+    background-color: #f1dbcb;
+    color: #faaa69
+}
+
+.btn-large {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px
+}
+
+.btn-common.btn-large {
+    line-height: 38px
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 276px;
+    border-radius: 2px;
+    margin: -100px 0 0 -138px;
+    z-index: 100;
+    display: none
+}
+
+.popup.active {
+    display: block
+}
+
+.popup-head {
+    height: 40px;
+    background-color: #56ba22;
+    border-radius: 2px 2px 0 0
+}
+
+.popup-head h2 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 40px;
+    text-align: center
+}
+
+.popup-body {
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 14px 12px
+}
+
+.popup-body p:only-child {
+    text-align: center
+}
+
+.popup-bar {
+    height: 40px;
+    border-top: 1px solid #d9d9d9;
+    background-color: #f2f2f2;
+    border-radius: 0 0 2px 2px;
+    display: -webkit-box;
+    display: box
+}
+
+.popup-bar a {
+    -webkit-box-flex: 1;
+    display: block;
+    width: 1px;
+    height: 40px;
+    border-left: 1px solid #d9d9d9;
+    color: #5b2;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center
+}
+
+.popup-bar a:first-child {
+    border: 0 none
+}
+
+.popup-bar a.touch {
+    background-color: #e6e6e6;
+    border-radius: 0
+}
+
+.popup-bar a:first-child.touch {
+    border-bottom-left-radius: 2px
+}
+
+.popup-bar a:last-child.touch {
+    border-bottom-right-radius: 2px
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4)
+}
+
+.mask.active {
+    display: block
+}
+
+.form-status .status-tips:before {
+    background: url(//sta.guazistatic.com/c2c_wap/icon-status.3cac80466e11ce8f07496dc996c885c7.png) no-repeat;
+    -ms-background-size: 120px auto;
+    background-size: 120px auto
+}
+
+.form-status {
+    min-height: 126px;
+    background-color: #fff;
+    border-bottom: 1px solid #d9d9d9;
+    padding: 0 0 30px
+}
+
+.form-status .status-tips {
+    position: relative;
+    color: #ffa200;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 103px 0 0
+}
+
+.form-status.status-loading .status-tips {
+    padding: 115px 0 0
+}
+
+.form-status.status-failed .status-tips:after,
+.form-status.status-succeed .status-tips:after {
+    content: "";
+    position: absolute;
+    top: 33px;
+    left: 50%;
+    width: 58px;
+    height: 58px;
+    background-color: #f2fbf6;
+    border: 1px solid #e9f7e1;
+    border-radius: 58px;
+    margin-left: -30px
+}
+
+.form-status .status-tips:before {
+    content: "";
+    position: absolute;
+    left: 50%
+}
+
+.form-status.status-loading .status-tips:before {
+    top: 33px;
+    width: 90px;
+    height: 72px;
+    background-position: 0 -20px;
+    margin-left: -45px
+}
+
+.form-status.status-succeed .status-tips:before {
+    top: 53px;
+    width: 28px;
+    height: 20px;
+    background-position: 0 0;
+    margin-left: -14px;
+    z-index: 2
+}
+
+.form-status.status-failed .status-tips:before {
+    top: 53px;
+    width: 20px;
+    height: 20px;
+    background-position: -28px 0;
+    margin-left: -10px;
+    z-index: 2
+}
+
+.form-status .status-cont {
+    font-size: 12px;
+    text-align: center;
+    padding: 35px 0 0
+}
+
+.form-status .status-cont strong {
+    color: #5b2;
+    font-weight: 500
+}
+
+.form-status .status-opt {
+    text-align: center;
+    padding: 17px 0 12px
+}
+
+.form-status .btn {
+    width: 144px;
+    margin: 0 3px
+}
+
+.loading-section,
+.nothing-section,
+.offline-section {
+    display: none
+}
+
+.loading .loading-section,
+.nothing .nothing-section,
+.offline .offline-section,
+.toast {
+    display: block
+}
+
+.toast {
+    z-index: 101;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    width: 320px;
+    margin-left: -160px;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center
+}
+
+.toast span {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .7);
+    display: inline-block;
+    max-width: 228px;
+    padding: 5px 10px;
+    word-break: break-all
+}
+
+.app-guide {
+    position: relative;
+    background-color: #fff;
+    border-bottom: 1px solid #cdcdcd;
+    padding: 0 90px 0 10px
+}
+
+.app-guide .guide-cont {
+    position: relative;
+    display: block;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-weight: 500;
+    padding: 8px 0
+}
+
+.app-guide .guide-logo {
+    float: left;
+    width: 42px;
+    height: 42px;
+    vertical-align: top;
+    margin-right: 10px
+}
+
+.app-guide .guide-dc,
+.app-guide .guide-slogon {
+    color: #505050;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden
+}
+
+.app-guide .guide-dc {
+    color: #878787;
+    font-size: 12px;
+    margin-top: 2px
+}
+
+.app-guide .guide-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 80px;
+    height: 30px;
+    background-color: #62af01;
+    border: 1px solid #559801;
+    border-radius: 3px;
+    color: #fff;
+    font: 14px/28px helvetica neue, arial, hiragino sans gb, microsoft yahei, sans-serif;
+    text-align: center;
+    padding: 0;
+    margin-top: -15px
+}
+
+.app-guide .guide-btn.disabled,
+.app-guide .guide-btn[disabled] {
+    background-color: #fff;
+    border-color: #c8c6c4;
+    color: #333
+}
+
+.app-guide .guide-cont.touch {
+    background-color: transparent
+}
+
+.app-guide .guide-cont.touch:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    padding: 0 90px 0 10px;
+    z-index: -1
+}
+
+.app-guide .guide-cont.disabled.touch:before {
+    display: none
+}
+
+.app-guide .guide-btn.touch {
+    background-color: #529301
+}
+
+.app-guide .guide-btn.disabled.touch,
+.app-guide .guide-btn[disabled].touch {
+    background-color: #fff
+}
+
+.popup .icon-close:after,
+.popup .list-guide i {
+    background: url(//sta.guazistatic.com/c2c_wap/icon_guide.9ee3a7bd10a5c4d0c6ce01a926383708.png) no-repeat;
+    -ms-background-size: 80px auto;
+    background-size: 80px auto
+}
+
+.popup-android,
+.popup-ios {
+    width: 250px;
+    background-color: #f0f0f0;
+    border-radius: 0
+}
+
+.popup-ios {
+    margin: -149px 0 0 -125px
+}
+
+.popup-android {
+    margin: -142px 0 0 -125px
+}
+
+.popup .list-guide {
+    padding: 26px 0 26px 25px
+}
+
+.popup .list-guide li {
+    color: #3d3d3d;
+    font-size: 12px;
+    line-height: 2;
+    padding: 16px 0
+}
+
+.popup .list-guide .num {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #56ba22;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 20px;
+    text-align: center;
+    margin-right: 6px
+}
+
+.popup .list-guide strong {
+    color: #56ba22;
+    font-weight: 500
+}
+
+.popup .list-guide i {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    line-height: 999em;
+    overflow: hidden
+}
+
+.popup .list-guide strong i {
+    margin: -5px 5px 0
+}
+
+.popup-ios .list-guide .icon-menu {
+    width: 16px;
+    height: 16px;
+    background-position: -8px 0
+}
+
+.popup-android .list-guide .icon-menu {
+    width: 23px;
+    height: 23px;
+    background-position: -25px 0;
+    margin: 0 5px
+}
+
+.popup-ios .list-guide .icon-browser {
+    width: 79px;
+    height: 79px;
+    background-position: 0 -23px
+}
+
+.popup-android .list-guide .icon-browser {
+    width: 63px;
+    height: 63px;
+    background-position: 0 -102px
+}
+
+.popup-android .list-guide .icon-ganji,
+.popup-ios .list-guide .icon-ganji {
+    width: 47px;
+    height: 47px;
+    background-position: 0 -165px
+}
+
+.popup .icon-close-container {
+    position: absolute;
+    top: -11px;
+    right: -11px;
+    width: 50px;
+    height: 50px
+}
+
+.popup .icon-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 22px;
+    height: 22px;
+    background-color: #000;
+    border-radius: 11px;
+    line-height: 999em;
+    overflow: hidden
+}
+
+.popup .icon-close:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px
+}
+
+.mask {
+    display: none
+}
+
+@media only screen and (max-height:320px) {
+    .popup-ios {
+        margin: -115px 0 0 -125px
+    }
+    .popup-android {
+        margin: -108px 0 0 -125px
+    }
+    .popup .list-guide {
+        padding: 10px 0 10px 25px
+    }
+    .popup .list-guide li {
+        color: #3d3d3d;
+        font-size: 12px;
+        line-height: 2;
+        padding: 10px 0
+    }
+}
+
+.slide-in-left,
+.slide-in-right {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    width: 100%;
+    height: 100%
+}
+
+.slide-in-left {
+    -webkit-animation: slideInLeft .3s ease-in both
+}
+
+.slide-in-right {
+    -webkit-animation: slideInRight .3s ease-in both
+}
+
+@-webkit-keyframes slideInLeft {
+    0% {
+        -webkit-transform: translate3d(-100%, 0, 0)
+    }
+    to {
+        -webkit-transform: none
+    }
+}
+
+@-webkit-keyframes slideInRight {
+    0% {
+        -webkit-transform: translate3d(100%, 0, 0)
+    }
+    to {
+        -webkit-transform: none
+    }
+}
+
+.icon-tomess,
+.icon-totel {
+    position: fixed;
+    bottom: 118px;
+    right: 14px;
+    z-index: 89;
+    display: none;
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    text-align: center;
+    background-color: #ff7e00;
+    border-radius: 50%
+}
+
+.icon-tomess.active,
+.icon-totel.active {
+    display: block
+}
+
+.icon-tomess:before,
+.icon-totel:before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 4px auto 0;
+    background: url(//sta.guazistatic.com/c2c_wap/icon_new_v2.20257d35f41d3b314b0504ca5b878f29.png) no-repeat;
+    background-size: 200px auto
+}
+
+.icon-totel:before {
+    background-position: -141px -78px
+}
+
+.icon-tomess:before {
+    background-position: -116px -78px
+}

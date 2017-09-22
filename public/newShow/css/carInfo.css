@@ -1,0 +1,2841 @@
+body {
+    color: #666;
+    font-family: Microsoft Yahei
+}
+
+.fc-9 {
+    color: #999
+}
+
+.f18 {
+    font-size: 18px
+}
+
+.f30 {
+    font-size: 30px
+}
+
+.yahei {
+    font-family: Microsoft Yahei
+}
+
+.combox {
+    border: 1px solid #ddd
+}
+
+.navbar-fixed {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    _position: absolute;
+    _top: expression(documentElement.scrollTop);
+    box-shadow: 0 2px 2px #eee;
+    -webkit-box-shadow: 0 2px 2px #eee;
+    -moz-box-shadow: 0 2px 2px #eee
+}
+
+.laybox {
+    margin: 20px auto
+}
+
+.laybox-mg {
+    margin: 5px auto 30px
+}
+
+.det-sumleft {
+    width: 600px;
+    float: left
+}
+
+.det-picside,
+.dt-sumpic {
+    position: relative
+}
+
+.det-picside,
+.det-picside li,
+.dt-sumpic {
+    width: 600px;
+    height: 400px;
+    overflow: hidden
+}
+
+.det-picside li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    text-align: center
+}
+
+.det-picside .onsale {
+    background: #22ac38;
+    position: absolute;
+    font-family: Microsoft Yahei, SimHei;
+    color: #fff;
+    line-height: 20px;
+    font-size: 14px;
+    padding: 5px 15px;
+    z-index: 10;
+    margin-top: 5px
+}
+
+.det-picside .booked,
+.det-picside .saled,
+.det-picside .stoped {
+    background: url(//sta.guazistatic.com/c2c_web/detail_saled.1f0923a65f858a37faa14213140cfd94.png) -50px 0;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    right: 0
+}
+
+.det-picside .booked {
+    background-position: -50px -70px
+}
+
+.det-picside .stoped {
+    background-position: -50px -140px
+}
+
+.det-picside li img {
+    vertical-align: middle;
+    max-width: 600px;
+    height: auto
+}
+
+.amount {
+    position: absolute;
+    background: rgba(0, 0, 0, .5);
+    height: 30px;
+    width: 60px;
+    line-height: 30px;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    font-size: 14px;
+    z-index: 10;
+    text-align: center;
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000, endcolorstr=#7F000000)
+}
+
+:root .amount {
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#00000000, endcolorstr=#00000000)
+}
+
+.dt-icon-1,
+.dt-icon-2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 54px;
+    height: 54px;
+    background: rgba(0, 0, 0, .5);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000, endcolorstr=#7F000000);
+    z-index: 10;
+    font-size: 12px;
+    color: #fff;
+    line-height: 24px;
+    text-align: center
+}
+
+.dt-icon-2 {
+    right: 55px
+}
+
+.dt-icon-1:hover,
+.dt-icon-2:hover {
+    text-decoration: none;
+    color: #fff
+}
+
+:root .dt-icon-1,
+:root .dt-icon-2 {
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#00000000, endcolorstr=#00000000)
+}
+
+.dt-icon-1 i,
+.dt-icon-2 i {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(//sta.guazistatic.com/c2c_web/icon-col.d041d93bb928b495e38a4633d032b190.png);
+    background-repeat: no-repeat;
+    margin: 9px auto 0
+}
+
+.dt-icon-1 i {
+    background-position: 0 0
+}
+
+.dt-icon-1.active i {
+    background-position: 0 -20px
+}
+
+.dt-icon-2 i {
+    background-position: 0 -40px
+}
+
+.car-number {
+    position: absolute;
+    background: rgba(0, 0, 0, .5);
+    height: 30px;
+    padding: 0 15px;
+    line-height: 30px;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+    font-size: 14px;
+    *background: #000;
+    *filter: alpha(opacity=50);
+    z-index: 10
+}
+
+.dt-transcont {
+    width: 600px;
+    margin: 10px 0 0
+}
+
+.dt-thumb {
+    width: 546px;
+    height: 121px;
+    position: relative;
+    overflow: hidden
+}
+
+.dt-thumb,
+.dt-thumb-in {
+    float: left
+}
+
+.dt-thumb-img {
+    width: 546px;
+    float: left;
+    margin: 0 1px 0 0
+}
+
+.dt-thumb-img li {
+    float: left;
+    display: inline;
+    margin: 0 1px 1px 0;
+    position: relative
+}
+
+.dt-thumb-img li a {
+    display: block;
+    width: 90px;
+    height: 60px;
+    text-align: center;
+    overflow: hidden
+}
+
+.dt-thumb-img li.active span {
+    width: 86px;
+    height: 56px;
+    border: 2px solid #fd8000;
+    background: transparent;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block
+}
+
+.arrow-next,
+.arrow-prew {
+    background: url(//sta.guazistatic.com/c2c_web/detail_slideshow.18c641f4de83c9bb42c8fa52307ae2d7.png) no-repeat;
+    width: 50px;
+    height: 70px;
+    position: absolute;
+    top: 160px;
+    opacity: .5;
+    *filter: alpha(opacity=50);
+    z-index: 10;
+    display: none
+}
+
+.active .arrow-next,
+.active .arrow-prew {
+    display: block
+}
+
+.arrow-prew {
+    left: 0;
+    background-position: 0 -131px
+}
+
+.arrow-next:hover,
+.arrow-prew:hover {
+    opacity: .8;
+    *filter: alpha(opacity=80)
+}
+
+.arrow-next {
+    right: 0;
+    background-position: -59px -131px
+}
+
+.tm-arrow-next,
+.tm-arrow-prew {
+    background: url(//sta.guazistatic.com/c2c_web/detail_slideshow.18c641f4de83c9bb42c8fa52307ae2d7.png) no-repeat;
+    width: 26px;
+    height: 121px;
+    display: block
+}
+
+.tm-arrow-prew {
+    margin-right: 1px
+}
+
+.tm-arrow-prew:hover {
+    background-position: -72px 0
+}
+
+.tm-arrow-next {
+    background-position: -36px 0
+}
+
+.tm-arrow-next:hover {
+    background-position: -108px 0
+}
+
+.det-sumright {
+    width: 540px;
+    float: right
+}
+
+.dt-titbox {
+    border-bottom: 1px solid #ddd;
+    _overflow: hidden;
+    _width: 540px
+}
+
+.dt-titletype {
+    font-size: 24px;
+    color: #333;
+    font-weight: 700;
+    line-height: 34px;
+    margin-bottom: 10px
+}
+
+.title-info-r {
+    float: right;
+    height: 26px
+}
+
+.title-info-r li {
+    float: left;
+    display: inline;
+    margin-left: 10px;
+    padding: 1px
+}
+
+.title-info-r li a {
+    color: #c6c6c6;
+    display: inline-block;
+    height: 14px;
+    line-height: 14px
+}
+
+.title-info-r .active {
+    background: #f5f5f4;
+    border: 1px solid #eae9e9;
+    border-bottom: none;
+    position: relative;
+    padding: 0;
+    z-index: 15
+}
+
+.ico-collect,
+.ico-share {
+    background-image: url(//sta.guazistatic.com/c2c_web/detail_bg_img_detail.3ab41e0be38682dc1c53746086123efe.png);
+    background-repeat: no-repeat;
+    float: left;
+    height: 14px;
+    margin: 2px 4px 0 0;
+    margin: 0 3px 0 0;
+    width: 14px
+}
+
+.ico-collect {
+    background-position: -26px -144px
+}
+
+.ico-share {
+    background-position: -83px -144px
+}
+
+.bg-span {
+    display: inline-block;
+    padding: 4px 6px 7px 5px
+}
+
+.bg-span a {
+    white-space: nowrap
+}
+
+.bg-span a:hover {
+    color: #333;
+    opacity: .8;
+    filter: alpha(opacity=80)
+}
+
+.sub-menu {
+    background: #f5f5f4;
+    border: 1px solid #eae9e9;
+    display: none;
+    position: absolute;
+    padding-bottom: 7px;
+    left: -1px;
+    top: 25px;
+    width: 77px;
+    _width: 80px
+}
+
+.share-menu {
+    padding: 0 6px;
+    width: 80px;
+    _width: 83px
+}
+
+.sendmsg,
+.sendmsg .sub-menu {
+    width: 92px
+}
+
+.collect .sub-menu {
+    width: 140px
+}
+
+.title-info-r .sub-menu a {
+    color: #8e8e8e;
+    display: inline-block;
+    padding: 5px 0 5px 24px
+}
+
+.title-info-r .share-menu a {
+    padding: 0 0 5px 24px!important
+}
+
+.title-info-r .sub-menu a:hover {
+    color: #ce3701
+}
+
+.active .bg-span {
+    background: #f5f5f4;
+    position: relative;
+    z-index: 1;
+    top: 1px
+}
+
+.active .sub-menu {
+    display: block
+}
+
+.title-info-l span {
+    margin-right: 10px
+}
+
+.basic-box {
+    padding: 10px 0 0;
+    margin-bottom: 20px;
+    background: #fafafa
+}
+
+.pricestype {
+    font-weight: 700;
+    font-size: 30px;
+    color: #ff7e00
+}
+
+.numtype {
+    vertical-align: -2px;
+    *vertical-align: 0;
+    margin-right: 3px;
+    font-size: 36px;
+    font-family: Arial
+}
+
+.pricebox {
+    margin: 0;
+    line-height: 30px;
+    padding-bottom: 10px;
+    height: 38px
+}
+
+.ico-txt {
+    display: inline-block;
+    width: 60px;
+    height: 18px;
+    color: #666;
+    line-height: 18px;
+    text-align: center;
+    margin: 0 10px;
+    float: left
+}
+
+.ico-mt {
+    margin-top: 7px
+}
+
+.assort li {
+    float: left;
+    width: 100px;
+    border-right: 1px solid #eee;
+    text-align: center;
+    color: #999;
+    line-height: 22px;
+    width: 24%;
+}
+
+.assort li.one {
+    border-left: 1px solid #eee;
+    /*width: 133px*/
+}
+
+.assort li b {
+    display: block;
+    color: #666;
+    font-size: 16px;
+    font-family: Microsoft Yahei
+}
+
+.gift-p {
+    height: 20px;
+    line-height: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    padding-left: 27px;
+    background: url(//sta.guazistatic.com/c2c_web/icon-gift.40a66804c7ddb2e5330d27e6e82b95a8.png) no-repeat 0 0
+}
+
+.gift-p,
+.gift-p a {
+    color: #333
+}
+
+.gift-p a:hover {
+    color: #333;
+    text-decoration: underline
+}
+
+.stipul-p {
+    margin: 20px 0
+}
+
+.stipul-btn {
+    width: 115px;
+    height: 48px;
+    line-height: 48px;
+    color: #fff;
+    font-family: Microsoft Yahei;
+    background-color: #fd8000;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 5px
+}
+
+.stipul-btn:hover {
+    background-color: #fd6000;
+    color: #fff;
+    text-decoration: none
+}
+
+.stipul-btn-gray,
+.stipul-btn-gray:hover {
+    background: #ccc;
+    cursor: default
+}
+
+.teltype {
+    font-size: 24px;
+    color: #666
+}
+
+.indem-box {
+    height: 158px
+}
+
+.f-type01 {
+    color: #22ac38;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 10px 0 0
+}
+
+.f-type02 {
+    color: #333;
+    font-weight: 700
+}
+
+.indem-tt {
+    height: 36px;
+    background-color: #f9f9f9;
+    line-height: 36px;
+    padding: 0 20px
+}
+
+.indem-ul {
+    overflow: hidden;
+    zoom: 1;
+    margin: 20px 0 0
+}
+
+.indem-ul li {
+    /*width: 178px;*/
+    text-align: left;
+	line-height: 20px;
+	float: left;
+	margin-left: 5px;
+}
+
+.indem01,
+.indem02,
+.indem03 {
+    background: url(//sta.guazistatic.com/c2c_web/detail_detail-hc-new.ff18fa60c3a849e14b40beae055c3797.png) no-repeat;
+    width: 36px;
+    height: 36px;
+    display: block;
+    margin: 0 auto;
+    *margin: 0
+}
+
+.indem02 {
+    background-position: 0 -45px
+}
+
+.indem03 {
+    background-position: 0 -89px
+}
+
+.detect-bd {
+    background-color: #f9f9f9;
+    font-size: 14px
+}
+
+.detect-right {
+    width: 215px;
+    text-align: center;
+    line-height: 24px;
+    padding-bottom: 10px
+}
+
+.divis-pic {
+    width: 100px;
+    height: 150px;
+    display: block;
+    margin: 25px auto 15px;
+    overflow: hidden
+}
+
+.divis-pic img {
+    vertical-align: middle
+}
+
+.detect-left {
+    width: 970px;
+    border-right: 1px solid #ddd
+}
+
+.det-go {
+    color: #666
+}
+
+.detect-info {
+    padding: 0 20px;
+    line-height: 24px;
+    font-size: 12px;
+    position: relative
+}
+
+.detect-txt {
+    padding: 10px 0;
+    height: 44px;
+    overflow: hidden
+}
+
+.detect-tt {
+    padding: 0 20px;
+    line-height: 45px;
+    background: #f5f5f5
+}
+
+.detect-xm {
+    border-top: 1px solid #e4e2e3;
+    padding: 15px 0
+}
+
+.detect-xm-c {
+    margin-right: -60px
+}
+
+.detect-xm dl {
+    width: 230px;
+    float: left;
+    line-height: 28px
+}
+
+.detect-xm dt {
+    font-size: 14px;
+    color: #333;
+    _padding-bottom: 7px
+}
+
+.detect-xm .d-w2 {
+    position: relative
+}
+
+.detect-xm .d-pop {
+    position: absolute;
+    border: 1px solid #fd8000;
+    background: #fff;
+    z-index: 9;
+    left: -46px;
+    bottom: 30px;
+    _bottom: 40px;
+    line-height: 20px;
+    padding: 10px 20px;
+    white-space: nowrap
+}
+
+.detect-xm .d-pop .arrow {
+    background: url(//sta.guazistatic.com/c2c_web/detail_detail-hc-new.ff18fa60c3a849e14b40beae055c3797.png) 0 -258px;
+    width: 11px;
+    height: 11px;
+    display: inline-block;
+    overflow: hidden;
+    bottom: -11px;
+    left: 69px;
+    position: absolute;
+    _width: 120px
+}
+
+.detect-xm .d-pop ul {
+    margin-bottom: 5px
+}
+
+.detect-xm .d-pop li {
+    background: url(//sta.guazistatic.com/c2c_web/detail_detail-hc-new.ff18fa60c3a849e14b40beae055c3797.png) -195px -232px no-repeat;
+    padding-left: 10px
+}
+
+.detect-xm .d-pop .tit {
+    margin-bottom: 5px
+}
+
+.detect-xm .d-pop a {
+    color: #666
+}
+
+.detect-xm .d-pop a:hover {
+    color: #e30
+}
+
+.blue-rd,
+.gray-rd,
+.gray-rd2,
+.n-rd,
+.red-rd,
+.via-icon,
+.via-icon02,
+.via-icon03,
+.via-icon04 {
+    background: url(//sta.guazistatic.com/c2c_web/detail_detail-hc-new.ff18fa60c3a849e14b40beae055c3797.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.via-icon,
+.via-icon02 {
+    width: 20px;
+    height: 20px;
+    *vertical-align: 0;
+    *margin: 6px 0 0
+}
+
+.via-icon {
+    background-position: -30px -132px
+}
+
+.via-icon02 {
+    background-position: 0 -132px
+}
+
+.blue-rd,
+.gray-rd,
+.gray-rd2,
+.n-rd,
+.red-rd,
+.via-icon03,
+.via-icon04 {
+    width: 16px;
+    height: 16px
+}
+
+.via-icon03 {
+    background-position: -60px -132px;
+    _vertical-align: top
+}
+
+.via-icon04 {
+    background-position: -86px -132px;
+    _vertical-align: top
+}
+
+.apt-btn {
+    display: block;
+    width: 124px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    background: #fd8000;
+    margin-right: 16px
+}
+
+.apt-btn:hover {
+    background: #fd6000;
+    color: #fff;
+    text-decoration: none
+}
+
+.bargain-btn-2 {
+    float: right;
+    width: 124px;
+    height: 46px;
+    line-height: 46px;
+    color: #fff;
+    font-family: Microsoft Yahei;
+    background-color: #ffae13;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 10px
+}
+
+.bargain-btn-2:hover {
+    color: #fff;
+    background-color: #cc8b0f;
+    text-decoration: none
+}
+
+.check-tel {
+    margin: 10px 20px 0 0
+}
+
+.check-tel .teltype {
+    font-size: 18px
+}
+
+.cont-tips-outer {
+    width: 1190px;
+    margin: 0 auto;
+    height: 49px
+}
+
+.cont-tips {
+    border: 1px solid #ddd;
+    height: 46px;
+    width: 1188px;
+    background-color: #fff
+}
+
+.cont-tips-qh li {
+    float: left;
+    display: inline;
+    border-right: 1px solid #ddd;
+    font-family: Microsoft Yahei;
+    font-size: 16px
+}
+
+.cont-tips-qh li a {
+    padding: 0 30px;
+    display: inline-block;
+    height: 46px;
+    line-height: 46px;
+    color: #666
+}
+
+.cont-tips-qh li a.active,
+.cont-tips-qh li a:hover {
+    background-color: #22ac38;
+    text-decoration: none;
+    color: #fff
+}
+
+.modbox {
+    margin: 34px 0 0
+}
+
+.modbox1 {
+    margin: 0;
+    padding: 40px 50px
+}
+
+.publicTit {
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0 0 10px
+}
+
+.deck {
+    height: 16px;
+    width: 4px;
+    font-size: 0;
+    background-color: #22ac38;
+    margin-right: 8px;
+    vertical-align: -2px;
+    display: inline-block
+}
+
+.owner-infor li {
+    float: left;
+    margin: 0 60px 10px 0;
+    *line-height: 24px;
+    font-size: 14px;
+    background-image: url(//sta.guazistatic.com/c2c_web/detail_icon-car-info.34500c6025cc367cc7ca70c956167ac8.png);
+    background-repeat: no-repeat;
+    color: #666;
+    padding-left: 20px
+}
+
+.owner-infor li label {
+    color: #999
+}
+
+.owner-infor li.owner {
+    background-position: left 5px
+}
+
+.owner-infor li.nianjian {
+    background-position: left -20px
+}
+
+.owner-infor li.baoxian {
+    background-position: left -45px
+}
+
+.owner-infor li.guohu {
+    background-position: left -70px
+}
+
+.jg-line {
+    color: #eee;
+    margin: 0 10px
+}
+
+.f-type03 {
+    line-height: 24px;
+    word-wrap: break-word;
+    font-size: 14px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px 20px;
+    margin-top: 10px;
+    *margin-top: 15px;
+    position: relative;
+    *zoom: 1;
+    z-index: 100
+}
+
+.f-type03 em {
+    display: block;
+    width: 10px;
+    height: 11px;
+    position: absolute;
+    top: -11px;
+    left: 27px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_icon-basic-info.9886d75dbbada40916a6e0aad79ac3fa.png) no-repeat
+}
+
+.dt-pictype {
+    margin: 14px -10px 20px 0
+}
+
+.dt-pictype img {
+    max-width: 590px;
+    max-height: 400px;
+    *width: 580px;
+    *height: 400px;
+    margin: 0 10px 10px 0;
+    vertical-align: top
+}
+
+.con-param-s {
+    margin-right: -16px;
+    margin-bottom: -30px
+}
+
+.c-param-in {
+    width: 386px;
+    float: left;
+    padding: 0 16px 30px 0
+}
+
+.param-table td,
+.param-table th {
+    border: 1px solid #ddd;
+    height: 32px;
+    line-height: 16px
+}
+
+.param-table th {
+    background-color: #f5f5f5;
+    font-size: 14px
+}
+
+.param-table td.td1 {
+    padding: 0 0 0 25px;
+    width: 42%
+}
+
+.param-table td.td2 {
+    padding: 0 0 0 25px;
+    width: 58%
+}
+
+.param-table td.td2 span {
+    color: #22ac38
+}
+
+.detecttitle {
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+    padding: 0 0 4px
+}
+
+.detecttitle h3 {
+    color: #333;
+    line-height: 40px;
+    font-weight: 700;
+    margin-bottom: 10px
+}
+
+.detecttitle span {
+    margin-right: 20px;
+    line-height: 24px
+}
+
+.linetype {
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border-bottom: 1px solid #ddd;
+    margin: 1px 0 30px
+}
+
+.headline-bd {
+    background-color: #f9f9f9;
+    margin-bottom: 20px
+}
+
+.headline,
+.headline-bd {
+    height: 46px;
+    line-height: 46px
+}
+
+.headline {
+    background: url(//sta.guazistatic.com/c2c_web/detail_detail-hc-new.ff18fa60c3a849e14b40beae055c3797.png) no-repeat right -172px;
+    color: #fff;
+    font-size: 16px;
+    float: left;
+    padding: 0 70px 0 20px;
+    margin-right: 10px
+}
+
+.detectBox {
+    margin-bottom: 15px
+}
+
+.bitpic {
+    padding-top: 35px;
+    text-align: center;
+    width: 532px;
+    height: 311px
+}
+
+.bitbox {
+    padding: 0 0 15px
+}
+
+.tableType td,
+.tableType th {
+    border: 1px solid #ddd;
+    line-height: 42px;
+    text-align: center
+}
+
+.tableType th {
+    background-color: #f9f9f9;
+    font-size: 14px
+}
+
+.f-type04 {
+    line-height: 24px;
+    margin: 0 0 5px
+}
+
+.pilotstep li {
+    width: 193px;
+    float: left;
+    display: inline;
+    margin-left: 30px
+}
+
+.pilotstep li.one {
+    margin-left: 0
+}
+
+.pilotstep li h3 {
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+    padding: 10px 0
+}
+
+.pilotstep li .stepfont {
+    text-align: center;
+    margin: 15px 0 0
+}
+
+.pilotstep li .stepfont p {
+    margin: 6px 0
+}
+
+.pilotstep li .stepfont span {
+    width: 60px;
+    display: inline-block;
+    text-align: left
+}
+
+.guessbox {
+    margin: 20px auto
+}
+
+a.addcar,
+a.addcar:hover {
+    background-image: url(//sta.guazistatic.com/c2c_web/icon-add.c3acca9604016a76253f2a89b7581ef2.png);
+    background-repeat: no-repeat;
+    background-position: left 5px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 100;
+    float: right;
+    padding: 0 0 0 20px;
+    text-decoration: none;
+    cursor: pointer
+}
+
+.outward {
+    width: 530px;
+    height: 620px
+}
+
+.appearance-img {
+    margin: 0
+}
+
+.appearance-con {
+    width: 487px;
+    height: 346px;
+    position: relative;
+    margin: 0 auto
+}
+
+.appear-point {
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #fd8000;
+    width: 17px;
+    height: 17px;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    line-height: 17px;
+    display: inline-block;
+    position: absolute;
+    margin-left: -5px;
+    margin-top: -8px;
+    cursor: pointer
+}
+
+.appear-mat {
+    position: absolute;
+    z-index: 20
+}
+
+.appear-dire,
+.appear-dire01 {
+    width: 81px;
+    height: 91px;
+    position: absolute;
+    top: 65px
+}
+
+.appear-dire {
+    background: url(//sta.guazistatic.com/c2c_web/detail_appearance-dire.6a5195f201b7b5b2844bdba5c14d2716.png) no-repeat;
+    _background: transparent;
+    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='detail_appearance-dire.png');
+    left: -80px
+}
+
+.appear-ct {
+    border: 1px solid #ddd;
+    width: 360px;
+    height: 275px;
+    padding: 10px;
+    background-color: #fff;
+    font-size: 14px
+}
+
+.appear-ct .appear-point {
+    position: relative;
+    margin-right: 10px
+}
+
+.appear-ct .appear-pic {
+    width: 360px;
+    height: 240px;
+    text-align: center;
+    margin-top: 10px
+}
+
+.exterior-img {
+    margin: 190px 0 0 56px;
+    position: relative
+}
+
+.exterior-img-2 {
+    margin: 90px 0 0 56px
+}
+
+.appear-dire01 {
+    background: url(//sta.guazistatic.com/c2c_web/detail_appearance-dire01.bc142b74b9877cee9924280334bda2ab.png) no-repeat;
+    _background: transparent;
+    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='detail_appearance-dire01.png');
+    right: -80px
+}
+
+.caption-bd {
+    margin: 40px 0 100px 20px
+}
+
+.caption-bd span {
+    margin-right: 15px
+}
+
+.blue-rd,
+.gray-rd,
+.gray-rd2,
+.n-rd,
+.red-rd {
+    margin-right: 5px;
+    *vertical-align: 0
+}
+
+.gray-rd {
+    background-position: -122px -132px
+}
+
+.gray-rd2 {
+    background-position: -105px -132px
+}
+
+.blue-rd {
+    background-position: -148px -132px
+}
+
+.red-rd {
+    background-position: -174px -132px
+}
+
+.n-rd {
+    background-position: 0 -223px
+}
+
+.areabox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0
+}
+
+.areabox li {
+    width: 487px;
+    height: 346px;
+    position: absolute
+}
+
+.a_pillar_l2-3,
+.a_pillar_r2-3,
+.b_pillar_l2-3,
+.b_pillar_r2-3,
+.c_pillar_l2-3,
+.c_pillar_r2-3,
+.door_fl-3,
+.door_fr-3,
+.door_rl-3,
+.door_rr-3,
+.fender_fl-3,
+.fender_fr-3,
+.fender_rl-3,
+.fender_rr-3,
+.foot_save-3,
+.head_save-3,
+.hood-3,
+.roof-3,
+.trunk_lid-3 {
+    background: url(//sta.guazistatic.com/c2c_web/detail_red-carblock.b53c8413e835941c3f88365ce7309558.png) no-repeat;
+    _background: url(//sta.guazistatic.com/c2c_web/detail_red-carblock-8.016888923e91537f727f75da490fe33e.png) no-repeat
+}
+
+.a_pillar_l2-2,
+.a_pillar_r2-2,
+.b_pillar_l2-2,
+.b_pillar_r2-2,
+.c_pillar_l2-2,
+.c_pillar_r2-2,
+.door_fl-2,
+.door_fr-2,
+.door_rl-2,
+.door_rr-2,
+.fender_fl-2,
+.fender_fr-2,
+.fender_rl-2,
+.fender_rr-2,
+.foot_save-2,
+.head_save-2,
+.hood-2,
+.roof-2,
+.trunk_lid-2 {
+    background: url(//sta.guazistatic.com/c2c_web/detail_blue-carblock.fa2ef975c04d1e3fa3bd4e934af1e3b4.png) no-repeat;
+    _background: url(//sta.guazistatic.com/c2c_web/detail_blue-carblock-8.6a2faea2009b8f43aee3a23123847015.png) no-repeat
+}
+
+.a_pillar_l2-1,
+.a_pillar_r2-1,
+.b_pillar_l2-1,
+.b_pillar_r2-1,
+.c_pillar_l2-1,
+.c_pillar_r2-1,
+.door_fl-1,
+.door_fr-1,
+.door_rl-1,
+.door_rr-1,
+.fender_fl-1,
+.fender_fr-1,
+.fender_rl-1,
+.fender_rr-1,
+.foot_save-1,
+.head_save-1,
+.hood-1,
+.roof-1,
+.trunk_lid-1 {
+    background: url(//sta.guazistatic.com/c2c_web/detail_gray-carblock.83a1bb7250f9bd5a45730ae9ce26b9c9.png) no-repeat;
+    _background: url(//sta.guazistatic.com/c2c_web/detail_gray-carblock-8.72169a089cb2e3f3db1a5df0bfc67ccf.png) no-repeat
+}
+
+.hood-1,
+.hood-2,
+.hood-3 {
+    background-position: 0 0
+}
+
+.fender_fl-1,
+.fender_fl-2,
+.fender_fl-3 {
+    background-position: 0 -692px
+}
+
+.fender_fr-1,
+.fender_fr-2,
+.fender_fr-3 {
+    background-position: 0 -346px
+}
+
+.roof-1,
+.roof-2,
+.roof-3 {
+    background-position: 0 -1038px
+}
+
+.door_fl-1,
+.door_fl-2,
+.door_fl-3 {
+    background-position: 0 -1384px
+}
+
+.door_fr-1,
+.door_fr-2,
+.door_fr-3 {
+    background-position: 0 -1730px
+}
+
+.door_rl-1,
+.door_rl-2,
+.door_rl-3 {
+    background-position: 0 -2076px
+}
+
+.door_rr-1,
+.door_rr-2,
+.door_rr-3 {
+    background-position: 0 -2422px
+}
+
+.trunk_lid-1,
+.trunk_lid-2,
+.trunk_lid-3 {
+    background-position: 0 -2768px
+}
+
+.fender_rl-1,
+.fender_rl-2,
+.fender_rl-3 {
+    background-position: 0 -3114px
+}
+
+.fender_rr-1,
+.fender_rr-2,
+.fender_rr-3 {
+    background-position: 0 -3460px
+}
+
+.head_save-1,
+.head_save-2,
+.head_save-3 {
+    background-position: 0 -3806px
+}
+
+.foot_save-1,
+.foot_save-2,
+.foot_save-3 {
+    background-position: 0 -4152px
+}
+
+.a_pillar_l2-1,
+.a_pillar_l2-2,
+.a_pillar_l2-3 {
+    background-position: 0 -4498px
+}
+
+.a_pillar_r2-1,
+.a_pillar_r2-2,
+.a_pillar_r2-3 {
+    background-position: 0 -4844px
+}
+
+.b_pillar_l2-1,
+.b_pillar_l2-2,
+.b_pillar_l2-3 {
+    background-position: 0 -5190px
+}
+
+.b_pillar_r2-1,
+.b_pillar_r2-2,
+.b_pillar_r2-3 {
+    background-position: 0 -5536px
+}
+
+.c_pillar_l2-1,
+.c_pillar_l2-2,
+.c_pillar_l2-3 {
+    background-position: 0 -5882px
+}
+
+.c_pillar_r2-1,
+.c_pillar_r2-2,
+.c_pillar_r2-3 {
+    background-position: 0 -6228px
+}
+
+.rec-car {
+    display: block;
+    width: 160px;
+    height: 210px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_rec-car.d2ffa6db1021323fe0497d532366518b.png) no-repeat;
+    position: fixed;
+    _position: absolute;
+    left: 0;
+    bottom: 0;
+    _top: expression(documentElement.scrollTop + document.documentElement.clientHeight - 210+ "px")
+}
+
+.rec-car a.close {
+    background: url(//sta.guazistatic.com/c2c_web/detail_close.498d391cdf1a4adae317e20889447228.png) no-repeat;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+    overflow: hidden
+}
+
+.rec-car a.close:hover {
+    background-position: 0 -14px;
+    cursor: pointer;
+    text-decoration: none
+}
+
+.rec-car .need-link {
+    display: block
+}
+
+.rec-car .need-link:hover {
+    text-decoration: none;
+    color: #62af00
+}
+
+.user-find {
+    padding: 40px 15px 45px;
+    color: #62af00;
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    line-height: 30px;
+    text-align: center
+}
+
+.user-find span {
+    font-size: 20px;
+    font-weight: 700
+}
+
+.help-whenever {
+    text-align: center;
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    color: #fff
+}
+
+.haoche-seal {
+    width: 100px;
+    height: 100px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_haoche-seal.75833a98cc49dff51ec1cd7fab87eb3d.png) no-repeat;
+    _background: url(//sta.guazistatic.com/c2c_web/detail_haoche-seal-8.ed8c63a4f8029286dc7855b54838128d.png) no-repeat;
+    position: absolute;
+    top: 35px;
+    right: 10px
+}
+
+.detect-xm dl dd,
+.detect-xm dl dt {
+    _height: 28px
+}
+
+.how-deal {
+    padding: 0 39px 35px;
+    border: 1px solid #ddd
+}
+
+.deal-tit {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 50px;
+    height: 50px;
+    padding-top: 30px
+}
+
+.deal-tit,
+.deal-txt {
+    color: #666;
+    text-align: center
+}
+
+.deal-txt {
+    font-size: 20px;
+    line-height: 40px;
+    height: 40px
+}
+
+.icon-deal {
+    width: 974px;
+    height: 102px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_icon-how-deal-new.aa4e160a863822bf9cf0a87ed440d87e.png) no-repeat;
+    margin: 30px auto 17px
+}
+
+.deal-detail {
+    height: 50px;
+    padding-bottom: 40px
+}
+
+.deal-detail li {
+    height: 50px;
+    width: 285px;
+    float: left
+}
+
+.deal-detail li.wd-250 {
+    width: 250px
+}
+
+.deal-detail li.li-1 div {
+    margin-left: 10px;
+    _margin-left: 5px
+}
+
+.deal-detail li div {
+    width: 40px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 50px;
+    color: #999;
+    font-family: simhei
+}
+
+.deal-detail li p {
+    font-size: 14px;
+    color: #666;
+    line-height: 24px
+}
+
+.deal-detail li p span {
+    color: #f60
+}
+
+.dotted-line {
+    height: 2px;
+    font-size: 0;
+    line-height: 0;
+    background: url(//sta.guazistatic.com/c2c_web/detail_bg-line.65efc6e67742f2ceadb350a98070ec3f.png) repeat-x
+}
+
+.solve-doubts {
+    overflow: hidden;
+    zoom: 1
+}
+
+.solve-doubts li {
+    width: 370px;
+    float: left;
+    padding-top: 147px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    line-height: 24px
+}
+
+.solve-doubts li span {
+    font-size: 16px;
+    color: #666;
+    line-height: 26px
+}
+
+.solve-doubts li.solve-1 {
+    background: url(//sta.guazistatic.com/c2c_web/detail_solve-1-new.adceec60091d2f3890f2c5862ac2e8e9.png) no-repeat center 30px
+}
+
+.solve-doubts li.solve-2 {
+    background: url(//sta.guazistatic.com/c2c_web/detail_solve-2-new.105442ec5a92a32080b4917d7205c890.png) no-repeat center 30px
+}
+
+.solve-doubts li.solve-3 {
+    background: url(//sta.guazistatic.com/c2c_web/detail_solve-3-new.38dc032074483fd708d39bae791ac0b2.png) no-repeat center 30px
+}
+
+.gonggao {
+    background: #fefad5;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-family: Microsoft Yahei;
+    font-size: 18px
+}
+
+.gonggao a {
+    width: 21px;
+    margin-top: 10px;
+    height: 21px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_close-2.ca4f2db647061c6932f8e74604ffbf0f.png) no-repeat 0 0
+}
+
+.gonggao a:hover {
+    background-position: 0 -21px
+}
+
+.c-mask {
+    background: rgba(0, 0, 0, .1);
+    bottom: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    position: absolute
+}
+
+.list-bigimg .onsale {
+    background: #22ac38;
+    position: absolute;
+    font-family: Microsoft Yahei, SimHei;
+    color: #fff;
+    line-height: 16px;
+    padding: 5px 15px;
+    z-index: 2;
+    top: 10px
+}
+
+.list-bigimg .booked,
+.list-bigimg .saled {
+    position: absolute;
+    z-index: 3;
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+    background-color: hsla(0, 0%, 100%, .8);
+    font-size: 24px;
+    color: #999;
+    text-align: center;
+    line-height: 90px;
+    left: 100px;
+    top: 51px
+}
+
+.list-infoBox {
+    background: #fff;
+    padding-bottom: 15px;
+    position: relative;
+    z-index: 1
+}
+
+.list-infoBox p {
+    padding: 0 10px
+}
+
+.list-infoBox:hover {
+    box-shadow: 0 3px 3px #b2b2b2
+}
+
+.list-infoBox:hover .hover-bg {
+    width: 290px;
+    height: 192px;
+    background: #000;
+    filter: alpha(opacity=20);
+    opacity: .2;
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    cursor: pointer
+}
+
+.info-title {
+    color: #333;
+    font-size: 14px
+}
+
+.infoBox {
+    font-size: 16px;
+    line-height: 1em;
+    margin: 14px 0 9px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    width: 270px;
+    white-space: nowrap
+}
+
+.imgtype img {
+    vertical-align: top
+}
+
+.footer {
+    margin-top: 30px
+}
+
+.car-fuwu {
+    height: 20px;
+    padding-bottom: 8px;
+    line-height: 20px
+}
+
+.car-fuwu span {
+    color: #666;
+    font-size: 14px
+}
+
+.car-fuwu span em {
+    color: #f60
+}
+
+.car-fuwu a {
+    display: inline-block;
+    width: 56px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    color: #f60;
+    border: 1px solid #f60;
+    border-radius: 2px;
+    margin-left: 10px
+}
+
+.car-fuwu a:hover {
+    text-decoration: none;
+    color: #f80;
+    border-color: #f80
+}
+
+.car-loan-pop {
+    width: 620px;
+    padding: 30px 153px 0 20px;
+    background: #fff url(//sta.guazistatic.com/c2c_web/detail_loan-step.e9c7591163f3e5efaa094bcd95b651d3.png) no-repeat 100% 0;
+    font-family: simsun
+}
+
+.fenqi {
+    width: 330px;
+    border-right: 1px solid #f5f5f5
+}
+
+.fenqi li {
+    height: 30px;
+    line-height: 30px;
+    font-family: simsun;
+    font-size: 14px;
+    padding-bottom: 20px
+}
+
+.loan-tit {
+    width: 50px;
+    height: 30px;
+    color: #707070
+}
+
+.car-price {
+    color: #999
+}
+
+.car-price span {
+    color: #f60;
+    font-size: 22px;
+    font-family: arial;
+    margin-right: 10px;
+    vertical-align: -2px
+}
+
+.shoufu {
+    width: 120px;
+    height: 30px
+}
+
+.shoufu-con {
+    width: 118px;
+    height: 28px;
+    border: 1px solid #cbc9ca;
+    background: url(//sta.guazistatic.com/c2c_web/detail_icon-car-loan.f2ecda8a00e8e5caf0079f4f54996ad7.png) no-repeat 100% 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 90
+}
+
+.shoufu-con p {
+    line-height: 28px;
+    padding-left: 10px;
+    color: #4b4b4b
+}
+
+.shoufu-con ul {
+    position: absolute;
+    top: 28px;
+    left: -1px;
+    z-index: 100;
+    border: 1px solid #cbc9ca;
+    width: 118px;
+    height: 240px;
+    background: #fff
+}
+
+.shoufu-con ul li {
+    padding: 0
+}
+
+.shoufu-con a {
+    color: #707070;
+    display: block;
+    padding: 0 10px;
+    font-size: 14px;
+    height: 30px;
+    width: 98px
+}
+
+.shoufu-con a:hover {
+    color: #4b4b4b;
+    background: #f5f5f5;
+    text-decoration: none
+}
+
+.loan-num {
+    height: 30px;
+    line-height: 30px;
+    color: #4b4b4b
+}
+
+.loan-num span {
+    color: #f60;
+    font-size: 16px;
+    font-family: arial;
+    margin: 0 5px
+}
+
+.loan-rec {
+    width: 220px;
+    margin-left: 360px
+}
+
+.logo-beiyin {
+    width: 220px;
+    height: 28px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_logo-beiyin.5f95d1d0094865c649523df9279a5231.png) no-repeat 100% 0;
+    margin-bottom: 10px
+}
+
+.beiyin-apl {
+    height: 24px;
+    line-height: 24px;
+    color: #4b4b4b;
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    margin-bottom: 15px
+}
+
+.beiyin-apl i {
+    display: block;
+    width: 3px;
+    height: 15px;
+    float: left;
+    line-height: 0;
+    font-size: 0;
+    background: #62af00;
+    margin: 5px 5px 0 0
+}
+
+.beiyin-apl span {
+    color: #f60
+}
+
+.beiyin-rec {
+    width: 220px;
+    height: 36px;
+    overflow: hidden;
+    font-size: 12px;
+    color: #4b4b4b;
+    line-height: 18px
+}
+
+.beiyin-rec dt {
+    font-weight: 700;
+    float: left
+}
+
+.beiyin-rec dd {
+    margin-left: 63px
+}
+
+.txt-close-open {
+    height: 20px;
+    line-height: 20px;
+    text-align: right
+}
+
+.txt-close-open span {
+    cursor: pointer
+}
+
+.txt-close-open i {
+    display: inline-block;
+    width: 7px;
+    height: 8px;
+    font-size: 0;
+    line-height: 0;
+    background: url(//sta.guazistatic.com/c2c_web/detail_icon-car-loan.f2ecda8a00e8e5caf0079f4f54996ad7.png) no-repeat 0 -40px;
+    vertical-align: middle;
+    margin-left: 5px
+}
+
+.dig-chart {
+    padding-top: 10px
+}
+
+.shoufu-chart {
+    height: 52px
+}
+
+.chart-tit {
+    line-height: 52px;
+    color: #707070;
+    font-size: 14px;
+    width: 50px
+}
+
+.shoufu-num {
+    height: 32px;
+    padding-top: 22px;
+    width: 460px;
+    margin-left: 30px
+}
+
+.chart-bg {
+    background: #f5f5f5;
+    width: 100%;
+    transform: skew(-30deg, 0);
+    -ms-transform: skew(-30deg, 0);
+    -moz-transform: skew(-30deg, 0);
+    -webkit-transform: skew(-30deg, 0);
+    -o-transform: skew(-30deg, 0)
+}
+
+.chart-bg,
+.chart-precent {
+    height: 10px;
+    line-height: 0;
+    font-size: 0
+}
+
+.chart-precent {
+    background: #346ca0;
+    width: 50%;
+    position: relative;
+    z-index: 10
+}
+
+.precent-num {
+    height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    position: absolute;
+    top: -22px;
+    right: -15px;
+    z-index: 20;
+    font-size: 12px;
+    color: #999;
+    transform: skew(30deg, 0);
+    -ms-transform: skew(30deg, 0);
+    -moz-transform: skew(30deg, 0);
+    -webkit-transform: skew(30deg, 0);
+    -o-transform: skew(30deg, 0)
+}
+
+.precent-num span {
+    font-size: 18px;
+    margin-right: 5px;
+    font-family: arial;
+    color: #f60;
+    vertical-align: middle
+}
+
+.two-num {
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    color: #999;
+    font-family: arial
+}
+
+.two-num em {
+    font-size: 14px;
+    margin-right: 5px;
+    vertical-align: middle
+}
+
+.fenqi-chart {
+    padding-top: 20px
+}
+
+.txt-fenqi {
+    width: 50px;
+    color: #707070;
+    font-size: 14px;
+    line-height: 50px
+}
+
+.chart-list {
+    width: 490px;
+    margin-left: 50px
+}
+
+.qishu {
+    float: left;
+    width: 45px;
+    height: 40px;
+    overflow: hidden;
+    line-height: 50px;
+    font-size: 14px;
+    color: #4b4b4b;
+    text-align: right;
+    padding-right: 10px
+}
+
+.qishu span {
+    font-size: 18px;
+    color: #f60;
+    font-family: arial;
+    vertical-align: -2px;
+    margin-right: 5px
+}
+
+.chart-list .shoufu-num {
+    height: 18px;
+    width: 435px;
+    margin-left: 0
+}
+
+.chart-list li {
+    _clear: both;
+    _zoom: 1;
+    *vertical-align: top
+}
+
+.chart-list .chart-precent {
+    background: #34a067
+}
+
+.contact-ganji {
+    padding: 10px 0 20px 55px
+}
+
+.contact-ganji p.p1 {
+    font-size: 14px;
+    color: #707070;
+    padding-bottom: 15px;
+    text-indent: 130px
+}
+
+.input-phone {
+    width: 295px;
+    height: 30px;
+    position: relative
+}
+
+.input-box input {
+    width: 98px;
+    height: 18px;
+    padding: 5px 10px;
+    color: #4b4b4b;
+    font-family: arial;
+    font-size: 14px;
+    margin-right: 10px
+}
+
+.get-code,
+.input-box input {
+    float: left;
+    border: 1px solid #cbc9c9
+}
+
+.get-code {
+    display: inline-block;
+    width: 113px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    background: #f0f0f0;
+    color: #6e6e6e;
+    font-size: 12px
+}
+
+.get-code:hover {
+    color: #4b4b4b;
+    text-decoration: none;
+    background: #fff
+}
+
+.error-tip {
+    display: none
+}
+
+.valid-error .error-tip {
+    display: block;
+    height: 30px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    font-size: 12px;
+    line-height: 30px;
+    color: #e30
+}
+
+.input-code {
+    width: 200px
+}
+
+.submit-code {
+    width: 70px;
+    height: 30px;
+    background: #fd8000;
+    color: #fff;
+    font-size: 14px;
+    border: medium none;
+    float: left
+}
+
+.submit-code:hover {
+    background: #fd6000;
+    color: #fff;
+    text-decoration: none
+}
+
+.contact-kefu {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    color: #707070;
+    margin-top: 10px
+}
+
+.contact-kefu span {
+    font-size: 24px;
+    font-family: arial;
+    color: #f60;
+    font-style: italic;
+    font-weight: 700;
+    vertical-align: middle
+}
+
+.tab-bank {
+    height: 34px;
+    border-bottom: 1px solid #ddd;
+    padding-top: 20px
+}
+
+.tab-bank span {
+    display: inline-block;
+    width: 88px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    font-size: 14px;
+    color: #707070;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-bottom: none;
+    background: #fff;
+    margin-right: 10px;
+    zoom: 1;
+    float: left;
+    _float: none
+}
+
+.tab-bank span.active {
+    height: 32px;
+    border-top: 2px solid #62af00;
+    border-bottom: 1px solid #fff;
+    font-weight: 700;
+    color: #4b4b4b
+}
+
+body .tool-tip {
+    border: 1px solid #88c444;
+    background-color: #fafff0
+}
+
+body .tool-tip-left .arrow {
+    border-color: transparent transparent transparent #88c444
+}
+
+body .tool-tip-left .arrow s {
+    border-color: transparent transparent transparent #fafff0
+}
+
+.tool-tip-left dt {
+    float: left;
+    font-weight: 700
+}
+
+.tool-tip-left dd {
+    margin-left: 60px
+}
+
+.loan-suc {
+    margin: 100px 0 30px 135px;
+    padding-left: 85px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_icon_suc_ie6.84a6e2d356c5559f64c7143325b5c4da.png) no-repeat 0 0;
+    position: relative
+}
+
+.loan-suc .p1 {
+    font-size: 32px;
+    text-indent: 0;
+    color: #4b4b4b;
+    font-family: Microsoft YaHei;
+    line-height: 60px;
+    height: 60px
+}
+
+.loan-suc .p2 {
+    height: 22px;
+    line-height: 22px;
+    font-size: 14px;
+    color: #4b4b4b;
+    padding-bottom: 40px
+}
+
+.ico-sc {
+    padding: 4px 6px 4px 5px;
+    position: relative;
+    z-index: 2
+}
+
+.ico-sc:hover {
+    background: #f5f5f4;
+    border: 1px solid #eae9e9;
+    border-bottom: none;
+    margin: -1px -1px 0
+}
+
+.scm {
+    display: none;
+    width: 153px;
+    height: 167px;
+    z-index: 1;
+    top: 25px;
+    right: -1px;
+    background: #f5f5f4;
+    border: 1px solid #eae9e9;
+    border-top: none;
+    position: absolute
+}
+
+.scm canvas {
+    display: none;
+    width: 134px;
+    height: 134px;
+    margin: 10px 0 0 10px
+}
+
+.scm span {
+    padding-left: 25px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_fav.c32cd1f98b860609751b71c63681e6ca.png) no-repeat -85px 2px
+}
+
+.ico-collect {
+    background: url(//sta.guazistatic.com/c2c_web/detail_fav.c32cd1f98b860609751b71c63681e6ca.png) no-repeat 0 0
+}
+
+.ico-sc:hover .scm,
+.ico-sc:hover .scm canvas {
+    display: block
+}
+
+.fav-new {
+    position: relative
+}
+
+.scf {
+    font-size: 12px;
+    height: 30px;
+    line-height: 36px;
+    overflow: hidden;
+    width: 120px;
+    position: absolute;
+    right: 0;
+    top: 26px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_fav.c32cd1f98b860609751b71c63681e6ca.png) no-repeat 0 -24px
+}
+
+.bargain-btn,
+.scf {
+    text-align: center;
+    color: #fff
+}
+
+.bargain-btn {
+    width: 115px;
+    height: 48px;
+    line-height: 48px;
+    font-family: Microsoft Yahei;
+    background-color: #ffae13;
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 20px
+}
+
+.bargain-btn:hover {
+    color: #fff;
+    background-color: #cc8b0f;
+    text-decoration: none
+}
+
+.em-sta {
+    position: relative;
+    cursor: pointer;
+    z-index: 20
+}
+
+.tip-icon {
+    position: absolute;
+    top: -15px;
+    left: 60px;
+    display: inline-block;
+    width: 30px;
+    height: 19px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_tip-icon.666591567008bf4563cc9a7021c05834.png) no-repeat 0 0
+}
+
+.active .tip-icon,
+.sta-tip-txt {
+    display: none
+}
+
+.active .sta-tip-txt {
+    display: block;
+    position: absolute;
+    bottom: 50px;
+    left: -338px;
+    width: 518px;
+    padding: 6px 10px;
+    line-height: 16px;
+    text-align: left;
+    background: #fff2e5;
+    border: 1px solid #fd8000
+}
+
+.sta-tip-txt i {
+    position: absolute;
+    bottom: -4px;
+    left: 383px;
+    display: inline-block;
+    width: 8px;
+    height: 4px;
+    line-height: 0;
+    font-size: 0;
+    background: url(//sta.guazistatic.com/c2c_web/detail_de-icon.d2260ef6dcf614c1ffc1f75a02198ea9.png) no-repeat 0 -40px
+}
+
+.remote-tip {
+    position: relative;
+    z-index: 2
+}
+
+.remote-tip-icon {
+    position: absolute;
+    right: 0;
+    top: -15px;
+    display: inline-block;
+    width: 52px;
+    height: 18px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_tip2.4d676a85c1ec13facc242ed8d5cd56fb.png) no-repeat
+}
+
+.car-error {
+    height: 26px;
+    padding-left: 15px;
+    line-height: 26px
+}
+
+.car-error i {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background: url(//sta.guazistatic.com/c2c_web/detail_de-icon.d2260ef6dcf614c1ffc1f75a02198ea9.png) no-repeat 0 -20px;
+    float: left;
+    margin: 7px 4px 0 0
+}
+
+.car-error a {
+    color: #c6c6c6
+}
+
+.car-error a:hover {
+    color: #666
+}
+
+.pop-finance {
+    width: 610px;
+    height: 550px
+}
+
+.fina-tit {
+    margin-top: 10px
+}
+
+.fina-tit h3 {
+    float: left;
+    margin: 14px 30px 0;
+    font-size: 24px;
+    color: #333
+}
+
+.list-item {
+    float: left;
+    width: 112px;
+    margin: 10px 0 0 10px;
+    _display: inline
+}
+
+.input-1,
+.inputype {
+    width: 90px;
+    height: 20px;
+    line-height: 20px;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #666;
+    font-family: Microsoft YaHei
+}
+
+.list-item2 {
+    width: 478px
+}
+
+.list-item2 .input-1 {
+    width: 456px
+}
+
+.p-rl {
+    position: relative;
+    z-index: 20
+}
+
+.inputype {
+    cursor: pointer;
+    background: url(//sta.guazistatic.com/c2c_web/detail_icon-f-arrow.60f3e81c80ce42ede61bf65224ed46c3.png) no-repeat 100%
+}
+
+.downbox {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    z-index: 41;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: none;
+    white-space: nowrap
+}
+
+.active .downbox {
+    display: block
+}
+
+.downbox li {
+    color: #666;
+    font-size: 14px;
+    display: inline;
+    height: 36px
+}
+
+.downbox a {
+    display: block;
+    color: #666;
+    padding-left: 20px;
+    line-height: 36px
+}
+
+.downbox a:hover {
+    background-color: #f1f1f1;
+    text-decoration: none;
+    color: #e54121
+}
+
+.downbox a:active {
+    color: #fff;
+    background-color: #e54121
+}
+
+.fina-box {
+    width: 610px;
+    height: 246px;
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+    overflow-y: auto
+}
+
+.fina-list {
+    width: 100%
+}
+
+.fina-list td,
+.fina-list th {
+    height: 40px;
+    font: normal 14px/40px Microsoft yahei;
+    color: #333;
+    text-align: center;
+    border-bottom: 1px solid #fff
+}
+
+.fina-list .tl-th {
+    width: 160px;
+    padding-left: 70px;
+    text-align: left
+}
+
+.fina-list .tl-td {
+    width: 210px;
+    padding-left: 20px;
+    text-align: left
+}
+
+.fina-list .ipt {
+    margin-right: 30px;
+    vertical-align: middle
+}
+
+.fina-icon {
+    display: inline-block;
+    width: 68px;
+    height: 21px;
+    margin-left: 4px;
+    font: normal 12px/21px Microsoft yahei;
+    color: #e54121;
+    text-align: center;
+    background: url(//sta.guazistatic.com/c2c_web/detail_icon-finance.9ca615e24342fdb78a6fa3143b5ba8e0.png) no-repeat
+}
+
+.fina-select {
+    padding-left: 56px
+}
+
+.fina-btn {
+    font-size: 16px;
+    text-align: center
+}
+
+.btn-submit {
+    display: block;
+    width: 192px;
+    margin: 25px auto 10px;
+    font-size: 24px;
+    line-height: 50px;
+    background-color: #e54121
+}
+
+.btn-submit,
+.btn-submit:hover {
+    text-decoration: none;
+    color: #fff
+}
+
+.btn-submit:hover {
+    background-color: #c43216
+}
+
+.icon-i {
+    float: right;
+    padding-left: 20px;
+    line-height: 28px;
+    font-size: 12px;
+    color: #888;
+    font-weight: 400;
+    background: url(//sta.guazistatic.com/c2c_web/icon-i.bb31afcc1768e025bf96dd1443ae2a79.png) no-repeat 0
+}
+
+.gift-pop {
+    width: 560px;
+    height: 180px;
+    line-height: 36px;
+    padding: 15px 20px;
+    background: #fff;
+    font-size: 16px;
+    color: #666;
+    overflow: auto
+}
+
+.pop-code {
+    width: 490px;
+    height: 300px;
+    background: #fff
+}
+
+.code-confirm {
+    width: 340px;
+    height: 120px;
+    margin: 70px auto 0
+}
+
+.code-confirm li {
+    height: 60px;
+    clear: both
+}
+
+.kj-p {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    width: 68px;
+    font-size: 16px;
+    color: #666
+}
+
+.kj-it {
+    float: right;
+    width: 270px;
+    height: 60px
+}
+
+.kj-input-1 {
+    float: left;
+    width: 138px
+}
+
+.kj-input-1,
+.kj-input-2 {
+    height: 18px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+    font-family: microsoft yahei
+}
+
+.kj-input-2 {
+    float: right;
+    width: 248px
+}
+
+.kj-error {
+    float: left;
+    color: red;
+    line-height: 20px;
+    font-size: 12px
+}
+
+.kj-get-code {
+    float: right;
+    width: 100px;
+    font-family: microsoft yahei
+}
+
+.kj-get-code,
+.st-price {
+    height: 40px;
+    background: #f2f2f2;
+    border: 1px solid #ddd;
+    color: #bbb;
+    font-size: 14px
+}
+
+.st-price {
+    display: block;
+    width: 340px;
+    margin: 0 auto;
+    font-family: Microsoft Yahei;
+    cursor: pointer
+}
+
+.kj-get-code.active,
+.st-price.active {
+    background: #22ac38;
+    border: 1px solid #22ac38;
+    color: #fff
+}
+
+.pop-guide {
+    width: 588px;
+    height: 518px;
+    background: #fff
+}
+
+.guide-suc {
+    padding: 25px 0 15px;
+    background: #f9f9f9
+}
+
+.guide-suc-icon {
+    width: 120px;
+    height: 50px;
+    padding-left: 60px;
+    margin: 0 auto 8px;
+    line-height: 50px;
+    font-size: 24px;
+    color: #000;
+    font-weight: 700;
+    background: url(//sta.guazistatic.com/c2c_web/icon-suc-50.3734d10af74ffb7cc282319a82d72816.png) no-repeat 0
+}
+
+.guide-suc-txt {
+    text-align: center;
+    line-height: 26px;
+    font-size: 18px;
+    color: #000
+}
+
+.guide-con {
+    height: 320px;
+    padding-top: 20px
+}
+
+.guide-img {
+    float: right;
+    width: 225px;
+    height: 320px;
+    margin-right: 18px
+}
+
+.guide-img-1 {
+    background: url(//sta.guazistatic.com/c2c_web/pop-img-1.57abe09bb5b507ccac124a67e58c6974.jpg) no-repeat
+}
+
+.guide-img-2 {
+    background: url(//sta.guazistatic.com/c2c_web/pop-img-2.60f4604032b018021f49bbbf97adebb8.jpg) no-repeat
+}
+
+.guide-img-3 {
+    background: url(//sta.guazistatic.com/c2c_web/pop-img-3.673d8fad1ed239b3abc2799ed6183149.jpg) no-repeat
+}
+
+.guide-img-4 {
+    background: url(//sta.guazistatic.com/c2c_web/pop-img-4.ad7755df60372f1399d9936fe2f25b93.jpg) no-repeat
+}
+
+.guide-explain {
+    width: 343px;
+    height: 320px;
+    float: left
+}
+
+.guide-explain-tit {
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #22ac38
+}
+
+.guide-explain ul {
+    padding-left: 30px;
+    overflow: hidden
+}
+
+.guide-explain li {
+    float: left;
+    width: 126px;
+    height: 30px;
+    font-size: 14px;
+    color: #666;
+    line-height: 30px;
+    padding-left: 28px;
+    background: url(//sta.guazistatic.com/c2c_web/icon.d3813e23be57cce3130fca2dd7182c11.png) no-repeat left -25px
+}
+
+.guide-explain li.active {
+    color: #22ac38
+}
+
+.pop-ewm-box {
+    margin: 15px auto 0;
+    width: 158px;
+    height: 158px;
+    border: 1px solid #d4d6d5
+}
+
+.pop-ewm-box img {
+    display: block;
+    width: 158px;
+    height: 158px
+}
+
+.scan-tips {
+    line-height: 26px;
+    font-size: 12px;
+    color: #999;
+    text-align: center
+}

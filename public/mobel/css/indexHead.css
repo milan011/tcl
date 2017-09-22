@@ -1,0 +1,69 @@
+.head-index {
+    padding: .08rem .15rem 0 .65rem
+}
+
+.gz-logo,
+.search-ipt:before {
+    background-image: url(//sta.guazistatic.com/c2c_wap/icon-head.27eba330681353ffd9c800c86da68a56.png);
+    background-size: .59rem auto;
+    display: inline-block
+}
+
+.gz-logo {
+    width: .41rem;
+    height: .2rem;
+    background-position: 0 0;
+    margin-left: -.5rem;
+    margin-top: .08rem
+}
+
+.gz-search {
+    border: 1px solid #dde4ea;
+    height: .28rem;
+    line-height: .28rem;
+    padding: 3px 0;
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 1px;
+    font-size: .14rem;
+    background-color: #fafbfc
+}
+
+.local-city {
+    position: relative;
+    float: left;
+    padding-left: .1rem;
+    padding-right: .1rem;
+    color: #495056;
+    border-right: 1px solid #dde4ea
+}
+
+.local-city:after {
+    content: "";
+    display: inline-block;
+    width: .06rem;
+    height: .06rem;
+    vertical-align: .03rem;
+    margin-left: .05rem;
+    border-top: 1px solid #495056;
+    border-right: 1px solid #495056;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg)
+}
+
+.search-ipt {
+    font-size: .12rem;
+    color: #bec6ce;
+    line-height: .28rem
+}
+
+.search-ipt:before {
+    content: "";
+    display: inline-block;
+    width: .15rem;
+    height: .15rem;
+    margin: -.03rem .06rem 0 .17rem;
+    vertical-align: middle;
+    background-position: -.44rem 0
+}

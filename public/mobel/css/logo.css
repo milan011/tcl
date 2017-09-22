@@ -1,0 +1,638 @@
+.icon {
+    width: .3rem;
+    height: .3rem;
+    display: block;
+    background: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/default.png) no-repeat;
+    background-size: .3rem .3rem;
+    -webkit-background-size: .3rem .3rem;
+    -ms-background-size: .3rem .3rem
+}
+
+.icon:after {
+    z-index: -1
+}
+
+.brand .icon.icon-kaiyi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/kaiyi.png)
+}
+
+.brand .icon.icon-siming {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/siming.png)
+}
+
+.brand .icon.icon-subaru {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/subaru.png)
+}
+
+.brand .icon.icon-maikailun {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/maikailun.png)
+}
+
+.brand .icon.icon-yingzhi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/yingzhi.png)
+}
+
+.brand .icon.icon-xianaotuo {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/xianaotuo.png)
+}
+
+.brand .icon.icon-xiyate {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/xiyate.png)
+}
+
+.brand .icon.icon-ferrari {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/ferrari.png)
+}
+
+.brand .icon.icon-lufeng {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/lufeng.png)
+}
+
+.brand .icon.icon-volvo {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/volvo.png)
+}
+
+.brand .icon.icon-chevrolet {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/chevrolet.png)
+}
+
+.brand .icon.icon-audi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/audi.png)
+}
+
+.brand .icon.icon-lexus {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/lexus.png)
+}
+
+.brand .icon.icon-haige {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/haige.png)
+}
+
+.brand .icon.icon-rolls-royce {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/rolls-royce.png)
+}
+
+.brand .icon.icon-toyota {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/toyota.png)
+}
+
+.brand .icon.icon-beijingqiche {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/beijingqiche.png)
+}
+
+.brand .icon.icon-porsche {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/porsche.png)
+}
+
+.brand .icon.icon-jiangnan {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jiangnan.png)
+}
+
+.brand .icon.icon-lincoln {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/lincoln.png)
+}
+
+.brand .icon.icon-liebao {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/liebao.png)
+}
+
+.brand .icon.icon-saibao1 {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/saibao1.png)
+}
+
+.brand .icon.icon-infiniti {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/infiniti.png)
+}
+
+.brand .icon.icon-buick {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/buick.png)
+}
+
+.brand .icon.icon-lotus {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/lotus.png)
+}
+
+.brand .icon.icon-tj-yiqi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/tj-yiqi.png)
+}
+
+.brand .icon.icon-jiebao {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jiebao.png)
+}
+
+.brand .icon.icon-baojun {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/baojun.png)
+}
+
+.brand .icon.icon-nj-iveco {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/nj-iveco.png)
+}
+
+.brand .icon.icon-jlshwuche {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jlshwuche.png)
+}
+
+.brand .icon.icon-yiqijiefang {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/yiqijiefang.png)
+}
+
+.brand .icon.icon-huayang {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/huayang.png)
+}
+
+.brand .icon.icon-mini {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/mini.png)
+}
+
+.brand .icon.icon-acura {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/acura.png)
+}
+
+.brand .icon.icon-lifan {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/lifan.png)
+}
+
+.brand .icon.icon-baolong {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/baolong.png)
+}
+
+.brand .icon.icon-beiqi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/beiqi.png)
+}
+
+.brand .icon.icon-landrover {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/landrover.png)
+}
+
+.brand .icon.icon-hafei {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/hafei.png)
+}
+
+.brand .icon.icon-ds {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/ds.png)
+}
+
+.brand .icon.icon-benteng {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/benteng.png)
+}
+
+.brand .icon.icon-huachen {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/huachen.png)
+}
+
+.brand .icon.icon-huaxiangfuqi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/huaxiangfuqi.png)
+}
+
+.brand .icon.icon-dazhong {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/dazhong.png)
+}
+
+.brand .icon.icon-fiat {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/fiat.png)
+}
+
+.brand .icon.icon-huapu {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/huapu.png)
+}
+
+.brand .icon.icon-shuanghuan {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/shuanghuan.png)
+}
+
+.brand .icon.icon-jili {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jili.png)
+}
+
+.brand .icon.icon-jiao {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jiao.png)
+}
+
+.brand .icon.icon-rongwei {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/rongwei.png)
+}
+
+.brand .icon.icon-smart {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/smart.png)
+}
+
+.brand .icon.icon-hongqi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/hongqi.png)
+}
+
+.brand .icon.icon-dongfengyulongnazhijie {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/dongfengyulongnazhijie.png)
+}
+
+.brand .icon.icon-hyundai {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/hyundai.png)
+}
+
+.brand .icon.icon-renault {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/renault.png)
+}
+
+.brand .icon.icon-cf-yangzi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/cf-yangzi.png)
+}
+
+.brand .icon.icon-biaozhi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/biaozhi.png)
+}
+
+.brand .icon.icon-dongfengfengdu {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/dongfengfengdu.png)
+}
+
+.brand .icon.icon-krui {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/krui.png)
+}
+
+.brand .icon.icon-brand-xiali {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/brand-xiali.png)
+}
+
+.brand .icon.icon-lamborghini {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/lamborghini.png)
+}
+
+.brand .icon.icon-fuqiqiteng {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/fuqiqiteng.png)
+}
+
+.brand .icon.icon-benz {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/benz.png)
+}
+
+.brand .icon.icon-alpina {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/alpina.png)
+}
+
+.brand .icon.icon-changanshangyong {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/changanshangyong.png)
+}
+
+.brand .icon.icon-galue {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/galue.png)
+}
+
+.brand .icon.icon-astonmartin {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/astonmartin.png)
+}
+
+.brand .icon.icon-zhongke-huabei {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/zhongke-huabei.png)
+}
+
+.brand .icon.icon-jeep {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jeep.png)
+}
+
+.brand .icon.icon-dongfeng {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/dongfeng.png)
+}
+
+.brand .icon.icon-shijue {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/shijue.png)
+}
+
+.brand .icon.icon-guanzhi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/guanzhi.png)
+}
+
+.brand .icon.icon-huachen-zhonghua {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/huachen-zhonghua.png)
+}
+
+.brand .icon.icon-qichen {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/qichen.png)
+}
+
+.brand .icon.icon-saab {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/saab.png)
+}
+
+.brand .icon.icon-dongnan {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/dongnan.png)
+}
+
+.brand .icon.icon-richan {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/richan.png)
+}
+
+.brand .icon.icon-mg1 {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/mg1.png)
+}
+
+.brand .icon.icon-maserati {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/maserati.png)
+}
+
+.brand .icon.icon-dongfengxiaokang {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/dongfengxiaokang.png)
+}
+
+.brand .icon.icon-laolunshi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/laolunshi.png)
+}
+
+.brand .icon.icon-gmc {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/gmc.png)
+}
+
+.brand .icon.icon-weiziman {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/weiziman.png)
+}
+
+.brand .icon.icon-kawei {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/kawei.png)
+}
+
+.brand .icon.icon-fengxing {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/fengxing.png)
+}
+
+.brand .icon.icon-dayu {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/dayu.png)
+}
+
+.brand .icon.icon-oulang {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/oulang.png)
+}
+
+.brand .icon.icon-ruilin {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/ruilin.png)
+}
+
+.brand .icon.icon-changan {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/changan.png)
+}
+
+.brand .icon.icon-zhidou {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/zhidou.png)
+}
+
+.brand .icon.icon-mitsubishi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/mitsubishi.png)
+}
+
+.brand .icon.icon-chuanqiyema {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/chuanqiyema.png)
+}
+
+.brand .icon.icon-jianghuai {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jianghuai.png)
+}
+
+.brand .icon.icon-alfaromeo {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/alfaromeo.png)
+}
+
+.brand .icon.icon-bmw {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/bmw.png)
+}
+
+.brand .icon.icon-shuanglong {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/shuanglong.png)
+}
+
+.brand .icon.icon-jincheng {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jincheng.png)
+}
+
+.brand .icon.icon-fusangheibao {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/fusangheibao.png)
+}
+
+.brand .icon.icon-dongfengfengshen {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/dongfengfengshen.png)
+}
+
+.brand .icon.icon-huatai {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/huatai.png)
+}
+
+.brand .icon.icon-skoda {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/skoda.png)
+}
+
+.brand .icon.icon-shenbao {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/shenbao.png)
+}
+
+.brand .icon.icon-hengtian {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/hengtian.png)
+}
+
+.brand .icon.icon-baofeili {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/baofeili.png)
+}
+
+.brand .icon.icon-chery {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/chery.png)
+}
+
+.brand .icon.icon-zhongxing {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/zhongxing.png)
+}
+
+.brand .icon.icon-weiwang,
+.brand .icon.icon-zhongshun {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/weiwang.png)
+}
+
+.brand .icon.icon-changcheng {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/changcheng.png)
+}
+
+.brand .icon.icon-jilindafa {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jilindafa.png)
+}
+
+.brand .icon.icon-cadillac {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/cadillac.png)
+}
+
+.brand .icon.icon-lotuscars {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/lotuscars.png)
+}
+
+.brand .icon.icon-xiaqitongjia {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/xiaqitongjia.png)
+}
+
+.brand .icon.icon-hanma {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/hanma.png)
+}
+
+.brand .icon.icon-sh-huizhong {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/sh-huizhong.png)
+}
+
+.brand .icon.icon-weilin {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/weilin.png)
+}
+
+.brand .icon.icon-linian {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/linian.png)
+}
+
+.brand .icon.icon-zhongou {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/zhongou.png)
+}
+
+.brand .icon.icon-maybach {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/maybach.png)
+}
+
+.brand .icon.icon-springo {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/springo.png)
+}
+
+.brand .icon.icon-futian {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/futian.png)
+}
+
+.brand .icon.icon-meiya {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/meiya.png)
+}
+
+.brand .icon.icon-anchi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/anchi.png)
+}
+
+.brand .icon.icon-chrysler {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/chrysler.png)
+}
+
+.brand .icon.icon-opel {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/opel.png)
+}
+
+.brand .icon.icon-huansu {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/huansu.png)
+}
+
+.brand .icon.icon-kaersen {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/kaersen.png)
+}
+
+.brand .icon.icon-wanfeng {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/wanfeng.png)
+}
+
+.brand .icon.icon-hafu {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/hafu.png)
+}
+
+.brand .icon.icon-bentley {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/bentley.png)
+}
+
+.brand .icon.icon-jiangling {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/jiangling.png)
+}
+
+.brand .icon.icon-daoqi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/daoqi.png)
+}
+
+.brand .icon.icon-wushiling {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/wushiling.png)
+}
+
+.brand .icon.icon-zhongtai {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/zhongtai.png)
+}
+
+.brand .icon.icon-fudi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/fudi.png)
+}
+
+.brand .icon.icon-suzuki {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/suzuki.png)
+}
+
+.brand .icon.icon-yongyuanqiche {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/yongyuanqiche.png)
+}
+
+.brand .icon.icon-wuling {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/wuling.png)
+}
+
+.brand .icon.icon-chuanqi1 {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/chuanqi1.png)
+}
+
+.brand .icon.icon-tesila {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/tesila.png)
+}
+
+.brand .icon.icon-ford {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/ford.png)
+}
+
+.brand .icon.icon-honda {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/honda.png)
+}
+
+.brand .icon.icon-changhe {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/changhe.png)
+}
+
+.brand .icon.icon-tianma {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/tianma.png)
+}
+
+.brand .icon.icon-qingling {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/qingling.png)
+}
+
+.brand .icon.icon-huanghai {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/huanghai.png)
+}
+
+.brand .icon.icon-tengshi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/tengshi.png)
+}
+
+.brand .icon.icon-kenisaige {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/kenisaige.png)
+}
+
+.brand .icon.icon-mazda {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/mazda.png)
+}
+
+.brand .icon.icon-byd {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/byd.png)
+}
+
+.brand .icon.icon-kia {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/kia.png)
+}
+
+.brand .icon.icon-haima {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/haima.png)
+}
+
+.brand .icon.icon-citroen {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/citroen.png)
+}
+
+.brand .icon.icon-datong {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/datong.png)
+}
+
+.brand .icon.icon-xinkai {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/xinkai.png)
+}
+
+.brand .icon.icon-huasong {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/huasong.png)
+}
+
+.brand .icon.icon-babosi {
+    background-image: url(//sta.guazistatic.com/static/c2c/app/chebiaoicon/babosi.png)
+}

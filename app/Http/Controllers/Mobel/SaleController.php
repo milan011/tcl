@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Show;
+namespace App\Http\Controllers\Mobel;
 
 use Illuminate\Http\Request;
 use DB;
@@ -61,7 +61,7 @@ class SaleController extends CommonController
         $current_page   = 'sale';
         $title           = '免费卖车【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
         // dd($all_top_brands);
-        return view('show.sale.index', compact('all_top_brands', 'current_page', 'title', 'show_city_name'));
+        return view('mobel.sale.index', compact('all_top_brands', 'current_page', 'title', 'show_city_name'));
     }
 
     /**

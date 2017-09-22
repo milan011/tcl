@@ -1,0 +1,1526 @@
+.c2btop {
+    background: #fff
+}
+
+.c2btop .w {
+    *overflow: hidden;
+    _overflow: auto
+}
+
+.sell-box {
+    background: url('../images/bannerBg.jpg') top no-repeat #fcfcf3
+}
+
+.promotion {
+    background-position: center 80px
+}
+
+.wrap {
+    width: 1190px
+}
+
+.wd-2em {
+    width: 2em
+}
+
+.wd-2em,
+.wd-5em {
+    display: inline-block
+}
+
+.wd-5em {
+    width: .5em
+}
+
+.img-0 {
+    width: 100%;
+    height: 525px;
+    position: relative
+}
+
+.sel-box,
+.sel-suc {
+    width: 341px;
+    height: 324px;
+    background: #fff;
+    position: absolute;
+    top: 50px;
+    /*left: 50%;*/
+    margin-left: 254px
+}
+
+.sel-tit {
+    font-size: 16px;
+    color: #798991;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    margin-bottom: 5px;
+    background-color: #dee4e7;
+    position: relative
+}
+
+.sel-tit span {
+    font-size: 20px;
+    color: #fd8000
+}
+
+.float-input,
+.input-phone,
+.service-slogan,
+.submit-tip span {
+    background-image: url(//sta.guazistatic.com/c2c_web/sell-form.c062ff0f56c9c62c4d02f3bd67e84732.png);
+    background-repeat: no-repeat
+}
+
+.sel-tit em {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    display: block;
+    width: 341px;
+    height: 11px;
+    background-repeat: repeat-x;
+    background-image: url(//sta.guazistatic.com/c2c_web/sell-form-2.62fedb2902b172066c3567717a6682a6.png)
+}
+
+.sell-num {
+    padding: 30px 20px 5px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #666
+}
+
+.sell-num span {
+    color: #fd8000;
+    font-size: 36px
+}
+
+.write-box {
+    padding: 0 20px 12px;
+    height: 64px
+}
+
+.input-phone {
+    width: 245px;
+    height: 24px;
+    padding: 10px 10px 10px 44px;
+    border: 1px solid #d2d2d2;
+    font-size: 14px;
+    font-family: microsoft yahei;
+    line-height: 24px;
+    color: #333;
+    background-position: 0 0
+}
+
+.valid-error {
+    line-height: 18px;
+    color: #ed4800
+}
+
+.sel-lists {
+    width: 291px;
+    height: 130px;
+    margin: 0 auto;
+    zoom: 1
+}
+
+.sel-lists li {
+    width: 291px;
+    _width: 296px;
+    height: 30px;
+    _float: left;
+    padding: 8px 0;
+    *vertical-align: top
+}
+
+.sel-lists li label {
+    height: 30px;
+    width: 80px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #666;
+    float: left
+}
+
+.input-txt {
+    background-image: url(//sta.guazistatic.com/c2c_web/sell-pub_ico_03.6499fb77d5fddff7adf8a1fe7cb56b44.png);
+    background-position: 180px 0
+}
+
+.auto_select,
+.input-txt {
+    width: 168px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 16px;
+    color: #888787;
+    padding: 5px 35px 5px 5px;
+    background-repeat: no-repeat;
+    border: 1px solid #d1d1d1
+}
+
+.auto_select {
+    background-position: 175px 0;
+    _float: left
+}
+
+.gj_sys_autoc_rs ul li {
+    border: 0;
+    cursor: pointer;
+    font-size: 14px!important;
+    line-height: 18px;
+    height: 18px;
+    overflow: hidden;
+    float: none
+}
+
+.gj_sys_autoc_rs ul li:hover {
+    background: #e5f8ff
+}
+
+.sel-lists .downbox {
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    border-top: 0;
+    position: absolute;
+    top: 29px;
+    _top: 30px;
+    left: 0;
+    z-index: 41;
+    display: none;
+    overflow-x: hidden;
+    white-space: nowrap;
+    float: left;
+    width: 100%;
+    *width: 208px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.sel-lists .downbox li {
+    color: #4b4b4b;
+    font-size: 14px;
+    display: inline;
+    width: auto;
+    height: 30px;
+    padding: 0;
+    margin: 0
+}
+
+.sel-lists .downbox a {
+    display: block;
+    color: #4b4b4b;
+    text-indent: 5px;
+    height: 30px;
+    line-height: 30px
+}
+
+.sel-lists .downbox a:hover {
+    background: #22ac38;
+    text-decoration: none;
+    color: #fff
+}
+
+.sel-lists .comselect.active {
+    position: relative;
+    z-index: 99
+}
+
+.input-gongli {
+    width: 158px;
+    padding: 5px;
+    float: left
+}
+
+.gongli {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 4px;
+    color: #666
+}
+
+#phone,
+.gongli {
+    float: left
+}
+
+.submit {
+    display: block;
+    width: 301px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 18px;
+    font-family: Microsoft Yahei;
+    color: #fff;
+    background: #fd8000;
+    border: 0 none;
+    margin: 0 auto;
+    _cursor: pointer
+}
+
+.submit:hover {
+    background: #fd6000
+}
+
+.submit-tip {
+    color: #999;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 22px 20px 0;
+    text-align: center
+}
+
+.submit-tip span {
+    width: 20px;
+    height: 20px;
+    background-position: 0 -180px;
+    margin-right: 5px
+}
+
+.submit-tip i.nub-org,
+.submit-tip span {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.submit-tip i.nub-org {
+    font-size: 24px;
+    color: #fd8000;
+    padding: 0 0 0 5px;
+    margin: -5px 0 0
+}
+
+.plan {
+    text-align: center;
+    padding: 15px 0 0;
+    color: #333;
+    font-size: 14px
+}
+
+.plan span {
+    padding: 0 0 0 10px;
+    color: #666
+}
+
+.plan input {
+    vertical-align: middle;
+    margin: -2px 4px 0 0
+}
+
+.ass-entra {
+    width: 301px;
+    height: 39px;
+    margin: 0 auto;
+    line-height: 39px;
+    font-size: 14px;
+    color: #666;
+    text-align: center
+}
+
+.ass-entra a {
+    color: #22ac38;
+    margin-left: 10px;
+    text-decoration: underline
+}
+
+.ass-entra a:hover {
+    color: #179500
+}
+
+.national .ass-entra {
+    height: 36px;
+    line-height: 36px
+}
+
+.ico-suc {
+    width: 62px;
+    height: 62px;
+    background: url(//sta.guazistatic.com/c2c_web/sell_icon_suc.b6b4e06a715136268f622dcf9df9e528.png) no-repeat 50%;
+    _background: url(//sta.guazistatic.com/c2c_web/sell_icon_suc_ie6.84a6e2d356c5559f64c7143325b5c4da.png) no-repeat 50%;
+    margin: 45px auto 0
+}
+
+.txt-suc {
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    font-family: Microsoft Yahei
+}
+
+.con-kefu,
+.txt-suc {
+    text-align: center;
+    color: #545454
+}
+
+.con-kefu {
+    font-size: 14px;
+    line-height: 26px
+}
+
+.con-kefu span {
+    color: #3cb7e1;
+    font-family: Arial;
+    margin: 0 3px
+}
+
+.back {
+    height: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    padding-top: 20px
+}
+
+.back a {
+    color: #22ac38;
+    margin: 0 15px
+}
+
+.back a:hover {
+    color: #179500;
+    text-decoration: none
+}
+
+.kefu-phone {
+    font-size: 12px;
+    color: #999;
+    font-family: Microsoft YaHei
+}
+
+.kefu-phone,
+.qu-in {
+    text-align: center;
+    padding-top: 30px
+}
+
+.qu-in {
+    line-height: 20px
+}
+
+.qu-in a {
+    font-size: 14px;
+    color: #ff8000
+}
+
+.qu-in a:hover {
+    text-decoration: underline;
+    color: ff8000
+}
+
+.sell-step {
+    width: 1110px;
+    height: 190px;
+    margin: 0 auto;
+    padding-top: 65px;
+    *padding-top: 200px;
+    font-size: 0
+}
+
+.sell-step li {
+    float: left
+}
+
+.sell-step .icon {
+    width: 238px;
+    height: 118px;
+    padding-top: 70px;
+    background: #fff;
+    border: 1px solid #efefd7;
+    position: relative
+}
+
+.sell-step .icon i {
+    display: block;
+    width: 130px;
+    height: 130px;
+    background-image: url(//sta.guazistatic.com/c2c_web/sell-icon.a2c892966fe8a2c576512ede9a65b01f.png);
+    _background-image: url(//sta.guazistatic.com/c2c_web/sell-icon-8.6d2987332812235e27fe20b98f9a69b6.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -65px;
+    left: 54px
+}
+
+.sell-step .icon-1 i {
+    background-position: 0 0
+}
+
+.sell-step .icon-2 i {
+    background-position: 0 -150px
+}
+
+.sell-step .icon-3 i {
+    background-position: 0 -300px
+}
+
+.sell-step .icon-4 i {
+    background-position: 0 -450px
+}
+
+.sell-step .icon p {
+    color: #a8a19d;
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    text-align: center;
+    line-height: 24px
+}
+
+.sell-step .icon p span {
+    font-size: 26px;
+    color: #e4733b;
+    line-height: 46px
+}
+
+.next-icon {
+    width: 50px;
+    height: 190px;
+    line-height: 190px;
+    text-align: center;
+    color: #ffbd9d;
+    font-size: 30px;
+    font-family: simsun
+}
+
+.img-txt {
+    width: 1190px;
+    margin: 0 auto
+}
+
+.img-txt-1 {
+    height: 353px
+}
+
+.img-txt-2 {
+    height: 336px
+}
+
+.img-txt-3 {
+    height: 279px
+}
+
+.img-txt-4 {
+    height: 251px
+}
+
+.img-1 {
+    width: 594px;
+    height: 353px;
+    background: url(//sta.guazistatic.com/c2c_web/sell-img-1.e73684c44cf5976f58391f35aee4946a.png) no-repeat 100% 0
+}
+
+.img-2 {
+    width: 525px;
+    height: 336px;
+    background: url(//sta.guazistatic.com/c2c_web/sell-img-2.520c4513772d2e95fe685f1c89e9f689.png) no-repeat 0 0
+}
+
+.img-3 {
+    width: 594px;
+    height: 279px;
+    background: url(//sta.guazistatic.com/c2c_web/sell-img-3.c431acc4182de3097666edaf796a095a.png) no-repeat 100% 0
+}
+
+.img-4 {
+    width: 594px;
+    height: 251px;
+    background: url(//sta.guazistatic.com/c2c_web/sell-img-4.9023f51b4c4c118b9a27d029461cb34e.png) no-repeat 0 0
+}
+
+.txt {
+    width: 525px;
+    height: 70px;
+    font-size: 18px;
+    color: #b7917b;
+    line-height: 28px;
+    font-family: Microsoft YaHei
+}
+
+.txt span {
+    font-size: 32px;
+    color: #e4733b;
+    line-height: 42px
+}
+
+.txt-1 {
+    padding-top: 142px
+}
+
+.txt-2 {
+    padding: 120px 0 0 80px
+}
+
+.txt-3 {
+    padding-top: 115px
+}
+
+.txt-4 {
+    padding: 80px 0 0 80px;
+    width: 490px
+}
+
+.con-tit {
+    width: 1190px;
+    height: 39px;
+    margin: 40px auto;
+    background: url(//sta.guazistatic.com/c2c_web/sell-bg-tit.68f6b173194faf05873faf2793d038e4.png) no-repeat;
+    color: #fcfcf3;
+    font-size: 28px;
+    line-height: 38px;
+    font-family: Microsoft YaHei;
+    text-align: center
+}
+
+.slide {
+    height: 312px;
+    width: 1190px;
+    margin: 0 auto;
+    position: relative
+}
+
+.next,
+.prev {
+    display: block;
+    width: 34px;
+    height: 34px;
+    background-image: url(//sta.guazistatic.com/c2c_web/sell-icon-slide.9c08bfcecdebc5242d63d0d5aaedcafa.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 140px
+}
+
+.next {
+    right: 18px;
+    background-position: 0 -40px
+}
+
+.prev {
+    left: 18px;
+    background-position: 0 0
+}
+
+.next:hover {
+    background-position: 0 -120px
+}
+
+.prev:hover {
+    background-position: 0 -80px
+}
+
+.slide-con {
+    width: 1065px;
+    padding-left: 15px;
+    height: 312px;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+.slide-con ul {
+    height: 312px;
+    width: 3200px
+}
+
+.slide-con li {
+    width: 278px;
+    height: 250px;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #efefd7;
+    float: left;
+    margin-right: 15px
+}
+
+.user-info {
+    width: 278px;
+    height: 100px
+}
+
+.user-phone {
+    width: 80px;
+    height: 100px;
+    float: right
+}
+
+.user-1 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-pic-1.99d1249262e718a985ff761c60e18467.jpg) no-repeat
+}
+
+.user-2 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-pic-2.cb56ac978cc1338a12ad7a37f4c6ac77.jpg) no-repeat
+}
+
+.user-3 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-pic-3.60a33dd45d7806b1577fd27aba8b8900.png) no-repeat
+}
+
+.user-4 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-pic-4.194c5af82932595e02321928c4381aad.jpg) no-repeat
+}
+
+.user-5 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-pic-5.91d97f6fe4cafda17cf9a736279c2a4b.jpg) no-repeat
+}
+
+.user-6 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-pic-6.30a4f07e19b2a35ea9b411e090217569.jpg) no-repeat
+}
+
+.user-7 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-pic-7.d0f3c15cb76a62dc535c965d7846b38d.jpg) no-repeat
+}
+
+.user-8 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-pic-8.079cfba5c2e3044a2f74306a9661661f.png) no-repeat
+}
+
+.user-9 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-pic-9.260f790d63f26adff0b15a20b67c07e6.jpg) no-repeat
+}
+
+.user-txt {
+    width: 175px;
+    height: 99px;
+    float: left;
+    border-bottom: 1px solid #f2dccf;
+    font-family: Microsoft YaHei
+}
+
+.user-txt .p1 {
+    font-size: 27px;
+    height: 40px;
+    line-height: 40px;
+    color: #e4733b;
+    padding-top: 20px
+}
+
+.user-txt .p2 {
+    font-size: 18px;
+    height: 28px;
+    line-height: 28px;
+    color: #b7917b
+}
+
+.detail-txt {
+    color: #a8a19d;
+    font-size: 14px;
+    line-height: 24px;
+    padding-top: 10px;
+    font-family: simsun
+}
+
+.haoche-rec {
+    font-size: 16px;
+    color: #b7917b;
+    line-height: 30px;
+    font-family: Microsoft YaHei
+}
+
+.haoche-rec,
+.sell-guide {
+    width: 1110px;
+    margin: 0 auto
+}
+
+.sell-guide {
+    height: 390px
+}
+
+.sell-guide li {
+    width: 540px;
+    height: 170px;
+    margin-bottom: 20px
+}
+
+.sell-guide .p1 {
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    color: #b7917b;
+    font-family: Microsoft YaHei
+}
+
+.txt-box {
+    padding: 9px 14px;
+    background: #fff;
+    border: 1px solid #efefd7;
+    margin-left: 40px;
+    font-size: 14px;
+    color: #a8a19d;
+    line-height: 24px;
+    width: 470px;
+    height: 100px;
+    font-family: simsun
+}
+
+.txt-box table {
+    width: 100%
+}
+
+.write-tip {
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    color: #b7917b
+}
+
+.backtotop,
+.write-tip {
+    text-align: center;
+    font-family: Microsoft YaHei
+}
+
+.backtotop {
+    display: block;
+    margin: 0 auto 50px;
+    width: 290px;
+    height: 50px;
+    line-height: 50px;
+    background: #fd8000;
+    font-size: 24px;
+    color: #fff
+}
+
+.backtotop:hover {
+    background: #fd6000;
+    text-decoration: none;
+    color: #fff
+}
+
+.national .sel-lists {
+    height: 160px
+}
+
+.national .valid-error {
+    top: 220px;
+    _top: 225px
+}
+
+.select-btn,
+.select-btn-hover {
+    background: url(//sta.guazistatic.com/c2c_web/sell-selArrow.43dfaf209a91a1847d2463658a2bed21.png) no-repeat
+}
+
+.select-box {
+    float: left;
+    height: 30px;
+    width: 210px;
+    line-height: 30px;
+    position: relative
+}
+
+.select-btn-2,
+.select-btn-2-hover {
+    background-position: right 0;
+    background-color: #fff;
+    border: 1px solid #c9c9c9;
+    cursor: pointer;
+    color: #1b1b1b;
+    display: inline-block;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 28px 0 5px;
+    width: 175px;
+    z-index: 0
+}
+
+.ucarselecttype {
+    position: absolute;
+    top: 29px;
+    left: 0;
+    width: 188px;
+    padding: 10px;
+    background: #fff;
+    z-index: 200;
+    border: 1px solid #ddd
+}
+
+.ucarselecttype-pinpaitop {
+    font-size: 16px;
+    color: #22ac38;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    font-family: Microsoft YaHei
+}
+
+.left-list {
+    width: 15px
+}
+
+.left-list a {
+    display: block;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    background: #ddd;
+    color: #4b4b4b;
+    font-size: 12px;
+    font-family: arial;
+    margin-bottom: 4px
+}
+
+.left-list a:hover {
+    text-decoration: none;
+    background: #22ac38;
+    color: #fff
+}
+
+.ucarselecttype-pinpaibottom {
+    width: 165px;
+    height: 435px;
+    overflow: auto
+}
+
+.ucarselecttype-pinpaibottom-2 {
+    width: 188px
+}
+
+.ucarselecttype-pinpaibottom p {
+    height: 26px;
+    padding: 0 8px;
+    line-height: 26px;
+    color: #4b4b4b;
+    background: #fff;
+    cursor: pointer;
+    margin-bottom: 1px;
+    font-family: Microsoft YaHei;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.ucarselecttype-pinpaibottom p.active,
+.ucarselecttype-pinpaibottom p:hover {
+    background: #22ac38;
+    color: #fff
+}
+
+.ucarselecttype-pinpaibottom p.pinpailist {
+    background: #e3e3e3;
+    text-align: center
+}
+
+.ucarselecttype-pinpaibottom p.pinpailist:hover {
+    background: #e3e3e3;
+    color: #4b4b4b
+}
+
+.pinpailist a {
+    color: #fff
+}
+
+.pinpailist a:hover {
+    color: #fff;
+    text-decoration: none
+}
+
+.ucarselecttype-2 {
+    width: 166px;
+    left: 187px
+}
+
+.ucarselecttype-2 .ucarselecttype-pinpaibottom {
+    width: 166px
+}
+
+.ucarselecttype-3 {
+    width: 342px;
+    left: 376px
+}
+
+.ucarselecttype-3 .ucarselecttype-pinpaibottom {
+    width: 342px
+}
+
+body {
+    font-family: Microsoft YaHei
+}
+
+.ass-pop-1 {
+    background: url(//sta.guazistatic.com/c2c_web/sell-bg-1.25d6199a01d550b3b45383e46003ffd9.png) no-repeat;
+    _background: url(//sta.guazistatic.com/c2c_web/sell-bg-1-8.7590f7df1488896e239afa7383938746.png) no-repeat;
+    position: relative
+}
+
+.ass-pop-1,
+.pop-loading {
+    width: 530px;
+    height: 570px
+}
+
+.pop-loading {
+    background: url(//sta.guazistatic.com/c2c_web/sell-loading.d792bbb29dab02319adc9a649a288fec.gif) no-repeat 50%
+}
+
+.pop-close {
+    display: block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: absolute;
+    top: 129px;
+    right: 0
+}
+
+.ass-form {
+    width: 390px;
+    padding: 157px 0 0 70px
+}
+
+.list {
+    height: 40px;
+    vertical-align: top;
+    padding: 6px 0
+}
+
+.list p.fl {
+    width: 90px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #666
+}
+
+.p-rl {
+    position: relative;
+    z-index: 20
+}
+
+.active .downbox,
+.p-rl {
+    display: block
+}
+
+.comselect {
+    float: left
+}
+
+.inputype {
+    height: 18px;
+    background-color: #fff;
+    line-height: 18px;
+    font-size: 14px;
+    border: 1px solid #d1d1d1;
+    padding: 10px 38px 10px 10px;
+    cursor: pointer;
+    background: #fff url(//sta.guazistatic.com/c2c_web/sell-bg-2.eb0b28902429bd8551ee132c3222ddd2.png) no-repeat right 0;
+    width: 200px
+}
+
+.inputype-2 {
+    width: 178px;
+    padding: 10px 60px 10px 10px;
+    float: left;
+    background-position: right -50px;
+    cursor: default
+}
+
+.inputype-3 {
+    background: none
+}
+
+.downbox {
+    border: 1px solid #d1d1d1;
+    background-color: #fff;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    z-index: 41;
+    display: none;
+    width: 248px
+}
+
+.city .downbox {
+    height: 330px
+}
+
+.car-brand .downbox {
+    height: 270px
+}
+
+.time .downbox {
+    height: 210px
+}
+
+.downbox-2 {
+    width: 288px
+}
+
+.downbox li {
+    color: #4b4b4b;
+    font-size: 14px;
+    display: inline
+}
+
+.downbox a {
+    display: block;
+    color: #333;
+    padding: 4px 10px;
+    line-height: 22px
+}
+
+.downbox a:hover,
+.downbox li.active a {
+    background-color: #22ac38;
+    text-decoration: none;
+    color: #fff
+}
+
+.downbox p {
+    height: 30px;
+    line-height: 30px;
+    text-indent: 10px;
+    background: #e3e3e3;
+    color: #fff
+}
+
+.con-phone {
+    height: 24px;
+    line-height: 24px;
+    color: #999;
+    padding: 0 0 10px
+}
+
+.con-phone span {
+    color: #22ac38
+}
+
+.submit-2 {
+    height: 44px;
+    width: 340px;
+    background: #fd8000;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+    font-family: Microsoft YaHei
+}
+
+.submit-2:hover {
+    background: #fd6000
+}
+
+.error-tip {
+    color: #f60;
+    line-height: 30px
+}
+
+.error-tip2 {
+    height: 26px;
+    line-height: 26px
+}
+
+.ass-pop-2 {
+    width: 640px;
+    height: 445px;
+    padding: 20px 20px 0;
+    background: #fff
+}
+
+.car-ass {
+    height: 82px
+}
+
+.ass-price-box {
+    width: 160px;
+    height: 68px;
+    background: #f4fbf5;
+    border: 1px solid #22ac38
+}
+
+.ass-tit {
+    display: block;
+    width: 28px;
+    height: 48px;
+    padding: 10px 0;
+    background: #cdf1d2;
+    font-size: 16px;
+    color: #5ec46f
+}
+
+.ass-price,
+.ass-tit {
+    float: left;
+    text-align: center
+}
+
+.ass-price {
+    width: 132px;
+    height: 68px;
+    line-height: 68px;
+    font-size: 36px;
+    font-family: arial;
+    color: #fd8000;
+    font-weight: 700
+}
+
+.ass-price em {
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    vertical-align: 2px
+}
+
+.car-con {
+    width: 470px;
+    height: 82px
+}
+
+.car-model {
+    height: 42px;
+    line-height: 42px;
+    color: #333;
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.car-d {
+    font-size: 14px;
+    color: #666;
+    line-height: 26px
+}
+
+.price-dis {
+    font-size: 16px;
+    color: #333;
+    line-height: 46px;
+    padding-top: 10px
+}
+
+.price-area {
+    width: 630px;
+    height: 6px;
+    background: #d1d1d1;
+    margin: 5px auto 67px;
+    position: relative
+}
+
+.price-1 {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border: 5px solid #d1d1d1;
+    border-radius: 50%;
+    line-height: 0;
+    font-size: 0
+}
+
+.price-2,
+.price-3 {
+    border: 5px solid #22ac38
+}
+
+.price-3 {
+    left: 365px
+}
+
+.price-1 span {
+    position: absolute;
+    top: 20px;
+    left: -25px;
+    display: inline-block;
+    width: 56px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666
+}
+
+.price-green {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 375px;
+    height: 6px;
+    background: #22ac38;
+    line-height: 0;
+    font-size: 0
+}
+
+.ave-price-1 {
+    position: absolute;
+    top: 23px;
+    left: 75px;
+    width: 96px;
+    height: 32px;
+    padding: 3px 0;
+    border: 2px solid #d1d1d1;
+    text-align: center;
+    line-height: 16px;
+    color: #666
+}
+
+.ave-price-1 em {
+    display: inline-block;
+    width: 2px;
+    height: 20px;
+    background: #d1d1d1;
+    position: absolute;
+    top: -20px;
+    left: 47px
+}
+
+.ave-price-2 {
+    position: absolute;
+    top: 23px;
+    left: 135px;
+    width: 100px;
+    height: 36px;
+    padding: 3px 0;
+    border: 2px solid #22ac38;
+    text-align: center;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fd8000
+}
+
+.ave-price-2 em {
+    display: inline-block;
+    width: 2px;
+    height: 20px;
+    background: #22ac38;
+    position: absolute;
+    top: -20px;
+    left: 49px
+}
+
+.ave-price-2 span {
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 700
+}
+
+.price-trend {
+    line-height: 56px;
+    color: #333;
+    font-size: 16px
+}
+
+.price-gra li {
+    height: 30px;
+    vertical-align: top
+}
+
+.price-year {
+    float: left;
+    width: 55px;
+    height: 16px;
+    line-height: 16px;
+    color: #333
+}
+
+.price-line {
+    float: left;
+    height: 16px;
+    background: #d1d1d1
+}
+
+.price-line-1 {
+    background: #22ac38;
+    width: 340px
+}
+
+.price-line-2 {
+    width: 290px
+}
+
+.price-line-3 {
+    width: 240px
+}
+
+.price-now {
+    font-size: 24px;
+    color: #fd8000;
+    line-height: 30px;
+    margin-top: -7px
+}
+
+.price-fu,
+.price-now {
+    float: left;
+    margin-left: 10px
+}
+
+.price-fu {
+    line-height: 16px;
+    color: #333
+}
+
+.submit-car {
+    height: 40px;
+    padding-top: 5px;
+    position: relative
+}
+
+.submit-tip-2 {
+    width: 110px;
+    height: 40px;
+    line-height: 40px;
+    color: #666;
+    font-size: 16px
+}
+
+.phone-input-2 {
+    float: left;
+    width: 188px;
+    height: 18px;
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    font-size: 16px;
+    font-family: arial;
+    margin-right: 10px
+}
+
+.submit-phone-2 {
+    float: left;
+    width: 150px;
+    height: 40px;
+    background: #fd8000;
+    border: 0;
+    font-size: 18px;
+    color: #fff;
+    font-family: Microsoft YaHei;
+    cursor: pointer
+}
+
+.submit-phone-2:hover {
+    background: #fd6000
+}
+
+.more-ass {
+    float: right;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #fd8000;
+    border: 0;
+    font-size: 18px;
+    color: #fff
+}
+
+.more-ass:hover {
+    background: #fd6000;
+    color: #fff;
+    text-decoration: none
+}
+
+.phone-error {
+    position: absolute;
+    top: 45px;
+    left: 110px;
+    height: 20px;
+    line-height: 20px;
+    color: #f60
+}
+
+.submit-suc-2 {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 34px;
+    background: url(//sta.guazistatic.com/c2c_web/sell-bg-2.eb0b28902429bd8551ee132c3222ddd2.png) no-repeat 0 -100px;
+    font-size: 14px;
+    color: #666
+}
+
+.sel-lists {
+    height: 160px
+}
+
+.car-300 {
+    font-size: 14px;
+    color: #f60;
+    text-align: center
+}
+
+.car-300 span {
+    display: inline-block;
+    width: 76px;
+    height: 18px;
+    margin-right: 10px;
+    vertical-align: -3px;
+    background: url(//sta.guazistatic.com/c2c_web/sell-car300.a09515dd246667e950343720ad4e3b64.png) no-repeat
+}
+
+.sell-float {
+    width: 100%;
+    height: 99px;
+    background: #fcfcfc;
+    border-top: 1px solid #eaeaea
+}
+
+.sell-float.sell-float-fixed {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 10000
+}
+
+.write-form {
+    width: 990px;
+    height: 69px;
+    padding: 15px 100px;
+    margin: 0 auto
+}
+
+.service-slogan {
+    float: left;
+    height: 69px;
+    padding: 0 45px 0 88px;
+    background-position: 0 -100px;
+    line-height: 69px;
+    font-size: 28px;
+    color: #798991
+}
+
+.service-slogan span {
+    font-size: 42px;
+    color: #fd8000
+}
+
+.float-input-box {
+    float: left;
+    padding-top: 10px;
+    height: 64px
+}
+
+.float-input {
+    width: 275px;
+    height: 24px;
+    padding: 10px 10px 10px 44px;
+    border: 1px solid #ff7e00;
+    font-size: 14px;
+    font-family: microsoft yahei;
+    line-height: 24px;
+    color: #333;
+    background-position: 0 -50px
+}
+
+.submit-float-input {
+    float: left;
+    display: block;
+    width: 170px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 18px;
+    font-family: Microsoft Yahei;
+    color: #fff;
+    background: #fd8000;
+    border: 0 none;
+    margin: 10px 0 0 5px;
+    _cursor: pointer；
+}
+
+.submit-float-input:hover {
+    background: #fd6000；
+}
