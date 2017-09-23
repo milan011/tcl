@@ -5,6 +5,8 @@
 @endsection
 
 @section('head_content')
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/content.css')}}">  
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/footer.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/indexHead.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/logo.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/home.css')}}">

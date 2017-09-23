@@ -1,0 +1,258 @@
+.photoTab {
+    width: 100%;
+    overflow: hidden
+}
+
+.topnav-float h1 {
+    font-size: .18rem;
+    line-height: .44rem;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0 .56rem;
+    overflow: hidden;
+    color: #34373a
+}
+
+.topnav-float .operate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    color: #848689;
+    font-size: .15rem;
+    line-height: .45rem;
+    padding: 0 .15rem;
+    z-index: 20
+}
+
+.img-box {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    overflow: hidden
+}
+
+.img-box,
+.nums-tip {
+    box-sizing: border-box
+}
+
+.nums-tip {
+    color: #fff;
+    font-size: .14rem;
+    z-index: 100;
+    text-align: right;
+    padding: .1rem .15rem 0 0
+}
+
+.nums-tip em {
+    font-size: .2rem;
+    color: #fff
+}
+
+.swipe-wrap img {
+    width: 100%
+}
+
+.swipe-wrap {
+    display: table
+}
+
+.big-images-slider {
+    top: 50%;
+    margin-top: -30%;
+    left: 0;
+    position: absolute;
+    z-index: 30;
+    width: 100%;
+    overflow: hidden
+}
+
+.big-images-slider .caption {
+    height: .4rem;
+    line-height: .4rem;
+    text-align: center;
+    color: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#1a1a1a), to(#0d0d0d));
+    border-bottom: 1px solid #1a1a1a;
+    position: relative
+}
+
+.big-images-slider .big-index {
+    color: #fff
+}
+
+.big-images-slider .img-box-body {
+    width: 3.2rem;
+    overflow: hidden;
+    margin: 0 auto
+}
+
+.big-images-slider .big-img-body {
+    width: 100%;
+    overflow: hidden;
+    margin: 0
+}
+
+.big-images-slider li img {
+    width: 3.2rem
+}
+
+.big-images-slider li {
+    float: left
+}
+
+.swipe {
+    visibility: hidden
+}
+
+.swipe,
+.swipe-wrap {
+    overflow: hidden;
+    position: relative
+}
+
+.swipe-wrap>div {
+    width: 100%;
+    display: table-cell;
+    position: relative;
+    vertical-align: middle
+}
+
+.swipe-index {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: .05rem;
+    text-align: center;
+    z-index: 50
+}
+
+.swipe-index i {
+    margin-right: 2%;
+    width: .04rem;
+    height: .04rem;
+    border-radius: 100%;
+    background: #666
+}
+
+.swipe-index i.active {
+    background: #aaa
+}
+
+.img-tabcon {
+    position: absolute;
+    left: 0;
+    top: .57rem;
+    width: 100%;
+    z-index: 50;
+    padding: 0 .15rem;
+    overflow: hidden;
+    box-sizing: border-box
+}
+
+.img-tabcon ul {
+    overflow: auto;
+    height: .37rem;
+    display: -webkit-box
+}
+
+.img-tabcon ul li {
+    line-height: .32rem;
+    margin-right: .15rem
+}
+
+.img-tabcon ul li .active {
+    border-bottom: 2px solid #38b44c;
+    color: #fff;
+    font-size: .16rem
+}
+
+.img-tabcon a {
+    font-size: .14rem;
+    color: #acacac;
+    display: block
+}
+
+.column-wrap {
+    padding-top: .45rem;
+    padding-bottom: .64rem;
+    background-color: #f3f5f8
+}
+
+.all-pic {
+    padding-top: .16rem
+}
+
+.all-pic .column-head {
+    color: #495056;
+    font-size: .16rem;
+    padding: 0 0 .08rem .15rem
+}
+
+.all-pic li a {
+    display: block;
+    line-height: 0;
+    padding: .03rem
+}
+
+.all-pic li img {
+    width: 100%
+}
+
+.all-pic .list {
+    overflow: hidden;
+    padding: 0 .12rem
+}
+
+.all-pic .list .list-item {
+    border-bottom: 0
+}
+
+.all-pic .list:after {
+    height: 0;
+    border-bottom: 0
+}
+
+.all-pic .list.row-three .list-item {
+    float: left;
+    width: 33.33%
+}
+
+.fixed-button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .64rem;
+    padding: .1rem .09rem;
+    display: -webkit-box;
+    box-sizing: border-box;
+    z-index: 100
+}
+
+.fixed-button .btn {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    display: block;
+    height: .44rem;
+    line-height: .44rem;
+    text-align: center;
+    font-size: .18rem;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 .06rem
+}
+
+.fixed-button .btn-1 {
+    background-color: #4cc76f
+}
+
+.fixed-button .btn-2 {
+    background-color: #ff7844
+}
+
+.pic-body .fixed-button {
+    background-color: hsla(0, 0%, 100%, .96)
+}

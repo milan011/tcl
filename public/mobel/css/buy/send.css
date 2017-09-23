@@ -1,0 +1,155 @@
+body,
+button,
+input,
+select,
+textarea {
+    font: 14px/1.5 helvetica neue, tahoma, arial, hiragino sans gb, microsoft yahei, sans-serif
+}
+
+.box-size {
+    width: 100%;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.popup-mobile {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 199;
+    display: none;
+    width: 90%;
+    height: 274px;
+    margin-top: -137px;
+    margin-left: -45%;
+    background-color: #fff;
+    border-radius: 8px
+}
+
+.popup-mobile.active {
+    display: block
+}
+
+.pop-error,
+.pop-ipt,
+.pop-tel,
+.pop-text,
+.popup-mobile .pop-tit {
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.popup-mobile .pop-tit {
+    height: 60px;
+    line-height: 60px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 16px;
+    text-align: center
+}
+
+.pop-text {
+    padding-bottom: 12px;
+    font-size: 16px;
+    color: #707070
+}
+
+.pop-ipt {
+    position: relative
+}
+
+.pop-ipt.mt10 {
+    margin-top: 10px
+}
+
+.pop-ipt input {
+    width: 100%;
+    padding-left: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    -webkit-appearance: none
+}
+
+.btn-code,
+.pop-ipt input {
+    height: 40px;
+    line-height: 40px
+}
+
+.btn-code {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 90px;
+    font-size: 13px;
+    color: #fff;
+    background-color: #d0d0d0;
+    border: none;
+    border-radius: 0 2px 2px 0
+}
+
+.btn-code.active {
+    background-color: #22ac38
+}
+
+.pop-tel {
+    font-size: 16px
+}
+
+.pop-tel a {
+    font-size: 13px;
+    color: #ff7e00
+}
+
+.pop-error {
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #ff7e00
+}
+
+.pop-error span:before {
+    content: "";
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin-top: 4px;
+    margin-right: 5px;
+    background: url(//sta.guazistatic.com/c2c_wap/icon.d694470cf6db618b194f21e0c2bce398.png) no-repeat;
+    background-size: 12px auto
+}
+
+.pop-btn {
+    display: -webkit-box;
+    display: box;
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box
+}
+
+.pop-btn .btn {
+    display: block;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    height: 44px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 44px;
+    text-align: center;
+    background-color: #22ac38;
+    border: none;
+    box-sizing: inherit
+}
+
+.pop-btn .btn-cancel {
+    height: 43px;
+    line-height: 43px;
+    color: #252825;
+    background-color: #fff;
+    border-top: 1px solid #e6e6e6;
+    border-radius: 0 0 0 5px
+}
+
+.pop-btn .btn-sure {
+    border-radius: 0 0 5px 0
+}

@@ -1,0 +1,132 @@
+.range-title {
+    height: 50px;
+    padding-right: 15px;
+    font-size: 16px;
+    line-height: 50px
+}
+
+.range-title span {
+    font-size: 13px;
+    color: #a0a0a0
+}
+
+.range-title .ramout {
+    float: right;
+    font-size: 14px;
+    color: #606060
+}
+
+.range-title .ramout.active {
+    color: #22ac38
+}
+
+.range-title .btn {
+    width: 48px;
+    height: 23px;
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 23px;
+    background-color: #ccc
+}
+
+.range-title .btn.active {
+    background-color: #22ac38
+}
+
+.range-box {
+    position: relative;
+    margin: 0 40px 0 26px;
+    padding: 9px 0 15px
+}
+
+.load-outer {
+    position: relative;
+    width: 100%;
+    background-color: #e6e6e6
+}
+
+.load-inner,
+.load-outer {
+    height: 4px;
+    border-radius: 2px
+}
+
+.load-inner {
+    position: absolute;
+    background-color: #22ac38
+}
+
+.icon-range {
+    position: absolute;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    margin-left: -15px;
+    margin-top: -14px;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 50%;
+    box-shadow: 0 3px 5px 0 #f2f2f2
+}
+
+.icon-range:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 16px;
+    margin: 6px auto;
+    background: url(//sta.guazistatic.com/c2c_wap/icon-sprite.ed2b1e9dee161eee37f5efe38e83a04b.png) no-repeat -192px -56px;
+    background-size: 209px auto
+}
+
+.curr-price {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    width: 62px;
+    height: 18px;
+    margin-left: -32px;
+    font-size: 13px;
+    color: #22ac38;
+    text-align: center;
+    border: 1px solid #22ac38;
+    border-radius: 2px
+}
+
+.curr-price:after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -4px;
+    background-color: #fff;
+    border-top: 1px solid #22ac38;
+    border-right: 1px solid #22ac38;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg)
+}
+
+.load-zero {
+    position: absolute;
+    left: 0;
+    bottom: 15px;
+    font-size: 13px;
+    color: #a0a0a0
+}
+
+.load-num {
+    display: -webkit-box;
+    display: box;
+    width: 100%;
+    padding-top: 21px
+}
+
+.load-num li {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    font-size: 13px;
+    color: #a0a0a0;
+    text-align: right
+}

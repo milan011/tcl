@@ -1,0 +1,491 @@
+.report-info {
+    position: relative;
+    top: .45rem;
+    padding: .13rem .15rem .12rem;
+    background-color: #fff;
+    margin-bottom: .51rem
+}
+
+.report-info p {
+    position: relative;
+    line-height: .22rem
+}
+
+.report-info .re-tit,
+.report-info .report-con {
+    font-size: .14rem;
+    color: #757f89
+}
+
+.re-car-name {
+    color: #495056;
+    font-size: .15rem
+}
+
+.report-detail {
+    padding-top: .12rem;
+    background-color: #fff;
+    margin-bottom: .06rem
+}
+
+.re-desc {
+    font-size: .15rem;
+    color: #495056;
+    padding: .04rem .15rem .15rem;
+    line-height: .22rem
+}
+
+.re-list a {
+    line-height: .43rem;
+    display: block;
+    position: relative;
+    padding: 0 .15rem
+}
+
+.re-list a p .tip-icon {
+    display: inline-block;
+    vertical-align: -3px;
+    width: .26rem;
+    height: .37rem;
+    margin-left: .01rem;
+    background-position: -1.69rem .11rem;
+    vertical-align: middle;
+    margin-top: -.03rem
+}
+
+.re-list a:before {
+    height: 1px;
+    content: "";
+    width: 100%;
+    border-top: 1px solid #f3f5f8;
+    position: absolute;
+    top: -1px;
+    right: 0;
+    transform: scaleY(.5);
+    -webkit-transform: scaleY(.5)
+}
+
+.re-list a:after {
+    content: "";
+    position: absolute;
+    right: .15rem;
+    top: .15rem;
+    width: .07rem;
+    height: .07rem;
+    border-left: 1px solid #8e959d;
+    border-top: 1px solid #8e959d;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg)
+}
+
+.re-list.active a:after {
+    top: .19rem;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.re-list a>div {
+    position: absolute;
+    right: .35rem;
+    top: 0
+}
+
+.re-list a>div span,
+.re-list a>p {
+    color: #757f89;
+    font-size: .15rem
+}
+
+.re-list a>div i {
+    margin-left: .04rem
+}
+
+.r-normal,
+.r-unormal {
+    display: inline-table;
+    vertical-align: .01rem;
+    white-space: nowrap;
+    border-radius: .01rem;
+    height: .24rem;
+    line-height: .24rem;
+    padding: 0 .07rem;
+    color: #38b44c;
+    font-size: .12rem;
+    box-sizing: border-box;
+    position: relative;
+    text-align: center
+}
+
+.r-normal:after,
+.r-unormal:after {
+    content: "";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    border: 1px solid #38b44c;
+    border-radius: .01rem;
+    box-sizing: border-box;
+    -webkit-transform: scale(.5);
+    transform: scale(.5)
+}
+
+.r-unormal:after {
+    border-color: #ffbb02
+}
+
+.r-unormal {
+    color: #ffbb02
+}
+
+.re-depoly {
+    display: none
+}
+
+.re-list.active .re-depoly {
+    display: block
+}
+
+.re-depoly ul {
+    width: 100%;
+    background-color: #f9fbfd
+}
+
+.re-depoly li {
+    height: .43rem;
+    line-height: .44rem;
+    padding-left: .15rem;
+    position: relative;
+    color: #757f89;
+    font-size: .14rem
+}
+
+.re-depoly li:after {
+    height: 1px;
+    content: "";
+    width: 100%;
+    border-top: 1px solid #f3f5f8;
+    position: absolute;
+    top: -1px;
+    right: 0;
+    transform: scaleY(.5);
+    -webkit-transform: scaleY(.5)
+}
+
+.re-depoly li i {
+    position: absolute;
+    right: .15rem;
+    top: .12rem;
+    width: .18rem;
+    height: .18rem;
+    background: url(//sta.guazistatic.com/c2c_wap/icons.58d3346e8f35c4f4fbec6cdae2684a97.png) no-repeat;
+    background-size: 3rem auto
+}
+
+.re-depoly .li-normal i {
+    background-position: -1.95rem .01rem
+}
+
+.re-depoly .li-unormal {
+    background-color: #fbf9ef
+}
+
+.re-depoly .li-unormal span {
+    position: absolute;
+    right: .4rem;
+    top: 0;
+    color: #ffbb03;
+    font-size: .12rem;
+    line-height: .44rem
+}
+
+.re-depoly .li-unormal i {
+    background-position: -1.95rem -.18rem
+}
+
+.re-depoly .li-notest i {
+    background-position: -1.73rem -.18rem
+}
+
+.mod-re-lists .report-thumb {
+    padding-bottom: .16rem
+}
+
+.mod-re-lists .report-img {
+    border-top: 1px solid #f3f5f8;
+    margin-top: 0;
+    padding-top: .15rem
+}
+
+.thumb-des {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    height: .34rem;
+    background-color: rgba(0, 0, 0, .4)
+}
+
+.thumb-des p {
+    line-height: .34rem;
+    color: #fff;
+    text-indent: .1rem
+}
+
+.mod-re-lists .thumb-des .thumb-img-num {
+    right: .02rem;
+    left: auto;
+    top: auto;
+    bottom: .04rem;
+    font-size: .14rem;
+    background-color: transparent
+}
+
+.second-tab {
+    height: .48rem;
+    display: -webkit-box;
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    top: .44rem;
+    left: 0;
+    z-index: 20
+}
+
+.second-tab a {
+    display: block;
+    line-height: .48rem;
+    color: #757f8a;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    text-align: center;
+    position: relative
+}
+
+.second-tab a:after {
+    height: .13rem;
+    content: "";
+    width: 1px;
+    border-right: 1px solid #dde4ea;
+    position: absolute;
+    top: .18rem;
+    right: 0;
+    transform: scaleX(.5);
+    -webkit-transform: scaleX(.5)
+}
+
+.second-tab a:last-child:after {
+    border-color: transparent
+}
+
+.second-tab a.active {
+    color: #38b44c
+}
+
+.product-picture .thumb-houseimg-box {
+    margin-bottom: .1rem
+}
+
+.product-picture .btn-check {
+    padding: .08rem 0 .27rem;
+    margin-bottom: 0
+}
+
+.product-picture .product-img {
+    padding: 0 .15rem;
+    background-color: #fff
+}
+
+.product-img img {
+    width: 100%;
+    display: block;
+    margin-bottom: .1rem
+}
+
+.product-img .slide-area img {
+    margin-bottom: 0
+}
+
+.img-textbox {
+    color: #252825;
+    font-size: .15rem;
+    padding: 0 0 .16rem;
+    line-height: .2rem;
+    display: table;
+    overflow: hidden
+}
+
+.img-textbox span {
+    display: table-cell;
+    position: relative;
+    float: none
+}
+
+.img-textbox span.fl {
+    color: #8e959d;
+    padding-right: .1rem;
+    font-size: .14rem;
+    white-space: nowrap
+}
+
+.img-textbox span.fr {
+    color: #495056;
+    font-size: .14rem;
+    line-height: .2rem
+}
+
+.detail .product-picture.line-list {
+    padding-top: .13rem
+}
+
+.column.product-picture,
+.comm-area {
+    padding-top: .89rem
+}
+
+.car-config {
+    margin-bottom: .06rem;
+    background-color: #fff
+}
+
+.car-config .column-head {
+    height: .46rem;
+    position: relative
+}
+
+.car-config .column-head:after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #f3f5f8;
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5)
+}
+
+.car-config .column-head .column-title {
+    font-size: .16rem;
+    font-weight: 500;
+    line-height: .47rem;
+    color: #495056;
+    position: relative
+}
+
+.car-config .column-title:before {
+    content: "";
+    position: absolute;
+    background-color: #38b44c;
+    left: 0;
+    top: .15rem;
+    width: .03rem;
+    height: .17rem
+}
+
+.car-config .list {
+    padding: .07rem 0
+}
+
+.car-config .list li {
+    overflow: hidden;
+    width: 100%;
+    padding: 0 .15rem;
+    box-sizing: border-box
+}
+
+.car-config .list li:last-child {
+    border-bottom-color: transparent
+}
+
+.car-config .list li p,
+.car-config .list li span {
+    font-size: .14rem;
+    width: 50%
+}
+
+.car-config .list li span {
+    color: #757f89;
+    width: 1.4rem;
+    line-height: .31rem;
+    display: block;
+    float: left
+}
+
+.car-config .list li p {
+    line-height: .31rem;
+    float: right;
+    color: #495056
+}
+
+.car-config .list:after {
+    border-bottom: 0
+}
+
+.car-config .green {
+    color: #22ac38
+}
+
+.no-content {
+    text-align: center;
+    padding: .1rem 0;
+    font-size: .14rem;
+    color: #999
+}
+
+.no-content.active {
+    display: block
+}
+
+.risk-tip {
+    color: #abafb3;
+    font-size: .12rem;
+    padding: .03rem .15rem .15rem
+}
+
+.faq-main {
+    position: relative;
+    top: .85rem;
+    padding: 0 .15rem .65rem;
+    background-color: #fff;
+    box-sizing: border-box
+}
+
+.faq-box {
+    padding: .11rem 0 .08rem
+}
+
+.faq-tith2 {
+    margin-bottom: .04rem;
+    font-size: .16rem;
+    font-weight: 400;
+    color: #495056
+}
+
+.faq-tith2:before {
+    content: "Q\FF1A";
+    display: inline-block;
+    font-size: .18rem;
+    color: #38b44c
+}
+
+.faq-cont {
+    color: #959ea7
+}
+
+.faq-cont a {
+    color: #38b44c
+}
+
+.faq-cont-list {
+    margin: .05rem 0;
+    padding: .09rem .12rem;
+    font-size: .12rem;
+    background-color: #f5faf6
+}
+
+.faq-cont-list li {
+    line-height: .2rem;
+    color: #959ea7
+}

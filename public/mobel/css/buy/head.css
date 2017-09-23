@@ -1,0 +1,381 @@
+.history-list li a:before,
+.icon-search:before,
+.tsearch:before,
+.usericon {
+    background: url(//sta.guazistatic.com/c2c_wap/icon-sprite.ed2b1e9dee161eee37f5efe38e83a04b.png) no-repeat;
+    background-size: 209px auto
+}
+
+.icon-close {
+    position: absolute;
+    text-indent: -100px;
+    overflow: hidden
+}
+
+.icon-close:after,
+.icon-close:before {
+    content: "";
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.icon-close:after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.arrow-down {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-left: 5px;
+    vertical-align: 3px;
+    border-top: 1px solid #666;
+    border-right: 1px solid #666;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg)
+}
+
+.heading,
+.heading2 {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    background-color: #f5f5f5;
+    overflow: hidden
+}
+
+.heading2>.icon-close {
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px
+}
+
+.heading2>.icon-close:after,
+.heading2>.icon-close:before {
+    top: 15px;
+    left: 21px;
+    width: 1px;
+    height: 14px;
+    background-color: #9e9e9e
+}
+
+.heading2 h1,
+.heading h1 {
+    margin: 0 44px;
+    font-size: 18px;
+    line-height: 44px;
+    color: #333;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.icon-reset2 {
+    right: 0;
+    font-size: 15px;
+    line-height: 44px;
+    color: #22ac38
+}
+
+.icon-back,
+.icon-reset2 {
+    position: absolute;
+    top: 0;
+    width: 44px
+}
+
+.icon-back {
+    left: 0;
+    height: 44px;
+    text-indent: -100px;
+    overflow: hidden
+}
+
+.icon-back:before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 12px;
+    height: 12px;
+    border-bottom: 1px solid #888;
+    border-left: 1px solid #888;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.heading .box-size {
+    padding: 7px 87px 7px 52px
+}
+
+.top-nav {
+    position: relative;
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 3px
+}
+
+.tcity {
+    float: left;
+    padding-left: 8px
+}
+
+.tcity:after {
+    content: "";
+    float: right;
+    width: 1px;
+    height: 15px;
+    margin-top: 7px;
+    margin-left: 10px;
+    background-color: #e6e6e6
+}
+
+.tsearch {
+    height: 28px;
+    font-size: 13px;
+    color: #999
+}
+
+@media screen and (max-width:374px) {
+    .tsearch {
+        font-size: 12px
+    }
+}
+
+.tsearch:before {
+    content: "";
+    display: inline-block;
+    vertical-align: -1px;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    margin-left: 10px;
+    background-position: -109px -56px
+}
+
+.search-box .box-size {
+    padding: 7px 47px 7px 44px
+}
+
+.search-box>.icon-close {
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px
+}
+
+.search-box>.icon-close:after,
+.search-box>.icon-close:before {
+    top: 15px;
+    left: 21px;
+    width: 1px;
+    height: 14px;
+    background-color: #9e9e9e
+}
+
+.search-box .top-nav .icon-close {
+    top: 8px;
+    right: 9px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #9e9e9e
+}
+
+.search-box .top-nav .icon-close:after,
+.search-box .top-nav .icon-close:before {
+    top: 3px;
+    left: 6px;
+    width: 1px;
+    height: 6px;
+    background-color: #fff
+}
+
+.search-box .ipt {
+    width: 100%;
+    height: 28px;
+    font-size: 12px;
+    line-height: normal;
+    color: #252825;
+    text-indent: 10px;
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box;
+    -webkit-appearance: textfield
+}
+
+.search-box .icon-search {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 47px;
+    height: 44px;
+    background: none;
+    border: none
+}
+
+.search-box .icon-search:before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 13px auto;
+    background-position: -127px -56px
+}
+
+.search-result {
+    padding-left: 15px;
+    background-color: #fff;
+    display: none
+}
+
+.search-result.active {
+    display: block
+}
+
+.history-list li a:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    vertical-align: -3px;
+    background-position: -148px -56px
+}
+
+.history-clear {
+    display: block;
+    height: 40px;
+    border-top: 1px solid #e6e6e6;
+    line-height: 40px;
+    text-align: center
+}
+
+.search-hot h3 {
+    height: 30px;
+    padding-left: 15px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #252825
+}
+
+.search-hot .lab-list {
+    padding: 0 15px 10px;
+    background-color: #fff
+}
+
+.search-hot .lab-list li a {
+    height: 30px;
+    line-height: 30px
+}
+
+.usericon {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    position: absolute;
+    right: 50px;
+    top: 11px
+}
+
+.lab-list {
+    width: 100%;
+    overflow: hidden
+}
+
+.lab-list,
+.lab-list li {
+    padding: 0 5px;
+    box-sizing: border-box
+}
+
+.lab-list li {
+    float: left;
+    width: 33.3%;
+    margin-top: 10px
+}
+
+.lab-list li a {
+    display: block;
+    height: 34px;
+    font-size: 13px;
+    line-height: 34px;
+    color: #404040;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px
+}
+
+.lab-list .active a,
+.lab-list li a.touch {
+    color: #22ac38;
+    background-color: #f1fff3;
+    border: 1px solid #22ac38
+}
+
+.lab-list .active a:after {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 7px;
+    margin-left: 8px;
+    vertical-align: 4px;
+    border-bottom: 1px solid #22ac38;
+    border-left: 1px solid #22ac38;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.row-list li a {
+    display: block;
+    height: 43px;
+    line-height: 43px;
+    color: #8a8a8a;
+    border-bottom: 1px solid #e6e6e6
+}
+
+.row-list li:last-child a {
+    border-bottom: none
+}
+
+.mod-tags li {
+    float: left;
+    height: 24px;
+    margin: 0 8px 8px 0;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #666;
+    line-height: 24px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px
+}
+
+.mod-tags .icon-close {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 10px
+}
+
+.mod-tags .icon-close:after,
+.mod-tags .icon-close:before {
+    top: 0;
+    left: 4px;
+    width: 1px;
+    height: 8px;
+    background-color: #ccc
+}

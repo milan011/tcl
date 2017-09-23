@@ -43,7 +43,7 @@ class CarController extends CommonController
     {
         // 车源详情
         $cars = $this->car->find($id);
-
+        // dd('che');
         $img = $cars->hasOneImagesOnFirst;
         $images = $cars->hasManyImages; // 车源图片
         // dd(lastsql());

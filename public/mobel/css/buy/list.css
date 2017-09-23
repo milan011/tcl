@@ -1,0 +1,150 @@
+.mod-list {
+    position: relative
+}
+
+.car-info {
+    display: block;
+    min-height: 80px;
+    padding: 15px 15px 15px 0;
+    border-bottom: 1px solid #e6e6e6
+}
+
+.car-img {
+    position: relative;
+    float: left;
+    width: 120px;
+    height: 80px;
+    margin-right: 10px
+}
+
+.car-img img {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.tag-mod {
+    position: absolute;
+    top: -2px;
+    left: -22px;
+    z-index: 4;
+    width: 40px;
+    height: 0;
+    font-size: 9px;
+    color: #fff;
+    border: 16px solid transparent;
+    border-bottom: 16px solid #38b44c;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.text-rotate {
+    width: 100%;
+    line-height: 16px;
+    text-align: center
+}
+
+.tag-new,
+.text-rotate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap
+}
+
+.tag-new {
+    z-index: 4;
+    width: 38px;
+    height: 38px;
+    text-indent: -100px;
+    overflow: hidden;
+    background: url(//sta.guazistatic.com/c2c_wap/icon-sprite.ed2b1e9dee161eee37f5efe38e83a04b.png) no-repeat -169px 0;
+    background-size: 209px auto
+}
+
+.tag-city {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    height: 20px;
+    padding: 0 4px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, .4)
+}
+
+.car-name {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #252825;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.car-km {
+    margin-top: 2px;
+    font-size: 12px;
+    color: #999;
+    overflow: hidden
+}
+
+.car-price {
+    margin-top: 7px;
+    font-size: 0;
+    overflow: hidden
+}
+
+.car-price strong {
+    margin-top: 3px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ff7e00
+}
+
+.icon-sta1,
+.icon-sta2,
+.icon-sta3,
+.icon-sta-blue,
+.icon-sta-sell {
+    display: inline-block;
+    height: 14px;
+    margin-top: 4px;
+    margin-left: 4px;
+    padding: 0 3px;
+    font-size: 11px;
+    line-height: 14px;
+    text-align: center;
+    border-radius: 2px
+}
+
+.icon-sta1 {
+    color: #33b868;
+    border: 1px solid #33b868
+}
+
+.icon-sta2 {
+    color: #ff5b35;
+    border: 1px solid #ff5b35
+}
+
+.icon-sta3 {
+    color: #3bc3b5;
+    border: 1px solid #3bc3b5
+}
+
+.icon-sta-blue {
+    color: #4084ea;
+    border: 1px solid #4084ea
+}
+
+.icon-sta-sell {
+    color: #ffa600;
+    border: 1px solid #f3b503
+}

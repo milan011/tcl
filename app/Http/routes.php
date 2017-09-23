@@ -30,19 +30,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('admin/resetPass', 'Admin\UserController@resetPass')->name('admin.user.reset');
     Route::auth();
 });
-
-/*Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
-       
-    Route::get('car/{id}', 'CarController@index')->name('home.car.index');  
-    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');
-    Route::get('/', 'HomeController@index')->name('home.index');  
-    Route::get('/city/{city?}', 'HomeController@index')->name('home.indexWithCity');  
-    Route::get('/join', 'JoinController@index')->name('home.join.index');  
-    Route::get('/sale', 'SaleController@index')->name('home.sale.index');  
-    Route::post('/sale/store', 'SaleController@store')->name('home.sale.store');  
-    Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('home.sale.getChildBrand');  
-});*/
-
 //手机端路由组
 Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => 'Mobel'], function () {
     Route::get('car/{id}', 'CarController@index')->name('mobel.car.index');  
@@ -55,7 +42,21 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('mobel.sale.getChildBrand');
 });
 
-Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
+Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
+       
+    Route::get('car/{id}', 'CarController@index')->name('home.car.index');  
+    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');
+    Route::get('/', 'HomeController@index')->name('home.index');  
+    Route::get('/city/{city?}', 'HomeController@index')->name('home.indexWithCity');  
+    Route::get('/join', 'JoinController@index')->name('home.join.index');  
+    Route::get('/sale', 'SaleController@index')->name('home.sale.index');  
+    Route::post('/sale/store', 'SaleController@store')->name('home.sale.store');  
+    Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('home.sale.getChildBrand');  
+});
+
+
+
+/*Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
        
     Route::get('car/{id}', 'CarController@index')->name('show.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('show.cate.index');
@@ -65,7 +66,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
     Route::get('/sale', 'SaleController@index')->name('show.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('show.sale.store');  
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('show.sale.getChildBrand');  
-});
+});*/
 
 
 
