@@ -76,7 +76,7 @@ class CarController extends Controller
     public function carself(Request $request)
     {
         
-        // dd($request->method());
+        // dd($request->all());
 
         if($request->method() == 'POST'){
             //初始搜索条件

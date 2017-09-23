@@ -74,7 +74,9 @@ class Cars extends Model
         }
 
         //if(isset($requestData['car_status']) && $requestData['car_status'] != ''){
-        if(!empty($requestData['car_status'])){
+        /*p($requestData['car_status']);
+        dd(empty($requestData['car_status']));*/
+        if(!empty($requestData['car_status']) || ($requestData['car_status'] == '0')){
             //有车源状态选项
             if($requestData['car_status'] == '1'){
 
