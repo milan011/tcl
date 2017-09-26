@@ -1,0 +1,341 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent
+}
+
+article,
+aside,
+blockquote,
+body,
+button,
+code,
+dd,
+details,
+div,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+input,
+legend,
+li,
+menu,
+nav,
+ol,
+p,
+pre,
+section,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block
+}
+
+li,
+ol,
+ul {
+    list-style: none
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400
+}
+
+address,
+b,
+cite,
+code,
+em,
+i,
+small,
+strong {
+    font-style: normal
+}
+
+button,
+input[type=button],
+input[type=reset],
+input[type=submit] {
+    -webkit-appearance: button;
+    -webkit-user-select: none;
+    cursor: pointer
+}
+
+button[disabled],
+input[disabled] {
+    cursor: default
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0 none;
+    padding: 0
+}
+
+input[type=checkbox],
+input[type=radio] {
+    -webkik-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+input[type=search] {
+    -webkit-appearance: textfield;
+    box-sizing: content-box
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+input:-webkit-autofill,
+select:-webkit-autofill,
+textarea:-webkit-autofill {
+    box-shadow: inset 0 0 0 999px #fff
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none
+}
+
+textarea {
+    overflow: auto;
+    vertical-align: top;
+    resize: vertical
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+caption,
+td,
+th {
+    vertical-align: middle
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+    content: "";
+    content: none
+}
+
+a img {
+    border: none
+}
+
+img {
+    display: block
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    font-size: 100%;
+    vertical-align: baseline
+}
+
+a:active,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 0 none
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help
+}
+
+body {
+    min-width: 320px;
+    max-width: 768px;
+    margin: 0 auto;
+    background-color: #fff;
+    color: #000;
+    font: .14rem/1.5 helvetica neue, tahoma, arial, hiragino sans gb, microsoft yahei, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased
+}
+
+button,
+input,
+select,
+textarea {
+    -webkit-appearance: none;
+    appearance: none
+}
+
+input,
+select {
+    vertical-align: middle
+}
+
+button {
+    outline: 0;
+    border: none;
+    background-color: transparent
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #bfbfbf
+}
+
+del {
+    text-decoration: line-through
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none!important;
+    margin: 0
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    font: 0/0;
+    clear: both
+}
+
+.backtop {
+    border-radius: 50%;
+    width: .42rem;
+    height: .42rem;
+    background-color: #fff;
+    border: 1px solid #dde4ea;
+    position: fixed;
+    right: .14rem;
+    bottom: .62rem;
+    z-index: 89;
+    box-shadow: 0 0 2px #dde4ea;
+    display: none
+}
+
+.backtop.active {
+    display: block
+}
+
+.backtop i,
+.year-2017:before {
+    background-image: url(//sta.guazistatic.com/c2c_wap/icon.9eaa74d2526e2fc9f1f77f6b66d6528e.png);
+    background-size: .18rem auto;
+    display: inline-block
+}
+
+.backtop i {
+    display: block;
+    width: .18rem;
+    height: .18rem;
+    margin: .14rem auto 0
+}
+
+.mask {
+    background-color: #495056;
+    -webkit-opacity: .8;
+    opacity: .8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    display: none
+}
+
+.mask.active {
+    display: block
+}
+
+html {
+    font-size: 625%
+}
+
+@media only screen and (min-width:376px) and (max-width:414px) {
+    html {
+        font-size: 690%
+    }
+}
+
+@media only screen and (min-width:415px) and (max-width:480px) {
+    html {
+        font-size: 800%
+    }
+}
+
+@media only screen and (min-width:481px) {
+    html {
+        font-size: 933.33%
+    }
+}
+
+@media only screen and (min-width:561px) {
+    html {
+        font-size: 1066.67%
+    }
+}
+
+@media only screen and (min-width:641px) {
+    html {
+        font-size: 1280%
+    }
+}

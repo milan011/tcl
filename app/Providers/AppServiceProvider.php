@@ -24,7 +24,10 @@ class AppServiceProvider extends ServiceProvider
             'admin.appraiser.*',           
             'admin.insurance.*',           
             'admin.loan.*',           
-            'admin.customer.*',           
+            'admin.customer.*', 
+            'home.*',
+            'show.*',
+            'mobel.*',       
         );
 
         view()->composer(
@@ -37,6 +40,10 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer(
             'show.*', 'App\Http\ViewComposers\CityComposer'
+        );
+
+        view()->composer(
+            'mobel.*', 'App\Http\ViewComposers\CityComposer'
         );
     }
 

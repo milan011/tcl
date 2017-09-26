@@ -250,7 +250,7 @@ class CateController extends CommonController
         }
         // dd($url_condition_b);
         // dd($recomment_brands);
-        
+        dd($category_type);
         foreach ($category_type as $key => $value) { //车辆类型信息添加筛选超链接
 
             $url_condition_t      = $url_condition;

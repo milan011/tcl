@@ -20,14 +20,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <!--css-->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/base.css')}}">
-    <!-- <script type="text/javascript" src="js/base.690ef8988bfee9ed9b2e.js"></script>
-    <script type="text/javascript" src="js/index_v2.8bd77216146184b7de07.js"></script> -->
+    
+    <script type="text/javascript" src="{{URL::asset('mobel/js/common/jQuery-1.12.0.min.js')}}"></script>
+    <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/base.js')}}"></script> -->
+    
     @yield('head_content')
 </head>
 
-<body> 
+<body @yield('bodyClass')> 
+
 @yield('content')
     
 @yield('footer_content')
+
+@yield('script_content')
 </body>
 </html>

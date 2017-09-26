@@ -40,6 +40,7 @@ class ConfigComposer
         $loan_stauts_config        = config('tcl.loan_stauts'); //获取配置文件中贷款状态
         $insurance_sor             = config('tcl.insurance_sor'); //获取配置文件中保险来源
         $insurance_company         = config('tcl.insurance_company'); //获取配置文件中保险公司列表
+        $price_interval_mobel      = config('tcl.price_interval_mobel'); //获取配置文件中前端价格区间
 
         $view->with('year_type', $year_type);
         $view->with('category_type', $category_type);
@@ -65,6 +66,7 @@ class ConfigComposer
         $view->with('loan_stauts_config', $loan_stauts_config);
         $view->with('insurance_sor', $insurance_sor);
         $view->with('insurance_company', $insurance_company);
+        $view->with('price_interval_mobel', $price_interval_mobel);
         
     }
 }

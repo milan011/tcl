@@ -1,0 +1,160 @@
+.heading {
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    height: .45rem;
+    background-color: #fff;
+    overflow: hidden
+}
+
+.heading h1 {
+    font-size: .16rem;
+    font-weight: 500;
+    line-height: .44rem;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0 .56rem;
+    overflow: hidden;
+    color: #495056
+}
+
+.heading .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-indent: -1rem;
+    overflow: hidden;
+    height: .45rem;
+    width: .45rem
+}
+
+.heading .back:before {
+    left: 0;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: .1rem;
+    height: .1rem;
+    border-top: 1px solid #495056;
+    border-right: 1px solid #495056;
+    margin: -.06rem 0 0 .16rem
+}
+
+.column,
+.other-search {
+    background-color: #fff;
+    overflow: hidden
+}
+
+.column-head {
+    position: relative;
+    line-height: .2rem;
+    overflow: hidden;
+    background-color: #f1f3f6;
+    padding: 0 .14rem
+}
+
+.column-title {
+    float: left;
+    color: #757f89;
+    font-size: .1rem;
+    overflow: hidden
+}
+
+.column-body {
+    background-color: #fcfcfc
+}
+
+.list {
+    position: relative;
+    overflow: hidden
+}
+
+.list .list-item {
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.list:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px
+}
+
+.city .list .list-item a {
+    display: inline-block;
+    line-height: .5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 .04rem;
+    overflow: hidden;
+    color: #495056;
+    font-size: .15rem;
+    position: relative;
+    margin: 0 .1rem
+}
+
+.city .list .list-item a:after {
+    content: "";
+    border-bottom: 1px solid #dbdee3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    z-index: 1
+}
+
+.city .list .list-item:last-child a:after {
+    border-bottom: 0
+}
+
+.locatingCity .list-item li {
+    border-bottom: 0;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.subtitle {
+    background-color: #f1f3f6;
+    padding: 0 .14rem;
+    line-height: .2rem;
+    color: #757f89;
+    font-size: .1rem
+}
+
+.aside-letter {
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: hsla(0, 0%, 100%, .5);
+    height: 100%;
+    width: .2rem;
+    z-index: 66
+}
+
+.aside-letter .letter-list {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -2rem
+}
+
+.letter-list li {
+    width: .2rem;
+    font-size: .11rem;
+    line-height: .16rem;
+    color: #757f89;
+    text-align: center
+}

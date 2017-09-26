@@ -19,30 +19,27 @@
 @section('content')
 <div class="line-list js-list-page">
         <header class="heading">
-            <a href="#" class="usericon" data-gzlog="tracking_type=click&eventid=1111432100000001"></a>
-            <a class="icon-home" href="/sjz/" baidu_alog="wap_listB_top&click&wap_listB_top_index_c">首页</a>
+
+            <a class="icon-home" href="{{route('mobel.index')}}">首页</a>
             <div class="box-size">
                 <div class="top-nav">
-                    <a class="tcity" data-gzlog="tracking_type=click&eventid=1111000000000003&evmsg=show&show=city" href="javascript:void(0);" baidu_alog="wap_listB_top&click&wap_listB_top_city_c">石家庄<i class="arrow-down"></i></a>
-                    <div class="tsearch" data-gzlog="tracking_type=click&eventid=0230220000000099" baidu_alog="wap_listB_top&click&wap_listB_top_search_c">
+                    <a class="tcity"  href="javascript:void(0);" >石家庄<i class="arrow-down"></i></a>
+                    <div class="tsearch">
                         搜索您想要的车
                     </div>
                 </div>
             </div>
-            <a class="js-change-style icon-column" href="javascript:void(0);" data-gzlog="tracking_type=click&eventid=1111000000000007" baidu_alog="wap_listB_top&click&wap_listB_top_style_small_c">大图列表</a>
         </header>
         <!--sell banner-->
         <!-- filter start -->
         <div class="filter">
             <nav class="filter-nav">
-                <a baidu_alog="wap_listB_filter&click&wap_listB_filter_order_c" data-gzlog="tracking_type=click&eventid=1111000000000004&evmsg=show&show=order" class="nav-item order" href="javascript:void(0);">智能排序</a>
-                <a baidu_alog="wap_listB_filter&click&wap_listB_filter_brand_c" data-gzlog="tracking_type=click&eventid=1111000000000003&evmsg=show&show=brand" class="nav-item brand" href="javascript:void(0);">品牌</a>
-                <a baidu_alog="wap_listB_filter&click&wap_listB_filter_price_c" data-gzlog="tracking_type=click&eventid=1111000000000003&evmsg=show&show=price" class="nav-item price" href="javascript:void(0);">价格</a>
-                <a baidu_alog="wap_listB_filter&click&wap_listB_filter_more_c" data-gzlog="tracking_type=click&eventid=1111000000000003&evmsg=show&show=option" class="nav-item option" href="javascript:void(0);">筛选</a>
-                <!--<a baidu_alog="wap_listB_filter&click&wap_listB_filter_sub_c" data-gzlog="tracking_type=click&eventid=1111000000000006&evmsg=show&show=subscription" class="nav-subscribe" href="/misc/subscription/?condition=/sjz/buy/&refer=/sjz/buy/">订阅</a>-->
-                <a class="nav-item-sell j-check-bao-mai " href="javascript:;"><i></i>保卖车</a>
+                <!-- <a class="nav-item" href="javascript:void(0);">推荐车源</a> -->
+                <a class="nav-item brand" href="javascript:void(0);">品牌</a>
+                <a class="nav-item price" href="javascript:void(0);">价格</a>
+                <a class="nav-item option" href="javascript:void(0);">更多筛选</a>
             </nav>
-            <div class="filter-box" id="filter-rank">
+            <!-- <div class="filter-box" id="filter-rank">
                 <ul class="row-list" data-urlKey="i">
                     <li class=" active js-single-option" data-urlVal=0 baidu_alog="wap_listB_order&click&wap_listB_order_0_c" data-gzlog="tracking_type=click&eventid=1111000000000004&evmsg=sort&sort=order&order=0">
                         <a href="javascript:void(0);"><i class="iconbg icon-rank1"></i>智能排序</a>
@@ -63,7 +60,7 @@
                         <a href="javascript:void(0);"><i class="iconbg icon-rank6"></i>里程最少</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <div class="filter-box" id="filter-price">
                 <ul class="lab-list" data-urlKey="p">
                     <li class="js-single-option" data-urlVal='0' baidu_alog="wap_listB_price&click&wap_listB_price_0_c"><a href="javascript:void(0);">不限</a></li>
@@ -92,49 +89,24 @@
                         <a href="javascript:void(0);">20万以上</a>
                     </li>
                 </ul>
-                <div class="range-title">
-                    <h3 class="fl">自定义价格</h3>
-                    <span>（单位: 万）</span>
-                    <button baidu_alog="wap_listB_JRange&click&wap_listB_JRange_price_sub_c" class="btn fr active js-submit-price" type="button">确定</button>
-                </div>
-                <div class="range-box js-option-continue" data-unit="10000" data-text="万" data-scale="1" data-min="0" data-max="50" data-more="99999999">
-                    <div class="load-outer">
-                        <!-- width:选中的总长度比例　　　left:左边开始偏移 -->
-                        <div class="load-inner" style="width: 100%; left: 0%;">
-                            <!-- 当前数值范围 -->
-                            <div class="curr-price">不限</div>
-                        </div>
-                        <!--　左边圆块开始位置：左侧偏移量　-->
-                        <span baidu_alog="wap_listB_JRange&touchend&wap_listB_JRange_price_l_c" class="icon-range icon-low" style="left: 0%;"></span>
-                        <!--　右边圆块开始位置：左侧偏移量　-->
-                        <span baidu_alog="wap_listB_JRange&touchend&wap_listB_JRange_price_R_c" class="icon-range icon-high" style="left: 100%;"></span>
-                    </div>
-                    <!-- 下方文案开始标记 -->
-                    <span class="load-zero">0</span>
-                    <!--　下方文案标记　-->
-                    <ul class="load-num">
-                        <li></li>
-                        <li>10</li>
-                        <li></li>
-                        <li>20</li>
-                        <li></li>
-                        <li>30</li>
-                        <li></li>
-                        <li>40</li>
-                        <li></li>
-                        <li>不限</li>
-                    </ul>
-                </div>
             </div>
+            <!-- <div class="filter-result">
+                <ul class="mod-tags fl" baidu_alog="wap_listB_current&amp;click&amp;wap_listB_current_c">
+                    <a href="/sjz/buy/" data-gzlog="tracking_type=click&amp;eventid=1111000000000010&amp;evmsg=delkey&amp;delkey=price_index&amp;price_index=17">
+                        <li>16-20万<i class="icon-close"></i></li>
+                    </a>
+                    <li class="btn-reset"><a class="icon-reset" href="/sjz/buy/">重置</a></li>
+                </ul>
+            </div> -->
         </div>
         <!-- filter end -->
         <div class="loading"><i class="icon-load01"></i>松开可以刷新</div>
         <!-- 行列表 start -->
         <section class="mod-list js-car-list">
-            <div class="find-num bg-shadow active">共为您找到2312辆车</div>
+            <!-- <div class="find-num bg-shadow active">共为您找到2312辆车</div> -->
             <ul class="list">
                 <li class="list-item" data-scroll-track="15069551@0@0&1111000000000002" data-clue=15069551 data-type=city>
-                    <a class="car-info" href="/sjz/ce16af2959ea9264x?from=list&fr_page=list&fr_pos=city&fr_no=0">
+                    <a class="car-info" href="javascript:void(0);">
                         <div class="car-img">
                             <img class="js-lazy-load" src="http://www.sjztcl.com/uploads/car/201709/images/mmexport1504749705099副本爱奇艺.jpg" data-original="https://image1.guazistatic.com/qn170806104327f6393d7b7e192acfbaa21e334f203220.jpg?imageView2/1/w/240/h/160/q/88" alt="日产阳光 2011款 1.5XL CVT豪华版">
                         </div>
@@ -151,518 +123,26 @@
                         <p class="page-size" style="display: none">1/50</p>
                     </a>
                 </li>
-                <li class="list-item" data-scroll-track="16024237@0@1&1111000000000002" data-clue=16024237 data-type=city>
-                    <a class="car-info" href="/sjz/1a6170b4b11708ccx?from=list&fr_page=list&fr_pos=city&fr_no=1">
+                
+                
+                <li class="list-item" data-scroll-track="15069551@0@0&1111000000000002" data-clue=15069551 data-type=city>
+                    <a class="car-info" href="javascript:void(0);">
                         <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170818173113a673f9789d8f7035fed3904309a73234.jpg?imageView2/1/w/240/h/160/q/88" alt="起亚智跑 2014款 2.0L 自动两驱版GLS">
-                        </div>
-                        <h3 class="car-name">起亚智跑 2014款 2.0L 自动两驱版GLS</h3>
-                        <div class="car-km">
-                            <span class="fl">2014年/5.4万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta-sell">保卖车</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">10.94万</i>
-                            <span class="index-price"><span>首付3.28</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15737136@0@2&1111000000000002" data-clue=15737136 data-type=city>
-                    <a class="car-info" href="/sjz/448695ae8110fdb5x?from=list&fr_page=list&fr_pos=city&fr_no=2">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170810180616c55b98349456d91de51e68a8797a1ec2.jpg?imageView2/1/w/240/h/160/q/88" alt="日产阳光 2011款 1.5XL CVT豪华版">
+                            <img class="js-lazy-load" src="http://www.sjztcl.com/uploads/car/201709/images/mmexport1504749705099副本爱奇艺.jpg" data-original="https://image1.guazistatic.com/qn170806104327f6393d7b7e192acfbaa21e334f203220.jpg?imageView2/1/w/240/h/160/q/88" alt="日产阳光 2011款 1.5XL CVT豪华版">
                         </div>
                         <h3 class="car-name">日产阳光 2011款 1.5XL CVT豪华版</h3>
                         <div class="car-km">
-                            <span class="fl">2011年/3.7万公里</span>
+                            <span class="fl">2011年/6.7万公里</span>
                             <p class="label-pbox clearfix fr hide-icon">
                                 <span class="icon-sta-sell">保卖车</span> </p>
                         </div>
                         <div class="car-price">
-                            <i class="finance-price">4.52万</i>
-                            <span class="index-price"><span>首付1.36</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="8941787@0@3&1111000000000002" data-clue=8941787 data-type=city>
-                    <a class="car-info" href="/sjz/fcbbef37b3bfdf60x?from=list&fr_page=list&fr_pos=city&fr_no=3">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image.guazistatic.com/gz01170302/17/57/aa381b65542b8fb6a583a98953b8f19e.jpg@base@tag=imgScale&w=240&h=160&c=1&m=2&q=88" alt="长安悦翔 2010款 三厢 1.5L 手动运动版">
-                        </div>
-                        <h3 class="car-name">长安悦翔 2010款 三厢 1.5L 手动运动版</h3>
-                        <div class="car-km">
-                            <span class="fl">2010年/12.2万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">1.60万</i>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15923307@0@4&1111000000000002" data-clue=15923307 data-type=city>
-                    <a class="car-info" href="/sjz/7f0c0879ebabcb4bx?from=list&fr_page=list&fr_pos=city&fr_no=4">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170816150712ca90828c00aeed748a214be6f2b764b8.jpg?imageView2/1/w/240/h/160/q/88" alt="起亚K3 2013款 1.6L 自动GLS">
-                        </div>
-                        <h3 class="car-name">起亚K3 2013款 1.6L 自动GLS</h3>
-                        <div class="car-km">
-                            <span class="fl">2013年/4.0万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta-sell">保卖车</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">7.25万</i>
-                            <span class="index-price"><span>首付2.17</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15986854@0@5&1111000000000002" data-clue=15986854 data-type=city>
-                    <a class="car-info" href="/sjz/d1c4386c5574ab38x?from=list&fr_page=list&fr_pos=city&fr_no=5">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170818124126ffa25c6c3286cd017b282f58894abbc6.jpg?imageView2/1/w/240/h/160/q/88" alt="日产天籁 2011款 2.5L XL领先版">
-                        </div>
-                        <h3 class="car-name">日产天籁 2011款 2.5L XL领先版</h3>
-                        <div class="car-km">
-                            <span class="fl">2011年/8.7万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta-sell">保卖车</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">9.75万</i>
-                            <span class="index-price"><span>首付2.92</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="16035812@0@6&1111000000000002" data-clue=16035812 data-type=city>
-                    <a class="car-info" href="/sjz/967d679315e23e16x?from=list&fr_page=list&fr_pos=city&fr_no=6">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170819143119f39c571f909815dfbc437553a03df1d7.jpg?imageView2/1/w/240/h/160/q/88" alt="雪铁龙爱丽舍 2012款 三厢 1.6L 手动科技型CNG">
-                            <span class="tag-new">新上架</span>
-                        </div>
-                        <h3 class="car-name">雪铁龙爱丽舍 2012款 三厢 1.6L 手动科技型CNG</h3>
-                        <div class="car-km">
-                            <span class="fl">2011年/5.0万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">3.45万</i>
-                            <span class="index-price"><span>首付1.03</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="16012481@0@7&1111000000000002" data-clue=16012481 data-type=city>
-                    <a class="car-info" href="/sjz/797069e0fb14ef5cx?from=list&fr_page=list&fr_pos=city&fr_no=7">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170819090851adcf674ecdc963b2187060e174855859.jpg?imageView2/1/w/240/h/160/q/88" alt="北京汽车E系列 2012款 两厢 1.5L 自动乐尚版">
-                            <span class="tag-new">新上架</span>
-                        </div>
-                        <h3 class="car-name">北京汽车E系列 2012款 两厢 1.5L 自动乐尚版</h3>
-                        <div class="car-km">
-                            <span class="fl">2014年/3.8万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">3.90万</i>
-                            <span class="index-price"><span>首付1.17</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15948750@0@8&1111000000000002" data-clue=15948750 data-type=city>
-                    <a class="car-info" href="/sjz/586cefee28609848x?from=list&fr_page=list&fr_pos=city&fr_no=8">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170817152012f17615e364c53a90482a12740c3eb835.jpg?imageView2/1/w/240/h/160/q/88" alt="别克英朗 2013款 GT 1.6L 自动时尚版">
-                        </div>
-                        <h3 class="car-name">别克英朗 2013款 GT 1.6L 自动时尚版</h3>
-                        <div class="car-km">
-                            <span class="fl">2013年/3.3万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">7.36万</i>
-                            <span class="index-price"><span>首付2.21</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15797870@0@9&1111000000000002" data-clue=15797870 data-type=city>
-                    <a class="car-info" href="/sjz/3397d3299c6a1987x?from=list&fr_page=list&fr_pos=city&fr_no=9">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn17081319462164e4d5399fd2a127f1ca07ecf19f54e8.jpg?imageView2/1/w/240/h/160/q/88" alt="日产阳光 2011款 1.5XE CVT舒适版">
-                        </div>
-                        <h3 class="car-name">日产阳光 2011款 1.5XE CVT舒适版</h3>
-                        <div class="car-km">
-                            <span class="fl">2011年/3.1万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta-sell">保卖车</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">4.58万</i>
-                            <span class="index-price"><span>首付1.37</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="12731193@0@10&1111000000000002" data-clue=12731193 data-type=city>
-                    <a class="car-info" href="/sjz/b241547b4078cff5x?from=list&fr_page=list&fr_pos=city&fr_no=10">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn1706021433063166c8cfe960240b803f290fb8acf209.jpg?imageView2/1/w/240/h/160/q/88" alt="雪佛兰爱唯欧 2011款 两厢 1.6L AT SX">
-                        </div>
-                        <h3 class="car-name">雪佛兰爱唯欧 2011款 两厢 1.6L AT SX</h3>
-                        <div class="car-km">
-                            <span class="fl">2011年/5.9万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">4.40万</i>
+                            <i class="finance-price">4.39万</i>
                             <span class="index-price"><span>首付1.32</span>万</span>
                         </div>
                         <p class="page-size" style="display: none">1/50</p>
                     </a>
                 </li>
-                <li class="list-item" data-scroll-track="15966194@0@11&1111000000000002" data-clue=15966194 data-type=city>
-                    <a class="car-info" href="/sjz/7edc1ba4a1bd5987x?from=list&fr_page=list&fr_pos=city&fr_no=11">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170817133655a3f665ebff569c374d413b56dea42a74.jpg?imageView2/1/w/240/h/160/q/88" alt="奇瑞风云2 2010款 两厢 1.5L 豪华型">
-                        </div>
-                        <h3 class="car-name">奇瑞风云2 2010款 两厢 1.5L 豪华型</h3>
-                        <div class="car-km">
-                            <span class="fl">2012年/6.5万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">2.18万</i>
-                            <span class="index-price"><span>首付0.65</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="13502198@0@12&1111000000000002" data-clue=13502198 data-type=city>
-                    <a class="car-info" href="/sjz/3e8aa0bce3b78b7ax?from=list&fr_page=list&fr_pos=city&fr_no=12">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170616163528e06f8b88a64e8aac0fa30021d2bb0841.jpg?imageView2/1/w/240/h/160/q/88" alt="斯柯达明锐 2012款 2.0L 手动逸杰版">
-                        </div>
-                        <h3 class="car-name">斯柯达明锐 2012款 2.0L 手动逸杰版</h3>
-                        <div class="car-km">
-                            <span class="fl">2012年/9.2万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">5.49万</i>
-                            <span class="index-price"><span>首付1.65</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="13002202@0@13&1111000000000002" data-clue=13002202 data-type=city>
-                    <a class="car-info" href="/sjz/8201edb6ebcb725bx?from=list&fr_page=list&fr_pos=city&fr_no=13">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170604170907d4d817fc341bad6dfa7ef15e0214a4a2.jpg?imageView2/1/w/240/h/160/q/88" alt="荣威550 2010款 550 1.8L 手动启悦贺岁版">
-                        </div>
-                        <h3 class="car-name">荣威550 2010款 550 1.8L 手动启悦贺岁版</h3>
-                        <div class="car-km">
-                            <span class="fl">2010年/7.3万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">4.10万</i>
-                            <span class="index-price"><span>首付1.23</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15818314@0@14&1111000000000002" data-clue=15818314 data-type=city>
-                    <a class="car-info" href="/sjz/a275915a6c5b8a72x?from=list&fr_page=list&fr_pos=city&fr_no=14">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn1708131627587017dc1fb489ca1fb0c6aaf07cbc97df.jpg?imageView2/1/w/240/h/160/q/88" alt="雪铁龙爱丽舍 2012款 三厢 1.6L 手动科技型CNG">
-                        </div>
-                        <h3 class="car-name">雪铁龙爱丽舍 2012款 三厢 1.6L 手动科技型CNG</h3>
-                        <div class="car-km">
-                            <span class="fl">2014年/2.3万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">4.30万</i>
-                            <span class="index-price"><span>首付1.29</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="16026983@0@15&1111000000000002" data-clue=16026983 data-type=city>
-                    <a class="car-info" href="/sjz/8badcd988cb7eb81x?from=list&fr_page=list&fr_pos=city&fr_no=15">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn17081917562026b6bfb85f864ed21d9039d2944bca7d.jpg?imageView2/1/w/240/h/160/q/88" alt="大众高尔夫 2012款 1.4TSI 自动舒适型">
-                            <span class="tag-new">新上架</span>
-                        </div>
-                        <h3 class="car-name">大众高尔夫 2012款 1.4TSI 自动舒适型</h3>
-                        <div class="car-km">
-                            <span class="fl">2012年/8.3万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">8.50万</i>
-                            <span class="index-price"><span>首付2.55</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="12788642@0@16&1111000000000002" data-clue=12788642 data-type=city>
-                    <a class="car-info" href="/sjz/90d1b8fa78f5b801x?from=list&fr_page=list&fr_pos=city&fr_no=16">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn1705301820035c9b003c3fe2a6c2e3171291504e4570.jpg?imageView2/1/w/240/h/160/q/88" alt="雪佛兰科鲁兹 2010款 1.6L SL天地版 MT">
-                        </div>
-                        <h3 class="car-name">雪佛兰科鲁兹 2010款 1.6L SL天地版 MT</h3>
-                        <div class="car-km">
-                            <span class="fl">2011年/10.1万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">4.60万</i>
-                            <span class="index-price"><span>首付1.38</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15292195@0@17&1111000000000002" data-clue=15292195 data-type=city>
-                    <a class="car-info" href="/sjz/0cbd5827797cba8cx?from=list&fr_page=list&fr_pos=city&fr_no=17">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170731103627858f9b422034b2fc5a9ef15a4ff536d2.jpg?imageView2/1/w/240/h/160/q/88" alt="别克英朗 2013款 GT 1.8L 自动时尚版">
-                        </div>
-                        <h3 class="car-name">别克英朗 2013款 GT 1.8L 自动时尚版</h3>
-                        <div class="car-km">
-                            <span class="fl">2014年/4.1万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">8.25万</i>
-                            <span class="index-price"><span>首付2.48</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15982454@0@18&1111000000000002" data-clue=15982454 data-type=city>
-                    <a class="car-info" href="/sjz/fd792ebcefc2994fx?from=list&fr_page=list&fr_pos=city&fr_no=18">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170819190329ad45f72f9fb430335adb3a3790718d77.jpg?imageView2/1/w/240/h/160/q/88" alt="现代索纳塔八 2011款 2.0L 自动豪华版">
-                            <span class="tag-new">新上架</span>
-                        </div>
-                        <h3 class="car-name">现代索纳塔八 2011款 2.0L 自动豪华版</h3>
-                        <div class="car-km">
-                            <span class="fl">2011年/12.5万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">7.79万</i>
-                            <span class="index-price"><span>首付2.34</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="14936838@0@19&1111000000000002" data-clue=14936838 data-type=city>
-                    <a class="car-info" href="/sjz/156d578b33727306x?from=list&fr_page=list&fr_pos=city&fr_no=19">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn1707241956177ec846458e92646b5c7779b28c507933.jpg?imageView2/1/w/240/h/160/q/88" alt="现代索纳塔八 2011款 2.0L 自动豪华版">
-                        </div>
-                        <h3 class="car-name">现代索纳塔八 2011款 2.0L 自动豪华版</h3>
-                        <div class="car-km">
-                            <span class="fl">2012年/6.5万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">9.30万</i>
-                            <span class="index-price"><span>首付2.79</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="16050639@0@20&1111000000000002" data-clue=16050639 data-type=city>
-                    <a class="car-info" href="/sjz/a158bd990c57f503x?from=list&fr_page=list&fr_pos=city&fr_no=20">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170819122551c617cb8d0cda256672a3c8b5ff5e847e.jpg?imageView2/1/w/240/h/160/q/88" alt="现代ix25 2015款 1.6L 自动两驱智能型GLS">
-                            <span class="tag-new">新上架</span>
-                        </div>
-                        <h3 class="car-name">现代ix25 2015款 1.6L 自动两驱智能型GLS</h3>
-                        <div class="car-km">
-                            <span class="fl">2016年/2.5万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta1">准新车</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">10.95万</i>
-                            <span class="index-price"><span>首付3.29</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15967788@0@21&1111000000000002" data-clue=15967788 data-type=city>
-                    <a class="car-info" href="/sjz/bf337f09e246c01fx?from=list&fr_page=list&fr_pos=city&fr_no=21">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn1708171547524bcea8c7c13d88ea438b001c24a89994.jpg?imageView2/1/w/240/h/160/q/88" alt="铃木启悦 2015款 1.6L 手动舒享型">
-                        </div>
-                        <h3 class="car-name">铃木启悦 2015款 1.6L 手动舒享型</h3>
-                        <div class="car-km">
-                            <span class="fl">2017年/400公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta1">准新车</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">6.20万</i>
-                            <span class="index-price"><span>首付1.86</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15664879@0@22&1111000000000002" data-clue=15664879 data-type=city>
-                    <a class="car-info" href="/sjz/6af3314fbf22286ex?from=list&fr_page=list&fr_pos=city&fr_no=22">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn1708091318359fde82561d58b794e3be1331387a4079.jpg?imageView2/1/w/240/h/160/q/88" alt="标致3008 2015款 1.6THP 自动潮流版">
-                        </div>
-                        <h3 class="car-name">标致3008 2015款 1.6THP 自动潮流版</h3>
-                        <div class="car-km">
-                            <span class="fl">2016年/2.3万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta1">准新车</span> <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">13.30万</i>
-                            <span class="index-price"><span>首付3.99</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15346812@0@23&1111000000000002" data-clue=15346812 data-type=city>
-                    <a class="car-info" href="/sjz/bec8868dd316d4cbx?from=list&fr_page=list&fr_pos=city&fr_no=23">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170801194328e19724292e50c0eceb539b7dbf3a73b0.jpg?imageView2/1/w/240/h/160/q/88" alt="力帆320 2012款 冠军版 1.3L 手动酷跃型">
-                        </div>
-                        <h3 class="car-name">力帆320 2012款 冠军版 1.3L 手动酷跃型</h3>
-                        <div class="car-km">
-                            <span class="fl">2012年/5.8万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">1.20万</i>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="12649332@0@24&1111000000000002" data-clue=12649332 data-type=city>
-                    <a class="car-info" href="/sjz/8ac911da23eb554dx?from=list&fr_page=list&fr_pos=city&fr_no=24">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170527172250cceffbba0e9d5007ceae8defef55b047.jpg?imageView2/1/w/240/h/160/q/88" alt="哈弗H9 2015款 2.0T 豪华型 7座">
-                        </div>
-                        <h3 class="car-name">哈弗H9 2015款 2.0T 豪华型 7座</h3>
-                        <div class="car-km">
-                            <span class="fl">2015年/2.4万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">17.50万</i>
-                            <span class="index-price"><span>首付5.25</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15879422@0@25&1111000000000002" data-clue=15879422 data-type=city>
-                    <a class="car-info" href="/sjz/fb259e2605f306b4x?from=list&fr_page=list&fr_pos=city&fr_no=25">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn1708151859286838190f7bb1e5312947afe5085a8bb1.jpg?imageView2/1/w/240/h/160/q/88" alt="现代瑞纳 2014款 1.4L 手动智能型GLS">
-                        </div>
-                        <h3 class="car-name">现代瑞纳 2014款 1.4L 手动智能型GLS</h3>
-                        <div class="car-km">
-                            <span class="fl">2014年/3.5万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">4.50万</i>
-                            <span class="index-price"><span>首付1.35</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="14772631@0@26&1111000000000002" data-clue=14772631 data-type=city>
-                    <a class="car-info" href="/sjz/c13bd30620086e05x?from=list&fr_page=list&fr_pos=city&fr_no=26">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image.guazistatic.com/gz01170719/11/27/d47e00b7b989b3814f0fca96fb36a396.jpg@base@tag=imgScale&w=240&h=160&c=1&m=2&q=88" alt="日产楼兰 2015款 2.5 S/C HEV XV 四驱混动旗舰版">
-                        </div>
-                        <h3 class="car-name">日产楼兰 2015款 2.5 S/C HEV XV 四驱混动旗舰版</h3>
-                        <div class="car-km">
-                            <span class="fl">2017年/100公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta1">准新车</span> <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">30.00万</i>
-                            <span class="index-price"><span>首付9.00</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15997098@0@27&1111000000000002" data-clue=15997098 data-type=city>
-                    <a class="car-info" href="/sjz/452f3d81678e6279x?from=list&fr_page=list&fr_pos=city&fr_no=27">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn1708181146344a9879d1d6bb4f9d910c6b47283cc091.jpg?imageView2/1/w/240/h/160/q/88" alt="比亚迪F0 2010款 尚酷爱国版 1.0L 铉酷型">
-                        </div>
-                        <h3 class="car-name">比亚迪F0 2010款 尚酷爱国版 1.0L 铉酷型</h3>
-                        <div class="car-km">
-                            <span class="fl">2010年/5.3万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">1.10万</i>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="16014780@0@28&1111000000000002" data-clue=16014780 data-type=city>
-                    <a class="car-info" href="/sjz/0b78a714426b1f99x?from=list&fr_page=list&fr_pos=city&fr_no=28">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170818131948c045c21193d7d3c7293e8126b29ca385.jpg?imageView2/1/w/240/h/160/q/88" alt="丰田威驰 2015款 1.5L 自动智享星光版">
-                        </div>
-                        <h3 class="car-name">丰田威驰 2015款 1.5L 自动智享星光版</h3>
-                        <div class="car-km">
-                            <span class="fl">2015年/1.6万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">7.10万</i>
-                            <span class="index-price"><span>首付2.13</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <li class="list-item" data-scroll-track="15834255@0@29&1111000000000002" data-clue=15834255 data-type=city>
-                    <a class="car-info" href="/sjz/db88d5584cdbf6b9x?from=list&fr_page=list&fr_pos=city&fr_no=29">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="picture/list-default-img.png" data-original="https://image1.guazistatic.com/qn170813165338c2c31508221c563dd991f29aa98e9400.jpg?imageView2/1/w/240/h/160/q/88" alt="雪佛兰景程 2012款 1.8 致真版 MT">
-                        </div>
-                        <h3 class="car-name">雪佛兰景程 2012款 1.8 致真版 MT</h3>
-                        <div class="car-km">
-                            <span class="fl">2012年/5.5万公里</span>
-                            <p class="label-pbox clearfix fr hide-icon">
-                                <span class="icon-sta2">急售</span> </p>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">4.55万</i>
-                            <span class="index-price"><span>首付1.36</span>万</span>
-                        </div>
-                        <p class="page-size" style="display: none">1/50</p>
-                    </a>
-                </li>
-                <!-- <li class="banbox-ps js-app-banner" baidu_alog="wap_list_app&click&wap_list_appguanggao_c">
-                    <div class="banbox-ps">
-                        <span class="closed-btn guide-close-brand"><span class="guide-close">关闭</span></span>
-                        <a href="http://app.guazistatic.com/2017070715535087_guazi_android_pub_3.2.1.0_app_self_guaziwap.apk ">
-                <img src="picture/app_down.png">
-                            </a>
-                    </div>
-                </li> -->
             </ul>
         </section>
         <!-- 一键订阅 start -->
@@ -701,7 +181,7 @@
         <!-- 周边城市车源 end -->
         <input type="hidden" value=15069551@1@0@city_16024237@1@1@city_15737136@1@2@city_8941787@1@3@city_15923307@1@4@city_15986854@1@5@city_16035812@1@6@city_16012481@1@7@city_15948750@1@8@city_15797870@1@9@city_12731193@1@10@city_15966194@1@11@city_13502198@1@12@city_13002202@1@13@city_15818314@1@14@city_16026983@1@15@city_12788642@1@16@city_15292195@1@17@city_15982454@1@18@city_14936838@1@19@city_16050639@1@20@city_15967788@1@21@city_15664879@1@22@city_15346812@1@23@city_12649332@1@24@city_15879422@1@25@city_14772631@1@26@city_15997098@1@27@city_16014780@1@28@city_15834255@1@29@city id="listCarIds" />
         <input type="hidden" value={ "city_filter": "1"} id="listFilter" />
-        <div class="loading active"><i class="icon-load02 iconbg"></i>上拉查看更多</div>
+        <!-- <div class="loading active"><i class="icon-load02 iconbg"></i>上拉查看更多</div> -->
         <div class="page-fixed bg-shadow active" style="display: none">1/1</div>
         <div class="fixed-icon">
             <!--<a class="icon-totel" href="#">咨询</a>-->
@@ -1185,29 +665,7 @@
 </div>
 <!-- 筛选页 end --><!-- app-pub-->
 
-<!-- <div class="popup-wrap" id="app-pub">
-    <div class="popup popup-downapp popup-downapp2">
-        <a href="javascript:;" class="close-btn">关闭按钮</a>
-        <div class="popup-body">
-            <div class="app-tit">
-                <h1>下载APP</h1>
-                <h2><span>收藏优质车源</span><span>抢先一步</span></h2>
-            </div>
-            <div class="form-deliver">
-                <ul class="down-list fl">
-                    <li>一键收藏</li>
-                    <li>上新提醒</li>
-                    <li>降价提醒</li>
-                </ul>
-                <div class="phone-bg fr"></div>
-            </div>
 
-            <div class="btn-app" data-url="http://app.guazistatic.com/2017070715535087_guazi_android_pub_3.2.1.0_app_self_guaziwap.apk " baidu_alog="wap_app_down&click&wap_other_appdown_1_c"  >
-                <a href="javascript:void(0);" class="btn" data-gzlog="tracking_type=click&eventid=0000000000000430">去下载<i class="icon-download"></i></a>
-            </div>
-        </div>
-    </div>
-</div> -->
 
     <div class="popup-wrap js-sub-app-show">
     <div class="popup popup-downapp js-sub-app-pub">
@@ -1262,11 +720,51 @@
                     <span class="imgcollect" id="tancengPic"></span>
                 </div>
            </div>
-                        <div class="btn-app" data-url="http://app.guazistatic.com/2017070715535087_guazi_android_pub_3.2.1.0_app_self_guaziwap.apk ">
-                <a href="javascript:void(0);" class="btn-layer-download" id="downLoadUrl" data-gzlog="">下载APP查看<i class="icon-download"></i></a>
-            </div>
-                    </div>
+        </div>
     </div>
 </div>
 <div class="tiplayer" id="errorDis"><span class="textcon" id="errorCont">提交失败</span></div>
+@endsection
+@section('script_content')
+    <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/base.js')}}"></script> -->
+    <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/list.js')}}"></script> -->
+    <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/content/script.js')}}"></script> -->
+    <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/script.js')}}"></script> -->
+    <script>
+        $(document).ready(function(){
+
+            $('a.price').click(function(event) {
+                // 价格筛选
+                var filter_price = $('#filter-price');
+
+                if(filter_price.hasClass('active')){
+
+                    filter_price.removeClass('active');
+                }else{
+
+                    filter_price.addClass('active');
+                }
+            });
+
+            $('a.option').click(function(event) {
+                /* 其他筛选*/
+                var option_obj   = $('.js-choose-option');
+                // console.log(option_obj);
+
+                $('.js-list-page').hide();
+                option_obj.show();
+            });
+
+            $('a.js-close-option').click(function(event) {
+                /* 关闭其他筛选 */
+                var option_obj   = $('.js-choose-option');
+                // console.log(option_obj);
+                // 
+                $('.js-list-page').show();
+                option_obj.hide();
+
+            });
+
+        });
+    </script>
 @endsection

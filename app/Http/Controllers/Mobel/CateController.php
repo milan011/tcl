@@ -163,6 +163,7 @@ class CateController extends CommonController
         //根据首字母取得所有品牌分类列表
         $letter_list       = $this->brand->getBransLetter();
         $brand_letter_list = $this->brand->getBransWithLetter();
+
         // p(lastsql());
         // dd($brand_letter_list);
 
@@ -172,13 +173,14 @@ class CateController extends CommonController
         $current_category = $current_cate['category'];
         $current_brand    = $current_cate['brand'];
 
-        $gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
-        $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
-        $capacity       = config('tcl.capacity'); //获取配置文件排量
-        $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
-        $sale_number    = config('tcl.sale_number'); //获取配置文件中车型类别
-        $price_interval = config('tcl.price_interval'); //获取配置文件中价格区间
-        $age            = config('tcl.age'); //获取配置文件中车龄区间
+        $price_interval     = config('tcl.price_interval'); //获取配置文件中价格区间
+        $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
+        $capacity           = config('tcl.capacity'); //获取配置文件排量
+        $category_type      = config('tcl.category_type'); //获取配置文件中车型类别
+        $sale_number        = config('tcl.sale_number'); //获取配置文件中车型类别
+        $price_interval     = config('tcl.price_interval'); //获取配置文件中价格区间
+        $age                = config('tcl.age'); //获取配置文件中车龄区间
 
         // p($select_condition);
 
@@ -250,7 +252,7 @@ class CateController extends CommonController
         }
         // dd($url_condition_b);
         // dd($recomment_brands);
-        
+        // dd($category_type);
         foreach ($category_type as $key => $value) { //车辆类型信息添加筛选超链接
 
             $url_condition_t      = $url_condition;

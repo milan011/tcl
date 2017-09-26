@@ -35,6 +35,7 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::get('car/{id}', 'CarController@index')->name('mobel.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('mobel.cate.index');
     Route::get('/', 'HomeController@index')->name('mobel.index');  
+    Route::get('/changeCity', 'HomeController@changeCity')->name('mobel.changeCity');  
     Route::get('/city/{city?}', 'HomeController@index')->name('mobel.indexWithCity');  
     Route::get('/join', 'JoinController@index')->name('mobel.join.index');  
     Route::get('/sale', 'SaleController@index')->name('mobel.sale.index');  
@@ -56,7 +57,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
 
 
 
-/*Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
+Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
        
     Route::get('car/{id}', 'CarController@index')->name('show.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('show.cate.index');
@@ -66,7 +67,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
     Route::get('/sale', 'SaleController@index')->name('show.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('show.sale.store');  
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('show.sale.getChildBrand');  
-});*/
+});
 
 
 
