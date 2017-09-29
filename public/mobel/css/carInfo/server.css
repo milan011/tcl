@@ -4,7 +4,7 @@
 .score-results .starbox,
 .score-results .starbox span,
 .vehicle-detection span:after {
-    background-image: url(//sta.guazistatic.com/c2c_wap/icons.58d3346e8f35c4f4fbec6cdae2684a97.png);
+    background-image: url(../../images/icons.png);
     background-size: 3rem auto;
     background-repeat: no-repeat
 }

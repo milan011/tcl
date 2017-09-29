@@ -32,8 +32,8 @@ Route::group(['middleware' => 'web'], function () {
 });
 //手机端路由组
 Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => 'Mobel'], function () {
-    Route::get('car/{id}', 'CarController@index')->name('mobel.car.index');  
-    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('mobel.cate.index');
+    Route::get('/car/{id}', 'CarController@index')->name('mobel.car.index');  
+    Route::get( '/cate/{brand?}/{condition?}', 'CateController@index')->name('mobel.cate.index');
     Route::get('/', 'HomeController@index')->name('mobel.index');  
     Route::get('/changeCity', 'HomeController@changeCity')->name('mobel.changeCity');  
     Route::get('/city/{city?}', 'HomeController@index')->name('mobel.indexWithCity');  
@@ -41,6 +41,7 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::get('/sale', 'SaleController@index')->name('mobel.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('mobel.sale.store');  
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('mobel.sale.getChildBrand');
+    Route::post('cate/getChildCategory', 'CateController@getChildCategory')->name('mobel.cate.getChildCategory');
 });
 
 Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
@@ -52,7 +53,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
     Route::get('/join', 'JoinController@index')->name('home.join.index');  
     Route::get('/sale', 'SaleController@index')->name('home.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('home.sale.store');  
-    Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('home.sale.getChildBrand');  
+    Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('home.sale.getChildBrand');    
 });
 
 

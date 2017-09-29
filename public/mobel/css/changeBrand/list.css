@@ -103,7 +103,7 @@ textarea:focus {
 .nav-subscribe:before,
 .subs-notip:before,
 .swich-three i {
-    background: url(../../images/iconbg.png) no-repeat;
+    background: url(//sta.guazistatic.com/c2c_wap/iconbg.3f9c3ad098d4511e7161cce61a3b0ae1.png) no-repeat;
     background-size: 210px auto
 }
 
@@ -298,10 +298,9 @@ textarea:focus {
 }
 
 .filter-nav .nav-item-sell {
-    display: inline-block;
-    width: 67px;
     height: 23px;
     margin-top: 8px;
+    padding: 0 6px;
     line-height: 23px;
     border: 1px solid #e5e5e5;
     border-radius: 15px
@@ -579,7 +578,7 @@ textarea:focus {
     width: 59px;
     height: 19px;
     vertical-align: -4px;
-    background: url(../../images/icon-load.gif) no-repeat;
+    background: url(//sta.guazistatic.com/c2c_wap/icon-load.8f57a20d0f1d9ffc95ec51cd219cb41e.gif) no-repeat;
     background-size: 59px auto
 }
 
@@ -677,10 +676,6 @@ textarea:focus {
     position: relative;
     background-color: #fff;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, .1)
-}
-
-.column-list .list-item:first-child {
-    margin-top: 10px
 }
 
 .line-list .car-info {
@@ -988,7 +983,7 @@ textarea:focus {
 }
 
 .column-list .subscribe {
-    margin: 0 10px;
+    margin: 0 15px;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, .1)
 }
 
@@ -1023,7 +1018,7 @@ textarea:focus {
 }
 
 .column-list .relate {
-    margin: 0 10px
+    margin: 0 15px
 }
 
 .column-list .relate .orient-list {
@@ -1086,7 +1081,7 @@ textarea:focus {
 }
 
 .column-list .around {
-    margin: 7px 10px 10px;
+    margin: 7px 15px 10px;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, .1)
 }
 
@@ -1620,8 +1615,8 @@ textarea:focus {
 
 .collection li:first-of-type span i,
 .collection li:last-child span i {
-    width: 22px;
-    height: 22px;
+    width: 21px;
+    height: 21px;
     display: inline-block;
     vertical-align: middle;
     margin-right: 5px
@@ -1632,7 +1627,7 @@ textarea:focus {
 }
 
 .collection li:last-child span i {
-    background-position: 0 -207px;
+    background-position: 0 -206px;
     margin-right: 2px
 }
 
@@ -1743,4 +1738,169 @@ textarea:focus {
     .label-pbox span:nth-child(3) {
         display: none
     }
+}
+
+.guide-brand-list,
+.guide-price-box {
+    display: none;
+    background-color: #fff;
+    margin-bottom: 10px
+}
+
+.guide-brand-list.active,
+.guide-price-box.active {
+    display: block
+}
+
+.guide-price-box {
+    padding-bottom: 20px
+}
+
+.hot-rank-title {
+    padding: 0 16px;
+    font-size: 16px;
+    color: #495056;
+    line-height: 50px
+}
+
+.hot-rank-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 16px 0 6px
+}
+
+.hot-rank-list li {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 1%;
+    margin-left: 10px
+}
+
+.hot-car-info {
+    position: relative;
+    display: block;
+    padding-top: 11px;
+    padding-bottom: 7px;
+    text-align: center;
+    box-shadow: 0 1px 2px 0 #e6e6e6;
+    border-radius: 2px
+}
+
+.hot-car-info:after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    border: 1px solid #f3f5f8;
+    border-radius: 2px;
+    box-sizing: border-box;
+    -webkit-transform: scale(.5);
+    Transform: scale(.5, .5)
+}
+
+.hot-car-img {
+    display: block;
+    width: 75px;
+    height: 50px;
+    margin: 0 auto
+}
+
+.hot-rank-list .iconbg {
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 20px;
+    height: 28px
+}
+
+.icon-hot-rank01 {
+    background-position: -21px -187px
+}
+
+.icon-hot-rank02 {
+    background-position: -42px -187px
+}
+
+.icon-hot-rank03 {
+    background-position: -63px -187px
+}
+
+.hot-car-name {
+    padding: 3px 5px 0;
+    color: #495056;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.hot-car-price {
+    margin-top: -2px;
+    font-size: 16px;
+    color: #f56539
+}
+
+.guide-brand-list {
+    width: 100%
+}
+
+.guide-brand-list li {
+    position: relative;
+    float: left;
+    width: 25%
+}
+
+.guide-brand-list li:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 1px;
+    height: 10px;
+    background-color: #e6e6e6;
+    margin-top: -5px
+}
+
+.guide-brand-list li a {
+    display: block;
+    color: #252825;
+    padding: 0 8px;
+    line-height: 41px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.guide-brand-list li:last-child:after,
+.guide-brand-list li:nth-child(4):after {
+    background-color: #fff
+}
+
+.brand-list-more i {
+    position: relative;
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    vertical-align: middle;
+    margin-top: -3px;
+    margin-left: 3px;
+    border: 1px solid #22ac38;
+    border-radius: 50%
+}
+
+.brand-list-more i:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    width: 4px;
+    height: 4px;
+    border-top: 1px solid #22ac38;
+    border-left: 1px solid #22ac38;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg)
 }

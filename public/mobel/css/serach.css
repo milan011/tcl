@@ -110,7 +110,7 @@
 .history-list li a:before,
 .icon-search:before,
 .tsearch:before {
-    background: url(//sta.guazistatic.com/c2c_wap/icon-head.27eba330681353ffd9c800c86da68a56.png) no-repeat;
+    background: url(../../images/icon-head.png) no-repeat;
     background-size: .59rem auto
 }
 

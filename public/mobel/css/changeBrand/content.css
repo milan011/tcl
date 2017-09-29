@@ -1,0 +1,770 @@
+.subtit {
+    padding: 15px 0 2px 10px
+}
+
+.brand-wrap {
+    overflow: hidden
+}
+
+.icon-brand {
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 2px;
+    background: url(../../images/brand-default.png) no-repeat;
+    background-size: 34px auto
+}
+
+.brand-cbox {
+    padding-bottom: 12px;
+    background-color: #fff
+}
+
+.brand-cbox .subtit:first-of-type {
+    padding: 15px 0 9px 10px
+}
+
+.brand-cbox .subtit:nth-of-type(2) {
+    padding: 20px 0 9px 10px
+}
+
+.brand-list {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden
+}
+
+.brand-list li {
+    float: left;
+    width: 20%;
+    box-sizing: border-box
+}
+
+.brand-list li a {
+    display: block;
+    padding: 7px 0 5px;
+    font-size: 12px;
+    color: gray;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.brand-list li .active {
+    background-color: #f2f2f2
+}
+
+.brand-carbox .subtit,
+.brand-rbox .subtit {
+    height: 25px;
+    padding: 0 0 0 15px;
+    font-size: 12px;
+    line-height: 25px;
+    color: #666;
+    background-color: #f5f5f5
+}
+
+.brand-rbox .aside-letter {
+    top: 32px
+}
+
+.brand-rbox .aside-letter-fixed {
+    top: 15px
+}
+
+.brand-list2 li {
+    height: 44px;
+    padding-left: 64px;
+    background-color: #fff;
+    overflow: hidden
+}
+
+.brand-list2 .limit-no {
+    padding-left: 15px
+}
+
+.brand-carbox .brand-list2 .limit-no a,
+.brand-list2 li a {
+    display: block;
+    height: 43px;
+    line-height: 43px;
+    color: #252825;
+    border-bottom: 1px solid #e6e6e6
+}
+
+.brand-list2 .limit-no a,
+.brand-list2 li:last-child a {
+    height: 44px;
+    line-height: 44px;
+    border-bottom: none
+}
+
+.brand-list2 li .icon-brand {
+    float: left;
+    margin: 5px 0 0 -49px
+}
+
+.brand-list2 .limit-no .icon-brand {
+    margin-left: 0
+}
+
+.brand-carbox {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    z-index: 99;
+    display: none;
+    width: 80%;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -8px 0 6px -5px #ebebeb
+}
+
+.brand-carbox.active {
+    display: block
+}
+
+.brand-list2-car li {
+    padding-left: 15px
+}
+
+.brand-list2-car li img {
+    float: left;
+    width: 50px;
+    height: 33px;
+    margin-top: 5px;
+    margin-right: 10px
+}
+
+.brand-list2-car li .num {
+    float: right;
+    margin-right: 15px;
+    font-size: 12px;
+    color: #acacac
+}
+
+.icon-kaiyi {
+    background-image: url(../../brand/kaiyi.png)
+}
+
+.icon-siming {
+    background-image: url(../../brand/siming.png)
+}
+
+.icon-subaru {
+    background-image: url(../../brand/subaru.png)
+}
+
+.icon-maikailun {
+    background-image: url(../../brand/maikailun.png)
+}
+
+.icon-yingzhi {
+    background-image: url(../../brand/yingzhi.png)
+}
+
+.icon-xianaotuo {
+    background-image: url(../../brand/xianaotuo.png)
+}
+
+.icon-xiyate {
+    background-image: url(../../brand/xiyate.png)
+}
+
+.icon-ferrari {
+    background-image: url(../../brand/ferrari.png)
+}
+
+.icon-lufeng {
+    background-image: url(../../brand/lufeng.png)
+}
+
+.icon-volvo {
+    background-image: url(../../brand/volvo.png)
+}
+
+.icon-chevrolet {
+    background-image: url(../../brand/chevrolet.png)
+}
+
+.icon-audi {
+    background-image: url(../../brand/audi.png)
+}
+
+.icon-lexus {
+    background-image: url(../../brand/lexus.png)
+}
+
+.icon-haige {
+    background-image: url(../../brand/haige.png)
+}
+
+.icon-rolls-royce {
+    background-image: url(../../brand/rolls-royce.png)
+}
+
+.icon-toyota {
+    background-image: url(../../brand/toyota.png)
+}
+
+.icon-beijingqiche {
+    background-image: url(../../brand/beijingqiche.png)
+}
+
+.icon-porsche {
+    background-image: url(../../brand/porsche.png)
+}
+
+.icon-jiangnan {
+    background-image: url(../../brand/jiangnan.png)
+}
+
+.icon-lincoln {
+    background-image: url(../../brand/lincoln.png)
+}
+
+.icon-liebao {
+    background-image: url(../../brand/liebao.png)
+}
+
+.icon-saibao1 {
+    background-image: url(../../brand/saibao1.png)
+}
+
+.icon-infiniti {
+    background-image: url(../../brand/infiniti.png)
+}
+
+.icon-buick {
+    background-image: url(../../brand/buick.png)
+}
+
+.icon-lotus {
+    background-image: url(../../brand/lotus.png)
+}
+
+.icon-tj-yiqi {
+    background-image: url(../../brand/tj-yiqi.png)
+}
+
+.icon-jiebao {
+    background-image: url(../../brand/jiebao.png)
+}
+
+.icon-baojun {
+    background-image: url(../../brand/baojun.png)
+}
+
+.icon-nj-iveco {
+    background-image: url(../../brand/nj-iveco.png)
+}
+
+.icon-jlshwuche {
+    background-image: url(../../brand/jlshwuche.png)
+}
+
+.icon-yiqijiefang {
+    background-image: url(../../brand/yiqijiefang.png)
+}
+
+.icon-huayang {
+    background-image: url(../../brand/huayang.png)
+}
+
+.icon-mini {
+    background-image: url(../../brand/mini.png)
+}
+
+.icon-acura {
+    background-image: url(../../brand/acura.png)
+}
+
+.icon-lifan {
+    background-image: url(../../brand/lifan.png)
+}
+
+.icon-baolong {
+    background-image: url(../../brand/baolong.png)
+}
+
+.icon-beiqi {
+    background-image: url(../../brand/beiqi.png)
+}
+
+.icon-landrover {
+    background-image: url(../../brand/landrover.png)
+}
+
+.icon-hafei {
+    background-image: url(../../brand/hafei.png)
+}
+
+.icon-ds {
+    background-image: url(../../brand/ds.png)
+}
+
+.icon-benteng {
+    background-image: url(../../brand/benteng.png)
+}
+
+.icon-huachen {
+    background-image: url(../../brand/huachen.png)
+}
+
+.icon-huaxiangfuqi {
+    background-image: url(../../brand/huaxiangfuqi.png)
+}
+
+.icon-dazhong {
+    background-image: url(../../brand/dazhong.png)
+}
+
+.icon-fiat {
+    background-image: url(../../brand/fiat.png)
+}
+
+.icon-huapu {
+    background-image: url(../../brand/huapu.png)
+}
+
+.icon-shuanghuan {
+    background-image: url(../../brand/shuanghuan.png)
+}
+
+.icon-jili {
+    background-image: url(../../brand/jili.png)
+}
+
+.icon-jiao {
+    background-image: url(../../brand/jiao.png)
+}
+
+.icon-rongwei {
+    background-image: url(../../brand/rongwei.png)
+}
+
+.icon-smart {
+    background-image: url(../../brand/smart.png)
+}
+
+.icon-hongqi {
+    background-image: url(../../brand/hongqi.png)
+}
+
+.icon-dongfengyulongnazhijie {
+    background-image: url(../../brand/dongfengyulongnazhijie.png)
+}
+
+.icon-hyundai {
+    background-image: url(../../brand/hyundai.png)
+}
+
+.icon-renault {
+    background-image: url(../../brand/renault.png)
+}
+
+.icon-cf-yangzi {
+    background-image: url(../../brand/cf-yangzi.png)
+}
+
+.icon-biaozhi {
+    background-image: url(../../brand/biaozhi.png)
+}
+
+.icon-dongfengfengdu {
+    background-image: url(../../brand/dongfengfengdu.png)
+}
+
+.icon-krui {
+    background-image: url(../../brand/krui.png)
+}
+
+.icon-brand-xiali {
+    background-image: url(../../brand/brand-xiali.png)
+}
+
+.icon-lamborghini {
+    background-image: url(../../brand/lamborghini.png)
+}
+
+.icon-fuqiqiteng {
+    background-image: url(../../brand/fuqiqiteng.png)
+}
+
+.icon-benz {
+    background-image: url(../../brand/benz.png)
+}
+
+.icon-alpina {
+    background-image: url(../../brand/alpina.png)
+}
+
+.icon-changanshangyong {
+    background-image: url(../../brand/changanshangyong.png)
+}
+
+.icon-galue {
+    background-image: url(../../brand/galue.png)
+}
+
+.icon-astonmartin {
+    background-image: url(../../brand/astonmartin.png)
+}
+
+.icon-zhongke-huabei {
+    background-image: url(../../brand/zhongke-huabei.png)
+}
+
+.icon-jeep {
+    background-image: url(../../brand/jeep.png)
+}
+
+.icon-dongfeng {
+    background-image: url(../../brand/dongfeng.png)
+}
+
+.icon-shijue {
+    background-image: url(../../brand/shijue.png)
+}
+
+.icon-guanzhi {
+    background-image: url(../../brand/guanzhi.png)
+}
+
+.icon-huachen-zhonghua {
+    background-image: url(../../brand/huachen-zhonghua.png)
+}
+
+.icon-qichen {
+    background-image: url(../../brand/qichen.png)
+}
+
+.icon-saab {
+    background-image: url(../../brand/saab.png)
+}
+
+.icon-dongnan {
+    background-image: url(../../brand/dongnan.png)
+}
+
+.icon-richan {
+    background-image: url(../../brand/richan.png)
+}
+
+.icon-mg1 {
+    background-image: url(../../brand/mg1.png)
+}
+
+.icon-maserati {
+    background-image: url(../../brand/maserati.png)
+}
+
+.icon-dongfengxiaokang {
+    background-image: url(../../brand/dongfengxiaokang.png)
+}
+
+.icon-laolunshi {
+    background-image: url(../../brand/laolunshi.png)
+}
+
+.icon-gmc {
+    background-image: url(../../brand/gmc.png)
+}
+
+.icon-weiziman {
+    background-image: url(../../brand/weiziman.png)
+}
+
+.icon-kawei {
+    background-image: url(../../brand/kawei.png)
+}
+
+.icon-fengxing {
+    background-image: url(../../brand/fengxing.png)
+}
+
+.icon-dayu {
+    background-image: url(../../brand/dayu.png)
+}
+
+.icon-oulang {
+    background-image: url(../../brand/oulang.png)
+}
+
+.icon-ruilin {
+    background-image: url(../../brand/ruilin.png)
+}
+
+.icon-changan {
+    background-image: url(../../brand/changan.png)
+}
+
+.icon-zhidou {
+    background-image: url(../../brand/zhidou.png)
+}
+
+.icon-mitsubishi {
+    background-image: url(../../brand/mitsubishi.png)
+}
+
+.icon-chuanqiyema {
+    background-image: url(../../brand/chuanqiyema.png)
+}
+
+.icon-jianghuai {
+    background-image: url(../../brand/jianghuai.png)
+}
+
+.icon-alfaromeo {
+    background-image: url(../../brand/alfaromeo.png)
+}
+
+.icon-bmw {
+    background-image: url(../../brand/bmw.png)
+}
+
+.icon-shuanglong {
+    background-image: url(../../brand/shuanglong.png)
+}
+
+.icon-jincheng {
+    background-image: url(../../brand/jincheng.png)
+}
+
+.icon-fusangheibao {
+    background-image: url(../../brand/fusangheibao.png)
+}
+
+.icon-dongfengfengshen {
+    background-image: url(../../brand/dongfengfengshen.png)
+}
+
+.icon-huatai {
+    background-image: url(../../brand/huatai.png)
+}
+
+.icon-skoda {
+    background-image: url(../../brand/skoda.png)
+}
+
+.icon-shenbao {
+    background-image: url(../../brand/shenbao.png)
+}
+
+.icon-hengtian {
+    background-image: url(../../brand/hengtian.png)
+}
+
+.icon-baofeili {
+    background-image: url(../../brand/baofeili.png)
+}
+
+.icon-chery {
+    background-image: url(../../brand/chery.png)
+}
+
+.icon-zhongxing {
+    background-image: url(../../brand/zhongxing.png)
+}
+
+.icon-weiwang,
+.icon-zhongshun {
+    background-image: url(../../brand/weiwang.png)
+}
+
+.icon-changcheng {
+    background-image: url(../../brand/changcheng.png)
+}
+
+.icon-jilindafa {
+    background-image: url(../../brand/jilindafa.png)
+}
+
+.icon-cadillac {
+    background-image: url(../../brand/cadillac.png)
+}
+
+.icon-lotuscars {
+    background-image: url(../../brand/lotuscars.png)
+}
+
+.icon-xiaqitongjia {
+    background-image: url(../../brand/xiaqitongjia.png)
+}
+
+.icon-hanma {
+    background-image: url(../../brand/hanma.png)
+}
+
+.icon-sh-huizhong {
+    background-image: url(../../brand/sh-huizhong.png)
+}
+
+.icon-weilin {
+    background-image: url(../../brand/weilin.png)
+}
+
+.icon-linian {
+    background-image: url(../../brand/linian.png)
+}
+
+.icon-zhongou {
+    background-image: url(../../brand/zhongou.png)
+}
+
+.icon-maybach {
+    background-image: url(../../brand/maybach.png)
+}
+
+.icon-springo {
+    background-image: url(../../brand/springo.png)
+}
+
+.icon-futian {
+    background-image: url(../../brand/futian.png)
+}
+
+.icon-meiya {
+    background-image: url(../../brand/meiya.png)
+}
+
+.icon-anchi {
+    background-image: url(../../brand/anchi.png)
+}
+
+.icon-chrysler {
+    background-image: url(../../brand/chrysler.png)
+}
+
+.icon-opel {
+    background-image: url(../../brand/opel.png)
+}
+
+.icon-huansu {
+    background-image: url(../../brand/huansu.png)
+}
+
+.icon-kaersen {
+    background-image: url(../../brand/kaersen.png)
+}
+
+.icon-wanfeng {
+    background-image: url(../../brand/wanfeng.png)
+}
+
+.icon-hafu {
+    background-image: url(../../brand/hafu.png)
+}
+
+.icon-bentley {
+    background-image: url(../../brand/bentley.png)
+}
+
+.icon-jiangling {
+    background-image: url(../../brand/jiangling.png)
+}
+
+.icon-daoqi {
+    background-image: url(../../brand/daoqi.png)
+}
+
+.icon-wushiling {
+    background-image: url(../../brand/wushiling.png)
+}
+
+.icon-zhongtai {
+    background-image: url(../../brand/zhongtai.png)
+}
+
+.icon-fudi {
+    background-image: url(../../brand/fudi.png)
+}
+
+.icon-suzuki {
+    background-image: url(../../brand/suzuki.png)
+}
+
+.icon-yongyuanqiche {
+    background-image: url(../../brand/yongyuanqiche.png)
+}
+
+.icon-wuling {
+    background-image: url(../../brand/wuling.png)
+}
+
+.icon-chuanqi1 {
+    background-image: url(../../brand/chuanqi1.png)
+}
+
+.icon-tesila {
+    background-image: url(../../brand/tesila.png)
+}
+
+.icon-ford {
+    background-image: url(../../brand/ford.png)
+}
+
+.icon-honda {
+    background-image: url(../../brand/honda.png)
+}
+
+.icon-changhe {
+    background-image: url(../../brand/changhe.png)
+}
+
+.icon-tianma {
+    background-image: url(../../brand/tianma.png)
+}
+
+.icon-qingling {
+    background-image: url(../../brand/qingling.png)
+}
+
+.icon-huanghai {
+    background-image: url(../../brand/huanghai.png)
+}
+
+.icon-tengshi {
+    background-image: url(../../brand/tengshi.png)
+}
+
+.icon-kenisaige {
+    background-image: url(../../brand/kenisaige.png)
+}
+
+.icon-mazda {
+    background-image: url(../../brand/mazda.png)
+}
+
+.icon-byd {
+    background-image: url(../../brand/byd.png)
+}
+
+.icon-kia {
+    background-image: url(../../brand/kia.png)
+}
+
+.icon-haima {
+    background-image: url(../../brand/haima.png)
+}
+
+.icon-citroen {
+    background-image: url(../../brand/citroen.png)
+}
+
+.icon-datong {
+    background-image: url(../../brand/datong.png)
+}
+
+.icon-xinkai {
+    background-image: url(../../brand/xinkai.png)
+}
+
+.icon-huasong {
+    background-image: url(../../brand/huasong.png)
+}
+
+.icon-babosi {
+    background-image: url(../../brand/babosi.png)
+}

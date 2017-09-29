@@ -48,9 +48,31 @@ class CateController extends CommonController
 
         // $begin = $this->getCurrentTime();
         // p($this->request->method());exit;  //{品牌b，车系c}，{车辆类型t，门店s}，{车龄a，价格p}
+        
 
-        $conditions = $brand .'-'. $condition;
+        $conditions      = $brand .'-'. $condition;
+        
+        $condition_brand = '';
+        $condition_other = '';
 
+        if(!empty($condition)){
+            // 品牌搜索和其他搜索均有
+            $condition_brand = $brand;
+            $condition_other = $condition;
+        }else{
+            if(starts_with($brand, 'b') || starts_with($brand, 'c')){
+                // 品牌搜索条件
+                $condition_brand = $brand;
+            }else{
+                $condition_other = $brand;
+            }
+        }
+        
+
+        /*p(starts_with($condition_brand, 'b'));
+        p(starts_with($condition_brand, 'c'));
+        p($condition_brand);
+        dd($condition_other);*/
         if(!empty($conditions)){
             // dd($conditons);
             $condition_arr = explode('-', $conditions);
@@ -109,13 +131,21 @@ class CateController extends CommonController
                     $select_condition['city'] = getConditionContent($value);
                     $url_condition['d'] = getConditionContent($value);
                     break;
+                case 'y':
+                    # 颜色
+                    $select_condition['color'] = getConditionContent($value);
+                    $url_condition['y'] = getConditionContent($value);
+                    break;
                 default:
                     # code...
                     break;
             }
         }
-        // dd($url_condition);
+        // dd($conditions);
         // dd(Session('current_city'));
+
+        // $this->url_condition = $url_condition;
+        // dd($this->url_condition);
         
         $sel_city_id   = (null !==Session('chosen_city_id')) ? Session('chosen_city_id') : Session('current_city');
 
@@ -158,7 +188,7 @@ class CateController extends CommonController
         // dd($recomment_brands);
         //门店列表
         $all_shop = $this->shop->getAllshopsWithBefore();
-        // dd($all_shop[37]);
+        // dd($all_shop);
 
         //根据首字母取得所有品牌分类列表
         $letter_list       = $this->brand->getBransLetter();
@@ -173,16 +203,17 @@ class CateController extends CommonController
         $current_category = $current_cate['category'];
         $current_brand    = $current_cate['brand'];
 
-        $price_interval     = config('tcl.price_interval'); //获取配置文件中价格区间
-        $gearbox            = config('tcl.gearbox'); //获取配置文件中变速箱类别
-        $out_color          = config('tcl.out_color'); //获取配置文件中外观颜色
-        $capacity           = config('tcl.capacity'); //获取配置文件排量
-        $category_type      = config('tcl.category_type'); //获取配置文件中车型类别
-        $sale_number        = config('tcl.sale_number'); //获取配置文件中车型类别
-        $price_interval     = config('tcl.price_interval'); //获取配置文件中价格区间
-        $age                = config('tcl.age'); //获取配置文件中车龄区间
+        $price_interval      = config('tcl.price_interval'); //获取配置文件中价格区间
+        $gearbox             = config('tcl.gearbox'); //获取配置文件中变速箱类别
+        $out_color_mobel     = config('tcl.out_color_mobel'); //获取配置文件中外观颜色
+        $capacity            = config('tcl.capacity'); //获取配置文件排量
+        $category_type_mobel = config('tcl.category_type_mobel'); //获取配置文件中车型类别
+        $category_type       = config('tcl.category_type'); //获取配置文件中车型类别
+        $sale_number         = config('tcl.sale_number'); //获取配置文件中车型类别
+        $price_interval      = config('tcl.price_interval'); //获取配置文件中价格区间
+        $age                 = config('tcl.age'); //获取配置文件中车龄区间
 
-        // p($select_condition);
+        // dd($gearbox);
 
         // dd($current_category);
         // dd($url_condition);
@@ -215,10 +246,11 @@ class CateController extends CommonController
         
         // dd($brand_letter_list);
         // dd($current_category);
+        // dd($url_condition);
         foreach ($current_category as $key => $value) { //车辆类型信息添加筛选超链接
-
+            // dd('hehe');
             $url_condition_c      = $url_condition;
-            $url_condition_c['c'] = $value['id'];
+            // $url_condition_c['c'] = $value['id'];
             // dd($url_condition_c);
             $select_url = getSelectUrl($url_condition_c);
 
@@ -226,7 +258,7 @@ class CateController extends CommonController
             //$current_category_with_url[$key]['url']     = $select_url;
             $current_category[$key]['url'] = $select_url;
         }
-        // dd($current_category);
+        // dd($url_condition_c);
         // 清除车辆类型信超链接
         foreach ($url_condition_c as $key => $value) {
             unset($url_condition_c['c']);
@@ -268,7 +300,7 @@ class CateController extends CommonController
             $clean_category_type_url = getSelectUrl($url_condition_t);
         }
 
-        // dd($category_type_with_url);
+        // dd($category_type);
 
         foreach ($age as $key => $value) { //车龄信息添加筛选超链接
             // dd($url_condition);
@@ -358,37 +390,104 @@ class CateController extends CommonController
         $spend = $end - $begin;
 
         echo "脚本执行时间为:".$spend."\n";*/
-        return view('mobel.cate.index', compact(
-            'cars', 
-            'gearbox', 
-            'out_color',
-            'capacity', 
-            'category_type_with_url',
-            'sale_number',
-            'recomment_brands',
-            'price_with_url', 
-            'age_with_url', 
-            'all_shop', 
-            'letter_list', 
-            'brand_letter_list',
-            'current_category',
-            'clean_price_interval_url',
-            'clean_age_url',
-            'clean_category_type_url',
-            'clean_recomment_brands_url',
-            'clean_shop_url',
-            'current_brand',
-            'clean_current_category_url',
-            'current_condition',
-            'show_city_name',
-            'current_page',
-            'title',
-            'chosen_city_selection'
-        ));
+        //筛选品牌
+        if(!empty($this->request->input('act')) && ($this->request->input('act') == 'changeBrand')){
+            // dd($url_condition);
+            return view('mobel.cate.changeBrand', compact(
+                'cars', 
+                'gearbox', 
+                'out_color',
+                'capacity', 
+                'category_type_with_url',
+                'sale_number',
+                'recomment_brands',
+                'price_with_url', 
+                'age_with_url', 
+                'all_shop', 
+                'letter_list', 
+                'brand_letter_list',
+                'current_category',
+                'clean_price_interval_url',
+                'clean_age_url',
+                'clean_category_type_url',
+                'clean_recomment_brands_url',
+                'clean_shop_url',
+                'current_brand',
+                'clean_current_category_url',
+                'current_condition',
+                'show_city_name',
+                'current_page',
+                'title',
+                'chosen_city_selection',
+                'condition_other'
+            ));
+        }else{
+           return view('mobel.cate.index', compact(
+                'cars', 
+                'gearbox', 
+                'out_color_mobel',
+                'capacity', 
+                'category_type_with_url',
+                'category_type_mobel',
+                'sale_number',
+                'recomment_brands',
+                'price_with_url', 
+                'age_with_url', 
+                'age',
+                'all_shop', 
+                'letter_list', 
+                'brand_letter_list',
+                'current_category',
+                'clean_price_interval_url',
+                'clean_age_url',
+                'clean_category_type_url',
+                'clean_recomment_brands_url',
+                'clean_shop_url',
+                'current_brand',
+                'clean_current_category_url',
+                'current_condition',
+                'show_city_name',
+                'current_page',
+                'title',
+                'chosen_city_selection',
+                'condition_brand'
+            )); 
+        }
     }
 
-    /*public function getCurrentTime ()  {  
-        list ($msec, $sec) = explode(" ", microtime());  
-        return (float)$msec + (float)$sec;  
-    }*/
+    //获得子品牌,跳过厂家
+    public function getChildCategory(Request $request){
+
+        // p($request->all());exit;
+        $brand_id   = $request->input('pid');
+        $condition  = $request->input('conditions');
+     
+        // p($condition);exit;
+
+        $categorys = $this->brand->getChildCategory($brand_id);
+
+        
+
+        // p($categorys->toArray());exit;
+
+        if($categorys->count() > 0){
+
+            foreach ($categorys as $key => $value) {
+
+                $value->url = route('mobel.cate.index'). '/c'. $value->id . '/' . $condition;
+            }
+
+            return response()->json(array(
+                'status' => 1,
+                'data'   => $categorys,
+                'message'   => '获取品牌列表成功'
+            ));
+        }else{
+
+            return response()->json(array(
+                'status' => 0,
+                'message'   => '该品牌下无子品牌'
+            ));
+        }        
+    }
 }

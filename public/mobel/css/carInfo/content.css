@@ -51,7 +51,7 @@ input:focus {
 .thumb-img-num:before,
 .tip-icon,
 .usericon {
-    background: url(//sta.guazistatic.com/c2c_wap/icons.58d3346e8f35c4f4fbec6cdae2684a97.png) no-repeat;
+    background: url(../../images/icons.58d3346e8f35c4f4fbec6cdae2684a97.png) no-repeat;
     background-size: 3rem auto
 }
 
@@ -59,7 +59,7 @@ input:focus {
 .loanbox .icon-man,
 .price-guide .price-sector,
 .price-sector .pos-2 .pointer {
-    background: url(//sta.guazistatic.com/c2c_wap/icons-detail.72db9c0283654da8f71dd6f3a1a469cc.png) no-repeat;
+    /*background: url(//sta.guazistatic.com/c2c_wap/icons-detail.72db9c0283654da8f71dd6f3a1a469cc.png) no-repeat;*/
     background-size: 3.2rem auto
 }
 
@@ -1098,7 +1098,7 @@ input:focus {
 
 .rz-bg {
     padding: .26rem 0 .2rem;
-    background: url(//sta.guazistatic.com/c2c_wap/re-bg.7254fc9a03a28ee5392e71a1c2c6362e.jpg) no-repeat;
+    background: url(../../images/re-bg.jpg) no-repeat;
     background-size: 100% 100%;
     margin: 0 .15rem
 }
@@ -1515,7 +1515,7 @@ a.ask-car {
 }
 
 .areabox li {
-    background: url(//sta.guazistatic.com/c2c_wap/car-parts.1068833f08adf9be098aa53ff134e87c.png) no-repeat;
+    background: url(../../images/car-parts.png) no-repeat;
     background-size: 2.78rem auto;
     display: none
 }
@@ -1677,7 +1677,7 @@ a.ask-car {
 }
 
 .out-bg {
-    background: url(//sta.guazistatic.com/c2c_wap/car-gray.c083bbaf434eece226a42ae163c62c62.jpg) no-repeat;
+    background: url(../../images/car-gray.jpg) no-repeat;
     background-size: 2.83rem auto;
     height: 2.06rem;
     width: 2.83rem
@@ -1690,7 +1690,7 @@ a.ask-car {
 }
 
 .carin-bg {
-    background: url(//sta.guazistatic.com/c2c_wap/car-in.728b7964374a178cb57ef89f11f4d984.jpg) no-repeat;
+    background: url(../../images/car-in.jpg) no-repeat;
     background-size: 2rem auto;
     width: 2rem;
     height: 2.65rem
@@ -1861,7 +1861,7 @@ a.ask-car {
 
 .car-inside {
     width: 2.15rem;
-    background: url(//sta.guazistatic.com/c2c_wap/car_inside.675fc563611900e504ddd1345061a229.png) no-repeat;
+    background: url(../../images/car_inside.png) no-repeat;
     background-size: 2.15rem auto;
     margin: 0 auto;
     height: 1.1rem;
@@ -2675,7 +2675,7 @@ a.ask-car {
 .thrD-ellipse {
     top: .2rem;
     height: 1.08rem;
-    background-image: url("http://sta.guazi.com/static/c2c/wap/detail/ellipse-bg.png");
+    background-image: url(../../images/ellipse-bg.png);
     background-size: cover;
     background-position: 0 .02rem
 }
@@ -2730,7 +2730,7 @@ a.ask-car {
     height: .4rem;
     margin-left: -.2rem;
     margin-top: -.2rem;
-    background-image: url("http://sta.guazi.com/static/c2c/wap/detail/btn.png");
+    background-image: url(../../images/btn.png);
     background-size: cover;
     background-position: 0 .03rem;
     background-repeat: no-repeat

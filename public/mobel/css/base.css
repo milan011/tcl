@@ -284,7 +284,7 @@ a {
     position: absolute;
     top: 50%;
     left: 50%;
-    background: url(//sta.guazistatic.com/c2c_wap/icon.4c4d7d4156e54e692029a08438a31d7b.png) no-repeat;
+    background: url(../../images/icon.png) no-repeat;
     background-size: 80px auto;
     -webkit-background-size: 80px auto;
     -ms-background-size: 80px auto;
@@ -608,7 +608,7 @@ a {
 }
 
 .form-status .status-tips:before {
-    background: url(//sta.guazistatic.com/c2c_wap/icon-status.3cac80466e11ce8f07496dc996c885c7.png) no-repeat;
+    background: url(../../images/icon-status.png) no-repeat;
     -ms-background-size: 120px auto;
     background-size: 120px auto
 }
@@ -828,7 +828,7 @@ a {
 
 .popup .icon-close:after,
 .popup .list-guide i {
-    background: url(//sta.guazistatic.com/c2c_wap/icon_guide.9ee3a7bd10a5c4d0c6ce01a926383708.png) no-repeat;
+    background: url(../../images/icon_guide.png) no-repeat;
     -ms-background-size: 80px auto;
     background-size: 80px auto
 }
@@ -1040,7 +1040,7 @@ a {
     width: 20px;
     height: 20px;
     margin: 4px auto 0;
-    background: url(//sta.guazistatic.com/c2c_wap/icon_new_v2.20257d35f41d3b314b0504ca5b878f29.png) no-repeat;
+    background: url(../../images/icon_new_v2.png) no-repeat;
     background-size: 200px auto
 }
 

@@ -276,7 +276,7 @@ input::-webkit-outer-spin-button {
 
 .backtop i,
 .year-2017:before {
-    background-image: url(//sta.guazistatic.com/c2c_wap/icon.9eaa74d2526e2fc9f1f77f6b66d6528e.png);
+    background-image: url(../../images/icon.png);
     background-size: .18rem auto;
     display: inline-block
 }

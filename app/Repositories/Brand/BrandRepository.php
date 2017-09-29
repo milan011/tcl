@@ -155,6 +155,30 @@ class BrandRepository implements BrandRepositoryContract {
 			->get();
 	}
 
+	//获得子品牌,跳过厂家
+	public function getChildCategory($brand_id) {
+
+		$compnay_list = [];
+
+		$compnay = Brand::select(['id', 'pid', 'name', 'logo_img'])
+						->where('pid', $brand_id)
+						->where('status', '1')
+						->get();
+		foreach ($compnay as $key => $value) {
+			$compnay_list[] = $value->id;
+		}
+
+		$category_info = Brand::select(['id', 'pid', 'name', 'logo_img'])
+							  ->whereIn('pid', $compnay_list)
+							  ->where('status', '1')
+							  ->get();
+
+		// p($category_info->toArray());exit;
+
+		return $category_info;
+
+	}
+
 	//获得指定品牌的父品牌
 	protected function getParentBrand($brand_id) {
 

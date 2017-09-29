@@ -43,7 +43,7 @@
         <a class="gz-logo fl" href="javascript:void(0);" ></a>
         <div class="gz-search" id="open_search">
             <a href="{{route('mobel.changeCity')}}" class="local-city" >{{$show_city_name}}</a>
-            <div class="search-ipt" data-role="vehicleSearch">搜索您想要的车</div>
+            <!-- <div class="search-ipt" data-role="vehicleSearch">搜索您想要的车</div> -->
         </div>
     </header>
     <section class="DoesNotContainCity">

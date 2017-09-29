@@ -71,7 +71,7 @@
 .entrance li a:before {
     content: "";
     position: absolute;
-    background: url(//sta.guazistatic.com/c2c_wap/icon-entry.f33a589e076acda57975dfddae042eff.png) no-repeat;
+    background: url(../../images/icon-entry.png) no-repeat;
     background-size: 2.15rem auto
 }
 
@@ -349,7 +349,7 @@
 .icon-foundcar:after,
 .icon-loan:after,
 .icon-service:after {
-    background-image: url(//sta.guazistatic.com/c2c_wap/icon-index.1fa519c257308f6ae10904ce0f1d56f7.png);
+    background-image: url(../../images/icon-index.png);
     background-repeat: no-repeat;
     background-size: .6rem 3.07rem
 }
@@ -544,7 +544,7 @@
 }
 
 .citybg {
-    background-image: url(//sta.guazistatic.com/c2c_wap/bg.60d7621eed86abd57b017e01c17edc3c.png);
+    background-image: url(../../images/bg.png);
     background-repeat: no-repeat;
     background-size: 15rem .6rem;
     width: 15rem;
@@ -568,7 +568,7 @@
 }
 
 .house {
-    background-image: url(//sta.guazistatic.com/c2c_wap/house1.7aacc3a551adb750636ce5fbb777ebfb.png);
+    background-image: url(../../images/house1.png);
     background-size: 15rem .6rem;
     width: 15rem;
     height: .6rem;

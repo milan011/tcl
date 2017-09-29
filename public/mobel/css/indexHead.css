@@ -4,7 +4,7 @@
 
 .gz-logo,
 .search-ipt:before {
-    background-image: url(//sta.guazistatic.com/c2c_wap/icon-head.27eba330681353ffd9c800c86da68a56.png);
+    background-image: url(../../images/icon-head.png);
     background-size: .59rem auto;
     display: inline-block
 }

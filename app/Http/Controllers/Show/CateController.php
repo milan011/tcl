@@ -48,7 +48,7 @@ class CateController extends CommonController
 
         // $begin = $this->getCurrentTime();
         // p($this->request->method());exit;  //{品牌b，车系c}，{车辆类型t，门店s}，{车龄a，价格p}
-
+        
         $conditions = $brand .'-'. $condition;
 
         if(!empty($conditions)){

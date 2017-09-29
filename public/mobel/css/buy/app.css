@@ -57,7 +57,7 @@
 .btn-app .icon-download,
 .download-header .left-word:after,
 .title span {
-    background: url(//sta.guazistatic.com/c2c_wap/guide_icon.b7d7a6e9858219137f0c6dd98380827d.png) no-repeat;
+    background: url(../../images/guide_icon.png) no-repeat;
     background-size: 150px auto
 }
 
@@ -291,7 +291,7 @@
 }
 
 .guazi-logo {
-    background: url(//sta.guazistatic.com/c2c_wap/logo_app_guazi_2.3c569dc844c4ccd0b9cf94461c603c41.png) no-repeat;
+    background: url(../../images/logo.png) no-repeat;
     background-size: 100px auto;
     width: 100px;
     height: 100px;
@@ -666,19 +666,19 @@
 }
 
 .imgcollect {
-    background-image: url(//sta.guazistatic.com/c2c_wap/phone-collect.6a991da1dd9431dbb9c5f4b905b62372.jpg)
+    /*background-image: url(//sta.guazistatic.com/c2c_wap/phone-collect.6a991da1dd9431dbb9c5f4b905b62372.jpg)*/
 }
 
 .imghistroy {
-    background-image: url(//sta.guazistatic.com/c2c_wap/phone-histroy.e8fbef61fbce719de43066002c7df522.jpg)
+    /*background-image: url(//sta.guazistatic.com/c2c_wap/phone-histroy.e8fbef61fbce719de43066002c7df522.jpg)*/
 }
 
 .imgtip {
-    background-image: url(//sta.guazistatic.com/c2c_wap/phone-tip.a621df915f5f8295606f35985ed4df39.jpg)
+    /*background-image: url(//sta.guazistatic.com/c2c_wap/phone-tip.a621df915f5f8295606f35985ed4df39.jpg)*/
 }
 
 .imguser {
-    background-image: url(//sta.guazistatic.com/c2c_wap/phone-user.fb9b9001300d41a795d452de0468a1c6.jpg)
+    /*background-image: url(//sta.guazistatic.com/c2c_wap/phone-user.fb9b9001300d41a795d452de0468a1c6.jpg)*/
 }
 
 .tip-layer {
