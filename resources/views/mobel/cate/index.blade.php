@@ -49,13 +49,12 @@
             </div>
             <div class="filter-result">
             <ul class="mod-tags fl">
-                <a href="javascript:void(0);">
-                    <li>16-20万<i class="icon-close"></i></li>
+                @foreach($current_condition as $key=>$condition)
+                <a href="{{$condition['url']}}">
+                    <li>{{$condition['content']}}<i class="icon-close"></i></li>
                 </a>
-                <a href="javascript:void(0);">
-                    <li>16-20万<i class="icon-close"></i></li>
-                </a>
-                <li class="btn-reset"><a class="icon-reset" href="javascript:void(0);">重置</a></li>
+                @endforeach
+                <li class="btn-reset"><a class="icon-reset" href="{{route('mobel.cate.index')}}">重置</a></li>
             </ul>
             <a class="nav-subscribe" href="javascript:void(0);">订阅</a>
             </div>
@@ -162,7 +161,7 @@
                 </ul>
             </section>
             <!-- 变速箱 start -->
-            <section class="filter-section"  data-urlKey="d">
+            <section class="filter-section"  data-urlKey="x">
                 <h3 class="subtit">变速箱</h3>
                 <ul class="lab-list">
                     @foreach($gearbox as $key=>$gear)

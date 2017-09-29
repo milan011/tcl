@@ -136,6 +136,11 @@ class CateController extends CommonController
                     $select_condition['color'] = getConditionContent($value);
                     $url_condition['y'] = getConditionContent($value);
                     break;
+                case 'x':
+                    # 变速箱
+                    $select_condition['gearbox'] = getConditionContent($value);
+                    $url_condition['x'] = getConditionContent($value);
+                    break;
                 default:
                     # code...
                     break;
@@ -337,6 +342,39 @@ class CateController extends CommonController
         }
 
         $price_with_url[1]['url'] = $clean_price_interval_url;
+
+        foreach ($gearbox as $key => $value) { //变速箱添加筛选超链接
+            // dd($url_condition);
+            $url_condition_x      = $url_condition;
+            $url_condition_x['x'] = $key;
+            $select_url = getSelectUrl($url_condition_x);
+            $gearbox_with_url[$key]['content'] = $value;
+            $gearbox_with_url[$key]['url']     = $select_url;
+        }
+
+        // 清除变速箱筛选超链接
+        foreach ($url_condition_x as $key => $value) {
+            unset($url_condition_x['x']);
+            $clean_gearbox_interval_url = $select_url = getSelectUrl($url_condition_x);
+        }
+
+        $gearbox_with_url[1]['url'] = $clean_gearbox_interval_url;
+
+        foreach ($out_color_mobel as $key => $value) { //颜色添加筛选超链接
+            // dd($url_condition);
+            $url_condition_y      = $url_condition;
+            $url_condition_y['y'] = $key;
+            $select_url = getSelectUrl($url_condition_y);
+            $color_with_url[$key]['content'] = $value['name'];
+            $color_with_url[$key]['url']     = $select_url;
+        }
+        // 清除颜色筛选超链接
+        foreach ($url_condition_y as $key => $value) {
+            unset($url_condition_y['y']);
+            $clean_color_interval_url = $select_url = getSelectUrl($url_condition_y);
+        }
+
+        $color_with_url[1]['url'] = $clean_color_interval_url;
         // dd($price_with_url);
 
         //已选条件处理
@@ -344,13 +382,13 @@ class CateController extends CommonController
 
         if(!empty($url_condition['b'])){ //当前品牌
             $brand = $this->brand->find($url_condition['b']);
-            $current_condition['brand']['content'] = '品牌：'.$brand->name;
+            $current_condition['brand']['content'] = $brand->name;
             $current_condition['brand']['url'] = $clean_recomment_brands_url;
         }
 
         if(!empty($url_condition['c'])){ //当前车型
             $brand = $this->brand->find($url_condition['c']);
-            $current_condition['category']['content'] = '车系：'.$brand->name;
+            $current_condition['category']['content'] = $brand->name;
             $current_condition['category']['url'] = $clean_current_category_url;
         }
 
@@ -359,26 +397,38 @@ class CateController extends CommonController
             $shop = $this->shop->find($url_condition['s']);
             // dd(lastsql());
             // dd($shop);
-            $current_condition['shop']['content'] = '门店：'.$shop->name;
+            $current_condition['shop']['content'] = $shop->name;
             $current_condition['shop']['url'] = $clean_shop_url;
         }
 
         if(!empty($url_condition['t'])){ //当前车辆类型
 
-            $current_condition['category_type']['content'] = '级别：'.$category_type[$url_condition['t']];
+            $current_condition['category_type']['content'] = $category_type[$url_condition['t']];
             $current_condition['category_type']['url']     = $clean_category_type_url;
         }
 
         if(!empty($url_condition['a'])){ //当前车龄区间
 
-            $current_condition['age']['content'] = '车龄：'.$age[$url_condition['a']];
+            $current_condition['age']['content'] = $age[$url_condition['a']];
             $current_condition['age']['url']     = $clean_age_url;
         }
 
         if(!empty($url_condition['p'])){ //当前价格区间
 
-            $current_condition['price']['content'] = '价格：'.$price_interval[$url_condition['p']];
+            $current_condition['price']['content'] = $price_interval[$url_condition['p']];
             $current_condition['price']['url']     = $clean_price_interval_url;
+        }
+
+        if(!empty($url_condition['x'])){ //当前变速箱条件
+
+            $current_condition['gearbox']['content'] = $gearbox[$url_condition['x']];
+            $current_condition['gearbox']['url']     = $clean_gearbox_interval_url;
+        }
+
+        if(!empty($url_condition['y'])){ //当前颜色条件
+            // dd($out_color_mobel);
+            $current_condition['color']['content'] = $out_color_mobel[$url_condition['y']]['name'];
+            $current_condition['color']['url']     = $clean_color_interval_url;
         }
 
         // dd($current_condition);
