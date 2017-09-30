@@ -14,6 +14,34 @@
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/app.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/content.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/send.css')}}">
+    <style>
+        .btngreen{
+            background-color: #22ac38;
+            border: 1px solid #22ac38;
+            height: 1.4rem;
+            line-height: 1.4rem;
+            display: block;
+            text-align: center;
+            color: #fff;
+            font-size: 1.0rem;
+            border-radius: .02rem;
+            -webkit-border-radius: .02rem;
+        }
+        
+        .btnbox{
+            margin: 5px auto;
+            width: 50%;
+        }
+        #prev_page{
+            width: 45%;
+            float: left;
+        }
+
+        #next_page{
+            width: 45%;
+            float: right;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -56,7 +84,7 @@
                 @endforeach
                 <li class="btn-reset"><a class="icon-reset" href="{{route('mobel.cate.index')}}">重置</a></li>
             </ul>
-            <a class="nav-subscribe" href="javascript:void(0);">订阅</a>
+            <!-- <a class="nav-subscribe" href="javascript:void(0);">订阅</a> -->
             </div>
         </div>
         <!-- filter end -->
@@ -64,36 +92,38 @@
         <!-- 行列表 start -->
         <section class="mod-list js-car-list">
             <!-- <div class="find-num bg-shadow active">共为您找到2312辆车</div> -->
+
             <ul class="list">
+                @foreach($cars as $key=>$car)
                 <li class="list-item" data-type=city>
                     <a class="car-info" href="javascript:void(0);">
                         <div class="car-img">
-                            <img class="js-lazy-load" src="http://www.sjztcl.com/uploads/car/201709/images/mmexport1504749705099副本爱奇艺.jpg" alt="日产阳光 2011款 1.5XL CVT豪华版">
+                            @if(isset($car->hasOneImagesOnFirst->filename))
+                                <img src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}" alt="{{$car->name}}">
+                            @else
+                                <img src="{{URL::asset('images/default.jpg')}}" alt="" />
+                            @endif
                         </div>
-                        <h3 class="car-name">日产阳光 2011款 1.5XL CVT豪华版</h3>
+                        <h3 class="car-name">{{$car->name}}</h3>
                         <div class="car-km">
-                            <span class="fl">2011年/6.7万公里</span>
+                            <span class="fl">{{$car->plate_date}}年/{{$car->mileage}}万公里</span>
                         </div>
                         <div class="car-price">
-                            <i class="finance-price">4.39万</i>
+                            <i class="finance-price">{{$car->top_price}}万</i>
                         </div>
                     </a>
                 </li>
-                
-                
-                <li class="list-item" data-type=city>
-                    <a class="car-info" href="javascript:void(0);">
-                        <div class="car-img">
-                            <img class="js-lazy-load" src="http://www.sjztcl.com/uploads/car/201709/images/mmexport1504749705099副本爱奇艺.jpg" alt="日产阳光 2011款 1.5XL CVT豪华版">
-                        </div>
-                        <h3 class="car-name">日产阳光 2011款 1.5XL CVT豪华版</h3>
-                        <div class="car-km">
-                            <span class="fl">2011年/6.7万公里</span>
-                        </div>
-                        <div class="car-price">
-                            <i class="finance-price">4.39万</i>
-                        </div>
-                    </a>
+                @endforeach
+
+                <li class="list-item" style="margin-top:10px;">
+                    <div class="btnbox">
+                    @if($cars->currentPage() > 1)
+                        <a id="prev_page" href="{{$cars->previousPageUrl()}}" class="btngreen">上一页</a>
+                    @endif
+                    @if($cars->hasMorePages())
+                        <a id="next_page" href="{{$cars->nextPageUrl()}}" class="btngreen">下一页</a>
+                    @endif
+                    </div>
                 </li>
             </ul>
         </section>
@@ -293,8 +323,16 @@
         $('a.brand').click(function(event) {
             /* 品牌筛选 */
             var current_url  = window.location.href; //当前URL
-            var redirect_url = current_url + '?act=changeBrand';
-            // alert(current_url);
+            var redirect_url = '';
+
+            if(current_url.indexOf("?") > 0 ){
+                redirect_url = current_url + '&act=changeBrand';
+            }else{
+                redirect_url = current_url + '?act=changeBrand';
+            }
+
+            /*alert(redirect_url);
+            return false;*/
             // alert(redirect_url);
 
              window.location.href = redirect_url;
@@ -317,6 +355,7 @@
             /* 搜索车源*/
             var condition_brand  = '{{$condition_brand}}'; //车型筛选条件
             var redirect_url     = "{{route('mobel.cate.index')}}/" + condition_brand;
+            var price_conditon   = "{{$price_condition}}";
             var chosen_url       = '';
 
             $('.js-multi-option').each(function(index, el) {
@@ -333,7 +372,11 @@
             // console.log(chosen_url);
             if(condition_brand.length != 0){
                redirect_url += '/'; 
-            }           
+            }  
+            if(price_conditon.length != 0){
+               redirect_url += price_conditon; 
+               redirect_url += '-'; 
+            }          
             redirect_url += chosen_url;
             // console.log(redirect_url);
             window.location.href = redirect_url;

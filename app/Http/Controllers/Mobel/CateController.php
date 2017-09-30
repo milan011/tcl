@@ -150,7 +150,13 @@ class CateController extends CommonController
         // dd(Session('current_city'));
 
         // $this->url_condition = $url_condition;
-        // dd($this->url_condition);
+        // dd($url_condition);
+
+        if(array_key_exists('p', $url_condition)){
+            $price_condition = 'p'.$url_condition['p'];
+        }else{
+           $price_condition= ''; 
+        }
         
         $sel_city_id   = (null !==Session('chosen_city_id')) ? Session('chosen_city_id') : Session('current_city');
 
@@ -182,9 +188,10 @@ class CateController extends CommonController
         }
         // dd($select_condition);
         // 符合条件车源
-        $cars = $this->car->getAllCarsWithBefore($select_condition);
+        $cars = $this->car->getAllCarsWithBeforeMobel($select_condition);
         // dd(lastSql());
-        // dd($cars); 
+        // dd($cars->hasMorePages());
+        // dd($cars);
         // dd($cars[0]->hasOneImagesOnFirst);
 
         // 推荐品牌
@@ -199,8 +206,8 @@ class CateController extends CommonController
         $letter_list       = $this->brand->getBransLetter();
         $brand_letter_list = $this->brand->getBransWithLetter();
 
-        // p(lastsql());
-        // dd($brand_letter_list);
+        // dd($letter_list);
+        // dd($brand_letter_list['A']);
 
         //当前车型信息
         $current_cate = $this->brand->getCurrentBrand($select_condition);
@@ -480,6 +487,7 @@ class CateController extends CommonController
                 'category_type_with_url',
                 'category_type_mobel',
                 'sale_number',
+                'price_condition',
                 'recomment_brands',
                 'price_with_url', 
                 'age_with_url', 

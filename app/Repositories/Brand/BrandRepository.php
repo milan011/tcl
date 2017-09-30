@@ -315,7 +315,7 @@ class BrandRepository implements BrandRepositoryContract {
 
 		foreach ($letter_list as $key => $value) {
 
-			$brand_list_with_letter[$value] = Brand::select(['id', 'name'])
+			$brand_list_with_letter[$value] = Brand::select(['id', 'name', 'logo_img'])
 				->where('pid', '0')
 				->where('status', '1')
 				->where('frist_letter', $value)

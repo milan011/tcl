@@ -110,7 +110,8 @@
 }
 
 .brand-carbox {
-    position: absolute;
+    /*position: absolute;*/
+    position: fixed;
     top: 44px;
     right: 0;
     z-index: 99;
@@ -122,7 +123,8 @@
 }
 
 .brand-carbox.active {
-    display: block
+    display: block;
+    overflow: auto;
 }
 
 .brand-list2-car li {
@@ -144,7 +146,8 @@
     color: #acacac
 }
 
-.icon-kaiyi {
+.icon-kaiyi,
+.icon-09564769 {
     background-image: url(../../brand/kaiyi.png)
 }
 
@@ -152,7 +155,8 @@
     background-image: url(../../brand/siming.png)
 }
 
-.icon-subaru {
+.icon-subaru,
+.icon-sibalu {
     background-image: url(../../brand/subaru.png)
 }
 
@@ -172,7 +176,7 @@
     background-image: url(../../brand/xiyate.png)
 }
 
-.icon-ferrari {
+.icon-falali {
     background-image: url(../../brand/ferrari.png)
 }
 
@@ -180,7 +184,8 @@
     background-image: url(../../brand/lufeng.png)
 }
 
-.icon-volvo {
+.icon-volvo,
+.icon-volov {
     background-image: url(../../brand/volvo.png)
 }
 
@@ -188,11 +193,12 @@
     background-image: url(../../brand/chevrolet.png)
 }
 
-.icon-audi {
+.icon-aodi {
     background-image: url(../../brand/audi.png)
 }
 
-.icon-lexus {
+.icon-lexus,
+.icon-leikesasi {
     background-image: url(../../brand/lexus.png)
 }
 
@@ -200,11 +206,12 @@
     background-image: url(../../brand/haige.png)
 }
 
-.icon-rolls-royce {
+.icon-rolls-royce,
+.icon-laosilaisi {
     background-image: url(../../brand/rolls-royce.png)
 }
 
-.icon-toyota {
+.icon-fengtian {
     background-image: url(../../brand/toyota.png)
 }
 
@@ -212,7 +219,7 @@
     background-image: url(../../brand/beijingqiche.png)
 }
 
-.icon-porsche {
+.icon-baoshijie {
     background-image: url(../../brand/porsche.png)
 }
 
@@ -220,7 +227,8 @@
     background-image: url(../../brand/jiangnan.png)
 }
 
-.icon-lincoln {
+.icon-lincoln,
+.icon-linken {
     background-image: url(../../brand/lincoln.png)
 }
 
@@ -232,19 +240,25 @@
     background-image: url(../../brand/saibao1.png)
 }
 
-.icon-infiniti {
+.icon-infiniti,
+.icon-yinfeinidi {
     background-image: url(../../brand/infiniti.png)
 }
 
-.icon-buick {
+.icon-bieke {
     background-image: url(../../brand/buick.png)
+}
+
+.icon-yema {
+    background-image: url(../../brand/yema.jpg)
 }
 
 .icon-lotus {
     background-image: url(../../brand/lotus.png)
 }
 
-.icon-tj-yiqi {
+.icon-tj-yiqi,
+.icon-yiqi {
     background-image: url(../../brand/tj-yiqi.png)
 }
 
@@ -256,11 +270,13 @@
     background-image: url(../../brand/baojun.png)
 }
 
-.icon-nj-iveco {
+.icon-nj-iveco,
+.icon-yiweike {
     background-image: url(../../brand/nj-iveco.png)
 }
 
-.icon-jlshwuche {
+.icon-jlshwuche,
+.icon-jiulong {
     background-image: url(../../brand/jlshwuche.png)
 }
 
@@ -276,7 +292,8 @@
     background-image: url(../../brand/mini.png)
 }
 
-.icon-acura {
+.icon-acura,
+.icon-ouge {
     background-image: url(../../brand/acura.png)
 }
 
@@ -292,7 +309,8 @@
     background-image: url(../../brand/beiqi.png)
 }
 
-.icon-landrover {
+.icon-landrover,
+.icon-luhu {
     background-image: url(../../brand/landrover.png)
 }
 
@@ -308,7 +326,8 @@
     background-image: url(../../brand/benteng.png)
 }
 
-.icon-huachen {
+.icon-huachen,
+.icon-jinbei {
     background-image: url(../../brand/huachen.png)
 }
 
@@ -320,7 +339,7 @@
     background-image: url(../../brand/dazhong.png)
 }
 
-.icon-fiat {
+.icon-feiyate {
     background-image: url(../../brand/fiat.png)
 }
 
@@ -344,7 +363,8 @@
     background-image: url(../../brand/rongwei.png)
 }
 
-.icon-smart {
+.icon-smart,
+.icon-smarty {
     background-image: url(../../brand/smart.png)
 }
 
@@ -352,15 +372,17 @@
     background-image: url(../../brand/hongqi.png)
 }
 
-.icon-dongfengyulongnazhijie {
+.icon-dongfengyulongnazhijie,
+.icon-nazhijie {
     background-image: url(../../brand/dongfengyulongnazhijie.png)
 }
 
-.icon-hyundai {
+.icon-xiandai {
     background-image: url(../../brand/hyundai.png)
 }
 
-.icon-renault {
+.icon-renault,
+.icon-leinuo {
     background-image: url(../../brand/renault.png)
 }
 
@@ -384,7 +406,8 @@
     background-image: url(../../brand/brand-xiali.png)
 }
 
-.icon-lamborghini {
+.icon-lamborghini,
+.icon-lanbojini {
     background-image: url(../../brand/lamborghini.png)
 }
 
@@ -392,7 +415,11 @@
     background-image: url(../../brand/fuqiqiteng.png)
 }
 
-.icon-benz {
+.icon-lianhua {
+    background-image: url(../../brand/lianhua.jpg)
+}
+
+.icon-benchi {
     background-image: url(../../brand/benz.png)
 }
 
@@ -416,7 +443,8 @@
     background-image: url(../../brand/zhongke-huabei.png)
 }
 
-.icon-jeep {
+.icon-jeep,
+.icon-jipu {
     background-image: url(../../brand/jeep.png)
 }
 
@@ -432,7 +460,8 @@
     background-image: url(../../brand/guanzhi.png)
 }
 
-.icon-huachen-zhonghua {
+.icon-huachen-zhonghua,
+.icon-zhonghua {
     background-image: url(../../brand/huachen-zhonghua.png)
 }
 
@@ -452,11 +481,13 @@
     background-image: url(../../brand/richan.png)
 }
 
-.icon-mg1 {
+.icon-mg1,
+.icon-mg {
     background-image: url(../../brand/mg1.png)
 }
 
-.icon-maserati {
+.icon-maserati,
+.icon-mashaladi {
     background-image: url(../../brand/maserati.png)
 }
 
@@ -504,7 +535,8 @@
     background-image: url(../../brand/zhidou.png)
 }
 
-.icon-mitsubishi {
+.icon-mitsubishi,
+.icon-sanlin {
     background-image: url(../../brand/mitsubishi.png)
 }
 
@@ -520,7 +552,7 @@
     background-image: url(../../brand/alfaromeo.png)
 }
 
-.icon-bmw {
+.icon-baoma {
     background-image: url(../../brand/bmw.png)
 }
 
@@ -544,7 +576,8 @@
     background-image: url(../../brand/huatai.png)
 }
 
-.icon-skoda {
+.icon-skoda,
+.icon-sikeda {
     background-image: url(../../brand/skoda.png)
 }
 
@@ -560,7 +593,8 @@
     background-image: url(../../brand/baofeili.png)
 }
 
-.icon-chery {
+.icon-chery,
+.icon-qirui {
     background-image: url(../../brand/chery.png)
 }
 
@@ -568,8 +602,10 @@
     background-image: url(../../brand/zhongxing.png)
 }
 
-.icon-weiwang,
-.icon-zhongshun {
+.icon-beiqiweiwang,
+.icon-zhongshun,
+.icon-beiqixinnengyuan,
+.icon-beiqizhizao {
     background-image: url(../../brand/weiwang.png)
 }
 
@@ -581,7 +617,8 @@
     background-image: url(../../brand/jilindafa.png)
 }
 
-.icon-cadillac {
+.icon-cadillac,
+.icon-kaidilake {
     background-image: url(../../brand/cadillac.png)
 }
 
@@ -605,7 +642,8 @@
     background-image: url(../../brand/weilin.png)
 }
 
-.icon-linian {
+.icon-linian,
+.icon-linian8 {
     background-image: url(../../brand/linian.png)
 }
 
@@ -633,7 +671,8 @@
     background-image: url(../../brand/anchi.png)
 }
 
-.icon-chrysler {
+.icon-chrysler,
+.icon-kelaisile {
     background-image: url(../../brand/chrysler.png)
 }
 
@@ -641,7 +680,7 @@
     background-image: url(../../brand/opel.png)
 }
 
-.icon-huansu {
+.icon-beiqihuansu {
     background-image: url(../../brand/huansu.png)
 }
 
@@ -657,7 +696,7 @@
     background-image: url(../../brand/hafu.png)
 }
 
-.icon-bentley {
+.icon-binli {
     background-image: url(../../brand/bentley.png)
 }
 
@@ -677,11 +716,13 @@
     background-image: url(../../brand/zhongtai.png)
 }
 
-.icon-fudi {
+.icon-fudi,
+.icon-fuqi {
     background-image: url(../../brand/fudi.png)
 }
 
-.icon-suzuki {
+.icon-suzuki,
+.icon-lingmu {
     background-image: url(../../brand/suzuki.png)
 }
 
@@ -693,7 +734,8 @@
     background-image: url(../../brand/wuling.png)
 }
 
-.icon-chuanqi1 {
+.icon-chuanqi1,
+.icon-guangqichuanqi {
     background-image: url(../../brand/chuanqi1.png)
 }
 
@@ -701,11 +743,11 @@
     background-image: url(../../brand/tesila.png)
 }
 
-.icon-ford {
+.icon-fute {
     background-image: url(../../brand/ford.png)
 }
 
-.icon-honda {
+.icon-bentian {
     background-image: url(../../brand/honda.png)
 }
 
@@ -733,15 +775,17 @@
     background-image: url(../../brand/kenisaige.png)
 }
 
-.icon-mazda {
+.icon-mazda,
+.icon-mazida {
     background-image: url(../../brand/mazda.png)
 }
 
-.icon-byd {
+.icon-biyadi {
     background-image: url(../../brand/byd.png)
 }
 
-.icon-kia {
+.icon-kia,
+.icon-qiya {
     background-image: url(../../brand/kia.png)
 }
 
@@ -749,11 +793,12 @@
     background-image: url(../../brand/haima.png)
 }
 
-.icon-citroen {
+.icon-xuetielong {
     background-image: url(../../brand/citroen.png)
 }
 
-.icon-datong {
+.icon-datong,
+.icon-shangqidatong {
     background-image: url(../../brand/datong.png)
 }
 

@@ -167,6 +167,94 @@ class CarRepository implements CarRepositoryContract
                      ->paginate(20);
     }
 
+    // 前端显示车源列表(移动端)
+    public function getAllCarsWithBeforeMobel($condition){   
+
+        // dd($condition);
+        // $query = Cars::query();  // 返回的是一个 QueryBuilder 实例
+        $query = new Cars();       // 返回的是一个Cars实例,两种方法均可
+
+        //品牌筛选
+        if(!empty($condition['brand_id'])){
+            $query = $query->where('brand_id', $condition['brand_id']);
+        }
+        //车型类别筛选
+        if(!empty($condition['category_type'])){
+            $query = $query->where('categorey_type', $condition['category_type']);
+        }
+        //价格筛选
+        if(!empty($condition['price']) && $condition['price'] > 1){
+            
+            //p($price_begin);
+            //dd($price_end);
+            $query = $query->where(function($query) use ($condition){
+
+                $price_begin_end = config('tcl.price_begin_end'); //获取配置文件中价格区间起始
+                $price_begin = $price_begin_end[$condition['price']]['begin'];
+                $price_end   = $price_begin_end[$condition['price']]['end'];
+
+                if(!empty($price_end)){
+                    $query = $query->where('top_price', '<=', $price_end);
+                }
+
+                if(!empty($price_begin)){
+                    $query = $query->where('top_price', '>', $price_begin);
+                }               
+            });
+
+            //dd($query);
+        }
+        //车龄筛选
+        if(!empty($condition['age'])&& $condition['age'] > 1){
+
+            $query = $query->where(function($query) use ($condition){
+
+                $age_begin_end  = config('tcl.age_begin_end'); //获取配置文件中车龄区间起始
+                $age_begin      = $age_begin_end[$condition['age']]['begin'];
+                $age_end        = $age_begin_end[$condition['age']]['end'];
+
+                if(!empty($age_end)){
+                    $query = $query->where('age', '<=', $age_end);
+                }
+
+                if(!empty($age_begin)){
+                    $query = $query->where('age', '>', $age_begin);
+                } 
+            });
+        }
+        //车系筛选
+        if(!empty($condition['category_id'])){
+            $query = $query->where('category_id', $condition['category_id']);
+        }
+        //变速箱筛选
+        if(!empty($condition['gearbox'])){
+            $query = $query->where('gearbox', $condition['gearbox']);
+        }
+        //颜色筛选
+        if(!empty($condition['color'])){
+            $query = $query->where('out_color', $condition['color']);
+        }
+        //门店筛选
+        if(!empty($condition['shop_id'])){
+            
+            $query = $query->where('shop_id', $condition['shop_id']);
+        }else{
+            $query = $query->whereIn('shop_id', $condition['shop_list']);
+        }
+        // dd($query);
+        $query = $query->where(function($query) use ($condition){
+
+                $query = $query->where('car_status', '1');
+                $query = $query->orWhere('car_status', '6');
+            });
+
+        $query = $query->where('is_show', '1');
+
+        return $query->select($this->select_columns)
+                     ->orderBy('updated_at', 'desc')
+                     ->simplePaginate(20);
+    }
+
     //获得推荐车源
     public function getRecommendCars($price){
 
