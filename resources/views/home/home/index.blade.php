@@ -14,9 +14,6 @@
     <script type="text/javascript" src="{{URL::asset('js/tcl/home/index.js')}}"></script>
 @endsection
 
-
-
-
 @section('current_city_name')
     {{$show_city_name}}
 @endsection

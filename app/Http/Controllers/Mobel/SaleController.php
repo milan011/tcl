@@ -14,7 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Car\CarRepositoryContract;
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
-use App\Http\Requests\CustomerSale\StoreCustomerSaleRequest;
+// use App\Http\Requests\CustomerSale\StoreCustomerSaleRequest;
 use App\Repositories\Sale\SaleRepositoryContract;
 
 class SaleController extends CommonController
@@ -70,7 +70,7 @@ class SaleController extends CommonController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCustomerSaleRequest $customerSaleRequest)
+    public function store(Request $customerSaleRequest)
     {   
         // dd('hah ');
         // dd($customerSaleRequest->all());

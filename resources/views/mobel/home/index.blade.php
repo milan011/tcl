@@ -111,7 +111,7 @@
         <!-- column end -->
         <ul class="buttonbox cleafix">
             <li><a href="{{route('mobel.cate.index')}}">我要买车</a></li>
-            <li><a href="{{route('mobel.cate.index')}}">免费卖车</a></li>
+            <li><a href="{{route('mobel.sale.index')}}">免费卖车</a></li>
         </ul>
         
         <!-- 根据开通城市接口 三选一频道入口  start-->
