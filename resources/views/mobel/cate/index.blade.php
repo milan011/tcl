@@ -96,7 +96,7 @@
             <ul class="list">
                 @foreach($cars as $key=>$car)
                 <li class="list-item" data-type=city>
-                    <a class="car-info" href="javascript:void(0);">
+                    <a class="car-info" target="_blank" href="{{route('mobel.car.index', ['car'=>$car->id])}}">
                         <div class="car-img">
                             @if(isset($car->hasOneImagesOnFirst->filename))
                                 <img src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}" alt="{{$car->name}}">

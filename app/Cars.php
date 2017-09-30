@@ -241,7 +241,7 @@ class Cars extends Model
     // 定义Car表与images表一对多关系
     public function hasManyImages()
     {
-        return $this->hasMany('App\Image', 'car_id', 'id');
+        return $this->hasMany('App\Image', 'car_id', 'id')->orderBy('is_top', 'desc');
     }
 
     // 定义Car表与images表一对多关系
