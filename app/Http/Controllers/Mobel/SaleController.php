@@ -73,9 +73,9 @@ class SaleController extends CommonController
     public function store(Request $customerSaleRequest)
     {   
         // dd('hah ');
-        // dd($customerSaleRequest->all());
+        // p($customerSaleRequest->all());exit;
         $current_ip = $customerSaleRequest->getClientIp();
-        $current_ip = '106.117.13.179';
+        // $current_ip = '106.117.13.179';
         $city_info  = getCurrentCityByIp($current_ip);
         // dd('hehe');
         // dd($current_ip);
@@ -93,8 +93,8 @@ class SaleController extends CommonController
             return redirect()->route('admin.transcation.edit', ['transcation'=>'1'])->withInput();
         }*/
         return response()->json(array(
-            'status'      => 200,
-            'msg'         => '您的信息已记录,销售顾问会尽快跟您联系',
+            'status' => 200,
+            'msg'    => '您的信息已记录,销售顾问会尽快跟您联系',
         ));
 
         // return response()->json($getInsertedId);

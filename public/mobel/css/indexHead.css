@@ -4,16 +4,16 @@
 
 .gz-logo,
 .search-ipt:before {
-    background-image: url(../../images/icon-head.png);
+    background: url(../images/logo2.png) no-repeat;
     background-size: .59rem auto;
     display: inline-block
 }
 
 .gz-logo {
-    width: .41rem;
+    width: .6rem;
     height: .2rem;
     background-position: 0 0;
-    margin-left: -.5rem;
+    margin-left: -.62rem;
     margin-top: .08rem
 }
 
@@ -26,7 +26,7 @@
     width: 100%;
     background-color: #fff;
     border-radius: 1px;
-    font-size: .14rem;
+    font-size: .2rem;
     background-color: #fafbfc
 }
 

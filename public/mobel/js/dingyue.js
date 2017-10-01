@@ -1,7 +1,7 @@
 $(document).ready(function(){
         
         $("input[name='mobile']").val('');
-
+        
         $('#storeInfo').click(function(){
 
             // var request_url = "{{route('mobel.sale.store')}}";
@@ -9,7 +9,7 @@ $(document).ready(function(){
             var mobile      = $("input[name='mobile']").val();
             var _token      = $("input[name='_token']").val();
 
-            console.log(typeof(mobile));
+            // console.log(typeof(mobile));
 
             if(!(/^1(3|4|5|7|8)\d{9}$/.test(mobile))){ 
                 alert("请填写正确的手机号码");  

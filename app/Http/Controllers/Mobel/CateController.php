@@ -222,10 +222,9 @@ class CateController extends CommonController
         $category_type_mobel = config('tcl.category_type_mobel'); //获取配置文件中车型类别
         $category_type       = config('tcl.category_type'); //获取配置文件中车型类别
         $sale_number         = config('tcl.sale_number'); //获取配置文件中车型类别
-        $price_interval      = config('tcl.price_interval'); //获取配置文件中价格区间
         $age                 = config('tcl.age'); //获取配置文件中车龄区间
 
-        // dd($gearbox);
+        // dd($price_interval);
 
         // dd($current_category);
         // dd($url_condition);

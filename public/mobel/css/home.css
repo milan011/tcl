@@ -71,7 +71,7 @@
 .entrance li a:before {
     content: "";
     position: absolute;
-    background: url(../../images/icon-entry.png) no-repeat;
+    background: url(../images/icon-entry.png) no-repeat;
     background-size: 2.15rem auto
 }
 

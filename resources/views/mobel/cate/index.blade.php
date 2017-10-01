@@ -66,7 +66,7 @@
             <a class="icon-home" href="{{route('mobel.index')}}">首页</a>
             <div class="box-size">
                 <div class="top-nav">
-                    <a class="tcity"  href="javascript:void(0);" >石家庄<i class="arrow-down"></i></a>
+                    <a class="tcity"  href="{{route('mobel.changeCity')}}" >{{$show_city_name}}<i class="arrow-down"></i></a>
                     <div class="tsearch">
                         搜索您想要的车
                     </div>

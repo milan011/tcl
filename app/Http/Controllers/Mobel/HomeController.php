@@ -39,7 +39,7 @@ class HomeController extends CommonController {
 		$sel_city = getSelCity($city, $this->shop); //车源来自城市信息
 
 		// dd($shop_list);
-		// dd($current_city_name);
+		// dd(Session::all());
 		$show_city_name = $sel_city['show_city_name'];
 
 		$select_condition['car_status'] = '1';
@@ -61,10 +61,17 @@ class HomeController extends CommonController {
 		return view('mobel.home.index', compact('cars', 'recomment_brands', 'price_interval_mobel',  'show_city_name', 'title'));
 	}
 
-	public function changeCity(){
+	public function changeCity($city = ''){
 
-		$show_city_name = (null !==Session('chosen_city_name')) ? Session('chosen_city_name') : Session('current_city_name');
-		// dd($show_city_name);
+		/*$show_city_name = (null !==Session('chosen_city_name')) ? Session('chosen_city_name') : Session('current_city_name');
+		dd(Session::all());
+		dd($show_city_name);*/
+
+		$sel_city = getSelCity($city, $this->shop); //车源来自城市信息
+
+		// dd(Session::all());
+		// dd($current_city_name);
+		$show_city_name = $sel_city['show_city_name'];
 
 		return view('mobel.home.changeCity', compact('cars', 'show_city_name'));
 	}

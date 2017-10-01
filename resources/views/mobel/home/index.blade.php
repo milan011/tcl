@@ -5,12 +5,28 @@
 @endsection
 
 @section('head_content')
-    <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/content.css')}}">  
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/content.css')}}"> 
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/dingyue.css')}}"> 
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/footer.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/indexHead.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/logo.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/home.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/serach.css')}}">
+    <style>
+        .input-border{
+            box-sizing: border-box;
+            border: 1px solid #e0e0e0;
+        }
+
+        .input-phone{
+            height: 42px;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 15px;
+            color: #333;
+            width: 100%;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -46,6 +62,7 @@
             <!-- <div class="search-ipt" data-role="vehicleSearch">搜索您想要的车</div> -->
         </div>
     </header>
+    
     <section class="DoesNotContainCity">
         <div class="focus lazyload" id="slide_banner" data-interval="3000">
             <ul class="focus-pics" data-role="list" style="width: 500%;">
@@ -88,18 +105,17 @@
             <ul class="list row-four">
                 @foreach($price_interval_mobel as $key=>$price)
                 <li class="list-item">
-                    <a href="javascript:void(0);">
+                    <a href="{{route('mobel.cate.index')}}/p{{$key}}@if(isset($chose_city))/d{{$chose_city}} @endif">
                     {{$price}}
                     </a>
                 </li>
-                @endforeach
-                            
+                @endforeach           
             </ul>
             <ul class="list row-seven brand clearfix">
                 @foreach($recomment_brands as $key=>$brand)
                 @if($key < 7)
                 <li class="list-item" data-url="url={{substr($brand->logo_img, 0, -4)}}">
-                    <a href="" >
+                    <a href="{{route('mobel.cate.index')}}/b{{$brand->id}}@if(isset($chose_city))/d{{$chose_city}} @endif" >
                         <i class="icon icon-{{substr($brand->logo_img, 0, -4)}}"></i>
                         {{$brand->name}}
                     </a>
@@ -118,20 +134,20 @@
         <div class="blank"></div>
         <div class="entrance three">
             <ul class="clearfix">
-                <li id="j-finance" data-gzlog="tracking_type=click&eventid=1110200000000035">
-                    <a href="http://m.jr.guazi.com/?jr_from=homepagemodule1&platform=wap" class="entry-loan-box">
+                <li id="j-finance">
+                    <a href="javascript:void(0);" class="entry-loan-box">
                         <p class="entry-title">淘车乐金融</p>
                         <p class="entry-text">付三成 开好车</p>
                     </a>
                 </li>
-                <li id="j-baoMai" data-gzlog="tracking_type=click&eventid=1110200000000036">
-                    <a href="https://m.guazi.com/misc/BaoMaiDes" class="entry-self-box">
+                <li id="j-baoMai">
+                    <a href="javascript:void(0);" class="entry-self-box">
                         <p class="entry-title">淘车乐寄售</p>
                         <p class="entry-text">限时出售 性价比高</p>
                     </a>
                 </li>
-                <li id="j-xinChe" data-gzlog="tracking_type=click&eventid=1110200000000037">
-                    <a href="http://xinche.guazi.com/www/fyc" class="entry-new-box">
+                <li id="j-xinChe">
+                    <a href="javascript:void(0);" class="entry-new-box">
                         <p class="entry-title">淘车乐车源</p>
                         <p class="entry-text">真实车源 诚信可靠</p>
                     </a>
@@ -141,10 +157,10 @@
         <!-- 根据开通城市接口 三选一频道入口  end-->
         <div class="blank"></div>
         <!-- 广告位图 -->
- 
+        @if($cars->count() != 0)
         <div class="tabbox">
             <ul class="tabnav" id="tab">
-                <li class="on" data-gzlog="tracking_type=click&eventid=1110200000000025"><a href="javascript:;">好车推荐</a></li>
+                <li class="on"><a href="javascript:;">好车推荐</a></li>
                 <!-- <li class="" data-gzlog="tracking_type=click&eventid=1110200000000026"><a href="javascript:;">保卖车</a></li> -->
                 <!-- <li class="" data-gzlog="tracking_type=click&eventid=1110200000000027"><a href="javascript:;">降价急售</a></li> -->
             </ul>
@@ -152,7 +168,7 @@
                 <ul class="on j-recommend-show">
                     @foreach($cars as $key=>$car)
                     <li class="list-item" >
-                        <a class="car-info" href="javascript:void(0);">
+                        <a class="car-info" target="_blank" href="{{route('mobel.car.index', ['car'=>$car->id])}}">
                             @if(isset($cars->hasOneImagesOnFirst->filename))
                                 <div class="car-img">
                                     <img data-role="lazyloadImg" class="js-lazy-load" src="{{URL::asset('uploads/car/'.$cars->hasOneImagesOnFirst->filename)}}"  alt="{{$car->name}}">
@@ -172,11 +188,43 @@
                         </a>
                     </li>
                     @endforeach
-                    
+                    <li class="list-item">
+                        <div class="btnbox">
+                            <a href="{{route('mobel.cate.index')}}" class="btnwhite">查看更多车源</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
+        @else
+        <!-- 行列表 start -->
+        <div class="subs-notip">无符合条件车源</div>
+        <!-- 行列表 end -->
+        <!-- 一键订阅浮层 start -->
+        <div>
+            <section class="filter-section filter-subslist" style="padding:15px;">
+                <!-- <div class="input-border" style="width:50%;display: inline-block;">
+                    {!! csrf_field() !!}
+                    <input class="j-input-phone" name="request_url" type="hidden" value="{{route('mobel.sale.store')}}">
+                    <input class="j-input-phone input-phone" name="mobile" type="text" placeholder="请输入手机号码" />
+                
+                </div> -->
+                <!-- <button class="btn" id="storeInfo" style="display: inline-block;width:30%">一建提交</button> -->
+                <a class="btn btn-add js-submit-option" style="width:100%;" href="{{route('mobel.index')}}/city/138">
+                    浏览其他城市车源
+                </a>
+            </section>
+        <!-- 订阅里程 start -->
+            <!-- <div class="form-btn">
+                <a class="btn btn-add js-submit-option"  href="javascript:void(0);">
+                    一键提交
+                </a>
+            </div> -->
+            <!-- <div class="toast js-sub-notice">提交成功</div> -->
+        </div>
+    @endif
     </section>
+    
 @endsection
 
 @section('footer_content')
@@ -184,14 +232,16 @@
 @endsection
 
 @section('script_content')
+    <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/base.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('mobel/js/index.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('mobel/js/content/script.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('mobel/js/script.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('mobel/js/ExtensionContent.jsm')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('mobel/js/script.js')}}"></script> -->
+    <script type="text/javascript" src="{{URL::asset('mobel/js/dingyue.js')}}"></script>
     <script>
         $(document).ready(function(){
 
-            // alert('阿拉曼');
+            
         });
     </script>
+    
 @endsection
