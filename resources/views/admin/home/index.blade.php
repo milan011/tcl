@@ -157,10 +157,10 @@
 			</div>
 		</div>
 		<div class="box-content">
-			<h2 style="text-align: center;">{{$notice->title}}
+			<h2 style="text-align: center;">{{$notice->title or ''}}
 			</h2>
 			<h2 style="text-align: center;">
-				<small>发布人：{{$notice->belongsToUser->nick_name}} 发布时间：{{substr($notice->created_at, 0 ,10)}}</small>
+				<small>发布人：{{$notice->belongsToUser->nick_name or ''}} 发布时间：{{substr($notice->created_at, 0 ,10) or ''}}</small>
 			</h2>
 			<div>{!! $notice->content !!}</div>
 			

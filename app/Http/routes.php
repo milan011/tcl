@@ -44,7 +44,7 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::post('cate/getChildCategory', 'CateController@getChildCategory')->name('mobel.cate.getChildCategory');
 });
 
-Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
+/*Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
        
     Route::get('car/{id}', 'CarController@index')->name('home.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');
@@ -54,7 +54,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
     Route::get('/sale', 'SaleController@index')->name('home.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('home.sale.store');  
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('home.sale.getChildBrand');    
-});
+});*/
 
 
 

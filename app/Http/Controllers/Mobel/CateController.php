@@ -191,7 +191,7 @@ class CateController extends CommonController
         $cars = $this->car->getAllCarsWithBeforeMobel($select_condition);
         // dd(lastSql());
         // dd($cars->hasMorePages());
-        // dd($cars);
+        // dd($cars->count());
         // dd($cars[0]->hasOneImagesOnFirst);
 
         // 推荐品牌

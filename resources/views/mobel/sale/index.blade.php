@@ -36,7 +36,10 @@
             <input class="j-input-phone" readonly type="text" data-role="phone" placeholder="" style="width:30%;display: inline-block;" />
         </div> -->
         <div class="input-border">
+            {!! csrf_field() !!}
             <input class="j-input-phone input-phone" name="mobile" type="text" data-role="phone" placeholder="请输入手机号码" />
+            <input class="j-input-phone" name="request_url" type="hidden" value="{{route('mobel.sale.store')}}">
+
         </div>
         <button class="sub-input j-sellSub" id="storeInfo" data-clue-entry="05" data-needpub="1">预约卖车</button>
     </div>
@@ -77,21 +80,21 @@
 @endsection
 
 @section('script_content')
-    <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/index.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('mobel/js/content/script.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('mobel/js/script.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('mobel/js/ExtensionContent.jsm')}}"></script> -->
-    <script>
+<!-- <script type="text/javascript" src="{{URL::asset('mobel/js/index.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('mobel/js/content/script.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('mobel/js/script.js')}}"></script> -->
+<script type="text/javascript" src="{{URL::asset('mobel/js/dingyue.js')}}"></script>
+<script>
     $(document).ready(function(){
         
-        $("input[name='mobile']").val('');
+        /*$("input[name='mobile']").val('');
 
         $('#storeInfo').click(function(){
 
             var request_url = '{{route('mobel.sale.store')}}';
             var mobile      = $("input[name='mobile']").val();
 
-            console.log(mobile);
+            console.log(typeof(mobile));
 
             if(!(/^1(3|4|5|7|8)\d{9}$/.test(mobile))){ 
                 alert("请填写正确的手机号码");  
@@ -114,7 +117,7 @@
                 },
                 error: function(xhr, type){
                     
-                    /*if(xhr.status == 422){ //表单验证失败，返回的状态
+                    if(xhr.status == 422){ //表单验证失败，返回的状态
                         console.log(JSON.parse(xhr.responseText));
                         var content_error = '';
                         
@@ -131,13 +134,13 @@
                         console.log(content_error);
 
                         return false;
-                    }*/
-                    alert('请填写正确的手机号码');
+                    }
+                    alert('额,提交失败,请重试一次');
                 }
             });
 
             return false;
-        });
+        });*/
     });
 </script>
 @endsection

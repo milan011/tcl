@@ -75,7 +75,7 @@ class SaleController extends CommonController
         // dd('hah ');
         // dd($customerSaleRequest->all());
         $current_ip = $customerSaleRequest->getClientIp();
-        // $current_ip = '106.117.13.179';
+        $current_ip = '106.117.13.179';
         $city_info  = getCurrentCityByIp($current_ip);
         // dd('hehe');
         // dd($current_ip);
@@ -83,7 +83,7 @@ class SaleController extends CommonController
         // $current_city = Area::where('name', substr($city_info, 0, (strlen($city_info)-3)))->first();
 
         // dd($current_city);
-        // dd($customerSaleRequest->all());
+        // p($customerSaleRequest->all());exit;
         $customerSaleRequest['city_id']   = $city_info->id;
         $customerSaleRequest['city_name'] = $city_info->name;
         $getInsertedId = $this->sale->create($customerSaleRequest);

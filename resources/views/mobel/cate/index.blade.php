@@ -8,6 +8,7 @@
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/head.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/total.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/list.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/dingyue.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/serach.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/brand.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/city.css')}}">
@@ -40,6 +41,20 @@
         #next_page{
             width: 45%;
             float: right;
+        }
+
+        .input-border{
+            box-sizing: border-box;
+            border: 1px solid #e0e0e0;
+        }
+
+        .input-phone{
+            height: 42px;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 15px;
+            color: #333;
+            width: 100%;
         }
     </style>
 @endsection
@@ -130,9 +145,28 @@
         <!-- 一键订阅 start -->
         
         <!-- 一键订阅 end -->
+        @if($cars->count() == 0)
+        <!-- 行列表 start -->
+        <div class="subs-notip">无符合条件车源,您可留下联系方式,我们会为您留意</div>
         <!-- 行列表 end -->
         <!-- 一键订阅浮层 start -->
-        
+        <div class="subscribe-form">
+            <section class="filter-section filter-subslist" style="padding:15px;">
+                <div class="input-border">
+                    {!! csrf_field() !!}
+                    <input class="j-input-phone" name="request_url" type="hidden" value="{{route('mobel.sale.store')}}">
+                    <input class="j-input-phone input-phone" name="mobile" type="text" placeholder="请输入手机号码" />
+                </div>
+            </section>
+        <!-- 订阅里程 start -->
+            <div class="form-btn">
+                <a class="btn btn-add js-submit-option" id="storeInfo" href="javascript:void(0);">
+                    一键提交
+                </a>
+            </div>
+            <div class="toast js-sub-notice">提交成功</div>
+        </div>
+        @endif
         <!-- 一键订阅浮层 end -->
         <!-- 相关车系 start -->
         <div class="js-relate-div" style="width: 100%;height: 30px;"></div>
@@ -142,10 +176,10 @@
         <!-- 周边城市车源 end -->  
     </div>
 <!--用户注册-->
-<div class="mask " id="user-mask"></div>
+<!-- <div class="mask " id="user-mask"></div> -->
 
 
-<div class="popup-mobile  js-user-div" data-reload="0">
+<!-- <div class="popup-mobile  js-user-div" data-reload="0">
     <p class="pop-tit">手机号验证</p>
     <p class="pop-text">留下您的手机号，我们才能及时通知您新车上架哦~</p>
     <p class="pop-ipt">
@@ -158,7 +192,7 @@
         <button class="btn btn-cancel" type="button">取消</button>
         <button class="btn btn-sure" type="button">提交</button>
     </div>
-</div>
+</div> -->
 
 <!-- search end -->
 
@@ -286,6 +320,7 @@
 <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/list.js')}}"></script> -->
 <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/content/script.js')}}"></script> -->
 <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/script.js')}}"></script> -->
+<script type="text/javascript" src="{{URL::asset('mobel/js/dingyue.js')}}"></script>
 <script>
     $(document).ready(function(){
 
