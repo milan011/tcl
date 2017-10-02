@@ -12,6 +12,7 @@
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/logo.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/home.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/serach.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/swipeslider.css')}}">
     <style>
         .input-border{
             box-sizing: border-box;
@@ -25,6 +26,10 @@
             font-size: 15px;
             color: #333;
             width: 100%;
+        }
+        .sw-bullet { 
+
+            bottom: .05rem;
         }
     </style>
 @endsection
@@ -65,40 +70,50 @@
     
     <section class="DoesNotContainCity">
         <div class="focus lazyload" id="slide_banner" data-interval="3000">
-            <ul class="focus-pics" data-role="list" style="width: 500%;">
-                <li data-role="item">
+            <!-- <ul class="focus-pics sw-slides" data-role="list" style="width: 500%;">
+                <li class="sw-slide" data-role="item">
                     <a href="">
                         <img data-role="lazyloadImg" src="http://www.sjztcl.com/home/img/index/dbfile/kaiye.png" alt="">
                     </a>
                 </li>
-                <li data-role="item">
+                <li class="sw-slide" data-role="item">
                     <a href="">
                         <img data-role="lazyloadImg" src="http://www.sjztcl.com/home/img/index/dbfile/slider.png" alt="">
                     </a>
                 </li>
-                <li data-role="item">
+                <li class="sw-slide" data-role="item">
                     <a href="">
                         <img data-role="lazyloadImg" src="http://www.sjztcl.com/home/img/sell/dbfile/11111.png" alt="">
                     </a>
                 </li>
-                <li data-role="item" >
+                <li class="sw-slide" data-role="item" >
                     <a href="">
                         <img data-role="lazyloadImg" src="http://www.sjztcl.com/home/img/index/dbfile/kaiye.png" alt="">
                     </a>
                 </li>
-                <li data-role="item">
-                    <a href="">
-                        <img data-role="lazyloadImg" src="http://www.sjztcl.com/home/img/index/dbfile/slider.png" alt="">
-                    </a>
-                </li>
-            </ul>
-            <div class="focus-indexs" id="focusIndexs">
+            </ul> -->
+            <figure id="full_feature" class="swipslider" style="height:1.5rem;">
+                <ul class="sw-slides">
+                    <li class="sw-slide">
+                        <img style="height:90%;" src="{{URL::asset('mobel/images/kaiye.png')}}" alt="Summer beach concept">
+                    </li>
+                    <li class="sw-slide">
+                        <img style="height:90%;" src="{{URL::asset('mobel/images/slider.png')}}" alt="Lang from Yie Ar Kung Fu">
+                    </li>
+                    <li class="sw-slide">
+                        <img style="height:90%;" src="{{URL::asset('mobel/images/11111.png')}}" alt="Tiny Tina">
+                    </li>
+                    <!-- <li class="sw-slide">
+                        <img src="{{URL::asset('newShow/images/banner4.png')}}" alt="Tiny Tina from Borderlands 2">
+                    </li> -->
+                </ul>
+            </figure>
+            <!-- <div class="focus-indexs" id="focusIndexs">
                 <i data-slide-to="0" class="active"></i>
                 <i data-slide-to="1"></i>
                 <i data-slide-to="2"></i>
                 <i data-slide-to="3"></i>
-                <i data-slide-to="4"></i>
-            </div>
+            </div> -->
         </div>
         <!-- column start -->
         <div class="column">
@@ -169,9 +184,9 @@
                     @foreach($cars as $key=>$car)
                     <li class="list-item" >
                         <a class="car-info" target="_blank" href="{{route('mobel.car.index', ['car'=>$car->id])}}">
-                            @if(isset($cars->hasOneImagesOnFirst->filename))
+                            @if(isset($car->hasOneImagesOnFirst->filename))
                                 <div class="car-img">
-                                    <img data-role="lazyloadImg" class="js-lazy-load" src="{{URL::asset('uploads/car/'.$cars->hasOneImagesOnFirst->filename)}}"  alt="{{$car->name}}">
+                                    <img data-role="lazyloadImg" class="js-lazy-load" src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}"  alt="{{$car->name}}">
                                 </div>
                             @else
                             <div class="car-img">
@@ -237,10 +252,11 @@
     <script type="text/javascript" src="{{URL::asset('mobel/js/content/script.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('mobel/js/script.js')}}"></script> -->
     <script type="text/javascript" src="{{URL::asset('mobel/js/dingyue.js')}}"></script>
+    <script src="{{URL::asset('mobel/js/common/swipeslider.js')}}"></script>
     <script>
         $(document).ready(function(){
 
-            
+            $('#full_feature').swipeslider();
         });
     </script>
     

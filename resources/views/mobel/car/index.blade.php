@@ -51,8 +51,18 @@
                     <div class="carmaster-price">
                         车主报价<span class="number-price">{{$cars->top_price}}万</span>
                     </div>
+                    <div class="carmaster-price">
+                        销售顾问:{{$cars->belongsToUser->nick_name or ''}}({{$cars->belongsToShop->shop_name}})
+                    </div>
+                    <div class="carmaster-price">
+                        联系电话:{{$cars->belongsToUser->creater_telephone or $cars->belongsToShop->shop_tele}}
+                        &nbsp&nbsp&nbsp&nbsp
+                        发布时间:{{substr($cars->created_at, 0 ,10)}}
+                    </div>
+                    <!-- <div class="carmaster-price">
+                        发布时间:{{substr($cars->created_at, 0 ,10)}}
+                    </div> -->
                 </div>
-                
                 <div class="blank" style="margin: .06rem 0;"></div>
                 <div class="column base-info" data-widget="">
                     <a href="javascript:;" class="column-head">

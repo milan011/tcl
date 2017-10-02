@@ -97,11 +97,13 @@
             <div class="label dib">价格</div>
             <div class="tags dib dib-con">
                 @foreach($price_with_url as $key=>$price)
+                    @if($key < 10)
                     <a href="{{$price['url']}}">
                         <div class="tagItem dib @if($key == 1) active @endif">
                             {{$price['content']}}
                         </div>
                     </a>
+                    @endif
                 @endforeach
             </div>
         </div>

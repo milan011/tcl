@@ -15,9 +15,10 @@
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/app.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/content.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/buy/send.css')}}">
+
     <style>
         .btngreen{
-            background-color: #22ac38;
+            background-color: gray;
             border: 1px solid #22ac38;
             height: 1.4rem;
             line-height: 1.4rem;
@@ -56,6 +57,10 @@
             color: #333;
             width: 100%;
         }
+
+        .line-list {
+            padding-bottom: 1rem;
+        }
     </style>
 @endsection
 
@@ -84,9 +89,11 @@
             <div class="filter-box" id="filter-price">
                 <ul class="lab-list" data-urlKey="p">
                     @foreach($price_with_url as $key=>$price)
+                    @if($key < 10)
                     <li class="js-single-option" data-urlVal='0'>
                         <a href="{{$price['url']}}">{{$price['content']}}</a>
                     </li>
+                    @endif
                     @endforeach
                 </ul>
             </div>
@@ -237,8 +244,8 @@
             </section>
         
         <!-- 车龄刻度 start -->
-            <section class="filter-section" data-urlKey="a" data-logkey="cheling">
-            <div class="range-title">
+        <section class="filter-section" data-urlKey="a" data-logkey="cheling">
+            <!-- <div class="range-title"> -->
                 <h3 class="fl">车龄要求</h3>
                 <ul class="lab-list">
                     @foreach($age as $key=>$ag)
@@ -247,7 +254,7 @@
                     </li>
                     @endforeach
                 </ul>
-            </div>
+            <!-- </div> -->
         </section>
                 <!-- 里程刻度 start -->
         <!-- <section class="filter-section" data-urlKey="g" data-logkey="road_haul">
@@ -315,6 +322,8 @@
 
 <!-- <div class="tiplayer" id="errorDis"><span class="textcon" id="errorCont">提交失败</span></div> -->
 @endsection
+
+
 @section('script_content')
 <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/base.js')}}"></script> -->
 <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/list.js')}}"></script> -->

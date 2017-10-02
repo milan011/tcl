@@ -56,7 +56,8 @@
     background-image: url(../brand/chevrolet.png)
 }
 
-.brand .icon.icon-audi {
+.brand .icon.icon-audi,
+.brand .icon.icon-aodi {
     background-image: url(../brand/audi.png)
 }
 
