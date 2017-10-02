@@ -41,6 +41,9 @@ class CarController extends CommonController
      */
     public function index($id)
     {
+        if(isMobile()){
+            return redirect()->route('mobel.index');
+        }
         // 车源详情
         $cars = $this->car->find($id);
 

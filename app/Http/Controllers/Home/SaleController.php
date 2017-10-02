@@ -48,6 +48,10 @@ class SaleController extends CommonController
      */
     public function index()
     {
+        if(isMobile()){
+            return redirect()->route('mobel.index');
+        }
+        
         $all_top_brands = $this->brand->getChildBrand(0);
         $current_page   = 'sale';
         $title           = '免费卖车【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';

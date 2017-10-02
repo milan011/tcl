@@ -21,7 +21,7 @@ class CommonController extends Controller
 
         Request $request
     ) {
-
+        
         // if(empty(Session('current_city')) || empty(Session('current_city_name'))){
             //若session没有当前城市id或名称,则根据客户ip获得所在城市并写入session
             $this->request = $request;

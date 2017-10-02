@@ -15,7 +15,22 @@
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/carInfo/content.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/carInfo/serv.css')}}">
     <style>
-        
+        .btnbox {
+            padding: 0 .15rem;
+            text-align: center;
+        }
+        .btnwhite {
+            background-color: #fff;
+            border: 1px solid #bec7ce;
+            width: 60%;
+            margin: .18rem auto .28rem;
+            color: #757f89;
+            font-size: .14rem;
+            height: .35rem;
+            line-height: .35rem;
+            display: block;
+            -webkit-border-radius:.02rem;
+        }
     </style>
 @endsection
 
@@ -48,7 +63,8 @@
                 </div>
                 <div class="product-head showNotice">
                     <h1 class="product-title">
-                        {{$cars->name}}
+                        <span>{{$cars->name}}</span>
+                        
                     </h1>
                     <div class="carmaster-price">
                         车主报价<span class="number-price">{{$cars->top_price}}万</span>
@@ -117,6 +133,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="btnbox">
+                    <a href="{{route('mobel.index')}}" class="btnwhite">查看更多车源</a>
+                </div>
                 <!-- 检测报告 -->
                 
                 <!-- 常见问题 start -->
@@ -164,6 +183,7 @@
             <!-- <input type="hidden" value="1" id="isBianlianPro" /> -->
         </div>
     </section>
+    
 @endsection
 
 @section('script_content')

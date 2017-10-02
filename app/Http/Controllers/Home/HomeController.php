@@ -35,6 +35,10 @@ class HomeController extends CommonController {
 	 */
 	public function index(Request $request, $city = '') {
 
+		if(isMobile()){
+            return redirect()->route('mobel.index');
+        }
+        
 		$sel_city = getSelCity($city, $this->shop); //车源来自城市信息
 
 		// dd($sel_city);

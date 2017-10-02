@@ -48,6 +48,9 @@ class SaleController extends CommonController
      */
     public function index()
     {
+        if(isMobile()){
+            return redirect()->route('mobel.index');
+        }
         $sel_city_id   = (null !==Session('chosen_city_id')) ? Session('chosen_city_id') : Session('current_city');
 
         // dd(Session::all());

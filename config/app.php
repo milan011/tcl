@@ -164,8 +164,7 @@ return [
         App\Providers\VailidatorServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class
-       
+        Maatwebsite\Excel\ExcelServiceProvider::class,      
     ],
 
     /*
@@ -219,8 +218,7 @@ return [
         'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image'    => Intervention\Image\Facades\Image::class,
-        'Excel'    => Maatwebsite\Excel\Facades\Excel::class
-        
+        'Excel'    => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

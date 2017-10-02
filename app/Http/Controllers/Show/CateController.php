@@ -45,7 +45,9 @@ class CateController extends CommonController
      */
     public function index($brand='', $condition='')
     {
-
+        if(isMobile()){
+            return redirect()->route('mobel.index');
+        }
         // $begin = $this->getCurrentTime();
         // p($this->request->method());exit;  //{品牌b，车系c}，{车辆类型t，门店s}，{车龄a，价格p}
         
