@@ -23,7 +23,8 @@
     line-height: .28rem;
     padding: 3px 0;
     position: relative;
-    width: 100%;
+    float:right;
+    width: .92rem;
     background-color: #fff;
     border-radius: 1px;
     font-size: .2rem;
@@ -36,7 +37,7 @@
     padding-left: .1rem;
     padding-right: .1rem;
     color: #495056;
-    border-right: 1px solid #dde4ea
+    /*border-right: 1px solid #dde4ea*/
 }
 
 .local-city:after {

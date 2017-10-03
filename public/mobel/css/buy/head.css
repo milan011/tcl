@@ -109,17 +109,20 @@
 }
 
 .heading .box-size {
-    padding: 7px 87px 7px 52px
+    /*padding: 7px 87px 7px 52px;*/
+    padding: 7px 7px 7px 52px;
 }
 
 .top-nav {
     position: relative;
-    width: 45%;
+    width: 4rem;
     height: 28px;
     line-height: 28px;
     background-color: #fff;
     border: 1px solid #eee;
-    border-radius: 3px
+    border-radius: 3px;
+    float: right;
+    margin-bottom: 5px;
 }
 
 .tcity {

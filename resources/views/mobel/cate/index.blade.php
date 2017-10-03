@@ -74,9 +74,9 @@
             <div class="box-size">
                 <div class="top-nav">
                     <a class="tcity"  href="{{route('mobel.changeCity')}}" >{{$show_city_name}}<i class="arrow-down"></i></a>
-                    <div class="tsearch">
+                    <!-- <div class="tsearch">
                         搜索您想要的车
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </header>
