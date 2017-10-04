@@ -45,8 +45,8 @@
             <section class="aside-scroll">
                 <h3 class="subtit dead-line" data-index="*">*</h3>
                 <ul class="brand-list2">
-                    <li class="limit-no js-change-brand" data-brandId="0" data-brandUrl="buy">
-                        <a href="javascript:void(0);">不限品牌</a>
+                    <li class="limit-no" data-brandId="0" data-brandUrl="buy">
+                        <a href="{{route('mobel.cate.index')}}/{{$condition_other}}">不限品牌</a>
                     </li>
                 </ul>
                 @foreach($brand_letter_list as $key=>$brand_list)
@@ -83,7 +83,7 @@
                         </ul>
                         <h3 class="subtit">选择车系</h3>
                         <ul class="brand-list2">
-                            <li class="limit-no"><a href="javascript:void(0);">不限车系</a></li>
+                            <li class="limit-no"><a id="brand_url" href="javascript:void(0);">不限车系</a></li>
                         </ul>
                         <!-- <h3 class="subtit" style="display:none;">一汽·大众奥迪</h3> -->
                     </div>
@@ -143,6 +143,7 @@
                         $('.brand-list2-car').empty();
                         $('.brand-list2-car').append(content);
                         $('#name_brand').text(brand_name);
+                        $('#brand_url').attr('href', data.brand_url);
                         $('.brand-carbox').addClass('active');
                     }else{
                         alert(data.message);

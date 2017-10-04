@@ -442,10 +442,7 @@ class CateController extends CommonController
         $current_page   = 'cate';
         $title          = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
 
-        /*$end = $this->getCurrentTime();
-        $spend = $end - $begin;
-
-        echo "脚本执行时间为:".$spend."\n";*/
+        // dd($condition_other);
         //筛选品牌
         if(!empty($this->request->input('act')) && ($this->request->input('act') == 'changeBrand')){
             // dd($url_condition);
@@ -534,10 +531,12 @@ class CateController extends CommonController
                 $value->url = route('mobel.cate.index'). '/c'. $value->id . '/' . $condition;
             }
 
+            $brand_url = route('mobel.cate.index'). '/b'. $brand_id . '/' . $condition; //不限车系url
             return response()->json(array(
-                'status' => 1,
-                'data'   => $categorys,
-                'message'   => '获取品牌列表成功'
+                'status'   => 1,
+                'data'     => $categorys,
+                'brand_url'=> $brand_url,
+                'message'  => '获取品牌列表成功'
             ));
         }else{
 
