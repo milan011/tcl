@@ -155,7 +155,11 @@
                             <li class="list-item">
                                 <a href="{{route('mobel.car.index', ['car'=>$rcar->id])}}" class="car-info">
                                     <div class="car-img">
-                                        <img class="js-lazy-load" src="{{URL::asset('uploads/car/'.$rcar->hasOneImagesOnFirst->filename)}}"/>
+                                        @if(isset($rcar->hasOneImagesOnFirst->filename))
+                <img src="{{URL::asset('uploads/car/'.$rcar->hasOneImagesOnFirst->filename)}}" onerror="this.src='{{URL::asset("images/default.jpg")}}'" alt="{{$rcar->name}}" />
+            @else
+                <img src="{{URL::asset('images/default.jpg')}}" alt="" />
+            @endif
                                     </div>
                                     <h3 class="car-name">{{$rcar->name}}</h3>
                                     <div class="car-km">

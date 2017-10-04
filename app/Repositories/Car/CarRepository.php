@@ -262,6 +262,7 @@ class CarRepository implements CarRepositoryContract
         $query = new Cars();
         $query = $query->where('name', '!=', '');
         $query = $query->where('car_status', '1');
+        $query = $query->where('is_show', '1');
         $query = $query->where('top_price', '<=', ($price*1.2));
         $query = $query->where('top_price', '>=', ($price*0.8));
 
