@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Auth;
 use Gate;
+use Carbon;
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryContract;
@@ -315,5 +317,20 @@ class WantController extends Controller
             'msg' => 'ok',
             'data' => $want->toJson(),
         ));      
+    }
+
+    // 求购下架
+    public function autoWasteWant(Request $request){
+
+        // dd($request->method());
+        $now         = Carbon::today();  //当前日期对象
+        $waster_date = $now->modify('-40 days');
+
+        // dd($waster_date);
+        // dd($now);
+        $wants = DB::table('tcl_want')
+                  ->where('tcl_want.updated_at', '<=', $waster_date)
+                  ->where('tcl_want.want_status', '1')
+                  ->update(['want_status'=>'0']);
     }
 }

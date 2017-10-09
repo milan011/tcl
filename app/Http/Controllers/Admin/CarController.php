@@ -448,6 +448,7 @@ class CarController extends Controller
         ));       
     }
 
+    //车源下架
     public function autoWasteCar(Request $request){
 
         // dd($request->method());
