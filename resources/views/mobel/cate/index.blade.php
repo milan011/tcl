@@ -248,7 +248,7 @@
         <!-- 车龄刻度 start -->
         <section class="filter-section" data-urlKey="a" data-logkey="cheling">
             <!-- <div class="range-title"> -->
-                <h3 class="fl">车龄要求</h3>
+                <h3 class="subtit">车龄要求</h3>
                 <ul class="lab-list">
                     @foreach($age as $key=>$ag)
                     <li class=" js-multi-option" data-urlVal='{{$key}}'>
@@ -299,8 +299,8 @@
 
     <!-- 门店 start -->
     <section class="filter-section" data-urlKey="s" data-logkey="shop">
-        <div class="range-title">
-            <h3 class="fl">门店</h3>
+        <!-- <div class="range-title"> -->
+            <h3 class="subtit">门店</h3>
             <ul class="lab-list">
                 <li class=" js-multi-option" data-urlVal='0'>
                     <a href="javascript:void(0);">不限</a>
@@ -312,7 +312,7 @@
                 @endforeach
                 
             </ul>
-        </div>
+        <!-- </div> -->
     </section>             
 </div>
     <div class="result-fixed">
