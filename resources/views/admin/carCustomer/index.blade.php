@@ -72,10 +72,10 @@
 						@foreach ($all_customer_cars as $car)
     					<tr>
 							<td>{{$car->mobile}}</td>
-							<td>{{$car->belongsToBrand->brand_name}}</td>
-							<td>{{$car->belongsToCompnay->compnay_name}}</td>
+							<td>{{$car->belongsToBrand->brand_name or ''}}</td>
+							<td>{{$car->belongsToCompnay->compnay_name  or ''}}</td>
 							<td>{{$car->belongsToCategory->category_name or ''}}</td>							
-							<td>{{$car->city_name}}</td>							
+							<td>{{$car->city_name  or ''}}</td>							
 							<td>{{substr($car->created_at, 0 ,10)}}</td>							
 						</tr>
 						@endforeach							

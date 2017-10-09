@@ -44,7 +44,7 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::post('cate/getChildCategory', 'CateController@getChildCategory')->name('mobel.cate.getChildCategory');
 });
 
-/*Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
+Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
        
     Route::get('car/{id}', 'CarController@index')->name('home.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');
@@ -54,11 +54,11 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::get('/sale', 'SaleController@index')->name('home.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('home.sale.store');  
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('home.sale.getChildBrand');    
-});*/
+});
 
 
 
-Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
+/*Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
        
     Route::get('car/{id}', 'CarController@index')->name('show.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('show.cate.index');
@@ -69,7 +69,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
     // Route::post('/sale/store', 'SaleController@store')->name('show.sale.store');  
     Route::match(['get', 'post'], '/sale/store', 'SaleController@store')->name('show.sale.store');
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('show.sale.getChildBrand');  
-});
+});*/
 
 
 
@@ -198,6 +198,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('want/interactiveAdd', 'WantController@interactiveAdd')->name('admin.want.interactiveAdd');
     Route::post('want/getWantInfo', 'WantController@getWantInfo')->name('admin.want.getWantInfo');
     Route::post('want/changeStatus', 'WantController@changeStatus')->name('admin.want.changeStatus');
+    Route::get('want/autoWasteWant', 'WantController@autoWasteWant')->name('admin.want.autoWasteWant');
     Route::post('want/follwQuickly', 'WantController@follwQuickly')->name('admin.want.follwQuickly');
     Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('admin.brand.getChildBrand');
     Route::post('brand/changeStatus', 'BrandController@changeStatus')->name('admin.brand.changeStatus');
