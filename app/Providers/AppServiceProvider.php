@@ -45,6 +45,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             'mobel.*', 'App\Http\ViewComposers\CityComposer'
         );
+
+        /*view()->composer(
+            'mobel.*', 'App\Http\ViewComposers\WeiXinComposer'
+        );*/
     }
 
     /**

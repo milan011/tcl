@@ -45,4 +45,12 @@ class CommonController extends Controller
             }
         // }
     }
+
+    /*public function getWeiSignPackage(){
+
+        $jssdk   = new \JSSDK("wx195ad83501ef1dab", "54decf6337e896ffc393bd0110b70758");
+        $weixsdk = $jssdk->GetSignPackage();
+
+        return $weixsdk;
+    }*/
 }

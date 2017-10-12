@@ -34,7 +34,8 @@
     "autoload": {
         "classmap": [
             "database",
-            "app/libs/ip2region/Ip2Region.class.php"
+            "app/libs/ip2region/Ip2Region.class.php",
+            "app/weixin/jssdk.php"
         ],
         "psr-4": {
             "App\\": "app/"

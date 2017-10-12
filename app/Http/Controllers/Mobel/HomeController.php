@@ -38,7 +38,11 @@ class HomeController extends CommonController {
 
 		$sel_city = getSelCity($city, $this->shop); //车源来自城市信息
 
-		// dd($shop_list);
+		// $weiSdk = $this->getWeiSignPackage();
+
+		/*p('hehe');
+		dd($weiSdk);*/
+		// dd($jssdk->GetSignPackage());
 		// dd(Session::all());
 		$show_city_name = $sel_city['show_city_name'];
 

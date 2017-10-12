@@ -12,10 +12,9 @@
     @yield('title')
     <!--css-->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('mobel/css/base.css')}}">
-    
+    <script type="text/javascript" src="{{URL::asset('mobel/js/jweixin-1.0.0.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('mobel/js/common/jQuery-1.12.0.min.js')}}"></script>
-    <!-- <script type="text/javascript" src="{{URL::asset('mobel/js/base.js')}}"></script> -->
-    
+        
     @yield('head_content')
 </head>
 
@@ -26,5 +25,6 @@
 @yield('footer_content')
 
 @yield('script_content')
+
 </body>
 </html>
