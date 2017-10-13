@@ -32,8 +32,9 @@ class ImageRepository implements ImageRepositoryContract
         $originalName = $photo->getClientOriginalName();
         $extension = $photo->getClientOriginalExtension();
         $originalNameWithoutExt = substr($originalName, 0, strlen($originalName) - strlen($extension) - 1);
-
+        
         $filename = $this->sanitize($originalNameWithoutExt);
+        $filename = preg_replace('/[\x{4e00}-\x{9fa5}]/iu',"",$filename);
         $allowed_filename = $this->createUniqueFilename( $filename, $extension );
 
         $uploadSuccess1 = $this->original( $photo, $allowed_filename );
