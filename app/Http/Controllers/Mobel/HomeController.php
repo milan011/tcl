@@ -36,6 +36,7 @@ class HomeController extends CommonController {
 	 */
 	public function index(Request $request, $city = '') {
 
+		// dd($request->getClientIp());
 		$sel_city = getSelCity($city, $this->shop); //车源来自城市信息
 
 		// $weiSdk = $this->getWeiSignPackage();

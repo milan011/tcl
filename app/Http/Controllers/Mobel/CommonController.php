@@ -9,7 +9,7 @@ use Session;
 use View;
 use Carbon;
 use Ip2Region;
-use App\Http\Requests;
+// use App\Http\Requests;
 use App\Area;
 use App\Http\Controllers\Controller;
 
@@ -24,13 +24,19 @@ class CommonController extends Controller
         // if(empty(Session('current_city')) || empty(Session('current_city_name'))){
             //若session没有当前城市id或名称,则根据客户ip获得所在城市并写入session
             $this->request = $request;
+
             $current_ip = $request->getClientIp(); //获取ip
-            // dd($current_ip);
+            // p($current_ip);
+            $current_ip = getClientIpss(); //获取ip
+            // p('e');exit;
+            // p($current_ip);
+            // dd($_SERVER);
+            // p($current_ip);exit;
             // $current_ip = '106.117.13.179';
             // $current_ip = '219.148.74.209';
             $city_info  = getCurrentCityByIp($current_ip); //根据ip获取城市信息
 
-            // p(($city_info));
+            // p(($city_info));exit;
             session(['current_city' => NUll]); 
             session(['current_city_name' => NUll]); 
 
