@@ -9,7 +9,7 @@ use Session;
 use View;
 use Carbon;
 use Ip2Region;
-// use App\Http\Requests;
+use App\Http\Requests;
 use App\Area;
 use App\Http\Controllers\Controller;
 
@@ -27,7 +27,7 @@ class CommonController extends Controller
 
             $current_ip = $request->getClientIp(); //获取ip
             // p($current_ip);
-            $current_ip = getClientIpss(); //获取ip
+            // $current_ip = getClientIpss(); //获取ip
             // p('e');exit;
             // p($current_ip);
             // dd($_SERVER);

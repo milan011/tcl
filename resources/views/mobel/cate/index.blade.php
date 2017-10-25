@@ -130,7 +130,7 @@
                         </div>
                         <h3 class="car-name">{{$car->name}}</h3>
                         <div class="car-km">
-                            <span class="fl">{{$car->plate_date}}年/{{$car->mileage}}万公里</span>
+                            <span class="fl">{{$car->plate_date}}/{{$car->mileage}}万公里</span>
                         </div>
                         <div class="car-price">
                             <i class="finance-price">{{$car->top_price}}万</i>
