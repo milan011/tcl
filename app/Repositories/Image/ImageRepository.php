@@ -14,7 +14,7 @@ class ImageRepository implements ImageRepositoryContract
 {
     public function upload( $form_data )
     {
-
+        // p('hehe');exit;
         $validator = Validator::make($form_data, Image::$rules, Image::$messages);
 
         if ($validator->fails()) {

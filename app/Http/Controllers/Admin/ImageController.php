@@ -25,6 +25,7 @@ class ImageController extends Controller
 
     public function postUpload()
     {
+        // p('hehe');exit;
         $photo = Input::all();
         $response = $this->image->upload($photo);
 
