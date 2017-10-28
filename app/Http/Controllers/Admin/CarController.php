@@ -49,6 +49,7 @@ class CarController extends Controller
         // dd($request->method());
         $all_top_brands = $this->brands->getChildBrand(0);
         $request['car_status'] = '1';
+        $request['is_show']    = '';
         $select_conditions  = $request->all();
         // dd($select_conditions);
         $cars = $this->car->getAllcars($request);
@@ -81,9 +82,13 @@ class CarController extends Controller
         if($request->method() == 'POST'){
             //初始搜索条件
             $select_conditions  = $request->all();
+            $select_conditions['is_show'] = '1';
+            $request['is_show'] = '1';
         }else{
             $select_conditions['car_status'] = '1';
             $request['car_status'] = '1';
+            $select_conditions['is_show'] = '1';
+            $request['is_show'] = '1';
         }
 
         $all_top_brands = $this->brands->getChildBrand(0);
@@ -92,6 +97,38 @@ class CarController extends Controller
         // dd($select_conditions['car_status']);
 
         return view('admin.car.self', compact('cars', 'select_conditions','all_top_brands'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     * 未登记车源列表
+     * @return \Illuminate\Http\Response
+     */
+    public function showHidden(Request $request)
+    {
+        
+        // dd($request->all());
+
+        if($request->method() == 'POST'){
+            //初始搜索条件
+            $select_conditions  = $request->all();
+            $select_conditions['is_show'] = '0';
+            $request['is_show'] = '0';
+            // $request['car_status'] = '1';
+        }else{
+            $select_conditions['is_show'] = '0';
+            $select_conditions['car_status'] = '1';
+            $request['car_status'] = '1';
+            $request['is_show'] = '0';
+        }
+        // dd($request->all());
+        $all_top_brands = $this->brands->getChildBrand(0);
+        $cars = $this->car->getAllcars($request, true);
+        // dd(lastSql());
+        /*dd($cars);
+        dd($select_conditions['car_status']);*/
+
+        return view('admin.car.showHidden', compact('cars', 'select_conditions','all_top_brands'));
     }
 
     /**

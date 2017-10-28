@@ -51,8 +51,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request['car_status']  = '1';
+        $request['car_status']   = '1';
         $request['want_status']  = '1';
+        $request['is_show']      = '1';
         
         $user = $request->user();
         $cars_num = $this->car->getAllCars($request, true)->toArray()['total'];

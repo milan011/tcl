@@ -105,6 +105,8 @@
 								</li>
 								<li><a class="submenu" href="{{route('admin.car.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">我的车源</span></a>
 								</li>
+								<li><a class="submenu" href="{{route('admin.car.showHidden')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">未登记车源</span></a>
+								</li>
 							</ul>	
 						</li>
 						@endif
