@@ -84,13 +84,13 @@ class ShopRepository implements ShopRepositoryContract
     //获得城市所有门店
     public function getShopsInCity($city_id){
 
-        return Shop::select('id', 'name')->where('city_id', $city_id)->get();
+        return Shop::select('id', 'name')->where('city_id', $city_id)->where('status', '1')->get();
     }
 
     //获得河北省所有门店
     public function getShopsInProvence($provence_id){
 
-        return Shop::select('id', 'name')->where('provence_id', $provence_id)->get();
+        return Shop::select('id', 'name')->where('provence_id', $provence_id)->where('status', '1')->get();
     }
 
     // 门店是否县级门店

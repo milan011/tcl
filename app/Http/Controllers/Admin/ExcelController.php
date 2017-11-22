@@ -34,19 +34,21 @@ class ExcelController extends Controller
             p($value->nick_name);
         }exit;*/
 
-        $begin_date = '2017-09-01';
-        $end_date   = '2017-10-01';
+        $begin_date = '2017-10-01';
+        $end_date   = '2017-11-01';
         $out_color  = config('tcl.out_color'); //获取配置文件中外观颜色
 
+        $creater_list = ['64', '65', '78', '89', '36', '4', '105', '114',
+            '116', '117', '118'];
         //车源搜索条件
         $query_cars = new Cars();
-        $query_cars = $query_cars->whereIn('creater_id', ['64', '65', '78', '89', '36', '4', '105']);
+        $query_cars = $query_cars->whereIn('creater_id', $creater_list);
         $query_cars = $query_cars->where('created_at', '<=', $end_date);
         $query_cars = $query_cars->where('created_at', '>=', $begin_date);
 
         //求购搜索条件
         $query_wants = new Want();
-        $query_wants = $query_wants->whereIn('creater_id', ['64', '65', '78', '89', '36', '4', '105']);
+        $query_wants = $query_wants->whereIn('creater_id', $creater_list);
         $query_wants = $query_wants->where('created_at', '<=', $end_date);
         $query_wants = $query_wants->where('created_at', '>=', $begin_date);       
 
@@ -99,17 +101,17 @@ class ExcelController extends Controller
         array_unshift($wants_info_content, ['车型','价格','里程','颜色','负责人', '门店','上传日期']);
 
 
-        $excels = Excel::create('车源统计',function($excel) use ($cars_info_content){
+        /*$excels = Excel::create('车源统计',function($excel) use ($cars_info_content){
             $excel->sheet('score', function($sheet) use ($cars_info_content){
                 $sheet->rows($cars_info_content);
             });
-        });
+        });*/
 
-        /*$excels = Excel::create('求购统计',function($excel) use ($wants_info_content){
-            // $excel->sheet('score', function($sheet) use ($wants_info_content){
+        $excels = Excel::create('求购统计',function($excel) use ($wants_info_content){
+            $excel->sheet('score', function($sheet) use ($wants_info_content){
                 $sheet->rows($wants_info_content);
             });
-        });*/
+        });
         // dd($excels->save());
         $excels->export('xls');
     }

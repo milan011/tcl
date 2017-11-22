@@ -68,7 +68,7 @@
             </div>
 
             <div class="uc">
-                <a class="" href="">
+                <a class="" href="javascript:viod(0);">
                     商户登录
                     <!-- <div class="app-guide">
                         <div class="guide-ewm">

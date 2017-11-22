@@ -145,7 +145,7 @@
 
 .dd-car li {
     float: left;
-    width: 550px;
+    /*width: 550px;*/
     overflow: hidden;
     padding-bottom: 20px
 }
@@ -163,7 +163,7 @@
 
 .dd-car p {
     float: left;
-    width: 485px
+    /*width: 485px;*/
 }
 
 .dd-car a {

@@ -47,6 +47,7 @@ class AppraiserController extends Controller
         // dd($request->all());
         $all_top_brands = $this->brands->getChildBrand(0);
         $request['car_status']   = '1';
+        $request['is_show']      = '1';
 
         if(!$request->has('is_appraiser')){
 
@@ -159,7 +160,7 @@ class AppraiserController extends Controller
         // dd($appraiserRequest->all());
 
         $this->car->updateByAppraiser($appraiserRequest, $id);
-        return redirect()->route('admin.appraiser.index')->withInput();
+        return redirect('admin/appraiser/index')->withInput();
     }
 
     /**

@@ -180,7 +180,7 @@
 							<span>
 								<i>尾款：</i>
 								<em>{{$transcation->last_pay}}</em>
-								<i>元</i>
+								<i>万元</i>
 							</span>
 						</p>
 					</div>

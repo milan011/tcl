@@ -290,6 +290,18 @@ class BrandRepository implements BrandRepositoryContract {
 			->get();
 	}
 
+	//获得推荐车型列表，前端列表页使用
+	/*public function getRecommentCategorysWithBefore() {
+
+		return Brand::select(['id', 'pid', 'name', 'sort', 'logo_img'])
+			->where('pid', '0')
+			->where('status', '1')
+			->where('recommend', '1')
+			->orderBy('sort', 'desc')
+			->limit(12)
+			->get();
+	}*/
+
 	//首字母存在品牌的字母列表
 	public function getBransLetter() {
 

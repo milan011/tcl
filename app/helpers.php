@@ -295,8 +295,8 @@ function getConditionContent($str)
 //生成超级链接
 function getSelectUrl($conditions)
 {
-    $base_url   = route('home.cate.index'). '/';
-    // $base_url   = route('show.cate.index') . '/';
+    // $base_url   = route('home.cate.index'). '/';
+    $base_url   = route('show.cate.index') . '/';
     $brand_url  = '';
     $orther_url = '';
 

@@ -47,6 +47,10 @@ class Cars extends Model
     // 搜索条件处理
     public function addCondition($requestData, $is_self){
 
+        if(!isset($requestData['is_show'])){
+            $requestData['is_show'] = '';
+        }
+        
         $query = $this;
 
         if($is_self){
