@@ -122,6 +122,7 @@ class CustomerRepository implements CustomerRepositoryContract
 
         return Customer::select('id', 'name')
                        ->where('telephone', $customer_telephone)
+                       ->where('creater_id', Auth::id())
                        ->first();
     }
 }
