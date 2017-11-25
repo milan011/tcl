@@ -21,7 +21,7 @@ class Insurance extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['insurance_code', 'name', 'company', 'car_plate', 'telephone', 'categorey_id', 'source', 'traffic_date', 'vehicle_date', 'traffic_price', 'vehicle_price', 'vehicle_tax', 'total_price', 'detail', 'interest_rate', 'rebeat', 'royalty_ratio', 'royalty', 'need_pay', 'profit', 'salesman', 'insurance_status', 'remark', 'customer_id', 'remark', 'creater_id', 'insurance_provence', 'insurance_city'];
+    protected $fillable = ['insurance_code', 'name', 'company', 'car_plate', 'telephone', 'categorey_id', 'source', 'traffic_date', 'vehicle_date', 'traffic_price', 'vehicle_price', 'vehicle_tax', 'total_price', 'detail', 'interest_rate', 'commercial_rate', 'rebeat', 'royalty_ratio', 'commercial_ratio', 'royalty', 'need_pay', 'profit', 'salesman', 'insurance_status', 'remark', 'customer_id', 'remark', 'creater_id', 'insurance_provence', 'insurance_city'];
 
     /**
      * The attributes excluded from the model's JSON form.

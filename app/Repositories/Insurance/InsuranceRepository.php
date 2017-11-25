@@ -19,7 +19,7 @@ use Debugbar;
 class InsuranceRepository implements InsuranceRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'insurance_code', 'name', 'company', 'car_plate', 'telephone','categorey_id', 'source', 'traffic_date', 'vehicle_date', 'traffic_price', 'vehicle_price', 'vehicle_tax', 'total_price', 'detail', 'interest_rate', 'rebeat', 'royalty_ratio', 'royalty', 'profit', 'need_pay', 'salesman', 'insurance_status', 'remark', 'customer_id', 'remark', 'creater_id', 'insurance_provence', 'insurance_city', 'created_at'];
+    protected $select_columns = ['id', 'insurance_code', 'name', 'company', 'car_plate', 'telephone','categorey_id', 'source', 'traffic_date', 'vehicle_date', 'traffic_price', 'vehicle_price', 'vehicle_tax', 'total_price', 'detail', 'interest_rate', 'commercial_rate', 'rebeat', 'royalty_ratio', 'commercial_ratio', 'royalty', 'profit', 'need_pay', 'salesman', 'insurance_status', 'remark', 'customer_id', 'remark', 'creater_id', 'insurance_provence', 'insurance_city', 'created_at'];
 
     // 根据ID获得保险信息
     public function find($id)

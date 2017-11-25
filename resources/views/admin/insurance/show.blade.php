@@ -77,15 +77,11 @@
 		<p class="title">[编号]:{{$insurance->insurance_code}}</p>
 		<p class="detial">
 			<i>客户:</i>
-			<em>{{$insurance->name}}</em>
+			<em>{{$insurance->name}}[电话:{{$insurance->telephone}}]</em>
 		</p>
 
 		<div class="col-xs-4">
 			<p class="detial">
-				<span>
-					<i>电话:</i>
-					{{$insurance->telephone}}
-				</span>
 				<span>
 					<i>保险公司:</i>
 					{{$insurance_company[$insurance->company]}}
@@ -94,14 +90,15 @@
 					<i>车牌号:</i>
 					{{$insurance->car_plate}}
 				</span>
-			</p>
-		</div>
-		<div class="col-xs-4">
-			<p class="detial">
 				<span>
 					<i>保险来源:</i>
 					{{$insurance_sor[$insurance->source]}}
 				</span>
+			</p>
+		</div>
+		<div class="col-xs-4">
+			<p class="detial">
+				
 				<span>
 					<i>交强金额:</i>
 					{{$insurance->traffic_price}}
@@ -110,10 +107,12 @@
 					<i>交强到期:</i>
 					{{$insurance->traffic_date}}
 				</span>
+				
 			</p>
 		</div>
 		<div class="col-xs-4">
 			<p class="detial">
+				
 				<span>
 					<i>商业金额:</i>
 					{{$insurance->vehicle_price}}
@@ -122,51 +121,68 @@
 					<i>商业到期:</i>
 					{{$insurance->vehicle_date}}
 				</span>
+			</p>
+		</div>
+		<div class="col-xs-4">
+			<p class="detial">
+				
 				<span>
 					<i>车船税:</i>
 					{{$insurance->vehicle_tax}}
 				</span>
 			</p>
 		</div>
-
 		<div class="col-xs-4">
 			<p class="detial">
 				<span>
 					<i>总保费:</i>
 					{{$insurance->total_price}}
 				</span>
+			</p>
+		</div>
+		<div class="col-xs-4">
+			<p class="detial">
+				
 				<span>
-					<i>利率:</i>
-					{{$insurance->interest_rate}}
+					<i>交强利率:</i>
+					<span style="color:red;">{{$insurance->interest_rate}}</span>
+				</span>
+				<span>
+					<i>商险利率:</i>
+					<span style="color:red;">{{$insurance->commercial_rate}}</span>
 				</span>
 				<span>
 					<i>返点:</i>
-					{{$insurance->rebeat}}
+					<span style="color:red;">{{$insurance->rebeat}}</span>
 				</span>
 			</p>
 		</div>
-
+		
 		<div class="col-xs-4">
 			<p class="detial">
+				
 				<span>
-					<i>提成比例:</i>
-					{{$insurance->royalty_ratio}}
+					<i>交强提成比例:</i>
+					<span style="color:blue;">{{$insurance->royalty_ratio}}</span>
+				</span>
+				<span>
+					<i>商险提成比例:</i>
+					<span style="color:blue;">{{$insurance->commercial_ratio}}</span>
 				</span>
 				<span>
 					<i>提成:</i>
-					{{$insurance->royalty}}
-				</span>
-				<span>
-					<i>利润:</i>
-					{{$insurance->profit}}
+					<span style="color:blue;">{{$insurance->royalty}}</span>
 				</span>
 			</p>
 		</div>
 
-		
-
 		<div class="col-xs-4">
 			<p class="detial">
+				
+				<span>
+					<i>利润:</i>
+					<span style="color:brown;">{{$insurance->profit}}</span>
+				</span>
 				<span>
 					<i>业务员:</i>
 					{{$insurance->salesman}}
@@ -175,19 +191,28 @@
 					<i>业务员提成:</i>
 					{{$insurance->need_pay}}
 				</span>
+			</p>
+		</div>
+
+		
+
+		<div class="col-xs-4">
+			<p class="detial">
+				
 				<span>
 					<i>保险省份:</i>
 					{{$insurance->belongsToProvence->provence_name}}
+				</span>
+				<span>
+					<i>保险城市:</i>
+					{{$insurance->belongsToCity->city_name or ''}}
 				</span>
 			</p>
 		</div>
 
 		<div class="col-xs-4">
 			<p class="detial">
-				<span>
-					<i>保险城市:</i>
-					{{$insurance->belongsToCity->city_name or ''}}
-				</span>
+				
 				<span>
 					<i>创建者:</i>
 					{{$insurance->belongsTouser->nick_name or ''}}

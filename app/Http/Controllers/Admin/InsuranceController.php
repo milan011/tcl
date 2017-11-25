@@ -106,10 +106,10 @@ class InsuranceController extends Controller
     public function store(StoreInsuranceRequest $insuranceRequest)
     {
         //p('xixi');
-        //dd($insuranceRequest->all());
+        // dd($insuranceRequest->all());
         $getInsertedId = $this->insurance->create($insuranceRequest);
         // p(lastSql());exit;
-        return redirect()->route('admin.insurance.index')->withInput();
+        return redirect('admin/insurance/index')->withInput();
     }  
 
     /**
@@ -186,7 +186,7 @@ class InsuranceController extends Controller
         // dd($insuranceRequest->all());
 
         $this->insurance->update($insuranceRequest, $id);
-        return redirect()->route('admin.insurance.index')->withInput();
+        return redirect('admin/insurance/index')->withInput();
     }
 
     /**

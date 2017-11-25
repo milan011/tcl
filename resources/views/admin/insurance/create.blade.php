@@ -209,9 +209,16 @@
 			  	</div>
 
 			  	<div class="control-group">
-					<label class="control-label" for="interest_rate">利率</label>
+					<label class="control-label" for="interest_rate">交强利率</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="interest_rate" name="interest_rate" type="text" value="{{old('interest_rate')}}" /><span style="margin-left:5px;">%</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="commercial_rate">商险利率</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="commercial_rate" name="commercial_rate" type="text" value="{{old('commercial_rate')}}" /><span style="margin-left:5px;">%</span>
 					</div>
 				</div>
 
@@ -223,9 +230,16 @@
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="royalty_ratio">提成比例</label>
+					<label class="control-label" for="royalty_ratio">交强提成比例</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="royalty_ratio" name="royalty_ratio" type="text" value="{{old('royalty_ratio')}}"><span style="margin-left:5px;">%</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="commercial_ratio">商险提成比例</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="commercial_ratio" name="commercial_ratio" type="text" value="{{old('commercial_ratio')}}"><span style="margin-left:5px;">%</span>
 					</div>
 				</div>
 
@@ -239,7 +253,7 @@
 				<div class="control-group">
 					<label class="control-label" for="profit">利润</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="profit" name="profit" type="text" value="{{old('profit')}}"><span style="margin-left:5px;"></span>
+					  <input class="input-xlarge focused" readonly id="profit" name="profit" type="text" value="{{old('profit')}}"><span style="margin-left:5px;"></span>
 					</div>
 				</div>
 
@@ -305,8 +319,8 @@
 <script src="{{URL::asset('js/tcl/bootstrap-datepicker.js')}}"></script> 
 <script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script> 
 <!-- 引入图片上传插件 -->
-<script src="{{URL::asset('js/tcl/dropzone/dropzone.js')}}"></script> 
-<script src="{{URL::asset('js/tcl/dropzone/dropzone-config.js')}}"></script> 
+<!-- <script src="{{URL::asset('js/tcl/dropzone/dropzone.js')}}"></script>  -->
+<!-- <script src="{{URL::asset('js/tcl/dropzone/dropzone-config.js')}}"></script>  -->
 <script>
 	$(document).ready(function(){
 
@@ -443,13 +457,16 @@
 		//总保费自动计算
 		$('.tra_price_add').change(function(){
 
-			var total_price   = 0; //总金额
-			var veh_pric      = 0; //商业险
-			var tra_pric      = 0; //交强险
-			var veh_tax       = 0; //车船税
-			var interest_rate = 0; //返点比例
-			var royalty_ratio = 0; //提成比例
-			var tc_price      = 0; //计算返点及提成费用和(商险+交强)
+			var total_price      = 0; //总金额
+			var veh_pric         = 0; //商业险
+			var tra_pric         = 0; //交强险
+			var veh_tax          = 0; //车船税
+			var interest_rate    = 0; //交强返点比例
+			var commercial_rate  = 0; //商险返点比例
+			var royalty_ratio    = 0; //交强提成比例
+			var commercial_ratio = 0; //商险提成比例
+			var tc_price         = 0; //计算返点及提成费用和(商险+交强)
+			var profit_price     = 0; //利润
 
 			if (isNaN(this.value)) {
 　　　　 			alert("请输入数字");
@@ -473,12 +490,22 @@
 
 			if($('#interest_rate').val() !== '') {
 				// console.log(parseFloat($('#vehicle_tax').val()));
-				interest_rate = parseFloat($('#interest_rate').val()); //返点比例
+				interest_rate = parseFloat($('#interest_rate').val()); //交强返点比例
+			}
+
+			if($('#commercial_rate').val() !== '') {
+				// console.log(parseFloat($('#vehicle_tax').val()));
+				commercial_rate = parseFloat($('#interest_rate').val()); //商险返点比例
 			}
 
 			if($('#royalty_ratio').val() !== '') {
 				// console.log(parseFloat($('#vehicle_tax').val()));
-				royalty_ratio = parseFloat($('#royalty_ratio').val()); //提成比例
+				royalty_ratio = parseFloat($('#royalty_ratio').val()); //交强提成比例
+			}
+
+			if($('#commercial_ratio').val() !== '') {
+				// console.log(parseFloat($('#vehicle_tax').val()));
+				commercial_ratio = parseFloat($('#royalty_ratio').val()); //商险提成比例
 			}
 
 			/*console.log((typeof($('#vehicle_tax').val())));
@@ -491,23 +518,34 @@
 			total_price = veh_pric + tra_pric + veh_tax; //保险总额
 			tc_price    = veh_pric + tra_pric;           //计算提成及返点金额
 
-			rate_price = tc_price/1.06*interest_rate*0.01; //返点
-			ratio_price = tc_price/1.06*royalty_ratio*0.01; //提成
+			interest_rate_price    = tra_pric/1.06*interest_rate*0.01;  //交强返点
+			commercial_rate_price  = veh_pric/1.06*interest_rate*0.01; //商险返点
 
+			royalty_ratio_price     = tra_pric/1.06*interest_rate*0.01;   //交强提成
+			commercial_ratio_price  = veh_pric/1.06*interest_rate*0.01; //商险提成
+
+			rate_price = interest_rate_price + commercial_rate_price; //返点
+			ratio_price = royalty_ratio_price + commercial_ratio_price; //提成
+
+			profit_price = rate_price + ratio_price;
 			console.log(tc_price);
 
 			$('#total_price').val(total_price.toFixed(2));
 			$('#rebeat').val(rate_price.toFixed(2));
 			$('#royalty').val(ratio_price.toFixed(2));
+			$('#profit').val(profit_price.toFixed(2));
 		});
 
 		//返点自动计算
-		$('#interest_rate').change(function(){
-			var rate_price    = parseFloat(0);  //返点金额
-			var tat_price     = parseFloat(0);  //总金额
-			var veh_pric      = parseFloat(0); //商业险
-			var tra_pric      = parseFloat(0); //交强险
-			var interest_rate = parseFloat(0); //返点比例
+		$('#interest_rate,#commercial_rate').change(function(){
+			var rate_price      = parseFloat(0);  //返点金额
+			var tat_price       = parseFloat(0);  //总金额
+			var veh_pric        = parseFloat(0); //商业险
+			var tra_pric        = parseFloat(0); //交强险
+			var interest_rate   = parseFloat(0); //交强返点比例
+			var commercial_rate = parseFloat(0); //商险返点比例
+			var profit_price    = 0; //利润
+			var royalty_price   = parseFloat($('#royalty').val()); //提成金额
 
 			if (isNaN(this.value)) {
 　　　　 			alert("请输入数字");
@@ -526,26 +564,42 @@
 
 			if($('#interest_rate').val() !== '') {
 				// console.log(parseFloat($('#vehicle_tax').val()));
-				interest_rate = parseFloat($('#interest_rate').val()); //返点比例
+				interest_rate = parseFloat($('#interest_rate').val()); //交强返点比例
+			}
+
+			if($('#commercial_rate').val() !== '') {
+				// console.log(parseFloat($('#vehicle_tax').val()));
+				commercial_rate = parseFloat($('#commercial_rate').val()); //商险返点比例
 			}
 
 			tat_price = veh_pric + tra_pric;
-			rate_price = tat_price/1.06*interest_rate*0.01;
 
+			interest_rate_price   = tra_pric/1.06*interest_rate*0.01;//交强返点
+			commercial_rate_price = veh_pric/1.06*commercial_rate*0.01;//商险返点
+			
+			rate_price = interest_rate_price + commercial_rate_price; //总返点
+
+			profit_price = rate_price + royalty_price; //利润等于返点与提成之和
 
 			$('#rebeat').val(rate_price.toFixed(2));
+			$('#profit').val(profit_price.toFixed(2));
 			console.log(rate_price);
+			console.log(royalty_price);
+			console.log(profit_price);
 
 
 		});
 
 		//提成自动计算
-		$('#royalty_ratio').change(function(){
-			var ratio_price   = parseFloat(0);  //提成金额
-			var tat_price     = parseFloat(0);  //总金额
-			var veh_pric      = parseFloat(0); //商业险
-			var tra_pric      = parseFloat(0); //交强险
-			var royalty_ratio = parseFloat(0); //提成比例
+		$('#royalty_ratio,#commercial_ratio').change(function(){
+			var ratio_price      = parseFloat(0);  //提成金额
+			var tat_price        = parseFloat(0);  //总金额
+			var veh_pric         = parseFloat(0); //商业险
+			var tra_pric         = parseFloat(0); //交强险
+			var royalty_ratio    = parseFloat(0); //交强提成比例
+			var commercial_ratio = parseFloat(0); //商业提成比例
+			var profit_price     = 0; //利润
+			var rebeat_price     = parseFloat($('#rebeat').val()); //返点金额
 
 			if (isNaN(this.value)) {
 　　　　 			alert("请输入数字");
@@ -564,14 +618,24 @@
 
 			if($('#royalty_ratio').val() !== '') {
 				// console.log(parseFloat($('#vehicle_tax').val()));
-				royalty_ratio = parseFloat($('#royalty_ratio').val()); //提成比例
+				royalty_ratio = parseFloat($('#royalty_ratio').val()); //交强提成比例
 			}
 
-			tat_price   = veh_pric + tra_pric;
-			ratio_price = tat_price/1.06*royalty_ratio*0.01;
+			if($('#commercial_ratio').val() !== '') {
+				// console.log(parseFloat($('#vehicle_tax').val()));
+				commercial_ratio = parseFloat($('#commercial_ratio').val()); //商险提成比例
+			}
+
+			interest_rate_price   = tra_pric/1.06*royalty_ratio*0.01;//交强提成
+			commercial_rate_price = veh_pric/1.06*commercial_ratio*0.01;//商险提成
+			
+			ratio_price = interest_rate_price + commercial_rate_price; //总提成
+
+			profit_price = ratio_price + rebeat_price; //利润等于返点与提成之和
 
 			console.log(ratio_price);
 			$('#royalty').val(ratio_price.toFixed(2));
+			$('#profit').val(profit_price.toFixed(2));
 
 		});
 	});
