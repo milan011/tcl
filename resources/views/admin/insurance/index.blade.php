@@ -65,12 +65,11 @@
 							<th>车型</th>
 							<th>客户</th>
 							<th>电话</th>
-							<th>保险公司</th>
+							<th>保险公司交强/商业</th>
 							<th>总保费</th>	
 							<th>交强到期</th>
 							<th>商险到期</th>				
 							<th>制单</th>
-							<th>制单人</th>
 							<th>操作</th>
 						</tr>
 					</thead> 
@@ -81,12 +80,11 @@
 							<td>{{$insurance->belongsToBrand->brand_name or '未知'}}</td>
 							<td>{{$insurance->name}}</td>							
 							<td>{{$insurance->telephone}}</td>
-							<td>{{$insurance_company[$insurance->company]}}</td>
+							<td>{{$insurance_company_commercial[$insurance->company_commercial] or ''}}/{{$insurance_company_interest[$insurance->company_interest] or ''}}</td>
 							<td>{{$insurance->total_price}}</td>							
 							<td>{{substr($insurance->traffic_date, 0 ,10)}}</td>							
 							<td>{{substr($insurance->vehicle_date, 0 ,10)}}</td>			
-							<td>{{substr($insurance->created_at, 0 ,10)}}</td>		
-							<td>{{$insurance->belongsToUser->nick_name}}</td>		
+							<td>{{substr($insurance->created_at, 0 ,10)}}({{$insurance->belongsToUser->nick_name}})</td>				
 							<td class="center">
 								
 								<div class="btn-group">

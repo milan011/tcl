@@ -50,11 +50,24 @@
 				  	</div>
 
 				  	<div class="control-group  ">
-                		<label class="control-label" for="company">保险公司</label>
+                		<label class="control-label" for="company_interest">保险公司(交强)</label>
                 		<div class="controls">
-                  			<select id="company" name="company" >                          
-						  		@foreach($insurance_company as $key=>$com)											
-						  		<option @if(($insurance->company) == $key) selected @endif  value="{{$key}}">
+                  			<select id="company_interest" name="company_interest" >                          
+						  		@foreach($insurance_company_interest as $key=>$com)											
+						  		<option @if(($insurance->company_interest) == $key) selected @endif  value="{{$key}}">
+						  			{{$com}}
+						  		</option>	
+						  		@endforeach	                   
+                  			</select>
+                		</div>
+              		</div>
+
+              		<div class="control-group  ">
+                		<label class="control-label" for="company_commercial">保险公司(商业)</label>
+                		<div class="controls">
+                  			<select id="company_commercial" name="company_commercial" >                          
+						  		@foreach($insurance_company_commercial as $key=>$com)											
+						  		<option @if(($insurance->company_commercial) == $key) selected @endif  value="{{$key}}">
 						  			{{$com}}
 						  		</option>	
 						  		@endforeach	                   
@@ -91,6 +104,13 @@
 					</div>
 				</div>
 
+				<div class="control-group">
+					<label class="control-label" for="vehicle_tax">车船税</label>
+					<div class="controls">
+					  <input class="input-xlarge focused tra_price_add" id="vehicle_tax" name="vehicle_tax" type="text" value="{{$insurance->vehicle_tax}}"><span style="margin-left:5px;">元</span>
+					</div>
+				</div>
+
               	<div class="control-group">
 					<label class="control-label" for="traffic_date">交强到期</label>
 					<div class="controls">
@@ -109,13 +129,6 @@
 					<label class="control-label" for="vehicle_date">商业到期</label>
 					<div class="controls">
 						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="vehicle_date" id="vehicle_date" value="{{$insurance->vehicle_date}}">
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="vehicle_tax">车船税</label>
-					<div class="controls">
-					  <input class="input-xlarge focused tra_price_add" id="vehicle_tax" name="vehicle_tax" type="text" value="{{$insurance->vehicle_tax}}"><span style="margin-left:5px;">元</span>
 					</div>
 				</div>
 

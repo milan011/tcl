@@ -30,7 +30,7 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.car.self')}}">贷款列表</a> 
+		<a href="{{route('admin.insurance.index')}}/index">贷款列表</a> 
 		<i class="icon-angle-right"></i>
 	</li>
 	<li><a href="#1f">添加贷款</a></li>
@@ -129,15 +129,26 @@
 					</div>
 				  </div>
 				  <div class="control-group">
-                	<label class="control-label" for="company">保险公司</label>
+                	<label class="control-label" for="company_interest">保险公司(交强)</label>
                 	<div class="controls">
-                  		<select id="company" name="company" >                        
-					  		@foreach($insurance_company as $key=>$company)											
-					  		<option  value="{{$key}}">{{$company}}</option>	
+                  		<select id="company_interest" name="company_interest" >                        
+					  		@foreach($insurance_company_interest as $key=>$company_interest)											
+					  		<option  value="{{$key}}">{{$company_interest}}</option>	
 					  		@endforeach	                     
                   		</select>
                 	</div>
-              	</div>
+              		</div>
+
+              		<div class="control-group">
+                	<label class="control-label" for="company_commercial">保险公司(商业)</label>
+                	<div class="controls">
+                  		<select id="company_commercial" name="company_commercial" >                        
+					  		@foreach($insurance_company_commercial as $key=>$company_commercial)											
+					  		<option  value="{{$key}}">{{$company_commercial}}</option>	
+					  		@endforeach	                     
+                  		</select>
+                	</div>
+              		</div>
 
               	<div class="control-group  ">
                 	<label class="control-label" for="car_plate">车牌号</label>
@@ -164,6 +175,13 @@
 					</div>
 				</div>
 
+				<div class="control-group">
+					<label class="control-label" for="vehicle_tax">车船税</label>
+					<div class="controls">
+					  <input class="input-xlarge focused tra_price_add" id="vehicle_tax" name="vehicle_tax" type="text" value="{{old('vehicle_tax')}}"><span style="margin-left:5px;">元</span>
+					</div>
+				</div>
+
               	<div class="control-group">
 					<label class="control-label" for="traffic_date">交强到期</label>
 					<div class="controls">
@@ -182,13 +200,6 @@
 					<label class="control-label" for="vehicle_date">商业到期</label>
 					<div class="controls">
 						<input type="text" onchange="checkCarDate();" class="input-xlarge date-picker" name="vehicle_date" id="vehicle_date" value="{{old('vehicle_date')}}">
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="vehicle_tax">车船税</label>
-					<div class="controls">
-					  <input class="input-xlarge focused tra_price_add" id="vehicle_tax" name="vehicle_tax" type="text" value="{{old('vehicle_tax')}}"><span style="margin-left:5px;">元</span>
 					</div>
 				</div>
 

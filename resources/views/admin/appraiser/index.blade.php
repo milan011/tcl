@@ -205,6 +205,7 @@
             	    	<label class="control-label" for="category_type">车辆类型</label>
             	    	<div class="controls">
             	      		<select id="category_type" name="category_type" >
+            	      			<option value=''>不限</option>
             	      			@foreach($category_type as $key=>$category)
             	      			<option @if(isset($select_conditions['category_type']) && $select_conditions['category_type'] == $key && $select_conditions['category_type'] != '') selected @endif value='{{$key}}'>{{$category}}</option>  
             	      			@endforeach                                         

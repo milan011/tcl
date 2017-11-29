@@ -83,8 +83,8 @@
 		<div class="col-xs-4">
 			<p class="detial">
 				<span>
-					<i>保险公司:</i>
-					{{$insurance_company[$insurance->company]}}
+					<i>保险公司交强/商业:</i>
+					{{$insurance_company_commercial[$insurance->company_commercial] or ''}}/{{$insurance_company_interest[$insurance->company_interest] or ''}}
 				</span>
 				<span>
 					<i>车牌号:</i>
