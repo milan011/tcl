@@ -55,7 +55,7 @@
 <ul class="breadcrumb">
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.index')}}">Home</a> 
+		<a href="{{route('admin.index')}}">首页</a> 
 		<i class="icon-angle-right"></i>
 	</li>
 	<li>

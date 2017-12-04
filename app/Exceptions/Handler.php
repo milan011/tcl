@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
         }*/
         
         if(($e instanceof \Illuminate\Database\QueryException)){
-            p('ma ge bi');
+            p('a o cuo le');
             dd($e);
         }
 

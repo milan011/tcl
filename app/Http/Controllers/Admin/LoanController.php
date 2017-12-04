@@ -108,7 +108,9 @@ class LoanController extends Controller
         // dd($loanRequest->all());
         $getInsertedId = $this->loan->create($loanRequest);
         // p(lastSql());exit;
-        return redirect()->route('admin.loan.index')->withInput();
+        // return redirect()->route('admin.loan.index')->withInput();
+        return redirect('admin/loan/index')->withInput();
+
     }  
 
     /**
@@ -186,7 +188,8 @@ class LoanController extends Controller
         // dd($loanRequest->all());
 
         $this->loan->update($loanRequest, $id);
-        return redirect()->route('admin.loan.index')->withInput();
+        // return redirect()->route('admin.loan.index')->withInput();
+        return redirect('admin/loan/index')->withInput();
     }
 
     /**
