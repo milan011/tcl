@@ -246,13 +246,13 @@
 					<label class="control-label" for="insurance_provence">所属城市</label>
 					<div class="controls">
 					  	<select id="provence_id" name="insurance_provence">
-					  		<option value="{{$provence->id}}">{{$provence->name}}</option>
+					  		<option value="{{$provence->id or 10}}">{{$provence->name or '河北'}}</option>
 					  		@foreach($area as $provence)
 					  		<option  value="{{$provence->id}}">{{$provence->name}}</option>
 					  		@endforeach									
 						</select>
 						<select id="city_id" name="insurance_city">
-					  		<option  value="{{$city->id}}">{{$city->name}}</option>											
+					  		<option  value="{{$city->id or 138}}">{{$city->name or '石家庄'}}</option>		
 						</select>
 					</div>
 				</div>
@@ -265,7 +265,8 @@
 					</div>
 			  	</div>  				
 				  <div class="form-actions">
-					<button type="submit" class="btn btn-primary">确定</button>
+					<button type="button" id="loan_edit" class="btn btn-primary">确定</button>
+					<button type="submit" id="loan_send" style="display: none;" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>
 				</fieldset>
@@ -326,6 +327,21 @@
 					alert('Ajax error!');
 				}
 			});
+		});
+
+		$('#loan_edit').click(function(event) {
+
+			var provence_id =  $('#provence_id').val(); //省份
+			var city_id     =  $('#city_id').val(); //城市
+
+			if((provence_id == 0) || (city_id == 0)){
+				//未选择省份或城市
+				alert('请选择省份和城市');
+				return false;
+			}else{
+				// $('#loan_form').submit();
+				$('#loan_send').trigger("click");
+			}
 		});
 	});
 </script>

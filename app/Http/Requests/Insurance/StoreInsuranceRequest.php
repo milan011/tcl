@@ -25,7 +25,7 @@ class StoreInsuranceRequest extends Request
     {
         // dd($this->all());
         return [
-            'categorey_id'  => 'required',
+            'categorey_id'  => 'required|numeric|min:1',
             'car_plate'    => 'required',
         ];
     }
@@ -38,7 +38,8 @@ class StoreInsuranceRequest extends Request
     public function messages(){
         return [
             'categorey_id.required' => '请选择车型',
-            'car_plate.required'   => '车牌号',
+            'categorey_id.min'      => '请选择车型',
+            'car_plate.required'    => '请输入车牌号',
         ];
     }
 }

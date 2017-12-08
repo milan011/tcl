@@ -106,7 +106,7 @@ class InsuranceController extends Controller
     public function store(StoreInsuranceRequest $insuranceRequest)
     {
         //p('xixi');
-        // dd($insuranceRequest->all());
+        dd($insuranceRequest->all());
         $getInsertedId = $this->insurance->create($insuranceRequest);
         // p(lastSql());exit;
         return redirect('admin/insurance/index')->withInput();
@@ -201,7 +201,7 @@ class InsuranceController extends Controller
     }
 
     /**
-     * 修改贷款状态
+     * 修改保险状态
      * 暂时只有激活-废弃转换
      * @return \Illuminate\Http\Response
      */
@@ -219,13 +219,13 @@ class InsuranceController extends Controller
         // $is_repeat = $this->insurance->isRepeat($insurance->vin_code);
 
         if($request->input('status') == '0'){
-            //激活贷款          
+            //激活保险          
             $this->insurance->statusChange($request, $request->input('id'));
-            $msg = '贷款已经激活';       
+            $msg = '保险已经激活';       
         }else{
-            //废弃贷款
+            //废弃保险
             $this->insurance->statusChange($request, $request->input('id'));
-            $msg = '贷款已经废弃';
+            $msg = '保险已经废弃';
         }
         
         return response()->json(array(

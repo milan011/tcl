@@ -133,10 +133,10 @@
 					</div>
 				  </div>
 				  <div class="control-group">
-					<label class="control-label" for="car_name">车辆名称</label>
+					<label class="control-label" for="car_name"><font style="color:red;">*&nbsp;</font>车辆名称</label>
 					<div class="controls">
 						<input type="hidden" name="auto_add_name" id="auto_add_name" value="1">
-					  	<input class="input-xlarge focused" readonly="readonly" id="name" name="car_name" type="text" value="">
+					  	<input class="input-xlarge focused" readonly="readonly" id="name" name="car_name" type="text" value="" required>
 					</div>
 				  </div>
 
@@ -362,7 +362,8 @@
 				  	<input type="hidden" name="shop_id" value="{{Auth::user()->shop_id}}">				
 				  	<input type="hidden" name="customer_id" value="">					
 					<button class="btn" id="return_customer">返回</button>
-					<button type="submit" id="loan_add" class="btn btn-primary">确定</button>
+					<button type="button" id="loan_add"  class="btn btn-primary">确定</button>
+					<button type="submit" id="send_loan" style="display:none;" class="btn btn-primary">提交</button>
 				  </div>
 				</fieldset>
 			</form>				
@@ -514,6 +515,27 @@
 					alert('Ajax error!');
 				}
 			});
+		});
+
+		$('#loan_add').click(function(event) {
+
+			var provence_id =  $('#provence_id').val(); //省份
+			var city_id     =  $('#city_id').val(); //城市
+			var name        =  $('#name').val(); //车型
+
+			if(name == ''){
+				alert('请选择车型');
+				return false;
+			}
+
+			if((provence_id == 0) || (city_id == 0)){
+				//未选择省份或城市
+				alert('请选择省份和城市');
+				return false;
+			}else{
+				// $('#loan_form').submit();
+				$('#send_loan').trigger("click");
+			}
 		});
 	});
 </script>

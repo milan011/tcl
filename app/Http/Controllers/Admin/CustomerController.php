@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Area;
 use App\Http\Requests;
+use Session;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
 use App\Http\Requests\Customer\StoreCustomerRequest;

@@ -67,7 +67,7 @@
 							<th>电话</th>
 							<th>账单日</th>
 							<th>车价</th>																				
-							<th>车贷</th>																			
+							<th>总贷</th>																			
 							<th>放款</th>
 							<th>期数</th>
 							<th>月供</th>
@@ -87,7 +87,7 @@
 							<td>{{$loan->telephone}}</td>
 							<td>{{$loan->bill_day}}</td>							
 							<td>{{$loan->appraiser_price}}</td>							
-							<td>{{$loan->loan_price}}</td>						
+							<td>{{$loan->total_loan}}</td>						
 							<td>{{substr($loan->loan_date, 0 ,10)}}</td>							
 							<td>{{$loan->loan_phase}}</td>							
 							<td>{{$loan->repayment_everymonth}}</td>

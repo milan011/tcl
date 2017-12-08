@@ -30,10 +30,10 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.insurance.index')}}/index">贷款列表</a> 
+		<a href="{{route('admin.insurance.index')}}/index">保险列表</a> 
 		<i class="icon-angle-right"></i>
 	</li>
-	<li><a href="#1f">添加贷款</a></li>
+	<li><a href="#1f">添加保险</a></li>
 </ul>
 @endsection
 <!-- 主体 -->
@@ -241,21 +241,21 @@
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="royalty_ratio">交强提成比例</label>
+					<label class="control-label" for="royalty_ratio">交强优惠比例</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="royalty_ratio" name="royalty_ratio" type="text" value="{{old('royalty_ratio')}}"><span style="margin-left:5px;">%</span>
 					</div>
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="commercial_ratio">商险提成比例</label>
+					<label class="control-label" for="commercial_ratio">商险优惠比例</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="commercial_ratio" name="commercial_ratio" type="text" value="{{old('commercial_ratio')}}"><span style="margin-left:5px;">%</span>
 					</div>
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="royalty">提成</label>
+					<label class="control-label" for="royalty">优惠</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" readonly id="royalty" name="royalty" type="text" value="{{old('royalty')}}"><span style="margin-left:5px;">元</span>
 					</div>
@@ -311,7 +311,8 @@
 				  	<input type="hidden" name="shop_id" value="{{Auth::user()->shop_id}}">				
 				  	<input type="hidden" name="customer_id" value="">					
 					<button class="btn" id="return_customer">返回</button>
-					<button type="submit" id="insurance_add" class="btn btn-primary">确定</button>
+					<button type="button" id="insurance_add"  class="btn btn-primary">确定</button>
+					<button type="submit" id="insurance_send" style="display:none;" class="btn btn-primary">提交</button>
 				  </div>
 				</fieldset>
 			</form>				
@@ -538,7 +539,7 @@
 			rate_price = interest_rate_price + commercial_rate_price; //返点
 			ratio_price = royalty_ratio_price + commercial_ratio_price; //提成
 
-			profit_price = rate_price + ratio_price;
+			profit_price = rate_price - ratio_price;
 			console.log(tc_price);
 
 			$('#total_price').val(total_price.toFixed(2));
@@ -590,7 +591,7 @@
 			
 			rate_price = interest_rate_price + commercial_rate_price; //总返点
 
-			profit_price = rate_price + royalty_price; //利润等于返点与提成之和
+			profit_price = rate_price - royalty_price; //利润等于返点与提成之差
 
 			$('#rebeat').val(rate_price.toFixed(2));
 			$('#profit').val(profit_price.toFixed(2));
@@ -642,12 +643,39 @@
 			
 			ratio_price = interest_rate_price + commercial_rate_price; //总提成
 
-			profit_price = ratio_price + rebeat_price; //利润等于返点与提成之和
+			profit_price = rebeat_price - ratio_price; //利润等于返点与提成之差
 
 			console.log(ratio_price);
 			$('#royalty').val(ratio_price.toFixed(2));
 			$('#profit').val(profit_price.toFixed(2));
 
+		});
+
+		$('#insurance_add').click(function(event) {
+
+			var provence_id   =  $('#provence_id').val(); //省份
+			var city_id       =  $('#city_id').val(); //城市
+			var car_plate     =  $('#car_plate').val(); //车牌号
+			var category_id   =  $('#thrid_category').val(); //车牌号
+
+			if(category_id == '0'){
+				alert('请选择车型');
+				return false;
+			}
+
+			if(car_plate == ''){
+				alert('请输入车牌');
+				return false;
+			}
+
+			if((provence_id == 0) || (city_id == 0)){
+				//未选择省份或城市
+				alert('请选择省份和城市');
+				return false;
+			}else{
+				// $('#loan_form').submit();
+				$('#insurance_send').trigger("click");
+			}
 		});
 	});
 </script>
