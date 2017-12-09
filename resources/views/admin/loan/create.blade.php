@@ -334,7 +334,7 @@
                 	</div>
               	</div>
               	<div class="control-group">
-					<label class="control-label" for="provence_id">所属城市</label>
+					<label class="control-label" for="provence_id"><font style="color:red;">*&nbsp;</font>所属城市</label>
 					<div class="controls">
 					  	<select id="provence_id" name="insurance_provence">
 					  		<option value="0">请选择省份</option>

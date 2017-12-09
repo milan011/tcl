@@ -243,7 +243,7 @@
                 	</div>
               	</div>
               	<div class="control-group">
-					<label class="control-label" for="insurance_provence">所属城市</label>
+					<label class="control-label" for="insurance_provence"><font style="color:red;">*&nbsp;</font>所属城市</label>
 					<div class="controls">
 					  	<select id="provence_id" name="insurance_provence">
 					  		<option value="{{$provence->id or 10}}">{{$provence->name or '河北'}}</option>
