@@ -104,11 +104,11 @@
 				</span>
 				<span>
 					<i>评估价:</i>
-					{{$loan->appraiser_price}}
+					{{$loan->appraiser_price}}万
 				</span>
 				<span>
 					<i>车贷金额:</i>
-					{{$loan->loan_price}}
+					{{$loan->loan_price}}万
 				</span>
 			</p>
 		</div>
@@ -116,15 +116,15 @@
 			<p class="detial">
 				<span>
 					<i>保险贷款:</i>
-					{{$loan->insurance_loan}}
+					{{$loan->insurance_loan}}万
 				</span>
 				<span>
 					<i>其他衍生贷款:</i>
-					{{$loan->orther_loan}}
+					{{$loan->orther_loan}}万
 				</span>
 				<span>
 					<i>总贷款:</i>
-					{{$loan->total_loan}}
+					{{$loan->total_loan}}万
 				</span>
 			</p>
 		</div>
@@ -141,7 +141,7 @@
 				</span>
 				<span>
 					<i>首月还款:</i>
-					{{$loan->repayment_frist}}
+					{{$loan->repayment_frist}}元
 				</span>
 			</p>
 		</div>
@@ -150,7 +150,7 @@
 			<p class="detial">
 				<span>
 					<i>每月还款:</i>
-					{{$loan->repayment_everymonth}}
+					{{$loan->repayment_everymonth}}元
 				</span>
 				<span>
 					<i>保险起始日期:</i>
@@ -224,11 +224,11 @@
 				</span>
 				<span>
 					<i>评估定位费用:</i>
-					{{$loan->appraiser_cost}}
+					{{$loan->appraiser_cost}}元
 				</span>
 				<span>
 					<i>手续费:</i>
-					{{$loan->poundage}}
+					{{$loan->poundage}}元
 				</span>
 			</p>
 		</div>
@@ -237,15 +237,15 @@
 			<p class="detial">
 				<span>
 					<i>汽贸利润:</i>
-					{{$loan->qm_profits}}
+					{{$loan->qm_profits}}元
 				</span>
 				<span>
 					<i>贷款部利润:</i>
-					{{$loan->loan_profits}}
+					{{$loan->loan_profits}}元
 				</span>
 				<span>
 					<i>家访费用:</i>
-					{{$loan->visits_profits}}
+					{{$loan->visits_profits}}元
 				</span>
 			</p>
 		</div>

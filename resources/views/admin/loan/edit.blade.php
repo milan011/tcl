@@ -108,13 +108,13 @@
 				<div class="control-group">
 					<label class="control-label" for="repayment_frist"><font style="color:red;">*&nbsp;</font>首月还款</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="repayment_frist" name="repayment_frist" type="text" value="{{$loan->repayment_frist}}" required><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge focused" id="repayment_frist" name="repayment_frist" type="text" value="{{$loan->repayment_frist}}" required><span style="margin-left:5px;">元</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="repayment_everymonth"><font style="color:red;">*&nbsp;</font>每月还款</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="repayment_everymonth" name="repayment_everymonth" type="text" value="{{$loan->repayment_everymonth}}" required><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge focused" id="repayment_everymonth" name="repayment_everymonth" type="text" value="{{$loan->repayment_everymonth}}" required><span style="margin-left:5px;">元</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -248,7 +248,7 @@
 					  	<select id="provence_id" name="insurance_provence">
 					  		<option value="{{$provence->id or 10}}">{{$provence->name or '河北'}}</option>
 					  		@foreach($area as $provence)
-					  		<option  value="{{$provence->id}}">{{$provence->name}}</option>
+					  		<option  value="{{$prove[nce->id}}">{{$provence->name}}</option>
 					  		@endforeach									
 						</select>
 						<select id="city_id" name="insurance_city">

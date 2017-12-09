@@ -201,13 +201,13 @@
 				<div class="control-group">
 					<label class="control-label" for="repayment_frist">首月还款</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="repayment_frist" name="repayment_frist" type="text" value="{{old('repayment_frist')}}"><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge focused" id="repayment_frist" name="repayment_frist" type="text" value="{{old('repayment_frist')}}"><span style="margin-left:5px;">元</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="repayment_everymonth"><font style="color:red;">*&nbsp;</font>每月还款</label>
 					<div class="controls">
-					  <input class="input-xlarge focused" id="repayment_everymonth" name="repayment_everymonth" type="text" value="{{old('repayment_everymonth')}}" required><span style="margin-left:5px;">万元</span>
+					  <input class="input-xlarge focused" id="repayment_everymonth" name="repayment_everymonth" type="text" value="{{old('repayment_everymonth')}}" required><span style="margin-left:5px;">元</span>
 					</div>
 				</div>
 				<div class="control-group">
