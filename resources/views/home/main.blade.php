@@ -63,6 +63,7 @@
                 <div class="item dib @if($current_page == 'cate') active @endif"><a href="{{route('home.cate.index')}}"><span>我要买车</span></a></div>
                 <div class="item dib @if($current_page == 'sale') active @endif"><a href="{{route('home.sale.index')}}"><span>我要卖车</span></a></div>
                 <div class="item dib @if($current_page == 'join') active @endif"><a href="{{route('home.join.index')}}"><span>我要加盟</span></a></div>
+                <div class="item dib @if($current_page == 'about') active @endif"><a href="{{route('home.about.index')}}"><span>关于我们</span></a></div>
             </nav>
         </div>
         <div class="dib mobileAdd">
@@ -132,7 +133,7 @@
     </div>
     <div class="copyRight">
         <p>CopyRight &copy; 2012 All right reserved 淘车乐二手车交易网 版权所有</p>
-        <p>电话0311-87785683 传真：0311-87220080 冀ICP备案12011064</p>
+        <p>电话0311-87785683 传真：0311-87220080 冀ICP备16003677号-1</p>
     </div>
     @yield('script_content')
 </footer>
