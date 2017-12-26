@@ -59,7 +59,7 @@ class StoreCarsRequest extends Request
             'vin_code.required'     => '请输入车架号',
             'vin_code.alpha_num'    => '车架号应由字母和数字组成',
             'vin_code.size'         => '请输入17位车架号',
-            'plate_provence.min'    => '请输入车源所在身份',
+            'plate_provence.min'    => '请输入车源所在省份',
             'plate_city.min'        => '请输入车源所在城市',
 
         ];
