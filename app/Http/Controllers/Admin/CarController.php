@@ -499,4 +499,253 @@ class CarController extends Controller
                   ->where('tcl_cars.car_status', '1')
                   ->update(['car_status'=>'0']);
     }
+
+    //车源数据分析
+    public function carAnalysed(){
+
+        $begin_date = '2017-02-10';
+        $end_date   = '2017-12-20';
+
+        //车源搜索列
+        // $select_columns_car = ['id', 'name', 'car_code', 'vin_code', 'capacity', 'top_price', 'plate_date', 'plate_end', 'mileage', 'age', 'out_color', 'inside_color', 'gearbox', 'plate_provence', 'plate_city', 'safe_end', 'sale_number', 'categorey_type', 'shop_id', 'creater_id', 'created_at', 'updated_at', 'description', 'bottom_price', 'safe_type','recommend', 'is_top', 'car_type', 'car_status', 'customer_id', 'guide_price', 'pg_description','xs_description', 'cate_id', 'appraiser_price', 'is_appraiser', 'appraiser_at'];
+        $select_columns_car = ['id', 'name', 'brand_id'];
+
+        $all_top_brands = $this->brands->getChildBrand(0);
+
+
+        //车源搜索条件
+        $query_cars = new Cars();
+        // $query_cars = $query_cars->select(DB::raw('count(*) as car_count'));
+        /*$query_cars = $query_cars->where('brand_id', '1');
+        $query_cars = $query_cars->where('created_at', '<=', $end_date);
+        $query_cars = $query_cars->where('created_at', '>=', $begin_date);
+
+        $cars_nums = $query_cars->select($select_columns_car)->get();*/
+
+        foreach ($all_top_brands as $key => $value) {
+
+            $cars_nums = DB::table('tcl_cars')
+                             ->join('tcl_brand', 'tcl_cars.brand_id', '=', 'tcl_brand.id')
+                             ->select(DB::raw('count(*) as car_count, brand_id, tcl_brand.name as bname'))
+                             ->where('brand_id', $value->id)
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->groupBy('brand_id')
+                             ->get();
+
+            if(!collect($cars_nums)->isEmpty()){
+                $nums[] = $cars_nums[0];
+            }
+            
+        }
+
+        $s_num = collect($nums)->sortByDesc('car_count')->chunk(20); //前20品牌
+        $numus = 0;
+        
+        foreach ($s_num[0] as $key => $value) {
+            $numus += $value->car_count;
+            $s_num[0][$key]->bili =  $value->car_count / 3688;
+        }
+
+        $category_list = DB::table('tcl_cars')
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->groupBy('category_id')
+                             ->get();
+
+        foreach ($category_list as $key => $value) {
+            $list_a[] = $value->category_id;
+        }
+
+        foreach ($list_a as $key => $value) {
+
+            $cars_nums = DB::table('tcl_cars')
+                             ->join('tcl_brand', 'tcl_cars.category_id', '=', 'tcl_brand.id')
+                             ->select(DB::raw('count(*) as car_count, category_id, tcl_brand.name as bname'))
+                             ->where('category_id', $value)
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->get();
+
+            if(!collect($cars_nums)->isEmpty()){
+                $cate_nums[] = $cars_nums[0];
+            }
+            
+        }
+
+        // dd($list_a);
+        $cate_num = collect($cate_nums)->sortByDesc('car_count')->chunk(20); //前20车型
+        $cate_numus = 0;
+        
+        foreach ($cate_num[0] as $key => $value) {
+            $cate_numus += $value->car_count;
+            $cate_num[0][$key]->bili =  $value->car_count / 3688;
+        }
+
+
+        // dd($cate_num);
+        
+        //排量
+        $capacity = config('tcl.capacity'); //获取配置文件排量
+        $capacity_list = DB::table('tcl_cars')
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->groupBy('capacity')
+                             ->get();
+
+        foreach ($capacity_list as $key => $value) {
+            $list_c[] = $value->capacity;
+        }
+        // dd($list_c);
+        foreach ($list_c as $key => $value) {
+
+            $cars_nums = DB::table('tcl_cars')
+                             ->select(DB::raw('count(*) as car_count, capacity'))
+                             ->where('capacity', $value)
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->get();
+            // dd($cars_nums);                 
+            if(!collect($cars_nums)->isEmpty()){
+                $capacity_num[] = $cars_nums[0];
+            }
+        }
+
+        // dd($capacity_num);
+        $capa_num = collect($capacity_num)->sortByDesc('car_count')->chunk(10); //前20车型
+        $capa_numus = 0;
+        
+        foreach ($capa_num[0] as $key => $value) {
+            $capa_numus += $value->car_count;
+            $capa_num[0][$key]->bili =  $value->car_count / 3688;
+            $capa_num[0][$key]->capa_name =  $capacity[$value->capacity];
+        }
+
+        
+        // dd($capa_num);
+        // 
+        //颜色
+        $out_color = config('tcl.out_color'); //获取配置文件排量
+        $out_color_list = DB::table('tcl_cars')
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->groupBy('out_color')
+                             ->get();
+        // dd($out_color_list);
+        foreach ($out_color_list as $key => $value) {
+            $list_color[] = $value->out_color;
+        }
+        // dd($list_color);
+        foreach ($list_color as $key => $value) {
+
+            $cars_nums = DB::table('tcl_cars')
+                             ->select(DB::raw('count(*) as car_count, out_color'))
+                             ->where('out_color', $value)
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->get();
+            // dd($cars_nums);                 
+            if(!collect($cars_nums)->isEmpty()){
+                $out_color_num[] = $cars_nums[0];
+            }
+        }
+
+        // dd($out_color_num);
+        $color_num = collect($out_color_num)->sortByDesc('car_count')->chunk(5); //前20车型
+        $color_numus = 0;
+        
+        foreach ($color_num[0] as $key => $value) {
+            $color_numus += $value->car_count;
+            $color_num[0][$key]->bili =  $value->car_count / 3688;
+            $color_num[0][$key]->capa_name =  $out_color[$value->out_color];
+        }
+
+        // dd($color_num);
+
+        //车龄分析
+        $cars_nums_age = DB::table('tcl_cars')
+                             ->select(DB::raw('count(*) as car_count'))
+                             ->where('age', '>=', '0')
+                             ->where('age', '<=', '5')
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->get();
+        // dd($cars_nums_age);
+
+        //行驶里程分析
+        $cars_nums_miliage = DB::table('tcl_cars')
+                             ->select(DB::raw('count(*) as car_count'))
+                             ->where('mileage', '>', '10')
+                             ->where('mileage', '<=', '10')
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->get();
+        $car_bili = $cars_nums_miliage[0]->car_count / 3688;
+        $cars_nums_miliage[0]->bili = $car_bili;
+        // dd($cars_nums_miliage);
+
+        //价格分析
+        $cars_nums_price = DB::table('tcl_cars')
+                             ->select(DB::raw('count(*) as car_count'))
+                             ->where('top_price', '>', '20')
+                             // ->where('top_price', '<=', '20')
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->get();
+        $car_price_bili = $cars_nums_price[0]->car_count / 3688;
+        $cars_nums_price[0]->bili = $car_price_bili;
+        // dd($cars_nums_price);
+
+        //门店分析
+        $shop_list = DB::table('tcl_cars')
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->groupBy('shop_id')
+                             ->get();
+
+        foreach ($shop_list as $key => $value) {
+            $list_shop[] = $value->shop_id;
+        }
+
+        foreach ($list_shop as $key => $value) {
+
+            $cars_nums = DB::table('tcl_cars')
+                             ->join('tcl_shop', 'tcl_cars.shop_id', '=', 'tcl_shop.id')
+                             ->select(DB::raw('count(*) as car_count, shop_id, tcl_shop.name as shop_name'))
+                             ->where('shop_id', $value)
+                             ->where('tcl_cars.created_at', '<=', $end_date)
+                             ->where('tcl_cars.created_at', '>=', $begin_date)
+                             ->get();
+
+            if(!collect($cars_nums)->isEmpty()){
+                $shop_nums[] = $cars_nums[0];
+            }
+            
+        }
+
+        // dd($list_shop);
+        $shop_num = collect($shop_nums)->sortByDesc('car_count')->chunk(20); //前20车型
+        $shop_numus = 0;
+        
+        foreach ($shop_num[0] as $key => $value) {
+            $shop_numus += $value->car_count;
+            $shop_num[0][$key]->bili =  $value->car_count / 3688;
+        }
+
+
+        // dd($shop_num);
+
+        //月份分析
+        $cars_nums_month = DB::table('tcl_cars')
+                             ->select(DB::raw('count(*) as car_count'))
+                             ->where('creater_id', '!=', '1')
+                             ->where('name', '!=', '')
+                             ->where('tcl_cars.created_at', '>=', '2017-12-01')
+                             ->where('tcl_cars.created_at', '<=', '2017-12-31')
+                             ->get();
+        $car_month_bili = $cars_nums_month[0]->car_count / 3688;
+        // dd($cars_nums_month[0]->car_count  / 3688);
+        $cars_nums_month[0]->bili = $car_month_bili;
+        dd($cars_nums_month);
+    }
 }

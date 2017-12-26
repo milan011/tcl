@@ -248,7 +248,7 @@
 					  	<select id="provence_id" name="insurance_provence">
 					  		<option value="{{$provence->id or 10}}">{{$provence->name or '河北'}}</option>
 					  		@foreach($area as $provence)
-					  		<option  value="{{$prove[nce->id}}">{{$provence->name}}</option>
+					  		<option  value="{{$provence->id}}">{{$provence->name}}</option>
 					  		@endforeach									
 						</select>
 						<select id="city_id" name="insurance_city">
