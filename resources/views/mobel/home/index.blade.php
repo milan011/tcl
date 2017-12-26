@@ -241,7 +241,7 @@
         </div>
     @endif
     </section>
-    <button class="btn btn_primary" id="onMenuShareTimeline">onMenuShareTimeline</button>
+    <!-- <button class="btn btn_primary" id="onMenuShareTimeline">onMenuShareTimeline</button> -->
 @endsection
 
 @section('footer_content')
