@@ -148,6 +148,7 @@ class CateController extends CommonController
            $select_condition['shop_list'] = $sel_city['shop_list']; 
         }
         // dd($select_condition);
+        $select_condition['plate_city'] = $sel_city['show_city_id'];
         // 符合条件车源
         $cars = $this->car->getAllCarsWithBefore($select_condition);
         // dd(lastSql());

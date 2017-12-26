@@ -48,7 +48,8 @@ class HomeController extends CommonController {
 		$show_city_name = $sel_city['show_city_name'];
 
 		$select_condition['car_status'] = '1';
-		$select_condition['shop_list'] = $sel_city['shop_list'];
+		$select_condition['shop_list']  = $sel_city['shop_list'];
+		$select_condition['plate_city'] = $sel_city['show_city_id'];
 
 		// dd($select_condition);
 

@@ -151,7 +151,12 @@ class CarRepository implements CarRepositoryContract
             
             $query = $query->where('shop_id', $condition['shop_id']);
         }else{
-            $query = $query->whereIn('shop_id', $condition['shop_list']);
+            $query = $query->where(function($query) use ($condition){
+
+                $query = $query->whereIn('shop_id', $condition['shop_list']);
+                $query = $query->orWhere('plate_city', $condition['plate_city']);
+            });
+            
         }
         // dd($query);
         $query = $query->where(function($query) use ($condition){

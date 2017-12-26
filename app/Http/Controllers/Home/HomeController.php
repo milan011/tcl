@@ -49,11 +49,12 @@ class HomeController extends CommonController {
 
 		$select_condition['car_status'] = '1';
 		$select_condition['shop_list'] = $sel_city['shop_list'];
+		$select_condition['plate_city'] = $sel_city['show_city_id'];
 
 		// dd($select_condition);
 
 		$cars = $this->car->getAllCarsWithBefore($select_condition);
-
+		dd(lastSql());
 		// 推荐品牌
 		$recomment_brands = $this->brand->getRecommentBrandsWithBefore();
 		$all_top_brands = $this->brand->getChildBrand(0);

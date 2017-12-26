@@ -49,7 +49,6 @@ class CateController extends CommonController
         // $begin = $this->getCurrentTime();
         // p($this->request->method());exit;  //{品牌b，车系c}，{车辆类型t，门店s}，{车龄a，价格p}
         
-
         $conditions      = $brand .'-'. $condition;
         
         $condition_brand = '';
@@ -186,6 +185,8 @@ class CateController extends CommonController
             //无门店选择,则获取该城市所有门店
            $select_condition['shop_list'] = $sel_city['shop_list']; 
         }
+
+        $select_condition['plate_city'] = $sel_city['show_city_id'];
         // dd($select_condition);
         // 符合条件车源
         $cars = $this->car->getAllCarsWithBeforeMobel($select_condition);
