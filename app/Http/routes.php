@@ -44,21 +44,22 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::post('cate/getChildCategory', 'CateController@getChildCategory')->name('mobel.cate.getChildCategory');
 });
 
-/*Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
+Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
        
     Route::get('car/{id}', 'CarController@index')->name('home.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');
     Route::get('/', 'HomeController@index')->name('home.index');  
     Route::get('/city/{city?}', 'HomeController@index')->name('home.indexWithCity');  
-    Route::get('/join', 'JoinController@index')->name('home.join.index');  
+    Route::get('/join', 'JoinController@index')->name('home.join.index');   
+    Route::get('/about', 'AboutController@index')->name('home.about.index');   
     Route::get('/sale', 'SaleController@index')->name('home.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('home.sale.store');  
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('home.sale.getChildBrand');    
-});*/
+});
 
 
 
-Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
+/*Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
        
     Route::get('car/{id}', 'CarController@index')->name('show.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('show.cate.index');
@@ -69,7 +70,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
     Route::post('/sale/store', 'SaleController@store')->name('show.sale.store');  
     Route::match(['get', 'post'], '/sale/store', 'SaleController@store')->name('show.sale.store');
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('show.sale.getChildBrand');  
-});
+});*/
 
 
 
@@ -161,6 +162,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
 
     Route::get('/', 'HomeController@index')->name('admin.index');     
     Route::match(['get', 'post'], 'car/index', 'CarController@index')->name('admin.car.index'); 
+    Route::match(['get', 'post'], 'car/carAnalysed', 'CarController@carAnalysed')->name('admin.car.carAnalysed'); 
     Route::match(['get', 'post'], 'appraiser/index', 'AppraiserController@index')->name('admin.appraiser.index'); 
     Route::match(['get', 'post'], 'insurance/index', 'InsuranceController@index')->name('admin.insurance.index');
     Route::match(['get', 'post'], 'loan/index', 'LoanController@index')->name('admin.loan.index');
@@ -168,6 +170,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::match(['get', 'post'], 'selfcar', 'CarController@carself')->name('admin.car.self'); 
     Route::match(['get', 'post'], 'showHidden', 'CarController@showHidden')->name('admin.car.showHidden'); 
     Route::match(['get', 'post'], 'want/index', 'WantController@index')->name('admin.want.index'); 
+    Route::match(['get', 'post'], 'want/wantAnalysed', 'WantController@wantAnalysed')->name('admin.want.carAnalysed');
     Route::match(['get', 'post'], 'transcation/index', 'TranscationController@index')->name('admin.transcation.index'); 
     Route::match(['get', 'post'], 'selfwant', 'WantController@selfwant')->name('admin.want.self'); 
     Route::match(['get', 'post'], 'chance/index', 'ChanceController@index')->name('admin.chance.index');  
