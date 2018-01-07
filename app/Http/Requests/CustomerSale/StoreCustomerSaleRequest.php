@@ -26,7 +26,7 @@ class StoreCustomerSaleRequest extends Request
         // dd($this->all());
         return [
             'brand'   => 'required|numeric|min:1',
-            'company' => 'required|numeric|min:1',
+            // 'company' => 'required|numeric|min:1',
             'type'    => 'required|numeric|min:1',
             'mobile'  => 'required|phone_number',
         ];
@@ -40,7 +40,7 @@ class StoreCustomerSaleRequest extends Request
     public function messages(){
         return [
             'brand.min'           => '请选择品牌',
-            'company.min'         => '请选择品牌',
+            // 'company.min'         => '请选择品牌',
             'type.min'            => '请选择品牌',
             'mobile.required'     => '请输入手机号码',
             'mobile.phone_number' => '手机号码无效',
