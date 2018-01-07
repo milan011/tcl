@@ -57,6 +57,16 @@ class CarRepository implements CarRepositoryContract
                    ->findOrFail($id);
     }
 
+    //全部车源数量
+    public function getAllCarsNum(){
+        $query = new Cars(); 
+
+        return $query->select($this->select_columns)
+                     ->where('name', '!=', '')
+                     ->where('creater_id', '!=', '1')
+                     ->count();
+    }
+
     // 根据不同参数获得车源列表
     public function getAllcars($request, $is_self = false)
     {   
@@ -97,6 +107,14 @@ class CarRepository implements CarRepositoryContract
         //品牌筛选
         if(!empty($condition['brand_id'])){
             $query = $query->where('brand_id', $condition['brand_id']);
+        }
+        //颜色筛选
+        if(!empty($condition['color'])){
+            $query = $query->where('out_color', $condition['color']);
+        }
+        //颜色筛选
+        if(!empty($condition['gearbox'])){
+            $query = $query->where('gearbox', $condition['gearbox']);
         }
         //车型类别筛选
         if(!empty($condition['category_type'])){
@@ -148,15 +166,22 @@ class CarRepository implements CarRepositoryContract
         }
         //门店筛选
         if(!empty($condition['shop_id'])){
-            
-            $query = $query->where('shop_id', $condition['shop_id']);
+            // dd('have');
+            // $query = $query->where('shop_id', $condition['shop_id']);
+            $query = $query->where(function($query) use ($condition){
+                $query = $query->where('shop_id', $condition['shop_id']);
+                if(isset($condition['shop_list'])){
+                    $query = $query->orWhereIn('shop_id', $condition['shop_list']);
+                }
+                
+            });
         }else{
+            // dd('nothave');
             $query = $query->where(function($query) use ($condition){
 
                 $query = $query->whereIn('shop_id', $condition['shop_list']);
                 $query = $query->orWhere('plate_city', $condition['plate_city']);
             });
-            
         }
         // dd($query);
         $query = $query->where(function($query) use ($condition){

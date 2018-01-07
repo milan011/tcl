@@ -47,6 +47,16 @@ class WantRepository implements WantRepositoryContract
                    ->findOrFail($id);
     }
 
+    //全部求购数量
+    public function getAllWantsNum(){
+        $query = new Want(); 
+
+        return $query->select($this->select_columns)
+                     ->where('name', '!=', '')
+                     ->where('creater_id', '!=', '1')
+                     ->count();
+    }
+
     // 根据不同参数获得求购信息列表
     public function getAllWants($request, $is_self = false)
     {   
