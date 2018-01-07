@@ -53,7 +53,7 @@
 	height:42px
 }
 .ser-gua li i,.submit-suc i,.sx-chexing .dd a,.tip-right {
-	background-image:url(//sta.guazistatic.com/c2c_web/index_icon.8b79f4d2cb0f62d300935bc342505a0e.png);
+	background-image:url(../images/icon/index_icon.png);
 	background-repeat:no-repeat
 }
 .sx-pinpai .dd a {
@@ -79,14 +79,32 @@
 	margin:10px 0 0 15px
 }
 .i-dazhong {
-	background:url(//sta.guazistatic.com/c2c_web/dazhong.7d2b9e81d92911fc7c5389635afc9fa3.png)
+	background:url(../brand_small/dazhong.png)
 }
-.i-toyota {
-	background:url(//sta.guazistatic.com/c2c_web/toyota.7fde064a1cb9ae24beda19a66ff93d7e.png)
+.i-fengtian {
+	background:url(../brand_small/fengtian.png)
 }
-.i-honda {
-	background:url(//sta.guazistatic.com/c2c_web/honda.c8a2cad7fee5fd93f0131142a00ad58f.png)
+.i-bentian {
+	background:url(../brand_small/bentian.png)
 }
+.i-xiandai {
+	background:url(../brand_small/xiandai.png)
+}
+.i-bieke {
+	background:url(../brand_small/bieke.png)
+}
+.i-fute {
+	background:url(../brand_small/fute.png)
+}
+
+.i-richan {
+	background:url(../brand_small/richan.png)
+}
+
+.i-aodi {
+	background:url(../brand_small/aodi.png)
+}
+
 .i-benz {
 	background:url(//sta.guazistatic.com/c2c_web/benz.e18506708d2c38b040aec01354d266bd.png)
 }
@@ -105,15 +123,11 @@
 .i-ford {
 	background:url(//sta.guazistatic.com/c2c_web/ford.56c8a07eab46f4f9a3ab887a541b4bdd.png)
 }
-.i-hyundai {
-	background:url(//sta.guazistatic.com/c2c_web/hyundai.8600f8e780f19b22ed53b388b87541b1.png)
-}
+
 .i-kia {
 	background:url(//sta.guazistatic.com/c2c_web/kia.ff4169b3c09e30dc4f28695888cdd8db.png)
 }
-.i-richan {
-	background:url(//sta.guazistatic.com/c2c_web/richan.df6535e3e20ed8228298b94ffdad7d95.png)
-}
+
 .i-biaozhi {
 	background:url(//sta.guazistatic.com/c2c_web/biaozhi.d0191836f41aee63872b802d9f631fd3.png)
 }

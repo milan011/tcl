@@ -152,7 +152,8 @@ input.placeholder {
 
 .all-city {
     padding: 15px 0 0 15px;
-    height: 465px;
+    height: auto;
+    /*height: 465px;*/
     overflow: auto
 }
 
@@ -175,7 +176,8 @@ input.placeholder {
 }
 
 .all-city dd {
-    width: 265px
+    /*width: 265px*/
+    width: auto;
 }
 
 .all-city dd a {
@@ -183,7 +185,8 @@ input.placeholder {
     height: 18px;
     padding: 0 3px;
     color: #333;
-    margin: 0 5px 7px
+    margin: 0 5px 7px;
+    font-size: 14px;
 }
 
 .all-city dd a.on,
@@ -389,7 +392,7 @@ body .gj_sys_autoc_ov span {
 .nav {
     height: 46px;
     line-height: 46px;
-    background: #22ac38
+    background: black;
 }
 
 .nav a {
@@ -402,7 +405,7 @@ body .gj_sys_autoc_ov span {
 .nav a.active,
 .nav a:hover {
     text-decoration: none;
-    background: #179500;
+    background: #990000;
     color: #fff
 }
 

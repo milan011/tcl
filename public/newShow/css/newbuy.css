@@ -24,18 +24,19 @@
 
 .screen dd {
     float: right;
-    width: 1128px
+    width: 1128px;
+    margin-bottom: 10px;
 }
 
 .dd-top {
-    height: 20px;
-    padding: 15px 0 15px 6px
+    /*height: 20px;*/
+    padding: 15px 10px 15px 6px
 }
 
 .dd-top .a-box {
     float: left;
-    width: 940px;
-    height: 20px;
+    /*width: 940px;*/
+    /*height: 20px;*/
     overflow: hidden
 }
 
@@ -50,13 +51,13 @@
 }
 
 .dd-top a:hover {
-    color: #22ac38;
+    color: #990000;
     text-decoration: none
 }
 
 .dd-top a.active {
     color: #fff;
-    background: #22ac38;
+    background: #990000;
     text-decoration: none
 }
 
@@ -71,7 +72,7 @@
 }
 
 .dd-btn:hover {
-    color: #22ac38
+    color: #990000
 }
 
 .dd-btn i {
@@ -91,7 +92,8 @@
 
 .dd-all {
     width: 1128px;
-    border-top: 1px solid #e6e6e6
+    border-top: 1px solid #e6e6e6;
+    margin-top: 10px;
 }
 
 .dd-all ul {
@@ -110,7 +112,7 @@
     width: 20px;
     height: 24px;
     line-height: 24px;
-    color: #22ac38;
+    color: #990000;
     font-size: 14px;
     font-weight: 700
 }
@@ -131,12 +133,13 @@
 
 .dd-all a:hover {
     text-decoration: none;
-    color: #22ac38
+    color: #990000
 }
 
 .dd-car {
     width: 1128px;
-    border-top: 1px solid #e6e6e6
+    border-top: 1px solid #e6e6e6;
+    margin-top: 10px;
 }
 
 .dd-car ul {
@@ -157,7 +160,7 @@
     text-align: right;
     line-height: 24px;
     font-size: 14px;
-    color: #22ac38;
+    color: #990000;
     font-weight: 700
 }
 
@@ -177,7 +180,7 @@
 
 .dd-car a:hover {
     text-decoration: none;
-    color: #22ac38
+    color: #990000
 }
 
 .screen-price {
@@ -210,8 +213,8 @@
     margin-top: -1px;
     margin-left: 5px;
     background: #f6fcf7;
-    color: #22ac38;
-    border: 1px solid #22ac38
+    color: #990000;
+    border: 1px solid #990000
 }
 
 .dd-more {
@@ -262,7 +265,7 @@
 }
 
 li.active .dd-sel {
-    border: 1px solid #22ac38
+    border: 1px solid #990000
 }
 
 .dd-sel i {
@@ -289,7 +292,7 @@ li.active .dd-sel i {
     height: auto;
     padding: 5px 0;
     background: #fff;
-    border: 1px solid #22ac38
+    border: 1px solid #990000
 }
 
 .dd-option-100 {
@@ -310,7 +313,7 @@ li.active .dd-option {
 }
 
 .dd-option a:hover {
-    background: #22ac38;
+    background: #990000;
     color: #fff;
     text-decoration: none
 }
@@ -326,7 +329,7 @@ li.active .dd-option {
     padding: 5px 0;
     overflow: hidden;
     background: #fff;
-    border: 1px solid #22ac38
+    border: 1px solid #990000
 }
 
 li.active .dd-color {
@@ -343,7 +346,7 @@ li.active .dd-color {
 }
 
 .dd-color a:hover {
-    background: #22ac38;
+    background: #990000;
     color: #fff;
     text-decoration: none
 }
@@ -444,7 +447,7 @@ li.active .dd-color {
 }
 
 .result-p2 a:hover {
-    color: #22ac38;
+    color: #990000;
     text-decoration: none
 }
 
@@ -469,16 +472,16 @@ li.active .dd-color {
 }
 
 .result-li li:hover {
-    border-color: #22ac38
+    border-color: #990000
 }
 
 .result-li li a {
-    color: #22ac38
+    color: #990000
 }
 
 .result-li li a:hover {
     text-decoration: none;
-    color: #22ac38
+    color: #990000
 }
 
 .result-li i {
@@ -535,7 +538,7 @@ li.active .dd-color {
 }
 
 .list-tab a.active {
-    border-bottom: 3px solid #22ac38
+    border-bottom: 3px solid #990000
 }
 
 .list-tab a.loan {
@@ -593,7 +596,7 @@ li.active .dd-color {
 
 .hot-option,
 .hot-screen.active .hot-sel {
-    border: 1px solid #22ac38
+    border: 1px solid #990000
 }
 
 .hot-option {
@@ -623,7 +626,7 @@ li.active .dd-color {
 
 .hot-option a:hover {
     color: #fff;
-    background: #22ac38;
+    background: #990000;
     text-decoration: none
 }
 
@@ -656,7 +659,7 @@ li.active .dd-color {
 
 .sort-a.active,
 .sort-a:hover {
-    color: #22ac38;
+    color: #990000;
     text-decoration: none
 }
 

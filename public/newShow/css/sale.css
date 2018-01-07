@@ -69,7 +69,7 @@
 .input-phone,
 .service-slogan,
 .submit-tip span {
-    background-image: url(//sta.guazistatic.com/c2c_web/sell-form.c062ff0f56c9c62c4d02f3bd67e84732.png);
+    background-image: url('../images/icon/sell-from.png');
     background-repeat: no-repeat
 }
 
@@ -81,7 +81,8 @@
     width: 341px;
     height: 11px;
     background-repeat: repeat-x;
-    background-image: url(//sta.guazistatic.com/c2c_web/sell-form-2.62fedb2902b172066c3567717a6682a6.png)
+    /*background-image: url(//sta.guazistatic.com/c2c_web/sell-form-2.62fedb2902b172066c3567717a6682a6.png)*/
+    background-image: url('../images/icon/sell-form-2.png')
 }
 
 .sell-num {
@@ -99,13 +100,13 @@
 
 .write-box {
     padding: 0 20px 12px;
-    height: 64px
+    height: auto;
 }
 
 .input-phone {
     width: 245px;
     height: 24px;
-    padding: 10px 10px 10px 44px;
+    padding: 10px 10px 10px 10px;
     border: 1px solid #d2d2d2;
     font-size: 14px;
     font-family: microsoft yahei;
@@ -145,7 +146,8 @@
 }
 
 .input-txt {
-    background-image: url(//sta.guazistatic.com/c2c_web/sell-pub_ico_03.6499fb77d5fddff7adf8a1fe7cb56b44.png);
+    /*background-image: url(//sta.guazistatic.com/c2c_web/sell-pub_ico_03.6499fb77d5fddff7adf8a1fe7cb56b44.png);*/
+    background-image: url('../images/icon/ell-pub_ico_03.png');
     background-position: 180px 0
 }
 
@@ -338,8 +340,10 @@
 .ico-suc {
     width: 62px;
     height: 62px;
-    background: url(//sta.guazistatic.com/c2c_web/sell_icon_suc.b6b4e06a715136268f622dcf9df9e528.png) no-repeat 50%;
-    _background: url(//sta.guazistatic.com/c2c_web/sell_icon_suc_ie6.84a6e2d356c5559f64c7143325b5c4da.png) no-repeat 50%;
+    /*background: url(//sta.guazistatic.com/c2c_web/sell_icon_suc.b6b4e06a715136268f622dcf9df9e528.png) no-repeat 50%;*/
+    background: url('../images/icon/sell_icon_suc.png') no-repeat 50%;
+    /*_background: url(//sta.guazistatic.com/c2c_web/sell_icon_suc_ie6.84a6e2d356c5559f64c7143325b5c4da.png) no-repeat 50%;*/
+    _background: url('../images/icon/sell_icon_suc_ie6.png') no-repeat 50%;
     margin: 45px auto 0
 }
 
@@ -437,8 +441,10 @@
     display: block;
     width: 130px;
     height: 130px;
-    background-image: url(//sta.guazistatic.com/c2c_web/sell-icon.a2c892966fe8a2c576512ede9a65b01f.png);
-    _background-image: url(//sta.guazistatic.com/c2c_web/sell-icon-8.6d2987332812235e27fe20b98f9a69b6.png);
+    /*background-image: url(//sta.guazistatic.com/c2c_web/sell-icon.a2c892966fe8a2c576512ede9a65b01f.png);*/
+    background-image: url('../images/icon/sell-icon.png');
+    /*_background-image: url(//sta.guazistatic.com/c2c_web/sell-icon-8.6d2987332812235e27fe20b98f9a69b6.png);*/
+    _background-image: url('../images/icon/sell-icon-8.png');
     background-repeat: no-repeat;
     position: absolute;
     top: -65px;
@@ -509,25 +515,29 @@
 .img-1 {
     width: 594px;
     height: 353px;
-    background: url(//sta.guazistatic.com/c2c_web/sell-img-1.e73684c44cf5976f58391f35aee4946a.png) no-repeat 100% 0
+    /*background: url(//sta.guazistatic.com/c2c_web/sell-img-1.e73684c44cf5976f58391f35aee4946a.png) no-repeat 100% 0*/
+    background: url('../images/icon/sell-img-1.png') no-repeat 100% 0
 }
 
 .img-2 {
     width: 525px;
     height: 336px;
-    background: url(//sta.guazistatic.com/c2c_web/sell-img-2.520c4513772d2e95fe685f1c89e9f689.png) no-repeat 0 0
+    /*background: url(//sta.guazistatic.com/c2c_web/sell-img-2.520c4513772d2e95fe685f1c89e9f689.png) no-repeat 0 0*/
+    background: url('../images/icon/sell-img-2.png') no-repeat 0 0
 }
 
 .img-3 {
     width: 594px;
     height: 279px;
-    background: url(//sta.guazistatic.com/c2c_web/sell-img-3.c431acc4182de3097666edaf796a095a.png) no-repeat 100% 0
+    /*background: url(//sta.guazistatic.com/c2c_web/sell-img-3.c431acc4182de3097666edaf796a095a.png) no-repeat 100% 0*/
+    background: url('../images/icon/sell-img-3.png') no-repeat 100% 0
 }
 
 .img-4 {
     width: 594px;
     height: 251px;
-    background: url(//sta.guazistatic.com/c2c_web/sell-img-4.9023f51b4c4c118b9a27d029461cb34e.png) no-repeat 0 0
+    /*background: url(//sta.guazistatic.com/c2c_web/sell-img-4.9023f51b4c4c118b9a27d029461cb34e.png) no-repeat 0 0*/
+    background: url('../images/icon/sell-img-4.png') no-repeat 0 0
 }
 
 .txt {
@@ -1007,8 +1017,9 @@ body {
     border: 1px solid #d1d1d1;
     padding: 10px 38px 10px 10px;
     cursor: pointer;
-    background: #fff url(//sta.guazistatic.com/c2c_web/sell-bg-2.eb0b28902429bd8551ee132c3222ddd2.png) no-repeat right 0;
-    width: 200px
+    background: #fff url(../images/icon/sell-bg-2.png) no-repeat right 0;
+    width: 30%;
+    margin:40px auto;
 }
 
 .inputype-2 {

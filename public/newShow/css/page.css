@@ -1,0 +1,98 @@
+.pagination {
+    margin: 0 0 30px;
+    clear: both;
+    text-align: center
+}
+
+.pagination li {
+    display: inline;
+    margin: 0 0 0 5px
+}
+
+.pagination li a {
+    background: #fafafa;
+    border: 1px solid #e6e6e6;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #495056;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    font-weight: 400
+}
+
+.pagination li a:hover {
+    background: #22ac38;
+    border-color: #22ac38;
+    color: #fff;
+    text-decoration: none
+}
+
+.pagination li.link-on a {
+    border: 1px solid #fff;
+    background: #fff;
+    color: #22ac38
+}
+
+.pagination li a span {
+    background: none;
+    border: none;
+    display: inline-block
+}
+
+.pagination li a.next,
+.pagination li a.prev {
+    width: 83px
+}
+
+.pagination li a.next em {
+    margin-left: 6px
+}
+
+.pagination li a.next em,
+.pagination li a.prev em {
+    font-family: simsun;
+    font-size: 15px;
+    font-weight: 700
+}
+
+.pagination li a.prev em {
+    margin-right: 6px
+}
+
+.pagination li.point a,
+.pagination li.point a:hover {
+    border: none;
+    background: none;
+    color: #495056
+}
+
+.pagination li span {
+    /* background: #fafafa;
+    border: 1px solid #e6e6e6; */
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #22ac38;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    font-weight: 400;
+}
+
+.pagination li.disabled {
+    /* background: #fafafa;
+    border: 1px solid #e6e6e6; */
+    width: 36px;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #22ac38;
+    vertical-align: top;
+    display: none;
+    font-weight: 400;
+}

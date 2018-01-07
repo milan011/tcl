@@ -555,7 +555,7 @@ body {
 }
 
 .indem-box {
-    height: 158px
+    height: auto;
 }
 
 .f-type01 {
