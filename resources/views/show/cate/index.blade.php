@@ -11,6 +11,8 @@
     <!-- <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/list.css')}}"> -->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/list.css')}}">
     <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/newbuy.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/baoming.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/page.css')}}">
     <!-- 首页脚本  -->
     <!-- <script type="text/javascript" src="../js/index.js"></script> -->
     <!-- <script type="text/javascript" src="{{URL::asset('js/tcl/home/index.js')}}"></script> -->
@@ -116,6 +118,35 @@
             </div>
         </dd>
     </dl>
+    <!-- 门店 -->
+    <dl class="clearfix">
+        <dt>门店</dt>
+        <dd>
+            <div class="dd-top">
+                <span class="a-box">
+                    <!-- 不限 -->
+                    <a href="{{$clean_shop_url}}">不限</a>
+                    <!-- 热门品牌 -->
+                    @foreach($all_shop as $key=>$shop)
+                        <a href="{{$shop['url']}}">{{$shop->name}}</a>
+                    @endforeach 
+                </span>
+                <!-- 点击全部为span添加class名active -->
+                <!-- <span class="dd-btn js-disAll js-option-hid" data-local="js-brand">全部<i></i></span> -->
+            </div>
+            <!-- <div class="dd-all clearfix js-brand js-option-hid-info" style="display: none;">
+                <ul>
+                    <li>
+                        <p>
+                            @foreach($all_shop as $key=>$shop)
+                            <a href="{{$shop['url']}}">{{$shop->name}}</a>
+                            @endforeach 
+                        </p>
+                    </li>
+                </ul>
+            </div> -->
+        </dd>
+    </dl>
     <!-- 更多 -->
     <dl class="clearfix js-more">
         <dt>更多</dt>
@@ -184,11 +215,12 @@
     <div class="screen-result js-top" id="post">
     <p class="result-p1">当前筛选：</p>
     <ul class="result-li">
-                    <li><a href="/sjz/buy/#bread"><i></i><span>品牌：</span>奔驰</a></li>
-                <li><a href="/sjz/benz/#bread"><i></i><span>车系：</span>奔驰A级</a></li>
-        </ul>
-            <p class="result-p2"><a href="/sjz/buy/#bread">重置条件</a></p>
-        <p class="result-p3">共为您找到2辆好车</p>
+        @foreach($current_condition as $condition)       
+        <li><a href="{{$condition['url']}}"><i></i>{{$condition['content']}}</a></li>
+        @endforeach
+    </ul>
+    <p class="result-p2"><a href="{{route('show.cate.index')}}">重置条件</a></p>
+    <p class="result-p3">共为您找到{{$cars->total()}}辆好车</p>
 </div>
 <!-- <div class="list-filter"> -->
     <!-- <div class="list-tab">
@@ -238,22 +270,28 @@
     </div> -->
 <!-- </div> -->
             <!--列表-->
+        @if($cars->total() > 0)
         <div class="list ">
-    <ul class="list-bigimg clearfix lazyLoadV2 ">
-        <li>
-            <!-- 车源售卖状态显示 -->                          
+            <ul class="list-bigimg clearfix lazyLoadV2 ">
+            @foreach($cars as $car)
+            <li>
+            <!-- 车源售卖状态显示 --> 
             <div class="list-infoBox ">
-                <a title="福特福克斯 2015款 两厢 1.6L 自动风尚型 " target="_blank " class="imgtype " href="{{route('show.car.index', 2165)}}" >
-                    <img width="290 " height="194 " src="http://www.sjztcl.com/uploads/car/201709/images/572418563913612577.jpg" alt="福特福克斯 2015款 两厢 1.6L 自动风尚型 ">
+                <a title="{{$car->name}}" target="_blank" class="imgtype " href="{{route('show.car.index', ['car'=>$car->id])}}" >
+                    @if(isset($car->hasOneImagesOnFirst->filename))
+                        <img width="290 " height="194 " src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}" alt="{{$car->name}}">
+                    @else
+                        <img src="{{URL::asset('images/default.jpg')}}" alt="" />
+                    @endif
                 </a>
                 <p class="infoBox ">
-                        <a baidu_alog='pc_list_xiangqingye&click&pc_list_xiangqingye_c' title="福特福克斯 2015款 两厢 1.6L 自动风尚型 " href="/sjz/5c3efaf456009940x.htm " target="_blank " class="info-title " >福特福克斯 2015款 两厢 1.6L 自动风尚型</a>
+                        <a title="{{$car->name}}" href="{{route('show.car.index', ['car'=>$car->id])}}" target="_blank " class="info-title">{{$car->name}}</a>
                 </p>
                 <p class="fc-gray ">
-                    <span class=" ">2015年4月上牌</span>                        
-                    <em class="shuxian ">|</em>行驶3.5万公里   
+                    <span class=" ">{{$car->plate_date}}上牌</span>                        
+                    <em class="shuxian ">|</em>行驶{{$car->mileage}}万公里   
                     <span>
-                       &nbsp&nbsp <i class="fc-org priType ">9.50万</i>
+                       &nbsp&nbsp <i class="fc-org priType ">{{$car->top_price}}万</i>
                     </span>                 
                 </p>
                 <!-- <p class="priType-s ">
@@ -265,11 +303,132 @@
                 </p> -->
             </div>
         </li>
+        @endforeach
     </ul>
 </div>
-        
+     <div class="pagination dib-con">
+                <!-- <div class="item dib prev">&lt;</div>
+                <div class="item dib num active">1</div>
+                <div class="item dib num">2</div>
+                <div class="item dib num">3</div>
+                <div class="item dib num">4</div>
+                <div class="item dib next">&gt;</div> -->
+                
+                {!! $cars->links() !!}
+    </div>   
     <!--page-->
-    <div class="pageBox " data-widget="app/ms_v2/common/list_page.js#pagination "><ul class="pageLink clearfix "><li><a class="c linkOn "><span>1</span></a></li><li><a href="/sjz/buy/o2/ " data-gzlog='tracking_type=click&eventid=0060000000000060&pageno=2'><span>2</span></a></li><li><a href="/sjz/buy/o3/ " data-gzlog='tracking_type=click&eventid=0060000000000060&pageno=3'><span>3</span></a></li><li><a href="/sjz/buy/o4/ " data-gzlog='tracking_type=click&eventid=0060000000000060&pageno=4'><span>4</span></a></li><li><a href="/sjz/buy/o5/ " data-gzlog='tracking_type=click&eventid=0060000000000060&pageno=5'><span>5</span></a></li><li><a href="/sjz/buy/o6/ " data-gzlog='tracking_type=click&eventid=0060000000000060&pageno=6'><span>6</span></a></li><li><a href="/sjz/buy/o7/ " data-gzlog='tracking_type=click&eventid=0060000000000060&pageno=7'><span>7</span></a></li><li>...</li><li><a href="/sjz/buy/o50/ " data-gzlog='tracking_type=click&eventid=0060000000000060&pageno=50'><span>50</span></a></li><li><a href="/sjz/buy/o2/ "  data-gzlog='tracking_type=click&eventid=0060000000000059' class="next "><span>下一页</span></a></li></ul></div></div>
+    @else
+    <div class="subscribe js-subscribe" id="subscribe2">
+        <p class="sub-p1">没有您想要的爱车？</p>
+        <p class="sub-p2">订阅后有符合条件的新车上架将通知您</p>
+        <ul class="sub-box">
+            <li>
+                <p class="li-tit">品牌</p>
+                <div class="conselect js-subbrand">
+                    <input id="brand_id" class="inputype js-brandinput" readonly="readonly" placeholder="不限" brandnum="0" brandname="" value="">
+                    <div class="p-r">
+                        <div class="down-box">
+                            <div class="brand-box ios js-brandlist js-subscribescroll">
+                                <ul class="all-brand ">
+                                    <li class="js_choosetag" brandnum="0">不限</li>
+                                </ul>
+                                <p class="s-tt"><a id="hot">热门</a></p>
+                                
+                                <ul class="hot-car clearfix">
+                                    @foreach($recomment_brands as $key=>$brand)
+                                        <li class="js_choosetag" brandnum="{{$brand->id}}" brandname="{{$brand->name}}">{{$brand->name}}</li>
+                                    @endforeach
+                                </ul>
+                                @foreach($brand_letter_list_with_no_chunk as $key=>$letter)
+                                <p class="s-tt" data-dict="{{$key}}"><a id="{{$key}}">{{$key}}</a></p>
+                                <ul class="all-brand">
+                                    @foreach($letter as $k=>$le)
+                                    <li class="js_choosetag" brandnum="{{$le->id}}">{{$le->name}}</li>
+                                    @endforeach
+                                </ul>
+                            @endforeach
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="li-tit">车系</p>
+                <div class="conselect js-series">
+                    <input id="category_id" class="inputype js-seriesinput" placeholder="不限" readonly="readonly" seriesnum="0" value="">
+                    <div class="p-r">
+                        <div class="down-box">
+                            <ul id="category_list" class="com-ul js-serieslist js-subscribescroll">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <p class="li-tit">电话</p>
+                <div class="conselect js-series">
+                    <input type="text" name="mobile" class="inputype_no_xiahua js-seriesinput" placeholder="请输入您的手机号" seriesnum="0" value="">
+                </div>
+            </li>
+        </ul>
+    
+        <p class="subscribed js-suberror">&nbsp;</p>
+        <input type="hidden" name="ajax_request_url" value="{{route('show.sale.getChildCategory')}}">
+        <button id="storeInfo" class="one-key-sub js-submit">一键订阅</button>
+        {!! csrf_field() !!}
+    </div>
+    @endif
+    <!-- <div class="ranklist ranklist2">
+        <div class="rele-car">
+            <p class="rele-tit">相关车系</p>
+        </div>
+        <ul>
+                    <li>
+                <a data-gzlog="tracking_type=click&amp;eventid=1011000000000004&amp;relatecar=h2" href="/sjz/h2/">
+                    <img class="js-tag-img" src="https://image.guazistatic.com/files/tag_img/105029.jpg">
+                    <div class="rank-car">
+                        <h2 class="p1">哈弗H2</h2>
+                        <p class="p2">约1辆车源</p>
+                        <p class="p3"><span>7.86</span>万起</p>
+                    </div>
+                </a>
+            </li>
+                    <li>
+                <a data-gzlog="tracking_type=click&amp;eventid=1011000000000004&amp;relatecar=chevrolet-keluzi" href="/sjz/chevrolet-keluzi/">
+                    <img class="js-tag-img" src="https://image.guazistatic.com/files/tag_img/17411.jpg">
+                    <div class="rank-car">
+                        <h2 class="p1">雪佛兰科鲁兹</h2>
+                        <p class="p2">约34辆车源</p>
+                        <p class="p3"><span>4.10</span>万起</p>
+                    </div>
+                </a>
+            </li>
+                    <li>
+                <a data-gzlog="tracking_type=click&amp;eventid=1011000000000004&amp;relatecar=gs4" href="/sjz/gs4/">
+                    <img class="js-tag-img" src="https://image.guazistatic.com/files/tag_img/106615.jpg">
+                    <div class="rank-car">
+                        <h2 class="p1">传祺GS4</h2>
+                        <p class="p2">约7辆车源</p>
+                        <p class="p3"><span>7.80</span>万起</p>
+                    </div>
+                </a>
+            </li>
+                    <li>
+                <a data-gzlog="tracking_type=click&amp;eventid=1011000000000004&amp;relatecar=fute-fukesi" href="/sjz/fute-fukesi/">
+                    <img class="js-tag-img" src="https://image.guazistatic.com/files/tag_img/5492.jpg">
+                    <div class="rank-car">
+                        <h2 class="p1">福特福克斯</h2>
+                        <p class="p2">约52辆车源</p>
+                        <p class="p3"><span>3.50</span>万起</p>
+                    </div>
+                </a>
+            </li>
+                </ul>
+        <input class="xgClue_ids" value="h2@0_chevrolet-keluzi@1_gs4@2_fute-fukesi@3" type="hidden">
+    </div> -->
+
+</div>
+
+    
 @endsection
 
 @section('script_content')
@@ -277,6 +436,9 @@
 <!-- <script src="{{URL::asset('newShow/js/common/swipeslider.js')}}"></script> -->
 <script>
     $(document).ready(function(){
+
+        $('#category_id').val('');
+        $('#brand_id').val('');
 
         $(".js-hover").mouseover(function(event) {
             /* Act on the event */
@@ -320,6 +482,157 @@
             }
         });
 
+        $('#subscribe2').click(function(){
+            var obj_conselect = $('.conselect');
+
+            obj_conselect.each(function(){
+                $(this).removeClass('active');
+            });
+        });
+
+        $('input.js-brandinput, input.js-seriesinput').click(function(e){
+
+            //品牌选择事件
+            var parent_obj = $(this).parent();
+
+            parent_obj.hasClass('active') ? parent_obj.removeClass('active') : parent_obj.addClass('active') ;
+            parent_obj.siblings().removeClass('active');
+            e.stopPropagation();
+        });
+        
+        $('li.js_choosetag').bind('click', function(e){
+            //品牌变更事件
+            // alert($(this).attr('brandnum'));
+            var top_brand   = $(this).attr('brandnum');
+            var brand_name  = $(this).attr('brandname');
+            var token       = $("input[name='_token']").val();
+            var request_url = $("input[name='ajax_request_url']").val();
+
+            /*console.log(top_brand);
+            console.log(brand_name);
+            console.log(request_url);*/
+            // alert(top_brand);return false;
+
+            //获得该顶级品牌子品牌
+            if(top_brand == '0'){
+                $('#category_id').attr('seriesnum', '0');
+                $('#category_id').attr('category_name', '');
+                $('#category_id').val('');
+                $('#brand_id').attr('brandnum', '0');
+                $('#brand_id').attr('brandname', '');
+                $('#brand_id').val('');
+                $('#category_list').empty();
+            }else{
+                $.ajax({
+                type: 'POST',       
+                url: request_url,       
+                data: { pid : top_brand},       
+                dataType: 'json',       
+                headers: {      
+                    'X-CSRF-TOKEN': token       
+                },      
+                success: function(data){        
+                    if(data.status == 1){
+                        var content = '<li class="com-li js_choosechexi" chexinum="0">不限</li>';
+                        // console.log(data.data);
+                        $.each(data.data, function(index, value){
+                            content += '<li class="com-li js_choosechexi" chexinum="';
+                            content += value.id;
+                            content += '"';
+                            content += 'category_name="';
+                            content += value.name;
+                            content += '" >';
+                            content += value.name;
+                            content += '</li>';
+                        });
+                        // $('#top_brand').append(content);
+                        // console.log($('#second_category'));
+                        $('#category_list').empty();
+                        $('#category_list').append(content);
+                        $('#brand_id').attr('brandnum', top_brand);
+                        $('#brand_id').attr('brandname', brand_name);
+                        $('#brand_id').val(brand_name);
+                        $('.js-series').addClass('active');
+                        $('.js-subbrand').removeClass('active');
+                        $('li.js_choosechexi').on('click', function(e){
+                            //车系变更事件
+                            var cate_id   = $(this).attr('chexinum');
+                            var cate_name  = $(this).attr('category_name');
+
+                            /*alert(cate_id);
+                            alert(cate_name);*/
+
+                            $('#category_id').attr('seriesnum', cate_id);
+                            $('#category_id').attr('category_name', cate_name);
+                            $('#category_id').val(cate_name);
+                            $('.js-series').removeClass('active');
+                        });
+                    }else{
+                        alert(data.message);
+                        $('#category_list').empty();
+                        return false;
+                    }
+                },      
+                error: function(xhr, type){
+    
+                    alert('Ajax error!');
+                }
+            });    
+            }
+        });
+
+        //报名
+        $('#storeInfo').click(function(){
+
+            var request_url = '{{route('show.sale.store')}}';
+
+            var brand_id  = $("#brand_id").attr('brandnum');
+            var cate_id   = $("#category_id").attr('seriesnum');
+            var mobile  = $("input[name='mobile']").val();
+
+            /*console.log(brand_id);
+            console.log(cate_id);
+            console.log(mobile);*/
+
+            if(brand_id == ''){
+
+                alert('请选择品牌');
+                return false;
+            }
+
+            if(cate_id == ''){
+
+                alert('请选择车系');
+                return false;
+            }
+
+            if(!(/^1(3|4|5|7|8)\d{9}$/.test(mobile))){ 
+                alert("请填写正确的手机号码");  
+                return false; 
+            }
+
+            $.ajax({
+                method: 'POST',
+                url: request_url,
+                data:{brand:brand_id, type:cate_id, mobile:mobile},
+                dataType: 'json',
+                headers: {      
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'        
+                },
+                success:function(data){
+
+                    //设置图片对应车源ID
+                    alert(data.msg);
+                    
+                },
+                error: function(xhr, type){
+                    
+                    alert('请正确选择车型并填写正确的手机号码');
+                }
+            });
+
+            return false;
+        });
     });
 </script>
 @endsection

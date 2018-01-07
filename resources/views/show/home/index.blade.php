@@ -30,11 +30,11 @@
     <!--banner显示 s-->
     <div class="sel-op clearfix">
     <div class="sel-area fl">
-        <div class="buy-tit">免费卖车<span><em class="orgtext">平均7天卖出</em>已有<em class="clue_num">6841277</em>人提交了申请</span></div>
+        <div class="buy-tit">免费卖车<span><em class="orgtext">平均7天卖出</em>已有<em class="clue_num">{{$all_nums}}</em>人登记信息</span></div>
         <div class="sell-car-box" data-value-domain="sjz">
             <form action="" class="clearfix" data-role="sell_form">
-                <input type="text" class="sell-phone-input" data-role="sellPhone" placeholder="请输入手机号码">
-                <button class="sell-phone-submit" data-clue-entry="03" data-gzlog="tracking_type=click&eventid=0210050000000013" >我要卖车</button>
+                <input name="mobile" type="text" class="sell-phone-input" data-role="sellPhone" placeholder="请输入手机号码">
+                <button id="storeInfo" class="sell-phone-submit" data-clue-entry="03" >我要卖/买车</button>
                 <input type="hidden" name="source_type" value="">
             </form>
             <p class="sell-phone-error"></p>
@@ -49,34 +49,31 @@
             <div class="sx-pinpai js_brands_index">
                 <div class="dt">品牌</div>
                 <div class="dd" id="baidu_alog">
-                <a href="/sjz/dazhong/" class="i-dazhong" title="大众二手车">大众</a>
-                <a href="/sjz/dazhong/" class="i-dazhong" title="大众二手车">大众</a>
-                <a href="/sjz/dazhong/" class="i-dazhong" title="大众二手车">大众</a>
-                <a href="/sjz/dazhong/" class="i-dazhong" title="大众二手车">大众</a>
-                <a href="/sjz/dazhong/" class="i-dazhong" title="大众二手车">大众</a>
-                <a href="/sjz/dazhong/" class="i-dazhong" title="大众二手车">大众</a>
-                <a href="/sjz/dazhong/" class="i-dazhong" title="大众二手车">大众</a>
+                @foreach($recomment_brands as $key=>$brand)
+                    @if($key < 7)
+                    <a href="/cate/b{{$brand->id}}" class="i-{{substr($brand->logo_img, 0, -4)}}">{{$brand->name}}</a>
+                    @endif
+                @endforeach
                 </div>
             </div>
 
             <div class="sx-price">
                 <div class="dt">价格</div>
                 <div class="dd">
-                    <a href="/sjz/buy/p3/" title='5万以下二手车'>5万以下</a>
-                    <a href="/sjz/buy/p3/" title='5万以下二手车'>5万以下</a>
-                    <a href="/sjz/buy/p3/" title='5万以下二手车'>5万以下</a>
-                    <a href="/sjz/buy/p3/" title='5万以下二手车'>5万以下</a>
-                    <a href="/sjz/buy/p3/" title='5万以下二手车'>5万以下</a>
-                    <a href="/sjz/buy/p3/" title='5万以下二手车'>5万以下</a>
+                    @foreach($price_interval as $key=>$price)
+                        @if($key >= 10)
+                            <a href="/cate/p{{$key}}">{{$price}}</a>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="sx-chexing">
                 <div class="dt">车型</div>
                 <div class="dd">
-                    <a href="/sjz/buy/h1/" class="x-sanxiang" title="二手SUV">轿车</a>
-                    <a href="/sjz/buy/h2/" class="x-suv" title="二手SUV">SUV</a>
-                    <a href="/sjz/buy/h3/" class="x-mpv" title="二手SUV">MPV</a>
-                    <a href="/sjz/buy/h4/" class="x-paoche" title="二手SUV">跑车</a>
+                    <a href="/cate/t1" class="x-sanxiang" title="轿车">轿车</a>
+                    <a href="/cate/t2" class="x-suv" title="SUV">SUV</a>
+                    <a href="/cate/t6" class="x-mpv" title="MPV">MPV</a>
+                    <a href="/cate/t3" class="x-paoche" title="面包车">面包车</a>
                 </div>
             </div>
         </div>
@@ -89,17 +86,15 @@
                     <figure id="full_feature" class="swipslider" style="width:860px;height:305px;margin: 0px;">
                         <ul class="sw-slides">
                             <li class="sw-slide">
-                                <img src="{{URL::asset('newShow/images/banner1.png')}}" alt="Summer beach concept">
+                                <img src="{{URL::asset('newShow/images/kaiye.png')}}" alt="Summer beach concept">
                             </li>
                             <li class="sw-slide">
-                                <img src="{{URL::asset('newShow/images/banner2.png')}}" alt="Lang from Yie Ar Kung Fu">
+                                <img src="{{URL::asset('newShow/images/slider.png')}}" alt="Lang from Yie Ar Kung Fu">
                             </li>
                             <li class="sw-slide">
-                                <img src="{{URL::asset('newShow/images/banner3.png')}}" alt="Tiny Tina">
+                                <img src="{{URL::asset('newShow/images/11111.png')}}" alt="Tiny Tina">
                             </li>
-                            <li class="sw-slide">
-                                <img src="{{URL::asset('newShow/images/banner4.png')}}" alt="Tiny Tina from Borderlands 2">
-                            </li>
+
                         </ul>
                     </figure>
                 </div>
@@ -127,17 +122,17 @@
             <ul class="clearfix">
                 <li>
                     <a  class=""  href="javascript:void(0);">
-                        <img src="{{URL::asset('newShow/images/banner_bottm1.png')}}" alt="">
+                        <img src="{{URL::asset('newShow/images/jiameng.png')}}" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0);">
-                        <img src="{{URL::asset('newShow/images/banner_bottom2.png')}}" alt="">
+                        <img src="{{URL::asset('newShow/images/mentou.png')}}" alt="">
                     </a>
                 </li>
                 <li>
                     <a  href="javascript:void(0);">
-                        <img src="{{URL::asset('newShow/images/banner_bottom3.png')}}" alt="">
+                        <img src="{{URL::asset('newShow/images/nianhui.jpg')}}" alt="">
                     </a>
                 </li>
             </ul>
@@ -147,50 +142,51 @@
     <!--banner显示 e -->
 
     <!--服务介绍 s-->
-    <ul class="ser-gua clearfix">
-    <li><i class="ser-1"></i>100%个人二手车</li>
-    <li><i class="ser-2"></i>259项全面检测</li>
-    <li><i class="ser-3"></i>14天可退</li>
-    <li><i class="ser-4"></i>1年2万公里质保</li>
-</ul>    <!--服务介绍 e -->
+    <!-- <ul class="ser-gua clearfix">
+       <li><i class="ser-1"></i>100%个人二手车</li>
+       <li><i class="ser-2"></i>全面检测</li>
+       <li><i class="ser-3"></i>14天可退</li>
+       <li><i class="ser-4"></i>1年2万公里质保</li>
+       </ul>  -->   <!--服务介绍 e -->
 
     <div class="w indexTab">
     <div class="title clearfix">
         <span class="ti-left">
-            <span>热门好车</span>
+            <span></span>
         </span>
     </div>
 
     <!--帖子列表 -->
     <div data-role="showList">
-                    <div class="list" style="
-    display:block;">
+    <div class="list" style="display:block;">
     <ul class="list-bigimg clearfix">
-        <li clue_id="7357501">
+        @foreach($cars as $car)
+        <li>
             <div class="list-infoBox">
-                <a   title="青年莲花莲花L5 2011款 三厢 1.6L 自动风尚版" target="_blank" class="imgtype" href="/sjz/2c0b2fbc38ed997cx.htm" >
-                    <img width="290" height="194" src="http://www.sjztcl.com/uploads/car/201709/images/572418563913612577.jpg" alt="青年莲花莲花L5 2011款 三厢 1.6L 自动风尚版">
+                <a  title="{{$car->name}}" target="_blank" class="imgtype" href="{{route('show.car.index', ['car'=>$car->id])}}" >
+                    <img width="290" height="194" src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}" onerror="this.src='{{URL::asset("images/default.jpg")}}'" alt="{{$car->name}}" />
                 </a>
                 <p class="infoBox">
-                    <a data-gzlog="tracking_type=click&eventid=0080310000000030&carid=7357501@0" baidu_alog='pc_index_tabSelect_detailCar&click&pc_index_tabSelect_guesslike_post_c' title="青年莲花莲花L5 2011款 三厢 1.6L 自动风尚版" href="/sjz/2c0b2fbc38ed997cx.htm" target="_blank" class="info-title" gjalog="100000000050000100000010">青年莲花莲花L5 2011款 三厢 1.6L 自动风尚版</a>
+                    <a title="{{$car->name}}" href="{{route('show.car.index', ['car'=>$car->id])}}" target="_blank" class="info-title">{{$car->name}}</a>
                 </p>
                 <p class="fc-gray">
-                    <span class="">2014年1月上牌</span>
-                    <em class="shuxian">|</em>行驶4.9万公里
+                    <span class="">{{$car->plate_date}}上牌</span>
+                    <em class="shuxian">|</em>行驶{{$car->mileage}}万公里
                 </p>
                 <p class="priType-s">
                     <span>
                         <i class="fc-org priType">
-                        4.20万
+                        {{$car->top_price}}万
                         </i>
                     </span>
-                    <s>11.92万</s>
+                    <!-- <s>11.92万</s> -->
                 </p>
             </div>
         </li>
+        @endforeach
     </ul>
     <div class="all-car-link">
-        <a href="javascript:void(0);">更多车源</a>
+        <a target="_blank" href="{{route('show.cate.index')}}">更多车源</a>
     </div>
 </div>
                               
@@ -207,6 +203,46 @@
 
         // alert('hehe');
         $('#full_feature').swipeslider();
+
+        $('#storeInfo').click(function(){
+
+            var request_url = '{{route('show.sale.store')}}';
+
+            //var brand_id  = $("#brand_id").attr('brandnum');
+            //var cate_id   = $("#category_id").attr('seriesnum');
+            var mobile  = $("input[name='mobile']").val();
+
+            /*console.log(brand_id);
+            console.log(cate_id);
+            console.log(mobile);*/
+
+            if(!(/^1(3|4|5|7|8)\d{9}$/.test(mobile))){ 
+                alert("请填写正确的手机号码");  
+                return false; 
+            }
+
+            $.ajax({
+                method: 'POST',
+                url: request_url,
+                data:{mobile:mobile},
+                dataType: 'json',
+                headers: {      
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'        
+                },
+                success:function(data){
+
+                    //设置图片对应车源ID
+                    alert(data.msg);
+                    
+                },
+                error: function(xhr, type){
+                    
+                    alert('请正确选择车型并填写正确的手机号码');
+                }
+            });
+
+            return false;
+        });
     });
 </script>
 @endsection

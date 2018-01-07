@@ -38,29 +38,34 @@
                 <img class="logo" src="{{URL::asset('home/img/common/logo.png')}}" alt="淘车乐">
             </div>
             <div class="c2city">
-
-                <a href="javascript:;" class="choose-city" baidu_alog="pc_index_city&mouseenter&pc_index_city_change_h">
-                    <span>石家庄<i style="background:url('{{URL::asset('home/img/common/tupian.png')}}') no-repeat;">&nbsp;</i></span>
+                <a href="javascript:;" class="choose-city">
+                    <span>@yield('current_city_name')
+                        <i style="background:url('{{URL::asset('home/img/common/tupian.png')}}') no-repeat;">
+                            &nbsp;
+                        </i>
+                    </span>
                 </a>
 
                 <i class="maskline"></i>
 
                 <div class="city-box">
                     <div class="all-city">
-
                         <dl>
-                            <dt>周边</dt>
-                                <dd>
-
-                                    <a data-gzlog='tracking_type=click&eventid=0020060000000018&select_city=tj' baidu_alog='pc_index_city&click&pc_index_around_city_c' href='/tj/' title='天津二手车'>天津</a>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt>热门</dt>
-                                <dd>
-                                    <a baidu_alog="pc_index_city&click&pc_index_quanguo_c" data-gzlog="tracking_type=click&eventid=0020060000000021"  href="/www/" title="全国二手车">全国</a>
-                                </dd>
-                            </dl>
+                            <!-- <dt>周边</dt> -->
+                            
+                            <dd>
+                                @foreach($citysHasTcl as $city)
+                                <a  href="{{route('show.index')}}/city/{{$city->id}}">{{$city->name}}</a>
+                                @endforeach
+                                <a  href="{{route('show.index')}}/city/75">张掖</a>
+                            </dd>
+                        </dl>
+                        <!-- <dl>
+                            <dt>热门</dt>
+                            <dd>
+                                <a  href="/www/" title="全国二手车">全国</a>
+                            </dd>
+                        </dl> -->
                             <!-- <div class="city-line"></div> -->
                     </div>
                         <p class="more-city">更多城市正在加紧筹备，敬请期待。</p>
@@ -68,7 +73,7 @@
             </div>
 
             <div class="uc">
-                <a class="" href="javascript:viod(0);">
+                <a class="" target="_blank" href="http://www.sjztcl.com/admin">
                     商户登录
                     <!-- <div class="app-guide">
                         <div class="guide-ewm">
@@ -130,8 +135,8 @@
                 @endif
                 <a class="fl @if($current_page == 'cate') active @endif" href="{{route('show.cate.index')}}" title="石家庄个人二手车">我要买车</a>
                 <a class="fl @if($current_page == 'sale') active @endif" href="{{route('show.sale.index')}}" title="石家庄二手车出售">我要卖车</a>
-                <a class="fl @if($current_page == 'join') active @endif" href="{{route('show.join.index')}}" title="淘车乐二手车服务保障">服务保障</a>
-                <a class="fl @if($current_page == 'join') active @endif" href="{{route('show.join.index')}}" title="淘车乐二手车加盟">我要加盟</a>
+                <a class="fl @if($current_page == 'join') active @endif" href="{{route('show.join.index')}}" title="淘车乐二手车服务保障">我要加盟</a>
+                <a class="fl @if($current_page == 'about') active @endif" href="{{route('show.about.index')}}" title="淘车乐二手车加盟">关于我们</a>
 
                 <!-- <a class="fl " href="/ask/"  title="淘车乐二手车问答系统">二手车问答</a> -->
             </div>

@@ -45,9 +45,9 @@
                 <div class="cityListArea">
                     <div class="cityList dib-con">
                     	@foreach($citysHasTcl as $city)
-                            <a href="{{route('home.index')}}/city/{{$city->id}}"><div class="dib cityItem">{{$city->name}}</div></a>
+                            <a href="{{route('show.index')}}/city/{{$city->id}}"><div class="dib cityItem">{{$city->name}}</div></a>
                         @endforeach
-                        <a href="{{route('home.index')}}/city/75"><div class="dib cityItem">张掖</div></a>
+                        <a href="{{route('show.index')}}/city/75"><div class="dib cityItem">张掖</div></a>
                     </div>
                 </div>
             </div>
@@ -56,13 +56,13 @@
             <nav class="mainNav dib-con">
                 
                 @if (!empty($chosen_city_selection))
-                    <div class="item dib  @if($current_page == 'home') active @endif"><a href="{{route('home.index')}}/city/{{$chosen_city_selection}}"><span>首页</span></a></div>
+                    <div class="item dib  @if($current_page == 'home') active @endif"><a href="{{route('show.index')}}/city/{{$chosen_city_selection}}"><span>首页</span></a></div>
                 @else
-                    <div class="item dib  @if($current_page == 'home') active @endif"><a href="{{route('home.index')}}"><span>首页</span></a></div>
+                    <div class="item dib  @if($current_page == 'home') active @endif"><a href="{{route('show.index')}}"><span>首页</span></a></div>
                 @endif
-                <div class="item dib @if($current_page == 'cate') active @endif"><a href="{{route('home.cate.index')}}"><span>我要买车</span></a></div>
-                <div class="item dib @if($current_page == 'sale') active @endif"><a href="{{route('home.sale.index')}}"><span>我要卖车</span></a></div>
-                <div class="item dib @if($current_page == 'join') active @endif"><a href="{{route('home.join.index')}}"><span>我要加盟</span></a></div>
+                <div class="item dib @if($current_page == 'cate') active @endif"><a href="{{route('show.cate.index')}}"><span>我要买车</span></a></div>
+                <div class="item dib @if($current_page == 'sale') active @endif"><a href="{{route('show.sale.index')}}"><span>我要卖车</span></a></div>
+                <div class="item dib @if($current_page == 'join') active @endif"><a href="{{route('show.join.index')}}"><span>我要加盟</span></a></div>
             </nav>
         </div>
         <div class="dib mobileAdd">
