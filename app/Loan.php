@@ -146,4 +146,10 @@ class Loan extends Model
 
       return $this->belongsTo('App\Area', 'insurance_provence', 'id')->select('id', 'name as provence_name');
     }
+
+    // 定义loan表与Customer表一对多关系
+    public function belongsToCustomer(){
+
+      return $this->belongsTo('App\Customer', 'customer_id', 'id')->select('id', 'name as customer_name', 'indentily_card as customer_indentily_card','address as customer_address');
+    }
 }

@@ -118,6 +118,12 @@ class Customer extends Model
         return $this->hasMany('App\Chance', 'want_customer_id', 'id');
     }
 
+    // 定义Customer表与Loan表一对多关系(求购)
+    public function hasManyLoans()
+    {
+        return $this->hasMany('App\Loan', 'customer_id', 'id');
+    }
+
     // 定义Shop表与Customer表一对多关系
     public function belongsToShop(){
 

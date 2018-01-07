@@ -44,7 +44,7 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::post('cate/getChildCategory', 'CateController@getChildCategory')->name('mobel.cate.getChildCategory');
 });
 
-Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
+/*Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
        
     Route::get('car/{id}', 'CarController@index')->name('home.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('home.cate.index');
@@ -55,22 +55,24 @@ Route::group(['middleware' => 'web', 'namespace' => 'Home'], function () {
     Route::get('/sale', 'SaleController@index')->name('home.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('home.sale.store');  
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('home.sale.getChildBrand');    
-});
+});*/
 
 
 
-/*Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
+Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
        
     Route::get('car/{id}', 'CarController@index')->name('show.car.index');  
     Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('show.cate.index');
     Route::get('/', 'HomeController@index')->name('show.index');  
     Route::get('/city/{city?}', 'HomeController@index')->name('show.indexWithCity');  
-    Route::get('/join', 'JoinController@index')->name('show.join.index');  
+    Route::get('/join', 'JoinController@index')->name('show.join.index');
+    Route::get('/about', 'AboutController@index')->name('show.about.index');    
     Route::get('/sale', 'SaleController@index')->name('show.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('show.sale.store');  
     Route::match(['get', 'post'], '/sale/store', 'SaleController@store')->name('show.sale.store');
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('show.sale.getChildBrand');  
-});*/
+    Route::post('sale/getChildCategory', 'SaleController@getChildCategory')->name('show.sale.getChildCategory');  
+});
 
 
 
@@ -224,7 +226,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('chance/store', 'ChanceController@store')->name('admin.chance.store');
     Route::post('car/ajaxAdd', 'CarController@ajaxAdd')->name('admin.car.ajaxAdd');
     Route::post('area/getAreaInfo', 'AreaController@getAreaInfo')->name('admin.area.getAreaInfo');
-    Route::get('excel/export','ExcelController@export'); //Excel路由
+    Route::get('excel/export','ExcelController@export'); //导出车源,求购
+    Route::get('excel/loanExport','ExcelController@loanExport'); //导出贷款
     Route::get('excel/import','ExcelController@import');
     Route::resource('user', 'UserController'); 
     Route::resource('car', 'CarController');  
