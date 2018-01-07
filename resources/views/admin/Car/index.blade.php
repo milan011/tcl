@@ -98,7 +98,7 @@
     					<tr>
 							<td>{{$car->car_code}}</td>
 							<td>
-								<a target="_blank" href="{{route('home.car.index', ['car'=>$car->id])}}">
+								<a target="_blank" href="{{route('show.car.index', ['car'=>$car->id])}}">
 									{{$car->name}}
 								</a>
 							</td>

@@ -241,13 +241,6 @@
             </div>
             <!--<div class="loadMore">查看更多车源</div>-->
             <div class="pagination dib-con">
-                <!-- <div class="item dib prev">&lt;</div>
-                <div class="item dib num active">1</div>
-                <div class="item dib num">2</div>
-                <div class="item dib num">3</div>
-                <div class="item dib num">4</div>
-                <div class="item dib next">&gt;</div> -->
-                
                 {!! $cars->links() !!}
             </div>
         </div>

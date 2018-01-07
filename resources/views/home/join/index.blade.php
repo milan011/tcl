@@ -1,4 +1,4 @@
-@extends('home.main')
+@extends('show.mainnew')
 
 @section('head_content')
     <!-- 详情页样式 -->

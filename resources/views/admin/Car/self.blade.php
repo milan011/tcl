@@ -84,7 +84,7 @@
     					<tr>
 							<td>{{$car->car_code}}</td>
 							<td>
-								<a target="_blank" href="{{route('home.car.index', ['car'=>$car->id])}}">
+								<a target="_blank" href="{{route('show.car.index', ['car'=>$car->id])}}">
 									{{$car->name}}
 								</a>
 							</td>
@@ -146,7 +146,7 @@
 												</a>												
 											</li>	
 											<li>
-												<a target="_blank" class="btn btn-success" href="{{route('home.car.index', ['car'=>$car->id])}}">
+												<a target="_blank" class="btn btn-success" href="{{route('show.car.index', ['car'=>$car->id])}}">
 													<i class="icon-edit icon-white"></i> 网站查看
 												</a>												
 											</li>										

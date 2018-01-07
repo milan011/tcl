@@ -480,7 +480,7 @@
 
 						var contents  = '车源已经存在';
 						// var car_id    = data.id;
-						var href_info = "{{route('home.index')}}" + '/car/' + data.id;
+						var href_info = "{{route('show.index')}}" + '/car/' + data.id;
 
 						contents += '<a style="color:red" target="_blank" href = "';
 						contents += href_info;
