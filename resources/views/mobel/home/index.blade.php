@@ -131,7 +131,7 @@
             <ul class="list row-seven brand clearfix">
                 @foreach($recomment_brands as $key=>$brand)
                 @if($key < 7)
-                <li class="list-item" data-url="url={{substr($brand->logo_img, 0, -4)}}">
+                <li class="list-item">
                     <a href="{{route('mobel.cate.index')}}/b{{$brand->id}}@if(isset($chose_city))/d{{$chose_city}} @endif" >
                         <i class="icon icon-{{substr($brand->logo_img, 0, -4)}}"></i>
                         {{$brand->name}}
