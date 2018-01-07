@@ -83,7 +83,7 @@ class CarController extends CommonController
         $capacity       = config('tcl.capacity'); //获取配置文件排量
         $category_type  = config('tcl.category_type'); //获取配置文件中车型类别
         $sale_number    = config('tcl.sale_number'); //获取配置文件中车型类别
-        $current_page   = 'cate';
+        $current_page   = 'car';
         $title          = $cars->name.'_石家庄淘车乐真实车源';
         $meta_des       = $cars->name.'淘车乐为您提供最真实的二手车报价,最详细的二手车车源情况';
 

@@ -111,6 +111,16 @@ class CateController extends CommonController
                     $select_condition['city'] = getConditionContent($value);
                     $url_condition['d'] = getConditionContent($value);
                     break;
+                case 'y':
+                    # 颜色
+                    $select_condition['color'] = getConditionContent($value);
+                    $url_condition['y'] = getConditionContent($value);
+                    break;
+                case 'x':
+                    # 变速箱
+                    $select_condition['gearbox'] = getConditionContent($value);
+                    $url_condition['x'] = getConditionContent($value);
+                    break;
                 default:
                     # code...
                     break;
@@ -141,17 +151,22 @@ class CateController extends CommonController
                 }
 
                 $select_condition['shop_list'] = $shop_list;
-                unset($select_condition['shop_id']);
+                // unset($select_condition['shop_id']);
             }       
         }else{
             //无门店选择,则获取该城市所有门店
            $select_condition['shop_list'] = $sel_city['shop_list']; 
         }
+
+        $select_condition['plate_city'] = $sel_city['show_city_id'];
+        
         // dd($select_condition);
         // 符合条件车源
         $cars = $this->car->getAllCarsWithBefore($select_condition);
         // dd(lastSql());
-        // dd($cars); 
+        //p($cars->total());
+        //p($cars->count());
+        //dd($cars); 
         // dd($cars[0]->hasOneImagesOnFirst);
 
         // 推荐品牌
@@ -163,11 +178,13 @@ class CateController extends CommonController
         // dd($all_shop[37]);
 
         //根据首字母取得所有品牌分类列表
-        $letter_list       = collect($this->brand->getBransLetter())->chunk(8)->toArray();
+        $letter_list               = collect($this->brand->getBransLetter())->chunk(8)->toArray();
+        // $letter_list_with_no_group = $this->brand->getBransLetter();
         // $brand_letter_list = collect($this->brand->getBransWithLetter())->chunk(8)->toArray();
         $brand_letter_list = $this->brand->getBransWithLetter();
+        $brand_letter_list_with_no_chunk = $this->brand->getBransWithLetter();
         // dd($letter_list);
-        // dd($brand_letter_list['A']);
+        // dd($brand_letter_list_with_no_chunk);
 
         //当前车型信息
         $current_cate = $this->brand->getCurrentBrand($select_condition);
@@ -230,7 +247,7 @@ class CateController extends CommonController
             //$current_category_with_url[$key]['url']     = $select_url;
             $current_category[$key]['url'] = $select_url;
         }
-        // dd($current_category);
+        // dd($url_condition);
         // 清除车辆类型信超链接
         foreach ($url_condition_c as $key => $value) {
             unset($url_condition_c['c']);
@@ -351,13 +368,13 @@ class CateController extends CommonController
 
         if(!empty($url_condition['b'])){ //当前品牌
             $brand = $this->brand->find($url_condition['b']);
-            $current_condition['brand']['content'] = $brand->name;
+            $current_condition['brand']['content'] = '品牌：'.$brand->name;
             $current_condition['brand']['url'] = $clean_recomment_brands_url;
         }
 
         if(!empty($url_condition['c'])){ //当前车型
             $brand = $this->brand->find($url_condition['c']);
-            $current_condition['category']['content'] = $brand->name;
+            $current_condition['category']['content'] = '车系：'.$brand->name;
             $current_condition['category']['url'] = $clean_current_category_url;
         }
 
@@ -366,37 +383,37 @@ class CateController extends CommonController
             $shop = $this->shop->find($url_condition['s']);
             // dd(lastsql());
             // dd($shop);
-            $current_condition['shop']['content'] = $shop->name;
+            $current_condition['shop']['content'] = '门店：'.$shop->name;
             $current_condition['shop']['url'] = $clean_shop_url;
         }
 
         if(!empty($url_condition['t'])){ //当前车辆类型
 
-            $current_condition['category_type']['content'] = $category_type[$url_condition['t']];
+            $current_condition['category_type']['content'] = '类型：'.$category_type[$url_condition['t']];
             $current_condition['category_type']['url']     = $clean_category_type_url;
         }
 
         if(!empty($url_condition['a'])){ //当前车龄区间
 
-            $current_condition['age']['content'] = $age[$url_condition['a']];
+            $current_condition['age']['content'] = '车龄：'.$age[$url_condition['a']];
             $current_condition['age']['url']     = $clean_age_url;
         }
 
         if(!empty($url_condition['p'])){ //当前价格区间
 
-            $current_condition['price']['content'] = $price_interval[$url_condition['p']];
+            $current_condition['price']['content'] = '价格：'.$price_interval[$url_condition['p']];
             $current_condition['price']['url']     = $clean_price_interval_url;
         }
 
         if(!empty($url_condition['x'])){ //当前变速箱条件
 
-            $current_condition['gearbox']['content'] = $gearbox[$url_condition['x']];
+            $current_condition['gearbox']['content'] = '变速箱：'.$gearbox[$url_condition['x']];
             $current_condition['gearbox']['url']     = $clean_gearbox_interval_url;
         }
 
         if(!empty($url_condition['y'])){ //当前颜色条件
             // dd($out_color_mobel);
-            $current_condition['color']['content'] = $out_color_mobel[$url_condition['y']]['name'];
+            $current_condition['color']['content'] = '颜色：'.$out_color_mobel[$url_condition['y']]['name'];
             $current_condition['color']['url']     = $clean_color_interval_url;
         }
 
@@ -404,10 +421,10 @@ class CateController extends CommonController
 
         $current_page   = 'cate';
         $title          = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
-
+        // dd($cars->links());
         /*$end = $this->getCurrentTime();
         $spend = $end - $begin;
-
+    
         echo "脚本执行时间为:".$spend."\n";*/
         return view('show.cate.index', compact(
             'cars', 
@@ -424,6 +441,7 @@ class CateController extends CommonController
             'all_shop', 
             'letter_list', 
             'brand_letter_list',
+            'brand_letter_list_with_no_chunk',
             'current_category',
             'clean_price_interval_url',
             'clean_age_url',

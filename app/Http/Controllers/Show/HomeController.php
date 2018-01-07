@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Show;
 use App\Repositories\Brand\BrandRepositoryContract;
 use App\Repositories\Car\CarRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
+use App\Repositories\Want\WantRepositoryContract;
 use Illuminate\Http\Request;
 use View;
 
@@ -13,16 +14,19 @@ class HomeController extends CommonController {
 	protected $brand;
 	protected $request;
 	protected $shop;
+	protected $want;
 
 	public function __construct(
 		CarRepositoryContract $car,
 		BrandRepositoryContract $brand,
 		ShopRepositoryContract $shop,
+		WantRepositoryContract $want,
 		Request $request
 	) {
 		$this->brand = $brand;
 		$this->car = $car;
 		$this->shop = $shop;
+		$this->want = $want;
 		$this->request = $request;
 		// $this->middleware('brand.create', ['only' => ['create']]);
 		parent::__construct($request);
@@ -49,8 +53,13 @@ class HomeController extends CommonController {
 
 		$select_condition['car_status'] = '1';
 		$select_condition['shop_list'] = $sel_city['shop_list'];
-
+		$select_condition['plate_city'] = $sel_city['show_city_id'];
 		// dd($select_condition);
+		//车源和求购总量
+		$nums_car = $this->car->getAllCarsNum();
+		$nums_want = $this->want->getAllWantsNum();
+		
+		$all_nums = $nums_want + $nums_car;
 
 		$cars = $this->car->getAllCarsWithBefore($select_condition);
 
@@ -65,7 +74,7 @@ class HomeController extends CommonController {
 		$price_begin_end = config('tcl.price_begin_end'); //获取配置文件中价格区间起始
 		$current_page = 'home';
 		$title = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
-
-		return view('show.home.index', compact('cars', 'recomment_brands', 'age', 'price_interval', 'category_type', 'show_city_name', 'current_page', 'title', 'all_top_brands'));
+		// dd($price_interval);
+		return view('show.home.index', compact('cars', 'recomment_brands', 'age', 'price_interval', 'category_type', 'show_city_name', 'current_page', 'title', 'all_top_brands', 'all_nums'));
 	}
 }

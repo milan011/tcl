@@ -55,16 +55,19 @@ class SaleController extends CommonController
 
         // dd(Session::all());
         $sel_city = getSelCity($sel_city_id, $this->shop); //车源来自城市信息
-
+        // dd($this->shop);
         $show_city_name = $sel_city['show_city_name'];       
         $chosen_city_selection = Session('chosen_city_id');
         $show_city_name = $sel_city['show_city_name']; 
-
+        // dd($show_city_name);
         $all_top_brands = $this->brand->getChildBrand(0);
+        // 推荐品牌
+        $recomment_brands    = $this->brand->getRecommentBrandsWithBefore();
+        $brand_letter_list_with_no_chunk = $this->brand->getBransWithLetter();
         $current_page   = 'sale';
         $title           = '免费卖车【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
         // dd($all_top_brands);
-        return view('show.sale.index', compact('all_top_brands', 'current_page', 'title', 'show_city_name'));
+        return view('show.sale.index', compact('all_top_brands', 'current_page', 'title', 'show_city_name', 'recomment_brands', 'brand_letter_list_with_no_chunk'));
     }
 
     /**
@@ -73,12 +76,12 @@ class SaleController extends CommonController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCustomerSaleRequest $customerSaleRequest)
+    public function store(Request $customerSaleRequest)
     {   
         // dd('hah ');
         // dd($customerSaleRequest->all());
         $current_ip = $customerSaleRequest->getClientIp();
-        // $current_ip = '106.117.13.179';
+        $current_ip = '106.117.13.179';
         $city_info  = getCurrentCityByIp($current_ip);
         // dd('hehe');
         // dd($current_ip);
@@ -112,6 +115,32 @@ class SaleController extends CommonController
         $brands = $this->brand->getChildBrand($brand_id);
 
         // p($brands->toJson());exit;
+        if($brands->count() > 0){
+
+            return response()->json(array(
+                'status' => 1,
+                'data'   => $brands,
+                'message'   => '获取品牌列表成功'
+            ));
+        }else{
+
+            return response()->json(array(
+                'status' => 0,
+                'message'   => '该品牌下无子品牌'
+            ));
+        }        
+    }
+
+    //获得顶级品牌车系,跳过合作厂家
+    public function getChildCategory(Request $request){
+
+        // dd($request->all());
+        $brand_id = $request->input('pid');
+
+        $brands = $this->brand->getChildCategory($brand_id);
+
+        /*p($brands);
+        p($brands->toJson());exit;*/
         if($brands->count() > 0){
 
             return response()->json(array(
