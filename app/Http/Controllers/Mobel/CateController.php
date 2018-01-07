@@ -179,7 +179,7 @@ class CateController extends CommonController
                 }
 
                 $select_condition['shop_list'] = $shop_list;
-                unset($select_condition['shop_id']);
+                // unset($select_condition['shop_id']);
             }       
         }else{
             //无门店选择,则获取该城市所有门店
