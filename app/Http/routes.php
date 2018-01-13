@@ -227,7 +227,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('car/ajaxAdd', 'CarController@ajaxAdd')->name('admin.car.ajaxAdd');
     Route::post('area/getAreaInfo', 'AreaController@getAreaInfo')->name('admin.area.getAreaInfo');
     Route::get('excel/export','ExcelController@export'); //导出车源,求购
-    Route::get('excel/loanExport','ExcelController@loanExport'); //导出贷款
+    Route::match(['get', 'post'], 'excel/loanExport','ExcelController@loanExport')->name('admin.loan.export'); //导出贷款
     Route::get('excel/import','ExcelController@import');
     Route::resource('user', 'UserController'); 
     Route::resource('car', 'CarController');  

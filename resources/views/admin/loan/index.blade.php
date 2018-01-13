@@ -52,6 +52,11 @@
             		<li style="display: inline-block;line-height:20px;float:right;">
 						<a class="btn btn-primary" href="{{route('admin.loan.create')}}">添加贷款</a>
 					</li>
+					@ifUserCan('loan.export')
+					<li style="display: inline-block;line-height:20px;float:right;">
+						<a class="btn btn-primary" id="loan_export" href="javascript:void(0)">导出数据</a>
+					</li>
+					@endif
 					<li style="display:inline-block;line-height:20px;">
 						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
 					</li>
@@ -188,9 +193,10 @@
 				<div class="modal-footer">
 				</div>
 				<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
-				<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
+				<input type="hidden" id="export_url" value="{{route('admin.loan.export')}}">
+                <input type="hidden" id="select_url" value="{{route('admin.loan.index')}}/index">
 				<input type="hidden" name="changStatus_url" value="{{route('admin.loan.changeStatus')}}">
-				<button type="submit" class="btn btn-primary">搜索</button>
+				<button type="submit" id="loan_select" class="btn btn-primary">搜索</button>
 			</form>	
 		</div>						         
 	</div>		
@@ -230,6 +236,27 @@
             autoclose: true,
             format: 'yyyy-mm-dd',
             todayHighlight: true
+        });
+
+		//导出贷款
+        $('#loan_export').click(function(event) {
+            var export_url = $('#export_url').val();
+            var form_obj   = $('#condition');
+
+            form_obj.attr('action', export_url);
+            form_obj.submit();
+            /*alert(export_url);
+            alert(form_obj_action);*/
+        });
+
+        //搜索贷款
+        $('#loan_select').click(function(event) {
+            /* Act on the event */
+            var select_url = $('#select_url').val();
+            var form_obj   = $('#condition');
+
+            form_obj.attr('action', select_url);
+            form_obj.submit();
         });
 
         //废弃激活贷款
