@@ -190,7 +190,7 @@ class CateController extends CommonController
         // dd($select_condition);
         // 符合条件车源
         $cars = $this->car->getAllCarsWithBeforeMobel($select_condition);
-        // dd(lastSql());
+        dd(lastSql());
         // dd($cars->hasMorePages());
         // dd($cars->count());
         // dd($cars[0]->hasOneImagesOnFirst);

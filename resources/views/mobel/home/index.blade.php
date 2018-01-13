@@ -131,7 +131,7 @@
             <ul class="list row-seven brand clearfix">
                 @foreach($recomment_brands as $key=>$brand)
                 @if($key < 7)
-                <li class="list-item">
+                <li class="list-item" data-url="url={{substr($brand->logo_img, 0, -4)}}">
                     <a href="{{route('mobel.cate.index')}}/b{{$brand->id}}@if(isset($chose_city))/d{{$chose_city}} @endif" >
                         <i class="icon icon-{{substr($brand->logo_img, 0, -4)}}"></i>
                         {{$brand->name}}
@@ -241,7 +241,6 @@
         </div>
     @endif
     </section>
-    <!-- <button class="btn btn_primary" id="onMenuShareTimeline">onMenuShareTimeline</button> -->
 @endsection
 
 @section('footer_content')
@@ -265,6 +264,7 @@
             $('#full_feature').swipeslider();
 
 
+            // console.log(weixsdk);
 
             wx.config({
             debug: false,

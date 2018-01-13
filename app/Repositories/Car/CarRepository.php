@@ -265,11 +265,29 @@ class CarRepository implements CarRepositoryContract
             $query = $query->where('out_color', $condition['color']);
         }
         //门店筛选
-        if(!empty($condition['shop_id'])){
+        /*if(!empty($condition['shop_id'])){
             
             $query = $query->where('shop_id', $condition['shop_id']);
         }else{
             $query = $query->whereIn('shop_id', $condition['shop_list']);
+        }*/
+        if(!empty($condition['shop_id'])){
+            // dd('have');
+            // $query = $query->where('shop_id', $condition['shop_id']);
+            $query = $query->where(function($query) use ($condition){
+                $query = $query->where('shop_id', $condition['shop_id']);
+                if(isset($condition['shop_list'])){
+                    $query = $query->orWhereIn('shop_id', $condition['shop_list']);
+                }
+                
+            });
+        }else{
+            // dd('nothave');
+            $query = $query->where(function($query) use ($condition){
+
+                $query = $query->whereIn('shop_id', $condition['shop_list']);
+                $query = $query->orWhere('plate_city', $condition['plate_city']);
+            });
         }
         // dd($query);
         $query = $query->where(function($query) use ($condition){

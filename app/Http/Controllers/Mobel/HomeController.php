@@ -54,6 +54,7 @@ class HomeController extends CommonController {
 		// dd($select_condition);
 
 		$cars = $this->car->getAllCarsWithBefore($select_condition);
+		// dd(lastSql());
 		// dd($cars);
 		// 推荐品牌
 		$recomment_brands      = $this->brand->getRecommentBrandsWithBefore();

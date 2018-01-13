@@ -18,8 +18,8 @@ class WeiXinComposer
         $jssdk   = new \JSSDK("wx195ad83501ef1dab", "54decf6337e896ffc393bd0110b70758");
         $weixsdk = $jssdk->GetSignPackage();
         
-        /*p('wo u');
-        dd($weixsdk);*/
+        p('wo u');
+        dd($weixsdk);
         $view->with('weixsdk', $weixsdk);
     }
 }

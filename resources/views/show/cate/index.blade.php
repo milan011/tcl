@@ -103,7 +103,7 @@
             <div class="dd-top">
                 @foreach($price_with_url as $key=>$price)
                     @if($key < 10)
-                        <a class="@if($key == 1) active @endif" href="{{$price['url']}}">
+                        <a href="{{$price['url']}}">
                             {{$price['content']}}
                         </a>
                     @endif

@@ -206,7 +206,7 @@
     </div>
     <div class="copyRight">
         <p>CopyRight &copy; 2012 All right reserved 淘车乐二手车交易网 版权所有</p>
-        <p>电话0311-87785683 传真：0311-87220080 冀ICP备16003677号-1</p>
+        <p>服务电话:4006706969 冀ICP备16003677号-1</p>
     </div>
     @yield('script_content')
 </footer>
