@@ -79,7 +79,7 @@
 					<div class="control-group">
 						<label class="control-label" for="car_plate">车牌号</label>
 						<div class="controls">
-					  		<input class="input-xlarge focused" id="car_plate" readonly="readonly" name="car_plate" type="text" value="{{$insurance->car_plate}}">
+					  		<input class="input-xlarge focused" id="car_plate"  name="car_plate" type="text" value="{{$insurance->car_plate}}">
 						</div>
 					</div>
 

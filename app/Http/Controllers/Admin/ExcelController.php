@@ -12,6 +12,7 @@ use App\Cars;
 use App\Want;
 use App\User;
 use App\Loan;
+use App\Insurance;
 
 use Excel;
 
@@ -117,6 +118,7 @@ class ExcelController extends Controller
         $excels->export('xls');
     }
 
+    //导出贷款
     public function loanExport(Request $request){
         // dd('hehe');
 
@@ -148,6 +150,7 @@ class ExcelController extends Controller
         $query_loans = $query_loans->where('created_at', '<=', $end_date);
         $query_loans = $query_loans->where('created_at', '>=', $begin_date);       
         $query_loans = $query_loans->where('creater_id', '!=', '1');       
+        $query_loans = $query_loans->where('loan_status', '=', '1');       
 
         $loans_info = $query_loans->select($select_columns_car)
                      ->orderBy('creater_id', 'asc')
@@ -155,16 +158,21 @@ class ExcelController extends Controller
                      ->get();
 
         // dd(lastSql());
-        /*dd($loans_info[0]);
-        dd($loans_info[0]->belongsToCustomer);*/
+        // dd($loans_info[2]->card);
+
+        /*$card_info = $loans_info[2]->card;
+        echo nl2br($card_info);
+        $card_info = str_replace("\r", '', $card_info);
+        dd($card_info);*/
+        // p($loans_info[0]->belongsToCustomer->customer_indentily_card);exit;
 
         $loans_info_content = [];
         foreach ($loans_info as $key => $value){
 
             $loans_info_content[] =  array(
                 $value->name,
-                $value->belongsToCustomer->customer_indentily_card,
-                $value->card,
+                $value->belongsToCustomer->customer_indentily_card."\t",
+                $value->card."\t",
                 $value->bill_day,
                 $value->telephone,
                 $value->car_name,
@@ -210,7 +218,141 @@ class ExcelController extends Controller
         // dd($file_name);
         $excels = Excel::create($file_name,function($excel) use ($loans_info_content){
             $excel->sheet('score', function($sheet) use ($loans_info_content){
+                $sheet->setWidth('B', 30);
+                $sheet->setWidth('C', 30);
+                $sheet->setWidth('E', 20);
+                $sheet->setWidth('F', 50);
+                $sheet->setWidth('P', 20);
+                $sheet->setWidth('Q', 20);
+                $sheet->setWidth('R', 20);
+                $sheet->setWidth('S', 60);
+                $sheet->setWidth('T', 20);
+                $sheet->setWidth('X', 20);
+                $sheet->setWidth('AE', 20);
+                $sheet->setWidth('AF', 40);
                 $sheet->rows($loans_info_content);
+            });
+        });
+
+        // dd($excels->save());
+        $excels->export('xls');
+    }
+
+    //导出保险
+    public function insuranceExport(Request $request){
+        // dd('hehe');
+
+        //贷款搜索内容列
+        $select_columns_car = ['id', 'insurance_code', 'name', 'company_commercial', 'company_interest', 'car_plate', 'telephone','categorey_id', 'source', 'traffic_date', 'vehicle_date', 'traffic_price', 'vehicle_price', 'vehicle_tax', 'total_price', 'detail', 'interest_rate', 'commercial_rate', 'rebeat', 'royalty_ratio', 'commercial_ratio', 'royalty', 'profit', 'need_pay', 'salesman', 'insurance_status', 'remark', 'customer_id', 'remark', 'creater_id', 'insurance_provence', 'insurance_city', 'created_at'];
+
+
+        // p($request->all());
+        // p(Carbon::today());
+        $now         = Carbon::today();  //当前日期对象
+        $waster_date = $now->modify('-7 days');
+
+        /*p($waster_date->toDateString());
+        dd($now->toDateString());*/
+        /*p($now);
+        p($now->toDateString());*/
+
+        $begin_date = !empty($request->begin_date) ? $request->begin_date : $waster_date->toDateString();
+        $end_date   = !empty($request->end_date) ? $request->end_date : Carbon::today()->toDateString();
+        $insurance_company_interest   = config('tcl.insurance_company_interest'); //获取配置文件中商险公司
+        $insurance_company_commercial = config('tcl.insurance_company_commercial'); //获取配置文件中交强公司
+        $insurance_sor                = config('tcl.insurance_sor'); //获取配置文件中保险来源
+
+        /*p($begin_date);
+        dd($end_date);*/
+        // $creater_list = ['64', '65', '78', '89', '36', '4', '105', '114',
+            // '116', '117', '118'];
+        //车源搜索条件
+        $query_insurances = new Insurance();
+        // $query_insurances = $query_insurances->whereIn('creater_id', $creater_list);
+        $query_insurances = $query_insurances->where('created_at', '<=', $end_date);
+        $query_insurances = $query_insurances->where('created_at', '>=', $begin_date);       
+        $query_insurances = $query_insurances->where('creater_id', '!=', '1');       
+        $query_insurances = $query_insurances->where('insurance_status', '=', '1');       
+
+        $insurances_info = $query_insurances->select($select_columns_car)
+                     ->orderBy('creater_id', 'asc')
+                     ->orderBy('updated_at', 'desc')
+                     ->get();
+
+        // dd(lastSql());
+        // dd($insurances_info[0]);
+
+        /*$card_info = $insurances_info[2]->card;
+        echo nl2br($card_info);
+        $card_info = str_replace("\r", '', $card_info);
+        dd($card_info);*/
+        // p($insurances_info[0]->belongsToCustomer->customer_indentily_card);exit;
+
+        $insurances_info_content = [];
+        foreach ($insurances_info as $key => $value){
+
+            $insurances_info_content[] =  array(
+                $value->insurance_code,
+                $insurance_company_commercial[$value->company_commercial].'/'.$insurance_company_interest[$value->company_interest],
+                $value->name,
+                $value->car_plate,
+                $value->telephone."\t",
+                $value->belongsToBrand->brand_name,
+                $insurance_sor[$value->source],
+                '',
+                '',
+                $value->traffic_date,
+                $value->vehicle_date,
+                $value->traffic_price,
+                $value->vehicle_tax,
+                $value->vehicle_price,
+                $value->total_price,
+                $value->commercial_rate.'%/'.$value->interest_rate.'%',
+                $value->rebeat,
+                $value->commercial_ratio.'%/'.$value->royalty_ratio.'%',
+                $value->royalty,
+                '',
+                '',
+                $value->profit,
+                '',
+                $value->need_pay,
+                '',
+                $value->salesman,
+                substr($value->created_at, 0 ,10),
+                $value->remark,
+            );
+        }
+
+        // array_unshift($insurances_info_content, ['客户姓名','身份证号码','客户卡号','账单日','电话','车辆名称','评估价(万)','车贷金额(万)','保险贷款(万)','其他衍生贷款(万)','总贷款(万)','期数(月)','刷卡日期','首月还款','每月还款','次年续保起始日期','旧车牌号','新车牌号','家庭住址','其他联系人电话','担保人','担保人电话','担保人地址','车辆初次登记日期','手续费（元）','汽贸利润（元）','贷款部利润（元）','家访费','家访','贷款渠道','客户渠道','备注', '贷款顾问','创建日期']);
+        // 
+        array_unshift($insurances_info_content, ['序号','保险公司(商险/交强)','被保人','车牌号','电话','车型','来源','介绍人','联系电话','交强到期日期','商业到期日期','交强','车船税','商业','总保费','利率(商险/交强)','返点','提成比例(商险/交强)','提成','应发工资','实收','利润','快递','需支付','加盟店是否结费','业务员','上传日期','备注']);
+
+        // dd($insurances_info_content);
+        $file_name = '保险统计(';
+        $file_name .= $begin_date;
+        $file_name .= '至';
+        $file_name .= $end_date;
+        $file_name .= ')';
+        // dd($file_name);
+        $excels = Excel::create($file_name,function($excel) use ($insurances_info_content){
+            $excel->sheet('score', function($sheet) use ($insurances_info_content){
+                $sheet->setWidth('B', 20);
+                $sheet->setWidth('C', 10);
+                $sheet->setWidth('D', 30);
+                $sheet->setWidth('E', 20);
+                $sheet->setWidth('F', 30);
+                $sheet->setWidth('J', 20);
+                $sheet->setWidth('K', 20);
+                $sheet->setWidth('P', 20);
+                $sheet->setWidth('Q', 20);
+                $sheet->setWidth('R', 20);
+                $sheet->setWidth('S', 10);
+                $sheet->setWidth('T', 20);
+                $sheet->setWidth('X', 20);
+                $sheet->setWidth('Y', 20);
+                $sheet->setWidth('AA', 30);
+                $sheet->setWidth('AB', 60);
+                $sheet->rows($insurances_info_content);
             });
         });
 

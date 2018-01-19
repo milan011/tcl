@@ -52,6 +52,11 @@
             		<li style="display: inline-block;line-height:20px;float:right;">
 						<a class="btn btn-primary" href="{{route('admin.insurance.create')}}">添加保险</a>
 					</li>
+					@ifUserCan('insurance.export')
+					<li style="display: inline-block;line-height:20px;float:right;">
+						<a class="btn btn-primary" id="insurance_export" href="javascript:void(0)">导出数据</a>
+					</li>
+					@endif
 					<li style="display:inline-block;line-height:20px;">
 						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
 					</li>
@@ -173,6 +178,8 @@
 				<div class="modal-footer">
 				</div>
 				<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
+				<input type="hidden" id="export_url" value="{{route('admin.insurance.export')}}">
+                <input type="hidden" id="select_url" value="{{route('admin.insurance.index')}}/index">
 				<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
 				<button type="submit" class="btn btn-primary">搜索</button>
 			</form>	
@@ -212,6 +219,27 @@
             autoclose: true,
             format: 'yyyy-mm-dd',
             todayHighlight: true
+        });
+
+		//导出保险
+        $('#insurance_export').click(function(event) {
+            var export_url = $('#export_url').val();
+            var form_obj   = $('#condition');
+
+            form_obj.attr('action', export_url);
+            form_obj.submit();
+            /*alert(export_url);
+            alert(form_obj_action);*/
+        });
+
+        //搜索保险
+        $('#insurance_select').click(function(event) {
+            /* Act on the event */
+            var select_url = $('#select_url').val();
+            var form_obj   = $('#condition');
+
+            form_obj.attr('action', select_url);
+            form_obj.submit();
         });
 
         //废弃激活保险
