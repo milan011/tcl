@@ -73,7 +73,7 @@ class HomeController extends CommonController {
 		$age_begin_end = config('tcl.age_begin_end'); //获取配置文件中车龄区间起始
 		$price_begin_end = config('tcl.price_begin_end'); //获取配置文件中价格区间起始
 		$current_page = 'home';
-		$title = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
+		$title = '河北淘车乐二手车';
 		// dd($price_interval);
 		return view('show.home.index', compact('cars', 'recomment_brands', 'age', 'price_interval', 'category_type', 'show_city_name', 'current_page', 'title', 'all_top_brands', 'all_nums'));
 	}

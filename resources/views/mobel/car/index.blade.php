@@ -264,7 +264,7 @@
             // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
             wx.onMenuShareAppMessage({
                 title: "{{$cars->name}}",
-                desc: '卖车人的故事讲给买车人听',
+                desc: '{{$cars->name}}',
                 link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}",
                 imgUrl:'http://www.sjztcl.com/uploads/car/' + "{{$cars->hasOneImagesOnFirst->filename}}",
                 trigger: function (res) {
@@ -282,9 +282,10 @@
             });
         // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
             wx.onMenuShareTimeline({
-            title: '淘车乐',
-            link: 'http://m.sjztcl.com',
-            imgUrl: 'http://www.sjztcl.com/getheadimg.png',
+            title: '{{$cars->name}}',
+            desc: '{{$cars->name}}',
+            link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}",
+            imgUrl: 'http://www.sjztcl.com/uploads/car/' + "{{$cars->hasOneImagesOnFirst->filename}}",
             trigger: function (res) {
               // alert('用户点击分享到朋友圈');
             },
@@ -300,10 +301,10 @@
           });
         // 2.3 监听“分享到QQ”按钮点击、自定义分享内容及分享结果接口
         wx.onMenuShareQQ({
-          title: '淘车乐',
-          desc: '卖车人的故事讲给买车人听',
-          link: 'http://m.sjztcl.com',
-          imgUrl: 'http://www.sjztcl.com/getheadimg.png',
+          title: '{{$cars->name}}',
+          desc: '{{$cars->name}}',
+          link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}",
+          imgUrl: 'http://www.sjztcl.com/uploads/car/' + "{{$cars->hasOneImagesOnFirst->filename}}",
           trigger: function (res) {
             // alert('用户点击分享到QQ');
           },
@@ -323,10 +324,10 @@
       
       // 2.4 监听“分享到微博”按钮点击、自定义分享内容及分享结果接口
         wx.onMenuShareWeibo({
-            title: '淘车乐',
-            desc: '卖车人的故事讲给买车人听',
-            link: 'http://m.sjztcl.com',
-            imgUrl: 'http://www.sjztcl.com/getheadimg.png',
+            title:'{{$cars->name}}',
+            desc: '{{$cars->name}}',
+            link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}",
+            imgUrl: 'http://www.sjztcl.com/uploads/car/' + "{{$cars->hasOneImagesOnFirst->filename}}",
             trigger: function (res) {
               // alert('用户点击分享到微博');
             },

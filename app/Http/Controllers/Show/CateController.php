@@ -425,7 +425,7 @@ class CateController extends CommonController
             $current_condition['color']['url']     = $clean_color_interval_url;
         }
 
-        // dd($current_condition);
+        dd($current_condition);
 
         $current_page   = 'cate';
         $title          = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
