@@ -5,7 +5,7 @@
  * Date: 2017/10/12
  * Time: 18:07
  */
-namespace App\Http\Routes;
+/*namespace App\Http\Routes;
 
 use Illuminate\Contracts\Routing\Registrar;
 
@@ -26,4 +26,18 @@ class ShowRoutes
             $router->post('sale/getChildBrand', 'SaleController@getChildBrand')->name('show.sale.getChildBrand');  
         });
     }
-}
+}*/
+Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
+       
+    Route::get('car/{id}', 'CarController@index')->name('show.car.index');  
+    Route::get( 'cate/{brand?}/{condition?}', 'CateController@index')->name('show.cate.index');
+    Route::get('/', 'HomeController@index')->name('show.index');  
+    Route::get('/city/{city?}', 'HomeController@index')->name('show.indexWithCity');  
+    Route::get('/join', 'JoinController@index')->name('show.join.index');
+    Route::get('/about', 'AboutController@index')->name('show.about.index');    
+    Route::get('/sale', 'SaleController@index')->name('show.sale.index');  
+    Route::post('/sale/store', 'SaleController@store')->name('show.sale.store');  
+    Route::match(['get', 'post'], '/sale/store', 'SaleController@store')->name('show.sale.store');
+    Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('show.sale.getChildBrand');  
+    Route::post('sale/getChildCategory', 'SaleController@getChildCategory')->name('show.sale.getChildCategory');  
+});

@@ -5,7 +5,7 @@
  * Date: 2017/10/12
  * Time: 18:07
  */
-namespace App\Http\Routes;
+/*namespace App\Http\Routes;
 
 use Illuminate\Contracts\Routing\Registrar;
 
@@ -27,4 +27,17 @@ class MobelRoutes
             $router->post('cate/getChildCategory', 'CateController@getChildCategory')->name('mobel.cate.getChildCategory');
         });
     }
-}
+}*/
+
+Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => 'Mobel'], function () {
+    Route::get('/car/{id}', 'CarController@index')->name('mobel.car.index');  
+    Route::get( '/cate/{brand?}/{condition?}', 'CateController@index')->name('mobel.cate.index');
+    Route::get('/', 'HomeController@index')->name('mobel.index');  
+    Route::get('/changeCity/{city?}', 'HomeController@changeCity')->name('mobel.changeCity');  
+    Route::get('/city/{city?}', 'HomeController@index')->name('mobel.indexWithCity');  
+    Route::get('/join', 'JoinController@index')->name('mobel.join.index');  
+    Route::get('/sale', 'SaleController@index')->name('mobel.sale.index');  
+    Route::post('/sale/store', 'SaleController@store')->name('mobel.sale.store');  
+    Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('mobel.sale.getChildBrand');
+    Route::post('cate/getChildCategory', 'CateController@getChildCategory')->name('mobel.cate.getChildCategory');
+});
