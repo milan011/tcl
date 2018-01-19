@@ -85,7 +85,7 @@
 							<td>{{$transcation->done_time}}</td>													
 							<td>{{substr($transcation->created_at, 0 ,10)}}</td>	
 							<td>{{$transcation_stauts_config[$transcation->trade_status]}}</td>	
-							<td>{{$transcation->belongsToChance->belongsToUser->nick_name}}</td>	
+							<td>{{$transcation->belongsToChance->belongsToUser->nick_name or ''}}</td>	
 							<td>{{$transcation->belongsToChance->belongsToShop->shop_name}}</td>
 							@if($transcation->user_id == Auth::id())		
 							<td class="center">
