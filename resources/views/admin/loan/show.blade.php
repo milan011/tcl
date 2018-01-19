@@ -87,8 +87,8 @@
 					{{$loan->telephone}}
 				</span>
 				<span>
-					<i>银行卡:</i>
-					{{$loan->card}}
+					<i>身份证:</i>
+					{{$loan->belongsToCustomer->customer_indentily_card}}
 				</span>
 				<span>
 					<i>账单日:</i>

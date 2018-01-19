@@ -343,6 +343,15 @@
 				$('#loan_send').trigger("click");
 			}
 		});
+
+		//银行卡号每四位加空格
+		!function () {
+        	$('#card').on('keyup mouseout input',function(){
+            	var $this = $(this),
+                v = $this.val();
+            	/\S{5}/.test(v) && $this.val(v.replace(/\s/g,'').replace(/(\d{4})(?=\d)/g, "$1 "));
+        	});
+    	}();
 	});
 </script>
 @endsection

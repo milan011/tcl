@@ -382,8 +382,8 @@
 <script src="{{URL::asset('js/tcl/bootstrap-datepicker.js')}}"></script> 
 <script src="{{URL::asset('js/tcl/locales/bootstrap-datepicker.zh-CN.js')}}"></script> 
 <!-- 引入图片上传插件 -->
-<script src="{{URL::asset('js/tcl/dropzone/dropzone.js')}}"></script> 
-<script src="{{URL::asset('js/tcl/dropzone/dropzone-config.js')}}"></script> 
+<!-- <script src="{{URL::asset('js/tcl/dropzone/dropzone.js')}}"></script>  -->
+<!-- <script src="{{URL::asset('js/tcl/dropzone/dropzone-config.js')}}"></script>  -->
 <script>
 	$(document).ready(function(){
 
@@ -537,6 +537,15 @@
 				$('#send_loan').trigger("click");
 			}
 		});
+
+		//银行卡号每四位加空格
+		!function () {
+        	$('#card').on('keyup mouseout input',function(){
+            	var $this = $(this),
+                v = $this.val();
+            	/\S{5}/.test(v) && $this.val(v.replace(/\s/g,'').replace(/(\d{4})(?=\d)/g, "$1 "));
+        	});
+    	}();
 	});
 </script>
 @endsection
