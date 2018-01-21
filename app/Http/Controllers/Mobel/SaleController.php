@@ -70,7 +70,7 @@ class SaleController extends CommonController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $customerSaleRequest)
+    public function store(StoreCustomerSaleRequest $customerSaleRequest)
     {   
         // dd('hah ');
         // p($customerSaleRequest->all());exit;

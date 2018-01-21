@@ -29,7 +29,7 @@ class SaleRepository implements SaleRepositoryContract
         $query = new CustomerCar();       // 返回的是一个CustomerCar实例,两种方法均可
 
         $query = $query->addCondition($request->all()); //根据条件组合语句
-
+        $query = $query->where('mobile', '!=', '');
         return $query->orderBy('created_at', 'desc')
                      ->paginate(12);
 
