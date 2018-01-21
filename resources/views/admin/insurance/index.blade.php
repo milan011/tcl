@@ -181,7 +181,7 @@
 				<input type="hidden" id="export_url" value="{{route('admin.insurance.export')}}">
                 <input type="hidden" id="select_url" value="{{route('admin.insurance.index')}}/index">
 				<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
-				<button type="submit" class="btn btn-primary">搜索</button>
+				<button type="submit" id="insurance_select" class="btn btn-primary">搜索</button>
 			</form>	
 		</div>						         
 	</div>		

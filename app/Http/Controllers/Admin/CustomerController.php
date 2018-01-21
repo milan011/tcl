@@ -85,11 +85,11 @@ class CustomerController extends Controller
     {
         // dd($customerRequest->all());exit;
 
-        $is_repeat = $this->customer->isRepeat($customerRequest->telephone);
+        $is_repeat = $this->customer->isRepeat($customerRequest->telephone, $customerRequest->customer_name);
         // p($is_repeat);exit;
-        if($this->customer->isRepeat($customerRequest->telephone)){
+        if($this->customer->isRepeat($customerRequest->telephone, $customerRequest->customer_name)){
             //已有用户,更新并返回
-            $customer_id = $this->customer->isRepeat($customerRequest->telephone)->id;
+            $customer_id = $this->customer->isRepeat($customerRequest->telephone, $customerRequest->customer_name)->id;
             $customer = $this->customer->update($customerRequest, $customer_id); 
         }else{
             //尚无记录,添加并返回

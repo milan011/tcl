@@ -91,6 +91,7 @@
                 		</div>
               		</div> 
 					<div class="form-actions">
+						<input type="hidden" name="is_insurance" value="1">
 						<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 						<button id="customer_add" class="btn btn-primary">下一步</button>					
 				 	</div>

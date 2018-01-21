@@ -14,5 +14,5 @@ interface CustomerRepositoryContract
 
     public function destroy($id);
 
-    public function isRepeat($customer_telephone);
+    public function isRepeat($customer_telephone, $customer_name);
 }

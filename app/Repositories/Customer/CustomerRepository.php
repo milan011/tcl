@@ -68,10 +68,12 @@ class CustomerRepository implements CustomerRepositoryContract
     public function create($requestData)
     {   
         
-        if($this->isRepeat($requestData->telephone)){
+        if($this->isRepeat($requestData->telephone,$requestData->customer_name)){
             //手机号码重复，已存在该手机注册用户，返回用户实例
-            $customer = $this->isRepeat($requestData->telephone);
+            // p('chongfu');exit;
+            $customer = $this->isRepeat($requestData->telephone,$requestData->customer_name);
         }else{
+            // p('buchongfu');exit;
             // 注册用户并返回实例
             $requestData['creater_id'] = Auth::id();
             $requestData['shop_id']    = Auth::user()->shop_id;
@@ -80,7 +82,8 @@ class CustomerRepository implements CustomerRepositoryContract
 
             unset($requestData['_token']);
             unset($requestData['customer_name']);
-
+            unset($requestData['is_insurance']);
+            // p($requestData->all());exit;
             $customer = new Customer();
             $input =  array_replace($requestData->all());
             $customer->fill($input);
@@ -118,10 +121,11 @@ class CustomerRepository implements CustomerRepositoryContract
     }
 
     //判断手机号是否被使用
-    public function isRepeat($customer_telephone){
+    public function isRepeat($customer_telephone, $customer_name){
 
         return Customer::select('id', 'name')
                        ->where('telephone', $customer_telephone)
+                       ->where('name', $customer_name)
                        ->where('creater_id', Auth::id())
                        ->first();
     }

@@ -23,13 +23,24 @@ class StoreCustomerRequest extends Request
      */
     public function rules()
     {
-        // dd($this->all());
-        return [
-            // 'name'     => 'required|unique:tcl_category',
-            'customer_name'  => 'required',
-            'telephone'      => 'required|phone_number',
-            'indentily_card' => 'alpha_num|size:18',
-        ];
+        // p($this->all());exit;
+        if($this->is_insurance == '1'){
+            //保险客户电话可以为空
+            return [
+                // 'name'     => 'required|unique:tcl_category',
+                'customer_name'  => 'required',
+                'telephone'      => 'phone_number',
+                'indentily_card' => 'alpha_num|size:18',
+            ];
+        }else{
+           return [
+                // 'name'     => 'required|unique:tcl_category',
+                'customer_name'  => 'required',
+                'telephone'      => 'required|phone_number',
+                'indentily_card' => 'alpha_num|size:18',
+            ]; 
+        }
+        
     }
 
     /**
