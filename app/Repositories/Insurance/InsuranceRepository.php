@@ -51,10 +51,10 @@ class InsuranceRepository implements InsuranceRepositoryContract
     public function create($requestData)
     {   
         // 添加保险并返回实例,处理跟进(添加保险)
-
+            // dd($requestData->all());
             //获得用户信息
             $customer_info = Customer::find($requestData->customer_id);
-
+            // dd($customer_info);
             $requestData['creater_id']     = Auth::id();
             $requestData['insurance_code'] = getCarCode('insurance');
             $requestData['name']           = $customer_info->name;

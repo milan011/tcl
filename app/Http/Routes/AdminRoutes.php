@@ -25,7 +25,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::match(['get', 'post'], 'plan/index', 'PlanController@index')->name('admin.plan.index');
     Route::match(['get', 'post'], 'selfPlan', 'PlanController@selfPlan')->name('admin.plan.self'); 
     Route::match(['get', 'post'], 'transcation/index', 'TranscationController@index')->name('admin.transcation.index');
-    Route::match(['get', 'post'], 'selfTranscation', 'TranscationController@selfTranscation')->name('admin.transcation.self');   
+    Route::match(['get', 'post'], 'selfTranscation', 'TranscationController@selfTranscation')->name('admin.transcation.self');
     Route::post('chance/create', 'ChanceController@create')->name('admin.chance.create'); 
     Route::post('chance/changeStatus', 'ChanceController@changeStatus')->name('admin.chance.changeStatus');
     Route::match(['get', 'post'], 'plan/create', 'PlanController@create')->name('admin.plan.create'); 
@@ -36,7 +36,6 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('transcation/completeDel/{transcation}', 'TranscationController@completeDel')->name('admin.transcation.completeDel');    
     Route::match(['get', 'post'], 'transcation/complete', 'TranscationController@complete')->name('admin.transcation.complete');    
     // Route::post('transcation/complete', 'TranscationController@complete')->name('admin.transcation.complete');    
-        
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('admin.shop.changeStatus');
     Route::post('car/changeStatus', 'CarController@changeStatus')->name('admin.car.changeStatus');
     Route::post('car/follwQuickly', 'CarController@follwQuickly')->name('admin.car.follwQuickly');
@@ -54,7 +53,9 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('brand/getChildBrand', 'BrandController@getChildBrand')->name('admin.brand.getChildBrand');
     Route::post('brand/changeStatus', 'BrandController@changeStatus')->name('admin.brand.changeStatus');
     Route::post('insurance/changeStatus', 'InsuranceController@changeStatus')->name('admin.insurance.changeStatus');
+    Route::get('insurance/editImg/{insurance}', 'InsuranceController@editImg')->name('admin.insurance.editImg');
     Route::post('loan/changeStatus', 'LoanController@changeStatus')->name('admin.loan.changeStatus');
+    Route::get('loan/editImg/{loan}', 'LoanController@editImg')->name('admin.loan.editImg');
     Route::post('category/getChildCategory', 'CategoryController@getChildCategory')->name('admin.category.getChildCategory');
     Route::post('category/checkRepeat', 'CategoryController@checkRepeat')->name('admin.category.checkRepeat');
     Route::get('role/{id}/editPermission', 'RoleController@editPermission')->name('admin.role.editPermission');    
@@ -65,9 +66,17 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::delete('aupload/file', 'UploadController@deleteFile');
     Route::post('upload/folder', 'UploadController@createFolder');
     Route::delete('upload/folder', 'UploadController@deleteFolder');
+    //车源图片处理
     Route::post('imgUpload', 'ImageController@postUpload')->name('admin.image.upload');
     Route::post('imgUpload/delete', 'ImageController@deleteUpload')->name('admin.image.delete');
+    //贷款图片处理
+    Route::post('imgLoanUpload', 'ImageLoanController@postUpload')->name('admin.imageLoan.upload');
+    Route::post('imgLoanUpload/delete', 'ImageLoanController@deleteUpload')->name('admin.imageLoan.delete');
+    //保险图片处理
+    Route::post('imgInsuranceUpload', 'ImageInsuranceController@postUpload')->name('admin.imageInsurance.upload');
+    Route::post('imgInsuranceUpload/delete', 'ImageInsuranceController@deleteUpload')->name('admin.imageInsurance.delete');
     Route::post('customer/ajaxStore', 'CustomerController@ajaxStore')->name('admin.customer.ajaxStore');
+    Route::post('customer/ajaxStoreInsurance', 'CustomerController@ajaxStoreInsurance')->name('admin.customer.ajaxStoreInsurance');//保险客户添加
     Route::post('chance/store', 'ChanceController@store')->name('admin.chance.store');
     Route::post('car/ajaxAdd', 'CarController@ajaxAdd')->name('admin.car.ajaxAdd');
     Route::post('area/getAreaInfo', 'AreaController@getAreaInfo')->name('admin.area.getAreaInfo');

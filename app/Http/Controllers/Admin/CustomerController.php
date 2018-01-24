@@ -86,16 +86,45 @@ class CustomerController extends Controller
         // dd($customerRequest->all());exit;
 
         $is_repeat = $this->customer->isRepeat($customerRequest->telephone, $customerRequest->customer_name);
+        // p(LastSql());exit;
         // p($is_repeat);exit;
         if($this->customer->isRepeat($customerRequest->telephone, $customerRequest->customer_name)){
             //已有用户,更新并返回
+            // p('重复');exit;
             $customer_id = $this->customer->isRepeat($customerRequest->telephone, $customerRequest->customer_name)->id;
             $customer = $this->customer->update($customerRequest, $customer_id); 
         }else{
             //尚无记录,添加并返回
             $customer = $this->customer->create($customerRequest); 
         }
-        // dd('hehe');
+        // p($customer);exit;
+        return response()->json($customer); 
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * ajax存储客户(保险)
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ajaxStoreInsurance(StoreCustomerRequest $customerRequest)
+    {
+        // dd($customerRequest->all());exit;
+
+        $is_repeat = $this->customer->isRepeatInsurance($customerRequest->telephone, $customerRequest->customer_name);
+        // p(LastSql());exit;
+        // p($is_repeat);exit;
+        if($this->customer->isRepeatInsurance($customerRequest->telephone, $customerRequest->customer_name)){
+            //已有用户,更新并返回
+            // p('you ');exit;
+            $customer_id = $this->customer->isRepeatInsurance($customerRequest->telephone, $customerRequest->customer_name)->id;
+            $customer = $this->customer->update($customerRequest, $customer_id); 
+        }else{
+            //尚无记录,添加并返回
+            // p('meiyou');exit;
+            $customer = $this->customer->createInsurance($customerRequest); 
+        }
+        // p($customer);exit;
         return response()->json($customer); 
     }
 

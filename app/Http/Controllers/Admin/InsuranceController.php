@@ -174,6 +174,36 @@ class InsuranceController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     * 图片编辑
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editImg($id)
+    {
+        $insurance =  $this->insurance->find($id);
+        $imgs = $insurance->hasManyImages;
+
+        /*$out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
+        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
+        $car_type       = config('tcl.car_type'); //获取配置文件车源类型
+        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
+        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
+        $capacity       = config('tcl.capacity'); //获取配置文件排量*/
+        
+        /*if (Gate::denies('update', $cars)) {
+            //不允许编辑,基于Policy
+            dd('no no');
+        }*/
+
+        // dd($imgs);
+        return view('admin.insurance.editImg', compact(
+            'imgs','insurance'
+        ));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -337,7 +337,7 @@
 <script>
 	$(document).ready(function(){
 
-		var request_url      = '{{route('admin.customer.ajaxStore')}}';
+		var request_url      = '{{route('admin.customer.ajaxStoreInsurance')}}';
 		/*var customer_name    = $('#customer_name').val();
 		var telephone        = $('#telephone').val();
 		var customer_res     = $('#customer_res').val();*/

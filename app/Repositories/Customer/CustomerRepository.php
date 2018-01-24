@@ -70,7 +70,7 @@ class CustomerRepository implements CustomerRepositoryContract
         
         if($this->isRepeat($requestData->telephone,$requestData->customer_name)){
             //手机号码重复，已存在该手机注册用户，返回用户实例
-            // p('chongfu');exit;
+            p('chongfu');exit;
             $customer = $this->isRepeat($requestData->telephone,$requestData->customer_name);
         }else{
             // p('buchongfu');exit;
@@ -80,6 +80,8 @@ class CustomerRepository implements CustomerRepositoryContract
             $requestData['name']       = $requestData['customer_name'];
             $requestData['password']   = bcrypt('123465');
 
+            // $is_insurance = !empty($requestData['is_insurance']) ? true : false ;
+
             unset($requestData['_token']);
             unset($requestData['customer_name']);
             unset($requestData['is_insurance']);
@@ -88,9 +90,47 @@ class CustomerRepository implements CustomerRepositoryContract
             $input =  array_replace($requestData->all());
             $customer->fill($input);
 
+            // p($customer);exit;
             $customer    = $customer->create($input);
+            // p(lastSql());exit;
+            // p($customer);exit;
         }        
+        // p($customer);exit;
+        return $customer;
+    }
 
+    // 创建用户(保险)
+    public function createInsurance($requestData)
+    {   
+        
+        if($this->isRepeatInsurance($requestData->telephone,$requestData->customer_name)){
+            //手机号码重复，已存在该手机注册用户，返回用户实例
+            // p('chongfu');exit;
+            $customer = $this->isRepeatInsurance($requestData->telephone,$requestData->customer_name);
+        }else{
+            // p('buchongfu');exit;
+            // 注册用户并返回实例
+            $requestData['creater_id'] = Auth::id();
+            $requestData['shop_id']    = Auth::user()->shop_id;
+            $requestData['name']       = $requestData['customer_name'];
+            $requestData['password']   = bcrypt('123465');
+
+            // $is_insurance = !empty($requestData['is_insurance']) ? true : false ;
+
+            unset($requestData['_token']);
+            unset($requestData['customer_name']);
+            unset($requestData['is_insurance']);
+            // p($requestData->all());exit;
+            $customer = new Customer();
+            $input =  array_replace($requestData->all());
+            $customer->fill($input);
+
+
+            // $customer    = $customer->insertIgnore($input);
+            $customer    = $customer->create($input);
+            // p($customer);exit;
+        }        
+        // p($customer);exit;
         return $customer;
     }
 
@@ -120,8 +160,20 @@ class CustomerRepository implements CustomerRepositoryContract
         }      
     }
 
-    //判断手机号是否被使用
+    //判断手机号是否被使用(非保险)
     public function isRepeat($customer_telephone, $customer_name){
+
+        return Customer::select('id', 'name')
+                       ->where('telephone', $customer_telephone)
+                       ->where('name', $customer_name)
+                       ->where('telephone', '!=', '')
+                       ->where('creater_id', Auth::id())
+                       ->first();
+    }
+
+
+    //判断手机号是否被使用(保险)
+    public function isRepeatInsurance($customer_telephone, $customer_name){
 
         return Customer::select('id', 'name')
                        ->where('telephone', $customer_telephone)
