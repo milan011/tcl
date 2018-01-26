@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('head_content')
+	<!-- 弹出图片css -->
+	<link type="text/css" rel="stylesheet" href="{{URL::asset('css/viewer.min.css')}}">
 	<style type="text/css">
 		.detial {
 	font-size: 14px;
@@ -243,15 +245,36 @@
 <h2>保险图片</h2> 
 <div class="row-fluid">	
 
-	<div class="box span12" style="padding:10px;">
+	<div class="box span12" id="dowebok" style="padding:10px;">
 
 		@foreach($imgs as $img)
 			<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
-				<a title="Sample Image 1" href="javascript:void:(0);">
-					<img class="grayscale" src="{{URL::asset('uploads/insurance/'.$img->filename)}}" alt="">
+				<a title="点击查看大图" href="javascript:void:(0);">
+					<img class="grayscale" data-original="{{URL::asset('uploads/insurance/'.$img->filename)}}" src="{{URL::asset('uploads/insurance/'.$img->filename)}}" alt="">
 				</a>
 			</div>	
 		@endforeach	
+		<!-- <ul id="dowebok">
+			<li><img data-original="img/tibet-1.jpg" src="img/thumbnails/tibet-1.jpg" alt="图片1"></li>
+			<li><img data-original="img/tibet-2.jpg" src="img/thumbnails/tibet-2.jpg" alt="图片2"></li>
+			<li><img data-original="img/tibet-3.jpg" src="img/thumbnails/tibet-3.jpg" alt="图片3"></li>
+			<li><img data-original="img/tibet-4.jpg" src="img/thumbnails/tibet-4.jpg" alt="图片4"></li>
+			<li><img data-original="img/tibet-5.jpg" src="img/thumbnails/tibet-5.jpg" alt="图片5"></li>
+			<li><img data-original="img/tibet-6.jpg" src="img/thumbnails/tibet-6.jpg" alt="图片6"></li>
+		</ul> -->
 	</div>
 </div>  
+@endsection
+
+@section('script_content')
+<!-- 引入全局辅助弹出图片 -->
+<script src="{{URL::asset('js/viewer-jquery.min.js')}}"></script>
+<script>
+	$(document).ready(function(){
+
+		$('#dowebok').viewer({
+			url: 'data-original',
+		});
+	});
+</script>
 @endsection
