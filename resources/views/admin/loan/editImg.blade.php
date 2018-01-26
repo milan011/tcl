@@ -30,10 +30,10 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.insurance.index')}}/index">保险</a> 
+		<a href="{{route('admin.loan.index')}}/index">贷款列表</a> 
 		<i class="icon-angle-right"></i>
 	</li>
-	<li><a href="javascript:void(0);">保险图片编辑</a></li>
+	<li><a href="javascript:void(0);">贷款图片编辑</a></li>
 </ul>
 @endsection
 <!-- 主体 -->
@@ -58,7 +58,7 @@
 					<!-- <h3>Images <span id="photoCounter"></span></h3><br /> -->
 					<!-- 隐藏图片信息模板 -->
 					
-						<form id="real-dropzone" class="form-horizontal dropzone" action="{{route('admin.imageInsurance.upload')}}" method="post" enctype="multipart/form-data">
+						<form id="real-dropzone" class="form-horizontal dropzone" action="{{route('admin.imageLoan.upload')}}" method="post" enctype="multipart/form-data">
 							{!! csrf_field() !!}
 
             				<div class="fallback">
@@ -68,7 +68,7 @@
                 				@foreach($imgs as $img)
 								<div class="dz-preview dz-processing dz-image-preview dz-error dz-complete">
 									<div class="dz-image">
-										<img data-dz-thumbnail="" alt="{{$img->filename}}" src="{{URL::asset('uploads/insurance/'.$img->filename)}}" style="height:100%;">
+										<img data-dz-thumbnail="" alt="{{$img->filename}}" src="{{URL::asset('uploads/loan/'.$img->filename)}}" style="height:100%;">
 									</div>
 									<a class="dz-remove" href="javascript:undefined;" data-dz-remove="">删除</a>
             					</div>
@@ -80,8 +80,8 @@
                 					
                 				</span>
                 			</h4>
-                			<input type="hidden" name="insurance_id" value="{{$insurance->id}}">
-                			<input type="hidden" name="remove_img" value="{{route('admin.imageInsurance.delete')}}">
+                			<input type="hidden" name="loan_id" value="{{$loan->id}}">
+                			<input type="hidden" name="remove_img" value="{{route('admin.imageLoan.delete')}}">
 						</form>
 					
     				<div id="preview-template" style="display:none;">	
@@ -152,19 +152,22 @@
 <script>
 	$(document).ready(function(){
 
-		var insurance_id = $("input[name='insurance_id']");		
+		var loan_id = $("input[name='loan_id']");		
+
+		/*alert(customer_id.val());
+		alert(loan_id.val());*/
 
 		$('.dz-remove').click(function(){
 
 			var img_name    = $(this).parents().children('.dz-image').children('img').attr('alt');
-			var img_insurance_id  = insurance_id.val();
-			var request_url = '{{route('admin.imageInsurance.delete')}}';
+			var img_loan_id  = loan_id.val();
+			var request_url = '{{route('admin.imageLoan.delete')}}';
 			var img_obj     = $(this).parent();
 			// alert(img_name);
 			$.ajax({
 				method: 'POST',
 				url: request_url,
-				data:{ img_name:img_name, img_insurance_id:img_insurance_id},
+				data:{ img_name:img_name, img_loan_id:img_loan_id},
 				dataType: 'json',
 				headers: {		
 					'X-CSRF-TOKEN': '{{ csrf_token() }}'		
@@ -192,7 +195,7 @@
 					return false;
 				}
 			});
-		});
+		});		
 	});
 </script>
 @endsection

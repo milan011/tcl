@@ -145,4 +145,10 @@ class Insurance extends Model
 
       return $this->belongsTo('App\Area', 'insurance_provence', 'id')->select('id', 'name as provence_name');
     }
+
+    // 定义Car表与images表一对多关系
+    public function hasManyImages()
+    {
+        return $this->hasMany('App\InsuranceImage', 'insurance_id', 'id');
+    }
 }

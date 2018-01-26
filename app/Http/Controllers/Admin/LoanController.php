@@ -123,10 +123,11 @@ class LoanController extends Controller
     {
        
         $loan = $this->loan->find($id);
+        $imgs = $loan->hasManyImages;
         
         // dd($loan);
 
-        return view('admin.loan.show', compact('loan'));
+        return view('admin.loan.show', compact('loan', 'imgs'));
     }
 
     /**
@@ -190,6 +191,36 @@ class LoanController extends Controller
         $this->loan->update($loanRequest, $id);
         // return redirect()->route('admin.loan.index')->withInput();
         return redirect('admin/loan/index')->withInput();
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * 图片编辑
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editImg($id)
+    {
+        $loan =  $this->loan->find($id);
+        $imgs = $loan->hasManyImages;
+
+        /*$out_color      = config('tcl.out_color'); //获取配置文件中外观颜色
+        $inside_color   = config('tcl.inside_color'); //获取配置文件中内饰颜色
+        $sale_number    = config('tcl.sale_number'); //获取配置文件中过户次数
+        $car_type       = config('tcl.car_type'); //获取配置文件车源类型
+        $customer_res   = config('tcl.customer_res'); //获取配置文件客户来源
+        $safe_type      = config('tcl.safe_type'); //获取配置文件保险类别
+        $capacity       = config('tcl.capacity'); //获取配置文件排量*/
+        
+        /*if (Gate::denies('update', $cars)) {
+            //不允许编辑,基于Policy
+            dd('no no');
+        }*/
+        /*dd(lastSql());
+        dd($imgs);*/
+        return view('admin.loan.editImg', compact(
+            'imgs','loan'
+        ));
     }
 
     /**

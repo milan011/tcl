@@ -101,10 +101,22 @@ class AccessServiceProvider extends ServiceProvider
             \App\Repositories\Customer\CustomerRepository::class
         );
 
-        //绑定ImgRepository
+        //绑定车源图片ImgRepository
         $this->app->bind(
             \App\Repositories\Image\ImageRepositoryContract::class,
             \App\Repositories\Image\ImageRepository::class
+        );
+
+        //绑定贷款图片ImgRepository
+        $this->app->bind(
+            \App\Repositories\ImageInsurance\ImageInsuranceRepositoryContract::class,
+            \App\Repositories\ImageInsurance\ImageInsuranceRepository::class
+        );
+
+        //绑定保险图片ImgRepository
+        $this->app->bind(
+            \App\Repositories\ImageLoan\ImageLoanRepositoryContract::class,
+            \App\Repositories\ImageLoan\ImageLoanRepository::class
         );
 
         //绑定WantRepository

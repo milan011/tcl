@@ -129,7 +129,7 @@
 											</button>
 										</form>
 									</span>
-									<div class="btn-group " role=”group”>
+									<div class="btn-group" role=”group”>
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 											更多
 											<span class="caret"></span>

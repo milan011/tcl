@@ -18,7 +18,7 @@
 		}
 
 		ul.dropdown-menu{
-			min-width:100%;
+			min-width:150%;
 		}
 
 		/*.dropzone{
@@ -81,7 +81,11 @@
 					<tbody>
 						@foreach ($insurances as $insurance)
     					<tr>
-							<td>{{$insurance->insurance_code}}</td>
+							<td>
+								<a target="_blank" href="{{route('admin.insurance.show', ['insurance'=>$insurance->id])}}">
+									{{$insurance->insurance_code}}
+								</a>
+							</td>
 							<td>{{$insurance->belongsToBrand->brand_name or '未知'}}</td>
 							<td>{{$insurance->name}}</td>							
 							<td>{{$insurance->telephone}}</td>
@@ -105,6 +109,11 @@
 											<li>
 												<a target="_blank" class="btn btn-warning" href="{{route('admin.insurance.show', ['insurance'=>$insurance->id])}}">
 													 查看
+												</a>												
+											</li>
+											<li>
+												<a class="btn btn-warning" href="{{route('admin.insurance.editImg', ['insurance'=>$insurance->id])}}">
+													<i class="icon-edit icon-white"></i> 图片编辑
 												</a>												
 											</li>										
 											<li>

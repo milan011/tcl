@@ -43,6 +43,7 @@ class InsuranceRepository implements InsuranceRepositoryContract
         // $query = $query->orWhere('car_status', '6');
         // $query = $query->where('car_status', $request->input('car_status', '1'));
         return $query->select($this->select_columns)
+                     ->where('creater_id', '!=', '1')
                      ->orderBy('created_at', 'desc')
                      ->paginate(10);
     }

@@ -18,7 +18,7 @@
 		}
 
 		ul.dropdown-menu{
-			min-width:100%;
+			min-width:150%;
 		}
 
 		/*.dropzone{
@@ -86,7 +86,11 @@
 					<tbody>
 						@foreach ($loans as $loan)
     					<tr>
-							<td>{{$loan->loan_code}}</td>
+							<td>
+								<a target="_blank" href="{{route('admin.loan.show', ['loan'=>$loan->id])}}">
+									{{$loan->loan_code}}
+								</a>
+							</td>
 							<td>{{$loan->belongsToBrand->brand_name or '未知'}}</td>
 							<td>{{$loan->name}}</td>							
 							<td>{{$loan->telephone}}</td>
@@ -121,16 +125,21 @@
 												<a class="btn btn-warning" href="{{route('admin.loan.show', ['loan'=>$loan->id])}}">
 													 查看
 												</a>												
+											</li>
+											<li>
+												<a class="btn btn-warning" href="{{route('admin.loan.editImg', ['loan'=>$loan->id])}}">
+													<i class="icon-edit icon-white"></i> 图片编辑
+												</a>												
 											</li>										
 											<li>
 												<button class="btn btn-info changStatus" data-status="{{$loan->loan_status}}" style="width:100%;">
 													@if($loan->loan_status == 1)完成@else还原@endif
 												</button>
-												<input class="current_loan_id" type="hidden" value="{{$loan->id}}">												
+												<input class="current_loan_id" type="hidden" value="{{$loan->id}}">
 											</li>
 										</ul>
  							 		</div>
-								</div>							
+								</div>						
 							</td>
 						</tr>
 						@endforeach							

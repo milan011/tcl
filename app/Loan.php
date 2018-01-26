@@ -152,4 +152,10 @@ class Loan extends Model
 
       return $this->belongsTo('App\Customer', 'customer_id', 'id')->select('id', 'name as customer_name', 'indentily_card as customer_indentily_card','address as customer_address');
     }
+
+    // 定义Car表与images表一对多关系
+    public function hasManyImages()
+    {
+        return $this->hasMany('App\LoanImage', 'loan_id', 'id');
+    }
 }

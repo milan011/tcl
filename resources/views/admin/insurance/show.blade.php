@@ -239,5 +239,19 @@
 		</div>
 		
 	</div>	
-</div>   
+</div> 
+<h2>保险图片</h2> 
+<div class="row-fluid">	
+
+	<div class="box span12" style="padding:10px;">
+
+		@foreach($imgs as $img)
+			<div class="masonry-thumb thumbnail" style="width:23%;height:20%">
+				<a title="Sample Image 1" href="javascript:void:(0);">
+					<img class="grayscale" src="{{URL::asset('uploads/insurance/'.$img->filename)}}" alt="">
+				</a>
+			</div>	
+		@endforeach	
+	</div>
+</div>  
 @endsection

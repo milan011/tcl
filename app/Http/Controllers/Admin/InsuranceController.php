@@ -121,10 +121,11 @@ class InsuranceController extends Controller
     public function show($id)
     {
         $insurance = $this->insurance->find($id);
+        $imgs = $insurance->hasManyImages;
         
         // dd($insurance);
 
-        return view('admin.insurance.show', compact('insurance'));
+        return view('admin.insurance.show', compact('insurance', 'imgs'));
     }
 
     /**
