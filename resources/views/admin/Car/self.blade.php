@@ -174,7 +174,16 @@
 									<i class="icon-edit icon-white"></i> 图片
 								</a>
 								</div>											
-								@else 
+								@elseif($car->car_status == '5')
+								<div class="btn-group">
+								<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">
+									<i class="icon-edit icon-white"></i> 查看
+								</a>
+								<a class="btn btn-warning" href="{{route('admin.car.editImg', ['car'=>$car->id])}}">
+									<i class="icon-edit icon-white"></i> 图片
+								</a>
+								</div>											
+								@else
 								<!-- 其他 -->
 								<div class="btn-group">
 									<a class="btn btn-warning" href="{{route('admin.car.show', ['car'=>$car->id])}}">

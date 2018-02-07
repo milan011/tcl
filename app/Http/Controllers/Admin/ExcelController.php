@@ -36,8 +36,9 @@ class ExcelController extends Controller
             p($value->nick_name);
         }exit;*/
 
-        $begin_date = '2017-12-01';
-        $end_date   = '2018-01-01';
+        $begin_date = '2018-01-01';
+        $end_date   = '2018-02-01';
+        $between    = '2018年1月份';
         $out_color  = config('tcl.out_color'); //获取配置文件中外观颜色
 
         $creater_list = ['64', '65', '78', '89', '36', '4', '105', '114',
@@ -76,7 +77,7 @@ class ExcelController extends Controller
                 substr($value->plate_date, 0 ,10),
                 $value->mileage,
                 $out_color[$value->out_color],
-                $value->belongsToUser->nick_name,
+                isset($value->belongsToUser->nick_name) ? $value->belongsToUser->nick_name : '',
                 $value->belongsToShop->shop_name,
                 substr($value->created_at, 0 ,10),
             );
@@ -103,17 +104,17 @@ class ExcelController extends Controller
         array_unshift($wants_info_content, ['车型','价格','里程','颜色','负责人', '门店','上传日期']);
 
 
-        /*$excels = Excel::create('车源统计',function($excel) use ($cars_info_content){
+        $excels = Excel::create('车源统计'.$between,function($excel) use ($cars_info_content){
             $excel->sheet('score', function($sheet) use ($cars_info_content){
                 $sheet->rows($cars_info_content);
             });
-        });*/
+        });
 
-        $excels = Excel::create('求购统计',function($excel) use ($wants_info_content){
+        /*$excels = Excel::create('求购统计'.$between,function($excel) use ($wants_info_content){
             $excel->sheet('score', function($sheet) use ($wants_info_content){
                 $sheet->rows($wants_info_content);
             });
-        });
+        });*/
         // dd($excels->save());
         $excels->export('xls');
     }

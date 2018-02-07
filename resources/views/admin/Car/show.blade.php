@@ -133,6 +133,10 @@
 		<div class="col-xs-4">
 			<p class="detial">
 				<span>
+					<i>大架号：</i>
+					{{$cars->vin_code or ''}}
+				</span>
+				<span>
 					<i>编号：</i>
 					{{$cars->car_code}}
 				</span>
