@@ -85,13 +85,13 @@
 						</tr>
 						<tr>
     						<td>所属门店</td>
-							<td>{{$car_info->belongsToShop->shop_name}}</td>							
-							<td>{{$want_info->belongsToShop->shop_name}}</td>							
+							<td>{{$car_info->belongsToShop->shop_name or ''}}</td>							
+							<td>{{$want_info->belongsToShop->shop_name or ''}}</td>							
 						</tr>
 						<tr>
     						<td>负责人</td>
-							<td>{{$car_info->belongsToUser->nick_name}}</td>							
-							<td>{{$want_info->belongsToUser->nick_name}}</td>							
+							<td>{{$car_info->belongsToUser->nick_name or ''}}</td>							
+							<td>{{$want_info->belongsToUser->nick_name or ''}}</td>							
 						</tr>
 						<tr>
     						<td>备注</td>

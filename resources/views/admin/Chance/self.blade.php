@@ -76,14 +76,14 @@
 						@foreach ($chances as $chance)
     					<tr>
     						<td>{{$chance->chance_code}}</td>
-							<td>{{$chance->belongsToCar->car_name}}</td>
-							<td>{{$chance->belongsToWant->want_name}}</td>
+							<td>{{$chance->belongsToCar->car_name or ''}}</td>
+							<td>{{$chance->belongsToWant->want_name or ''}}</td>
 							<td>{{$chance->belongsToUserOnCar->car_creater or ''}}</td>
-							<td>{{$chance->belongsToUserOnWant->want_creater}}</td>								
-							<td>{{$chance->belongsToUser->nick_name}}</td>											
-							<td>{{substr($chance->created_at, 0 ,10)}}</td>	
-							<td>{{$chance_status[$chance->status]}}</td>						
-							<td>{{$chance->belongsToShop->shop_name}}</td>									
+							<td>{{$chance->belongsToUserOnWant->want_creater or ''}}</td>								
+							<td>{{$chance->belongsToUser->nick_name or ''}}</td>											
+							<td>{{substr($chance->created_at, 0 ,10) or ''}}</td>	
+							<td>{{$chance_status[$chance->status] or ''}}</td>						
+							<td>{{$chance->belongsToShop->shop_name or ''}}</td>									
 							<td class="center">
 								<div class="btn-group">
 									<span>

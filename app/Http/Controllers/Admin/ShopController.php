@@ -133,7 +133,7 @@ class ShopController extends Controller
     public function destroy($id)
     {    
         $this->shop->destroy($id);        
-        return redirect()->route('admin.shop.index');       
+        return redirect()->route('admin.shop.index');
     }
 
     /**

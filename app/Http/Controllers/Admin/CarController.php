@@ -49,7 +49,7 @@ class CarController extends Controller
         // dd($request->method());
         $all_top_brands = $this->brands->getChildBrand(0);
         $request['car_status'] = '1';
-        $request['is_show']    = '';
+        $request['is_show']    = '1';
         $select_conditions  = $request->all();
         // dd($select_conditions);
         $cars = $this->car->getAllcars($request);

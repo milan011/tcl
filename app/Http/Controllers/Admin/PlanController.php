@@ -172,7 +172,8 @@ class PlanController extends Controller
         $car_info  = $this->car->find($chances->car_id); //车源信息
         $want_info = $this->want->find($chances->want_id); //求购信息
         // dd($chances);
-        // dd($car_info);
+
+        // dd($car_info->belongsToUser);
         // dd($want_info);
         /*$gearbox        = config('tcl.gearbox'); //获取配置文件中变速箱类别
         $out_color      = config('tcl.out_color'); //获取配置文件中外观颜色

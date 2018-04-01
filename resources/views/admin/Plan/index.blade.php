@@ -87,8 +87,8 @@
 							@else
 							<td class="center"><span class="label label-warning">废弃</span></td>
 							@endif
-							<td>{{$plan->belongsToChance->belongsToUser->nick_name}}</td>						
-							<td>{{$plan->belongsToChance->belongsToShop->shop_name}}</td>
+							<td>{{$plan->belongsToChance->belongsToUser->nick_name or ''}}</td>						
+							<td>{{$plan->belongsToChance->belongsToShop->shop_name or ''}}</td>
 							@if($plan->user_id == Auth::id())							
 							<td class="center">
 								<a class="btn btn-success" href="{{route('admin.plan.edit', ['plan'=>$plan->id])}}">

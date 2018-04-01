@@ -34,6 +34,7 @@ class UserRepository implements UserRepositoryContract
         }])->paginate(10);*/
         return User::with(tableUnionDesign('hasManyRoles', ['roles.id', 'name', 'slug']))
                    // ->with(tableUnionDesign('belongsToShop', ['id','name','address','email']))
+                   ->where('status', '1')
                    ->select(['id','shop_id', 'name', 'nick_name'])
                    ->paginate(10);
         // return User::with('hasOneShop')->paginate(10);
@@ -121,7 +122,10 @@ class UserRepository implements UserRepositoryContract
         }
         try {
             $user = User::findorFail($id);
-            $user->delete();
+            // $user->delete();
+            $user->status = '0';
+            $user->save();
+
             Session()->flash('sucess', '删除管理员成功');
            
         } catch (\Illuminate\Database\QueryException $e) {

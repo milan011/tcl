@@ -71,6 +71,12 @@
 
 			color:red;
 		}
+		
+		.timeslot {
+
+			height: 63px !important;
+		}
+		
 	</style>
 @endsection
 
@@ -133,7 +139,7 @@
 						</tr>
 						<tr>
     						<td>名称</td>
-							<td class="info">{{$waited_info->name}}</td>							
+							<td class="info">{{$waited_info->name or ''}}</td>							
 							<td class="info" id="name"></td>
 							<td>车型类别</td>
 							<td class="info">{{$category_type[$waited_info->categorey_type]}}</td>						
@@ -282,7 +288,7 @@
 					<div class="box-content">
 						<div class="timeline"> 
 							@foreach ($follow_info as $key=>$info)
-					 		<div class="timeslot @if($key%2 == 0) alt @endif">
+					 		<div class="timeslot @if($key%2 == 0) alt @endif" style="height:63px !important;">
 								<div class="task">
 				    				<span>
 										<span class="type">{{$follow_type[$info->follow_type]}}</span>
@@ -291,24 +297,21 @@
 												<li style="list-style:none;">{{$des}}</li>
 											@endforeach
 										</span>
-										<span>
-											
-										</span> 
 									</span>
 									<div class="arrow"></div>
 								</div>	
-								<div class="icon">
+								<!-- <div class="icon">
 									<i class="icon-globe"></i>
-								</div>
+								</div> -->
 								<div class="time">
 									<strong>{{$info->belongsToUsers->nick_name or ''}}</strong> 于 {{$info->created_at}}
 								</div>	
 			   				</div>
-							<div class="clearfix"></div>
+							<!-- <div class="clearfix"></div> -->
 							@endforeach				
 						</div>
 						<div class="clearfix"></div>
-						<div class="chat-form" style="text-align: right;margin:-10px -10px -10px -10px;">
+						<div class="chat-form" style="text-align: right;margin:50px -10px -10px -10px;">
 							<textarea id="textDesc"></textarea>
 				 			<label class="checkbox inline" style="padding-left:0px;margin-top: 0px;">
 								<input type="checkbox" name="checkFollow" id="inlineCheckbox1" value="1"> 记录

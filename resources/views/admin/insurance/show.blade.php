@@ -81,7 +81,6 @@
 			<i>客户:</i>
 			<em>{{$insurance->name}}[电话:{{$insurance->telephone}}]</em>
 		</p>
-
 		<div class="col-xs-4">
 			<p class="detial">
 				<span>

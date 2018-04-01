@@ -66,6 +66,11 @@
 
 			color:red;
 		}
+
+		.timeslot {
+
+			height: 63px !important;
+		}
 	</style>
 @endsection
 
