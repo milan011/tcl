@@ -123,7 +123,7 @@
 										<form action="{{route('admin.chance.create')}}" method="post" style="display: inherit;margin:0px;">
 										    {{ csrf_field() }}
             								<input type="hidden" name="car_id" value="{{$car->id}}">
-            								
+            								<input type="hidden" name="car_category_id" value="{{$car->category_id}}">
 											<button class="btn btn-success" type="submit">
 											<i class="icon-edit icon-white"></i> 匹配
 											</button>

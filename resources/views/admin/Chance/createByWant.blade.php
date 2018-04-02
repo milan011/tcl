@@ -204,7 +204,7 @@
 						</tr>
 						<tr>
     						<td>负责人</td>
-							<td class="info" >{{$waited_info->belongsToUser->nick_name}}({{$waited_info->belongsToUser->creater_telephone}})</td>				
+							<td class="info" >{{$waited_info->belongsToUser->nick_name or ''}}({{$waited_info->belongsToUser->creater_telephone}})</td>				
 							<td class="info"  id="creater"></td>
 							<td>客户信息</td>
 							<td class="info">
@@ -294,7 +294,7 @@
 									<i class="icon-globe"></i>
 								</div>
 								<div class="time">
-									<strong>{{$info->belongsToUsers->nick_name}}</strong> 于 {{$info->created_at}}
+									<strong>{{$info->belongsToUsers->nick_name or ''}}</strong> 于 {{$info->created_at}}
 								</div>	
 			   				</div>
 							<div class="clearfix"></div>
@@ -358,8 +358,8 @@
 							<td>{{$match->sale_number}}</td>							
 							<!-- <td>{{$match->description}}</td>							 -->
 							<td>{{substr($match->created_at, 0 ,10)}}</td>							
-							<td>{{$match->belongsToShop->shop_name}}</td>							
-							<td>{{$match->belongsToUser->nick_name}}</td>		
+							<td>{{$match->belongsToShop->shop_name or ''}}</td>							
+							<td>{{$match->belongsToUser->nick_name or ''}}</td>		
 							<td class="center">
 								<div class="btn-group">
 									<span>

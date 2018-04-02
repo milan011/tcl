@@ -94,16 +94,19 @@ class ChanceController extends Controller
         // dd(Auth::user()->isSuperAdmin());
         $request['os_recommend'] = 'yes';
         // $is_self = $request->has('is_self');      
-        
         $select_conditions  = $request->all();
         $all_top_brands     = $this->brands->getChildBrand(0);
 
         if($request->has('want_id')){
             //匹配求购信息
             $waited_info = $this->want->find($request->want_id);
+            $price_begin = $waited_info->top_price * 0.8;
+            $price_end   = $waited_info->top_price * 1.2;
             /*$request['top_price']    = $waited_info->top_price;          
             $request['bottom_price'] = $waited_info->bottom_price;*/
             $request['car_status']   = '1';
+            $request['top_price']     = $price_end;     
+            $request['bottom_price']  = $price_begin;
 
             $is_self_want = $this->want->is_self_want($request->want_id);
             // dd($is_self_want);
@@ -133,16 +136,58 @@ class ChanceController extends Controller
         }else{
             // 匹配车源信息
             $waited_info = $this->car->find($request->car_id);
+            $price_begin = $waited_info->top_price * 0.8;
+            $price_end   = $waited_info->top_price * 1.2;
+            // dd($waited_info);
+            /*p($price_begin);
+            dd($price_end);*/
             // dd($waited_info->belongsToCity->city_name);
             /*$request['top_price']    = $waited_info->top_price;          
             $request['bottom_price'] = $waited_info->bottom_price;*/
-            $request['want_status']   = '1';         
+            //系统推荐条件
+            // $conditions_default['want_status'] = '1';
+
+            // $query = $query->where('top_price', '<=', ($price*1.2));
+            // dd($request->all());
+            $request['want_status']   = '1';
+            $request['top_price']     = $price_end;     
+            $request['bottom_price']  = $price_begin;
 
             $is_self_car = $this->car->is_self_car($request->car_id);
             // dd($is_self_car);
 
             $match_info = $this->want->getAllWants($request, !$is_self_car);
+
+
+            // $match_info = $this->want->getAllWants($request, !$is_self_car);
             // dd(lastSql());
+            // dd($match_info);
+            /*$filtered = $match_info->items()->map(function ($item) use ($request) {
+                // return $item->categorey_id == $request->category_id;
+                // return $item->categorey_id == 126;
+                
+                if($item->categorey_id == 126){
+                    $item->sort = 1;
+                }else{
+                    $item->sort = 0;
+                }
+                dd($item);
+            });*/
+            /*foreach ($match_info->items() as $key => $value) {
+                if($value->categorey_id == 117){
+                    $value->sort = 0;
+                }else{
+                    $value->sort = 1;
+                }
+            }*/
+
+            // $match_info->items = collect($match_info->items())->sortBy('sort');
+
+            // collect($match_info->items())->sortBy('sort');
+
+            /*dd($match_info->items());
+
+            dd($match_info);*/
             $createBy   = 'car';
             // dd($waited_info->categorey_type);
             $img_info = $waited_info->hasManyImages;

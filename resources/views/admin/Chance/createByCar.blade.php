@@ -376,8 +376,8 @@
 						<td>{{$sale_number_config[$match->sale_number]}}</td>							
 						<!-- <td>{{$match->remark}}</td>							 -->
 						<td>{{substr($match->created_at, 0 ,10)}}</td>							
-						<td>{{$match->belongsToShop->shop_name}}</td>							
-						<td>{{$match->belongsToUser->nick_name}}</td>		
+						<td>{{$match->belongsToShop->shop_name or ''}}</td>							
+						<td>{{$match->belongsToUser->nick_name or ''}}</td>		
 						<td class="center">
 							<div class="btn-group">
 								<span>
