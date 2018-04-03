@@ -220,7 +220,7 @@
 						</tr>
 						<tr>
     						<td>负责人</td>
-							<td class="info">{{$waited_info->belongsToUser->nick_name}}({{$waited_info->belongsToUser->creater_telephone}})</td>							
+							<td class="info">{{$waited_info->belongsToUser->nick_name or ''}}({{$waited_info->belongsToUser->creater_telephone}})</td>							
 							<td class="info" id="creater"></td>
 							<td>客户信息</td>
 							<td class="info">

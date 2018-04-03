@@ -437,7 +437,8 @@ class CarRepository implements CarRepositoryContract
             // dd(collect($update_content)->toJson());
             // dd(json_decode(collect($update_content)->toJson())); //json_decode将json再转回数组
             // dd($changed_content);
-        
+            
+
             // 车源编辑信息
             $car->vin_code       = $requestData->vin_code;
             $car->capacity       = $requestData->capacity;
@@ -458,8 +459,9 @@ class CarRepository implements CarRepositoryContract
             $car->guide_price    = $requestData->guide_price;
             $car->is_top         = $requestData->is_top;
             $car->recommend      = $requestData->recommend;
+            $car->age            = getCarAge($requestData->plate_date);
             // $car->creater_id     = Auth::id();
-    
+            // dd($car->age);
             // 车源跟进信息
             $follow_info->car_id       = $id;
             $follow_info->user_id      = Auth::id();
