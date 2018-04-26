@@ -188,7 +188,7 @@ class CateController extends CommonController
 
         //当前车型信息
         $current_cate = $this->brand->getCurrentBrand($select_condition);
-        
+        // dd($current_cate);
         $current_category = $current_cate['category'];
         // dd($current_category);
         $current_brand    = $current_cate['brand'];
@@ -235,7 +235,7 @@ class CateController extends CommonController
         
         $brand_letter_list = collect($brand_letter_list)->chunk(8);
         // dd($brand_letter_list);
-        // dd($current_category);
+        dd($current_category);
         foreach ($current_category as $key => $value) { //车辆类型信息添加筛选超链接
 
             $url_condition_c      = $url_condition;
@@ -248,12 +248,17 @@ class CateController extends CommonController
             $current_category[$key]['url'] = $select_url;
         }
         // dd($url_condition);
+        // dd($url_condition_c);
         // 清除车辆类型信超链接
-        foreach ($url_condition_c as $key => $value) {
-            unset($url_condition_c['c']);
-            $clean_current_category_url =  getSelectUrl($url_condition_c);
+        if(!empty($url_condition_c)){
+
+            foreach ($url_condition_c as $key => $value) {
+                unset($url_condition_c['c']);
+                $clean_current_category_url =  getSelectUrl($url_condition_c);
+            }
         }
         
+        dd($clean_current_category_url);
         // dd($current_category);
 
         foreach ($recomment_brands as $key => $value) { //品牌信息添加筛选超链接
@@ -271,7 +276,7 @@ class CateController extends CommonController
             unset($url_condition_b['b']);
             $clean_recomment_brands_url =  getSelectUrl($url_condition_b);
         }
-        // dd($url_condition_b);
+        // dd($clean_recomment_brands_url);
         // dd($recomment_brands);
         // dd($category_type);
         foreach ($category_type as $key => $value) { //车辆类型信息添加筛选超链接
@@ -425,7 +430,7 @@ class CateController extends CommonController
             $current_condition['color']['url']     = $clean_color_interval_url;
         }
 
-        dd($current_condition);
+        // dd($current_condition);
 
         $current_page   = 'cate';
         $title          = '【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';

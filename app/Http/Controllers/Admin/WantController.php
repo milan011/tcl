@@ -76,7 +76,7 @@ class WantController extends Controller
         
         $all_top_brands = $this->brands->getChildBrand(0);
         $wants = $this->want->getAllWants($request, true);
-
+        // dd($wants[0]->belongsToCustomer);
         return view('admin.want.self', compact('wants',  'want_stauts_config', 'select_conditions','all_top_brands'));
     }
 

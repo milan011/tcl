@@ -64,16 +64,12 @@
 					<thead>
 						<tr>
 							<th>编号</th>
+							<th>客户</th>
 							<th>车型</th>
-							<th>价格</th>
-							<!-- <th>年限</th> -->
-							<th>里程</th>							
-							<th>变速箱</th>
-							<th>颜色</th>
-							<th>排量</th>
+							<th>价格</th>							
 							<th>状态</th>
+							<th>备注</th>
 							<th>上传日期</th>
-							<th>门店</th>
 							<th>负责人</th>
 							<th>操作</th>
 						</tr>
@@ -82,16 +78,17 @@
 						@foreach ($wants as $want)
     					<tr>
 							<td>{{$want->want_code}}</td>
+							<td>
+								{{$want->belongsToCustomer->customer_name or ''}}
+								@if(Auth::id() == $want->creater_id)
+								({{$want->belongsToCustomer->customer_telephone or ''}})
+								@endif
+							</td>
 							<td>{{$want->name}}</td>
-							<td>{{$want->bottom_price}}-{{$want->top_price}}万</td>							
-							<!-- <td>1年</td> -->
-							<td>{{$mileage_config[$want->mileage]}}</td>							
-							<td>@if($want->gearbox == 0) 不限 @else {{$gearbox[$want->gearbox]}} @endif</td>			
-							<td>{{$out_color[$want->out_color]}}</td>						
-							<td>@if($want->capacity == 0) 不限 @else {{$capacity[$want->capacity]}} @endif</td>
-							<td>{{$want_stauts_config[$want->want_status]}}</td>							
+							<td>{{$want->bottom_price}}-{{$want->top_price}}万</td>										
+							<td>{{$want_stauts_config[$want->want_status]}}</td>
+							<td>{{$want->remark}}</td>							
 							<td>{{substr($want->created_at, 0 ,10)}}</td>							
-							<td>{{$want->belongsToShop->shop_name}}</td>							
 							<td>{{$want->belongsToUser->nick_name or ''}}</td>										
 							<td class="center">
 								@if($want->want_status == '0') 

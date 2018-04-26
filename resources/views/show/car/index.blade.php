@@ -137,7 +137,7 @@
                                 </li>
                             </ul>
                             <p class="f-type03">
-                                <em></em>{{$cars->description}}
+                                <em></em>{!! $cars->description !!}
                             </p>
                         </div>
                         <!--车辆图片-->

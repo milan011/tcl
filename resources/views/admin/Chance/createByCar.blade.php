@@ -74,7 +74,7 @@
 		
 		.timeslot {
 
-			height: 63px !important;
+			min-height: 200px !important;
 		}
 		
 	</style>
@@ -288,7 +288,7 @@
 					<div class="box-content">
 						<div class="timeline"> 
 							@foreach ($follow_info as $key=>$info)
-					 		<div class="timeslot @if($key%2 == 0) alt @endif" style="height:63px !important;">
+					 		<div class="timeslot @if($key%2 == 0) alt @endif">
 								<div class="task">
 				    				<span>
 										<span class="type">{{$follow_type[$info->follow_type]}}</span>

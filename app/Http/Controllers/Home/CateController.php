@@ -50,7 +50,7 @@ class CateController extends CommonController
         }
         // $begin = $this->getCurrentTime();
         // p($this->request->method());exit;  //{品牌b，车系c}，{车辆类型t，门店s}，{车龄a，价格p}
-        
+
         $conditions = $brand .'-'. $condition;
 
         if(!empty($conditions)){
@@ -118,7 +118,7 @@ class CateController extends CommonController
         }
         // dd($url_condition);
         // dd(Session('current_city'));
-        
+
         $sel_city_id   = (null !==Session('chosen_city_id')) ? Session('chosen_city_id') : Session('current_city');
 
         // dd(Session::all());

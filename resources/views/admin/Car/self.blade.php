@@ -353,6 +353,20 @@
 			</form>	
 		</div>						         
 	</div>
+	<div class="modal hide fade" id="follow_modal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>请输入跟进信息</h3>
+		</div>
+		<div class="modal-body">
+			<textarea id="follow_content" name="remark" required style="width:95%;"></textarea>
+			<input type="hidden" name="current_follow_car_id" id="current_follow_car_id" value="">
+		</div>
+		<div class="modal-footer">		
+			<a href="#" id = "send_follow" class="btn btn-primary">提交</a>
+			<a href="#" class="btn" data-dismiss="modal">返回</a>
+		</div>
+	</div>
 @endsection
 
 @section('script_content')
@@ -462,10 +476,18 @@
 		$('.follow_quickly').click(function(){
 
 			var current_follow_car_id  = $(this).next().val();
+			// var follow_content         = $('#follow_content').val();
 
-			// alert(current_follow_car_id);
+			
+			$('#current_follow_car_id').val(current_follow_car_id);
+			$('#follow_content').val('');
+			alert(current_follow_car_id);
+			alert($('#follow_content').val());
 
-			$.ajax({
+			$('#follow_modal').modal('show');
+
+			
+			/*$.ajax({
 				
 				type: 'POST',
 				url: 'car/follwQuickly',
@@ -485,7 +507,7 @@
 
 					alert('操作失败，请重新操作或联系管理员');
 				}
-			});
+			});*/
 		});
 
 		$('.date-picker').datepicker({

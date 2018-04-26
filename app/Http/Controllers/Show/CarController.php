@@ -46,11 +46,22 @@ class CarController extends CommonController
         }
         // 车源详情
         $cars = $this->car->find($id);
-
+        // $cars->descsriptionsss = nl2br($cars->descsription);
+        // dd(nl2br($cars->description));
+        $cars->description = nl2br($cars->description);
+        /*$cars->miaoshu = "
+      【车型】 现代 ix35 两驱 6挡手自一体 </br>
+      【新车裸车价格】 全款购车21.2万 </br>
+      【配置】 定速巡航 倒车影像 全景电动天窗 无钥匙启动 无钥匙进入多功能方向盘 主驾驶电动座椅 导航 自动空调等 配置丰富 </br>
+      【特点】 动力十足 空间十足 精品车源 约车方便 全车百分之八十原车漆 </br>
+      【承诺】本公司承诺在售车辆无事故 无泡水 无火烧 支持分期购车 首付1-3成 利息低 手续简单 支持置换 代办过户
+      ";*/
+        // dd($cars);
+        
         $img = $cars->hasOneImagesOnFirst;
         $images = $cars->hasManyImages; // 车源图片
         // dd(lastsql());
-        // dd($images);
+        // dd($cars);
         // dd(is_odd(10));
         // dd(is_odd(count($images)));
         

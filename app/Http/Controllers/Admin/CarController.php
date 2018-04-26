@@ -314,6 +314,7 @@ class CarController extends Controller
      */
     public function update(UpdateCarsRequest $carRequest, $id)
     {
+        // dd($carRequest->all());
         $this->car->update($carRequest, $id);
         return redirect()->route('admin.car.self')->withInput();
     }

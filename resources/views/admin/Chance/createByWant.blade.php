@@ -69,7 +69,7 @@
 
 		.timeslot {
 
-			height: 63px !important;
+			min-height: 200px !important;
 		}
 	</style>
 @endsection

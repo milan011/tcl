@@ -81,7 +81,7 @@
 							<td>{{$chance->belongsToUserOnCar->car_creater or ''}}</td>
 							<td>{{$chance->belongsToUserOnWant->want_creater or ''}}</td>								
 							<td>{{$chance->belongsToUser->nick_name or ''}}</td>											
-							<td>{{substr($chance->created_at, 0 ,10) or ''}}</td>	
+							<td>{{substr($chance->created_at, 0 ,10)}}</td>	
 							<td>{{$chance_status[$chance->status] or ''}}</td>						
 							<td>{{$chance->belongsToShop->shop_name or ''}}</td>									
 							<td class="center">
