@@ -222,6 +222,13 @@
 					  <input class="input-xlarge focused" id="visits_profits" name="visits_profits" type="text" value="{{$loan->visits_profits}}" required><span style="margin-left:5px;">元</span>
 					</div>
 				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="loan_deposit"><font style="color:red;">*&nbsp;</font>贷款保证金</label>
+					<div class="controls">
+					  <input class="input-xlarge focused" id="loan_deposit" name="loan_deposit" type="text" value="{{$loan->loan_deposit}}" required><span style="margin-left:5px;">元</span>
+					</div>
+				</div>
 
 				  <div class="control-group  ">
                 	<label class="control-label" for="loan_channels">贷款渠道</label>

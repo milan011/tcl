@@ -21,7 +21,7 @@ class Loan extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['loan_code', 'name', 'card', 'bill_day', 'telephone', 'car_name', 'cate_id', 'category_id', 'appraiser_price', 'loan_price', 'insurance_loan', 'orther_loan', 'total_loan', 'loan_phase', 'loan_date', 'repayment_frist', 'repayment_everymonth', 'loan_begin_date', 'car_plate_old', 'car_plate_new', 'other_contact1', 'other_contact2', 'other_contact1_phone', 'other_contact2_phone', 'recognizor', 'recognizor_adress', 'recognizor_phone', 'plate_date', 'appraiser_cost', 'poundage', 'qm_profits', 'loan_profits', 'visits_profits', 'loan_channels', 'customer_sorcue', 'customer_id','loan_status', 'insurance_status', 'remark', 'creater_id', 'insurance_provence', 'insurance_city'];
+    protected $fillable = ['loan_code', 'name', 'card', 'bill_day', 'telephone', 'car_name', 'cate_id', 'category_id', 'appraiser_price', 'loan_price', 'insurance_loan', 'orther_loan', 'total_loan', 'loan_deposit', 'loan_phase', 'loan_date', 'repayment_frist', 'repayment_everymonth', 'loan_begin_date', 'car_plate_old', 'car_plate_new', 'other_contact1', 'other_contact2', 'other_contact1_phone', 'other_contact2_phone', 'recognizor', 'recognizor_adress', 'recognizor_phone', 'plate_date', 'appraiser_cost', 'poundage', 'qm_profits', 'loan_profits', 'visits_profits', 'loan_channels', 'customer_sorcue', 'customer_id','loan_status', 'insurance_status', 'remark', 'creater_id', 'insurance_provence', 'insurance_city'];
 
     /**
      * The attributes excluded from the model's JSON form.

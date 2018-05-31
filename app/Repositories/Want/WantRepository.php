@@ -75,7 +75,7 @@ class WantRepository implements WantRepositoryContract
 
         return $query->select($this->select_columns)
                      ->orderBy('created_at', 'DESC')
-                     ->paginate(10);
+                     ->paginate(20);
     }
 
     // 创建求购信息

@@ -161,7 +161,7 @@
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="loan_code">保险编号</label>
+						<label class="control-label" for="loan_code">贷款编号</label>
 						<div class="controls">
 						  	<input class="input-xlarge focused" name="loan_code" id="loan_code" type="text" value="">
 						</div>

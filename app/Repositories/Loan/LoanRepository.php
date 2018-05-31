@@ -19,7 +19,7 @@ use Debugbar;
 class LoanRepository implements LoanRepositoryContract
 {
     //默认查询数据
-    protected $select_columns = ['id', 'loan_code', 'name', 'card', 'bill_day', 'telephone', 'car_name', 'cate_id', 'category_id', 'appraiser_price', 'loan_price', 'insurance_loan', 'orther_loan', 'total_loan', 'loan_phase', 'loan_date', 'repayment_frist', 'repayment_everymonth', 'loan_begin_date', 'car_plate_old', 'car_plate_new', 'other_contact1', 'other_contact2', 'other_contact1_phone', 'other_contact2_phone', 'recognizor', 'recognizor_adress', 'recognizor_phone', 'plate_date', 'appraiser_cost', 'poundage', 'qm_profits', 'loan_profits', 'visits_profits', 'loan_channels', 'customer_sorcue', 'customer_id','loan_status', 'insurance_status', 'remark', 'creater_id', 'insurance_provence', 'insurance_city', 'created_at'];
+    protected $select_columns = ['id', 'loan_code', 'name', 'card', 'bill_day', 'telephone', 'car_name', 'cate_id', 'category_id', 'appraiser_price', 'loan_price', 'insurance_loan', 'orther_loan', 'total_loan', 'loan_deposit', 'loan_phase', 'loan_date', 'repayment_frist', 'repayment_everymonth', 'loan_begin_date', 'car_plate_old', 'car_plate_new', 'other_contact1', 'other_contact2', 'other_contact1_phone', 'other_contact2_phone', 'recognizor', 'recognizor_adress', 'recognizor_phone', 'plate_date', 'appraiser_cost', 'poundage', 'qm_profits', 'loan_profits', 'visits_profits', 'loan_channels', 'customer_sorcue', 'customer_id','loan_status', 'insurance_status', 'remark', 'creater_id', 'insurance_provence', 'insurance_city', 'created_at'];
 
     // 贷款表列名称-注释对应
     /*protected $columns_annotate = [
@@ -88,7 +88,7 @@ class LoanRepository implements LoanRepositoryContract
             $requestData['creater_id']  = Auth::id();
             $requestData['loan_code']   = getCarCode('loan');
             $requestData['name']        = $customer_info->name;
-            $requestData['telephone']        = $customer_info->telephone;
+            $requestData['telephone']   = $customer_info->telephone;
 
 
 

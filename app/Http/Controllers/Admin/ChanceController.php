@@ -198,6 +198,7 @@ class ChanceController extends Controller
                 $follow_info[$key]['description'] = json_decode($value->description);
             }
             // dd($follow_info);
+            
             // dd(json_decode($follow_info[8]->description));
             // dd(decodeUnicode(json_decode($follow_info[1]->description)));
             // dd(json_decode($follow_info[0]->description->toJson()));

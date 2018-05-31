@@ -297,6 +297,14 @@
 					{{$loan->created_at}}
 				</span>
 				<span>
+					<i>贷款保证金:</i>
+					{{$loan->loan_deposit}}
+				</span>
+			</p>
+		</div>
+		<div class="col-xs-4">
+			<p class="detial">
+				<span>
 					<i>备注:</i>
 					{{$loan->remark}}
 				</span>

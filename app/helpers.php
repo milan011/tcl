@@ -355,8 +355,10 @@ function getSelCity($city = '', $shop)
     if (!empty($city)) {
         // p('hh');
         $city_info = Area::select('name', 'id')->find($city);
+        // p(Session::all());
         session(['chosen_city_name' => $city_info->name]);
         session(['chosen_city_id' => $city_info->id]);
+        // dd(Session::all());
     } else {
         // p('xixi');
         session(['chosen_city_name' => null]);
