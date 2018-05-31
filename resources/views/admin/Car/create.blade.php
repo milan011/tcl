@@ -351,6 +351,7 @@
                 <ul>
                     <li>当您选择图片并确认后，图片会自动上传</li>
                     <li>上传图片请勿大于2MB</li>
+                    <li style="color:red;">如果没有上传车型图片,车源会被判定为未登记车源,不会在网站前端显示</li>
                 </ul>
             </div>
             <div class="form-actions">									
