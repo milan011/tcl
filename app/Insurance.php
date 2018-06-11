@@ -73,6 +73,8 @@ class Insurance extends Model
             }           
         }*/
 
+        // dd($requestData);
+
         if(!empty($requestData['insurance_code'])){
 
             $query = $query->where('insurance_code', $requestData['insurance_code']);

@@ -298,7 +298,7 @@ class ExcelController extends Controller
                 $value->name,
                 $value->car_plate,
                 $value->telephone."\t",
-                $value->belongsToBrand->brand_name,
+                !empty($value->belongsToBrand->brand_name) ? $value->belongsToBrand->brand_name : '未知' ,
                 $insurance_sor[$value->source],
                 '',
                 '',

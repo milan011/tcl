@@ -86,15 +86,17 @@
                     <figure id="full_feature" class="swipslider" style="width:860px;height:305px;margin: 0px;">
                         <ul class="sw-slides">
                             <li class="sw-slide">
-                                <img src="{{URL::asset('newShow/images/kaiye.png')}}" alt="Summer beach concept">
+                                <img src="{{URL::asset('newShow/images/realcar.jpg')}}" alt="Summer beach concept">
                             </li>
                             <li class="sw-slide">
-                                <img src="{{URL::asset('newShow/images/slider.png')}}" alt="Lang from Yie Ar Kung Fu">
+                                <img src="{{URL::asset('newShow/images/zhaoshang5-30.jpg')}}" alt="Lang from Yie Ar Kung Fu">
                             </li>
                             <li class="sw-slide">
-                                <img src="{{URL::asset('newShow/images/11111.png')}}" alt="Tiny Tina">
+                                <img src="{{URL::asset('newShow/images/jinrong5-30.jpg')}}" alt="Tiny Tina">
                             </li>
-
+                            <li class="sw-slide">
+                                <img src="{{URL::asset('newShow/images/zhaosheng5-30.jpg')}}" alt="Tiny Tina">
+                            </li>
                         </ul>
                     </figure>
                 </div>

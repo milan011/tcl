@@ -97,17 +97,17 @@
             <figure id="full_feature" class="swipslider" style="height:1.5rem;">
                 <ul class="sw-slides">
                     <li class="sw-slide">
-                        <img style="height:90%;" src="{{URL::asset('mobel/images/kaiye.png')}}" alt="Summer beach concept">
+                        <img style="height:90%;" src="{{URL::asset('mobel/images/realcar.jpg')}}" alt="Summer beach concept">
                     </li>
                     <li class="sw-slide">
-                        <img style="height:90%;" src="{{URL::asset('mobel/images/slider.png')}}" alt="Lang from Yie Ar Kung Fu">
+                        <img style="height:90%;" src="{{URL::asset('mobel/images/zhaoshang5-30.jpg')}}" alt="Lang from Yie Ar Kung Fu">
                     </li>
                     <li class="sw-slide">
-                        <img style="height:90%;" src="{{URL::asset('mobel/images/11111.png')}}" alt="Tiny Tina">
+                        <img style="height:90%;" src="{{URL::asset('mobel/images/jinrong5-30.jpg')}}" alt="Tiny Tina">
                     </li>
-                    <!-- <li class="sw-slide">
-                        <img src="{{URL::asset('newShow/images/banner4.png')}}" alt="Tiny Tina from Borderlands 2">
-                    </li> -->
+                    <li class="sw-slide">
+                        <img src="{{URL::asset('newShow/images/zhaosheng5-30.jpg')}}" alt="Tiny Tina from Borderlands 2">
+                    </li>
                 </ul>
             </figure>
             <!-- <div class="focus-indexs" id="focusIndexs">

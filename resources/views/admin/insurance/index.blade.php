@@ -146,9 +146,9 @@
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="loan_code">保险编号</label>
+						<label class="control-label" for="insurance_code">保险编号</label>
 						<div class="controls">
-						  	<input class="input-xlarge focused" name="loan_code" id="loan_code" type="text" value="">
+						  	<input class="input-xlarge focused" name="insurance_code" id="insurance_code" type="text" value="">
 						</div>
 					</div>
 					<div class="control-group">
