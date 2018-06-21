@@ -58,6 +58,7 @@ class Loan extends Model
 
         if(!(Auth::user()->isSuperAdmin())){
 
+            // dd(Auth::user()->isDkLeader());
             if(!(Auth::user()->isDkLeader())){
                 //贷款顾问
                 // dd('小兵');
