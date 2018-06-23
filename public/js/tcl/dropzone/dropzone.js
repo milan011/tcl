@@ -143,12 +143,12 @@
       dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
       dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
       dictInvalidFileType: "图片格式错误",
-      dictResponseError: "Server responded with {{statusCode}} code.",
+      dictResponseError: "您上传图片过多导致网络拥堵，建议分批上传",
       dictCancelUpload: "取消上传",
       dictCancelUploadConfirmation: "确认取消图片",
       dictRemoveFile: "Remove file",
       dictRemoveFileConfirmation: null,
-      dictMaxFilesExceeded: "上传图片数量已达上限",
+      dictMaxFilesExceeded: "单次上传图片数量请勿超过20张",
       accept: function(file, done) {
         return done();
       },
