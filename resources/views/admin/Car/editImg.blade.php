@@ -128,8 +128,10 @@
     		<!-- End 隐藏图片信息模板 -->			
 			<div class="jumbotron how-to-create">
                 <ul>
-                    <li>当您选择图片并确认后，图片会自动上传</li>
-                    <li>上传图片请勿大于2MB</li>
+                    <li>当您选择图片并确认后，图片会自动上传。</li>
+                    <li>上传图片请勿大于<span style="color:red;">2MB。</span></li>
+                    <li style="color:red;">车源添加图片数量限制为18张，大家传车源时注意图片大小不要超过2MB，一次上传图片尽量不要太多，一次上传太多的话容易造成服务器反应较慢导致网络出错。</li>
+                    <li style="color:red;">如果没有上传车型图片,车源会被判定为未登记车源,不会在网站前端显示。</li>
                 </ul>
             </div>
             <div class="form-actions">									
@@ -262,7 +264,7 @@
 		
 								return false;
 							}*/
-							alert('设置首图失败,请重新设置或联系管理员');
+							alert('设置首图失败,请刷新后重新设置或联系管理员');
 							return false;
 						}
 					});
