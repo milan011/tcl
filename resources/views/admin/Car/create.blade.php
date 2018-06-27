@@ -139,8 +139,10 @@
                 	<label class="control-label" for="capacity">排量</label>
                 	<div class="controls">
                   		<select id="capacity" name="capacity" >                        
-					  		@foreach($capacity as $key=>$capa)											
-					  		<option  value="{{$key}}">{{$capa}}</option>	
+					  		@foreach($capacity as $key=>$capa)		
+					  			
+					  		<option  value="{{$key}}">{{$capa}}</option>
+					  			
 					  		@endforeach	                     
                   		</select>
                 	</div>
@@ -150,8 +152,10 @@
                 	<label class="control-label" for="shiftType">变速箱</label>
                 	<div class="controls">
                   		<select id="gearbox" name="gearbox" >                        
-					  		@foreach($gearbox as $key=>$gear)											
-					  		<option  value="{{$key}}">{{$gear}}</option>	
+					  		@foreach($gearbox as $key=>$gear)	
+					  			@if($key != 0)										
+					  				<option  value="{{$key}}">{{$gear}}</option>	
+					  		  	@endif
 					  		@endforeach	                     
                   		</select>
                 	</div>
@@ -161,8 +165,10 @@
                 	<label class="control-label" for="out_color">外观颜色</label>
                 	<div class="controls">
                   		<select id="out_color" name="out_color" >                        
-					  		@foreach($out_color as $key=>$color)											
-					  		<option  value="{{$key}}">{{$color}}</option>	
+					  		@foreach($out_color as $key=>$color)
+					  			@if($key != 0)											
+					  				<option  value="{{$key}}">{{$color}}</option>	
+					  			@endif
 					  		@endforeach	                     
                   		</select>
                 	</div>
@@ -233,7 +239,7 @@
               	</div>
               	
               	<div class="control-group">
-					<label class="control-label" for="focusedInput">行驶里程</label>
+					<label class="control-label" for="focusedInput"><font style="color:red;">*&nbsp;</font>行驶里程</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="mileage" name="mileage" type="text" value="{{old('mileage')}}"><span style="margin-left:5px;">万公里</span>
 					</div>
@@ -391,7 +397,9 @@
 		var img_content      = $('#img_content');
 		var customer_id      = $("input[name='customer_id']");	
 		var car_id           = $("input[name='car_id']");		
-		var user_role        = $("input[name='user_role']");		
+		var user_role        = $("input[name='user_role']");
+		
+		
 
 		/*alert(customer_id.val());
 		alert(car_id.val());*/
@@ -460,10 +468,27 @@
 
 		$('#car_add').click(function(){
 
-			var request_url = '{{route('admin.car.ajaxAdd')}}';
-			var is_repead   = false;
+			var request_url 	 = '{{route('admin.car.ajaxAdd')}}';
+			var is_repead   	 = false;
+			var mileage    		 = $("input[name='mileage']").val(); //行驶里程
+			var top_price    	 = $("input[name='top_price']").val();//期望价格
+			var bottom_price     = $("input[name='bottom_price']").val();//底价
 
-			$.ajax({
+			/*alert(mileage);
+			alert(top_price);
+			alert(bottom_price);*/
+
+			if((mileage >= 30) || (top_price >= 150) || (bottom_price >= 150)){
+
+				var contents = '您输入的行驶里程或者价格可能不符合实际,请仔细核对,点击"确认"继续,点击"取消"重新填写';
+
+				$.confirm({
+    		    			title: '注意!',
+    		    			content: contents,
+    		    			cancelButton: '取消',
+    		    			confirmButtonClass: 'btn-danger',
+    		    			confirm: function () {
+    		        			$.ajax({
 				method: 'POST',
 				url: request_url,
 				data:$("#car_form").serialize(),
@@ -544,6 +569,95 @@
 					alert('添加车源失败，请刷新后重新添加或联系管理员');
 				}
 			});
+    		    			},
+    		    			cancel: function () {
+    		        			return false;
+    		    			}
+    					});
+			}else{
+				$.ajax({
+				method: 'POST',
+				url: request_url,
+				data:$("#car_form").serialize(),
+				dataType: 'json',
+				headers: {		
+					'X-CSRF-TOKEN': '{{ csrf_token() }}'		
+				},
+				success:function(data){
+
+					//设置图片对应车源ID
+					/*alert(data.scalar.id);
+					console.log(data);*/
+					is_repead = data.isRepeat;
+
+					if(is_repead){
+
+						var contents  = '车源已经存在';
+						// var car_id    = data.id;
+						var href_info = "{{route('show.index')}}" + '/car/' + data.id;
+
+						contents += '<a style="color:red" target="_blank" href = "';
+						contents += href_info;
+						contents += '">';
+						contents += '点击查看';
+						contents += '</a>';
+
+						$.confirm({
+    		    			title: '注意!',
+    		    			content: contents,
+    		    			cancelButton: '取消',
+    		    			confirmButtonClass: 'btn-danger',
+    		    			confirm: function () {
+    		        			return false;
+    		    			},
+    		    			cancel: function () {
+    		        			return false;
+    		    			}
+    					});
+						return false;
+					}
+
+					car_id.val(data.scalar.id);
+					$('#content_title').text('图片上传');
+					car_content.hide();
+					img_content.show();
+				},
+				error: function(xhr, type){
+					
+					if(xhr.status == 422){ //表单验证失败，返回的状态
+						// console.log(JSON.parse(xhr.responseText));
+						var content_error = '';
+						
+						content_error += '<div>';
+						content_error += "<div class='alert alert-warning' style='text-align:center;'>";
+						$.each(JSON.parse(xhr.responseText),function(name,value) {
+							// console.log(name);
+							// console.log(value);							
+							content_error += value[0];
+							content_error += '<div>';							
+						});
+						content_error += '</div>';
+						content_error += '</div>';
+
+						var modal = new Modal({
+    						title: '',
+    						content: content_error,
+    						width: 560,
+    						
+    						onModalShow: function () {
+    						    var $form = this.$modal.find('div');
+    						}
+						});
+
+						modal.open();
+
+						return false;
+					}
+					alert('添加车源失败，请刷新后重新添加或联系管理员');
+				}
+			});
+			}
+			
 
 			return false;
 		});
@@ -664,7 +778,7 @@
 				},
 				error: function(xhr, type){
 
-					alert('Ajax error!');
+					alert('数据错误，请刷新后重试');
 				}
 			});
 		});

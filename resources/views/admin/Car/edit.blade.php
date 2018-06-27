@@ -30,7 +30,7 @@
 <div class="row-fluid sortable" style="height:100%;">
 	<div class="box span12" style="height:100%;">
 		<div class="box-content" style="overflow:auto;height:90%;">
-			<form class="form-horizontal" action="{{route('admin.car.update', ['car'=>$cars->id])}}" method="post" enctype="multipart/form-data">
+			<form id="car_form" class="form-horizontal" action="{{route('admin.car.update', ['car'=>$cars->id])}}" method="post" enctype="multipart/form-data">
 				{!! csrf_field() !!}
 				{{ method_field('PUT') }}
 				<fieldset>
@@ -244,7 +244,7 @@
 					</div>
 				  </div> -->	  				
 				  <div class="form-actions">
-					<button type="submit" class="btn btn-primary">确定</button>
+					<button type="button" id="send_car" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
 				  </div>
 				</fieldset>
@@ -266,6 +266,33 @@
             autoclose: true,
             format: 'yyyy-mm',
             todayHighlight: true
+        });
+
+        $("#send_car").click(function(){
+        	var mileage    		 = $("input[name='mileage']").val(); //行驶里程
+			var top_price    	 = $("input[name='top_price']").val();//期望价格
+			var bottom_price     = $("input[name='bottom_price']").val();//底价
+
+			if((mileage >= 30) || (top_price >= 150) || (bottom_price >= 150)){
+
+				var contents = '您输入的行驶里程或者价格可能不符合实际,请仔细核对,点击"确认"继续,点击"取消"重新填写';
+
+				$.confirm({
+    		    			title: '注意!',
+    		    			content: contents,
+    		    			cancelButton: '取消',
+    		    			confirmButtonClass: 'btn-danger',
+    		    			confirm: function () {
+    		        			$("#car_form").submit();
+    		    			},
+    		    			cancel: function () {
+    		        			return false;
+    		    			}
+    					});
+			}else{
+				$("#car_form").submit();
+			}
+        	
         });
 
         $('#provence_id').change(function(){
