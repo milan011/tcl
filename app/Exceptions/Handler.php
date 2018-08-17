@@ -66,6 +66,22 @@ class Handler extends ExceptionHandler
                 return '大哥，没找着啊！';
             }
         }*/
+
+        if($e instanceof ImageException) { //图片异常
+            $result = [
+                "msg"    => "",
+                "data"   => $e->getMessage(),
+                "status" => 0,
+                "code"   => 400,
+
+            ];
+            // dd($e);
+            // dd($e->getMessage());
+            
+            // redirect()->route('admin.image.error')->withErrors($e->getMessage());
+
+            return response()->json($result);
+        }
         
         if(($e instanceof \Illuminate\Database\QueryException)){
             p('a o cuo le');

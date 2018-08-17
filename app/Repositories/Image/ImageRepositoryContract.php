@@ -8,7 +8,7 @@ interface ImageRepositoryContract
 
     public function createUniqueFilename( $filename, $extension );
 
-    public function original( $photo, $filename );
+    public function original( $photo, $filename, $car_id);
 
     public function icon( $photo, $filename );
 

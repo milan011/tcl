@@ -39,5 +39,12 @@ Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
     Route::post('/sale/store', 'SaleController@store')->name('show.sale.store');  
     Route::match(['get', 'post'], '/sale/store', 'SaleController@store')->name('show.sale.store');
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('show.sale.getChildBrand');  
-    Route::post('sale/getChildCategory', 'SaleController@getChildCategory')->name('show.sale.getChildCategory');  
+    Route::post('sale/getChildCategory', 'SaleController@getChildCategory')->name('show.sale.getChildCategory');
+
+    Route::get('/dpx', function () {
+
+        // return 'hehe';
+        return view('show.dpx.index');
+    });
+
 });

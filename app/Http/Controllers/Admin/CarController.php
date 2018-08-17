@@ -78,7 +78,6 @@ class CarController extends Controller
     {
         
         // dd($request->all());
-
         if($request->method() == 'POST'){
             //初始搜索条件
             $select_conditions  = $request->all();
@@ -108,7 +107,7 @@ class CarController extends Controller
     {
         
         // dd($request->all());
-
+ 
         if($request->method() == 'POST'){
             //初始搜索条件
             $select_conditions  = $request->all();

@@ -166,7 +166,12 @@
         <li>
             <div class="list-infoBox">
                 <a  title="{{$car->name}}" target="_blank" class="imgtype" href="{{route('show.car.index', ['car'=>$car->id])}}" >
-                    <img width="290" height="194" src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}" onerror="this.src='{{URL::asset("images/default.jpg")}}'" alt="{{$car->name}}" />
+                    
+                    @if(isset($car->hasOneImagesOnFirst->filename))
+                    <img width="290" height="194" src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}"  alt="{{$car->name}}" />
+                    @else
+                    <img width="290" height="194" src="{{URL::asset('images/default.jpg')}}"  alt="{{$car->name}}" />
+                    @endif
                 </a>
                 <p class="infoBox">
                     <a title="{{$car->name}}" href="{{route('show.car.index', ['car'=>$car->id])}}" target="_blank" class="info-title">{{$car->name}}</a>

@@ -29,7 +29,9 @@ class ImageController extends Controller
         $photo = Input::all();
         $response = $this->image->upload($photo);
 
-        // dd($response);
+        /*dd('呵呵');
+        dd($response);*/
+        
         return $response;
 
     }
@@ -69,5 +71,10 @@ class ImageController extends Controller
         return response()->json([
             'images' => $imageAnswer
         ]);
+    }
+
+    public function imgError(){
+
+        return view('admin.errors.imageError');
     }
 }

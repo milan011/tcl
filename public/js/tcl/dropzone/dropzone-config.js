@@ -18,6 +18,21 @@ Dropzone.options.realDropzone = {
     // The setting up of the dropzone
     init:function() {
 
+        this.on("success", function(file, res) {
+
+            //将json字符串转换成json对象
+            // var obj = JSON.parse(res);
+            
+            console.log(res);
+            /*//res为dropzone.js返回的图片路经
+            file.path = res;*/
+                
+            if( res.status == 0 && res.code == 400 ){
+                alert('请注意,您上传的图片有竖拍照片存在,请修改图片并重新上传');
+                location.href = '/admin/car/editImg/' + res.data;
+            }             
+        });
+
         this.on("removedfile", function(file) {
             var token = $("input[name='_token']").val();
             $.ajax({
@@ -30,12 +45,14 @@ Dropzone.options.realDropzone = {
                 },
                 success: function(data){
                     var rep = JSON.parse(data);
+
                     if(rep.code == 200)
                     {
                         photo_counter--;
                         $("#photoCounter").text( "(" + photo_counter + ")");
-                    }
-
+                    }/*else{
+                        alert('上传失败');
+                    }*/
                 }
             });
 
@@ -70,6 +87,7 @@ Dropzone.options.realDropzone = {
     success: function(file,done) {
         photo_counter++;
         $("#photoCounter").text( "(" + photo_counter + ")");
+        
         /*var img_alt = $('.dz-complete').last().children('.dz-image').children('img').attr('alt');
 
         console.log(file);

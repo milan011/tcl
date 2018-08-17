@@ -14,7 +14,7 @@ class ImageRepository implements ImageRepositoryContract
 {
     public function upload( $form_data )
     {
-        // p('hehe');exit;
+        // p($form_data['car_id']);exit;
         $validator = Validator::make($form_data, Image::$rules, Image::$messages);
 
         if ($validator->fails()) {
@@ -37,7 +37,7 @@ class ImageRepository implements ImageRepositoryContract
         $filename = preg_replace('/[\x{4e00}-\x{9fa5}]/iu',"",$filename);
         $allowed_filename = $this->createUniqueFilename( $filename, $extension );
 
-        $uploadSuccess1 = $this->original( $photo, $allowed_filename );
+        $uploadSuccess1 = $this->original( $photo, $allowed_filename, $form_data['car_id']);
 
         $uploadSuccess2 = $this->icon( $photo, $allowed_filename );
 
@@ -88,7 +88,7 @@ class ImageRepository implements ImageRepositoryContract
     /**
      * Optimize Original Image
      */
-    public function original( $photo, $filename )
+    public function original( $photo, $filename, $car_id )
     {
         $manager = new ImageManager();
         $url = asset('img/photo.jpg');
@@ -98,7 +98,7 @@ class ImageRepository implements ImageRepositoryContract
         $img_height = $img_size[1];
         $img_bili   = round((($img_width)/($img_height)) ,2);
 
-        /*p($img_bili);exit;
+        /*p($img_bili);
         p($img_width);
         p($img_height);
         dd(getimagesize($photo));*/
@@ -109,6 +109,13 @@ class ImageRepository implements ImageRepositoryContract
         // $image = $manager->make( $photo )->save(Config::get('images.full_size') . $filename ); //无处理
         // $image = $manager->make( $photo )->resize(800, 600)->insert('images/warter_img.png', 'bottom-right', 15, 10)->save(Config::get('images.full_size') . $filename ); // 图片为800*600并加水印
         // $image = $manager->make( $photo )->resize((960*$img_bili), 960)->save(Config::get('images.full_size') . $filename );
+        // 
+        if($img_bili < 1){
+            //图片为手机竖拍
+            throw new \App\Exceptions\ImageException($car_id);
+            // redirect()->route('admin.image.error');
+        }
+
         $image = $manager->make( $photo )->resize((600*$img_bili), 600)->resizeCanvas(800, 600, 'center', false)->insert('images/water_img.png', 'bottom-right', 0, 2)->save(Config::get('images.full_size') . $filename );
 
         return $image;
