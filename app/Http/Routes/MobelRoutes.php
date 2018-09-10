@@ -40,4 +40,10 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::post('/sale/store', 'SaleController@store')->name('mobel.sale.store');  
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('mobel.sale.getChildBrand');
     Route::post('cate/getChildCategory', 'CateController@getChildCategory')->name('mobel.cate.getChildCategory');
+
+    Route::get('/zhaosheng', function () {
+
+        // return 'hehe';
+        return view('mobel.zhaosheng.index', ['current_page' => '']);
+    });
 });

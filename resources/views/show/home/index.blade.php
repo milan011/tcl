@@ -12,11 +12,15 @@
     <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/content.css')}}">
     <!-- 轮播图样式 -->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/swipeslider.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{URL::asset('newShow/css/pinggushi.css')}}">
     <!-- 首页脚本  -->
     <!-- <script type="text/javascript" src="../js/index.js"></script> -->
     <!-- <script type="text/javascript" src="{{URL::asset('js/tcl/home/index.js')}}"></script> -->
 
-
+    <style>
+        
+        
+    </style>
 @endsection
 
 
@@ -25,6 +29,19 @@
 @endsection
 
 @section('content')
+<div class="layer-worth js-finance-popup-content active">
+    <div class="whitebg">
+        <div class="worth-bg">
+            <div class="worth-bgimg"></div>
+            <div class="worth-cons">
+                <a href="javascript:" id="close_zs" class="close js-close-finance-popup">&nbsp;</a>
+                <div class="text-tit">淘车乐商学院</div>
+                <p>二手车（中、高级）鉴定评估师特训班招生啦!</p>
+                <a href="zhaosheng" target="_blank" class="worth-href">查看详情</a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="index-area">
 
     <!--banner显示 s-->
@@ -249,6 +266,10 @@
             });
 
             return false;
+        });
+
+        $('#close_zs').click(function(){
+            $(".layer-worth").hide();
         });
     });
 </script>

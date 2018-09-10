@@ -1,0 +1,184 @@
+.popup-wrap .popup-downapp {
+    margin-top: -150px;
+}
+.popup-wrap .popup {
+    z-index: 201;
+}
+.popup-wrap .popup-downapp {
+    border-radius: 5px;
+    top: 50%;
+    margin-top: -165px;
+    background-color: wheat;
+}
+.popup {
+    position: fixed;
+    top: 15px;
+    right: 14px;
+    left: 14px;
+    z-index: 101;
+    width: auto;
+    background-color: #fff;
+    border-radius: 0;
+    margin: 0;
+        margin-top: 0px;
+}
+.popup, .popup-wrap.active {
+    display: block;
+}
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 276px;
+    border-radius: 2px;
+    margin: -100px 0 0 -138px;
+    z-index: 100;
+    /*display: none;*/
+}
+.popup-downapp .close-btn {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    overflow: hidden;
+    text-indent: -88px;
+    border: 1px solid #fff;
+    background: url(../images/guanbi.png);
+    background-size: 100% 100%;
+}
+.popup-wrap .popup-body {
+    background-color: transparent;
+    padding: 0;
+}
+.popup-body {
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 14px 12px;
+}
+.popup-downapp .pop-tit {
+    border-radius: 5px 5px 0 0;
+    background-clip: padding-box;
+}
+.pop-tit {
+    padding: 20px 0 10px;
+}
+.pop-tit {
+    position: relative;
+    padding: 36px 0 20px;
+}
+.title {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: -19px;
+    margin-left: -100px;
+}
+.pop-tit p {
+    font-size: 16px;
+}
+.pop-tit p {
+    font-size: 18px;
+    text-align: center;
+    color: #333;
+    padding: 0 18px;
+}
+.title .icon-succ {
+    display: inline-block;
+    margin-top: -9px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #22ac38;
+    border: 4px solid #eaffed;
+}
+.title span {
+    display: inline-block;
+    vertical-align: top;
+    color: #000;
+    font-size: 26px;
+    width: 135px;
+    height: 38px;
+    line-height: 38px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 2px;
+    background-position: 0 0;
+}
+.pop-tit p {
+    font-size: 16px;
+}
+.pop-tit p {
+    font-size: 18px;
+    text-align: center;
+    color: #333;
+    padding: 0 18px;
+}
+.popup-downapp .form-deliver {
+    padding: 14px;
+}
+.form-deliver {
+    overflow: hidden;
+}
+.form-deliver .fl {
+    width: 100%;
+}
+.fl {
+    float: left;
+}
+.fl {
+    float: left;
+}
+.form-deliver .downapp {
+    font-size: 16px;
+    font-weight: bolder;
+    color: #22ac38;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+}
+.form-deliver p {
+    font-size: 18px;
+    color: #000;
+    letter-spacing: 1px;
+    text-align: right;
+    margin-bottom: 3px;
+}
+.form-deliver p {
+    font-size: 18px;
+    color: #000;
+    letter-spacing: 1px;
+    text-align: right;
+    margin-bottom: 3px;
+}
+.form-deliver p {
+    font-size: 18px;
+    color: #000;
+    letter-spacing: 1px;
+    text-align: right;
+    margin-bottom: 3px;
+}
+.form-deliver .fr {
+    width: 45%;
+}
+.fr {
+    float: right;
+}
+.fr {
+    float: right;
+}
+li, ol, ul {
+    list-style: none;
+}
+.form-deliver li {
+    color: #7d7d7d;
+    font-size: 15px;
+    line-height: 28px;
+    position: relative;
+    padding-left: 22px;
+}
+li, ol, ul {
+    list-style: none;
+}

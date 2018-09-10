@@ -1,0 +1,97 @@
+.worth.active {
+            display: block;
+        }
+        .layer-worth {
+            width: 481px;
+            height: 488px;
+            padding: 27px 26px 0 57px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin: -274px 0 0 -283px;
+            display: block;
+            z-index: 102;
+        }
+
+        .whitebg {
+            background: #fff;
+            padding-bottom: 86px;
+            border-radius: 5px;
+        }
+        .worth-bg {
+            background-color: #d92d28;
+            border-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            height: 403px;
+            position: relative;
+        }
+        .worth-bgimg {
+            /*background: url(//sta.guazistatic.com/c2c_web/index-layer-bg-@1xx.e499c026847f01c281fa3cbc5c65f464.png) no-repeat;*/
+            position: absolute;
+            left: -57px;
+            top: -18px;
+            width: 564px;
+            height: 541px;
+            z-index: 1;
+        }
+        .worth-cons {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            left: 0;
+            z-index: 2;
+            height: 491px;
+        }
+        .layer-worth a.close, .layer-worth a.close:hover {
+            background: url(../images/close.png);
+            width: 52px;
+            height: 52px;
+            position: absolute;
+            right: -24px;
+            top: -20px;
+            display: inline-block;
+            z-index: 2;
+            text-decoration: none;
+        }
+        .layer-worth .text-tit, .layer-worth p {
+            color: #ffe9d4;
+            text-align: center;
+            font-size: 28px;
+            padding: 60px 0 4px;
+            text-shadow: 1px 1px 1px #b0472e;
+        }
+        .layer-worth p {
+            font-size: 16px;
+            padding: 0;
+            top: 105px;
+        }
+        .layer-worth .text-tit, .layer-worth p {
+            color: #ffe9d4;
+            text-align: center;
+            font-size: 28px;
+            padding: 60px 0 4px;
+            text-shadow: 1px 1px 1px #b0472e;
+        }
+        .layer-worth a.worth-href, .layer-worth a.worth-href:hover {
+            width: 201px;
+            height: 56px;
+            line-height: 56px;
+            background: #fff4a2;
+            margin: 0 auto;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-top: 26px;
+            display: block;
+            margin-left: 138px;
+            font-size: 20px;
+            color: #901727;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid #b0472e;
+            box-shadow: 2px 6px 15px #bb0500;
+            font-weight: bolder;
+        }

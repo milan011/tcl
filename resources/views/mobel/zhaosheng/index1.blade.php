@@ -1,7 +1,7 @@
 @extends('mobel.main')
 
 @section('title')
-    <title>{{$title}}</title>
+    <title>二手车（中、高级）鉴定评估师特训班——招生简章</title>
     <meta name="keywords" content="二手车,二手车交易市场,二手车网上交易平台,石家庄二手车，石家庄淘车乐,石家庄二手车交易平台，石家庄二手车交易">
     <meta name="description" content="石家庄淘车乐是河北省最大的二手车交易平台,二手车源信息最真实,最值得信赖的网上二手车交易市场,提供二手车评估,二手车报价,二手车交易等相关服务,买卖二手车就上淘车乐">
 @endsection
@@ -42,7 +42,7 @@
 @section('content')
 <div class="popup-wrap js-sub-app-show active">
     <div class="popup popup-downapp js-sub-app-pub">
-        <a href="javascript:;" style="float: right;"  class="close-btn" id="close_zs">关闭</a>
+        <a href="javascript:;" id="close_zs">关闭</a>
         <div class="popup-body">
             <div class="pop-tit">
                 
@@ -57,7 +57,7 @@
             </div>
 
             <div class="btn-app" >
-                <a target="_blank" style="width:100%;color: blueviolet;" href="/zhaosheng" class="btn" >查看详情</i></a>
+                <a style="width:100%;color: blueviolet;" href="javascript:void(0);" class="btn" >查看详情</i></a>
             </div>
         </div>
     </div>
@@ -86,14 +86,6 @@
             </ul>
         </div>
 </header>
-    <!-- search end -->
-    <header class="head-index">
-        <a class="gz-logo fl" href="javascript:void(0);" ></a>
-        <div class="gz-search" id="open_search">
-            <a href="{{route('mobel.changeCity')}}" class="local-city" >{{$show_city_name}}</a>
-            <!-- <div class="search-ipt" data-role="vehicleSearch">搜索您想要的车</div> -->
-        </div>
-    </header>
     
     <section class="DoesNotContainCity">
         <div class="focus lazyload" id="slide_banner" data-interval="3000">

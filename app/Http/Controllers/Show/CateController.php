@@ -235,7 +235,7 @@ class CateController extends CommonController
         
         $brand_letter_list = collect($brand_letter_list)->chunk(8);
         // dd($brand_letter_list);
-        dd($current_category);
+        // dd($current_category);
         foreach ($current_category as $key => $value) { //车辆类型信息添加筛选超链接
 
             $url_condition_c      = $url_condition;
@@ -258,7 +258,7 @@ class CateController extends CommonController
             }
         }
         
-        dd($clean_current_category_url);
+        // dd($clean_current_category_url);
         // dd($current_category);
 
         foreach ($recomment_brands as $key => $value) { //品牌信息添加筛选超链接

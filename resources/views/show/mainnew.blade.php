@@ -3,7 +3,6 @@
     <head _tracker='{"pagetype":"index"}'>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="renderer" content="webkit">
-    <!-- <title>【石家庄二手车交易市场_石家庄个人二手车报价出售转让】-淘车乐</title> -->
     @yield('title')
     <meta name="description" content="石家庄淘车乐是河北省最大的二手车交易平台,二手车源信息最真实,最值得信赖的网上二手车交易市场,提供二手车评估,二手车报价,二手车交易等相关服务,买卖二手车就上淘车乐" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">

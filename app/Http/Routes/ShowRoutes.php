@@ -47,4 +47,9 @@ Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
         return view('show.dpx.index');
     });
 
+    Route::get('/zhaosheng', function () {
+
+        // return 'hehe';
+        return view('show.zhaosheng.index', ['current_page' => '']);
+    });
 });
