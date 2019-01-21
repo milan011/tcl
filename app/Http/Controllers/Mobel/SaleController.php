@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mobel;
 
 use Illuminate\Http\Request;
 use DB;
+use App\PaiMai;
 use Debugbar;
 use View;
 use Carbon;
@@ -70,9 +71,8 @@ class SaleController extends CommonController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCustomerSaleRequest $customerSaleRequest)
+    public function store(Request $customerSaleRequest)
     {   
-        // dd('hah ');
         // p($customerSaleRequest->all());exit;
         $current_ip = $customerSaleRequest->getClientIp();
         // $current_ip = '106.117.13.179';
@@ -96,6 +96,63 @@ class SaleController extends CommonController
         return response()->json(array(
             'status' => 200,
             'msg'    => '您的信息已记录,销售顾问会尽快跟您联系',
+        ));
+
+        // return response()->json($getInsertedId);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * 客户卖车信息登记
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storePaiMai(Request $request)
+    {   
+        // p($customerSaleRequest->all());exit;
+        $current_ip = $request->getClientIp();
+        $current_ip = '106.117.13.179';
+        $city_info  = getCurrentCityByIp($current_ip);
+        // dd('hehe');
+        // dd($current_ip);
+        // dd($city_info);
+        // $current_city = Area::where('name', substr($city_info, 0, (strlen($city_info)-3)))->first();
+
+        // dd($current_city);
+        // p($request->all());exit;
+        $request['city_id']   = $city_info->id;
+        $request['city_name'] = $city_info->name;
+
+        $customerPaiMai = new PaiMai();
+
+        $telephoneRepeat = PaiMai::select(['id', 'name', 'telephone'])
+                                 ->where('telephone', $request->telephone)
+                                 ->first();
+
+        if(!empty($telephoneRepeat)){
+            return response()->json(array(
+                'status' => 200,
+                'msg'    => '您已报名成功,请勿重复报名',
+            ));
+        }
+/*        $requestData['category_id'] = empty($requestData->type) ? '' : $requestData->type;
+        $requestData['brand_id'] = empty($requestData->brand) ? '' : $requestData->brand;
+        $requestData['car_factory'] = empty($requestData->company) ? '' : $requestData->company;*/
+
+        // dd($requestData->all());
+        $input =  array_replace($request->all());
+        $customerPaiMai->fill($input);
+        $newInfo  = $customerPaiMai->create($input); 
+
+        // dd($newInfo);
+        // p(lastSql());exit;
+        /*if(!$getInsertedId){
+            // dd('hehe sb');
+            return redirect()->route('admin.transcation.edit', ['transcation'=>'1'])->withInput();
+        }*/
+        return response()->json(array(
+            'status' => 200,
+            'msg'    => '报名成功,淘车乐期待您的光临',
         ));
 
         // return response()->json($getInsertedId);

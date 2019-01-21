@@ -447,6 +447,7 @@ class CarRepository implements CarRepositoryContract
             $car->inside_color   = $requestData->inside_color;
             $car->plate_date     = $requestData->plate_date;
             $car->plate_end      = $requestData->plate_end;
+            $car->plate_city     = $requestData->plate_city;
             $car->sale_number    = $requestData->sale_number;
             $car->safe_type      = $requestData->safe_type;
             $car->safe_end       = $requestData->safe_end;

@@ -57,7 +57,7 @@
             </div>
 
             <div class="btn-app" >
-                <a target="_blank" style="width:100%;color: blueviolet;" href="/zhaosheng" class="btn" >查看详情</i></a>
+                <a target="_blank" style="width:100%;color: blueviolet;" href="http://m.sjztcl.com/zhaosheng" class="btn" >查看详情</i></a>
             </div>
         </div>
     </div>

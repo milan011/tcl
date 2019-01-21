@@ -52,4 +52,10 @@ Route::group(['middleware' => 'web', 'namespace' => 'Show'], function () {
         // return 'hehe';
         return view('show.zhaosheng.index', ['current_page' => '']);
     });
+
+    Route::get('/city/zhaosheng', function () {
+
+        // return 'hehe';
+        return view('show.zhaosheng.index', ['current_page' => '']);
+    });
 });

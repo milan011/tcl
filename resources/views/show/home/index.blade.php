@@ -29,7 +29,7 @@
 @endsection
 
 @section('content')
-<div class="layer-worth js-finance-popup-content active">
+<!-- <div class="layer-worth js-finance-popup-content active">
     <div class="whitebg">
         <div class="worth-bg">
             <div class="worth-bgimg"></div>
@@ -37,11 +37,11 @@
                 <a href="javascript:" id="close_zs" class="close js-close-finance-popup">&nbsp;</a>
                 <div class="text-tit">淘车乐商学院</div>
                 <p>二手车（中、高级）鉴定评估师特训班招生啦!</p>
-                <a href="zhaosheng" target="_blank" class="worth-href">查看详情</a>
+                <a href='http://www.sjztcl.com/zhaosheng' target="_blank" class="worth-href">查看详情</a>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="index-area">
 
     <!--banner显示 s-->
@@ -103,7 +103,9 @@
                     <figure id="full_feature" class="swipslider" style="width:860px;height:305px;margin: 0px;">
                         <ul class="sw-slides">
                             <li class="sw-slide">
+                                <a href="http://www.sjztcl.com/join" target="_blank">
                                 <img src="{{URL::asset('newShow/images/realcar.jpg')}}" alt="Summer beach concept">
+                                </a>
                             </li>
                             <li class="sw-slide">
                                 <img src="{{URL::asset('newShow/images/zhaoshang5-30.jpg')}}" alt="Lang from Yie Ar Kung Fu">

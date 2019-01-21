@@ -38,6 +38,7 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
     Route::get('/join', 'JoinController@index')->name('mobel.join.index');  
     Route::get('/sale', 'SaleController@index')->name('mobel.sale.index');  
     Route::post('/sale/store', 'SaleController@store')->name('mobel.sale.store');  
+    Route::post('/sale/storePaiMai', 'SaleController@storePaiMai');  
     Route::post('sale/getChildBrand', 'SaleController@getChildBrand')->name('mobel.sale.getChildBrand');
     Route::post('cate/getChildCategory', 'CateController@getChildCategory')->name('mobel.cate.getChildCategory');
 
@@ -46,4 +47,11 @@ Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => '
         // return 'hehe';
         return view('mobel.zhaosheng.index', ['current_page' => '']);
     });
+
+    Route::get('/paimai', function () {
+
+        // return 'hehe';
+        return view('mobel.paimai.index', ['current_page' => '']);
+    });
+ 
 });
