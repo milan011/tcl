@@ -66,9 +66,25 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $catgoryRequest)
     {
         // dd($catgoryRequest->all());
-        $getInsertedId = $this->category->create($catgoryRequest);
-        // p(lastSql());exit;
-        return redirect()->route('admin.category.index')->withInput();    
+        // dd($this->category->isRepeat($catgoryRequest));
+        if($this->category->isRepeat($catgoryRequest)){
+            //车型重复
+            return response()->json(array(
+                'status' => 1,
+                // 'data'   => $category,
+                'message'   => '该车型已经添加'
+            ));
+        }else{
+            $getInsertedId = $this->category->create($catgoryRequest);
+            // dd($getInsertedId);
+            return response()->json(array(
+                'status' => 2,
+                // 'data'   => $category,
+                'message'   => '添加成功'
+            ));
+            // return redirect()->route('admin.category.index')->withInput();
+        }
+            
     }
 
     /**

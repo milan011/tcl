@@ -115,7 +115,7 @@
 
 		$('#category_add').click(function(){
 
-			var request_url = '{{route('admin.category.checkRepeat')}}';
+			var request_url = '{{route('admin.category.store')}}';
 
 			$.ajax({
 				method: 'POST',
@@ -133,7 +133,7 @@
 						return false;
 					}else{
 						//车型不重复
-						$('#category_form').submit();
+						alert(data.message);
 					}
 				},
 				error: function(xhr, type){

@@ -45,10 +45,10 @@ class CategoryRepository implements CategoryRepositoryContract
         $input['recommend'] = $requestData->recommend;
         $input['user_id']   = Auth::id();
         // dd($input);
-
+        // dd('hehe');
         $category = $category->insertIgnore($input);
-
-        Session::flash('sucess', '添加车型成功');
+        // dd($category);
+        // Session::flash('sucess', '添加车型成功');
         return $category;
     }
 
