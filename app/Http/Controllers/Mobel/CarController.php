@@ -7,11 +7,13 @@ use DB;
 use Debugbar;
 use Session;
 use View;
+use Auth;
 use Carbon;
 use App\Http\Requests;
 use App\Area;
 use App\Http\Controllers\Controller;
 use App\Repositories\Car\CarRepositoryContract;
+use App\Repositories\User\UserRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
 
 class CarController extends CommonController
@@ -19,16 +21,19 @@ class CarController extends CommonController
     protected $car;
     protected $request;
     protected $shop;
+    protected $user;
 
     public function __construct(
         CarRepositoryContract $car,
         ShopRepositoryContract $shop,
+        UserRepositoryContract $user,
         Request $request
     ) {
         
         $this->car     = $car;
         $this->request = $request;
         $this->shop = $shop;
+        $this->user = $user;
         // $this->middleware('brand.create', ['only' => ['create']]);
         parent::__construct($request);
 
@@ -39,11 +44,38 @@ class CarController extends CommonController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($id, Request $request)
     {
         // 车源详情
         $cars = $this->car->find($id);
-        // dd($cars);
+        // $carsUser = $cars->belongsToUser;
+        // dd($cars->belongsToUser);
+        // dd($request->get('manager')));
+        $wxShouQuanUrl = '';
+        if(!empty($request->get('manager'))){
+            // dd($this->user->find($request->get('manager'))->belongsToShop->name);
+            $wxUserInfo = $this->user->find($request->get('manager'));
+            /*$cars->belongsToUser = array(
+                "user_id" => $wxUserInfo->id,
+                "nick_name" => $wxUserInfo->nick_name,
+                "creater_telephone" => $wxUserInfo->telephone,
+            );*/
+            $cars->belongsToUser->user_id = $wxUserInfo->id;
+            $cars->belongsToUser->nick_name = $wxUserInfo->nick_name;
+            $cars->belongsToShop->shop_name = $wxUserInfo->belongsToShop->name;
+            $cars->belongsToUser->creater_telephone = $wxUserInfo->telephone;
+            $wxShouQuanUrl = '?manager='.$wxUserInfo->id;
+        }
+
+        // dd($request->get('manager'));
+        // dd(Auth::user());
+        $wxShouQuan = '';
+        if(Auth::user()){ //授权用户
+            $wxShouQuan = '?manager='.Auth::user()->id;
+        }
+        // dd($wxShouQuan);
+        // dd($cars->belongsToUser);
+
         $img = $cars->hasOneImagesOnFirst;
         $images = $cars->hasManyImages; // 车源图片
         // dd(lastsql());
@@ -84,6 +116,6 @@ class CarController extends CommonController
         $title          = $cars->name.'_石家庄淘车乐真实车源';
         $meta_des       = $cars->name.'淘车乐为您提供最真实的二手车报价,最详细的二手车车源情况';
 
-        return view('mobel.car.index', compact('cars', 'images', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number', 'recommend_cars', 'current_page', 'title', 'meta_des', 'show_city_name'));
+        return view('mobel.car.index', compact('cars', 'images', 'gearbox', 'out_color', 'capacity', 'category_type', 'sale_number', 'recommend_cars', 'current_page', 'title', 'meta_des', 'show_city_name', 'wxShouQuan','wxShouQuanUrl'));
     }
 }

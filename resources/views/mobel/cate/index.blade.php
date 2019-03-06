@@ -70,7 +70,7 @@
 <div class="line-list js-list-page">
         <header class="heading">
 
-            <a class="icon-home" href="{{route('mobel.index')}}">首页</a>
+            <a class="icon-home" href="{{route('mobel.index')}}{{$wxShouQuanUrl}}">首页</a>
             <div class="box-size">
                 <div class="top-nav">
                     <a class="tcity"  href="{{route('mobel.changeCity')}}" >{{$show_city_name}}<i class="arrow-down"></i></a>
@@ -106,7 +106,7 @@
                     <li>{{$condition['content']}}<i class="icon-close"></i></li>
                 </a>
                 @endforeach
-                <li class="btn-reset"><a class="icon-reset" href="{{route('mobel.cate.index')}}">重置</a></li>
+                <li class="btn-reset"><a class="icon-reset" href="{{route('mobel.cate.index')}}{{$wxShouQuanUrl}}">重置</a></li>
             </ul>
             <!-- <a class="nav-subscribe" href="javascript:void(0);">订阅</a> -->
             </div>
@@ -120,7 +120,7 @@
             <ul class="list">
                 @foreach($cars as $key=>$car)
                 <li class="list-item" data-type=city>
-                    <a class="car-info" target="_blank" href="{{route('mobel.car.index', ['car'=>$car->id])}}">
+                    <a class="car-info" target="_blank" href="{{route('mobel.car.index', ['car'=>$car->id])}}{{$wxShouQuanUrl}}">
                         <div class="car-img">
                             @if(isset($car->hasOneImagesOnFirst->filename))
                                 <img src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}" alt="{{$car->name}}">
@@ -507,7 +507,7 @@
             wx.onMenuShareAppMessage({
                 title: '淘车乐',
                 desc: '卖车人的故事讲给买车人听',
-                link: 'http://m.sjztcl.com',
+                link: 'http://m.sjztcl.com' + "{{$wxShouQuan}}",
                 imgUrl: 'http://www.sjztcl.com/getheadimg.png',
                 trigger: function (res) {
                   // alert('用户点击发送给朋友');
@@ -525,7 +525,7 @@
         // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
             wx.onMenuShareTimeline({
             title: '淘车乐',
-            link: 'http://m.sjztcl.com',
+            link: 'http://m.sjztcl.com' + "{{$wxShouQuan}}",
             imgUrl: 'http://www.sjztcl.com/getheadimg.png',
             trigger: function (res) {
               // alert('用户点击分享到朋友圈');
@@ -544,7 +544,7 @@
         wx.onMenuShareQQ({
           title: '淘车乐',
           desc: '卖车人的故事讲给买车人听',
-          link: 'http://m.sjztcl.com',
+          link: 'http://m.sjztcl.com' + "{{$wxShouQuan}}",
           imgUrl: 'http://www.sjztcl.com/getheadimg.png',
           trigger: function (res) {
             // alert('用户点击分享到QQ');
@@ -567,7 +567,7 @@
         wx.onMenuShareWeibo({
             title: '淘车乐',
             desc: '卖车人的故事讲给买车人听',
-            link: 'http://m.sjztcl.com',
+            link: 'http://m.sjztcl.com' + "{{$wxShouQuan}}",
             imgUrl: 'http://www.sjztcl.com/getheadimg.png',
             trigger: function (res) {
               // alert('用户点击分享到微博');

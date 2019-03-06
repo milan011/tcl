@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="btnbox">
-                    <a href="{{route('mobel.index')}}" class="btnwhite">查看更多车源</a>
+                    <a href="{{route('mobel.index')}}{{$wxShouQuanUrl}}" class="btnwhite">查看更多车源</a>
                 </div>
                 <!-- 检测报告 -->
                 
@@ -153,7 +153,7 @@
                         <ul class="list">
                             @foreach($recommend_cars as $rcar)
                             <li class="list-item">
-                                <a href="{{route('mobel.car.index', ['car'=>$rcar->id])}}" class="car-info">
+                                <a href="{{route('mobel.car.index', ['car'=>$rcar->id])}}{{$wxShouQuanUrl}}" class="car-info">
                                     <div class="car-img">
                                         @if(isset($rcar->hasOneImagesOnFirst->filename))
                 <img src="{{URL::asset('uploads/car/'.$rcar->hasOneImagesOnFirst->filename)}}" onerror="this.src='{{URL::asset("images/default.jpg")}}'" alt="{{$rcar->name}}" />
@@ -197,7 +197,6 @@
 <script>
 
         $(document).ready(function(){
-
             wx.config({
             debug: false,
             appId: '{{$weixsdk["appId"]}}',
@@ -265,7 +264,7 @@
             wx.onMenuShareAppMessage({
                 title: "{{$cars->name}}",
                 desc: '{{$cars->name}}',
-                link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}",
+                link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}" + "{{$wxShouQuan}}",
                 imgUrl:'http://www.sjztcl.com/uploads/car/' + "{{$cars->hasOneImagesOnFirst->filename}}",
                 trigger: function (res) {
                   // alert('用户点击发送给朋友');
@@ -284,7 +283,7 @@
             wx.onMenuShareTimeline({
             title: '{{$cars->name}}',
             desc: '{{$cars->name}}',
-            link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}",
+            link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}" + "{{$wxShouQuan}}",
             imgUrl: 'http://www.sjztcl.com/uploads/car/' + "{{$cars->hasOneImagesOnFirst->filename}}",
             trigger: function (res) {
               // alert('用户点击分享到朋友圈');
@@ -303,7 +302,7 @@
         wx.onMenuShareQQ({
           title: '{{$cars->name}}',
           desc: '{{$cars->name}}',
-          link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}",
+          link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}" + "{{$wxShouQuan}}",
           imgUrl: 'http://www.sjztcl.com/uploads/car/' + "{{$cars->hasOneImagesOnFirst->filename}}",
           trigger: function (res) {
             // alert('用户点击分享到QQ');
@@ -326,7 +325,7 @@
         wx.onMenuShareWeibo({
             title:'{{$cars->name}}',
             desc: '{{$cars->name}}',
-            link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}",
+            link: 'http://m.sjztcl.com/car/' + "{{$cars->id}}" + "{{$wxShouQuan}}",
             imgUrl: 'http://www.sjztcl.com/uploads/car/' + "{{$cars->hasOneImagesOnFirst->filename}}",
             trigger: function (res) {
               // alert('用户点击分享到微博');

@@ -1,6 +1,6 @@
 <footer class="footer">
-        
-        <p>河北淘车乐二手车</p>
+        {{-- <p>{{Auth::user()->id}}</p> --}}
+        <p>河北淘车乐二手车&nbsp;&nbsp;@if(isset(Auth::user()->id))[已授权]@endif</p>
         <div class="phone">
             <span>服务电话:
             <a class="testCountPhone"

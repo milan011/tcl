@@ -29,7 +29,10 @@ class MobelRoutes
     }
 }*/
 
-Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => 'Mobel'], function () {
+
+Route::group(['domain' => 'm.mytcl.net', 'middleware' => 'web', 'namespace' => 'Mobel'], function () { 
+    Route::get('/manage', 'Auth\WxAuthController@showLoginForm');
+    Route::post('/manage', 'Auth\WxAuthController@login');
     Route::get('/car/{id}', 'CarController@index')->name('mobel.car.index');  
     Route::get( '/cate/{brand?}/{condition?}', 'CateController@index')->name('mobel.cate.index');
     Route::get('/', 'HomeController@index')->name('mobel.index');  

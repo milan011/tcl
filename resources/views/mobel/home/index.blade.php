@@ -40,7 +40,7 @@
 @endsection
 
 @section('content')
-<div class="popup-wrap js-sub-app-show active">
+<!-- <div class="popup-wrap js-sub-app-show active">
     <div class="popup popup-downapp js-sub-app-pub">
         <a href="javascript:;" style="float: right;"  class="close-btn" id="close_zs">关闭</a>
         <div class="popup-body">
@@ -61,7 +61,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- 头部搜索框 -->
 <header class="heading search-box" style="display:none;" id="search_list" data-id="1" data-domain="sjz" >
         <a class="icon-close js-close-search" href="javascript:void(0);">取消</a>
@@ -168,7 +168,7 @@
         </div>
         <!-- column end -->
         <ul class="buttonbox cleafix">
-            <li><a href="{{route('mobel.cate.index')}}">我要买车</a></li>
+            <li><a href="{{route('mobel.cate.index')}}{{$wxShouQuanUrl}}">我要买车</a></li>
             <li><a href="{{route('mobel.sale.index')}}">我要卖车</a></li>
         </ul>
         
@@ -210,7 +210,7 @@
                 <ul class="on j-recommend-show">
                     @foreach($cars as $key=>$car)
                     <li class="list-item" >
-                        <a class="car-info" target="_blank" href="{{route('mobel.car.index', ['car'=>$car->id])}}">
+                        <a class="car-info" target="_blank" href="{{route('mobel.car.index', ['car'=>$car->id])}}{{$wxShouQuanUrl}}">
                             @if(isset($car->hasOneImagesOnFirst->filename))
                                 <div class="car-img">
                                     <img data-role="lazyloadImg" class="js-lazy-load" src="{{URL::asset('uploads/car/'.$car->hasOneImagesOnFirst->filename)}}"  alt="{{$car->name}}">
@@ -232,7 +232,7 @@
                     @endforeach
                     <li class="list-item">
                         <div class="btnbox">
-                            <a href="{{route('mobel.cate.index')}}" class="btnwhite">查看更多车源</a>
+                            <a href="{{route('mobel.cate.index')}}{{$wxShouQuanUrl}}" class="btnwhite">查看更多车源</a>
                         </div>
                     </li>
                 </ul>
@@ -283,7 +283,7 @@
     <script>
 
         $(document).ready(function(){
-
+            // alert('{{$wxShouQuan}}');
             var show_city_name = '{{$show_city_name}}';
 
             // console.log(show_city_name);
@@ -297,4 +297,158 @@
             });
         });
     </script>
+    <script>
+    wx.config({
+            debug: false,
+            appId: '{{$weixsdk["appId"]}}',
+            timestamp: {{$weixsdk['timestamp']}},
+            nonceStr: '{{$weixsdk["nonceStr"]}}',
+            signature: '{{$weixsdk["signature"]}}',
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onRecordEnd',
+                'playVoice',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+        });
+    
+        wx.ready(function () {
+            // 在这里调用 API
+            // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+            // document.querySelector('#checkJsApi').onclick = function () {
+              wx.checkJsApi({
+                jsApiList: [
+                    'getNetworkType',
+                    'previewImage',
+                    'onMenuShareTimeline',
+                    'onMenuShareAppMessage',
+                    'onMenuShareQQ',
+                    'onMenuShareWeibo'
+                ],
+                success: function (res) {
+                  // alert(JSON.stringify(res));
+                }
+              });
+            // };
+            // 2. 分享接口
+            // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+            // alert('已注册获取“发送给朋友”状态事件');
+            // 分享到朋友圈
+            wx.onMenuShareAppMessage({
+                title: '淘车乐',
+                desc: '卖车人的故事讲给买车人听',
+                link: 'http://m.sjztcl.com' + "{{$wxShouQuan}}",
+                imgUrl: 'http://www.sjztcl.com/getheadimg.png',
+                trigger: function (res) {
+                  // alert('用户点击发送给朋友');
+                },
+                success: function (res) {
+                  // alert('已分享');
+                },
+                cancel: function (res) {
+                  // alert('已取消');
+                },
+                fail: function (res) {
+                  // alert(JSON.stringify(res));
+                }
+            });
+        // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+            wx.onMenuShareTimeline({
+            title: '淘车乐',
+            link: 'http://m.sjztcl.com' + "{{$wxShouQuan}}",
+            imgUrl: 'http://www.sjztcl.com/getheadimg.png',
+            trigger: function (res) {
+              // alert('用户点击分享到朋友圈');
+            },
+            success: function (res) {
+              // alert('已分享');
+            },
+            cancel: function (res) {
+              // alert('已取消');
+            },
+            fail: function (res) {
+              alert(JSON.stringify(res));
+            }
+          });
+        // 2.3 监听“分享到QQ”按钮点击、自定义分享内容及分享结果接口
+        wx.onMenuShareQQ({
+          title: '淘车乐',
+          desc: '卖车人的故事讲给买车人听',
+          link: 'http://m.sjztcl.com' + "{{$wxShouQuan}}",
+          imgUrl: 'http://www.sjztcl.com/getheadimg.png',
+          trigger: function (res) {
+            // alert('用户点击分享到QQ');
+          },
+          complete: function (res) {
+            // alert(JSON.stringify(res));
+          },
+          success: function (res) {
+            // alert('已分享');
+          },
+          cancel: function (res) {
+            // alert('已取消');
+          },
+          fail: function (res) {
+            // alert(JSON.stringify(res));
+          }
+        });
+      
+      // 2.4 监听“分享到微博”按钮点击、自定义分享内容及分享结果接口
+        wx.onMenuShareWeibo({
+            title: '淘车乐',
+            desc: '卖车人的故事讲给买车人听',
+            link: 'http://m.sjztcl.com' + "{{$wxShouQuan}}",
+            imgUrl: 'http://www.sjztcl.com/getheadimg.png',
+            trigger: function (res) {
+              // alert('用户点击分享到微博');
+            },
+            complete: function (res) {
+              // alert(JSON.stringify(res));
+            },
+            success: function (res) {
+              // alert('已分享');
+            },
+            cancel: function (res) {
+              // alert('已取消');
+            },
+            fail: function (res) {
+              // alert(JSON.stringify(res));
+            }
+        });
+    });
+    
+        wx.error(function (res) {
+            alert(res.errMsg);
+        });
+</script>
 @endsection

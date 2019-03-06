@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mobel;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 use Debugbar;
 use View;
 use Carbon;
@@ -14,6 +15,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Car\CarRepositoryContract;
 use App\Repositories\Brand\BrandRepositoryContract;
+use App\Repositories\User\UserRepositoryContract;
 use App\Repositories\Shop\ShopRepositoryContract;
 
 
@@ -23,16 +25,19 @@ class CateController extends CommonController
     protected $brand;
     protected $shop;
     protected $request;
+    protected $user;
 
     public function __construct(
         CarRepositoryContract $car,
         BrandRepositoryContract $brand,
         ShopRepositoryContract $shop,
+        UserRepositoryContract $user,
         Request $request
     ) {
         $this->car = $car;
         $this->brand = $brand;
         $this->shop = $shop;
+        $this->user = $user;
         $this->request = $request;
         // $this->middleware('brand.create', ['only' => ['create']]);
         parent::__construct($request);
@@ -67,7 +72,17 @@ class CateController extends CommonController
             }
         }
         
-
+        $wxShouQuan = '';
+        $wxShouQuanUrl = '';
+        if(Auth::user()){ //授权用户
+            $wxShouQuan = '?manager='.Auth::user()->id;
+        }
+        if(!empty($this->request->get('manager'))){
+            // dd($this->user->find($request->get('manager'))->belongsToShop->name);
+            $wxUserInfo = $this->user->find($this->request->get('manager'));
+            $wxShouQuanUrl = '?manager='.$wxUserInfo->id;
+        }
+        // dd($wxShouQuan);
         /*p(starts_with($condition_brand, 'b'));
         p(starts_with($condition_brand, 'c'));
         p($condition_brand);
@@ -190,7 +205,7 @@ class CateController extends CommonController
         // dd($select_condition);
         // 符合条件车源
         $cars = $this->car->getAllCarsWithBeforeMobel($select_condition);
-        dd(lastSql());
+        // dd(lastSql());
         // dd($cars->hasMorePages());
         // dd($cars->count());
         // dd($cars[0]->hasOneImagesOnFirst);
@@ -473,6 +488,8 @@ class CateController extends CommonController
                 'current_page',
                 'title',
                 'chosen_city_selection',
+                'wxShouQuan',
+                'wxShouQuanUrl',
                 'condition_other'
             ));
         }else{
@@ -505,6 +522,8 @@ class CateController extends CommonController
                 'current_page',
                 'title',
                 'chosen_city_selection',
+                'wxShouQuan',
+                'wxShouQuanUrl',
                 'condition_brand'
             )); 
         }
