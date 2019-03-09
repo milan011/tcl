@@ -53,7 +53,7 @@ class HomeController extends CommonController {
         }
         if(!empty($request->get('manager'))){
             // dd($this->user->find($request->get('manager'))->belongsToShop->name);
-            $wxUserInfo = $this->user->find($request->get('manager'));
+            $wxUserInfo = $this->user->findUsedUser($request->get('manager'));
             $wxShouQuanUrl = '?manager='.$wxUserInfo->id;
         }
 

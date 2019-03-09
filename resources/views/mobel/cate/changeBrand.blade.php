@@ -46,7 +46,7 @@
                 <h3 class="subtit dead-line" data-index="*">*</h3>
                 <ul class="brand-list2">
                     <li class="limit-no" data-brandId="0" data-brandUrl="buy">
-                        <a href="{{route('mobel.cate.index')}}/{{$condition_other}}">不限品牌</a>
+                        <a href="{{route('mobel.cate.index')}}/{{$condition_other}}{{$wxShouQuanUrl}}">不限品牌</a>
                     </li>
                 </ul>
                 @foreach($brand_letter_list as $key=>$brand_list)
@@ -110,6 +110,7 @@
             // var current_url = window.location.href; //当前URL
             var brand_name  = $(this).children('a').text();
             var conditions  = '{{$condition_other}}';
+            var manager     = '{{$managerId}}';
 
             /*console.log($(this).attr('data-brandId'));
             console.log(token);
@@ -119,7 +120,7 @@
             $.ajax({
                 type: 'POST',       
                 url: request_url,       
-                data: { pid : top_brand, conditions:conditions},       
+                data: { pid : top_brand, conditions:conditions, manager:manager},       
                 dataType: 'json',       
                 headers: {      
                     'X-CSRF-TOKEN': token       
@@ -127,8 +128,8 @@
                 success: function(data){        
                     if(data.status == 1){
                         var content = '';
-                        /*console.log(data.data);
-                        console.log(brand_name);*/
+                        console.log(data.data);
+                        console.log(brand_name);
                         // <li><a href="javascript:void(0);">A3<span class="num">-</span></a></li>
                         $.each(data.data, function(index, value){
                             content += '<li>';

@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="btnbox">
-                    <a href="{{route('mobel.index')}}{{$wxShouQuanUrl}}" class="btnwhite">查看更多车源</a>
+                    <a href="{{route('mobel.cate.index')}}{{$wxShouQuanUrl}}" class="btnwhite">查看更多车源</a>
                 </div>
                 <!-- 检测报告 -->
                 

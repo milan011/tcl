@@ -73,7 +73,7 @@
             <a class="icon-home" href="{{route('mobel.index')}}{{$wxShouQuanUrl}}">首页</a>
             <div class="box-size">
                 <div class="top-nav">
-                    <a class="tcity"  href="{{route('mobel.changeCity')}}" >{{$show_city_name}}<i class="arrow-down"></i></a>
+                    <a class="tcity"  href="{{route('mobel.changeCity')}}{{$wxShouQuanUrl}}" >{{$show_city_name}}<i class="arrow-down"></i></a>
                     <!-- <div class="tsearch">
                         搜索您想要的车
                     </div> -->
@@ -93,7 +93,7 @@
                     @foreach($price_with_url as $key=>$price)
                     @if($key < 10)
                     <li class="js-single-option" data-urlVal='0'>
-                        <a href="{{$price['url']}}">{{$price['content']}}</a>
+                        <a href="{{$price['url']}}{{$wxShouQuanUrl}}">{{$price['content']}}</a>
                     </li>
                     @endif
                     @endforeach
@@ -102,7 +102,7 @@
             <div class="filter-result">
             <ul class="mod-tags fl">
                 @foreach($current_condition as $key=>$condition)
-                <a href="{{$condition['url']}}">
+                <a href="{{$condition['url']}}{{$wxShouQuanUrl}}">
                     <li>{{$condition['content']}}<i class="icon-close"></i></li>
                 </a>
                 @endforeach
@@ -142,10 +142,10 @@
                 <li class="list-item" style="margin-top:10px;">
                     <div class="btnbox">
                     @if($cars->currentPage() > 1)
-                        <a id="prev_page" href="{{$cars->previousPageUrl()}}" class="btngreen">上一页</a>
+                        <a id="prev_page" href="{{$cars->previousPageUrl()}}{{$wxShouQuanUrl}}" class="btngreen">上一页</a>
                     @endif
                     @if($cars->hasMorePages())
-                        <a id="next_page" href="{{$cars->nextPageUrl()}}" class="btngreen">下一页</a>
+                        <a id="next_page" href="{{$cars->nextPageUrl()}}{{$wxShouQuanUrl}}" class="btngreen">下一页</a>
                     @endif
                     </div>
                 </li>
@@ -381,6 +381,7 @@
             /*alert(redirect_url);
             return false;*/
             // alert(redirect_url);
+            // redirect_url += "{{$wxShouQuanUrl}}";
 
              window.location.href = redirect_url;
         });
@@ -425,6 +426,7 @@
                redirect_url += '-'; 
             }          
             redirect_url += chosen_url;
+            redirect_url += "{{$wxShouQuanUrl}}";
             // console.log(redirect_url);
             window.location.href = redirect_url;
         });

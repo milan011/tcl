@@ -27,6 +27,15 @@ class UserRepository implements UserRepositoryContract
                     ->findOrFail($id);
     }
 
+    // 获得有效用户信息
+    public function findUsedUser($id)
+    {   
+        return User::with(tableUnionDesign('hasManyRoles', ['roles.id', 'name', 'slug']))
+                    ->select(['id', 'name', 'nick_name', 'telephone', 'qq_number', 'email', 'wx_number','address','shop_id', 'status'])
+                    ->where('status', '1')
+                    ->find($id);
+    }
+
     public function getAllUsers()
     {           
         /*return User::with(['hasOneShop'=>function($query){

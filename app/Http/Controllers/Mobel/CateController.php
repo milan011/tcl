@@ -74,13 +74,16 @@ class CateController extends CommonController
         
         $wxShouQuan = '';
         $wxShouQuanUrl = '';
+        $managerId = '';
         if(Auth::user()){ //授权用户
             $wxShouQuan = '?manager='.Auth::user()->id;
         }
         if(!empty($this->request->get('manager'))){
             // dd($this->user->find($request->get('manager'))->belongsToShop->name);
-            $wxUserInfo = $this->user->find($this->request->get('manager'));
+            $wxUserInfo = $this->user->findUsedUser($this->request->get('manager'));
             $wxShouQuanUrl = '?manager='.$wxUserInfo->id;
+            $managerId  = $this->request->get('manager');
+            // $wxShouQuanUrlBrand = '\&'.'manager='.$wxUserInfo->id;
         }
         // dd($wxShouQuan);
         /*p(starts_with($condition_brand, 'b'));
@@ -490,6 +493,7 @@ class CateController extends CommonController
                 'chosen_city_selection',
                 'wxShouQuan',
                 'wxShouQuanUrl',
+                'managerId',
                 'condition_other'
             ));
         }else{
@@ -540,18 +544,24 @@ class CateController extends CommonController
 
         $categorys = $this->brand->getChildCategory($brand_id);
 
-        
-
+        $wxShouQuanUrl = '';
+        if(!empty($request->input('manager'))){
+            // dd($this->user->find($request->get('manager'))->belongsToShop->name);
+            $wxUserInfo = $this->user->findUsedUser($request->input('manager'));
+            $wxShouQuanUrl = '?manager='.$wxUserInfo->id;
+        }
         // p($categorys->toArray());exit;
-
+        // dd($wxShouQuanUrl);
         if($categorys->count() > 0){
 
             foreach ($categorys as $key => $value) {
 
-                $value->url = route('mobel.cate.index'). '/c'. $value->id . '/' . $condition;
+                $value->url = route('mobel.cate.index'). '/c'. $value->id . '/' . $condition . $wxShouQuanUrl;
             }
 
             $brand_url = route('mobel.cate.index'). '/b'. $brand_id . '/' . $condition; //不限车系url
+            /*$brand_url += $wxShouQuanUrl;
+            p($brand_url);exit;*/
             return response()->json(array(
                 'status'   => 1,
                 'data'     => $categorys,

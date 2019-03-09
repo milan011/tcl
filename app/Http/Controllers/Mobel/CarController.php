@@ -54,17 +54,20 @@ class CarController extends CommonController
         $wxShouQuanUrl = '';
         if(!empty($request->get('manager'))){
             // dd($this->user->find($request->get('manager'))->belongsToShop->name);
-            $wxUserInfo = $this->user->find($request->get('manager'));
+            $wxUserInfo = $this->user->findUsedUser($request->get('manager'));
             /*$cars->belongsToUser = array(
                 "user_id" => $wxUserInfo->id,
                 "nick_name" => $wxUserInfo->nick_name,
                 "creater_telephone" => $wxUserInfo->telephone,
             );*/
-            $cars->belongsToUser->user_id = $wxUserInfo->id;
-            $cars->belongsToUser->nick_name = $wxUserInfo->nick_name;
-            $cars->belongsToShop->shop_name = $wxUserInfo->belongsToShop->name;
-            $cars->belongsToUser->creater_telephone = $wxUserInfo->telephone;
-            $wxShouQuanUrl = '?manager='.$wxUserInfo->id;
+            if(!empty($wxUserInfo)){
+                $cars->belongsToUser->user_id = $wxUserInfo->id;
+                $cars->belongsToUser->nick_name = $wxUserInfo->nick_name;
+                $cars->belongsToShop->shop_name = $wxUserInfo->belongsToShop->name;
+                $cars->belongsToUser->creater_telephone = $wxUserInfo->telephone;
+                $wxShouQuanUrl = '?manager='.$wxUserInfo->id;
+            }
+            
         }
 
         // dd($request->get('manager'));

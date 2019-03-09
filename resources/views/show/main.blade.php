@@ -101,6 +101,7 @@
             <div class="dib col-10">
                 <div class="title">友情链接</div>
                 <div class="dib-con links">
+                    <a href="https://www.rcche.com"><div class="link dib">石家庄瑞城二手车市场</div></a>
                     <a href="http://dealers.che168.com/shop/index_161051.html"><div class="link dib">二手车之家</div></a>
                     <a href="http://www.che168.com/dealer/146535.html#pvareaid=102118"><div class="link dib">衡水淘车乐</div></a>
                     <a href="http://www.che168.com/dealer/256572.html#pvareaid=102118"><div class="link dib">张家口淘车乐</div></a>
