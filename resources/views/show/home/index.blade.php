@@ -103,9 +103,7 @@
                     <figure id="full_feature" class="swipslider" style="width:860px;height:305px;margin: 0px;">
                         <ul class="sw-slides">
                             <li class="sw-slide">
-                                <a href="http://www.sjztcl.com/join" target="_blank">
                                 <img src="{{URL::asset('newShow/images/realcar.jpg')}}" alt="Summer beach concept">
-                                </a>
                             </li>
                             <li class="sw-slide">
                                 <img src="{{URL::asset('newShow/images/zhaoshang5-30.jpg')}}" alt="Lang from Yie Ar Kung Fu">

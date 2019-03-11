@@ -136,8 +136,6 @@
                 <a class="fl @if($current_page == 'sale') active @endif" href="{{route('show.sale.index')}}" title="淘车乐二手车出售">我要卖车</a>
                 <a class="fl @if($current_page == 'join') active @endif" href="{{route('show.join.index')}}" title="淘车乐加盟">我要加盟</a>
                 <a class="fl @if($current_page == 'about') active @endif" href="{{route('show.about.index')}}" title="关于淘车乐二手车">关于我们</a>
-                <a class="fl" href='https://www.rcche.com' target="_blank" title="瑞城二手车市场" >瑞城二手车市场</a>
-
                 <!-- <a class="fl " href="/ask/"  title="淘车乐二手车问答系统">二手车问答</a> -->
             </div>
         </div>
