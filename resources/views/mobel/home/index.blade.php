@@ -90,7 +90,7 @@
     <header class="head-index">
         <a class="gz-logo fl" href="javascript:void(0);" ></a>
         <div class="gz-search" id="open_search">
-            <a href="{{route('mobel.changeCity')}}" class="local-city" >{{$show_city_name}}</a>
+            <a href="{{route('mobel.changeCity')}}{{$wxShouQuanUrl}}" class="local-city" >{{$show_city_name}}</a>
             <!-- <div class="search-ipt" data-role="vehicleSearch">搜索您想要的车</div> -->
         </div>
     </header>
@@ -169,7 +169,7 @@
         <!-- column end -->
         <ul class="buttonbox cleafix">
             <li><a href="{{route('mobel.cate.index')}}{{$wxShouQuanUrl}}">我要买车</a></li>
-            <li><a href="{{route('mobel.sale.index')}}">我要卖车</a></li>
+            <li><a href="{{route('mobel.sale.index')}}?type=2">我要卖车</a></li>
         </ul>
         
         <!-- 根据开通城市接口 三选一频道入口  start-->

@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
             'admin.insurance.*',           
             'admin.loan.*',           
             'admin.customer.*', 
+            'admin.carCustomer.*', 
             'home.*',
             'show.*',
             'mobel.*',       

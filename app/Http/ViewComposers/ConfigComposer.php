@@ -42,6 +42,7 @@ class ConfigComposer
         $insurance_company_interest   = config('tcl.insurance_company_interest'); //获取配置文件中保险公司列表(交强)
         $insurance_company_commercial = config('tcl.insurance_company_commercial'); //获取配置文件中保险公司列表(商业)
         $price_interval_mobel         = config('tcl.price_interval_mobel'); //获取配置文件中前端价格区间
+        $enroll_type                  = config('tcl.enroll_type'); //获取配置文件中报名类型
 
         $view->with('year_type', $year_type);
         $view->with('category_type', $category_type);
@@ -69,6 +70,7 @@ class ConfigComposer
         $view->with('insurance_company_interest', $insurance_company_interest);
         $view->with('insurance_company_commercial', $insurance_company_commercial);
         $view->with('price_interval_mobel', $price_interval_mobel);
+        $view->with('enroll_type', $enroll_type);
         
     }
 }

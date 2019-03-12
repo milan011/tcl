@@ -85,7 +85,7 @@ class HomeController extends CommonController {
 		return view('mobel.home.index', compact('cars', 'wxShouQuan','wxShouQuanUrl','recomment_brands', 'price_interval_mobel',  'show_city_name', 'title'));
 	}
 
-	public function changeCity($city = ''){
+	public function changeCity(Request $request, $city = ''){
 
 		/*$show_city_name = (null !==Session('chosen_city_name')) ? Session('chosen_city_name') : Session('current_city_name');
 		dd(Session::all());
@@ -93,10 +93,23 @@ class HomeController extends CommonController {
 
 		$sel_city = getSelCity($city, $this->shop); //车源来自城市信息
 
+		$wxShouQuan = '';
+		$wxShouQuanUrl = '';
+		$managerId = '';
+		if(Auth::user()){ //授权用户
+            $wxShouQuan = '?manager='.Auth::user()->id;
+        }
+        if(!empty($request->get('manager'))){
+            // dd($this->user->find($request->get('manager'))->belongsToShop->name);
+            $wxUserInfo = $this->user->findUsedUser($request->get('manager'));
+            $wxShouQuanUrl = '?manager='.$wxUserInfo->id;
+            $managerId  = $this->request->get('manager');
+        }
+
 		// dd(Session::all());
 		// dd($current_city_name);
 		$show_city_name = $sel_city['show_city_name'];
 
-		return view('mobel.home.changeCity', compact('cars', 'show_city_name'));
+		return view('mobel.home.changeCity', compact('cars', 'wxShouQuan','wxShouQuanUrl', 'managerId', 'show_city_name'));
 	}
 }

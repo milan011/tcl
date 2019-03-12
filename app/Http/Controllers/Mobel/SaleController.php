@@ -47,10 +47,15 @@ class SaleController extends CommonController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $sel_city_id   = (null !==Session('chosen_city_id')) ? Session('chosen_city_id') : Session('current_city');
+        // dd($request->get('type'));
 
+        $type = 0;
+        if(!empty($request->get('type'))){ //报名类型
+            $type = $request->get('type');
+        }
         // dd(Session::all());
         $sel_city = getSelCity($sel_city_id, $this->shop); //车源来自城市信息
 
@@ -62,7 +67,7 @@ class SaleController extends CommonController
         $current_page   = 'sale';
         $title           = '免费卖车【淘车乐_二手车_二手车交易市场_二手车网上交易平台_石家庄二手车交易平台】_淘车乐二手车交易网';
         // dd($all_top_brands);
-        return view('mobel.sale.index', compact('all_top_brands', 'current_page', 'title', 'show_city_name'));
+        return view('mobel.sale.index', compact('all_top_brands', 'type', 'current_page', 'title', 'show_city_name'));
     }
 
     /**
@@ -73,7 +78,7 @@ class SaleController extends CommonController
      */
     public function store(Request $customerSaleRequest)
     {   
-        // p($customerSaleRequest->all());exit;
+        // p($request->all());exit;
         $current_ip = $customerSaleRequest->getClientIp();
         // $current_ip = '106.117.13.179';
         $city_info  = getCurrentCityByIp($current_ip);
@@ -87,6 +92,7 @@ class SaleController extends CommonController
         $customerSaleRequest['city_id']   = $city_info->id;
         $customerSaleRequest['city_name'] = $city_info->name;
         $customerSaleRequest['source_type'] = '2';
+        $customerSaleRequest['enroll_type'] = $customerSaleRequest->enroll_type;
         $getInsertedId = $this->sale->create($customerSaleRequest);
         // p(lastSql());exit;
         /*if(!$getInsertedId){

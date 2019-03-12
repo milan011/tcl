@@ -25,7 +25,7 @@ class CustomerCar extends Model
      * 定义可批量赋值字段
      * @var array
      */
-    protected $fillable = ['name', 'mobile', 'brand_id', 'car_factory', 'source_type','category_id','city_id','city_name'];
+    protected $fillable = ['name', 'mobile', 'enroll_type', 'brand_id', 'car_factory', 'source_type','category_id','city_id','city_name'];
 
     /**
      * The attributes excluded from the model's JSON form.

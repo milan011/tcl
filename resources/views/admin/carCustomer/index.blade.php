@@ -61,8 +61,9 @@
 					<thead>
 						<tr>
 							<th>电话</th>
+							<th>咨询类型</th>
 							<th>品牌</th>
-							<th>厂家</th>
+							{{-- <th>厂家</th> --}}
 							<th>车系</th>
 							<th>城市</th>
 							<th>时间</th>						
@@ -72,8 +73,14 @@
 						@foreach ($all_customer_cars as $car)
     					<tr>
 							<td>{{$car->mobile}}</td>
+							@if(!empty($car->enroll_type))
+								<td>{{$enroll_type[$car->enroll_type]}}</td>
+							@else
+								<td>未知</td>
+							@endif
+							
 							<td>{{$car->belongsToBrand->brand_name or ''}}</td>
-							<td>{{$car->belongsToCompnay->compnay_name  or ''}}</td>
+							{{-- <td>{{$car->belongsToCompnay->compnay_name  or ''}}</td> --}}
 							<td>{{$car->belongsToCategory->category_name or ''}}</td>							
 							<td>{{$car->city_name  or ''}}</td>							
 							<td>{{substr($car->created_at, 0 ,10)}}</td>							

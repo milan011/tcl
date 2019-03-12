@@ -8,6 +8,7 @@ $(document).ready(function(){
             var request_url = $("input[name='request_url']").val();
             var mobile      = $("input[name='mobile']").val();
             var _token      = $("input[name='_token']").val();
+            var enroll_type = $("#enroll_type").val();
 
             // console.log(typeof(mobile));
 
@@ -19,37 +20,19 @@ $(document).ready(function(){
             $.ajax({
                 method: 'POST',
                 url: request_url,
-                data:{ mobile : mobile},
+                data:{ mobile : mobile, enroll_type : enroll_type},
                 dataType: 'json',
                 headers: {      
                     'X-CSRF-TOKEN': _token        
                 },
                 success:function(data){
 
-                    //设置图片对应车源ID
+                    // console.log(data);
                     alert(data.msg);
                     
                 },
                 error: function(xhr, type){
                     
-                    /*if(xhr.status == 422){ //表单验证失败，返回的状态
-                        console.log(JSON.parse(xhr.responseText));
-                        var content_error = '';
-                        
-                        content_error += '<div>';
-                        content_error += "<div class='alert alert-warning' style='text-align:center;'>";
-                        $.each(JSON.parse(xhr.responseText),function(name,value) {
-                            // console.log(name);
-                            // console.log(value);                          
-                            content_error += value[0];
-                            content_error += '<div>';                           
-                        });
-                        content_error += '</div>';
-                        content_error += '</div>';
-                        console.log(content_error);
-
-                        return false;
-                    }*/
                     alert('额,提交失败,请重试一次');
                 }
             });

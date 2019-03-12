@@ -47,7 +47,7 @@
                 <ul class="list">
                     <li class="list-item">
                         @foreach($citysHasTcl as $city)
-                            <a href="{{route('mobel.index')}}/city/{{$city->id}}" data-gzlog="select_city=quanguo">      {{$city->name}}
+                            <a href="{{route('mobel.index')}}/city/{{$city->id}}{{$wxShouQuanUrl}}" data-gzlog="select_city=quanguo">      {{$city->name}}
                             </a>
                         @endforeach
                         <a href="{{route('mobel.index')}}/city/75" data-gzlog="select_city=quanguo">张掖</a>
