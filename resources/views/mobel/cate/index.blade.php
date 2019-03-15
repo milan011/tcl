@@ -142,10 +142,10 @@
                 <li class="list-item" style="margin-top:10px;">
                     <div class="btnbox">
                     @if($cars->currentPage() > 1)
-                        <a id="prev_page" href="{{$cars->previousPageUrl()}}{{$wxShouQuanUrl}}" class="btngreen">上一页</a>
+                        <a id="prev_page" href="{{$cars->previousPageUrl()}}{{$wxShouQuanUrl2}}" class="btngreen">上一页</a>
                     @endif
                     @if($cars->hasMorePages())
-                        <a id="next_page" href="{{$cars->nextPageUrl()}}{{$wxShouQuanUrl}}" class="btngreen">下一页</a>
+                        <a id="next_page" href="{{$cars->nextPageUrl()}}{{$wxShouQuanUrl2}}" class="btngreen">下一页</a>
                     @endif
                     </div>
                 </li>

@@ -147,7 +147,7 @@
             <ul class="list row-four">
                 @foreach($price_interval_mobel as $key=>$price)
                 <li class="list-item">
-                    <a href="{{route('mobel.cate.index')}}/p{{$key}}@if(isset($chose_city))/d{{$chose_city}} @endif">
+                    <a href="{{route('mobel.cate.index')}}/p{{$key}}@if(isset($chose_city))/d{{$chose_city}} @endif{{$wxShouQuanUrl}}">
                     {{$price}}
                     </a>
                 </li>
@@ -157,7 +157,7 @@
                 @foreach($recomment_brands as $key=>$brand)
                 @if($key < 7)
                 <li class="list-item" data-url="url={{substr($brand->logo_img, 0, -4)}}">
-                    <a href="{{route('mobel.cate.index')}}/b{{$brand->id}}@if(isset($chose_city))/d{{$chose_city}} @endif" >
+                    <a href="{{route('mobel.cate.index')}}/b{{$brand->id}}@if(isset($chose_city))/d{{$chose_city}} @endif{{$wxShouQuanUrl}}" >
                         <i class="icon icon-{{substr($brand->logo_img, 0, -4)}}"></i>
                         {{$brand->name}}
                     </a>

@@ -83,7 +83,7 @@ class CateController extends CommonController
             $wxUserInfo = $this->user->findUsedUser($this->request->get('manager'));
             $wxShouQuanUrl = '?manager='.$wxUserInfo->id;
             $managerId  = $this->request->get('manager');
-            // $wxShouQuanUrlBrand = '\&'.'manager='.$wxUserInfo->id;
+            $wxShouQuanUrl2 = '&manager='.$wxUserInfo->id;
         }
         // dd($wxShouQuan);
         /*p(starts_with($condition_brand, 'b'));
@@ -493,6 +493,7 @@ class CateController extends CommonController
                 'chosen_city_selection',
                 'wxShouQuan',
                 'wxShouQuanUrl',
+                'wxShouQuanUrl2',
                 'managerId',
                 'condition_other'
             ));
@@ -528,6 +529,7 @@ class CateController extends CommonController
                 'chosen_city_selection',
                 'wxShouQuan',
                 'wxShouQuanUrl',
+                'wxShouQuanUrl2',
                 'condition_brand'
             )); 
         }
