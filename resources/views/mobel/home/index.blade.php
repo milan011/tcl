@@ -97,50 +97,22 @@
     
     <section class="DoesNotContainCity">
         <div class="focus lazyload" id="slide_banner" data-interval="3000">
-            <!-- <ul class="focus-pics sw-slides" data-role="list" style="width: 500%;">
-                <li class="sw-slide" data-role="item">
-                    <a href="">
-                        <img data-role="lazyloadImg" src="http://www.sjztcl.com/home/img/index/dbfile/kaiye.png" alt="">
-                    </a>
-                </li>
-                <li class="sw-slide" data-role="item">
-                    <a href="">
-                        <img data-role="lazyloadImg" src="http://www.sjztcl.com/home/img/index/dbfile/slider.png" alt="">
-                    </a>
-                </li>
-                <li class="sw-slide" data-role="item">
-                    <a href="">
-                        <img data-role="lazyloadImg" src="http://www.sjztcl.com/home/img/sell/dbfile/11111.png" alt="">
-                    </a>
-                </li>
-                <li class="sw-slide" data-role="item" >
-                    <a href="">
-                        <img data-role="lazyloadImg" src="http://www.sjztcl.com/home/img/index/dbfile/kaiye.png" alt="">
-                    </a>
-                </li>
-            </ul> -->
             <figure id="full_feature" class="swipslider" style="height:1.5rem;">
                 <ul class="sw-slides">
                     <li class="sw-slide">
-                        <img style="height:90%;" src="{{URL::asset('mobel/images/realcar.jpg')}}" alt="Summer beach concept">
+                        <img style="height:90%;" src="{{URL::asset('mobel/bg/realcar.jpg')}}" alt="Summer beach concept">
                     </li>
                     <li class="sw-slide">
-                        <img style="height:90%;" src="{{URL::asset('mobel/images/zhaoshang5-30.jpg')}}" alt="Lang from Yie Ar Kung Fu">
+                        <img style="height:90%;" src="{{URL::asset('mobel/bg/zhaoshang5-30.jpg')}}" alt="Lang from Yie Ar Kung Fu">
                     </li>
                     <li class="sw-slide">
-                        <img style="height:90%;" src="{{URL::asset('mobel/images/jinrong5-30.jpg')}}" alt="Tiny Tina">
+                        <img style="height:90%;" src="{{URL::asset('mobel/bg/jinrong5-30.jpg')}}" alt="Tiny Tina">
                     </li>
                     <li class="sw-slide">
-                        <img src="{{URL::asset('newShow/images/zhaosheng5-30.jpg')}}" alt="Tiny Tina from Borderlands 2">
+                        <img src="{{URL::asset('mobel/bg/zhaosheng5-30.jpg')}}" alt="Tiny Tina from Borderlands 2">
                     </li>
                 </ul>
             </figure>
-            <!-- <div class="focus-indexs" id="focusIndexs">
-                <i data-slide-to="0" class="active"></i>
-                <i data-slide-to="1"></i>
-                <i data-slide-to="2"></i>
-                <i data-slide-to="3"></i>
-            </div> -->
         </div>
         <!-- column start -->
         <div class="column">

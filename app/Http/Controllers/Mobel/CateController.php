@@ -75,6 +75,7 @@ class CateController extends CommonController
         $wxShouQuan = '';
         $wxShouQuanUrl = '';
         $managerId = '';
+        $wxShouQuanUrl2 = '';
         if(Auth::user()){ //授权用户
             $wxShouQuan = '?manager='.Auth::user()->id;
         }
