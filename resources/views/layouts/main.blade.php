@@ -110,6 +110,22 @@
 							</ul>	
 						</li>
 						@endif
+						@if(Auth::user()->id == 4 ||  Auth::user()->id == 109)
+							<li>
+							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车源评估</span><span style="float:right;">>></span></a>
+							<ul>
+								<li>
+									<a class="submenu" href="{{route('admin.appraiser.index')}}/index">
+									<i class="icon-money"></i> <span class="hidden-tablet">
+										评估车源</span>
+									</a>
+								</li>
+								<li>
+									<a class="submenu" href="{{route('admin.car.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">我的车源</span></a>
+								</li>
+							</ul>	
+							</li>
+						@endif
 						@ifUserCan('pinggu.check')
 							<li>
 							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">车源评估</span><span style="float:right;">>></span></a>
@@ -137,31 +153,31 @@
 						</li>
 						@endif
 						@ifUserCan('chance.check')
-						<li>
+						<!-- <li>
 							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">销售机会</span><span style="float:right;">>></span></a>
 							<ul>
 								<li><a class="submenu" href="{{route('admin.chance.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">发起的销售机会</span></a></li>
 								<li><a class="submenu" href="{{route('admin.chance.index')}}/index"><i class="icon-file-alt"></i><span class="hidden-tablet">参与的销售机会</span></a></li>			
 							</ul>
-						</li>
+						</li> -->
 						@endif
 						@ifUserCan('plan.check')
-						<li>
+						<!-- <li>
 							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">约车管理</span><span style="float:right;">>></span></a>
 							<ul>
 								<li><a class="submenu" href="{{route('admin.plan.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">发起的约车</span></a></li>
 								<li><a class="submenu" href="{{route('admin.plan.index')}}/index"><i class="icon-file-alt"></i><span class="hidden-tablet">参与的约车</span></a></li>			
 							</ul>
-						</li>
+						</li> -->
 						@endif
 						@ifUserCan('transcation.check')
-						<li>
+						<!-- <li>
 							<a class="dropmenu" href="JavaScript:void(0);"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">交易管理</span><span style="float:right;">>></span></a>
 							<ul>
 								<li><a class="submenu" href="{{route('admin.transcation.self')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">发起的交易</span></a></li>
 								<li><a class="submenu" href="{{route('admin.transcation.index')}}/index"><i class="icon-file-alt"></i><span class="hidden-tablet">参与的交易</span></a></li>			
 							</ul>
-						</li>
+						</li> -->
 						@endif
 						@ifUserCan('customer.check')
 						<li>
@@ -227,9 +243,9 @@
 						@endif
 						@ifUserCan('customerCar.check')
 						<li>
-							<a class="submenu" href="{{route('admin.carCustomer.index')}}">
+							<a class="submenu" href="{{route('admin.carCustomer.index')}}/index">
 									<i class="icon-bullhorn"></i> <span class="hidden-tablet">
-										客户卖车信息</span>
+										报名信息</span>
 							</a>
 						</li>
 						@endif

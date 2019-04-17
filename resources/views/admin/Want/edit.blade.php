@@ -36,38 +36,38 @@
 				<fieldset>
 				  
 				  <div class="control-group">
-					<label class="control-label" for="name">车源名称</label>
+					<label class="control-label" for="name">求购名称</label>
 					<div class="controls">
 					  <input class="input-xlarge focused" id="name" readonly="readonly" name="name" type="text" value="{{$wants->name}}">
 					</div>
 				  </div>
-				  <div class="control-group">
-					<label class="control-label" for="want_code">车源编号</label>
-					<div class="controls">
-					  <input class="input-xlarge focused" id="want_code" readonly="readonly" name="want_code" type="text" value="{{$wants->want_code}}">
-					</div>
-				  </div>
-				  <div class="control-group">
+				  <!-- <div class="control-group">
+				  					<label class="control-label" for="want_code">求购编号</label>
+				  					<div class="controls">
+				  					  <input class="input-xlarge focused" id="want_code" readonly="readonly" name="want_code" type="text" value="{{$wants->want_code}}">
+				  					</div>
+				  </div> -->
+				<div class="control-group">
 					<label class="control-label" for="alternate_car">备选车型</label>
 					<div class="controls">
 						<input class="input-xlarge one_line focused" name="alternate_car" id="alternate_car" type="text" value="{{$wants->alternate_car}}" placeholder="备选车型">
 						<input class="input-xlarge one_line focused" name="alternate_car_another" id="alternate_car_another" type="text" value="{{$wants->alternate_car_another}}" placeholder="备选车型">
 					</div>
 				</div>
-				  <div class="control-group  ">
-                	<label class="control-label" for="capacity">排量</label>
-                	<div class="controls">
-                  		<select id="capacity" name="capacity" >                        
+				<!-- <div class="control-group">
+				                	<label class="control-label" for="capacity">排量</label>
+				                	<div class="controls">
+				                  		<select id="capacity" name="capacity" >                        
 					  		@foreach($capacity as $key=>$capa)											
-					  		<option @if(($wants->capacity) == $key) selected @endif  value="{{$key}}">
+					  		<option @if($wants->capacity == $key) selected @endif  value="{{$key}}">
 					  			{{$capa}}
 					  		</option>	
-					  		@endforeach	                     
-                  		</select>
-                	</div>
-              	</div>
+					  		@endforeach
+				                  		</select>
+				                	</div>
+				              	</div> -->
 
-				  <div class="control-group  ">
+				<div class="control-group  ">
                 	<label class="control-label" for="shiftType">变速箱</label>
                 	<div class="controls">
                   		<select id="gearbox" name="gearbox" >                        
@@ -167,14 +167,14 @@
 					</div>
 			  	</div>	
 
-			  	<div class="control-group ">
-					<label class="control-label" for="xs_remark">
-						<font style="color:red;">*&nbsp;</font>销售描述
-					</label>
-					<div class="controls">
-					<textarea id="xs_remark" name="xs_remark" required >{{$wants->xs_remark}}</textarea>
-					</div>
-			  	</div>	  				
+			  	<!-- <div class="control-group ">
+			  	  									<label class="control-label" for="xs_remark">
+			  	  										<font style="color:red;">*&nbsp;</font>销售描述
+			  	  									</label>
+			  	  									<div class="controls">
+			  	  									<textarea id="xs_remark" name="xs_remark" required >{{$wants->xs_remark}}</textarea>
+			  	  									</div>
+			  	  				</div>	 -->  				
 				  <div class="form-actions">
 					<button type="submit" class="btn btn-primary">确定</button>
 					<button class="btn" onclick="window.history.go(-1);return false;">返回</button>
@@ -183,7 +183,8 @@
 			</form>				
 		</div>
 	</div>			
-</div>   
+</div> 
+
 @endsection
 @section('script_content')
 <!-- 引入日历插件 -->

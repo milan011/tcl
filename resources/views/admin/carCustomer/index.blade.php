@@ -46,44 +46,102 @@
 			<div class="box-content">
 				<div class="page-tabs">
             		<ul class="nav nav-tabs">
-            		  
-            		  <li style="display: inline-block;line-height:20px;">
-						<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索信息</a>
-					</li>
-            		
-					<li style="display:inline-block;line-height:20px;">
-						<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
-					</li>
+            		    <li style="display: inline-block;line-height: 20px;">
+							<a class="btn btn-primary" href="{{route('admin.carCustomer.create')}}">添加报名</a>
+						</li>
+            			<li style="display: inline-block;line-height:20px;">
+							<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索信息</a>
+						</li>
+						<li style="display:inline-block;line-height:20px;">
+							<a href="#" onclick="window.history.go(-1);return false;" class="btn ">返回</a>
+						</li>
             		</ul>
         		</div>
 
 				<table  class="table table-striped table-bordered">
 					<thead>
 						<tr>
+							<th>客户</th>
 							<th>电话</th>
 							<th>咨询类型</th>
-							<th>品牌</th>
-							{{-- <th>厂家</th> --}}
-							<th>车系</th>
+							<th>车型</th>
 							<th>城市</th>
-							<th>时间</th>						
+							<th>分发</th>
+							<th>时间</th>	
+							<th>操作</th>					
 						</tr>
 					</thead> 
 					<tbody>
 						@foreach ($all_customer_cars as $car)
     					<tr>
+							<td>{{$car->name or ''}}</td>
 							<td>{{$car->mobile}}</td>
 							@if(!empty($car->enroll_type))
 								<td>{{$enroll_type[$car->enroll_type]}}</td>
 							@else
 								<td>未知</td>
 							@endif
-							
-							<td>{{$car->belongsToBrand->brand_name or ''}}</td>
+							{{-- <td>{{$car->belongsToBrand->brand_name or ''}}</td> --}}
 							{{-- <td>{{$car->belongsToCompnay->compnay_name  or ''}}</td> --}}
-							<td>{{$car->belongsToCategory->category_name or ''}}</td>							
+							<td>{{$car->belongsToCategory->category_name or $car->category_name}}</td>
 							<td>{{$car->city_name  or ''}}</td>							
-							<td>{{substr($car->created_at, 0 ,10)}}</td>							
+							@if(!empty($car->belongsToShop->shop_name))
+								<td style="color:#67c23a;">{{$car->belongsToShop->shop_name}}</td>	
+							@else
+								<td style="color:#f56c6c;">未分发</td>	
+							@endif
+							<td>{{$car->created_at}}</td>
+							<!-- <td class="center">
+								<a class="btn btn-warning" href="{{route('admin.carCustomer.edit', ['carCustomer'=>$car->id])}}">
+									<i class="icon-edit icon-white"></i> 编辑
+								</a>
+								@if($car->status == '0') 
+								<button class="btn btn-info changStatus" data-status="0">
+									<i class="icon-edit icon-white"></i> 激活
+								</button>
+								@else 
+								<button class="btn btn-danger changStatus" data-status="1">
+									<i class="icon-edit icon-white"></i> 废弃
+								</button>
+								@endif
+								<input type="hidden" value="{{$car->id}}">
+								<button class="btn btn-info fenfa" data-status="0">
+									<i class="icon-edit icon-white"></i> 分发
+								</button>
+							</td> -->
+							<td class="center">
+								<div class="btn-group">
+									<a class="btn btn-success" href="{{route('admin.carCustomer.edit', ['carCustomer'=>$car->id])}}">
+										<i class="icon-edit icon-white"></i> 编辑
+									</a>
+									<div class="btn-group " role=”group”>
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+											更多
+											<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu pull-right">
+											<li>
+												<a target="_blank" class="btn btn-warning" href="{{route('admin.carCustomer.show', ['carCustomer'=>$car->id])}}">查看
+												</a>												
+											</li>
+											@if(empty($car->belongsToShop->shop_name))
+											<li>
+												<button class="btn btn-info fenfa" data-status="0">
+													<i class="icon-edit icon-white"></i> 分发
+												</button>
+												<input type="hidden" value="{{$car->id}}">
+											</li>
+											@endif										
+											<li>
+												<button class="btn btn-info changStatus" data-status="{{$car->status}}" style="width:100%;">
+														@if($car->status == 1)废弃@else激活@endif
+												</button>
+												<input type="hidden" value="{{$car->id}}">
+											</li>
+										</ul>
+ 							 		</div>
+								</div>							
+							</td>
 						</tr>
 						@endforeach							
 					</tbody>
@@ -100,10 +158,49 @@
 			<h3>车源搜索</h3>
 		</div>
 		<div class="modal-body"">
-			<form class="form-horizontal" id="condition" action="{{route('admin.carCustomer.index')}}/index" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.carCustomer.index')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
-									
+					<div class="control-group">
+						<label class="control-label" for="name">客户</label>
+						<div class="controls">
+						  	<input class="input-xlarge focused" name="name" id="name" type="text" value="">
+						</div>
+					</div>	
+					<div class="control-group">
+						<label class="control-label" for="mobile">电话</label>
+						<div class="controls">
+						  	<input class="input-xlarge focused" name="mobile" id="mobile" type="text" value="">
+						</div>
+					</div>	
+					<div class="control-group">
+						<label class="control-label" for="enroll_type">咨询类型</label>
+						<div class="controls">
+						  	<select id="enroll_type" name="enroll_type">
+						  		<option  value="">不限</option>
+						  		@foreach($enroll_type as $key => $enroll)
+						  			<option  value="{{$key}}">{{$enroll}}</option>
+						  		@endforeach
+							</select>
+						</div>
+					</div>	
+					<div class="control-group">
+						<label class="control-label" for="category_name">车型</label>
+						<div class="controls">
+						  	<input class="input-xlarge focused" name="category_name" id="category_name" type="text" value="">
+						</div>
+					</div>	
+					<div class="control-group">
+						<label class="control-label" for="fenfa_shop">分发门店</label>
+						<div class="controls">
+						  	<select id="fenfa_shop_list" name="fenfa_shop_id">
+						  		<option  value="">不限</option>
+						  		@foreach($shop_fenfa as $key => $shop)
+						  			<option  value="{{$shop->id}}">{{$shop->name}}</option>
+						  		@endforeach
+							</select>
+						</div>
+					</div>
 					<div class="control-group">
 						<label class="control-label" for="begin_date">日期范围</label>
 						<div class="controls">
@@ -116,11 +213,38 @@
 				<div class="modal-footer">
 				</div>
 				<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
-				<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">
 				<button type="submit" class="btn btn-primary">搜索</button>
 			</form>	
-		</div>						         
-	</div>		
+		</div>	
+	</div>	
+	<div class="modal hide fade" id="fenFaModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>分发</h3>
+		</div>
+		<div class="modal-body"">
+			<form class="form-horizontal" action="{{route('admin.carCustomer.fenfa')}}" method="post">
+				{!! csrf_field() !!}
+				<fieldset>
+									
+					<div class="control-group">
+						<label class="control-label" for="begin_date">门店:</label>
+						<div class="controls">
+							<select id="fenfa_shop" name="fenfa_shop">
+						  		@foreach($shop_fenfa as $key => $shop)
+						  			<option  value="{{$shop->id}}">{{$shop->name}}</option>
+						  		@endforeach
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				<div class="modal-footer">
+				</div>
+				<a href="javascript:void(0);" class="btn" data-dismiss="modal">关闭</a>
+				<input type="hidden" name="fenfa_info_id" id="fenfa_info_id" value="">
+				<button type="submit" class="btn btn-primary">分发</button>
+			</form>	
+		</div>	
 </div>
 @endsection
 
@@ -140,7 +264,77 @@
             autoclose: true,
             format: 'yyyy-mm-dd',
             todayHighlight: true
-        });   
+        }); 
+
+        $('.fenfa').click(function(e){
+
+        	// alert($(this).next().val());
+        	var fenfa_info_id = $(this).next().val();
+        	e.preventDefault();
+        	$('#fenfa_info_id').val(fenfa_info_id);
+			$('#fenFaModal').modal('show');
+        });
+
+        $('.changStatus').click(function(){
+
+			var id     = $(this).next().val();
+			// var status = $(this).attr('data-status');
+			var token = $("input[name='_token']").val();
+
+			/*alert(id);
+			alert(status);*/
+			// alert($("input[name='_token']").val());
+
+			$.confirm({
+    		    title: '注意!',
+    		    content: '确定要废弃吗',
+    		    cancelButton: '取消',
+    		    confirmButtonClass: '',
+    		    confirm: function () {
+    		        $.ajax({
+
+				type: 'POST',
+
+				url: 'carCustomer/changeStatus',
+
+				data: { id : id},
+
+				dataType: 'json',
+
+				headers: {
+
+					'X-CSRF-TOKEN': '{{ csrf_token() }}'
+
+				},
+
+				success: function(data){
+
+					alert(data.msg);
+					location.reload();
+					// console.log(data);
+				},
+
+				error: function(xhr, type){
+
+					alert('Ajax error!');
+				}
+			});
+    		    },
+    		    cancel: function () {
+    		        return false;
+    		    }
+    		});
+		}); 
+
+		$('.pagination').children('li').children('a').click(function(){
+
+			// alert($(this).attr('href'));
+			$('#condition').attr('action', $(this).attr('href'));
+			// alert($('#condition').attr('action'));
+			// return false;
+			$('#condition').submit();
+			return false;
+		});
 	});
 </script>
 @endsection

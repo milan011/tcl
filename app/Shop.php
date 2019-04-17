@@ -54,6 +54,12 @@ class Shop extends Model
       return $this->hasMany('App\Cars', 'shop_id', 'id');
     }
 
+    // 定义Shop表与CustomerCars表一对多关系
+    public function hasManyCustomerCars(){
+
+      return $this->hasMany('App\CustomerCar', 'ff_shop', 'id');
+    }
+
     // 定义Shop表与Want表一对多关系
     public function hasManyWants(){
 

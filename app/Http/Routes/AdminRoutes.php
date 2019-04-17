@@ -33,11 +33,13 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
     Route::post('transcation/create', 'TranscationController@create')->name('admin.transcation.create');
     Route::post('transcation/changeStatus', 'TranscationController@changeStatus')->name('admin.transcation.changeStatus');    
     Route::match(['get', 'post'], 'carCustomer/index', 'CarCustomerController@index')->name('admin.carCustomer.index');
+    Route::post('carCustomer/fenfa', 'CarCustomerController@fenfa')->name('admin.carCustomer.fenfa');
     Route::post('transcation/completeDel/{transcation}', 'TranscationController@completeDel')->name('admin.transcation.completeDel');    
     Route::match(['get', 'post'], 'transcation/complete', 'TranscationController@complete')->name('admin.transcation.complete');    
     // Route::post('transcation/complete', 'TranscationController@complete')->name('admin.transcation.complete');    
     Route::post('shop/changeStatus', 'ShopController@changeStatus')->name('admin.shop.changeStatus');
     Route::post('car/changeStatus', 'CarController@changeStatus')->name('admin.car.changeStatus');
+    Route::post('carCustomer/changeStatus', 'CarCustomerController@changeStatus')->name('admin.carCustomer.changeStatus');
     Route::post('car/follwQuickly', 'CarController@follwQuickly')->name('admin.car.follwQuickly');
     Route::post('car/interactiveAdd', 'CarController@interactiveAdd')->name('admin.car.interactiveAdd');  
     Route::post('car/getCarInfo', 'CarController@getCarInfo')->name('admin.car.getCarInfo');

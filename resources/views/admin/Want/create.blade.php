@@ -85,7 +85,7 @@
 			<form class="form-horizontal" id="want_form" action="{{route('admin.want.store')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
-					<div class="control-group">
+					<!-- <div class="control-group">
 						<label class="control-label" for="focusedInput">车型类别</label>
 						<div class="controls">
 						   <select id="category_type" name="category_type">
@@ -94,7 +94,7 @@
 						  		@endforeach											
 							</select>
 						</div>
-				  	</div>
+									  	</div> -->
 				  <div class="control-group">
 					<label class="control-label" for="selectError3">车型品牌</label>
 					<div class="controls">
@@ -110,9 +110,9 @@
 						<select id="thrid_category" name="categorey_id" style="display:none;width:15%;">
 					  		<option  value="0">请选择车系</option>											
 						</select>
-						<select id="four_category" name="cate_id" style="display:none;">
-					  		<option  value="0">请选择车型</option>											
-						</select>
+						<!-- <select id="four_category" name="cate_id" style="display:none;">
+											  		<option  value="0">请选择车型</option>											
+						</select> -->
 
 					</div>
 				  </div>
@@ -131,56 +131,54 @@
 						<input class="input-xlarge one_line focused" name="alternate_car_another" id="alternate_car_another" type="text" value="{{old('alternate_car_another')}}" placeholder="备选车型">
 					</div>
 				</div>
-				  <div class="control-group  ">
-                	<label class="control-label" for="capacity">排量</label>
-                	<div class="controls">
-                  		<select id="capacity" name="capacity" >                       
+				<!-- <div class="control-group  ">
+				                	<label class="control-label" for="capacity">排量</label>
+				                	<div class="controls">
+				                  		<select id="capacity" name="capacity" >                       
 					  		@foreach($capacity as $key=>$capa)
 					  		@if($key != 0)											
 					  		<option  value="{{$key}}">{{$capa}}</option>
 					  		@endif	
 					  		@endforeach	                     
-                  		</select>
-                	</div>
-              	</div>
+				                  		</select>
+				                	</div>
+				              	</div> -->
 
-				  <div class="control-group  ">
+				<div class="control-group  ">
                 	<label class="control-label" for="shiftType">变速箱</label>
                 	<div class="controls">
                   		<select id="gearbox" name="gearbox" >                        
-					  		@foreach($gearbox as $key=>$gear)
-					  		@if($key != 0)											
-					  		<option  value="{{$key}}">{{$gear}}</option>
-					  		@endif	
+					  		@foreach($gearbox as $key=>$gear)										
+					  			<option  value="{{$key}}">{{$gear}}</option>
 					  		@endforeach	                     
                   		</select>
                 	</div>
               	</div>
 
-              	<div class="control-group  ">
-                	<label class="control-label" for="out_color">外观颜色</label>
-                	<div class="controls">
-                  		<select id="out_color" name="out_color" >                        
-					  		@foreach($out_color as $key=>$color)
-					  		@if($key > 0)											
-					  		<option  value="{{$key}}">{{$color}}</option>	
-					  		@endif
-					  		@endforeach	                     
-                  		</select>
-                	</div>
-              	</div>
-              	<div class="control-group  ">
+              	<!-- <div class="control-group  ">
+              	                	<label class="control-label" for="out_color">外观颜色</label>
+              	                	<div class="controls">
+              	                  		<select id="out_color" name="out_color" >                        
+              						  		@foreach($out_color as $key=>$color)
+              						  		@if($key > 0)											
+              						  		<option  value="{{$key}}">{{$color}}</option>	
+              						  		@endif
+              						  		@endforeach	                     
+              	                  		</select>
+              	                	</div>
+              	</div> -->
+              	<!-- <div class="control-group  ">
               	<label class="control-label" for="mileage">里程</label>
-                	<div class="controls">
-                  		<select id="mileage" name="mileage" >                       
-					  		@foreach($mileage_config as $key=>$mileage)	
-					  		@if($key > 1)									
-					  		<option  value="{{$key}}">{{$mileage}}</option>	
-					  		@endif
-					  		@endforeach	                     
-                  		</select>
-                	</div>
-                </div>
+              	                	<div class="controls">
+              	                  		<select id="mileage" name="mileage" >                       
+              						  		@foreach($mileage_config as $key=>$mileage)	
+              						  		@if($key > 1)									
+              						  		<option  value="{{$key}}">{{$mileage}}</option>	
+              						  		@endif
+              						  		@endforeach	                     
+              	                  		</select>
+              	                	</div>
+              	                </div> -->
 
               	<!-- <div class="control-group  ">
                 	<label class="control-label" for="inside_color">内饰颜色</label>
@@ -247,14 +245,14 @@
                 	</div>
               	</div> -->
               	<!-- <div class="control-group  ">
-                	<label class="control-label" for="mileage">里程</label>
-                	<div class="controls">
-                  		<select id="mileage" name="mileage" >                       
-					  		@foreach($mileage_config as $key=>$mileage)											
-					  		<option  value="{{$key}}">{{$mileage}}</option>	
-					  		@endforeach	                     
-                  		</select>
-                	</div>
+              	                	<label class="control-label" for="mileage">里程</label>
+              	                	<div class="controls">
+              	                  		<select id="mileage" name="mileage" >                       
+              						  		@foreach($mileage_config as $key=>$mileage)											
+              						  		<option  value="{{$key}}">{{$mileage}}</option>	
+              						  		@endforeach	                     
+              	                  		</select>
+              	                	</div>
               	</div> -->
 			  <div class="control-group">
 					<label class="control-label" for="top_price"><font style="color:red;">*&nbsp;</font>可接受价格</label>
@@ -307,14 +305,14 @@
 					</div>
 			  	</div>	
 
-			  	<div class="control-group ">
-					<label class="control-label" for="xs_remark">
-						<font style="color:red;">*&nbsp;</font>销售描述
-					</label>
-					<div class="controls">
-					<textarea id="xs_remark" name="xs_remark" required ></textarea>
-					</div>
-			  	</div>
+			  	<!-- <div class="control-group ">
+			  						<label class="control-label" for="xs_remark">
+			  							<font style="color:red;">*&nbsp;</font>销售描述
+			  						</label>
+			  						<div class="controls">
+			  						<textarea id="xs_remark" name="xs_remark" required ></textarea>
+			  						</div>
+			  	</div> -->
 	  				
 				  <div class="form-actions">
 				  	<input type="hidden" name="ajax_request_url" value="{{route('admin.brand.getChildBrand')}}">

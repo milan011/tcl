@@ -19,8 +19,7 @@ class SaleRepository implements SaleRepositoryContract
     // 根据ID获得客户车源信息信息
     public function find($id)
     {
-        return CustomerCar::select(['id', 'name', 'mobile'])
-                       ->findOrFail($id);
+        return CustomerCar::findOrFail($id);
     }
 
     // 获得客户车源信息列表
@@ -30,6 +29,7 @@ class SaleRepository implements SaleRepositoryContract
 
         $query = $query->addCondition($request->all()); //根据条件组合语句
         $query = $query->where('mobile', '!=', '');
+        $query = $query->where('status', '1');
         return $query->orderBy('created_at', 'desc')
                      ->paginate(12);
 
@@ -52,5 +52,31 @@ class SaleRepository implements SaleRepositoryContract
         $customerCar  = $customerCar->create($input);             
 
         return $customerCar;
+    }
+
+    // 修改报名
+    public function update($requestData, $id)
+    {
+        
+        $carCustomer  = CustomerCar::findorFail($id);
+        $input        =  array_replace($requestData->all());
+        $carCustomer->fill($input)->save();
+        // dd($carCustomer->toJson());
+        Session::flash('sucess', '修改报名成功');
+        return $carCustomer;
+    }
+
+    // 分发报名
+    public function fenfa($id, $fenfa_shop)
+    {
+        
+        $carCustomer  = CustomerCar::findorFail($id);
+        
+        $carCustomer->ff_shop = $fenfa_shop;
+        $carCustomer->is_fenfa = '1';
+        $carCustomer->save();
+        // dd($carCustomer->toJson());
+        Session::flash('sucess', '分发成功');
+        return $carCustomer;
     }
 }

@@ -93,7 +93,7 @@ class SaleController extends CommonController
         $customerSaleRequest['city_id']     = $city_info->id;
         $customerSaleRequest['city_name']   = $city_info->name;
         $customerSaleRequest['source_type'] = '1';
-        $customerSaleRequest['enroll']      = '2';
+        $customerSaleRequest['enroll_type']      = '2';
         $getInsertedId = $this->sale->create($customerSaleRequest);
         // p(lastSql());exit;
         /*if(!$getInsertedId){
