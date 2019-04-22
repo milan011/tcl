@@ -93,7 +93,13 @@
                         </li>
                         <li>
                             <span>上牌地</span>
-                            <p>{{$cars->belongsToShop->belongsToArea->city_name}}</p>
+                            <p>
+                                @if($cars->belongsToShop->belongsToArea->city_name == $cars->belongsToCity->city_name)
+                                    {{$cars->belongsToShop->belongsToArea->city_name or ''}}
+                                @else
+                                    {{$cars->belongsToCity->city_name or ''}}
+                                @endif
+                            </p>
                         </li>
                         <li>
                             <span>变速箱</span>

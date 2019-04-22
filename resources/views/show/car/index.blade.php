@@ -73,7 +73,15 @@
                             </p>
                             <b>国五</b>排放标准</li> -->
                         <li>
-                            <b>{{$cars->belongsToShop->belongsToArea->city_name or ''}}</b>上牌地</li>
+                            <b>
+                                @if($cars->belongsToShop->belongsToArea->city_name == $cars->belongsToCity->city_name)
+                                    {{$cars->belongsToShop->belongsToArea->city_name or ''}}
+                                @else
+                                    {{$cars->belongsToCity->city_name or ''}}
+                                @endif
+                            </b>
+                            上牌地
+                        </li>
                     </ul>
                     <p class="stipul-p">
                         <!-- <span class="f18">
