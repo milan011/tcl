@@ -10,7 +10,7 @@
 	</li>
 	<li>
 		<i class="icon-home"></i>
-		<a href="{{route('admin.carCustomer.index')}}">门店管理</a> 
+		<a href="{{route('admin.shop.index')}}">门店管理</a> 
 		<i class="icon-angle-right"></i>
 	</li>
 	<li><a href="#1f">添加门店</a></li>
@@ -24,7 +24,7 @@
 <div class="row-fluid sortable">
 	<div class="box span12">
 		<div class="box-content">
-			<form class="form-horizontal" action="{{route('admin.carCustomer.store')}}" method="post">
+			<form class="form-horizontal" action="{{route('admin.shop.store')}}" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 				  <div class="control-group">

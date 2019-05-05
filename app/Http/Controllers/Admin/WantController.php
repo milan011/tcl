@@ -325,7 +325,7 @@ class WantController extends Controller
 
         // dd($request->method());
         $now         = Carbon::today();  //当前日期对象
-        $waster_date = $now->modify('-40 days');
+        $waster_date = $now->modify('-15 days');
 
         // dd($waster_date);
         // dd($now);
