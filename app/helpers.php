@@ -356,8 +356,14 @@ function getSelCity($city = '', $shop)
         // p('hh');
         $city_info = Area::select('name', 'id')->find($city);
         // p(Session::all());
-        session(['chosen_city_name' => $city_info->name]);
-        session(['chosen_city_id' => $city_info->id]);
+        if(empty($city_info)){
+        	session(['chosen_city_name' => '石家庄']);
+        	session(['chosen_city_id' => '138']);
+        }else{
+        	session(['chosen_city_name' => $city_info->name]);
+        	session(['chosen_city_id' => $city_info->id]);
+        }
+        
         // dd(Session::all());
     } else {
         // p('xixi');

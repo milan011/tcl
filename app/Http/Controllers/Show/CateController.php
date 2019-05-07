@@ -411,23 +411,23 @@ class CateController extends CommonController
 
         if(!empty($url_condition['p'])){ //当前价格区间
 
-            $current_condition['price']['content'] = '价格：'.$price_interval[$url_condition['p']];
+            $current_condition['price']['content']  = '价格：'.$price_interval[$url_condition['p']];
             $current_condition['price']['selected'] = $price_interval[$url_condition['p']];
-            $current_condition['price']['url']     = $clean_price_interval_url;
+            $current_condition['price']['url']      = $clean_price_interval_url;
         }
 
         if(!empty($url_condition['x'])){ //当前变速箱条件
 
-            $current_condition['gearbox']['content'] = '变速箱：'.$gearbox[$url_condition['x']];
+            $current_condition['gearbox']['content']  = '变速箱：'.$gearbox[$url_condition['x']];
             $current_condition['gearbox']['selected'] = $gearbox[$url_condition['x']];
-            $current_condition['gearbox']['url']     = $clean_gearbox_interval_url;
+            $current_condition['gearbox']['url']      = $clean_gearbox_interval_url;
         }
 
         if(!empty($url_condition['y'])){ //当前颜色条件
             // dd($out_color_mobel);
-            $current_condition['color']['content'] = '颜色：'.$out_color_mobel[$url_condition['y']]['name'];
+            $current_condition['color']['content']  = '颜色：'.$out_color_mobel[$url_condition['y']]['name'];
             $current_condition['color']['selected'] = $out_color_mobel[$url_condition['y']]['name'];
-            $current_condition['color']['url']     = $clean_color_interval_url;
+            $current_condition['color']['url']      = $clean_color_interval_url;
         }
 
         // dd($current_condition);

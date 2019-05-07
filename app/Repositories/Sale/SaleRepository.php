@@ -26,10 +26,19 @@ class SaleRepository implements SaleRepositoryContract
     public function getAllCustomersCars($request)
     {   
         $query = new CustomerCar();       // 返回的是一个CustomerCar实例,两种方法均可
+        // dd(Auth::user()->isMdLeader());
+        // dd(Auth::user()->belongsToShop);
+        if(Auth::user()->isMdLeader()){
+            //门店店长
 
+        }
         $query = $query->addCondition($request->all()); //根据条件组合语句
         $query = $query->where('mobile', '!=', '');
         $query = $query->where('status', '1');
+        if(Auth::user()->isMdLeader()){
+            //门店店长
+            $query = $query->where('ff_shop', Auth::user()->belongsToShop->id);
+        }
         return $query->orderBy('created_at', 'desc')
                      ->paginate(12);
 

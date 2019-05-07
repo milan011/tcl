@@ -46,9 +46,11 @@
 			<div class="box-content">
 				<div class="page-tabs">
             		<ul class="nav nav-tabs">
+            			@if(!Auth::user()->isMdLeader())
             		    <li style="display: inline-block;line-height: 20px;">
 							<a class="btn btn-primary" href="{{route('admin.carCustomer.create')}}">添加报名</a>
 						</li>
+						@endif
             			<li style="display: inline-block;line-height:20px;">
 							<a class="btn btn-search" href="#"><i class="halflings-icon search"></i>搜索信息</a>
 						</li>
@@ -67,8 +69,10 @@
 							<th>车型</th>
 							<th>城市</th>
 							<th>分发</th>
-							<th>时间</th>	
-							<th>操作</th>					
+							<th>时间</th>
+							@if(!Auth::user()->isMdLeader())	
+							<th>操作</th>
+							@endif					
 						</tr>
 					</thead> 
 					<tbody>
@@ -109,6 +113,7 @@
 									<i class="icon-edit icon-white"></i> 分发
 								</button>
 							</td> -->
+							@if(!Auth::user()->isMdLeader())
 							<td class="center">
 								<div class="btn-group">
 									<a class="btn btn-success" href="{{route('admin.carCustomer.edit', ['carCustomer'=>$car->id])}}">
@@ -142,6 +147,7 @@
  							 		</div>
 								</div>							
 							</td>
+							@endif
 						</tr>
 						@endforeach							
 					</tbody>
@@ -158,7 +164,7 @@
 			<h3>车源搜索</h3>
 		</div>
 		<div class="modal-body"">
-			<form class="form-horizontal" id="condition" action="{{route('admin.carCustomer.index')}}" method="post">
+			<form class="form-horizontal" id="condition" action="{{route('admin.carCustomer.index')}}/index" method="post">
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="control-group">
@@ -177,9 +183,9 @@
 						<label class="control-label" for="enroll_type">咨询类型</label>
 						<div class="controls">
 						  	<select id="enroll_type" name="enroll_type">
-						  		<option  value="">不限</option>
+						  		<option value="">不限</option>
 						  		@foreach($enroll_type as $key => $enroll)
-						  			<option  value="{{$key}}">{{$enroll}}</option>
+						  			<option @if(isset($select_conditions['enroll_type']) && $select_conditions['enroll_type'] == $key && $select_conditions['enroll_type'] != '') selected @endif value="{{$key}}">{{$enroll}}</option>
 						  		@endforeach
 							</select>
 						</div>
@@ -196,7 +202,7 @@
 						  	<select id="fenfa_shop_list" name="fenfa_shop_id">
 						  		<option  value="">不限</option>
 						  		@foreach($shop_fenfa as $key => $shop)
-						  			<option  value="{{$shop->id}}">{{$shop->name}}</option>
+						  			<option @if(isset($select_conditions['fenfa_shop_id']) && $select_conditions['fenfa_shop_id'] == $key && $select_conditions['fenfa_shop_id'] != '') selected @endif value="{{$shop->id}}">{{$shop->name}}</option>
 						  		@endforeach
 							</select>
 						</div>

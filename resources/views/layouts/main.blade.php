@@ -244,8 +244,8 @@
 						@ifUserCan('customerCar.check')
 						<li>
 							<a class="submenu" href="{{route('admin.carCustomer.index')}}/index">
-									<i class="icon-bullhorn"></i> <span class="hidden-tablet">
-										报名信息</span>
+								<i class="icon-bullhorn"></i> 
+								<span class="hidden-tablet">报名信息</span>
 							</a>
 						</li>
 						@endif
